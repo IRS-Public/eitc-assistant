@@ -1,0 +1,56 @@
+@import "../variables";
+@import "../mixins";
+@import "reset";
+@import "normalize";
+
+
+// Apply a natural box layout model to all elements, but allowing components to
+// change
+:global {
+  html {
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  body {
+    height: 100%;
+    // NOTE: This path needs to be relative to `irs.scss` since it will only be
+    // resolved once the SCSS file is compiled.
+    color: $color-gray-darkest;
+    font-family: $font-sans;
+    font-size: $font-size-base;
+    line-height: $line-height-base;
+    overflow-x: hidden;
+  }
+
+  a {
+    color: $color-blue;
+    text-decoration: underline;
+
+    &:hover, &:focus {
+      color: $color-blue-dark;
+    }
+    &:active {
+      color: $color-blue-darkest;
+    }
+    &:visited {
+      color: $color-visited;
+    }
+  }
+
+  /* stylelint-disable */
+  #root {
+    height: 100%;
+  }
+  /* stylelint-enable */
+
+  .sr-only {
+    @include sr-only;
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.label {
+  // color: $color-gray-darkest;
+  display: block;
+  max-width: $input-max-width;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+
+  .required {
+    // color: $color-red;
+    font-size: $font-size-base;
+  }
+
+  &.disabled {
+    // color: $color-gray-text;
+    cursor: not-allowed;
+
+    .required {
+      // color: $color-gray-text;
+    }
+  }
+}

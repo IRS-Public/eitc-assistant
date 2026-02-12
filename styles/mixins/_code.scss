@@ -1,0 +1,12 @@
+@mixin code {
+  padding: 0.2em 0.4em;
+  margin: 0 2px;
+  background: rgba($color-gray-light, 0.8);
+  border-radius: 3px;
+  font-family: $font-mono;
+  font-size: $font-size-tiny;
+
+  @include media-breakpoint-down(md) {
+    font-size: $font-size-tiny - 1px;
+  }
+}

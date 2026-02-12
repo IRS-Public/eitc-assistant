@@ -1,0 +1,15 @@
+@mixin input-text {
+  width: 100%;
+  max-width: $input-max-width;
+  height: $input-height;
+  box-sizing: border-box;
+  padding: $input-padding-vertical baselines(4);
+  // border: $input-border-width solid $color-gray-darkest;
+  margin: $input-margin-top 0;
+  appearance: none;
+  border-radius: $border-radius / 2;
+  color: $color-gray-darkest; // standardize on firefox
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  line-height: $input-text-line-height;
+}

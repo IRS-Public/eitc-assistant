@@ -1,0 +1,6 @@
+@mixin ul {
+  display: block;
+  padding-left: 2em;
+  list-style-type: disc;
+  text-align: left;
+}

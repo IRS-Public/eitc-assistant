@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="10px" height="5px" viewBox="0 0 10 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.2 (78181) - https://sketchapp.com -->
+    <title>minus-solid</title>
+    <desc>Created with Sketch.</desc>
+    <g id="UI-components" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Mobile-Nav" transform="translate(-24.000000, -2741.000000)" fill="#0073AF" fill-rule="nonzero">
+            <g id="Footer-Copy" transform="translate(0.000000, 2662.000000)">
+                <g id="Footer" transform="translate(0.000000, 43.000000)">
+                    <g id="Top-Footer">
+                        <g id="Agency" transform="translate(24.000000, 29.000000)">
+                            <path d="M10,10.4379464 L10,8.56205357 C10,8.23549107 9.76116071,7.97276786 9.46428571,7.97276786 L0.535714286,7.97276786 C0.238839286,7.97276786 0,8.23549107 0,8.56205357 L0,10.4379464 C0,10.7645089 0.238839286,11.0272321 0.535714286,11.0272321 L9.46428571,11.0272321 C9.76116071,11.0272321 10,10.7645089 10,10.4379464 Z" id="minus-solid"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

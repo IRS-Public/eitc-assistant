@@ -1,0 +1,28 @@
+@mixin display-icon($icon, $direction, $size, $margin, $hover) {
+  &::#{$direction} {
+    // background-image: url(#{$image-path}/#{$icon}.png);
+    position: relative;
+    display: inline-block;
+    width: $size;
+    height: $size;
+    background-image: url("../#{$image-path}/#{$icon}.svg"); // stylelint-disable-line string-quotes
+    background-repeat: no-repeat;
+    background-size: 100%;
+    content: "";
+
+    /* stylelint-disable block-closing-brace-newline-after, at-rule-empty-line-before */
+    @if $direction == "after" {
+      margin-left: $margin;
+    } @else {
+      margin-right: $margin;
+    }
+    /* stylelint-enable */
+  }
+
+  @if $hover == "hover" {
+    &:hover::#{$direction} {
+      // background-image: url("../#{$image-path}/#{$icon}-hover.png"); // stylelint-disable-line string-quotes
+      background-image: url("../#{$image-path}/#{$icon}-hover.svg"); // stylelint-disable-line string-quotes
+    }
+  }
+}

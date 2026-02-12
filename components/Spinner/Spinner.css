@@ -1,0 +1,107 @@
+@keyframes fade {
+  from {
+    opacity: 0.9;
+  }
+
+  to {
+    opacity: 0.1;
+  }
+}
+
+.spinner {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.spinner > div {
+  position: absolute;
+  top: 38%;
+  left: 47%;
+  width: 7%;
+  height: 24%;
+  /* animation: fade 1000ms linear infinite; */
+  animation-name: fade;
+  animation-duration: 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  background: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+}
+
+.bar1 {
+  animation-delay: 0s;
+  transform: rotate(0deg) translate(0, -130%);
+}
+
+.bar2 {
+  animation-delay: -915.66667ms;
+  transform: rotate(30deg) translate(0, -130%);
+}
+
+.bar3 {
+  animation-delay: -832.33333ms;
+  transform: rotate(60deg) translate(0, -130%);
+}
+
+.bar4 {
+  animation-delay: -749ms;
+  transform: rotate(90deg) translate(0, -130%);
+}
+
+.bar5 {
+  animation-delay: -665.66667ms;
+  transform: rotate(120deg) translate(0, -130%);
+}
+
+.bar6 {
+  animation-delay: -582.33333ms;
+  transform: rotate(150deg) translate(0, -130%);
+}
+
+.bar7 {
+  animation-delay: -499ms;
+  transform: rotate(180deg) translate(0, -130%);
+}
+
+.bar8 {
+  animation-delay: -0.41566667s;
+  transform: rotate(210deg) translate(0, -130%);
+}
+
+.bar9 {
+  animation-delay: -0.33233333s;
+  transform: rotate(240deg) translate(0, -130%);
+}
+
+.bar10 {
+  animation-delay: -249ms;
+  transform: rotate(270deg) translate(0, -130%);
+}
+
+.bar11 {
+  animation-delay: -165.66667ms;
+  transform: rotate(300deg) translate(0, -130%);
+}
+
+.bar12 {
+  animation-delay: -82.33333ms;
+  transform: rotate(330deg) translate(0, -130%);
+}
+
+.spinnerWrapper {
+  justify-content: center;
+  align-items: center;
+  background-color: #002d62;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 51;
+  overflow: hidden;
+}

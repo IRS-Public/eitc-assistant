@@ -1,0 +1,709 @@
+{
+  "headerNavItems": [
+    {
+      "key": "headerNavItems-1",
+      "dataTestId": "helpLink",
+      "type": "link",
+      "text": "Help",
+      "href": "/help/telephone-assistance",
+      "external": true,
+      "irsSite": true
+    },
+    {
+      "key": "headerNavItems-2",
+      "dataTestId": "newsLink",
+      "type": "link",
+      "text": "News",
+      "href": "/newsroom",
+      "external": true,
+      "irsSite": true
+    },
+    {
+      "key": "headerNavItems-3",
+      "dataTestId": "languageSwitcher",
+      "type": "languageSwitcher",
+      "text": "English",
+      "list": [
+        {
+          "key": "headerNavItems-3-2",
+          "dataTestId": "spanishLinkHeader",
+          "href": "https://www.irs.gov/es",
+          "text": "Español",
+          "langCode": "es",
+          "external": true,
+          "irsSite": true
+        },
+        {
+          "key": "headerNavItems-3-3",
+          "dataTestId": "chinese1LinkHeader",
+          "href": "https://www.irs.gov/zh-hans",
+          "text": "中文 (简体)",
+          "langCode": "zh-hans",
+          "external": false
+        },
+        {
+          "key": "headerNavItems-3-4",
+          "dataTestId": "chinese2LinkHeader",
+          "href": "https://www.irs.gov/zh-hant",
+          "text": "中文 (繁體)",
+          "langCode": "zh-hant",
+          "external": false
+        },
+        {
+          "key": "headerNavItems-3-5",
+          "dataTestId": "koreanLinkHeader",
+          "href": "https://www.irs.gov/ko",
+          "text": "한국어",
+          "langCode": "ko",
+          "external": false
+        },
+        {
+          "key": "headerNavItems-3-6",
+          "dataTestId": "russianLinkHeader",
+          "href": "https://www.irs.gov/ru",
+          "text": "Русский",
+          "langCode": "ru",
+          "external": false
+        },
+        {
+          "key": "headerNavItems-3-7",
+          "dataTestId": "vietnameseLinkHeader",
+          "href": "https://www.irs.gov/vi",
+          "text": "Tiếng Việt",
+          "langCode": "vi",
+          "external": false
+        },
+        {
+          "key": "headerNavItems-3-8",
+          "dataTestId": "haitianLinkHeader",
+          "href": "https://www.irs.gov/ht",
+          "text": "Kreyòl ayisyen",
+          "langCode": "ht",
+          "external": false
+        }
+      ]
+    },
+    {
+      "key": "headerNavItems-4",
+      "dataTestId": "charitiesLink",
+      "type": "link",
+      "text": "Charities & Nonprofits",
+      "href": "/charities-non-profits",
+      "icon": "HandsHelping",
+      "external": true,
+      "irsSite": true
+    },
+    {
+      "key": "headerNavItems-5",
+      "dataTestId": "taxProsLink",
+      "type": "link",
+      "text": "Tax Pros",
+      "href": "/tax-professionals",
+      "icon": "Book",
+      "external": true,
+      "irsSite": true
+    }
+  ],
+  "mobileHeaderNavItems": [
+    {
+      "key": "mobileHeaderNavItems-1",
+      "dataTestId": "searchBox",
+      "type": "toggleButton",
+      "text": "Search",
+      "toggleText": "Search",
+      "target": "TOGGLE_SEARCH"
+    },
+    {
+      "key": "mobileHeaderNavItems-2",
+      "dataTestId": "helpLink",
+      "type": "link",
+      "text": "Help",
+      "toggleText": "Help",
+      "href": "/help/telephone-assistance",
+      "external": true
+    },
+    {
+      "key": "mobileHeaderNavItems-3",
+      "dataTestId": "menuButton",
+      "type": "toggleButton",
+      "text": "Menu",
+      "toggleText": "Close",
+      "target": "TOGGLE_MENU"
+    }
+  ],
+  "navBar": [
+    {
+      "key": "navBar-24",
+      "dataTestId": "fileLink",
+      "type": "link",
+      "text": "File",
+      "href": "/filing",
+      "active": false,
+      "isOpen": false,
+      "external": true,
+      "irsSite": true,
+      "columns": [
+        {
+          "key": "column-24-1",
+          "dataTestId": "infoForTextFile",
+          "name": "Information For...",
+          "list": [
+            {
+              "key": "list-24-1-1",
+              "dataTestId": "individualsLink",
+              "href": "/individuals",
+              "text": "Individuals",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-2",
+              "dataTestId": "businessLink",
+              "href": "/businesses",
+              "text": "Business & Self Employed",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-3",
+              "dataTestId": "charitiesLink",
+              "href": "/charities-and-nonprofits",
+              "text": "Charities and Nonprofits",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-4",
+              "dataTestId": "internationalLink",
+              "href": "/individuals/international-taxpayers",
+              "text": "International Taxpayers",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-5",
+              "dataTestId": "govLink",
+              "href": "/government-entities/federal-state-local-governments",
+              "text": "Federal State and Local Governments",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-6",
+              "dataTestId": "tribalLink",
+              "href": "/government-entities/indian-tribal-governments",
+              "text": "Indian Tribal Governments",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-1-7",
+              "dataTestId": "bondsLink",
+              "href": "/tax-exempt-bonds",
+              "text": "Tax Exempt Bonds",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-24-2",
+          "dataTestId": "filingForIndvText",
+          "name": "Filing for Individuals",
+          "list": [
+            {
+              "key": "list-24-2-1",
+              "dataTestId": "howToFileLink",
+              "href": "/filing/individuals/how-to-file",
+              "text": "How to File",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-2-2",
+              "dataTestId": "whenToFileLink",
+              "href": "/filing/individuals/when-to-file",
+              "text": "When to File",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-2-3",
+              "dataTestId": "whereToFileLink",
+              "href": "/filing/where-to-file-tax-returns-addresses-listed-by-return-type",
+              "text": "Where to File",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-2-4",
+              "dataTestId": "updateMyInfoLink",
+              "href": "/filing/individual/update-my-information",
+              "text": "Update My Information",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-24-3",
+          "dataTestId": "popularTextFile",
+          "name": "Popular",
+          "list": [
+            {
+              "key": "list-24-3-1",
+              "dataTestId": "economicImpactLink",
+              "href": "/coronavirus/get-my-payment",
+              "text": "Get Your Economic Impact Payment Status",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-3-2",
+              "dataTestId": "coronavirusLink",
+              "href": "/coronavirus-tax-relief-and-economic-impact-payments",
+              "text": "Coronavirus Tax Relief",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-3-4",
+              "dataTestId": "taxRecordLink",
+              "href": "/individuals/get-transcript",
+              "text": "Get Your Tax Record",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-24-3-5",
+              "dataTestId": "ipPinLink",
+              "href": "/identity-theft-fraud-scams/get-an-identity-protection-pin",
+              "text": "Get an Identity Protection PIN (IP PIN)",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "navBar-25",
+      "dataTestId": "payLink",
+      "type": "link",
+      "text": "Pay",
+      "href": "/payments",
+      "active": false,
+      "isOpen": false,
+      "external": true,
+      "irsSite": true,
+      "columns": [
+        {
+          "key": "column-25-1",
+          "dataTestId": "payByText",
+          "name": "Pay By",
+          "list": [
+            {
+              "key": "list-25-1-1",
+              "dataTestId": "bankAcctLink",
+              "href": "/payments/direct-pay",
+              "text": "Bank Account (Direct Pay)",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-1-2",
+              "dataTestId": "debitCCLink",
+              "href": "/payments/pay-taxes-by-credit-or-debit-card",
+              "text": "Debit or Credit Card",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-1-3",
+              "dataTestId": "paymenPlanLink",
+              "href": "/payments/online-payment-agreement-application",
+              "text": "Payment Plan (Installment Agreement)",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-1-4",
+              "dataTestId": "eftpsLink",
+              "href": "/payments/eftps-the-electronic-federal-tax-payment-system",
+              "text": "Electronic Federal Tax Payment System (EFTPS)",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-2",
+          "dataTestId": "popularTextPay",
+          "name": "Popular",
+          "list": [
+            {
+              "key": "list-25-2-1",
+              "dataTestId": "viewyourAcctLink",
+              "href": "/payments/view-your-tax-account",
+              "text": "View Your Account",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-2-2",
+              "dataTestId": "tweLink",
+              "href": "/individuals/tax-withholding-estimator",
+              "text": "Tax Withholding Estimator",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-2-3",
+              "dataTestId": "estimatedTaxesLink",
+              "href": "/businesses/small-businesses-self-employed/estimated-taxes",
+              "text": "Estimated Taxes",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-25-2-4",
+              "dataTestId": "penaltiesLink",
+              "href": "/payments/penalties",
+              "text": "Penalties",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "navBar-26",
+      "dataTestId": "refundLink",
+      "type": "link",
+      "text": "Refunds",
+      "href": "/refunds",
+      "active": false,
+      "isOpen": false,
+      "external": true,
+      "irsSite": true,
+      "columns": [
+        {
+          "key": "column-26-1",
+          "name": "&nbsp;",
+          "list": [
+            {
+              "key": "list-26-1-1",
+              "dataTestId": "whereMyRefundLink",
+              "href": "https://sa.www4.irs.gov/irfof/lang/en/irfofgetstatus.jsp",
+              "text": "Where's My Refund",
+              "external": true,
+              "irsSite": false
+            },
+            {
+              "key": "list-26-1-2",
+              "dataTestId": "whatToExpectLink",
+              "href": "/refunds/what-to-expect-for-refunds-this-year",
+              "text": "What to Expect",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-26-1-3",
+              "dataTestId": "directDepositLink",
+              "href": "/refunds/get-your-refund-faster-tell-irs-to-direct-deposit-your-refund-to-one-two-or-three-accounts",
+              "text": "Direct Deposit",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-26-1-4",
+              "dataTestId": "reducedRefundsLink",
+              "href": "/taxtopics/tc203",
+              "text": "Reduced Refunds",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-26-1-5",
+              "dataTestId": "fixReturnLink",
+              "href": "/forms-pubs/about-form-1040x",
+              "text": "Fix/Correct a Return",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "navBar-27",
+      "dataTestId": "creditsDeductionsLink",
+      "type": "link",
+      "text": "Credits & Deductions",
+      "href": "/credits-and-deductions",
+      "active": true,
+      "isOpen": false,
+      "external": true,
+      "irsSite": true,
+      "columns": [
+        {
+          "key": "column-27-1",
+          "dataTestId": "infoForTextCD",
+          "name": "Information For...",
+          "list": [
+            {
+              "key": "list-27-1-1",
+              "dataTestId": "youFamilyLink",
+              "href": "/credits-deductions-for-individuals",
+              "text": "Individuals",
+              "subText": "For you and your family",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-27-1-2",
+              "dataTestId": "businessCredLink",
+              "href": "/credits-deductions/businesses",
+              "text": "Businesses & Self-Employed",
+              "subText": "Standard mileage and other information",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-27-2",
+          "dataTestId": "poularTextCD",
+          "name": "Popular",
+          "list": [
+            {
+              "key": "list-27-2-1",
+              "dataTestId": "eitcLink",
+              "href": "/credits-deductions/individuals/earned-income-tax-credit",
+              "text": "Earned Income Credit (EITC)",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-27-2-2",
+              "dataTestId": "ctcLink",
+              "href": "/credits-deductions/advance-child-tax-credit-payments-in-2021",
+              "text": "Advance Child Tax Credit",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-27-2-3",
+              "dataTestId": "standardDedLink",
+              "href": "/help/ita/how-much-is-my-standard-deduction",
+              "text": "Standard Deduction",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-27-2-4",
+              "dataTestId": "healthCovgLink",
+              "href": "/credits-deductions/individuals/hctc",
+              "text": "Health Coverage",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-27-2-5",
+              "dataTestId": "retirementLink",
+              "href": "/retirement-plans",
+              "text": "Retirement Plans",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "navBar-28",
+      "type": "link",
+      "text": "Forms & Instructions",
+      "dataTestId": "formsInsLink",
+      "href": "/forms-instructions",
+      "active": false,
+      "isOpen": false,
+      "external": true,
+      "irsSite": true,
+      "columns": [
+        {
+          "key": "column-28-1",
+          "dataTestId": "formsInsText",
+          "name": "FORMS & INSTRUCTIONS",
+          "list": [
+            {
+              "key": "list-28-1-1",
+              "dataTestId": "1040Link",
+              "href": "/forms-pubs/about-form-1040",
+              "text": "Form 1040",
+              "subText": "Individual Tax Return",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-1-2",
+              "dataTestId": "1040iLink",
+              "href": "/pub/irs-pdf/i1040gi.pdf",
+              "text": "Form 1040 Instructions",
+              "subText": "Instructions for Form 1040",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-1-3",
+              "dataTestId": "w9Link",
+              "href": "/forms-pubs/about-form-w-9",
+              "text": "Form W-9",
+              "subText": "Request for Taxpayer Identification Number (TIN) and Certification",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-1-4",
+              "dataTestId": "4506tLink",
+              "href": "/forms-pubs/about-form-4506-t",
+              "text": "Form 4506-T",
+              "subText": "Request for Transcript of Tax Return",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-28-2",
+          "name": "&nbsp;",
+          "list": [
+            {
+              "key": "list-28-2-1",
+              "dataTestId": "w4Link",
+              "href": "/forms-pubs/about-form-w-4",
+              "text": "Form W-4",
+              "subText": "Employee's Withholding Certificate",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-2-2",
+              "dataTestId": "941Link",
+              "href": "/forms-pubs/about-form-941",
+              "text": "Form 941",
+              "subText": "Employer's Quarterly Federal Tax Return",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-2-3",
+              "dataTestId": "w2Link",
+              "href": "/forms-pubs/about-form-w-2",
+              "text": "Form W-2",
+              "subText": "Employers engaged in a trade or business who pay compensation",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-2-4",
+              "dataTestId": "9465Link",
+              "href": "/forms-pubs/about-form-9465",
+              "text": "Form 9465",
+              "subText": "Installment Agreement Request",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        },
+        {
+          "key": "column-28-3",
+          "dataTestId": "popularTaxProsText",
+          "name": "POPULAR FOR TAX PROS",
+          "list": [
+            {
+              "key": "list-28-3-1",
+              "dataTestId": "1040xLink",
+              "href": "/forms-pubs/about-form-1040x",
+              "text": "Form 1040-X",
+              "subText": "Amend/Fix Return",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-3-2",
+              "dataTestId": "2848Link",
+              "href": "/forms-pubs/about-form-2848",
+              "text": "Form 2848",
+              "subText": "Apply for Power of Attorney",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-3-3",
+              "dataTestId": "w7Link",
+              "href": "/forms-pubs/about-form-w-7",
+              "text": "Form W-7",
+              "subText": "Apply for an ITIN",
+              "external": true,
+              "irsSite": true
+            },
+            {
+              "key": "list-28-3-4",
+              "dataTestId": "230Link",
+              "href": "/pub/irs-pdf/pcir230.pdf",
+              "text": "Circular 230",
+              "subText": "Rules Governing Practice before IRS",
+              "external": true,
+              "irsSite": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "key": "navBar-29",
+      "type": "search",
+      "isOpen": false
+    }
+  ],
+  "search": {
+    "action": "/site-index-search",
+    "dataTestId": "searchLink",
+    "placeholder": {
+      "en": "Search",
+      "es": "Buscar",
+      "ht": "Rechèch",
+      "ko": "검색",
+      "ru": "Поиск",
+      "vi": "Tìm kiếm",
+      "zh-hans": "搜索",
+      "zh-hant": "搜索"
+    },
+    "show": false,
+    "external": true,
+    "label": "Search IRS.gov",
+    "btnLabel": "Submit Search to IRS.gov"
+  },
+  "headerMessage": "An official website of the United States government",
+  "overviewText": "Overview",
+  "menuState": false,
+  "langState": false,
+  "params": {
+    "location": {
+      "pathname": "/app/tax-withhold-estimator/",
+      "langCode": "en"
+    }
+  },
+  "langList": {
+    "en": true,
+    "es": true,
+    "zh-hant": true,
+    "zh-hans": true,
+    "ko": true,
+    "ru": true,
+    "vi": true,
+    "ht": true
+  }
+}
