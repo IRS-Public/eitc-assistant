@@ -1,0 +1,17 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.DateFieldRangeContainer {
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 24px; // Adding 24px more to make there a 40px margin per design specs
+  
+  @media (max-width: $container-width-sm) {
+    &:first-child{
+    margin-bottom: 16px;
+    }
+  }
+}
+

@@ -1,0 +1,56 @@
+@mixin button {
+  display: inline-block;
+  width: auto;
+  box-sizing: border-box;
+  padding: $button-vertical-padding $button-horizontal-padding;
+  border: solid 1px $color-blue;
+  appearance: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-family: $font-sans;
+  font-size: $font-size-base;
+  font-weight: $font-normal;
+  letter-spacing: 0.05em;
+  line-height: $button-line-height;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active {
+    text-decoration: none;
+  }
+
+  &:disabled,
+  &:disabled:hover {
+    border: solid 1px $color-gray-light;
+    background: $color-gray-light;
+    box-shadow: none;
+    color: $color-gray-text;
+    cursor: not-allowed;
+  }
+
+  &.block {
+    display: block;
+    width: 100%;
+  }
+
+  &.padded {
+    padding-right: 50px;
+    padding-left: 50px;
+
+    @include media-breakpoint-down(sm) {
+      display: block;
+      width: 100%;
+      padding-right: 20px;
+      padding-left: 20px;
+    }
+  }
+
+  &.wide {
+    @include media-breakpoint-down(sm) {
+      display: block;
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="283px" height="163px" viewBox="0 0 263 163" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 2</title>
+    <defs>
+        <linearGradient x1="-2.12109375%" y1="45.4296875%" x2="87.2705078%" y2="45.4296875%" id="linearGradient-1">
+            <stop stop-color="#004673" offset="0%"></stop>
+            <stop stop-color="#087591" offset="35.8556799%"></stop>
+            <stop stop-color="#B5BA05" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-2.12109375%" y1="45.4296875%" x2="87.2705078%" y2="45.4296875%" id="linearGradient-2">
+            <stop stop-color="#004673" offset="0%"></stop>
+            <stop stop-color="#087591" offset="49.4721284%"></stop>
+            <stop stop-color="#B5BA05" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2">
+            <path d="M201.25,120 L229.971154,120" id="Line-7"></path>
+            <path d="M121.5,25 C184.184319,25 235,75.5918209 235,138 L235,138 L204.899051,138.001189 C204.914654,137.3435 204.9225,136.683907 204.9225,136.022495 C204.9225,90.464528 167.700014,53.5324987 121.78375,53.5324987 C75.8674863,53.5324987 38.645,90.464528 38.645,136.022495 C38.645,136.683907 38.6528455,137.3435 38.6684492,138.001189 L8,138 C8,75.5918209 58.8156809,25 121.5,25 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+            <path d="M121.5,25 C183.557476,25 233.9825,74.5849606 234.984794,136.131147 L235,137.999805 L204.899075,138 C204.914662,137.342644 204.9225,136.683384 204.9225,136.022309 C204.9225,90.4644182 167.700014,53.5324509 121.78375,53.5324509 C75.8674863,53.5324509 38.645,90.4644182 38.645,136.022309 C38.645,136.683384 38.6528375,137.342644 38.6684255,138 L8,137.999805 C8,75.5917361 58.8156809,25 121.5,25 Z" id="Combined-Shape" fill="url(#linearGradient-2)"></path>
+            <text id="BALANCE-DE-$0" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="15.4" font-weight="500" fill="#333333">
+                <tspan x="70" y="15">BALANCE DE $0</tspan>
+            </text>
+            <text id="DEUDA" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="15.4" font-weight="500" fill="#333333">
+                <tspan x="0" y="159">DEUDA</tspan>
+            </text>
+            <text id="REEMBOLSO" font-family="SourceSansPro-Semibold, Source Sans Pro" font-size="15.4" font-weight="500" fill="#333333">
+                <tspan x="180" y="159">REEMBOLSO</tspan>
+            </text>
+            <line x1="121" y1="26" x2="121" y2="57" id="Line" stroke="#000000" stroke-width="2" stroke-linecap="square"></line>
+        </g>
+    </g>
+</svg>

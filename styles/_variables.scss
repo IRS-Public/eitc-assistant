@@ -1,0 +1,202 @@
+// *************************
+// Core values
+// *************************
+$rem-base:       16px;
+$em-base:        16px;
+$baseline-base:  4px;
+$module-spacing: 16px;
+
+// Baseline grid helper
+@function baselines($num) {
+  @return $num * $baseline-base;
+}
+
+// Relative font and image file paths
+$font-path:  "../assets/fonts"  !default;
+$image-path: "../assets/images" !default;
+
+
+// *************************
+// Typography
+// *************************
+$font-sans:      "Source Sans Pro", sans-serif !default;
+$font-mono:      "Consolas", "Menlo", monospace !default;
+
+// Typography: Weights
+$font-extralight:     200 !default;
+$font-light:          300 !default;
+$font-normal:         400 !default;
+$font-semibold:       600 !default;
+$font-bold:           700 !default;
+$font-extrabold:      900 !default;
+
+
+// Typography: Sizes
+$font-size-base:         $rem-base !default;
+$font-size-tiny:         12px !default;
+$font-size-caption:      $font-size-tiny;
+$font-size-title:        40px !default;
+$font-size-subtitle:     20px !default;
+$font-size-heading1:     28px !default;
+$font-size-heading2:     24px !default;
+$font-size-heading3:     20px !default;
+$font-size-heading4:     16px !default;
+
+
+// Typography: Line heights
+$line-height-base:         baselines(6)  !default;
+$line-height-tiny:         baselines(4)  !default;
+$line-height-caption:      $line-height-tiny;
+$line-height-title:        baselines(14) !default;
+$line-height-subtitle:     baselines(7)  !default;
+$line-height-heading1:     baselines(10) !default;
+$line-height-heading2:     baselines(9) !default;
+$line-height-heading3:     baselines(7) !default;
+$line-height-heading4:     baselines(6) !default;
+
+// Typography: default styling
+$type-max-width: 42em !default;
+
+
+// *************************
+// Colors
+// *************************
+// Colors: Blues
+$color-blue-lightest:        #e4f3fb !default;
+$color-blue:                 #00599c !default;
+$color-blue-vivid:           #2491ff !default;
+$color-blue-dark:            #002d62 !default;
+$color-blue-darkest:         #002346 !default;
+
+
+
+
+// Colors: Reds
+$color-red:                  #d11242 !default;
+$color-error-red:            $color-red !default;
+$color-red-lightest:         #faf0f0 !default;
+
+// Colors: Grayscale
+$color-gray-darkest:         #1b1b1b !default;
+$color-gray-dark:            #5b616b !default;
+$color-gray-text:            $color-gray-dark !default;
+$color-gray:                 #d6d7d9 !default;
+$color-gray-light:           $color-gray !default;
+$color-gray-lighter:         #f3f3f3 !default;
+$color-gray-lightest:        #f9f9f9 !default;
+$color-white:                #ffffff !default;
+
+// Colors: Golds
+$color-gold:                 #c7a97b !default;
+$color-yellow:               #fdb81e !default;
+$color-warning-yellow:       $color-yellow !default;
+$color-yellow-light:         #fff4dd !default;
+$color-yellow-lightest:      $color-yellow-light !default;
+
+
+// Colors: Greens
+$color-green:                #2e8540 !default;
+$color-success-green:        $color-green !default;
+$color-green-light:          #ecf8ed !default;
+$color-green-lightest:       $color-green-light !default;
+$color-teal:                 #087591 !default;
+$color-info-blue:            $color-teal !default;
+$color-teal-light:           #e7f6f8 !default;
+$color-teal-lightest:        $color-teal-light !default;
+
+// Colors: Purple
+$color-purple:               #6e41a0 !default;
+$color-visited:              $color-purple !default;
+$color-purple-lightest:      #f4eff8 !default;
+
+// Colors: Other
+$color-focus:                #add4fe !default;
+// Note: Artifical focus highlighting only used for checkboxes and radio
+// buttons where the system UI elements are rendered but hidden
+
+
+// *************************
+// Inputs
+// *************************
+$input-line-height:       1.25 !default;
+$input-text-line-height:  20px !default;
+$input-border-width:      1px !default;
+$input-padding-vertical:  12px !default;
+$input-margin-top:        12px !default;
+$input-max-width:         30em !default;
+$input-height: (
+  ($font-size-base * $input-line-height) +
+  ($input-padding-vertical * 2) +
+  ($input-border-width * 2)
+);
+
+// *************************
+// Buttons
+// *************************
+$button-vertical-padding: 8px !default;
+$button-horizontal-padding: 12px !default;
+$button-line-height:      1.5 !default;
+
+
+// *************************
+// Z-Index
+// *************************
+$z-index-navbar:        100;
+$z-index-modal-overlay: 200;
+$z-index-modal:         300;
+
+
+// *************************
+// Magic numbers
+// *************************
+$border-radius:               3px !default;
+$width-nav-sidebar:           220px;
+$width-nav-collapsed-sidebar: 65px;
+$calcSidebarWidth:            calc(100% - #{$width-nav-sidebar});
+$calcSidebarCollapsedWidth:   calc(100% - #{$width-nav-collapsed-sidebar});
+
+
+// *************************
+// Bootstrap Grid
+// *************************
+$enable-grid-classes:        true;
+$fluid-edge-padding:         20px;
+$fluid-edge-padding-mobile:  12px;
+// fluid-edge-padding is the padding on the left and right sides of the window
+
+
+// Grid: container width vars
+$container-width-sm: 540px;
+$container-width-md: 720px;
+$container-width-lg: 960px;
+$container-width-xl: 1140px;
+
+// Grid: Containers
+$container-max-widths: (
+  sm: $container-width-sm,
+  md: $container-width-md,
+  lg: $container-width-lg,
+  xl: $container-width-xl
+) !default;
+
+// Grid: breakpoints
+$grid-breakpoints: (
+  xs: 0,
+  sm: $container-width-sm + 36px,
+  md: $container-width-md + 48px,
+  lg: $container-width-lg + 32px,
+  xl: $container-width-xl + 60px
+) !default;
+
+// Grid: Columns
+$grid-columns:            12 !default;
+$grid-gutter-width-base:  $module-spacing !default;
+$grid-gutter-width-base-xl:  $module-spacing * 1.5 !default;
+
+$grid-gutter-widths: (
+  xs: $grid-gutter-width-base,
+  sm: $grid-gutter-width-base,
+  md: $grid-gutter-width-base,
+  lg: $grid-gutter-width-base,
+  xl: $grid-gutter-width-base-xl
+) !default;

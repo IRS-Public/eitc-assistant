@@ -1,0 +1,6 @@
+@mixin ol {
+  display: block;
+  padding-left: 2em;
+  list-style-type: decimal;
+  text-align: left;
+}

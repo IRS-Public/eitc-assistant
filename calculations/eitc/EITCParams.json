@@ -1,0 +1,319 @@
+{
+    "2025": {
+      "useARPA": true,
+      "EITCComputationSingle": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 10620,
+            "L": 19104,
+            "R1": 0.0765,
+            "M": 649,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 23350,
+            "L": 50434,
+            "R1": 0.34,
+            "M": 4328,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 23350,
+            "L": 57310,
+            "R1": 0.4,
+            "M": 7152,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 23350,
+            "L": 61555,
+            "R1": 0.45,
+            "M": 8046,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCComputationMFJ": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 17730,
+            "L": 26214,
+            "R1": 0.0765,
+            "M": 649,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 30470,
+            "L": 57554,
+            "R1": 0.34,
+            "M": 4328,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 30470,
+            "L": 64430,
+            "R1": 0.4,
+            "M": 7152,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 30470,
+            "L": 68675,
+            "R1": 0.45,
+            "M": 8046,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCMaxLimits": {
+        "single": [
+          19104,
+          50434,
+          57310,
+          61555
+        ],
+        "married": [
+          26214,
+          57554,
+          64430,
+          68675
+        ]
+      },
+      "childIncomeThreshold": "$4,400",
+      "investmentsThreshold": 11950,
+      "EITCPaperFormLinks": [
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040",
+          "text": "results.a.f1040sei"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040",
+          "text": "results.a.f1040"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040-sr",
+          "text": "results.a.f1040s"
+        }
+      ]
+    },
+
+    "2024": {
+      "useARPA": true,
+      "EITCComputationSingle": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 10330,
+            "L": 18591,
+            "R1": 0.0765,
+            "M": 632,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 22720,
+            "L": 49084,
+            "R1": 0.34,
+            "M": 4213,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 22720,
+            "L": 55768,
+            "R1": 0.4,
+            "M": 6960,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 22720,
+            "L": 59899,
+            "R1": 0.45,
+            "M": 7830,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCComputationMFJ": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 17250,
+            "L": 25511,
+            "R1": 0.0765,
+            "M": 632,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 29640,
+            "L": 56004,
+            "R1": 0.34,
+            "M": 4213,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 29640,
+            "L": 62688,
+            "R1": 0.4,
+            "M": 6960,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 29640,
+            "L": 66819,
+            "R1": 0.45,
+            "M": 7830,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCMaxLimits": {
+        "single": [
+          18591,
+          49084,
+          55768,
+          59899
+        ],
+        "married": [
+          25511,
+          56004,
+          62688,
+          66819
+        ]
+      },
+      "childIncomeThreshold": "$4,400",
+      "investmentsThreshold": 11600,
+      "EITCPaperFormLinks": [
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040",
+          "text": "results.a.f1040sei"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040",
+          "text": "results.a.f1040"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040-sr",
+          "text": "results.a.f1040s"
+        }
+      ]
+    },
+
+    "2023": {
+      "useARPA": true,
+      "EITCComputationSingle": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 9800,
+            "L": 17640,
+            "R1": 0.0765,
+            "M": 600,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 21560,
+            "L": 46560,
+            "R1": 0.34,
+            "M": 3995,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 21560,
+            "L": 52918,
+            "R1": 0.4,
+            "M": 6604,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 21560,
+            "L": 56838,
+            "R1": 0.45,
+            "M": 7430,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCComputationMFJ": {
+        "table": [
+          {
+            "A": 7300,
+            "B": 16370,
+            "L": 24210,
+            "R1": 0.0765,
+            "M": 600,
+            "R2": 0.0765
+          },
+          {
+            "A": 10950,
+            "B": 28120,
+            "L": 53120,
+            "R1": 0.34,
+            "M": 3995,
+            "R2": 0.1598
+          },
+          {
+            "A": 15400,
+            "B": 28120,
+            "L": 59478,
+            "R1": 0.4,
+            "M": 6604,
+            "R2": 0.2106
+          },
+          {
+            "A": 15400,
+            "B": 28120,
+            "L": 63398,
+            "R1": 0.45,
+            "M": 7430,
+            "R2": 0.2106
+          }
+        ]
+      },
+      "EITCMaxLimits": {
+        "single": [
+          17640,
+          46560,
+          52918,
+          56838
+        ],
+        "married": [
+          24210,
+          53120,
+          59478,
+          63398
+        ]
+      },
+      "childIncomeThreshold": "$4,400",
+      "investmentsThreshold": 11000,
+      "EITCPaperFormLinks": [
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040",
+          "text": "results.a.f1040sei"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040",
+          "text": "results.a.f1040"
+        },
+        {
+          "href": "https://www.irs.gov/forms-pubs/about-form-1040-sr",
+          "text": "results.a.f1040s"
+        }
+      ]
+    }
+}

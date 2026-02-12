@@ -1,0 +1,119 @@
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-extralight-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-extralight-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 200;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-extralightit-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-extralightit-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-light-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-light-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 300;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-lightit-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-lightit-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-regular-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-regular-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 400;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-it-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-it-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-semibold-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-semibold-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-semiboldit-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-semiboldit-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-bold-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-bold-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-boldit-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-boldit-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: normal;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-black-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-black-optimized.woff') format('woff');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: italic;
+  font-stretch: normal;
+  src: url('./WOFF2/sourcesanspro-blackit-optimized.woff2') format('woff2'),
+    url('./WOFF/sourcesanspro-blackit-optimized.woff') format('woff');
+  font-display: swap;
+}

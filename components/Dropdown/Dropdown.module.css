@@ -1,0 +1,16 @@
+.dropDown {
+  background-image: url('./dropdown-arrow.svg');
+  background-position: right 13px center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  padding-right: 40px;
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Safari, Chrome, Opera */
+  -webkit-appearance: none;
+}
+
+/* for IE10 */
+.dropDown::-ms-expand {
+  display: none;
+}

@@ -1,0 +1,9 @@
+{
+  "appMinYear": 2013,
+  "appMaxYear": 2020,
+  "minItemizedLimitYear": 2018,
+  "mainItemizedLimit": 10000,
+  "mfsItemizedLimit": 5000,
+  "minFamilySizeYear": 2018,
+  "unemploymentCompMinYear": 2020
+}

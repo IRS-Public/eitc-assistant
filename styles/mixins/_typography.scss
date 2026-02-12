@@ -1,0 +1,217 @@
+// *************************
+// BODY
+// *************************
+@mixin body-style {
+  max-width: $type-max-width;
+  font-family: $font-sans;
+}
+
+@mixin body-sizing {
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+}
+
+@mixin body-margins {
+  margin-top: baselines(3);
+  margin-bottom: baselines(3);
+}
+
+@mixin body {
+  @include body-style;
+  @include body-sizing;
+}
+
+
+// *************************
+// CAPTION
+// *************************
+@mixin caption-style {
+  max-width: $type-max-width;
+  font-family: $font-sans;
+}
+
+@mixin caption-sizing {
+  font-size: $font-size-caption;
+  line-height: $line-height-caption;
+}
+
+@mixin caption-margins {
+  margin-top: baselines(2);
+  margin-bottom: baselines(2);
+}
+
+@mixin caption {
+  @include caption-style;
+  @include caption-sizing;
+}
+
+
+// *************************
+// TINY
+// *************************
+@mixin tiny-style {
+  max-width: $type-max-width;
+  font-family: $font-sans;
+}
+
+@mixin tiny-sizing {
+  font-size: $font-size-tiny;
+  line-height: $line-height-tiny;
+}
+
+@mixin tiny-margins {
+  margin-top: baselines(2);
+  margin-bottom: baselines(2);
+}
+
+@mixin tiny {
+  @include tiny-style;
+  @include tiny-sizing;
+}
+
+
+// *************************
+// TITLE
+// *************************
+@mixin title-style {
+  font-family: $font-sans;
+  font-weight: $font-bold;
+}
+
+@mixin title-sizing {
+  font-size: $font-size-title;
+  line-height: $line-height-title;
+
+  @include media-breakpoint-down(sm) {
+    font-size: $font-size-heading1;
+    line-height: $line-height-heading1;
+  }
+}
+
+@mixin title-margins {
+  margin-bottom: baselines(6);
+}
+
+@mixin title {
+  @include title-style;
+  @include title-sizing;
+}
+
+
+// *************************
+// SUBTITLE
+// *************************
+@mixin subtitle-style {
+  font-family: $font-sans;
+}
+
+@mixin subtitle-sizing {
+  font-size: $font-size-subtitle;
+  line-height: $line-height-subtitle;
+}
+
+@mixin subtitle-margins {
+  margin-top: baselines(3);
+  margin-bottom: baselines(3);
+}
+
+@mixin subtitle {
+  @include subtitle-style;
+  @include subtitle-sizing;
+}
+
+
+// *************************
+// HEADING1
+// *************************
+@mixin heading1-style {
+  font-family: $font-sans;
+  font-weight: $font-bold;
+}
+
+@mixin heading1-sizing {
+  font-size: $font-size-heading1;
+  line-height: $line-height-heading1;
+}
+
+@mixin heading1-margins {
+  margin-top: baselines(5);
+  margin-bottom: baselines(5);
+}
+
+@mixin heading1 {
+  @include heading1-style;
+  @include heading1-sizing;
+}
+
+
+// *************************
+// HEADING2
+// *************************
+@mixin heading2-style {
+  font-family: $font-sans;
+  font-weight: $font-bold;
+}
+
+@mixin heading2-sizing {
+  font-size: $font-size-heading2;
+  line-height: $line-height-heading2;
+}
+
+@mixin heading2-margins {
+  margin-top: baselines(4);
+  margin-bottom: baselines(4);
+}
+
+@mixin heading2 {
+  @include heading2-style;
+  @include heading2-sizing;
+}
+
+
+// *************************
+// HEADING3
+// *************************
+@mixin heading3-style {
+  font-family: $font-sans;
+  font-weight: $font-bold;
+}
+
+@mixin heading3-sizing {
+  font-size: $font-size-heading3;
+  line-height: $line-height-heading3;
+}
+
+@mixin heading3-margins {
+  margin-top: baselines(3);
+  margin-bottom: baselines(3);
+}
+
+@mixin heading3 {
+  @include heading3-style;
+  @include heading3-sizing;
+}
+
+
+// *************************
+// HEADING4
+// *************************
+@mixin heading4-style {
+  font-family: $font-sans;
+  font-weight: $font-bold;
+}
+
+@mixin heading4-sizing {
+  font-size: $font-size-heading4;
+  line-height: $line-height-heading4;
+}
+
+@mixin heading4-margins {
+  margin-top: baselines(3);
+  margin-bottom: baselines(3);
+}
+
+@mixin heading4 {
+  @include heading4-style;
+  @include heading4-sizing;
+}

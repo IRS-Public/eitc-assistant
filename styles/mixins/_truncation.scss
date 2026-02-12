@@ -1,0 +1,8 @@
+
+@mixin truncate-text ($width) {
+  width: $width;
+  max-width: $width;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

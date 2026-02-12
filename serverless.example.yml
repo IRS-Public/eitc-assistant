@@ -1,0 +1,83 @@
+service: digital-mailroom-frontend
+
+frameworkVersion: '2'
+
+provider:
+  name: aws
+  endpointType: regional
+  stage: dev
+  runtime: nodejs12.x
+  timeout: 10 # seconds
+  memorySize: 1024
+  profile: ${self:custom.settings.${self:custom.myStage}.PROFILE}
+  region: ${self:custom.settings.${self:custom.myStage}.REGION}
+  role: ${self:custom.settings.${self:custom.myStage}.ROLE}
+  kmsKeyArn: ${self:custom.settings.${self:custom.myStage}.KMS_KEY_ARN}
+  lambdaHashingVersion: 20201221
+  deploymentBucket:
+    name: ${self:custom.settings.${self:custom.myStage}.DEPLOYMENT_BUCKET}
+    serverSideEncryption: AES256
+
+plugins:
+  - serverless-s3-sync
+  - serverless-deployment-bucket
+
+package:
+  individually: true
+
+custom:
+  myStage: ${opt:stage, self:provider.stage}
+  settings:
+    dev:
+      FRONTEND_BUCKET: digital-mailroom-frontend-bucket-dev
+      PROFILE: pup_apps
+      REGION: us-east-1
+      ROLE: arn:aws:iam::407277282137:role/PUP_Enhs
+      KMS_KEY_ARN: arn:aws:kms:us-east-1:407277282137:key/7fbbd730-85b9-4602-855b-9f341b6cb70d
+      DEPLOYMENT_BUCKET: pup-apps-deployment-bucket
+      RESOURCE: arn:aws:s3:::${self:custom.settings.${self:custom.myStage}.FRONTEND_BUCKET}/*
+      API: https://jnybrpyc78.execute-api.us-east-1.amazonaws.com/dev
+
+    pete:
+      FRONTEND_BUCKET: digital-mailroom-frontend-bucket-pete
+      PROFILE: pup_non_prod
+      REGION: us-gov-west-1
+      ROLE: arn:aws-us-gov:iam::389349617710:role/PUP_serverless_Enhs
+      KMS_KEY_ARN: arn:aws-us-gov:kms:us-gov-west-1:389349617710:key/ef545343-d41e-4578-93de-92a30432d4f2
+      DEPLOYMENT_BUCKET: pup-apps-deployment-bucket-pete
+      RESOURCE: arn:aws-us-gov:s3:::${self:custom.settings.${self:custom.myStage}.FRONTEND_BUCKET}/*
+      API: https://g8npxy2xtk.execute-api.us-gov-west-1.amazonaws.com/pete
+
+    prod:
+      FRONTEND_BUCKET: digital-mailroom-frontend-bucket-prod
+      PROFILE: pup_prod
+      REGION: us-gov-west-1
+      ROLE: arn:aws-us-gov:iam::899858702317:role/PUP_serverless_Enhs
+      KMS_KEY_ARN: arn:aws-us-gov:kms:us-gov-west-1:899858702317:key/175ce7cc-d12a-444d-a957-00aeaa260fe6
+      DEPLOYMENT_BUCKET: pup-apps-deployment-bucket-prod
+      RESOURCE: arn:aws-us-gov:s3:::${self:custom.settings.${self:custom.myStage}.FRONTEND_BUCKET}/*
+      API: https://apps.irs.gov/prod #Deploy backend first
+
+  s3Sync:
+    - bucketName: ${self:custom.settings.${self:custom.myStage}.FRONTEND_BUCKET}
+      localDir: out
+
+resources:
+  Resources:
+    DigitalMailroomBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: ${self:custom.settings.${self:custom.myStage}.FRONTEND_BUCKET}
+    DigitalMailroomBucketAllowPublicReadPolicy:
+      Type: AWS::S3::BucketPolicy
+      Properties:
+        Bucket:
+          Ref: DigitalMailroomBucket
+        PolicyDocument:
+          Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - 's3:GetObject'
+              Resource: ${self:custom.settings.${self:custom.myStage}.RESOURCE}
+              Principal: '*'
