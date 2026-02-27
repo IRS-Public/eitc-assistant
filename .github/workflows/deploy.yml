@@ -1,0 +1,30 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ "main", "rav/6-commit-static-site-files" ]
+    tags: [ "v*" ]
+
+permissions:
+  contents: read
+  id-token: write
+
+# Cancel redundant builds on same branch
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # do not cancel redundant builds on main or release branches
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' && !startsWith(github.ref, 'refs/heads/release/') && !startsWith(github.ref, 'refs/tags/') }}
+
+#This is a commment
+
+jobs:
+  build-deploy-credit-assistant:
+    if: vars.build == 'true'
+    uses: IRSDigitalService/shared-actions/.github/workflows/build-scan-deploy.yml@rav/40-onboard-eitc
+    permissions:
+      id-token: write
+      contents: read
+      packages: read
+    with:
+      app: "credit-assistant"
+    secrets: inherit
