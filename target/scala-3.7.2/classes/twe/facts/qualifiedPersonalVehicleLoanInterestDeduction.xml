@@ -1,0 +1,157 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/personalVehicleLoanInterestAmount">
+      <Name>Interest paid on passenger vehicle loan</Name>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/isEligibleForQualifiedPassengerVehicleLoanInterestDeduction">
+      <Name>Eligible for Qualified Passenger Vehicle Loan Interest Deduction</Name>
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/personalVehicleLoanInterestAmount"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/maxQPVLIDAmount">
+      <Name>Maximum qualified personal vehicle loan deduction</Name>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>10000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/excessAmountQPVLIDForMFJFiler">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <GreaterOf>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/magiForOB3BelowLineDeductions"/>
+            </Minuend>
+            <Subtrahends>
+              <Dollar>200000</Dollar>
+            </Subtrahends>
+          </Subtract>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/excessAmountQpvlidForNonMFJFiler">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <GreaterOf>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/magiForOB3BelowLineDeductions"/>
+            </Minuend>
+            <Subtrahends>
+              <Dollar>100000</Dollar>
+            </Subtrahends>
+          </Subtract>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/excessOverThresholdQPVLID">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dependency path="/excessAmountQPVLIDForMFJFiler"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/excessAmountQpvlidForNonMFJFiler"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseOutAmountQPVLID">
+      <Name>Qualified Personal Vehicle Loan Amount Phase Out</Name>
+      <Description>Phaseout amount for the QPVLID</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Multiply>
+          <Ceiling>
+            <Divide>
+              <Dividend>
+                <Dependency path="/excessOverThresholdQPVLID"/>
+              </Dividend>
+              <Divisors>
+                <Dollar>1000</Dollar>
+              </Divisors>
+            </Divide>
+          </Ceiling>
+          <Dollar>200</Dollar>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/tentativeQualifiedPersonalVehicleLoanInterestDeduction">
+      <Name>Tentative amount of the personal vehicle loan interest deduction</Name>
+      <Derived>
+        <GreaterOf>
+          <Subtract>
+            <Minuend>
+              <LesserOf>
+                <Dependency path="/maxQPVLIDAmount"/>
+                <Dependency path="/personalVehicleLoanInterestAmount"/>
+              </LesserOf>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/phaseOutAmountQPVLID"/>
+            </Subtrahends>
+          </Subtract>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedPersonalVehicleLoanInterestDeduction">
+      <Name>Actual amount of the personal vehicle loan interest deduction</Name>
+      <Description>Defaults to 0 if QPVLID section is not complete</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <IsComplete>
+                  <Dependency path="/isEligibleForQualifiedPassengerVehicleLoanInterestDeduction"/>
+                </IsComplete>
+                <Dependency path="/isEligibleForQualifiedPassengerVehicleLoanInterestDeduction"/>
+              </All>
+            </When>
+            <Then>
+              <Dependency path="/tentativeQualifiedPersonalVehicleLoanInterestDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

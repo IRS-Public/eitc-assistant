@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<?xml-model href="./FlowConfig.rng"?>
+<FlowConfig>
+  <page title="Credits" route="/credits">
+    <section>
+      <h2>Credits</h2>
+
+      <p>
+        Credits directly reduce the amount of tax you owe, dollar for dollar.
+        Certain credits can increase your refund if their combined amount is larger than the tax you owe.
+      </p>
+      <p>
+        This estimator only supports some credits.
+        There may be other credits you qualify for that could impact your estimated refund or tax owed.
+      </p>
+
+      <h3 condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Child Tax Credit (CTC)</h3>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue">The CTC helps families raising children by providing a tax benefit of up to <fg-show path="/maxCtcAmount"/> per qualifying child.</p>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue"><modal-link for="modal-ctc-who-can-claim">Who can claim the CTC?</modal-link></p>
+      <fg-set path="/ctcEligibleDependents" if-true="/tentativelyEligibleForCtcOdc">
+        <question>
+          Number of children
+        </question>
+        <hint>
+          Don’t count children without a Social Security number (SSN) valid for work.
+          Leave blank if <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">both you and your spouse</span> don’t have an SSN.
+        </hint>
+        <input type="int"/>
+      </fg-set>
+
+      <h3 condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Credit for Other Dependents (ODC)</h3>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Taxpayers with dependents who don’t qualify for the Child Tax Credit may be able to claim the ODC.</p>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue"><modal-link for="modal-odc-who-can-claim">Who can claim the ODC?</modal-link></p>
+      <fg-set path="/odcEligibleDependents" if-true="/tentativelyEligibleForCtcOdc">
+        <question>
+          Number of other dependents
+        </question>
+        <hint>Leave blank if you’re not a U.S. citizen, national, or lawful resident. Don't include dependents that you already reported for the Child Tax Credit.</hint>
+        <input type="int"/>
+      </fg-set>
+
+      <h3 condition="/flowIsEligibleForCDCC" operator="isTrue">Child and Dependent Care Credit (CDCC)</h3>
+      <p condition="/flowIsEligibleForCDCC" operator="isTrue">The CDCC helps taxpayers who pay for the care of a family or household member while working or looking for work.</p>
+      <p condition="/flowIsEligibleForCDCC" operator="isTrue"><modal-link for="modal-cdcc-who-can-claim-and-eligible-expenses">Who can claim the CDCC and what expenses are eligible?</modal-link></p>
+      <fg-set path="/cdccQualifyingPersons" if-true="/flowIsEligibleForCDCC">
+        <question>
+          Number of qualifying children and dependents
+        </question>
+        <input type="int"/>
+      </fg-set>
+      <fg-set path="/cdccQualifyingExpenses" if-true="/flowIsEligibleForCDCC">
+        <question>
+          Estimated annual care expenses for <fg-show path="/taxYear"/>
+        </question>
+        <hint>max <fg-show path="/cdccMaxClaimableExpenseWithOneQP"/> for one person, and <fg-show path="/cdccMaxClaimableExpenseWithTwoQP"/> for two or more people</hint>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3 condition="/flowShouldShowEitcSection" operator="isTrue">Earned Income Tax Credit (EITC)</h3>
+      <p condition="/flowShouldShowEitcSection" operator="isTrue">The EITC helps low- to moderate-income workers and families lower their taxes.</p>
+      <p condition="/flowShouldShowEitcSection" operator="isTrue"><modal-link for="modal-eitc-who-can-claim">Who can claim the EITC?</modal-link></p>
+      <fg-set path="/eitcQualifyingChildren" if-true="/flowShouldAskForEitcQualifyingChildren">
+        <question>Number of qualifying children</question>
+        <hint>Don't count children without a Social Security number (SSN). Leave blank if you <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> don't have an SSN.</hint>
+        <input type="int"/>
+      </fg-set>
+      <fg-set path="/primaryFilerAge25OrOlderForEitc" if-true="/flowShouldAskWhetherPrimaryFilerAge25OrOlderForEitc">
+        <question>Will you be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?</question>
+        <hint>Select "No" if you don't have a Social Security number.</hint>
+        <input type="boolean"/>
+      </fg-set>
+      <fg-set path="/secondaryFilerAge25OrOlderForEitc" if-true="/flowShouldAskWhetherSecondaryFilerAge25OrOlderForEitc">
+        <question>Will your spouse be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?</question>
+        <hint>Select "No" if your spouse doesn't have a Social Security number.</hint>
+        <input type="boolean"/>
+      </fg-set>
+
+      <div condition="/isEligibleForRetirementSavingsContributionsCredit" operator="isTrue">
+        <h3>Retirement Savings Contribution Credit</h3>
+        <p>The retirement savings contribution credit is a tax benefit that helps low- to moderate-income taxpayers save for retirement. Enter the credit amount you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim for contributions to a traditional IRA, Roth IRA, 401(k), 403(b), or similar plans.</p>
+        <p>
+          <modal-link for="modal-retirement-savings-credit-who-can-claim">Who can claim the retirement savings contribution credit and how do I estimate it?</modal-link>
+        </p>
+        <fg-set path="/retirementSavingsContributionsTaxCreditAmount">
+          <question>Retirement savings credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/></question>
+          <hint>(max <fg-show path="/retirementSavingsContributionsMaximumAmount"/>)</hint>
+          <input type="dollar"/>
+        </fg-set>
+      </div>
+
+      <h3 condition="/isEligibleForEducationCredits" operator="isTrue">American Opportunity Tax Credit (AOTC)</h3>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue">The AOTC helps offset the cost of tuition, fees, and other expenses for the first four years of college.</p>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue"><modal-link for="modal-aotc-who-can-claim-and-eligible-expenses">Who can claim the AOTC and what expenses qualify?</modal-link></p>
+      <fg-set path="/qualifyingStudents" if-true="/isEligibleForEducationCredits">
+        <question>Number of college students</question>
+        <input type="int" />
+      </fg-set>
+      <fg-set path="/aotcQualifiedEducationExpenses" if-true="/isEligibleForEducationCredits">
+        <question>Estimated total college tuition or fees in <fg-show path="/taxYear"/></question>
+        <hint>(max <fg-show path="/maxAotcAdjustedQualifiedExpenseCap"/> per student)</hint>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3 condition="/isEligibleForEducationCredits" operator="isTrue">Lifetime Learning Credit (LLC)</h3>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue">
+        The LLC helps offset the cost of college courses, professional certifications, and job skill trainings.
+        You can’t claim the AOTC and LLC for the same student.
+      </p>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue"><modal-link for="modal-llc-who-can-claim">Who can claim the LLC?</modal-link></p>
+      <fg-set path="/llcQualifiedEducationExpenses" if-true="/isEligibleForEducationCredits">
+        <question>Estimated total tuition or fees in <fg-show path="/taxYear"/></question>
+        <hint>(max $10,000)</hint>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3 condition="/isEligibleForAdoptionCredit" operator="isTrue">Adoption Credit</h3>
+      <p condition="/isEligibleForAdoptionCredit" operator="isTrue">The adoption credit helps families offset the costs of adopting an eligible child.</p>
+      <p condition="/isEligibleForAdoptionCredit" operator="isTrue"><modal-link for="modal-adoption-credit-who-can-claim">Who can claim the adoption credit?</modal-link></p>
+      <fg-set path="/adoptionEligibleChildren" if-true="/isEligibleForAdoptionCredit">
+        <question>Number of adopted children</question>
+        <input type="int"/>
+      </fg-set>
+      <fg-set path="/estimatedTotalQualifiedAdoptionExpenses" if-true="/isEligibleForAdoptionCredit">
+        <question>Adoption expenses you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"/></question>
+        <hint>(max <fg-show path="/maxAdoptionCreditPerChild"/> per child)</hint>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3 condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue">Credit for the Elderly or the Disabled</h3>
+      <p condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue">This credit helps older adults and people with qualifying disabilities lower their taxes.</p>
+      <p condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue"><modal-link for="modal-credit-elderly-disabled-who-can-claim">Who can claim the credit for the elderly or the disabled?</modal-link></p>
+
+      <fg-set path="/elderlyAndDisabledTaxCreditAmount" if-true="/eitherPrimaryOrSecondaryFilersAge65OrOlder" optional="true">
+        <question>Amount of the elderly and disabled credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/></question>        <input type="dollar"/>
+      </fg-set>
+
+      <h3>Foreign Tax Credit</h3>
+      <p>The foreign tax credit reduces your U.S. taxes when you pay or owe taxes to a foreign country or U.S. territory.</p>
+      <p><modal-link for="modal-foreign-tax-credit-who-can-claim">Who can claim the foreign tax credit?</modal-link></p>
+      <fg-set path="/schedule3Line1">
+        <question>Foreign tax you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"/></question>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3>Business Credits</h3>
+      <p>Business credits include many individual tax credits that reward businesses for things like hiring and supporting workers, energy investments, or research and development. </p>
+      <p><modal-link for="modal-what-are-business-credits">What are business credits?</modal-link></p>
+      <fg-set path="/schedule3Line6a">
+        <question>Amount in business credits you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/></question>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3>Mortgage Interest Credit</h3>
+      <p>The mortgage interest credit reduces taxes for low- to moderate-income homeowners who receive a Mortgage Credit Certificate from their state or local government.</p>
+      <p><modal-link for="modal-mortgage-interest-credit-who-can-claim">Who can claim the mortgage interest credit?</modal-link></p>
+      <fg-set path="/tentativeSchedule3Line6g">
+        <question>Estimated mortgage interest credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/></question>
+        <hint>(max $2,000)</hint>
+        <input type="dollar"/>
+      </fg-set>
+
+      <h3>Alternative Minimum Tax (AMT) Credit</h3>
+      <p>The AMT Credit allows high-income taxpayers to reclaim extra tax paid under the AMT in previous years.</p>
+      <p><modal-link for="modal-amt-who-can-claim">Who can claim the AMT Credit?</modal-link></p>
+      <fg-set path="/alternativeMinimumTaxCreditAmount">
+        <question>AMT tax credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/></question>
+        <input type="dollar"/>
+      </fg-set>
+    </section>
+    <modal-dialog id="modal-ctc-who-can-claim">
+      <modal-heading>Who can claim the Child Tax Credit (CTC)?</modal-heading>
+      <modal-content>
+        <p>To claim the CTC, you must have a qualifying child who:</p>
+        <ul>
+          <li>Is your dependent child, stepchild, foster child, sibling, or descendant (grandchild, niece, nephew)</li>
+          <li>Is under 17 at the end of <fg-show path="/taxYear"/></li>
+          <li>Lives with you in the U.S. more than half the year</li>
+          <li>Has a Social Security number (SSN) valid for work (you or your spouse must also have an SSN)</li>
+          <li>Doesn’t support themselves or plans to file a joint return (unless to claim a refund)</li>
+        </ul>
+        <p>You can claim up to <fg-show path="/maxCtcAmount"/> per qualifying child.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 4 on Schedule 8812 for a number greater than 0. Schedule 8812  would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/child-tax-credit">Learn more about the CTC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-odc-who-can-claim">
+      <modal-heading>Who can claim the Credit for Other Dependents (ODC)?</modal-heading>
+      <modal-content>
+        <p>To claim the ODC, you must have a qualifying dependent who:</p>
+        <ul>
+          <li>You plan to claim as a dependent on your tax return</li>
+          <li>Has a gross income less than <fg-show path="/odcDependentGrossIncomeThreshold"/></li>
+          <li>Lives with you in the U.S. more than half the year if they’re a child or for all year if they’re an adult, unless they're a <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000220957">specific type of relative</a></li>
+          <li>Has a Social Security number, Individual Taxpayer Identification Number (ITIN), or Adoption Tax Identification Number (ATIN)</li>
+          <li>Doesn’t support themselves or plans to file a joint return</li>
+          <li>Won’t be used to claim the Child Tax Credit</li>
+        </ul>
+        <p>You can claim up to <fg-show path="/maxOdcAmount"/> per qualifying dependent of any age.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 6 on Schedule 8812 for a number greater than 0. Schedule 8812 would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/newsroom/understanding-the-credit-for-other-dependents">Learn more about the ODC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-cdcc-who-can-claim-and-eligible-expenses">
+      <modal-heading>Who can claim the Child and Dependent Care Credit (CDCC) and what expenses are eligible?</modal-heading>
+      <modal-content>
+        <p>To claim the CDCC, you must be paying for the care of a child under 13 or for a spouse or dependent who lives with you and can’t care for themselves.</p>
+        <p>The person providing the care can’t be your spouse, the child’s parent, or another dependent.</p>
+        <p>Expenses that qualify:</p>
+        <ul>
+          <li>Daycare, preschool (below kindergarten)</li>
+          <li>Before- and after-school care</li>
+          <li>Day camps</li>
+          <li>Care for a spouse or dependent who can’t care for themselves</li>
+        </ul>
+        <p>Expenses that don’t qualify:</p>
+        <ul>
+          <li>Overnight camps</li>
+          <li>Private school tuition</li>
+          <li>Food, lodging, or clothing unless directly tied to care</li>
+          <li>Payments to your spouse, the child’s parent, or another dependent for care</li>
+        </ul>
+        <p>This is not a complete list. Refer to <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p503#en_US_2023_publink1000203292">Publication 503</a> to learn more about which expenses qualify.</p>
+        <p>You can claim up to <fg-show path="/cdccMaxClaimableExpenseWithOneQP"/> for one person or <fg-show path="/cdccMaxClaimableExpenseWithTwoQP"/> for two or more people.</p>
+        <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you and your spouse are legally separated or live apart and meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p503#en_US_2023_publink1000203323">other criteria.</a></p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 2 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc602">Learn more about the CDCC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-eitc-who-can-claim">
+      <modal-heading>Who can claim the Earned Income Tax Credit (EITC)?</modal-heading>
+      <modal-content>
+        <p><strong>To claim the EITC with children</strong>, you must be a low- to moderate-income worker with a qualifying child.</p>
+        <p>A qualifying child for the EITC must:</p>
+        <ul>
+          <li>Be your child, stepchild, foster child, sibling, or descendant (grandchild, niece, nephew)</li>
+          <li>Be under 19 at the end of <fg-show path="/taxYear"/>, under 24 at the end of <fg-show path="/taxYear"/> if a full-time student, or any age if they are permanently disabled</li>
+          <li>Live with you in the U.S. more than half the year</li>
+          <li>Have a Social Security number valid for work</li>
+          <li>Not file a joint return (except to claim a refund)</li>
+        </ul>
+        <p>You can claim up to 3 qualifying children.</p>
+        <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc#marriedfilingseparate">specific criteria.</a></p>
+        <p><strong>To claim the EITC without children,</strong> you must be a low- to moderate-income worker who:</p>
+        <ul>
+          <li>Will be at least 25 years old but under 65 on January 1, <fg-show path="/nextTaxYear"/></li>
+          <li>Lived in the U.S. for more than half the year</li>
+          <li>Have a Social Security number valid for work</li>
+        </ul>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 27a on Form 1040 of your federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc">Learn more about the EITC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-retirement-savings-credit-who-can-claim">
+      <modal-heading>Who can claim the Retirement Savings Contribution Credit and how do I estimate it?</modal-heading>
+      <modal-content>
+        <p>To claim the retirement savings contribution credit, you must contribute to a traditional IRA, Roth IRA, 401(k), 403(b), or similar plan.</p>
+        <p>These contributions don’t qualify:</p>
+        <ul>
+          <li>Employer contributions or matches</li>
+          <li>Rollover contributions</li>
+        </ul>
+        <p>To estimate your credit amount, multiply the retirement contributions you expect to make in <fg-show path="/taxYear"/> by <fg-show path="/retirementSavingsMultiplier"/>%. This percentage is based on your filing status and estimated adjusted gross income.</p>
+        <p>You can claim up to <fg-show path="/retirementSavingsMaximumAmountNonMFJ"/> (<fg-show path="/retirementSavingsMaximumAmountMFJ"/> if filing jointly).</p>
+        <p>If it’s hard to estimate, it’s ok to leave this credit amount blank.</p>
+        <p>
+          <strong>How to check if you claimed this credit last year</strong>
+        </p>
+        <p>If you expect to have similar retirement savings as last year, you can use your credit amount from last year. Review line 4 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p>
+          <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc610">Learn more about the retirement savings contribution credit.</a>
+        </p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-aotc-who-can-claim-and-eligible-expenses">
+      <modal-heading>Who can claim the American Opportunity Tax Credit (AOTC) and what expenses qualify?</modal-heading>
+      <modal-content>
+        <p>To claim the AOTC, you, your spouse, or a dependent must:</p>
+        <ul>
+          <li>Be in the first 4 years of higher education</li>
+          <li>Enroll at least half-time to pursue a degree or credential</li>
+        </ul>
+        <p>You can claim up to <fg-show path="/maxAotcPerQualifyingStudent"/> per student, including:</p>
+        <ul>
+          <li>100% of the first $2,000 in expenses</li>
+          <li>25% of the next $2,000 in expenses</li>
+        </ul>
+        <p>
+          <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/qualified-ed-expenses">Expenses</a> can include tuition, fees, books, supplies, and other items.
+          You can claim expenses paid by you, your spouse, your dependent, or a third party.
+        </p>
+        <p>This credit can’t be claimed more than 4 times per student.</p>
+        <p>You can’t claim both the American Opportunity Tax Credit and the Lifetime Learning Credit for the same student.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 27 on Form 8863, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/american-opportunity-tax-credit">Learn more about the AOTC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-llc-who-can-claim">
+      <modal-heading>Who can claim the Lifetime Learning Credit (LLC)?</modal-heading>
+      <modal-content>
+        <p>To claim the LLC, you, your spouse, or a dependent must:</p>
+        <ul>
+          <li>Pay tuition or fees for college courses, professional certifications, or job skill trainings</li>
+          <li>Enroll or take courses at an <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/eligible-educational-institution">eligible educational institution</a></li>
+          <li>Enroll in one or more courses for an academic period in <fg-show path="/taxYear"/></li>
+        </ul>
+        <p>You can claim up to 20% of the first $10,000 in expenses and a maximum of <fg-show path="/maxLlcAmountForTaxYear"/> per federal tax return. You may claim expenses paid by you, your spouse, your dependent, or a third party.</p>
+        <p>You can’t claim both the American Opportunity Tax Credit and the LLC for the same student.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 31 on Form 8863, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/llc">Learn more about the LLC.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-adoption-credit-who-can-claim">
+      <modal-heading>Who can claim the Adoption Credit?</modal-heading>
+      <modal-content>
+        <p>To claim the adoption credit, you or your spouse must:</p>
+        <ul>
+          <li>Have paid qualified <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/adoption-credit#qualifiedexpenses">adoption expenses</a> such as adoption fees, court costs, attorney fees, or travel</li>
+          <li>Adopt a child under 18, or who is physically or mentally unable to care for themselves</li>
+        </ul>
+        <p>You can claim up to <fg-show path="/maxAdoptionCreditPerChild"/> in qualified expenses per adopted child. <a target="_blank" class="usa-link" href="https://www.irs.gov/instructions/i8839#en_US_2024_publink23077td0e531">When to claim expenses</a> depends on adoption type, adoption status, and when expenses were incurred.</p>
+        <p>This credit is partially refundable. It can reduce your taxes and give you a refund up to <fg-show path="/maxRefundableAdoptionCreditAmount"/> if it brings your tax owed to $0. Unused amounts can be carried forward for up to 5 years.</p>
+        <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you lived apart from your spouse and meet <a target="_blank" class="usa-link" href="https://www.irs.gov/instructions/i8839#en_US_2024_publink23077td0e498">other criteria.</a></p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review Form 8839 (Qualified Adoption Expenses), which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-8839">Learn more about the adoption credit.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-credit-elderly-disabled-who-can-claim">
+      <modal-heading>Who can claim the elderly or disabled credit?</modal-heading>
+      <modal-content>
+        <p>You may qualify if:</p>
+        <ul>
+          <li>You are 65 years old or older on January 1, <fg-show path="/nextTaxYear"/>, or you retire on permanent and total disability and receive taxable disability income</li>
+          <li>Your adjusted gross income (AGI) is generally less than $17,500 ($25,000 if married filing jointly)</li>
+          <li>Your total nontaxable Social Security, pensions, annuities, or disability income is generally less than $5,000 ($7,500 if married filing jointly)</li>
+        </ul>
+        <p>Use <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-r-form-1040">Schedule R</a> to calculate the credit amount.</p>
+        <p condition="/isFilingStatusMFS" operator="isTrue">If you're filing as Married Filing Separately, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p524#en_US_2023_publink100038676">specific criteria.</a></p>
+        <p condition="/isFilingStatusHOH" operator="isTrue">If you're filing as Head of Household, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p524#en_US_2023_publink100038676">specific criteria.</a></p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 6d on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/credit-for-the-elderly-or-the-disabled">Learn more about the Elderly or Disabled Credit.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-foreign-tax-credit-who-can-claim">
+      <modal-heading>Who can claim the foreign tax credit?</modal-heading>
+      <modal-content>
+        <p>To claim the foreign tax credit, you or your spouse must:</p>
+        <ul>
+          <li>Pay or owe taxes to a foreign country or U.S. territory, and</li>
+          <li>Be subject to U.S. tax on the same income</li>
+        </ul>
+        <p>If you're planning to take an itemized deduction for foreign tax, then you won't be able to claim this credit.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 1 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/international-taxpayers/foreign-tax-credit">Learn more about the Foreign Tax Credit.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-what-are-business-credits">
+      <modal-heading>What are business credits?</modal-heading>
+      <modal-content>
+        <p>Business credits are a group of tax credits that include incentives for activities such as:</p>
+        <ul>
+          <li>Hiring and supporting workers</li>
+          <li>Energy investments</li>
+          <li>Research and development</li>
+        </ul>
+        <p>You may need to file Form 3800 to claim them.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 6a on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/business-tax-credits">Learn more about business tax credits.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-mortgage-interest-credit-who-can-claim">
+      <modal-heading>Who can claim the mortgage interest credit?</modal-heading>
+      <modal-content>
+        <p>To claim the mortgage interest credit, you and your spouse must:</p>
+        <ul>
+          <li>Have a qualified Mortgage Credit Certificate (MCC) from your state or local government</li>
+          <li>Pay mortgage interest on your main home</li>
+        </ul>
+        <p>The MCC will show the percentage of interest you can claim as a credit. If you don’t have an MCC, you can’t claim this credit.</p>
+        <p>This credit is limited to $2,000 per year.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 6g on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p530#en_US_2023_publink100011906">Learn more about the Mortgage Interest Credit.</a></p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-amt-who-can-claim">
+      <modal-heading>Who can claim the Alternative Minimum Tax (AMT) Credit?</modal-heading>
+      <modal-content>
+        <p>To claim the AMT, you or your spouse must:</p>
+        <ul>
+          <li>Have owed AMT in a prior year</li>
+          <li>Not be subject to AMT in the current year</li>
+        </ul>
+        <p>You can claim this credit by filing Form 8801.</p>
+        <p><strong>How to check if you claimed this credit last year</strong></p>
+        <p class="margin-top-0">Review line 6b on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-8801">Learn more about the AMT.</a></p>
+      </modal-content>
+    </modal-dialog>
+  </page>
+</FlowConfig>

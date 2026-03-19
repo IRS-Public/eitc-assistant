@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/additionalStandardDeductionItems">
+      <Description>The count of the number of blindness or old age items among the filers.</Description>
+      <Derived>
+        <Add>
+          <Count>
+            <Dependency path="/primaryFilerIsBlind"/>
+          </Count>
+          <Count>
+            <Dependency path="/primaryFilerAge65OrOlder"/>
+          </Count>
+          <Dependency path="/secondaryFilerAdditionalStandardDeductionItems"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/secondaryFilerAdditionalStandardDeductionItems">
+      <Name>Secondary Filer Additional Standard Deduction Items</Name>
+      <Description>Additional Standard Deduction Items from the secondary filer</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Add>
+                <Count>
+                  <Dependency path="/secondaryFilerIsBlind"/>
+                </Count>
+                <Count>
+                  <Dependency path="/secondaryFilerAge65OrOlder"/>
+                </Count>
+              </Add>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Int>0</Int>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/additionalStandardDeductionMultiplier">
+      <Name>Additional standard deduction multiplier</Name>
+      <Description>The amount to add to the standard deduction for each additional item. Rev Proc
+        .14 Standard Deduction &#xA7;63(f)</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusHOH"/>
+                <Dependency path="/isFilingStatusSingle"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>2050</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+                <Dependency path="/isFilingStatusMFS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>1650</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/additionalStandardDeduction">
+      <Name>Additional standard deduction</Name>
+      <Description>The additional amount to add to the standard deduction to account for blindness
+        or old age.</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/additionalStandardDeductionItems"/>
+          <Dependency path="/additionalStandardDeductionMultiplier"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/MFJStandardDeduction">
+      <Name>Married Filing Jointly Standard Deduction</Name>
+      <Description>Standard Deduction for filers who are married filing jointly. Rev Proc .15
+        Standard Deduction &#xA7;1(j)(2)(A)</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>32200</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/singleOrMFSStandardDeduction">
+      <Name>Single or Married Filing Separately Standard Deduction</Name>
+      <Description>Standard Deduction for filers who are married filing separately or single. Rev
+        Proc .15 Standard Deduction &#xA7;1(j)(2)(C) &#xA7;1(j)(2)(D)</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>16100</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/HoHStandardDeduction">
+      <Name>HoH Standard Deduction</Name>
+      <Description>Standard Deduction for filers who are filing HoH. Rev Proc .15 Standard Deduction
+        &#xA7;1(j)(2)(B)</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>24150</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/filingStatusStandardDeduction">
+      <Description>The amount of the standard deduction based on filing status alone.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusMFS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dependency path="/singleOrMFSStandardDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dependency path="/HoHStandardDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dependency path="/MFJStandardDeduction"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/normalStandardDeduction">
+      <Description>The amount to use as the standard deduction if a filer cannot be claimed as a
+        dependent.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/filingStatusStandardDeduction"/>
+          <Dependency path="/additionalStandardDeduction"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/earnedIncomeBump">
+      <Description>The alternative amount to use as the standard deduction if a filer can be claimed
+        as a dependent. This amount is not used if it exceeds the normal amount of the standard
+        deduction.</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>450</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/tentativeMinimumStandardDeduction">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>1350</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/minimumStandardDeduction">
+      <Description>The alternative amount to use as the standard deduction if a filer can be claimed
+        as a dependent. This amount is not used if it exceeds the normal amount of the standard
+        deduction.</Description>
+      <Derived>
+        <Add>
+          <GreaterOf>
+            <Dependency path="/tentativeMinimumStandardDeduction"/>
+            <Add>
+              <Dependency path="/incomeTotal"/>
+              <Dependency path="/earnedIncomeBump"/>
+            </Add>
+          </GreaterOf>
+          <Dependency path="/additionalStandardDeduction"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/standardDeduction">
+      <Description>The amount of the standard deduction</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Not>
+                <Dependency path="/treatFilersAsDependents"/>
+              </Not>
+            </When>
+            <Then>
+              <Dependency path="/normalStandardDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/treatFilersAsDependents"/>
+            </When>
+            <Then>
+              <LesserOf>
+                <Dependency path="/minimumStandardDeduction"/>
+                <Dependency path="/normalStandardDeduction"/>
+              </LesserOf>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/primaryFilerIsBlind">
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/secondaryFilerIsBlind">
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/onlyPrimaryFilerIsBlind">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsBlind"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsBlind"/>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/secondaryFilerIsBlind"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/secondaryFilerIsBlind"/>
+            </Not>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/onlySecondaryFilerIsBlind">
+      <Derived>
+        <All>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/primaryFilerIsBlind"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/primaryFilerIsBlind"/>
+            </Not>
+          </Any>
+          <IsComplete>
+            <Dependency path="/secondaryFilerIsBlind"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerIsBlind"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryAndSecondaryFilersAreBlind">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsBlind"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsBlind"/>
+          <IsComplete>
+            <Dependency path="/secondaryFilerIsBlind"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerIsBlind"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryFilerIsClaimedOnAnotherReturn">
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/secondaryFilerIsClaimedOnAnotherReturn">
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/onlyPrimaryFilerIsClaimedOnAnotherReturn">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+            </Not>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/onlySecondaryFilerIsClaimedOnAnotherReturn">
+      <Derived>
+        <All>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+            </Not>
+          </Any>
+          <IsComplete>
+            <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryAndSecondaryFilersAreClaimedOnAnotherReturn">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+          <IsComplete>
+            <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/neitherFilerIsClaimedOnAnotherReturn">
+      <Derived>
+        <Not>
+          <Any>
+            <All>
+              <IsComplete>
+                <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+              </IsComplete>
+              <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+            </All>
+            <All>
+              <IsComplete>
+                <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+              </IsComplete>
+              <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+            </All>
+          </Any>
+        </Not>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryFilerIsClaimingDependents">
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/treatFilersAsDependents">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Any>
+                <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+                <Dependency path="/secondaryFilerIsClaimedOnAnotherReturn"/>
+              </Any>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/primaryFilerIsClaimedOnAnotherReturn"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryFilerAge65OrOlder">
+      <Description>Whether the filer is 65 or older at the end of the tax year.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/secondaryFilerAge65OrOlder">
+      <Description>Whether the filer is 65 or older at the end of the tax year.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/onlyPrimaryFilerAge65OrOlder">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerAge65OrOlder"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerAge65OrOlder"/>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/secondaryFilerAge65OrOlder"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/secondaryFilerAge65OrOlder"/>
+            </Not>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/onlySecondaryFilerAge65OrOlder">
+      <Derived>
+        <All>
+          <Any>
+            <Not>
+              <IsComplete>
+                <Dependency path="/primaryFilerAge65OrOlder"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <Dependency path="/primaryFilerAge65OrOlder"/>
+            </Not>
+          </Any>
+          <IsComplete>
+            <Dependency path="/secondaryFilerAge65OrOlder"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerAge65OrOlder"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryAndSecondaryFilersAge65OrOlder">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerAge65OrOlder"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerAge65OrOlder"/>
+          <IsComplete>
+            <Dependency path="/secondaryFilerAge65OrOlder"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerAge65OrOlder"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eitherPrimaryOrSecondaryFilersAge65OrOlder">
+      <Derived>
+        <Any>
+          <Dependency path="/primaryFilerAge65OrOlder"/>
+          <All>
+            <IsComplete>
+              <Dependency path="/secondaryFilerAge65OrOlder"/>
+            </IsComplete>
+            <Dependency path="/secondaryFilerAge65OrOlder"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

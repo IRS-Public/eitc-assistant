@@ -1,0 +1,15 @@
+.usa-table {
+  margin-top: var(--units-6);
+}
+
+.usa-table tbody th {
+  font-weight: normal;
+}
+
+.usa-table tbody th {
+  font-weight: normal;
+}
+
+.usa-table caption {
+  font-size: var(--font-size-md-lg);
+}

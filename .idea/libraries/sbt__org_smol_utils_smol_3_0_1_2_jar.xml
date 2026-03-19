@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sbt: org.smol-utils:smol_3:0.1.2:jar" type="java-imported" external-system-id="SBT">
+    <properties groupId="org.smol-utils" artifactId="smol_3" version="0.1.2" baseVersion="0.1.2" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/smol-utils/smol_3/0.1.2/smol_3-0.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/smol-utils/smol_3/0.1.2/smol_3-0.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

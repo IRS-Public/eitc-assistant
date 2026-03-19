@@ -1,0 +1,82 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.NetInvestmentIncomeTaxSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.WithholdingCalculationsSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.StandardDeductionSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.QualifiedDividendsCapitalGainsWorksheetSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.socialSecurityBenefitsSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.generators.WebsiteSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.FilersSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.CreditSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.parser.FgDetailSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.JobSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.AdjustmentSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.parser.ParserSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.ExcessBusinessLossSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.AdoptionCreditSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.SelfEmploymentSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.RetirementSavingsCreditSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.IncomeSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.PayPeriodCalculationsSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.QualifiedBusinessIncomeSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mWebsiteSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mbasic form config[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32msocialSecurityBenefitsSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mParserSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mflow parsing[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.scenarios.UatScenariosSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.ItemizedDeductionsSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.EitcSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.DeductionChoiceSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(gov.irs.twe.factDictionary.OB3DeductionSpec, org.scalatest.tools.Framework$$anon$1@197b3f9, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mQualifiedDividendsCapitalGainsWorksheetSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mFgDetailSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mFgDetail.parse[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAdjustmentSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mJobSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mExcessBusinessLossSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mFilersSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mWithholdingCalculationsSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mNetInvestmentIncomeTaxSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mStandardDeductionSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mStandard Deduction amounts[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mCreditSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAdoptionCreditSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mQualifiedBusinessIncomeSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSelfEmploymentSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPayPeriodCalculationsSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mRetirementSavingsCreditSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mIncomeSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mItemizedDeductionsSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mEitcSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mDeductionChoiceSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mOB3DeductionSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mUatScenariosSpec:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 5 seconds, 830 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 443[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 24, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 443, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.NetInvestmentIncomeTaxSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.ItemizedDeductionsSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.FilersSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.AdoptionCreditSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.IncomeSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.PayPeriodCalculationsSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.StandardDeductionSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.parser.ParserSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.WithholdingCalculationsSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.RetirementSavingsCreditSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.DeductionChoiceSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.scenarios.UatScenariosSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.generators.WebsiteSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.AdjustmentSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.ExcessBusinessLossSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.QualifiedBusinessIncomeSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.JobSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.OB3DeductionSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.socialSecurityBenefitsSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.CreditSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.QualifiedDividendsCapitalGainsWorksheetSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.parser.FgDetailSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.EitcSpec[0m
+[0m[[0m[0mdebug[0m] [0m[0m	gov.irs.twe.factDictionary.SelfEmploymentSpec[0m

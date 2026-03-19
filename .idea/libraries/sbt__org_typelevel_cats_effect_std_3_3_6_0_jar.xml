@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sbt: org.typelevel:cats-effect-std_3:3.6.0:jar" type="java-imported" external-system-id="SBT">
+    <properties groupId="org.typelevel" artifactId="cats-effect-std_3" version="3.6.0" baseVersion="3.6.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.6.0/cats-effect-std_3-3.6.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-effect-std_3/3.6.0/cats-effect-std_3-3.6.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,11 @@
+#audit-panel {
+  button {
+    display: block;
+    margin: 1rem 0;
+  }
+}
+
+/* This is deliberately applied to the whole page, not just the audit panel */
+fg-show {
+  background-color: lightyellow;
+}

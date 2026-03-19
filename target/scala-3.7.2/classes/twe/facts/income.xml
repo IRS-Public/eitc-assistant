@@ -1,0 +1,733 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/capitalLossLimit">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>1500.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>3000.00</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/flowInitialQuestionsComplete">
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="../filerAssignment"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="../startDate"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="../endDate"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="../isHourlyJob"/>
+          </IsComplete>
+          <Any>
+            <Dependency path="../isPastJob"/>
+            <IsComplete>
+              <Dependency path="../payFrequency"/>
+            </IsComplete>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/isPastJobIncompleteOrFalse">
+      <Derived>
+        <Any>
+          <Not>
+            <IsComplete>
+              <Dependency path="../isPastJob"/>
+            </IsComplete>
+          </Not>
+          <Not>
+            <Dependency path="../isPastJob"/>
+          </Not>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/flowShowConsistentPayQuestion">
+      <Derived>
+        <All>
+          <Dependency path="../isHourlyJob"/>
+          <Not>
+            <Dependency path="../isPastJob"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/flowShowSinglePayPeriodQuestion">
+      <Derived>
+        <All>
+          <Dependency path="../consistentPay"/>
+          <Not>
+            <Dependency path="../isPastJob"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/showTipAndOvertime">
+      <Derived>
+        <All>
+          <Dependency path="../flowInitialQuestionsComplete"/>
+          <Not>
+            <Dependency path="/isFilingStatusMFS"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/declaredDoneAddingIncome">
+      <Description>Whether the taxpayer has declared they are done adding new income</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <!-- This is a temporary definition, kind of circular with other facts. -->
+    <Fact path="/ordinaryDividendsIncome">
+      <Description>Form 1040 Line 3b. Ordinary dividends income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/unemploymentIncome">
+      <Description>Unemployment income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/unemploymentIncomeWithholding">
+      <Description>Whether the taxpayer chose to withhold federal tax from unemployment income</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+      <Placeholder>
+        <False/>
+      </Placeholder>
+    </Fact>
+    <Fact path="/preTaxRetirementAccountIncome">
+      <Description>Total distributions from pre-tax retirement accounts</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxExemptInterestIncome">
+      <Description>Form 1040 Line 2a. Non-taxable interest</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxableInterestIncome">
+      <Description>Form 1040 Line 2b. Interest income excluding non-taxable interest</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/shortTermCapitalGainsIncome">
+      <Description>Short term capital gains income</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/longTermCapitalGainsIncome">
+      <Description>Long term capital gains income</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/shortTermCapitalLoss">
+      <Description>Short term capital losses. Losses are captured as positive amounts</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/longTermCapitalLoss">
+      <Description>Long term capital losses. Losses are captured as positive amounts</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/qualifiedDividendsIncome">
+      <Description>Form 1040 Line 3a. Amount of qualified dividends estimated by tax payer.</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/netShortTermGainOrLoss">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/shortTermCapitalGainsIncome"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/shortTermCapitalLoss"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/netLongTermGainOrLoss">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/longTermCapitalGainsIncome"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/longTermCapitalLoss"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/netCapitalGainOrLoss">
+      <Description> Form 1040 Line 7</Description>
+      <Derived>
+        <GreaterOf>
+          <!--          You cannot offset ordinary income by more than the capital loss limit, so we ensure that combined losses do not exceed the limit separate from the individual caps on the loss facts themselves-->
+          <Multiply>
+            <Dependency path="/capitalLossLimit"/>
+            <Dollar>-1.00</Dollar>
+          </Multiply>
+          <Dependency path="/scheduleDLine16"/>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/scheduleDLine16">
+      <Derived>
+        <Add>
+          <Dependency path="/netShortTermGainOrLoss"/>
+          <Dependency path="/netLongTermGainOrLoss"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/netCapitalGainsWithoutQualifiedDividends">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <GreaterThanOrEqual>
+                  <Left>
+                    <Dollar>0</Dollar>
+                  </Left>
+                  <Right>
+                    <Dependency path="/scheduleDLine16"/>
+                  </Right>
+                </GreaterThanOrEqual>
+                <GreaterThanOrEqual>
+                  <Left>
+                    <Dollar>0</Dollar>
+                  </Left>
+                  <Right>
+                    <Dependency path="/scheduleDLine16"/>
+                  </Right>
+                </GreaterThanOrEqual>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <LesserOf>
+                <Dependency path="/netLongTermGainOrLoss"/>
+                <Dependency path="/netCapitalGainOrLoss"/>
+              </LesserOf>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/netCapitalGains">
+      <Description>Qualified Dividends + lesser of long term and gross capital gains. Used in QBI Deduction</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/qualifiedDividendsIncome"/>
+          <Dependency path="/netCapitalGainsWithoutQualifiedDividends"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/sCorpPassiveIncome">
+      <Description>Passive income from S-corporations or partnerships</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/sCorpNonPassiveIncome">
+      <Description>Non-passive income from S-corporations or partnerships</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonRentalRoyaltyScheduleEIncome">
+      <Description>Net Schedule E income. Input is not accessible in the Flow and not accessible for taxpayers to provide values.Used for backwards compatibility with certain test scenarios where Net Schedule E was a separate input than Rentals and Royalties</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonSpecificOtherIncome">
+      <Description>Non-specific other income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/otherIncomeWithholding">
+      <Description>Federal taxes withheld from other income so far in the tax year</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/rentalIncome">
+      <Description>Schedule E Line 21</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/royaltyIncome">
+      <Description>Schedule E Line 23b</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/isMFSLivedTogether">
+      <Description>If TP has MFS filing status and lived with their spouse for the entirety of the TY</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+      <Placeholder>
+        <False/>
+      </Placeholder>
+    </Fact>
+    <!-- Sections 911, 931, and 933 are carved out for OB3 MAGI calculations for senior deduction
+and car loan interest deduction
+     Default to 0 for right now-->
+    <Fact path="/foreignEarnedIncome">
+      <Name>&#xA7; 911 Foreign Earned Income Exclusion- Foreign Earned Income</Name>
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/overseasTerritoryIncome">
+      <Name>&#xA7; 931 - Income from sources within Guam, American Samoa, or the Northern Mariana
+        Islands
+      </Name>
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/puertoRicoEarnedIncome">
+      <Name>&#xA7; 933. Income from sources within Puerto Rico</Name>
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/nonTaxableCombatPay">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/incomeToIncludeForOB3MAGI">
+      <Derived>
+        <Add>
+          <Dependency path="/foreignEarnedIncome"/>
+          <Dependency path="/overseasTerritoryIncome"/>
+          <Dependency path="/puertoRicoEarnedIncome"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/pensionsIncomeSelf">
+      <Description>Total income for all pensions</Description>
+      <Derived>
+        <CollectionSum>
+          <Dependency path="/pensionsAssignedToSelf/*/income"/>
+        </CollectionSum>
+      </Derived>
+    </Fact>
+    <Fact path="/pensionsIncomeSpouse">
+      <Description>Total income for all pensions for spouse</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Not>
+                <Dependency path="/isFilingStatusMFJ"/>
+              </Not>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <CollectionSum>
+                <Dependency path="/pensionsAssignedToSpouse/*/income"/>
+              </CollectionSum>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/pensionsIncomeTotal">
+      <Description> Total income from all pensions for both self and spouse</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/pensionsIncomeSelf"/>
+          <Dependency path="/pensionsIncomeSpouse"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobsIncomeSelf">
+      <Description>Total income for all jobs</Description>
+      <Derived>
+        <CollectionSum>
+          <Dependency path="/jobsAssignedToSelf/*/income"/>
+        </CollectionSum>
+      </Derived>
+    </Fact>
+    <Fact path="/jobsIncomeSpouse">
+      <Description>Total income for all jobs for spouse</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <CollectionSum>
+                <Dependency path="/jobsAssignedToSpouse/*/income"/>
+              </CollectionSum>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobsIncomeTotal">
+      <Description>Total income for all jobs for both self and spouse</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/jobsIncomeSelf"/>
+          <Dependency path="/jobsIncomeSpouse"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/nonJobsIncomeTotal">
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/incomeTotal"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/jobsIncomeSelf"/>
+              <Dependency path="/netSelfEmploymentIncomeSelf"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/earnedIncomeSelf">
+      <Description>
+        Earned Income includes:
+        Wages, salary, or tips where federal income taxes are withheld on Form W-2, box 1
+        Income from a job where your employer didn&#x2019;t withhold tax (such as gig economy work) including:
+        Driving a car for booked rides or deliveries
+        Running errands or doing tasks
+        Selling goods online
+        Providing creative or professional services
+        Providing other temporary, on-demand or freelance work
+        Money made from self-employment, including if you:
+        Own or operate a business or farm
+        Are a minister or member of a religious order
+        Are a statutory employee and have income
+        Benefits from a union strike
+        Certain disability benefits you got before you were the minimum retirement age
+        Nontaxable Combat Pay (Form W-2, box 12 with code Q)
+
+        Earned income does not include:
+        Pay you got for work when you were an inmate in a penal institution
+        Interest and dividends
+        Pensions or annuities
+        Social Security
+        Unemployment benefits
+        Alimony
+        Child support
+
+
+      </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/netSelfEmploymentIncomeSelf"/>
+          <Dependency path="/jobsIncomeSelf"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/earnedIncomeSpouse">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Add>
+                <Dependency path="/netSelfEmploymentIncomeSpouse"/>
+                <Dependency path="/jobsIncomeSpouse"/>
+              </Add>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/earnedIncomeTotal">
+      <Derived>
+        <Add>
+          <Dependency path="/earnedIncomeSelf"/>
+          <Dependency path="/earnedIncomeSpouse"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal">
+      <Description> Other sources of income. Taxable portion of SSA benefits not included. Used to
+        calculate taxable portion onf SSA benefits</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/netSelfEmploymentIncomeTotal"/>
+          <Dependency path="/unemploymentIncome"/>
+          <Dependency path="/taxableInterestIncome"/>
+          <Dependency path="/netCapitalGainOrLoss"/>
+          <Dependency path="/sCorpPassiveIncome"/>
+          <Dependency path="/sCorpNonPassiveIncome"/>
+          <Dependency path="/nonRentalRoyaltyScheduleEIncome"/>
+          <Dependency path="/rentalIncome"/>
+          <Dependency path="/royaltyIncome"/>
+          <Dependency path="/nonSpecificOtherIncome"/>
+          <Dependency path="/ordinaryDividendsIncome"/>
+          <Dependency path="/qualifiedDividendsIncome"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/otherIncomeTotal">
+      <Description>Used for W-4 calculations</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
+          <Dependency path="/ssaBenefitsTaxableAmount"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/grossIncomeTotal">
+      <Description>
+        The full gross income, without removing pre-tax income. This is usually not the fact you
+        want in tax calculations; it's used for displaying a taxpayer's total income in a way that
+        matches their expectations.
+      </Description>
+      <Derived>
+        <Add>
+          <CollectionSum>
+            <Dependency path="/jobs/*/grossIncome"/>
+          </CollectionSum>
+          <CollectionSum>
+            <Dependency path="/pensions/*/grossIncome"/>
+          </CollectionSum>
+          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
+          <Dependency path="/excessBusinessLossAdjustment"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/preTaxDeductionsTotal">
+      <Description>
+        Pretax deductions, summed separately from the income. This is usually not the fact you want
+        in tax calculations; it's used for displaying a taxpayer's deductions income in a way that
+        matches their expectations.
+      </Description>
+      <Derived>
+        <Add>
+          <CollectionSum>
+            <Dependency path="/jobs/*/preTaxDeductions"/>
+          </CollectionSum>
+          <CollectionSum>
+            <Dependency path="/pensions/*/preTaxDeductions"/>
+          </CollectionSum>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/incomeTotalMinusTaxableSSABenefits">
+      <Description>Sum of 1z, 2b, 3b, 4b, 5b, 7, and 8 on the 1040 (Line 9 - 6b) </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/jobsIncomeTotal"/>
+          <Dependency path="/pensionsIncomeTotal"/>
+          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
+          <Dependency path="/excessBusinessLossAdjustment"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/incomeTotal">
+      <Description>Form 1040 Line 9</Description>
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/incomeTotalMinusTaxableSSABenefits"/>
+            <Dependency path="/ssaBenefitsTaxableAmount"/>
+          </Add>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/hasJobsAvailableForExtraWithholdingButNotPensions">
+      <Derived>
+        <All>
+          <Dependency path="/hasJobsAvailableForExtraWithholding"/>
+          <Not>
+            <Dependency path="/hasPensionsAvailableForExtraWithholding"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/hasPensionsAvailableForExtraWithholdingButNotJobs">
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/hasJobsAvailableForExtraWithholding"/>
+          </Not>
+          <Dependency path="/hasPensionsAvailableForExtraWithholding"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/hasJobsAndPensionsAvailableForExtraWithholding">
+      <Derived>
+        <All>
+          <Dependency path="/hasJobsAvailableForExtraWithholding"/>
+          <Dependency path="/hasPensionsAvailableForExtraWithholding"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryFilerHasJobsOrPensionsAvailableForExtraWithholding">
+      <Derived>
+        <Any>
+          <Dependency path="/primaryFilerHasJobsAvailableForExtraWithholding"/>
+          <Dependency path="/primaryFilerHasPensionsAvailableForExtraWithholding"/>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/spouseHasJobsOrPensionsAvailableForExtraWithholding">
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFJ"/>
+          <Any>
+            <Dependency path="/spouseHasJobsAvailableForExtraWithholding"/>
+            <Dependency path="/spouseHasPensionsAvailableForExtraWithholding"/>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/primaryFilerAndSpouseHaveJobsOrPensionsAvailableForExtraWithholding">
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFJ"/>
+          <Dependency path="/primaryFilerHasJobsOrPensionsAvailableForExtraWithholding"/>
+          <Dependency path="/spouseHasJobsOrPensionsAvailableForExtraWithholding"/>
+        </All>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

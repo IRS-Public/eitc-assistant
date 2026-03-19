@@ -1,0 +1,246 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/retirementSavingsContributionsTaxCreditAmount">
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/retirementSavingsMaximumAmountMFJ">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>2000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsMaximumAmountNonMFJ">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>1000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsTaxCreditIncomeThreshold">
+      <Description>The maximum income limit to be eligible for the savers credit</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dependency path="/retirementSavingsContributionsTaxCreditIncomeThresholdMFJ"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dependency path="/retirementSavingsContributionsTaxCreditIncomeThresholdHOH"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/retirementSavingsContributionsTaxCreditIncomeThresholdSingle"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsTaxCreditIncomeThresholdSingle">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>40250</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsTaxCreditIncomeThresholdHOH">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>60375</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsTaxCreditIncomeThresholdMFJ">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>80500</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsAgiLimitForFiftyPercent">
+      <Description>Maximum income at which the applicable percentage is 50%</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>48500</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dollar>36375</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>24250</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsAgiLimitForTwentyPercent">
+      <Description>Maximum income at which the applicable percentage is 20%</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>52500</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dollar>39375</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>26250</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsMultiplier">
+      <Description>Content representation of the mulitiplier used on Form 8880, line 9</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <LessThanOrEqual>
+                <Left>
+                  <Dependency path="/agi"/>
+                </Left>
+                <Right>
+                  <Dependency path="/retirementSavingsAgiLimitForFiftyPercent"/>
+                </Right>
+              </LessThanOrEqual>
+            </When>
+            <Then>
+              <Int>50</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <LessThanOrEqual>
+                <Left>
+                  <Dependency path="/agi"/>
+                </Left>
+                <Right>
+                  <Dependency path="/retirementSavingsAgiLimitForTwentyPercent"/>
+                </Right>
+              </LessThanOrEqual>
+            </When>
+            <Then>
+              <Int>20</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <LessThanOrEqual>
+                <Left>
+                  <Dependency path="/agi"/>
+                </Left>
+                <Right>
+                  <Dependency path="/retirementSavingsContributionsTaxCreditIncomeThreshold"/>
+                </Right>
+              </LessThanOrEqual>
+            </When>
+            <Then>
+              <Int>10</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Int>0</Int>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/isEligibleForRetirementSavingsContributionsCredit">
+      <Derived>
+        <All>
+          <LessThanOrEqual>
+            <Left>
+              <Dependency path="/agi"/>
+            </Left>
+            <Right>
+              <Dependency path="/retirementSavingsContributionsTaxCreditIncomeThreshold"/>
+            </Right>
+          </LessThanOrEqual>
+          <Dependency path="/neitherFilerIsClaimedOnAnotherReturn"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsMaximumAmount">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dependency path="/retirementSavingsMaximumAmountMFJ"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/retirementSavingsMaximumAmountNonMFJ"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/retirementSavingsContributionsCredit">
+      <Description>The following simplifying assumption was made for user convenience: do not apply AGI phaseout</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/retirementSavingsContributionsTaxCreditAmount"/>
+          <Dependency path="/retirementSavingsContributionsMaximumAmount"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

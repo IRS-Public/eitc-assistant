@@ -1,0 +1,237 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/itemizedDeduction">
+      <Name>Itemized deductions</Name>
+      <Description>Total amount of itemized deductions minus 2/37 of the excess taxable income of
+        the top tax bracket. For taxpayers not in that bracket, the excess will be $0.
+        estimated itemized deductions</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/itemizedDeductionTotal"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/amountOfItemizedDeductionsToSubtract"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/itemizedDeductionTotal">
+      <Name>Total amount of itemized deductions</Name>
+      <Description>Total amount of itemized deductions that the taxpayer estimates for this tax
+        year. There are edge cases for taxpayers in the highest tax bracket that must apply before
+        we calculate the final amount of itemized deductions</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/qualifiedMortgageInterestAndInvestmentInterestExpensesTotal"/>
+          <Dependency path="/qualifiedMortgageInsurancePremiumDeductionTotal"/>
+          <Dependency path="/stateAndLocalTaxDeduction"/>
+          <Dependency path="/medicalAndDentalExpensesTotal"/>
+          <Dependency path="/charitableContributionsTotal"/>
+          <Dependency path="/casualtyLossesTotal"/>
+          <Dependency path="/otherDeductionsTotal"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/amountOfItemizedDeductionsToSubtract">
+      <Description>If the taxpayer is not in the tax bracket, /excessTaxableIncomeOverTopTaxBracket will be negative or zero so this fact will always be zero.
+      </Description>
+      <Derived>
+        <Round>
+          <GreaterOf>
+            <Dollar>0</Dollar>
+            <Multiply>
+              <LesserOf>
+                <Dependency path="/excessTaxableIncomeOverTopTaxBracket"/>
+                <Dependency path="/itemizedDeductionTotal"/>
+              </LesserOf>
+              <Rational>2/37</Rational>
+            </Multiply>
+          </GreaterOf>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedMortgageInterestAndInvestmentInterestExpenses">
+      <Name>Qualified mortgage interest and investment interest expenses </Name>
+      <Description>Qualified mortgage interest including points (if you're the buyer) and Investment interest (limited to your net investment income)
+      </Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/qualifiedMortgageInsurancePremiums">
+      <Name>Qualified mortgage insurance premiums</Name>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/stateAndLocalTaxPayments">
+      <Name>State and Local Taxes</Name>
+      <Description>There are four types of deductible nonbusiness SALT taxes: 1)
+        State, local, and foreign income taxes; 2) State and local general sales taxes; 3) State and
+        local real estate taxes; 4) State and local personal property taxes</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/cashCharitableContributions">
+      <Name>Cash Charitable Contributions</Name>
+      <Description>Schedule A Line 11</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonCashCharitableContributions">
+      <Name>Non-cash Charitable Contributions</Name>
+      <Description>Schedule A Line 12. Both this fact and /cashCharitableContributions are simple writables, so they are functionally equivalent. The reason we split them out is to match certain testing scenarios</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/charitableContributions">
+      <Name>Gross total of charitable contributions</Name>
+      <Derived>
+        <Add>
+          <Dependency path="/nonCashCharitableContributions"/>
+          <Dependency path="/cashCharitableContributions"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedMortgageInterestAndInvestmentInterestExpensesTotal">
+      <Derived>
+        <Dependency path="/qualifiedMortgageInterestAndInvestmentInterestExpenses"/>
+      </Derived>
+    </Fact>
+    <Fact path="/medicalAndDentalExpensesRate">
+      <Derived>
+        <Rational>75/1000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/medicalAndDentalExpensesFloor">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Round>
+          <Multiply>
+            <Dependency path="/medicalAndDentalExpensesRate"/>
+            <Dependency path="/agi"/>
+          </Multiply>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/medicalAndDentalExpensesTotal">
+      <Name>Total of all medical and dental expenses </Name>
+      <Description>Total expenses that exceed 7.5% of your adjusted gross income. Can include the
+        total estimated amount paid for health insurance premiums, not including any amount the
+        employer pays</Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/medicalAndDentalExpenses"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/medicalAndDentalExpensesFloor"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/medicalAndDentalExpenses">
+      <Name>Total of all medical and dental expenses </Name>
+      <Description>Total expenses that exceed 7.5% of your adjusted gross income. Can include the
+        total estimated amount paid for health insurance premiums, not including any amount the
+        employer pays</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/charitableContributionsTotal">
+      <Description>
+        Only allow this itemized deduction for individuals whose aggregate charitable contributions are in excess of %0.5 of their AGI
+        Floor the charitable amount by MIN of A) Charitable contributions - (0.005 * MAX(contribution base, 0); or B) 0.6 *
+        contribution base.
+      </Description>
+      <Derived>
+        <GreaterOf>
+          <LesserOf>
+            <Subtract>
+              <Minuend>
+                <Dependency path="/charitableContributions"/>
+              </Minuend>
+              <Subtrahends>
+                <Multiply>
+                  <Rational>5/1000</Rational>
+                  <GreaterOf>
+                    <Dependency path="/agi"/>
+                    <Dollar>0</Dollar>
+                  </GreaterOf>
+                </Multiply>
+              </Subtrahends>
+            </Subtract>
+            <Multiply>
+              <Rational>60/100</Rational>
+              <Dependency path="/agi"/>
+            </Multiply>
+          </LesserOf>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/casualtyLossesTotal">
+      <Name>Total of all casualty loss items </Name>
+      <Description>Casualty and theft losses relating to your home, household items, and vehicles if the loss is attributable to a federally-declared disaster or a State declared disaster
+        The following simplifying assumption was made for user convenience: Do not apply the dollar and AGI limit, i.e. only itemized if the casualty loss is in excess of $100 from each casualty, to the extent that the total exceeds 10% of AGI.
+      </Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/otherDeductionsTotal">
+      <Name> Total of all other itemized deductions </Name>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/itemizedDeductionTotalForQBI">
+      <Description>Itemized deduction total without QBI-dependent caps.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/qualifiedMortgageInterestAndInvestmentInterestExpensesTotal"/>
+          <Dependency path="/qualifiedMortgageInsurancePremiumDeductionTotal"/>
+          <Dependency path="/stateAndLocalTaxDeduction"/>
+          <Dependency path="/medicalAndDentalExpensesTotal"/>
+          <Dependency path="/charitableContributionsTotal"/>
+          <Dependency path="/casualtyLossesTotal"/>
+          <Dependency path="/otherDeductionsTotal"/>
+        </Add>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

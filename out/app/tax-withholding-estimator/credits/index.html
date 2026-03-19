@@ -1,0 +1,870 @@
+<!doctype html>
+<html lang="en">
+ <!-- Google Tag Manager -->
+ <head>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KV978ZL');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax Withholding Estimator - Credits | Internal Revenue Service</title>
+  <!-- Favicons for mobile and desktop -->
+  <link rel="icon" type="image/ico" href="/app/tax-withholding-estimator/resources/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/app/tax-withholding-estimator/resources/img/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/app/tax-withholding-estimator/resources/img/android-icon-192x192.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/app/tax-withholding-estimator/resources/img/apple-icon-72x72.png">
+  <link rel="stylesheet" href="/app/tax-withholding-estimator/resources/styles/main.css">
+  <link rel="stylesheet" href="/app/tax-withholding-estimator/resources/styles/audit-panel.css" id="audit-panel-styles" disabled>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/fg-components.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/debug-components.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/modals.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/audit-panel.js"></script>
+  <script src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/js/uswds-init.min.js"></script>
+  <script defer src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/js/uswds.min.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/vendor/pdf-lib-1.17.1.min.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/w4-pdf.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KV978ZL" height="0" width="0" title="Google Tag Manager" class="gtm-noscript"&gt;</noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </head>
+ <body>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+  <header>
+   <section class="usa-banner" aria-label="An official website of the United States government">
+    <div class="usa-accordion">
+     <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+       <div class="grid-col-auto">
+        <img aria-hidden="true" class="usa-banner__header-flag" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/us_flag_small.png" alt="">
+       </div>
+       <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+        <p class="usa-banner__header-text">An official website of the United States government</p>
+        <p class="usa-banner__header-action">Here’s how you know</p>
+       </div>
+       <button type="button" class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner-default"><span class="usa-banner__button-text">Here’s how you know</span></button>
+      </div>
+     </header>
+     <div class="usa-banner__content usa-accordion__content" id="gov-banner-default">
+      <div class="grid-row grid-gap-lg">
+       <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+         <p><strong>Official websites use .gov</strong>
+          <br>
+          A <strong>.gov</strong> website belongs to an official government organization in the United States.</p>
+        </div>
+       </div>
+       <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/icon-https.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+         <strong>Secure .gov websites use HTTPS</strong>
+         <br>
+         A <strong>lock</strong> (<span class="icon-lock"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64" class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-description-default" focusable="false">
+           <title id="banner-lock-title-default">Lock</title> <desc id="banner-lock-description-default">Locked padlock icon</desc> <path fill="#000000" fill-rule="evenodd" d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z" />
+          </svg> 
+         </span> ) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="logo-banner">
+    <div class="grid-container">
+     <a href="https://www.irs.gov" aria-label="IRS.gov"> <img src="/app/tax-withholding-estimator/resources/img/irs-logo.svg" alt=""> </a>
+    </div>
+   </div>
+  </header>
+  <main id="main-content">
+   <h1>Tax Withholding Estimator</h1>
+   <div class="usa-step-indicator margin-top-3">
+    <ol class="usa-step-indicator__segments">
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/"> <span>About you</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/income/"> <span>Income &amp; tax payments</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/adjustments/"> <span>Adjustments</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/deductions/"> <span>Standard deduction choice</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/additional-deductions/"> <span>Additional deductions</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--current"><span class="usa-step-indicator__segment-label"> <span aria-current="step">Credits</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Results</span> <span class="usa-sr-only">not completed</span> </span></li>
+    </ol>
+    <div class="usa-step-indicator__header">
+     <div class="usa-step-indicator__heading">
+      <span class="usa-sr-only"> Step 6 of 7: Credits </span> <span class="usa-step-indicator__heading-counter" aria-hidden="true"> <span class="usa-step-indicator__current-step">6</span> <span class="usa-step-indicator__total-steps"> <span>of</span> <span>7</span> </span><span class="usa-step-indicator__heading-text">Credits</span> </span>
+     </div>
+    </div>
+   </div>
+   <div class="header-bottom-border">
+    <a class="usa-link back-link" href="/app/tax-withholding-estimator/additional-deductions/"> 
+     <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+      <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#navigate_before"></use>
+     </svg> Back 
+    </a>
+   </div>
+   <noscript>
+    <p class="alert--warning">JavaScript is required to use the Tax Withholding Estimator. Please enable JavaScript or switch to a browser that is JavaScript-capable.</p>
+   </noscript>
+   <img src="/app/tax-withholding-estimator/resources/img/spinner.svg" id="loading-spinner" alt="Loading spinner" class="hidden" onload="this.classList.remove('hidden')">
+   <div id="page-content-wrapper" class="hidden">
+    <div>
+     <section class="flow usa-prose">
+      <h2>Credits</h2>
+      <p>Credits directly reduce the amount of tax you owe, dollar for dollar. Certain credits can increase your refund if their combined amount is larger than the tax you owe.</p>
+      <p>This estimator only supports some credits. There may be other credits you qualify for that could impact your estimated refund or tax owed.</p>
+      <h3 condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Child Tax Credit (CTC)</h3>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue">The CTC helps families raising children by providing a tax benefit of up to <fg-show path="/maxCtcAmount"></fg-show> per qualifying child.</p>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue"><modal-link for="modal-ctc-who-can-claim">Who can claim the CTC?</modal-link></p>
+      <fg-set path="/ctcEligibleDependents" inputtype="int" condition="/tentativelyEligibleForCtcOdc" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/ctcEligibleDependents"> Number of children </label>
+        <div class="usa-hint" id="/ctcEligibleDependents-hint">
+         Don’t count children without a Social Security number (SSN) valid for work. Leave blank if <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">both you and your spouse</span> don’t have an SSN.
+        </div>
+        <input id="/ctcEligibleDependents" class="usa-input usa-input--xs" type="text" name="/ctcEligibleDependents" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <h3 condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Credit for Other Dependents (ODC)</h3>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue">Taxpayers with dependents who don’t qualify for the Child Tax Credit may be able to claim the ODC.</p>
+      <p condition="/tentativelyEligibleForCtcOdc" operator="isTrue"><modal-link for="modal-odc-who-can-claim">Who can claim the ODC?</modal-link></p>
+      <fg-set path="/odcEligibleDependents" inputtype="int" condition="/tentativelyEligibleForCtcOdc" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/odcEligibleDependents"> Number of other dependents </label>
+        <div class="usa-hint" id="/odcEligibleDependents-hint">Leave blank if you’re not a U.S. citizen, national, or lawful resident. Don't include dependents that you already reported for the Child Tax Credit.</div>
+        <input id="/odcEligibleDependents" class="usa-input usa-input--xs" type="text" name="/odcEligibleDependents" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <h3 condition="/flowIsEligibleForCDCC" operator="isTrue">Child and Dependent Care Credit (CDCC)</h3>
+      <p condition="/flowIsEligibleForCDCC" operator="isTrue">The CDCC helps taxpayers who pay for the care of a family or household member while working or looking for work.</p>
+      <p condition="/flowIsEligibleForCDCC" operator="isTrue"><modal-link for="modal-cdcc-who-can-claim-and-eligible-expenses">Who can claim the CDCC and what expenses are eligible?</modal-link></p>
+      <fg-set path="/cdccQualifyingPersons" inputtype="int" condition="/flowIsEligibleForCDCC" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/cdccQualifyingPersons"> Number of qualifying children and dependents </label>  <input id="/cdccQualifyingPersons" class="usa-input usa-input--xs" type="text" name="/cdccQualifyingPersons" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <fg-set path="/cdccQualifyingExpenses" inputtype="dollar" condition="/flowIsEligibleForCDCC" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/cdccQualifyingExpenses"> Estimated annual care expenses for <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/cdccQualifyingExpenses-hint">
+         max <fg-show path="/cdccMaxClaimableExpenseWithOneQP"></fg-show> for one person, and <fg-show path="/cdccMaxClaimableExpenseWithTwoQP"></fg-show> for two or more people
+        </div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/cdccQualifyingExpenses" type="text" inputmode="numeric" name="/cdccQualifyingExpenses" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3 condition="/flowShouldShowEitcSection" operator="isTrue">Earned Income Tax Credit (EITC)</h3>
+      <p condition="/flowShouldShowEitcSection" operator="isTrue">The EITC helps low- to moderate-income workers and families lower their taxes.</p>
+      <p condition="/flowShouldShowEitcSection" operator="isTrue"><modal-link for="modal-eitc-who-can-claim">Who can claim the EITC?</modal-link></p>
+      <fg-set path="/eitcQualifyingChildren" inputtype="int" condition="/flowShouldAskForEitcQualifyingChildren" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/eitcQualifyingChildren"> Number of qualifying children </label>
+        <div class="usa-hint" id="/eitcQualifyingChildren-hint">
+         Don't count children without a Social Security number (SSN). Leave blank if you <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> don't have an SSN.
+        </div>
+        <input id="/eitcQualifyingChildren" class="usa-input usa-input--xs" type="text" name="/eitcQualifyingChildren" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <fg-set path="/primaryFilerAge25OrOlderForEitc" inputtype="boolean" condition="/flowShouldAskWhetherPrimaryFilerAge25OrOlderForEitc" operator="isTrue" optional="false">
+       <div class="usa-form-group">
+        <fieldset class="usa-fieldset">
+         <legend class="usa-legend twe-question"> Will you be 25 years old or older on January 1, <fg-show path="/nextTaxYear"></fg-show>? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+         <div class="usa-hint" id="/primaryFilerAge25OrOlderForEitc-hint">Select "No" if you don't have a Social Security number.</div>
+         <div class="usa-radio">
+          <input id="/primaryFilerAge25OrOlderForEitc-yes" class="usa-radio__input" type="radio" value="true" name="/primaryFilerAge25OrOlderForEitc" aria-invalid="false" required> <label for="/primaryFilerAge25OrOlderForEitc-yes" class="usa-radio__label">Yes</label>
+         </div>
+         <div class="usa-radio">
+          <input id="/primaryFilerAge25OrOlderForEitc-no" class="usa-radio__input" type="radio" value="false" name="/primaryFilerAge25OrOlderForEitc" aria-invalid="false" required> <label for="/primaryFilerAge25OrOlderForEitc-no" class="usa-radio__label">No</label>
+         </div>
+        </fieldset>
+       </div>
+      </fg-set>
+
+      <fg-set path="/secondaryFilerAge25OrOlderForEitc" inputtype="boolean" condition="/flowShouldAskWhetherSecondaryFilerAge25OrOlderForEitc" operator="isTrue" optional="false">
+       <div class="usa-form-group">
+        <fieldset class="usa-fieldset">
+         <legend class="usa-legend twe-question"> Will your spouse be 25 years old or older on January 1, <fg-show path="/nextTaxYear"></fg-show>? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+         <div class="usa-hint" id="/secondaryFilerAge25OrOlderForEitc-hint">Select "No" if your spouse doesn't have a Social Security number.</div>
+         <div class="usa-radio">
+          <input id="/secondaryFilerAge25OrOlderForEitc-yes" class="usa-radio__input" type="radio" value="true" name="/secondaryFilerAge25OrOlderForEitc" aria-invalid="false" required> <label for="/secondaryFilerAge25OrOlderForEitc-yes" class="usa-radio__label">Yes</label>
+         </div>
+         <div class="usa-radio">
+          <input id="/secondaryFilerAge25OrOlderForEitc-no" class="usa-radio__input" type="radio" value="false" name="/secondaryFilerAge25OrOlderForEitc" aria-invalid="false" required> <label for="/secondaryFilerAge25OrOlderForEitc-no" class="usa-radio__label">No</label>
+         </div>
+        </fieldset>
+       </div>
+      </fg-set>
+
+      <div condition="/isEligibleForRetirementSavingsContributionsCredit" operator="isTrue">
+       <h3>Retirement Savings Contribution Credit</h3>
+       <p>The retirement savings contribution credit is a tax benefit that helps low- to moderate-income taxpayers save for retirement. Enter the credit amount you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim for contributions to a traditional IRA, Roth IRA, 401(k), 403(b), or similar plans.</p>
+       <p><modal-link for="modal-retirement-savings-credit-who-can-claim">Who can claim the retirement savings contribution credit and how do I estimate it?</modal-link></p>
+       <fg-set path="/retirementSavingsContributionsTaxCreditAmount" inputtype="dollar" optional="true">
+        <div class="usa-form-group">
+         <label class="usa-label twe-question" for="/retirementSavingsContributionsTaxCreditAmount"> Retirement savings credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"></fg-show> </label>
+         <div class="usa-hint" id="/retirementSavingsContributionsTaxCreditAmount-hint">
+          (max <fg-show path="/retirementSavingsContributionsMaximumAmount"></fg-show>)
+         </div>
+         <div class="usa-input-group">
+          <div class="usa-input-prefix" aria-hidden="true">
+           <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+            <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+           </svg>
+          </div>
+          <input class="usa-input" id="/retirementSavingsContributionsTaxCreditAmount" type="text" inputmode="numeric" name="/retirementSavingsContributionsTaxCreditAmount" autocomplete="off" aria-invalid="false">
+         </div>
+        </div>
+       </fg-set>
+
+      </div>
+      <h3 condition="/isEligibleForEducationCredits" operator="isTrue">American Opportunity Tax Credit (AOTC)</h3>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue">The AOTC helps offset the cost of tuition, fees, and other expenses for the first four years of college.</p>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue"><modal-link for="modal-aotc-who-can-claim-and-eligible-expenses">Who can claim the AOTC and what expenses qualify?</modal-link></p>
+      <fg-set path="/qualifyingStudents" inputtype="int" condition="/isEligibleForEducationCredits" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/qualifyingStudents"> Number of college students </label>  <input id="/qualifyingStudents" class="usa-input usa-input--xs" type="text" name="/qualifyingStudents" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <fg-set path="/aotcQualifiedEducationExpenses" inputtype="dollar" condition="/isEligibleForEducationCredits" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/aotcQualifiedEducationExpenses"> Estimated total college tuition or fees in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/aotcQualifiedEducationExpenses-hint">
+         (max <fg-show path="/maxAotcAdjustedQualifiedExpenseCap"></fg-show> per student)
+        </div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/aotcQualifiedEducationExpenses" type="text" inputmode="numeric" name="/aotcQualifiedEducationExpenses" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3 condition="/isEligibleForEducationCredits" operator="isTrue">Lifetime Learning Credit (LLC)</h3>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue">The LLC helps offset the cost of college courses, professional certifications, and job skill trainings. You can’t claim the AOTC and LLC for the same student.</p>
+      <p condition="/isEligibleForEducationCredits" operator="isTrue"><modal-link for="modal-llc-who-can-claim">Who can claim the LLC?</modal-link></p>
+      <fg-set path="/llcQualifiedEducationExpenses" inputtype="dollar" condition="/isEligibleForEducationCredits" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/llcQualifiedEducationExpenses"> Estimated total tuition or fees in <fg-show path="/taxYear"></fg-show>? </label>
+        <div class="usa-hint" id="/llcQualifiedEducationExpenses-hint">(max $10,000)</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/llcQualifiedEducationExpenses" type="text" inputmode="numeric" name="/llcQualifiedEducationExpenses" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3 condition="/isEligibleForAdoptionCredit" operator="isTrue">Adoption Credit</h3>
+      <p condition="/isEligibleForAdoptionCredit" operator="isTrue">The adoption credit helps families offset the costs of adopting an eligible child.</p>
+      <p condition="/isEligibleForAdoptionCredit" operator="isTrue"><modal-link for="modal-adoption-credit-who-can-claim">Who can claim the Adoption Credit?</modal-link></p>
+      <fg-set path="/adoptionEligibleChildren" inputtype="int" condition="/isEligibleForAdoptionCredit" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/adoptionEligibleChildren"> Number of adopted children </label>  <input id="/adoptionEligibleChildren" class="usa-input usa-input--xs" type="text" name="/adoptionEligibleChildren" inputmode="numeric" maxlength="2" autocomplete="off" aria-invalid="false">
+       </div>
+      </fg-set>
+
+      <fg-set path="/estimatedTotalQualifiedAdoptionExpenses" inputtype="dollar" condition="/isEligibleForAdoptionCredit" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/estimatedTotalQualifiedAdoptionExpenses"> Adoption expenses you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/estimatedTotalQualifiedAdoptionExpenses-hint">
+         (max <fg-show path="/maxAdoptionCreditPerChild"></fg-show> per child)
+        </div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/estimatedTotalQualifiedAdoptionExpenses" type="text" inputmode="numeric" name="/estimatedTotalQualifiedAdoptionExpenses" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3 condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue">Credit for the Elderly or the Disabled</h3>
+      <p condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue">This credit helps older adults and people with qualifying disabilities lower their taxes.</p>
+      <p condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue"><modal-link for="modal-credit-elderly-disabled-who-can-claim">Who can claim the credit for the elderly or the disabled?</modal-link></p>
+      <fg-set path="/elderlyAndDisabledTaxCreditAmount" inputtype="dollar" condition="/eitherPrimaryOrSecondaryFilersAge65OrOlder" operator="isTrue" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/elderlyAndDisabledTaxCreditAmount"> Amount of the elderly and disabled credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"></fg-show> </label> 
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/elderlyAndDisabledTaxCreditAmount" type="text" inputmode="numeric" name="/elderlyAndDisabledTaxCreditAmount" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Foreign Tax Credit</h3>
+      <p>The foreign tax credit reduces your U.S. taxes when you pay or owe taxes to a foreign country or U.S. territory.</p>
+      <p><modal-link for="modal-foreign-tax-credit-who-can-claim">Who can claim the foreign tax credit?</modal-link></p>
+      <fg-set path="/schedule3Line1" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/schedule3Line1"> Foreign tax you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"></fg-show> </label> 
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/schedule3Line1" type="text" inputmode="numeric" name="/schedule3Line1" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Business Credits</h3>
+      <p>Business credits include many individual tax credits that reward businesses for things like hiring and supporting workers, energy investments, or research and development.</p>
+      <p><modal-link for="modal-what-are-business-credits">What are business credits?</modal-link></p>
+      <fg-set path="/schedule3Line6a" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/schedule3Line6a"> Amount in business credits you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"></fg-show> </label> 
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/schedule3Line6a" type="text" inputmode="numeric" name="/schedule3Line6a" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Mortgage Interest Credit</h3>
+      <p>The mortgage interest credit reduces taxes for low- to moderate-income homeowners who receive a Mortgage Credit Certificate from their state or local government.</p>
+      <p><modal-link for="modal-mortgage-interest-credit-who-can-claim">Who can claim the mortgage interest credit?</modal-link></p>
+      <fg-set path="/tentativeSchedule3Line6g" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/tentativeSchedule3Line6g"> Estimated mortgage interest credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/tentativeSchedule3Line6g-hint">(max $2,000)</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/tentativeSchedule3Line6g" type="text" inputmode="numeric" name="/tentativeSchedule3Line6g" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Alternative Minimum Tax (AMT) Credit</h3>
+      <p>The AMT Credit allows high-income taxpayers to reclaim extra tax paid under the AMT in previous years.</p>
+      <p><modal-link for="modal-amt-who-can-claim">Who can claim the AMT Credit?</modal-link></p>
+      <fg-set path="/alternativeMinimumTaxCreditAmount" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/alternativeMinimumTaxCreditAmount"> AMT tax credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"></fg-show> </label> 
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/alternativeMinimumTaxCreditAmount" type="text" inputmode="numeric" name="/alternativeMinimumTaxCreditAmount" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+     </section>
+     <dialog id="modal-ctc-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Child Tax Credit (CTC)?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the CTC, you must have a qualifying child who:</p>
+         <ul>
+          <li>Is your dependent child, stepchild, foster child, sibling, or descendant (grandchild, niece, nephew)</li>
+          <li>Is under 17 at the end of <fg-show path="/taxYear"></fg-show></li>
+          <li>Lives with you in the U.S. more than half the year</li>
+          <li>Has a Social Security number (SSN) valid for work (you or your spouse must also have an SSN)</li>
+          <li>Doesn’t support themselves or plans to file a joint return (unless to claim a refund)</li>
+         </ul>
+         <p>You can claim up to <fg-show path="/maxCtcAmount"></fg-show> per qualifying child.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 4 on Schedule 8812 for a number greater than 0. Schedule 8812 would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/child-tax-credit">Learn more about the CTC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-odc-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Credit for Other Dependents (ODC)?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the ODC, you must have a qualifying dependent who:</p>
+         <ul>
+          <li>You plan to claim as a dependent on your tax return</li>
+          <li>Has a gross income less than <fg-show path="/odcDependentGrossIncomeThreshold"></fg-show></li>
+          <li>Lives with you in the U.S. more than half the year if they’re a child or for all year if they’re an adult, unless they're a <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000220957">specific type of relative</a></li>
+          <li>Has a Social Security number, Individual Taxpayer Identification Number (ITIN), or Adoption Tax Identification Number (ATIN)</li>
+          <li>Doesn’t support themselves or plans to file a joint return</li>
+          <li>Won’t be used to claim the Child Tax Credit</li>
+         </ul>
+         <p>You can claim up to <fg-show path="/maxOdcAmount"></fg-show> per qualifying dependent of any age.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 6 on Schedule 8812 for a number greater than 0. Schedule 8812 would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/newsroom/understanding-the-credit-for-other-dependents">Learn more about the ODC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-cdcc-who-can-claim-and-eligible-expenses" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Child and Dependent Care Credit (CDCC) and what expenses are eligible?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the CDCC, you must be paying for the care of a child under 13 or for a spouse or dependent who lives with you and can’t care for themselves.</p>
+         <p>The person providing the care can’t be your spouse, the child’s parent, or another dependent.</p>
+         <p>Expenses that qualify:</p>
+         <ul>
+          <li>Daycare, preschool (below kindergarten)</li>
+          <li>Before- and after-school care</li>
+          <li>Day camps</li>
+          <li>Care for a spouse or dependent who can’t care for themselves</li>
+         </ul>
+         <p>Expenses that don’t qualify:</p>
+         <ul>
+          <li>Overnight camps</li>
+          <li>Private school tuition</li>
+          <li>Food, lodging, or clothing unless directly tied to care</li>
+          <li>Payments to your spouse, the child’s parent, or another dependent for care</li>
+         </ul>
+         <p>This is not a complete list. Refer to <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p503#en_US_2023_publink1000203292">Publication 503</a> to learn more about which expenses qualify.</p>
+         <p>You can claim up to <fg-show path="/cdccMaxClaimableExpenseWithOneQP"></fg-show> for one person or <fg-show path="/cdccMaxClaimableExpenseWithTwoQP"></fg-show> for two or more people.</p>
+         <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you and your spouse are legally separated or live apart and meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p503#en_US_2023_publink1000203323">other criteria.</a></p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 2 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc602">Learn more about the CDCC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-eitc-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Earned Income Tax Credit (EITC)?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p><strong>To claim the EITC with children</strong>, you must be a low- to moderate-income worker with a qualifying child.</p>
+         <p>A qualifying child for the EITC must:</p>
+         <ul>
+          <li>Be your child, stepchild, foster child, sibling, or descendant (grandchild, niece, nephew)</li>
+          <li>Be under 19 at the end of <fg-show path="/taxYear"></fg-show>, under 24 at the end of <fg-show path="/taxYear"></fg-show> if a full-time student, or any age if they are permanently disabled</li>
+          <li>Live with you in the U.S. more than half the year</li>
+          <li>Have a Social Security number valid for work</li>
+          <li>Not file a joint return (except to claim a refund)</li>
+         </ul>
+         <p>You can claim up to 3 qualifying children.</p>
+         <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/who-qualifies-for-the-earned-income-tax-credit-eitc#marriedfilingseparate">specific criteria.</a></p>
+         <p><strong>To claim the EITC without children,</strong> you must be a low- to moderate-income worker who:</p>
+         <ul>
+          <li>Will be at least 25 years old but under 65 on January 1, <fg-show path="/nextTaxYear"></fg-show></li>
+          <li>Lived in the U.S. for more than half the year</li>
+          <li>Have a Social Security number valid for work</li>
+         </ul>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 27a on Form 1040 of your federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc">Learn more about the EITC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-retirement-savings-credit-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Retirement Savings Contribution Credit and how do I estimate it?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the retirement savings contribution credit, you must contribute to a traditional IRA, Roth IRA, 401(k), 403(b), or similar plan.</p>
+         <p>These contributions don’t qualify:</p>
+         <ul>
+          <li>Employer contributions or matches</li>
+          <li>Rollover contributions</li>
+         </ul>
+         <p>To estimate your credit amount, multiply the retirement contributions you expect to make in <fg-show path="/taxYear"></fg-show> by <fg-show path="/retirementSavingsMultiplier"></fg-show>%. This percentage is based on your filing status and estimated adjusted gross income.</p>
+         <p>You can claim up to <fg-show path="/retirementSavingsMaximumAmountNonMFJ"></fg-show> (<fg-show path="/retirementSavingsMaximumAmountMFJ"></fg-show> if filing jointly).</p>
+         <p>If it’s hard to estimate, it’s ok to leave this credit amount blank.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p>If you expect to have similar retirement savings as last year, you can use your credit amount from last year. Review line 4 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc610">Learn more about the retirement savings contribution credit.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-aotc-who-can-claim-and-eligible-expenses" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the American Opportunity Tax Credit (AOTC) and what expenses qualify?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the AOTC, you, your spouse, or a dependent must:</p>
+         <ul>
+          <li>Be in the first 4 years of higher education</li>
+          <li>Enroll at least half-time to pursue a degree or credential</li>
+         </ul>
+         <p>You can claim up to <fg-show path="/maxAotcPerQualifyingStudent"></fg-show> per student, including:</p>
+         <ul>
+          <li>100% of the first $2,000 in expenses</li>
+          <li>25% of the next $2,000 in expenses</li>
+         </ul>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/qualified-ed-expenses">Expenses</a> can include tuition, fees, books, supplies, and other items. You can claim expenses paid by you, your spouse, your dependent, or a third party.</p>
+         <p>This credit can’t be claimed more than 4 times per student.</p>
+         <p>You can’t claim both the American Opportunity Tax Credit and the Lifetime Learning Credit for the same student.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 27 on Form 8863, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/american-opportunity-tax-credit">Learn more about the AOTC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-llc-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Lifetime Learning Credit (LLC)?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the LLC, you, your spouse, or a dependent must:</p>
+         <ul>
+          <li>Pay tuition or fees for college courses, professional certifications, or job skill trainings</li>
+          <li>Enroll or take courses at an <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/eligible-educational-institution">eligible educational institution</a></li>
+          <li>Enroll in one or more courses for an academic period in <fg-show path="/taxYear"></fg-show></li>
+         </ul>
+         <p>You can claim up to 20% of the first $10,000 in expenses and a maximum of <fg-show path="/maxLlcAmountForTaxYear"></fg-show> per federal tax return. You may claim expenses paid by you, your spouse, your dependent, or a third party.</p>
+         <p>You can’t claim both the American Opportunity Tax Credit and the LLC for the same student.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 31 on Form 8863, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/llc">Learn more about the LLC.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-adoption-credit-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Adoption Credit?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the adoption credit, you or your spouse must:</p>
+         <ul>
+          <li>Have paid qualified <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/adoption-credit#qualifiedexpenses">adoption expenses</a> such as adoption fees, court costs, attorney fees, or travel</li>
+          <li>Adopt a child under 18, or who is physically or mentally unable to care for themselves</li>
+         </ul>
+         <p>You can claim up to <fg-show path="/maxAdoptionCreditPerChild"></fg-show> in qualified expenses per adopted child. <a target="_blank" class="usa-link" href="https://www.irs.gov/instructions/i8839#en_US_2024_publink23077td0e531">When to claim expenses</a> depends on adoption type, adoption status, and when expenses were incurred.</p>
+         <p>This credit is partially refundable. It can reduce your taxes and give you a refund up to <fg-show path="/maxRefundableAdoptionCreditAmount"></fg-show> if it brings your tax owed to $0. Unused amounts can be carried forward for up to 5 years.</p>
+         <p condition="/isFilingStatusMFS" operator="isTrue">If you’re married and filing separately from your spouse, you can only claim this credit if you lived apart from your spouse and meet <a target="_blank" class="usa-link" href="https://www.irs.gov/instructions/i8839#en_US_2024_publink23077td0e498">other criteria.</a></p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review Form 8839 (Qualified Adoption Expenses), which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-8839">Learn more about the adoption credit.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-credit-elderly-disabled-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the elderly or disabled credit?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>You may qualify if:</p>
+         <ul>
+          <li>You are 65 years old or older on January 1, <fg-show path="/nextTaxYear"></fg-show>, or you retire on permanent and total disability and receive taxable disability income</li>
+          <li>Your adjusted gross income (AGI) is generally less than $17,500 ($25,000 if married filing jointly)</li>
+          <li>Your total nontaxable Social Security, pensions, annuities, or disability income is generally less than $5,000 ($7,500 if married filing jointly)</li>
+         </ul>
+         <p>Use <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-r-form-1040">Schedule R</a> to calculate the credit amount.</p>
+         <p condition="/isFilingStatusMFS" operator="isTrue">If you're filing as Married Filing Separately, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p524#en_US_2023_publink100038676">specific criteria.</a></p>
+         <p condition="/isFilingStatusHOH" operator="isTrue">If you're filing as Head of Household, you can only claim this credit if you meet <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p524#en_US_2023_publink100038676">specific criteria.</a></p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 6d on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/credit-for-the-elderly-or-the-disabled">Learn more about the Elderly or Disabled Credit.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-foreign-tax-credit-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the foreign tax credit?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the foreign tax credit, you or your spouse must:</p>
+         <ul>
+          <li>Pay or owe taxes to a foreign country or U.S. territory, and</li>
+          <li>Be subject to U.S. tax on the same income</li>
+         </ul>
+         <p>If you're planning to take an itemized deduction for foreign tax, then you won't be able to claim this credit.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 1 on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/international-taxpayers/foreign-tax-credit">Learn more about the Foreign Tax Credit.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-are-business-credits" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What are business credits?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Business credits are a group of tax credits that include incentives for activities such as:</p>
+         <ul>
+          <li>Hiring and supporting workers</li>
+          <li>Energy investments</li>
+          <li>Research and development</li>
+         </ul>
+         <p>You may need to file Form 3800 to claim them.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 6a on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/business-tax-credits">Learn more about business tax credits.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-mortgage-interest-credit-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the mortgage interest credit?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the mortgage interest credit, you and your spouse must:</p>
+         <ul>
+          <li>Have a qualified Mortgage Credit Certificate (MCC) from your state or local government</li>
+          <li>Pay mortgage interest on your main home</li>
+         </ul>
+         <p>The MCC will show the percentage of interest you can claim as a credit. If you don’t have an MCC, you can’t claim this credit.</p>
+         <p>This credit is limited to $2,000 per year.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 6g on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p530#en_US_2023_publink100011906">Learn more about the Mortgage Interest Credit.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-amt-who-can-claim" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Who can claim the Alternative Minimum Tax (AMT) Credit?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To claim the AMT, you or your spouse must:</p>
+         <ul>
+          <li>Have owed AMT in a prior year</li>
+          <li>Not be subject to AMT in the current year</li>
+         </ul>
+         <p>You can claim this credit by filing Form 8801.</p>
+         <p><strong>How to check if you claimed this credit last year</strong></p>
+         <p class="margin-top-0">Review line 6b on Schedule 3, which would have been attached to and submitted with your Form 1040 federal tax return.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-8801">Learn more about the AMT.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+    </div>
+    <div class="form-actions">
+     <a class="usa-button" href="/app/tax-withholding-estimator/results/" onclick="return handleSectionContinue(event)"> Next 
+      <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-right-neg-1 margin-y-neg-05">
+       <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#navigate_next"></use>
+      </svg> </a>
+    </div>
+   </div>
+  </main>
+  <aside id="audit-panel" aria-label="Audit Panel" class="hidden">
+   <h1>TWE Audit Panel</h1>
+   <div class="fg-alert usa-alert usa-alert--warning">
+    <div class="usa-alert__body">
+     <h3 class="usa-alert__heading">Note</h3>
+     <div>The Audit Panel is a developer tool used to debug the Tax Withholding Estimator. It is intended for internal development purposes only and is not for taxpayer use. Results generated by the Audit Panel are not official IRS determinations and must not be used for filing, compliance, or decision-making purposes.</div>
+    </div>
+   </div>
+   <h2>Override Date</h2>
+   <div class="usa-form-group">
+    <p>Override date: <fg-show path="/overrideDate"></fg-show></p>
+    <p>
+     <fg-set path="/overrideDate" inputtype="text" optional="true">
+      <label class="usa-label twe-question" for="override-date-input">Set override date (YYYY-MM-DD):</label> <input id="override-date-input" class="usa-input" type="text">
+     </fg-set>
+
+    </p>
+   </div>
+   <h2>Load Fact Graph</h2>
+   <div class="usa-form-group">
+    <label class="usa-label" for="load-fact-graph">Load Fact Graph</label> <textarea class="usa-textarea" id="load-fact-graph"></textarea>
+    <button class="usa-button" type="button" onclick="loadFactGraph(document.querySelector('#load-fact-graph').value)">Set</button>
+   </div>
+   <h2>Reset Fact Graph</h2>
+   <fg-reset>
+    <button class="usa-button usa-button--outline" type="reset">Start over</button>
+   </fg-reset>
+   <h2>Fact Graph Audit Panel</h2>
+   <div class="usa-form-group">
+    <label class="usa-label twe-question" for="fact-select">Fact Path</label> <input list="fact-options" class="usa-input" onkeydown="pathSelectListener(event)" id="fact-select"> <datalist id="fact-options" aria-invalid="false"></datalist>
+   </div>
+   <div class="usa-form-group">
+    <label class="usa-label twe-question" for="fact-collection-id">Collection ID</label> <input id="fact-collection-id" class="usa-input" type="text" autocomplete="off" aria-invalid="false">
+   </div>
+   <button class="usa-button" id="add-fact-button" type="button" onclick="trackSelectedFact()">Add fact</button>
+   <div id="audit-panel__fact-list"></div>
+  </aside>
+  <template id="audit-panel__fact">
+   <h3 class="audit-panel__fact__path">REPLACE_ME_WITH_FACT_PATH</h3>
+   <dl>
+    <dt>Fact Type:</dt>
+    <dd class="audit-panel__fact__type"></dd>
+    <dt>Value:</dt>
+    <dd class="audit-panel__fact__value"></dd>
+   </dl>
+   <div class="audit-panel__fact__definition">
+    <pre><code><slot name="definition"></slot></code></pre>
+   </div>
+   <div class="audit-panel__fact__controls">
+    <button class="usa-button audit-panel__fact__remove" onlick="trackSelectedFact()" type="button">Remove fact</button>
+   </div>
+  </template>
+  <script type="module">
+    // If configured, automatically enable Audit Mode on startup
+    import { enable } from '/app/tax-withholding-estimator/resources/js/audit-panel.js'
+    enable()
+  </script>
+  <footer aria-label="Tax Withholding Estimator" class="footer">
+   <div data-testid="identifier" class="usa-identifier">
+    <section data-testid="identifierMasthead" class="usa-identifier__section usa-identifier__section--masthead" aria-label="Agency identifier">
+     <div class="usa-identifier__container">
+      <div data-testid="identifierLogos" class="usa-identifier__logos">
+       <a class="usa-identifier__logo" href="https://irs.gov" aria-label="IRS.gov"> <img src="/app/tax-withholding-estimator/resources/img/irs_logo_bk.svg" class="usa-identifier__logo-img" alt=""> </a>
+      </div>
+      <div data-testid="identifierIdentity" class="usa-identifier__identity">
+       <p class="usa-identifier__identity-domain">IRS.gov</p>
+       <p class="usa-identifier__identity-disclaimer">An official website of the <a class="usa-link" target="_blank" href="https://irs.gov">IRS<span class="usa-sr-only"> (opens in a new tab)</span></a></p>
+      </div>
+     </div>
+    </section>
+    <nav class="usa-identifier__section usa-identifier__section--required-links" aria-label="??layout.identifier.important-link_en_US??">
+     <div class="usa-identifier__container">
+      <ul class="usa-identifier__required-links-list">
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="/about/">About</a></li>
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="https://www.irs.gov/accessibility">Accessibility</a></li>
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="https://www.irs.gov/privacy-disclosure/irs-privacy-policy">Privacy policy</a></li>
+      </ul>
+     </div>
+    </nav>
+   </div>
+  </footer>
+  <template id="validate-alert-template">
+   <div class="usa-alert usa-alert--error validate-alert" role="alert">
+    <div class="usa-alert__body">
+     <h4 class="usa-alert__heading">Warning status</h4>
+     <p class="usa-alert__text" id="alert-message">Please complete the required fields</p>
+    </div>
+   </div>
+  </template>
+  <!-- I did this with text scripts because getting innerHTML from a template doesn't work for some reason -->
+  <script type="text" id="errors.InvalidCharacters">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidDollar">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidHyphens">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidParentheses">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.TooManyDecimals">Enter a number with only one decimal.</script>
+  <script type="text" id="errors.TooManyFractionalDigits">Enter only two digits after the decimal.</script>
+  <script type="text" id="errors.InvalidDay">Enter a valid day.</script>
+  <script type="text" id="errors.InvalidDayDueToLeapYear">Invalid day due to leap year.</script>
+  <script type="text" id="errors.InvalidMonth">Enter a valid month.</script>
+  <script type="text" id="errors.InvalidDate">Enter a valid date.</script>
+  <script type="text" id="errors.InvalidLimit">Invalid limit set.</script>
+  <script type="text" id="errors.BlankEnum">Value was blank.</script>
+  <script type="text" id="errors.InvalidEnum">Value not found.</script>
+  <script type="text" id="errors.Max">Enter an amount less than</script>
+  <script type="text" id="errors.Min">Enter an amount more than</script>
+  <script type="text" id="errors.Default">Sorry, something went wrong</script>
+ </body>
+</html>

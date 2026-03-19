@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuite hostname="Mac" name="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" tests="83" errors="0" failures="0" skipped="0" time="4.203" timestamp="2026-02-25T14:38:04">
+          <properties>
+      <property name="java.specification.version" value="21"/><property name="sun.jnu.encoding" value="UTF-8"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="https://github.com/Homebrew/homebrew-core/issues"/><property name="sun.boot.library.path" value="/opt/homebrew/Cellar/openjdk@21/21.0.6/libexec/openjdk.jdk/Contents/Home/lib"/><property name="sun.java.command" value="/Users/samuelswire/Library/Caches/Coursier/arc/https/github.com/sbt/sbt/releases/download/v1.9.7/sbt-1.9.7.zip/sbt/bin/sbt-launch.jar -info set Test / testOptions += Tests.Argument(TestFrameworks.ScalaTest, &quot;-oC&quot;) test scalafmtCheckAll"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2025-01-21"/><property name="java.home" value="/opt/homebrew/Cellar/openjdk@21/21.0.6/libexec/openjdk.jdk/Contents/Home"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="Zero based"/><property name="line.separator" value="
+"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="java.specification.name" value="Java Platform API Specification"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="21.0.6"/><property name="user.name" value="samuelswire"/><property name="log4j.ignoreTCL" value="true"/><property name="file.encoding" value="UTF-8"/><property name="java.vendor.version" value="Homebrew"/><property name="java.io.tmpdir" value="/var/folders/bx/0dynw5g56318ly188z_xx5xm0000gn/T/"/><property name="java.version" value="21.0.6"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="native.encoding" value="UTF-8"/><property name="java.library.path" value="/Users/samuelswire/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/><property name="stderr.encoding" value="UTF-8"/><property name="java.vendor" value="Homebrew"/><property name="scala.ext.dirs" value="/Users/samuelswire/.sbt/1.0/java9-rt-ext-homebrew_21_0_6"/><property name="sun.io.unicode.encoding" value="UnicodeBig"/><property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="java.class.path" value="/Users/samuelswire/Library/Caches/Coursier/arc/https/github.com/sbt/sbt/releases/download/v1.9.7/sbt-1.9.7.zip/sbt/bin/sbt-launch.jar"/><property name="java.vm.vendor" value="Homebrew"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="America/New_York"/><property name="java.vm.specification.version" value="21"/><property name="os.name" value="Mac OS X"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="US"/><property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/Users/samuelswire"/><property name="user.language" value="en"/><property name="sbt.script" value="/Users/samuelswire/Library/Caches/Coursier/arc/https/github.com/sbt/sbt/releases/download/v1.9.7/sbt-1.9.7.zip/sbt/bin/sbt"/><property name="sbt.ipcsocket.tmpdir" value="/var/folders/bx/0dynw5g56318ly188z_xx5xm0000gn/T/.sbt1bd05eda/ipcsocket"/><property name="swoval.tmpdir" value="/var/folders/bx/0dynw5g56318ly188z_xx5xm0000gn/T/.sbt1bd05eda/swoval"/><property name="apple.awt.application.name" value="Boot"/><property name="jline.esc.timeout" value="0"/><property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/><property name="stdout.encoding" value="UTF-8"/><property name="path.separator" value=":"/><property name="os.version" value="26.3"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="OpenJDK Runtime Environment"/><property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/><property name="java.vendor.url.bug" value="https://github.com/Homebrew/homebrew-core/issues"/><property name="user.dir" value="/Users/samuelswire/tax-withholding-estimator"/><property name="os.arch" value="aarch64"/><property name="java.vm.info" value="mixed mode, sharing"/><property name="java.vm.version" value="21.0.6"/><property name="java.class.version" value="65.0"/>
+    </properties>
+          <testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, OB3, itemized" time="0.528">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, OB3, itemized, no SSN" time="0.115">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, high itemized deductions (mortgage interest, SALT, charity, medical)" time="0.099">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + tips + overtime + car loan interest" time="0.104">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, No tax on tips, No tax on overtime, SALT, phased out" time="0.095">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, college student dependent + tuition payments" time="0.079">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ,  salary, pension, zero deduction, itemized" time="0.078">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ,  salary, pension, phased out deduction, one SSN" time="0.074">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Married filing jointly, salary, 1 child, multiple incomes, car loan interest" time="0.07">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single filer, new job" time="0.068">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, low wages, 2 dependents" time="0.07">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Head of Household, wages only" time="0.066">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, Social Security + part-time wages, senior deduction" time="0.067">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, self-employed income, IRA contributions" time="0.091">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + dividends + interest + student loan interest" time="0.062">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, low wages, no dependents, EITC eligible" time="0.049">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + overtime income" time="0.048">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + tip income" time="0.048">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + short term gains + investment income" time="0.048">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + rental income" time="0.048">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, high wages +Cap Gains + Investment" time="0.052">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, high wages +Cap Gains + Investment, overall limitation" time="0.045">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + HSA + IRA + educator expenses" time="0.044">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, wages + foreign investment income" time="0.045">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Self-employed filer with business credit-eligible expenses" time="0.043">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, High Income, 1 child, Multi, Car loan" time="0.044">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, SS, part time, senior deduction" time="0.043">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, low wages, EITC, no dependents" time="0.046">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="SE, Wages, QBI" time="0.04">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, high itemized deductions (mortgage, SALT, charity, medical)" time="0.04">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, salary, full deduction" time="0.04">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, salary, partial deduction, standard" time="0.039">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, pension, SS, partial deduction, standard" time="0.041">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, salary, full deduction, itemized" time="0.041">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, salary, full deduction, standard" time="0.043">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, pension, partial deduction, standard" time="0.04">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, wage, partial deduction, itemized" time="0.036">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, full tip deduction" time="0.037">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, partial deduction" time="0.038">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, two tipped jobs" time="0.037">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, two tipped jobs, no SSN user" time="0.036">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, three tipped jobs, max" time="0.039">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, two tipped jobs, itemized" time="0.037">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, 1 job, factor 2, partial deduction" time="0.036">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, 1 job, factor 1.5, partial deduction" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, 2 jobs,  partial deduction" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFj, 2 jobs, maximum deduction" time="0.039">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFj, 2 jobs, phased out deduction, no SSN spouse" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, 1 job, tips and OT" time="0.037">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, 1 job, tips and OT" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, phasedout deduction" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, zero deduction" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, phased out, no SSN, CTC" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, max amount deduction" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH,  phased out deduction, CTC, QBI" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, one child, non-refundable" time="0.037">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, one child, refundable partial" time="0.035">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, 3 children, one SSN, full refundable" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH,1 child, non-refundable" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, 2 child, no SSN" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, Full QBI, under threshold" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, small QBI, under threshold" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, 1k QBI, under threshold" time="0.036">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, 10k QBI, over low threshold" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, QBI, over high threshold" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, QBI full, under threshold" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, partial QBI, over low threshold" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, partial QBI, over high threshold" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, SALT under 10k" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, SALT, phased out under 40k" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="QW, SALT, max amount" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, no phase out" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFj, SALT, phased out down to 10k" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, SALT, phased out" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, SALT, phased out to min" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, No tax on overtime, factor 2, itemized,SSN" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="HH, 2 jobs" time="0.034">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="Single, MIP phased out" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFS, MIP phased out" time="0.032">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, adoption 1 child full" time="0.033">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, adoption 2 children phasedout" time="0.031">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="MFJ, high income, itemized, charity, adoption" time="0.031">
+                      
+                    </testcase><testcase classname="gov.irs.twe.factDictionary.scenarios.UatScenariosSpec" name="QW, overwithheld" time="0.03">
+                      
+                    </testcase>
+          <system-out><![CDATA[]]></system-out>
+          <system-err><![CDATA[]]></system-err>
+        </testsuite>

@@ -1,0 +1,1567 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/jobs/*/restOfYearWithholding">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="../isPastJob"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Multiply>
+                <Dependency path="../remainingPayPeriodsRational"/>
+                <Dependency path="../averageWithholdingPerPayPeriod"/>
+              </Multiply>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/endOfYearProjectedWithholding">
+      <Description>The end of year amount withheld for this job if nothing is changed.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="../yearToDateWithholding"/>
+          <Dependency path="../restOfYearWithholding"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/bonusWithholdingPrimaryRate">
+      <Description>
+        Bonus withholdings are 22% if less than 1,000,000 and 37% on the sum exceeding
+        1,000,000. Ref: Pub 15, Section 7.
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Rational>22/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/bonusWithholdingExcessRate">
+      <Description>
+        Bonus withholdings are 22% if less than 1,000,000 and 37% on the sum exceeding
+        1,000,000. Ref: Pub 15, Section 7.
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Rational>37/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/withholdingsFromTotalBonusReceived">
+      <Description>
+        Bonus withholdings are 22% if less than 1,000,000 and 37% on the sum exceeding
+        1,000,000. Ref: Pub 15, Section 7.
+      </Description>
+      <Derived>
+        <Round>
+          <Switch>
+            <Case>
+              <When>
+                <LessThanOrEqual>
+                  <Left>
+                    <Dependency path="../totalFutureBonus"/>
+                  </Left>
+                  <Right>
+                    <Subtract>
+                      <Minuend>
+                        <Dependency path="/totalBonusReceivedThreshold"/>
+                      </Minuend>
+                      <Subtrahends>
+                        <Dependency path="../mostRecentPayPeriodBonusAmount"/>
+                      </Subtrahends>
+                    </Subtract>
+                  </Right>
+                </LessThanOrEqual>
+              </When>
+              <Then>
+                <Multiply>
+                  <Dependency path="/bonusWithholdingPrimaryRate"/>
+                  <Dependency path="../totalFutureBonus"/>
+                </Multiply>
+              </Then>
+            </Case>
+            <Case>
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Add>
+                  <!-- 22% on the first $1,000,000-->
+                  <Multiply>
+                    <Dependency path="/bonusWithholdingPrimaryRate"/>
+                    <GreaterOf>
+                      <Dollar>0</Dollar>
+                      <Subtract>
+                        <Minuend>
+                          <Dependency path="/totalBonusReceivedThreshold"/>
+                        </Minuend>
+                        <Subtrahends>
+                          <Dependency path="../mostRecentPayPeriodBonusAmount"/>
+                        </Subtrahends>
+                      </Subtract>
+                    </GreaterOf>
+                  </Multiply>
+                  <!-- 37% on the amount exceeding $1,000,000-->
+                  <Multiply>
+                    <Dependency path="/bonusWithholdingExcessRate"/>
+                    <Subtract>
+                      <Minuend>
+                        <Dependency path="../totalBonusReceived"/>
+                      </Minuend>
+                      <Subtrahends>
+                        <Dependency path="/totalBonusReceivedThreshold"/>
+                      </Subtrahends>
+                    </Subtract>
+                  </Multiply>
+                </Add>
+              </Then>
+            </Case>
+          </Switch>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/restOfYearStandardWithholding">
+      <Derived>
+        <Multiply>
+          <Divide>
+            <Dividend>
+              <Dependency path="../standardAnnualWithholdingAmount"/>
+            </Dividend>
+            <Divisors>
+              <Dependency path="../payPeriodsPerYear"/>
+            </Divisors>
+          </Divide>
+          <Dependency path="../fullPayPeriods"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/tentativeWithholdingAmount">
+      <Description>Line 2h of Pub. 15-T Worksheet 1A. The amount from the Annual Method Percentage
+        table.</Description>
+      <Derived>
+        <Divide>
+          <Dividend>
+            <Dependency path="../standardAnnualWithholdingAmount"/>
+          </Dividend>
+          <Divisors>
+            <Dependency path="../payPeriodsPerYear"/>
+          </Divisors>
+        </Divide>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/creditsNeededToFullyBridgeTaxGap">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <LessThan>
+                <Left>
+                  <Dependency path="/taxGap"/>
+                </Left>
+                <Right>
+                  <Dollar>0</Dollar>
+                </Right>
+              </LessThan>
+            </When>
+            <Then>
+              <Divide>
+                <Dividend>
+                  <Multiply>
+                    <!-- Ensure taxGap gets converted to a positive number-->
+                    <Dependency path="/taxGap"/>
+                    <Int>-1</Int>
+                    <Dependency path="../payPeriodsPerYear"/>
+                  </Multiply>
+                </Dividend>
+                <Divisors>
+                  <Subtract>
+                    <Minuend>
+                      <Dependency path="../fullPayPeriods"/>
+                    </Minuend>
+                    <Subtrahends>
+                      <Dependency path="../payPeriodsBeforeW4ChangesAppear"/>
+                    </Subtrahends>
+                  </Subtract>
+                </Divisors>
+              </Divide>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/tentativeAnnualWithholdingAmount">
+      <Description>Annualized tentative withholding amount. Line 2g of Pub. 15-T Worksheet 1A</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="../tentativeWithholdingAmount"/>
+          <Dependency path="../payPeriodsPerYear"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/committedWithholding">
+      <Description>
+        The total amount that will be withheld from the paycheck if the W-4 is submitted today with
+        no additional withholdings. This is also referred to as the "do-nothing withholding."
+      </Description>
+      <Derived>
+        <Add>
+          <Dependency path="../yearToDateWithholding"/>
+          <Dependency path="../lagWithholding"/>
+          <Dependency path="../futureTentativeWithholding"/>
+          <Dependency path="../withholdingsFromTotalBonusReceived"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/lagWithholding">
+      <Description>
+        The amount that will be withheld in the time between today and when the W-4 is expected to
+        be processed.
+      </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="../isPastJob"/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Multiply>
+                <Dependency path="../averageWithholdingPerPayPeriod"/>
+                <LesserOf>
+                  <Dependency path="../remainingPayPeriodsRational"/>
+                  <!-- Casting this value to a rational -->
+                  <Multiply>
+                    <Dependency path="../payPeriodsBeforeW4ChangesAppear"/>
+                    <Rational>1/1</Rational>
+                  </Multiply>
+                </LesserOf>
+              </Multiply>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/futureTentativeWithholding">
+      <Description>Result from Pub 15-T Worksheet 1A</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="../isPastJob"/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Multiply>
+                <Dependency path="../tentativeWithholdingAmount"/>
+                <GreaterOf>
+                  <Rational>0/1</Rational>
+                  <Subtract>
+                    <Minuend>
+                      <Dependency path="../remainingPayPeriodsRational"/>
+                    </Minuend>
+                    <Subtrahends>
+                      <!-- Casting this value to a rational -->
+                      <Multiply>
+                        <Dependency path="../payPeriodsBeforeW4ChangesAppear"/>
+                        <Rational>1/1</Rational>
+                      </Multiply>
+                    </Subtrahends>
+                  </Subtract>
+                </GreaterOf>
+              </Multiply>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/annualizedIncome">
+      <Description>The earnings if the job duration were all year.</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="../averagePayPerPayPeriodForWithholding"/>
+          <Dependency path="../payPeriodsPerYear"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/projectedW4EffectDate">
+      <Description>Date when we expect the W4 chagnes to take effect. 14 days after the current date</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/today"/>
+          <Days>14</Days>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/payPeriodsBeforeW4ChangesAppear">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="../isPayFrequencyWeekly"/>
+            </When>
+            <Then>
+              <Int>2</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="../isPayFrequencyBiWeekly"/>
+            </When>
+            <Then>
+              <Int>1</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="../isPayFrequencySemiMonthly"/>
+            </When>
+            <Then>
+              <Switch>
+                <!-- Handle scenario when there are 2 pay periods. Only happens in the middle of Feb -->
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/projectedW4EffectDate"/>
+                      </Left>
+                      <Right>
+                        <AddPayrollMonths>
+                          <Dependency path="../mostRecentPayDate"/>
+                          <Int>1</Int>
+                        </AddPayrollMonths>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Int>2</Int>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/projectedW4EffectDate"/>
+                      </Left>
+                      <Right>
+                        <Dependency path="../nextPayDay"/>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Int>1</Int>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <True/>
+                  </When>
+                  <Then>
+                    <Int>0</Int>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="../isPayFrequencyMonthly"/>
+            </When>
+            <Then>
+              <Count>
+                <GreaterThanOrEqual>
+                  <Left>
+                    <Dependency path="/projectedW4EffectDate"/>
+                  </Left>
+                  <Right>
+                    <AddPayrollMonths>
+                      <Dependency path="../mostRecentPayDate"/>
+                      <Int>1</Int>
+                    </AddPayrollMonths>
+                  </Right>
+                </GreaterThanOrEqual>
+              </Count>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobsAvailableForExtraWithholding">
+      <Description>Jobs that are ended or end too soon are not candidates for extra withholding on a
+        new W4.</Description>
+      <Derived>
+        <Filter path="/jobs">
+          <Dependency path="conditionForPossibleW4Jobs"/>
+        </Filter>
+      </Derived>
+    </Fact>
+    <Fact path="/highestPayingJob">
+      <Description>Highest "paying" job available for extra withholding</Description>
+      <Derived>
+        <IndexOf>
+          <Collection>
+            <Filter path="/jobsAvailableForExtraWithholding">
+              <Equal>
+                <Left>
+                  <Maximum>
+                    <Dependency path="/jobsAvailableForExtraWithholding/*/income"/>
+                  </Maximum>
+                </Left>
+                <Right>
+                  <Dependency path="income"/>
+                </Right>
+              </Equal>
+            </Filter>
+          </Collection>
+          <Index>
+            <Int>0</Int>
+          </Index>
+        </IndexOf>
+      </Derived>
+    </Fact>
+    <Fact path="/jobSelectedForExtraWithholding">
+      <Description>The job selected for extra withholding on a new W4. The W4 refers to this as the "highest paying job".</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <IsComplete>
+                  <Dependency path="/highestPayingJob"/>
+                </IsComplete>
+                <Any>
+                  <Not>
+                    <IsComplete>
+                      <Dependency path="/highestPayingPension"/>
+                    </IsComplete>
+                  </Not>
+                  <GreaterThanOrEqual>
+                    <Left>
+                      <Dependency path="/highestPayingJob/income"/>
+                    </Left>
+                    <Right>
+                      <Dependency path="/highestPayingPension/income"/>
+                    </Right>
+                  </GreaterThanOrEqual>
+                </Any>
+              </All>
+            </When>
+            <Then>
+              <Dependency path="/highestPayingJob"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/totalEndOfYearProjectedWithholding">
+      <Description>The amount withheld for all jobs if nothing is changed.</Description>
+      <Derived>
+        <Add>
+          <CollectionSum>
+            <Dependency path="/jobs/*/endOfYearProjectedWithholding"/>
+          </CollectionSum>
+          <Dependency path="/pensionsTotalEndOfYearProjectedWithholding"/>
+          <Dependency path="/otherIncomeWithholding"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/withholdingGap">
+      <Description>
+        The rest-of-year withholding gap: taxes owed if nothing is changed.
+
+        Positive value = underpayment = balance due
+        Negative value = overpayment = refund
+      </Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/totalOwed"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/totalEndOfYearProjectedWithholding"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/withholdingSurplus">
+      <Description>
+        The rest-of-year withholding surplus: refund gained if nothing is changed.
+
+        Positive value = overpayment = refund
+        Negative value = underpayment = balance due
+
+        Used when you need a positive value for projected refund amount
+      </Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/withholdingGap"/>
+          <Dollar>-1</Dollar>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/isOverwithheld">
+      <Derived>
+        <LessThan>
+          <Left>
+            <Dependency path="/withholdingGap"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </LessThan>
+      </Derived>
+    </Fact>
+    <Fact path="/isZeroRefund">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="/withholdingGap"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/isUnderwithheld">
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/withholdingGap"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/mayBeSubjectToUnderpaymentPenalty">
+      <Description>
+        Taxpayers may be subject to penalties if they owe
+        * $1,000 (or more), AND
+        * the withholding gap is more than 10% of total tax bill
+
+        https://www.irs.gov/taxtopics/tc306
+        https://www.irs.gov/payments/underpayment-of-estimated-tax-by-individuals-penalty
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/owesAtleast1000Dollars"/>
+          <Dependency path="/owesAtleast10PercentOfTotalTax"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/owesAtleast1000Dollars">
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/withholdingGap"/>
+          </Left>
+          <Right>
+            <Dollar>1000</Dollar>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/owesAtleast10PercentOfTotalTax">
+      <Description>Withholding gap is more than 10% of total tax bill. Used for underpayment penalty.</Description>
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/withholdingGap"/>
+          </Left>
+          <Right>
+            <Dependency path="/10PercentOfTotalTax"/>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/10PercentOfTotalTax">
+      <Derived>
+        <Multiply>
+          <Rational>1/10</Rational>
+          <Dependency path="/totalTax"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/taxGap">
+      <Description>The tax gap once W-4s are updated and we account for the remaining pay periods. Effectively 1040 Line 37 - Lines 25d</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/totalOwed"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/totalCommittedWithholding"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/totalCommittedWithholding">
+      <Derived>
+        <Add>
+          <Dependency path="/jobsTotalCommittedWithholding"/>
+          <Dependency path="/pensionsTotalCommittedWithholding"/>
+          <Dependency path="/otherIncomeWithholding"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobsTotalCommittedWithholding">
+      <Derived>
+        <CollectionSum>
+          <Dependency path="/jobs/*/committedWithholding"/>
+        </CollectionSum>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/pub15Worksheet1aLine1g">
+      <Description>Line 1g of Pub 15-T Worksheet 1A</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <!-- Pub 15T specifies just MFJ, but W-4 doesn't differentiate between MFJ and QSS -->
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>12900</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>8600</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/averageTaxablePayPerPayPeriod">
+      <Description>Line 1a of Pub 15-T Worksheet 1A</Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="../averagePayPerPayPeriodForWithholding"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="../preTaxDeductionsPerPayPeriod"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/pub15Worksheet1aLine1e">
+      <Derived>
+        <Add>
+          <!-- Line 1c -->
+          <Multiply>
+            <Dependency path="../averageTaxablePayPerPayPeriod"/>
+            <Dependency path="../payPeriodsPerYear"/>
+          </Multiply>
+          <!-- Line 1d -->
+          <Dependency path="../w4Line4a"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/pub15Worksheet1aLine1h">
+      <Derived>
+        <Add>
+          <Dependency path="../pub15Worksheet1aLine1g"/>
+          <!-- Line 1f -->
+          <Dependency path="../w4Line4b"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/adjustedAnnualWageAmount">
+      <Description>Line 1i of Pub 15-T Worksheet 1A</Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="../pub15Worksheet1aLine1e"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="../pub15Worksheet1aLine1h"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/standardAnnualWithholdingAmount">
+      <Description>Standard withholding rate schedules for use when Form W-4 Step 2 box is not
+        checked. Line 2g of Pub. 15-T Worksheet 1A. These amounts are generally a base withholding
+        amount plus a percentage of the excess of Annual Adjusted Wages Amount. The base withholding
+        captures the total withholding for all the brackets below the one that the AAWA falls into. </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <!-- SINGLE OR MARRIED FILING SEPARATELY -->
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusMFS"/>
+              </Any>
+            </When>
+            <Then>
+              <Switch>
+                <!-- Less than $7,500: no withholding -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>7500</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Dollar>0</Dollar>
+                  </Then>
+                </Case>
+                <!-- At least $7,500 but less than $19,900: $0 plus 10% of the excess over $7,500 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>19900</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Multiply>
+                      <Rational>10/100</Rational>
+                      <Subtract>
+                        <Minuend>
+                          <Dependency path="../adjustedAnnualWageAmount"/>
+                        </Minuend>
+                        <Subtrahends>
+                          <Dollar>7500</Dollar>
+                        </Subtrahends>
+                      </Subtract>
+                    </Multiply>
+                  </Then>
+                </Case>
+                <!-- At least $19,900 but less than $57,900: $1,240 plus 12% of the excess over
+          $19,900 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>57900</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>1240</Dollar>
+                      <Multiply>
+                        <Rational>12/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>19900</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $57,900 but less than $113,200: $5,800.00 plus 22% of the excess
+                over $57,900 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>113200</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>5800.00</Dollar>
+                      <Multiply>
+                        <Rational>22/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>57900</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $113,200 but less than $209,275: $17,966 plus 24% of the excess over
+                $113,200 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>209275</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>17966.00</Dollar>
+                      <Multiply>
+                        <Rational>24/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>113200</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $209,275 but less than $263,725: $41,024.00 plus 32% of the excess over
+                $209,275 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>263725</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>41024.00</Dollar>
+                      <Multiply>
+                        <Rational>32/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>209275.00</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $263,726 but less than $648,100: $58,448 plus 35% of the excess over
+                $263,725 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>648100</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>58448.00</Dollar>
+                      <Multiply>
+                        <Rational>35/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>263725</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- 648,100 and above: 192,979.25 plus 37% of the excess over $648,100 -->
+                <Case>
+                  <When>
+                    <True/>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>192979.25</Dollar>
+                      <Multiply>
+                        <Rational>37/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>648100</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+              </Any>
+            </When>
+            <Then>
+              <Switch>
+                <!-- Less than $19,300: no withholding -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>19300</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Dollar>0</Dollar>
+                  </Then>
+                </Case>
+                <!-- At least $19,300 but less than $44,100: $0 plus 10% of the excess over
+              $19,300 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>44100</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Multiply>
+                      <Rational>10/100</Rational>
+                      <Subtract>
+                        <Minuend>
+                          <Dependency path="../adjustedAnnualWageAmount"/>
+                        </Minuend>
+                        <Subtrahends>
+                          <Dollar>19300</Dollar>
+                        </Subtrahends>
+                      </Subtract>
+                    </Multiply>
+                  </Then>
+                </Case>
+                <!-- At least $44,100 but less than $120,100: $2,480.00 plus 12% of the excess over
+                $44,100 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>120100</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>2480.00</Dollar>
+                      <Multiply>
+                        <Rational>12/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>44100</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $120,100 but less than 230,700: $11,600 plus 22% of the excess over
+              $120,100 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>230700</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>11600.00</Dollar>
+                      <Multiply>
+                        <Rational>22/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>120100</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $230,700 but less than $422,850: $35,932 plus 24% of the excess over
+                $230,700 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>422850</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>35932</Dollar>
+                      <Multiply>
+                        <Rational>24/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>230700</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $422,850 but less than $531,750: $82,048 plus 32% of the excess over
+              $422,850 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>531750</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>82048</Dollar>
+                      <Multiply>
+                        <Rational>32/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>422850</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $531,750 but less than $788,000: $116,896 plus 35% of the excess
+                over $531,750 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>788000</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>116896</Dollar>
+                      <Multiply>
+                        <Rational>35/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>531750</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- $788,00 and above: $206,583.50 plus 37% of the excess over $788,000 -->
+                <Case>
+                  <When>
+                    <True/>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>206583.50</Dollar>
+                      <Multiply>
+                        <Rational>37/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>788000</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Switch>
+                <!-- Less than $15,550: no withholding -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>15550</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Dollar>0</Dollar>
+                  </Then>
+                </Case>
+                <!-- At least $15,550 but less than $33,250: $0 plus 10% of the excess over
+              $15,550 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>33250</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Multiply>
+                      <Rational>10/100</Rational>
+                      <Subtract>
+                        <Minuend>
+                          <Dependency path="../adjustedAnnualWageAmount"/>
+                        </Minuend>
+                        <Subtrahends>
+                          <Dollar>15550</Dollar>
+                        </Subtrahends>
+                      </Subtract>
+                    </Multiply>
+                  </Then>
+                </Case>
+                <!-- At least $33,250 but less than $83,000: $1,770 plus 12% of the excess over
+              $33,250 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>83000</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>1770</Dollar>
+                      <Multiply>
+                        <Rational>12/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>33250</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $83,000 but less than 121,250: $7,740 plus 22% of the excess over
+              $83,000 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>121250</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>7740</Dollar>
+                      <Multiply>
+                        <Rational>22/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>83000</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $121,250 but less than $217,300: $16,155 plus 24% of the excess over
+              $121,250 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>217300</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>16155</Dollar>
+                      <Multiply>
+                        <Rational>24/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>121250</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $217,300 but less than $271,750: $39,207 plus 32% of the excess over
+              $217,300 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>271750</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>39207</Dollar>
+                      <Multiply>
+                        <Rational>32/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>217300</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- At least $271,750 but less than $656,150: $56,631 plus 35% of the excess over
+              $271,750 -->
+                <Case>
+                  <When>
+                    <LessThan>
+                      <Left>
+                        <Dependency path="../adjustedAnnualWageAmount"/>
+                      </Left>
+                      <Right>
+                        <Dollar>656150</Dollar>
+                      </Right>
+                    </LessThan>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>56631</Dollar>
+                      <Multiply>
+                        <Rational>35/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>271750</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+                <!-- $656,150 and above: $191,171 plus 37% of the excess over $656,150 -->
+                <Case>
+                  <When>
+                    <True/>
+                  </When>
+                  <Then>
+                    <Add>
+                      <Dollar>191171.00</Dollar>
+                      <Multiply>
+                        <Rational>37/100</Rational>
+                        <Subtract>
+                          <Minuend>
+                            <Dependency path="../adjustedAnnualWageAmount"/>
+                          </Minuend>
+                          <Subtrahends>
+                            <Dollar>656150</Dollar>
+                          </Subtrahends>
+                        </Subtract>
+                      </Multiply>
+                    </Add>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/cannotZeroOutRefundDueToExcessWithholding">
+      <Description>
+        The taxpayer has already overwithheld enough money for long enough, that dropping all withholding for the
+        remainder of the year will not bring them to a zero balance.
+      </Description>
+      <Derived>
+        <Any>
+          <All>
+            <!-- If job is selected for extra withholding -->
+            <IsComplete>
+              <Dependency path="/jobSelectedForExtraWithholding"/>
+            </IsComplete>
+            <!-- and tentativeAnnualWithholdingAmount is lower than creditsNeededToFullyBridgeTaxGap -->
+            <LessThan>
+              <Left>
+                <Dependency path="/jobSelectedForExtraWithholding/tentativeAnnualWithholdingAmount"/>
+              </Left>
+              <Right>
+                <Dependency path="/jobSelectedForExtraWithholding/creditsNeededToFullyBridgeTaxGap"/>
+              </Right>
+            </LessThan>
+          </All>
+          <All>
+            <!-- If pension is selected for extra withholding -->
+            <IsComplete>
+              <Dependency path="/pensionSelectedForExtraWithholding"/>
+            </IsComplete>
+            <!-- and tentativeAnnualWithholdingAmount is lower than creditsNeededToFullyBridgeTaxGap -->
+            <LessThan>
+              <Left>
+                <Dependency path="/pensionSelectedForExtraWithholding/tentativeAnnualWithholdingAmount"/>
+              </Left>
+              <Right>
+                <Dependency path="/pensionSelectedForExtraWithholding/creditsNeededToFullyBridgeTaxGap"/>
+              </Right>
+            </LessThan>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/pub15TWorksheet1aLine3b">
+      <Description>
+        Pub. 15-T Worksheet 1A Line 3b
+        Divide the amount on line 3a by the number of pay periods on line 1b
+      </Description>
+      <Derived>
+        <Divide>
+          <Dividend>
+            <!-- Pub. 15-T, Worksheet 1A, Line 3a -->
+            <Dependency path="../w4Line3"/>
+          </Dividend>
+          <Divisors>
+            <!-- Pub. 15-T, Worksheet 1A, Line 1b -->
+            <Dependency path="../payPeriodsPerYear"/>
+          </Divisors>
+        </Divide>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/pub15TWorksheet1aLine3c">
+      <Description>
+        Pub. 15-T Worksheet 1A Line 3c
+        Subtract line 3b from line 2h. If zero or less, enter -0-
+      </Description>
+      <Derived>
+        <GreaterOf>
+          <Subtract>
+            <Minuend>
+              <!-- Pub. 15-T, Worksheet 1A, Line 2h -->
+              <Dependency path="../tentativeWithholdingAmount"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="../pub15TWorksheet1aLine3b"/>
+            </Subtrahends>
+          </Subtract>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/withholdingAmountPerPayPeriod">
+      <Description>
+        "The amount to withhold from the employee's wages this pay period", also Pub 15-T Worksheet 1A, Line 4b
+        Employers will calculate this based off of the employee's W-4. We also calculate it for its usefulness in determining
+        whether the taxpayer may need to make estimated tax payments.
+
+        Defined as the sum of Pub-15 Worksheet 1A, Lines 3c and 4a.
+      </Description>
+      <Derived>
+        <Add>
+          <Dependency path="../pub15TWorksheet1aLine3c"/>
+          <!-- Pub. 15-T, Worksheet 1A, Line 4a -->
+          <Dependency path="../w4Line4c"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/mayNeedToMakeEstimatedPayments">
+      <Description>
+        Whether the taxpayer needs to make estimated payments to make up the balance.
+
+        In short, if the amount that needs to be withheld per pay period is greater than (or equal to, being conservative
+        with the calculation is helpful to the taxpayer here) than the amount of money available.
+      </Description>
+      <Derived>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency path="/jobSelectedForExtraWithholding"/>
+            </IsComplete>
+            <GreaterThan>
+              <Left>
+                <Dependency path="/jobSelectedForExtraWithholding/withholdingAmountPerPayPeriod"/>
+              </Left>
+              <Right>
+                <Dollar>0</Dollar>
+              </Right>
+            </GreaterThan>
+            <GreaterThanOrEqual>
+              <Left>
+                <Dependency path="/jobSelectedForExtraWithholding/withholdingAmountPerPayPeriod"/>
+              </Left>
+              <Right>
+                <Dependency path="/jobSelectedForExtraWithholding/averageTaxablePayPerPayPeriod"/>
+              </Right>
+            </GreaterThanOrEqual>
+          </All>
+          <All>
+            <IsComplete>
+              <Dependency path="/pensionSelectedForExtraWithholding"/>
+            </IsComplete>
+            <GreaterThan>
+              <Left>
+                <Dependency path="/pensionSelectedForExtraWithholding/withholdingAmountPerPayPeriod"/>
+              </Left>
+              <Right>
+                <Dollar>0</Dollar>
+              </Right>
+            </GreaterThan>
+            <GreaterThanOrEqual>
+              <Left>
+                <Dependency path="/pensionSelectedForExtraWithholding/withholdingAmountPerPayPeriod"/>
+              </Left>
+              <Right>
+                <Dependency path="/pensionSelectedForExtraWithholding/averagePayPerPayPeriodForWithholding"/>
+              </Right>
+            </GreaterThanOrEqual>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

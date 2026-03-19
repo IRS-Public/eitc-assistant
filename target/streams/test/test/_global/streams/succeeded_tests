@@ -1,0 +1,29 @@
+#Successful Tests
+#Wed Feb 25 14:38:08 EST 2026
+gov.irs.twe.factDictionary.AdditionalMedicareTaxSpec=1769183287080
+gov.irs.twe.factDictionary.AdjustmentSpec=1772048284080
+gov.irs.twe.factDictionary.AdoptionCreditSpec=1772048284243
+gov.irs.twe.factDictionary.CreditSpec=1772048284999
+gov.irs.twe.factDictionary.DeductionChoiceSpec=1772048284509
+gov.irs.twe.factDictionary.EitcSpec=1772048284512
+gov.irs.twe.factDictionary.ElderlyAndDisabledCreditSpec=1769643274490
+gov.irs.twe.factDictionary.ExcessBusinessLossSpec=1772048283964
+gov.irs.twe.factDictionary.FilersSpec=1772048283923
+gov.irs.twe.factDictionary.IncomeSpec=1772048284484
+gov.irs.twe.factDictionary.ItemizedDeductionsSpec=1772048284491
+gov.irs.twe.factDictionary.JobSpec=1772048283910
+gov.irs.twe.factDictionary.NetInvestmentIncomeTaxSpec=1772048283918
+gov.irs.twe.factDictionary.OB3DeductionSpec=1772048284587
+gov.irs.twe.factDictionary.PayPeriodCalculationsSpec=1772048284568
+gov.irs.twe.factDictionary.QualifiedBusinessIncomeSpec=1772048284377
+gov.irs.twe.factDictionary.QualifiedDividendsCapitalGainsWorksheetSpec=1772048284507
+gov.irs.twe.factDictionary.RetirementSavingsCreditSpec=1772048284415
+gov.irs.twe.factDictionary.SelfEmploymentSpec=1772048284507
+gov.irs.twe.factDictionary.StandardDeductionSpec=1772048284480
+gov.irs.twe.factDictionary.TY25TaxCalculationsSpec=1765985373222
+gov.irs.twe.factDictionary.WithholdingCalculationsSpec=1772048284026
+gov.irs.twe.factDictionary.scenarios.UatScenariosSpec=1772048288252
+gov.irs.twe.factDictionary.socialSecurityBenefitsSpec=1772048283912
+gov.irs.twe.generators.WebsiteSpec=1772048283530
+gov.irs.twe.parser.FgDetailSpec=1772048283891
+gov.irs.twe.parser.ParserSpec=1772048284008

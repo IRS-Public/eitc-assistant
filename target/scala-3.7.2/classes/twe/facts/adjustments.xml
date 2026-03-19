@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/hsaContributionAmount">
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/hsaTotalDeductibleAmountMax">
+      <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>17000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/hsaDeduction">
+      <Description>HSA total deductible amount</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/hsaContributionAmount"/>
+          <Dependency path="/hsaTotalDeductibleAmountMax"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/deductionForTraditionalIRAContribution">
+      <Description>Deduction for contributions to traditional IRAs (excluding payroll deductions)</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/deductionForTraditionalIRAContributionMax">
+      <Description>Max contribution for traditional IRAs (excluding payroll deductions) is $8000 per year. $7000 is the limit for those under 50, but we only know if someone is under 65 or not
+        We are agnostic to filing status so double to 16000 and do not take MAGI into account for simplified computation
+      </Description>
+      <Derived>
+        <Dollar>16000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/traditionalIRAContributionDeduction">
+      <Description>Deduction for contributions to traditional IRAs (excluding payroll deductions)</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/deductionForTraditionalIRAContribution"/>
+          <Dependency path="/deductionForTraditionalIRAContributionMax"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/movingExpensesForArmedServicesMembers">
+      <Description>Moving expenses for members of armed services</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/alimonyPaid">
+      <Description>Alimony paid (pre 2019 divorce)</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/penaltyForEarlySavingsWithdrawal">
+      <Description>Penalty for early withdrawal of savings</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/selfEmploymentHealthInsuranceContributions">
+      <Description>Self-employed health insurance contributions for both self and spouse. Implements Form 7206</Description>
+      <Override>
+        <Condition>
+          <Not>
+            <Dependency path="/eitherTPHasSelfEmploymentIncome"/>
+          </Not>
+        </Condition>
+        <Default>
+          <Dollar>0</Dollar>
+        </Default>
+      </Override>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/businessCreditsForEligible">
+      <Description>Business credits for reservists, performing artists, and fee-based government
+        officials</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/selfEmploymentRetirementPlanContributions">
+      <Description>Self-employed contributions to eligible retirement plans.</Description>
+      <Override>
+        <Condition>
+          <Not>
+            <Dependency path="/eitherTPHasSelfEmploymentIncome"/>
+          </Not>
+        </Condition>
+        <Default>
+          <Dollar>0</Dollar>
+        </Default>
+      </Override>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/adjustmentsToIncomeExcludingStudentLoanInterest">
+      <Description>The adjustments to income used in the calculation of non-IRA deduction MAGIs to determine deducible
+        amounts. Used in the Student Loan Interest Deduction and Social Security Benefits Worksheets. This should
+        include be a sum of Schedule 1, lines 11 through 20, and 23 and 25</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/educatorExpensesAdjustment"/>
+          <Dependency path="/businessCreditsForEligible"/>
+          <Dependency path="/hsaDeduction"/>
+          <Dependency path="/selfEmploymentTaxDeduction"/>
+          <Dependency path="/movingExpensesForArmedServicesMembers"/>
+          <Dependency path="/selfEmploymentRetirementPlanDeduction"/>
+          <Dependency path="/selfEmploymentHealthInsuranceDeduction"/>
+          <Dependency path="/penaltyForEarlySavingsWithdrawal"/>
+          <Dependency path="/alimonyPaid"/>
+          <Dependency path="/traditionalIRAContributionDeduction"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/adjustmentsToIncome">
+      <Description>Adjustments to income to report on line 10 of Form 1040 and line 26 of Schedule 1.
+        The following simplifying assumption was made for user convenience: Not all Schedule 1 adjustments are included to reduce the number of questions</Description>
+      <Derived>
+        <GreaterOf>
+          <Round>
+            <Add>
+              <Dependency path="/adjustmentsToIncomeExcludingStudentLoanInterest"/>
+              <Dependency path="/studentLoanInterestDeduction"/>
+            </Add>
+          </Round>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

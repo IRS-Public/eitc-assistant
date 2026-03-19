@@ -1,0 +1,89 @@
+#audit-panel {
+  button {
+    display: block;
+    margin: 1rem 0;
+  }
+
+  .inline {
+    display: inline;
+  }
+
+  #copy-fg-status {
+    opacity: 0;
+    visibility: hidden;
+    padding-left: 1rem;
+  }
+
+  .animate-success {
+    animation: fadeInOut 2s ease-in-out;
+  }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0;  visibility: visible;}
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden;}
+}
+
+/* This is deliberately applied to the whole page, not just the audit panel */
+fg-show {
+  background-color: lightyellow;
+}
+
+/* usa-prose included here to out-specify USWDS */
+.usa-prose fact-link a, fact-link a {
+  color: inherit;
+}
+
+audited-fact {
+  background-color: var(--base-lightest);
+  border: 1px solid var(--base-lighter);
+  border-radius: 4px;
+  display: block;
+  margin: var(--units-2) 0;
+  padding: var(--units-2);
+}
+
+audited-fact::part(fact-data) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--units-1);
+  margin: 0;
+}
+
+audited-fact::part(fact-term) {
+  font-weight: bold;
+}
+
+audited-fact::part(fact-definition) {
+  margin-left: 0;
+}
+
+
+audited-fact::part(heading) {
+  margin-top: 0;
+}
+
+audited-fact::part(heading),
+audited-fact::part(code-block) {
+  white-space: pre-wrap;
+  word-break: break-word;
+  width: 100%;
+}
+
+audited-fact::part(code-block) {
+  border-top: 1px solid var(--base-lighter);
+  padding-top: var(--units-2);
+}
+
+audited-fact::part(remove-button) {
+  appearance: none;
+  background: white;
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  font-weight: bold;
+  padding: var(--units-05) var(--units-1);
+  color: var(--primary);
+  cursor: pointer;
+}
