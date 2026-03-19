@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ScalaCompilerConfiguration">
-    <option name="separateProdTestSources" value="true" />
-    <profile name="sbt 1" modules="credit-assistant_4039,credit-assistant_4039.main,credit-assistant_4039.test,twe,twe.main,twe.test" />
-  </component>
-</project>
