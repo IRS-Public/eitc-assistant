@@ -1,0 +1,148 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/qualifiedTipIncome">
+      <Name>Qualified Tip Income</Name>
+      <Derived>
+        <CollectionSum>
+          <Dependency path="/jobs/*/qualifiedTipIncome"/>
+        </CollectionSum>
+      </Derived>
+    </Fact>
+    <Fact path="/maxQualifiedTipDeductionAmount">
+      <Name>Maximum qualified tip deduction</Name>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>25000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/isEligibleForQualifiedTipDeduction">
+      <Name>Taxpayer eligible for qualified tip deduction</Name>
+      <Description>
+        Per Notice 2025-69, Taxpayers are ineligible for the qualified tip deduction if they are
+        Married Filing Separately.
+        https://www.irs.gov/pub/irs-drop/n-25-69.pdf
+      </Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/isFilingStatusMFS"/>
+          </Not>
+          <GreaterThan>
+            <Left>
+              <Dependency path="/qualifiedTipIncome"/>
+            </Left>
+            <Right>
+              <Dollar>0</Dollar>
+            </Right>
+          </GreaterThan>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedTipDeductionExcessOverThreshold">
+      <Derived>
+        <GreaterOf>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/magiForOB3BelowLineDeductions"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/qualifiedTipDeductionPhaseOutThreshold"/>
+            </Subtrahends>
+          </Subtract>
+          <Dollar>0</Dollar>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedTipDeductionPhaseOut">
+      <Name>Qualified Tip Deduction Phase Out</Name>
+      <Description>The amount allowable as a deduction under shall be reduced (but not
+        below zero) by $100 for each $1,000 by which the
+        taxpayer&#x2019;s MAGI exceeds $150,000 ($300,000 in the case of a joint return).
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <!-- Example: Single filer with MAGI of $160,500. This amount exceeds the relevant
+          threshold
+        ($150,000) by $10,500. This is 10.5 increments of $1,000 in excess of the threshold, which
+        is rounded down to 10 increments. Therefore, the otherwise allowable deduction amount is
+        reduced by $1,000 ($100/increment multiplied by 10 increments). -->
+        <StepwiseMultiply>
+          <Multiplicand>
+            <Dependency path="/qualifiedTipDeductionExcessOverThreshold"/>
+          </Multiplicand>
+          <Rate>
+            <!-- Reduce by a rate of $100 for each $1000 of MAGI exceeding the relevant threshold -->
+            <Rational>100/1000</Rational>
+          </Rate>
+        </StepwiseMultiply>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedTipDeduction">
+      <Name>Qualified tip deduction</Name>
+      <Description>Qualified tip deductions
+        Example:
+        Single filer with 160k MAGI and 20k qualified tips. 150k applicable tip deduction threshold
+        (20,000 excess/1000)*100 = 2,000 phase out
+        20,000 tip - 2,000 phase out = 18,000 applicable deduction
+      </Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Switch>
+            <Case>
+              <When>
+                <Dependency path="/isEligibleForQualifiedTipDeduction"/>
+              </When>
+              <Then>
+                <Subtract>
+                  <Minuend>
+                    <LesserOf>
+                      <Dependency path="/qualifiedTipIncome"/>
+                      <Dependency path="/maxQualifiedTipDeductionAmount"/>
+                    </LesserOf>
+                  </Minuend>
+                  <Subtrahends>
+                    <Dependency path="/qualifiedTipDeductionPhaseOut"/>
+                  </Subtrahends>
+                </Subtract>
+              </Then>
+            </Case>
+            <Case>
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Dollar>0</Dollar>
+              </Then>
+            </Case>
+          </Switch>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedTipDeductionPhaseOutThreshold">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>300000</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>150000</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

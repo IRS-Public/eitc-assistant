@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sbt: org.typelevel:cats-collections-core_3:0.9.8:jar" type="java-imported" external-system-id="SBT">
+    <properties groupId="org.typelevel" artifactId="cats-collections-core_3" version="0.9.8" baseVersion="0.9.8" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-collections-core_3/0.9.8/cats-collections-core_3-0.9.8.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/org/typelevel/cats-collections-core_3/0.9.8/cats-collections-core_3-0.9.8-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

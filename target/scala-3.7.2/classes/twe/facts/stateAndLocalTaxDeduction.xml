@@ -1,0 +1,211 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/stateAndLocalTaxDeductionLimit">
+      <Description>
+        This fact is purely informational for the user interface.
+      </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Divide>
+                <Dividend>
+                  <Dependency path="/saltWorksheetLine1"/>
+                </Dividend>
+                <Divisors>
+                  <Int>2</Int>
+                </Divisors>
+              </Divide>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/saltWorksheetLine1"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine1">
+      <Description>
+        Instructions for Schedule A (Form 1040) SALT Worksheet Line 1.
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>40400</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine2">
+      <Description>SALT Worksheet Line 2. Enter the amount from Form 1040 or 1040-SR, line 11b</Description>
+      <Derived>
+        <Dependency path="/agi"/>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine3e">
+      <Description>SALT Worksheet Line 3e. Add lines 3a through 3d (Excluded Income)</Description>
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine4">
+      <Description>SALT Worksheet Line 4. Add lines 2 and 3e</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/saltWorksheetLine2"/>
+          <Dependency path="/saltWorksheetLine3e"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine5">
+      <Description>SALT Worksheet Line 5. </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>252500</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>505000</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine6">
+      <Description>SALT Worksheet Line 6. Subtract line 5 from line 4. If zero or less, enter
+        0.</Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/saltWorksheetLine4"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/saltWorksheetLine5"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine7">
+      <Description>SALT Worksheet Line 7. Multiply line 6 by 30% (0.30)</Description>
+      <Derived>
+        <StepwiseMultiply>
+          <Multiplicand>
+            <Dependency path="/saltWorksheetLine6"/>
+          </Multiplicand>
+          <Rate>
+            <Rational>3/10</Rational>
+          </Rate>
+        </StepwiseMultiply>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine8">
+      <Description>SALT Worksheet Line 8. Subtract line 7 from line 1</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/saltWorksheetLine1"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/saltWorksheetLine7"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/stateAndLocalTaxPaymentsDeductionLowerThreshold">
+      <Description>Boundary under the SALT deduction is not limited and the worksheet is not needed and over which the worksheet line 1 is set to $40,000 </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>5000</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>10000</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/saltWorksheetLine9">
+      <Description>SALT Worksheet Line 9. Enter the larger of the amount on line 8 or $10,000 if non MFS and $5,000 if MFS</Description>
+      <Derived>
+        <GreaterOf>
+          <Dependency path="/saltWorksheetLine8"/>
+          <Dependency path="/stateAndLocalTaxPaymentsDeductionLowerThreshold"/>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/stateAndLocalTaxApplicableLimitationAmount">
+      <Description>Line 10 Comparator. The amount on line 9 (half the amount on line 9 if
+        married filing separately)</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <GreaterOf>
+                <StepwiseMultiply>
+                  <Multiplicand>
+                    <Dependency path="/saltWorksheetLine9"/>
+                  </Multiplicand>
+                  <Rate>
+                    <Rational>1/2</Rational>
+                  </Rate>
+                </StepwiseMultiply>
+                <Dependency path="/stateAndLocalTaxPaymentsDeductionLowerThreshold"/>
+              </GreaterOf>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/saltWorksheetLine9"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/stateAndLocalTaxDeduction">
+      <Description>SALT Worksheet Line 10. Enter the smaller of the amount on line 9 (adjusted
+        for MFS) or the amount from Schedule A, line 5d</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/stateAndLocalTaxApplicableLimitationAmount"/>
+          <Dependency path="/stateAndLocalTaxPayments"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

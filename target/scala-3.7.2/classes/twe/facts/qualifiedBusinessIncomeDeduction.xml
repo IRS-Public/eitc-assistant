@@ -1,0 +1,583 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/wantsDerivedQBIDeduction">
+      <Writable>
+        <Boolean/>
+      </Writable>
+      <Placeholder>
+        <True/>
+      </Placeholder>
+    </Fact>
+    <Fact path="/wantsQBIDeductionOverride">
+      <Derived>
+        <Not>
+          <Dependency path="/wantsDerivedQBIDeduction"/>
+        </Not>
+      </Derived>
+    </Fact>
+    <Fact path="/qBIDeductionOverrideAmount">
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/qbiComponentMultiplier">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Rational>2/10</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/qbiPhaseInThreshold">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>403500</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>201775</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>201750</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/qbiPhaseOutThreshold">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>553500</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>276775</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>276750</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/qbiPhaseInRange">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/qbiPhaseOutThreshold"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/qbiPhaseInThreshold"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/minimumDeductionForActiveQBIAmount">
+      <Name>Minimum Deduction for Active QBI</Name>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>400</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/minimumQBIThresholdForApplicableTaxpayer">
+      <Name>Minimum QBI for Base Deduction</Name>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>1000</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleIncomeForQualifiedBusinessIncomeDeduction">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Add>
+              <Dependency path="/netSelfEmploymentIncomeTotal"/>
+              <Dependency path="/selfEmploymentRetirementPlanDeduction"/>
+              <Dependency path="/sCorpNonPassiveIncome"/>
+              <Dependency path="/rentalIncome"/>
+              <Dependency path="/royaltyIncome"/>
+              <Dependency path="/nonRentalRoyaltyScheduleEIncome"/>
+            </Add>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/selfEmploymentTaxDeduction"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedBusinessIncome">
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/eligibleIncomeForQualifiedBusinessIncomeDeduction"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/selfEmploymentHealthInsuranceDeduction"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/tentativeQualifiedBusinessIncomeComponent">
+      <Description> Form 8995-A Line 3</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/qualifiedBusinessIncome"/>
+          <Dependency path="/qbiComponentMultiplier"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine4">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine5">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine4"/>
+          <Rational>5/10</Rational>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine6">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine5"/>
+          <Rational>25/100</Rational>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine7">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine8">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine7"/>
+          <Rational>25/1000</Rational>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine9">
+      <Derived>
+        <Add>
+          <Dependency path="/form8995aLine6"/>
+          <Dependency path="/form8995aLine8"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine10">
+      <Derived>
+        <GreaterOf>
+          <Dependency path="/form8995aLine5"/>
+          <Dependency path="/form8995aLine9"/>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine11">
+      <Description>The following simplifying assumption was made for user convenience: Because Line 4 (Allocable share of W-2 wages from the trade, business, or aggregation) is zero'd out, Line 10 will always be zero. We don't collect or derive this information in TWE today so we ignore it here and always take the tentative QBI component</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/tentativeQualifiedBusinessIncomeComponent"/>
+          <!--          <Dependency path="/form8995aLine10"/>-->
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine12">
+      <Derived>
+        <Dependency path="/form8995aLine26"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine13">
+      <Description>The following simplifying assumption was made for user convenience: if there is no phase in, use the tentative QBI Component. If there is any phase in (positive or negative), use that instead.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Equal>
+                <Left>
+                  <Dependency path="/form8995aLine12"/>
+                </Left>
+                <Right>
+                  <Dollar>0</Dollar>
+                </Right>
+              </Equal>
+            </When>
+            <Then>
+              <Dependency path="/form8995aLine11"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/form8995aLine12"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine14">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedBusinessIncomeComponent">
+      <Description>Form 8995-A Line 15 (aggregated) and Line 16</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/form8995aLine13"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/form8995aLine14"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine17">
+      <Derived>
+        <Dependency path="/tentativeQualifiedBusinessIncomeComponent"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine18">
+      <Derived>
+        <Dependency path="/form8995aLine10"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine19">
+      <Description>Form 8995-A Line 19 = Line 17- Line 18 = Line 3 - Line 10</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/form8995aLine17"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/form8995aLine18"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine20">
+      <Derived>
+        <Dependency path="/taxableIncomeForQBIDeduction"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine21">
+      <Derived>
+        <Dependency path="/qbiPhaseInThreshold"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine22">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/form8995aLine20"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/form8995aLine21"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine23">
+      <Derived>
+        <Dependency path="/qbiPhaseInRange"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine24">
+      <Description> QBI Phase In Percentage. We multiply this by 100 and then divide by 100 at the end of the QBI Deduction calculation to ensure a high level of precision</Description>
+      <Derived>
+        <Divide>
+          <Dividend>
+            <Multiply>
+              <Dependency path="/form8995aLine22"/>
+              <Dollar>100</Dollar>
+            </Multiply>
+          </Dividend>
+          <Divisors>
+            <Multiply>
+              <Dependency path="/form8995aLine23"/>
+            </Multiply>
+          </Divisors>
+        </Divide>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine25">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine19"/>
+          <Dependency path="/form8995aLine24"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine26">
+      <Description>Form 8895-A Line 26, flows into Line 12. The following simplifying assumption was made for user convenience: we always calculate the phase in reduction if the taxable income is above the phase in threshold, even if they are above the phase out threshold</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <LessThan>
+                  <Left>
+                    <Dependency path="/taxableIncomeForQBIDeduction"/>
+                  </Left>
+                  <Right>
+                    <Dependency path="/qbiPhaseInThreshold"/>
+                  </Right>
+                </LessThan>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <!-- taxable income is within the phase in threshold, go through all the derivations of Part III -->
+              <True/>
+            </When>
+            <Then>
+              <Divide>
+                <Dividend>
+                  <Subtract>
+                    <Minuend>
+                      <Multiply>
+                        <Dependency path="/form8995aLine17"/>
+                        <Dollar>100</Dollar>
+                      </Multiply>
+                    </Minuend>
+                    <Subtrahends>
+                      <Dependency path="/form8995aLine25"/>
+                    </Subtrahends>
+                  </Subtract>
+                </Dividend>
+                <Divisors>
+                  <Dollar>100</Dollar>
+                </Divisors>
+              </Divide>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine27">
+      <Derived>
+        <Dependency path="/qualifiedBusinessIncomeComponent"/>
+      </Derived>
+    </Fact>
+    <!-- We don't capture REIT or PTP information, so these are all zero'd out    -->
+    <Fact path="/form8995aLine28">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine29">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine30">
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Add>
+            <Dependency path="/form8995aLine28"/>
+            <Dependency path="/form8995aLine29"/>
+          </Add>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine31">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine30"/>
+          <Dependency path="/qbiComponentMultiplier"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine32">
+      <Derived>
+        <Add>
+          <Dependency path="/form8995aLine27"/>
+          <Dependency path="/form8995aLine31"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine33">
+      <Derived>
+        <Dependency path="/taxableIncomeForQBIDeduction"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine34">
+      <Derived>
+        <Dependency path="/netCapitalGains"/>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine35">
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/form8995aLine33"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/form8995aLine34"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine36">
+      <Derived>
+        <Multiply>
+          <Dependency path="/form8995aLine35"/>
+          <Dependency path="/qbiComponentMultiplier"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine37">
+      <Derived>
+        <LesserOf>
+          <Dependency path="/form8995aLine32"/>
+          <Dependency path="/form8995aLine36"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/form8995aLine38">
+      <Derived>
+        <Dollar>0</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/tentativeQualifiedBusinessIncomeDeduction">
+      <Description>Form 8895-A Line 39. </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/form8995aLine37"/>
+          <Dependency path="/form8995aLine38"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/isEligibleForApplicableTaxpayerQBIDeduction">
+      <Description>Tentative QBI is over applicable taxpayer threshold of $1,000</Description>
+      <Derived>
+        <GreaterThanOrEqual>
+          <Left>
+            <Dependency path="/qualifiedBusinessIncome"/>
+          </Left>
+          <Right>
+            <Dependency path="/minimumQBIThresholdForApplicableTaxpayer"/>
+          </Right>
+        </GreaterThanOrEqual>
+      </Derived>
+    </Fact>
+    <Fact path="/derivedQualifiedBusinessIncomeDeduction">
+      <Name>Derived Qualified Business Income Deduction</Name>
+      <Description>Section 199A: qualified business income deduction. The deduction allows eligible
+            taxpayers to deduct up to 20 percent of their QBI, plus 20 percent of qualified real estate
+            investment trust (REIT) dividends and qualified publicly traded partnership (PTP) income.
+            Income earned through a C corporation or by providing services as an employee is not
+            eligible for the deduction. For more information on what qualifies as a trade or business,
+            see Determining your qualified trades or businesses in the Instructions for Form 8995-A or
+            Form 8995.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <!-- When the taxpayer isn't an applicable taxpayer for QBI Deduction and doesn't have
+                at least $1,000 in QBI, they aren't an applicable taxpayer for the $400 floored deduction and instead just get the standard QBI deduction -->
+            <When>
+              <Not>
+                <Dependency path="/isEligibleForApplicableTaxpayerQBIDeduction"/>
+              </Not>
+            </When>
+            <Then>
+              <Dependency path="/tentativeQualifiedBusinessIncomeDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <!-- Otherwise, take the greater of the minimum deduction ($400) or the estimated
+                deduction provided by the taxpayer-->
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <GreaterOf>
+                <Dependency path="/minimumDeductionForActiveQBIAmount"/>
+                <Dependency path="/tentativeQualifiedBusinessIncomeDeduction"/>
+              </GreaterOf>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/qualifiedBusinessIncomeDeduction">
+      <Name>Qualified Business Income Deduction</Name>
+      <Description>Taxpayer provided QBID if they want to override the derived amount, else the derived amount</Description>
+      <Derived>
+        <Round>
+          <Switch>
+            <Case>
+              <!--Use override amount if selected by the taxpayer-->
+              <When>
+                <Dependency path="/wantsQBIDeductionOverride"/>
+              </When>
+              <Then>
+                <Dependency path="/qBIDeductionOverrideAmount"/>
+              </Then>
+            </Case>
+            <Case>
+              <!-- Otherwise, use the derived amount-->
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Dependency path="/derivedQualifiedBusinessIncomeDeduction"/>
+              </Then>
+            </Case>
+          </Switch>
+        </Round>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

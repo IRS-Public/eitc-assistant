@@ -1,0 +1,2498 @@
+<!doctype html>
+<html lang="en">
+ <!-- Google Tag Manager -->
+ <head>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KV978ZL');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax Withholding Estimator - Income &amp; tax payments | Internal Revenue Service</title>
+  <!-- Favicons for mobile and desktop -->
+  <link rel="icon" type="image/ico" href="/app/tax-withholding-estimator/resources/img/favicon.ico">
+  <link rel="icon" type="image/png" href="/app/tax-withholding-estimator/resources/img/apple-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/app/tax-withholding-estimator/resources/img/android-icon-192x192.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/app/tax-withholding-estimator/resources/img/apple-icon-72x72.png">
+  <link rel="stylesheet" href="/app/tax-withholding-estimator/resources/styles/main.css">
+  <link rel="stylesheet" href="/app/tax-withholding-estimator/resources/styles/audit-panel.css" id="audit-panel-styles" disabled>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/fg-components.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/debug-components.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/modals.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/audit-panel.js"></script>
+  <script src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/js/uswds-init.min.js"></script>
+  <script defer src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/js/uswds.min.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/vendor/pdf-lib-1.17.1.min.js"></script>
+  <script type="module" src="/app/tax-withholding-estimator/resources/js/w4-pdf.js"></script>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>&lt;iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KV978ZL" height="0" width="0" title="Google Tag Manager" class="gtm-noscript"&gt;</noscript>
+  <!-- End Google Tag Manager (noscript) -->
+ </head>
+ <body>
+  <a class="usa-skipnav" href="#main-content">Skip to main content</a>
+  <header>
+   <section class="usa-banner" aria-label="An official website of the United States government">
+    <div class="usa-accordion">
+     <header class="usa-banner__header">
+      <div class="usa-banner__inner">
+       <div class="grid-col-auto">
+        <img aria-hidden="true" class="usa-banner__header-flag" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/us_flag_small.png" alt="">
+       </div>
+       <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+        <p class="usa-banner__header-text">An official website of the United States government</p>
+        <p class="usa-banner__header-action">Here’s how you know</p>
+       </div>
+       <button type="button" class="usa-accordion__button usa-banner__button" aria-expanded="false" aria-controls="gov-banner-default"><span class="usa-banner__button-text">Here’s how you know</span></button>
+      </div>
+     </header>
+     <div class="usa-banner__content usa-accordion__content" id="gov-banner-default">
+      <div class="grid-row grid-gap-lg">
+       <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/icon-dot-gov.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+         <p><strong>Official websites use .gov</strong>
+          <br>
+          A <strong>.gov</strong> website belongs to an official government organization in the United States.</p>
+        </div>
+       </div>
+       <div class="usa-banner__guidance tablet:grid-col-6">
+        <img class="usa-banner__icon usa-media-block__img" src="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/icon-https.svg" role="img" alt="" aria-hidden="true">
+        <div class="usa-media-block__body">
+         <strong>Secure .gov websites use HTTPS</strong>
+         <br>
+         A <strong>lock</strong> (<span class="icon-lock"> 
+          <svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64" class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-description-default" focusable="false">
+           <title id="banner-lock-title-default">Lock</title> <desc id="banner-lock-description-default">Locked padlock icon</desc> <path fill="#000000" fill-rule="evenodd" d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z" />
+          </svg> 
+         </span> ) or <strong>https://</strong> means you’ve safely connected to the .gov website. Share sensitive information only on official, secure websites.
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="logo-banner">
+    <div class="grid-container">
+     <a href="https://www.irs.gov" aria-label="IRS.gov"> <img src="/app/tax-withholding-estimator/resources/img/irs-logo.svg" alt=""> </a>
+    </div>
+   </div>
+  </header>
+  <main id="main-content">
+   <h1>Tax Withholding Estimator</h1>
+   <div class="usa-step-indicator margin-top-3">
+    <ol class="usa-step-indicator__segments">
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"><span class="usa-step-indicator__segment-label"> <a class="usa-step-indicator__link" href="/app/tax-withholding-estimator/"> <span>About you</span> <span class="usa-sr-only">completed</span> </a> </span></li>
+     <li class="usa-step-indicator__segment usa-step-indicator__segment--current"><span class="usa-step-indicator__segment-label"> <span aria-current="step">Income &amp; tax payments</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Adjustments</span> <span class="usa-sr-only">not completed</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Standard deduction choice</span> <span class="usa-sr-only">not completed</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Additional deductions</span> <span class="usa-sr-only">not completed</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Credits</span> <span class="usa-sr-only">not completed</span> </span></li>
+     <li class="usa-step-indicator__segment"><span class="usa-step-indicator__segment-label"> <span>Results</span> <span class="usa-sr-only">not completed</span> </span></li>
+    </ol>
+    <div class="usa-step-indicator__header">
+     <div class="usa-step-indicator__heading">
+      <span class="usa-sr-only"> Step 2 of 7: Income &amp; tax payments </span> <span class="usa-step-indicator__heading-counter" aria-hidden="true"> <span class="usa-step-indicator__current-step">2</span> <span class="usa-step-indicator__total-steps"> <span>of</span> <span>7</span> </span><span class="usa-step-indicator__heading-text">Income &amp; tax payments</span> </span>
+     </div>
+    </div>
+   </div>
+   <div class="header-bottom-border">
+    <a class="usa-link back-link" href="/app/tax-withholding-estimator/"> 
+     <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+      <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#navigate_before"></use>
+     </svg> Back 
+    </a>
+   </div>
+   <noscript>
+    <p class="alert--warning">JavaScript is required to use the Tax Withholding Estimator. Please enable JavaScript or switch to a browser that is JavaScript-capable.</p>
+   </noscript>
+   <img src="/app/tax-withholding-estimator/resources/img/spinner.svg" id="loading-spinner" alt="Loading spinner" class="hidden" onload="this.classList.remove('hidden')">
+   <div id="page-content-wrapper" class="hidden">
+    <div>
+     <section class="flow usa-prose">
+      <h2><fg-show path="/taxYear"></fg-show> Income &amp; tax payments</h2>
+      <p>Tell us about the total income, federal tax withholding, and estimated tax payments you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to have for <fg-show path="/taxYear"></fg-show>.</p>
+      <div class="usa-alert usa-alert--info">
+       <div class="usa-alert__body">
+        <p class="usa-alert__text">To use this estimator, you need to have income from a job, pension, or annuity.</p>
+       </div>
+      </div>
+      <h3>Jobs with an employer (W-2)</h3>
+      <fg-alert class="hidden" alert-type="error" condition="/declaredDoneAddingIncome" operator="isTrue" blocking="true">
+       <div class="fg-alert usa-alert usa-alert--error">
+        <div class="usa-alert__body">
+         <h3 class="usa-alert__heading">You need to have a job or pension to continue</h3>
+         <p class="usa-alert__text">To continue using the estimator, you need to have at least one job or pension that regularly withholds federal income taxes. If you don’t pay any taxes on your income through withholding, you may want to plan to <a target="_blank" href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" class="usa-link">pay estimated taxes.<span class="usa-sr-only"> (opens in a new tab)</span></a></p>
+        </div>
+       </div>
+      </fg-alert>
+      <p><modal-link for="modal-what-counts-job">What counts as a job?</modal-link></p>
+      <fg-collection path="/jobs" itemname="Job">
+       <div class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable margin-bottom-3" data-allow-multiple>
+        <template class="fg-collection__item-template">
+         <h4 class="usa-accordion__heading">
+          <button class="usa-accordion__button usa-accordion__button--highlight" type="button" aria-expanded="true"> <span>Job</span> <span class="collection-item-number"></span> </button>
+         </h4>
+         <div class="usa-accordion__content">
+          <div class="fg-collection-item__fields">
+           <fg-set path="/jobs/*/filerAssignment" inputtype="enum" condition="/isFilingStatusMFJ" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Who is this income for? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/jobs/*/filerAssignment-self" class="usa-radio__input" type="radio" value="self" name="/jobs/*/filerAssignment" aria-invalid="false" required> <label for="/jobs/*/filerAssignment-self" class="usa-radio__label radio-option"> <span>Myself</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/filerAssignment-spouse" class="usa-radio__input" type="radio" value="spouse" name="/jobs/*/filerAssignment" aria-invalid="false" required> <label for="/jobs/*/filerAssignment-spouse" class="usa-radio__label radio-option"> <span>My spouse</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/jobs/*/isHourlyJob" inputtype="boolean" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Is this an hourly or salary job <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/jobs/*/isHourlyJob-yes" class="usa-radio__input" type="radio" value="true" name="/jobs/*/isHourlyJob" aria-invalid="false" required> <label for="/jobs/*/isHourlyJob-yes" class="usa-radio__label">Hourly (the pay changes based on how many hours you work)</label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/isHourlyJob-no" class="usa-radio__input" type="radio" value="false" name="/jobs/*/isHourlyJob" aria-invalid="false" required> <label for="/jobs/*/isHourlyJob-no" class="usa-radio__label">Salary (the pay is about the same each pay period)</label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <h5>Timing</h5>
+           <fg-set path="/jobs/*/isAllYear" inputtype="boolean" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Do <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> <!-- isIncomplete default needed because this appears before filer selected --> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isIncomplete">you</span> expect to have this job all year or only part of the year? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/jobs/*/isAllYear-yes" class="usa-radio__input" type="radio" value="true" name="/jobs/*/isAllYear" aria-invalid="false" required> <label for="/jobs/*/isAllYear-yes" class="usa-radio__label">All year (January 1-December 31, <fg-show path="/taxYear"></fg-show>)</label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/isAllYear-no" class="usa-radio__input" type="radio" value="false" name="/jobs/*/isAllYear" aria-invalid="false" required> <label for="/jobs/*/isAllYear-no" class="usa-radio__label">Part of the year</label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/jobs/*/writableStartDate" inputtype="date" condition="/jobs/*/flowAskPartYearDates" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the first day in <fg-show path="/taxYear"></fg-show> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> expect to have this job? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/jobs/*/writableStartDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/jobs/*/writableStartDate-month">Month</label> <select class="usa-select" id="/jobs/*/writableStartDate-month" name="/jobs/*/writableStartDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/jobs/*/writableStartDate-day">Day</label> <input class="usa-input" id="/jobs/*/writableStartDate-day" name="/jobs/*/writableStartDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/jobs/*/writableStartDate-year">Year</label> <input class="usa-input" id="/jobs/*/writableStartDate-year" name="/jobs/*/writableStartDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/jobs/*/writableEndDate" inputtype="date" condition="/jobs/*/flowAskPartYearDates" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the last day in <fg-show path="/taxYear"></fg-show> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> expect to have this job? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/jobs/*/writableEndDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/jobs/*/writableEndDate-month">Month</label> <select class="usa-select" id="/jobs/*/writableEndDate-month" name="/jobs/*/writableEndDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/jobs/*/writableEndDate-day">Day</label> <input class="usa-input" id="/jobs/*/writableEndDate-day" name="/jobs/*/writableEndDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/jobs/*/writableEndDate-year">Year</label> <input class="usa-input" id="/jobs/*/writableEndDate-year" name="/jobs/*/writableEndDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/jobs/*/payFrequency" inputtype="enum" condition="/jobs/*/isPastJobIncompleteOrFalse" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> How frequently are <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> <!-- isIncomplete default needed because this appears before filer selected --> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isIncomplete">you</span> paid? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <p class="margin-y-1"><modal-link for="modal-pay-frequency-en">Learn more about pay frequency.</modal-link></p>
+              <div class="usa-radio">
+               <input id="/jobs/*/payFrequency-weekly" class="usa-radio__input" type="radio" value="weekly" name="/jobs/*/payFrequency" aria-invalid="false" required> <label for="/jobs/*/payFrequency-weekly" class="usa-radio__label radio-option"> <span>Weekly</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/payFrequency-biWeekly" class="usa-radio__input" type="radio" value="biWeekly" name="/jobs/*/payFrequency" aria-invalid="false" required> <label for="/jobs/*/payFrequency-biWeekly" class="usa-radio__label radio-option"> <span>Every two weeks</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/payFrequency-semiMonthly" class="usa-radio__input" type="radio" value="semiMonthly" name="/jobs/*/payFrequency" aria-invalid="false" required> <label for="/jobs/*/payFrequency-semiMonthly" class="usa-radio__label radio-option"> <span>Twice monthly</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/jobs/*/payFrequency-monthly" class="usa-radio__input" type="radio" value="monthly" name="/jobs/*/payFrequency" aria-invalid="false" required> <label for="/jobs/*/payFrequency-monthly" class="usa-radio__label radio-option"> <span>Once a month</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <div condition="/jobs/*/flowInitialQuestionsComplete" operator="isFalse">
+            <h5>Job Details</h5>
+            <p>Once we know more about your income, we'll ask you additional questions.</p>
+           </div>
+           <div condition="/jobs/*/flowInitialQuestionsComplete" operator="isTrueAndComplete">
+            <h5>Dates and income</h5>
+            <p condition="/jobs/*/isPastJob" operator="isFalse">Use the most recent paystub from <fg-show path="/taxYear"></fg-show> to enter the following information.</p>
+            <fg-set path="/jobs/*/mostRecentPayPeriodEnd" inputtype="date" condition="/jobs/*/isPastJob" operator="isFalse" optional="false">
+             <div class="usa-form-group">
+              <fieldset class="usa-fieldset">
+               <legend class="usa-legend twe-question"> When did the most recent pay period in <fg-show path="/taxYear"></fg-show> end? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+               <p class="margin-y-1"><modal-link for="modal-job-pay-dates-en">How do I find the pay period and pay date?</modal-link></p>
+               <div class="usa-memorable-date">
+                <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayPeriodEnd-month">Month</label> <select class="usa-select" id="/jobs/*/mostRecentPayPeriodEnd-month" name="/jobs/*/mostRecentPayPeriodEnd-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+                </div>
+                <div class="usa-form-group usa-form-group--day">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayPeriodEnd-day">Day</label> <input class="usa-input" id="/jobs/*/mostRecentPayPeriodEnd-day" name="/jobs/*/mostRecentPayPeriodEnd-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+                <div class="usa-form-group usa-form-group--year">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayPeriodEnd-year">Year</label> <input class="usa-input" id="/jobs/*/mostRecentPayPeriodEnd-year" name="/jobs/*/mostRecentPayPeriodEnd-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+               </div>
+              </fieldset>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/mostRecentPayDate" inputtype="date" condition="/jobs/*/isPastJob" operator="isFalse" optional="false">
+             <div class="usa-form-group">
+              <fieldset class="usa-fieldset">
+               <legend class="usa-legend twe-question"> When was <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">their</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> most recent pay date in <fg-show path="/taxYear"></fg-show>? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+               <div class="usa-memorable-date">
+                <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayDate-month">Month</label> <select class="usa-select" id="/jobs/*/mostRecentPayDate-month" name="/jobs/*/mostRecentPayDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+                </div>
+                <div class="usa-form-group usa-form-group--day">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayDate-day">Day</label> <input class="usa-input" id="/jobs/*/mostRecentPayDate-day" name="/jobs/*/mostRecentPayDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+                <div class="usa-form-group usa-form-group--year">
+                 <label class="usa-label" for="/jobs/*/mostRecentPayDate-year">Year</label> <input class="usa-input" id="/jobs/*/mostRecentPayDate-year" name="/jobs/*/mostRecentPayDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+               </div>
+              </fieldset>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/consistentPay" inputtype="boolean" condition="/jobs/*/flowShowConsistentPayQuestion" operator="isTrue" optional="true">
+             <div class="usa-form-group">
+              <fieldset class="usa-fieldset">
+               <legend class="usa-legend twe-question"> How steady is the pay from paycheck to paycheck? </legend>
+               <div class="usa-radio">
+                <input id="/jobs/*/consistentPay-yes" class="usa-radio__input" type="radio" value="true" name="/jobs/*/consistentPay" aria-invalid="false"> <label for="/jobs/*/consistentPay-yes" class="usa-radio__label">The pay is about the same each paycheck</label>
+               </div>
+               <div class="usa-radio">
+                <input id="/jobs/*/consistentPay-no" class="usa-radio__input" type="radio" value="false" name="/jobs/*/consistentPay" aria-invalid="false"> <label for="/jobs/*/consistentPay-no" class="usa-radio__label">The pay is very different each paycheck</label>
+               </div>
+              </fieldset>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/amountLastPaycheck" inputtype="dollar" condition="/jobs/*/flowShowSinglePayPeriodQuestion" operator="isTrue" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/amountLastPaycheck"> What’s the gross income for this pay period? <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/jobs/*/amountLastPaycheck-hint">This will include any bonus, tip, and overtime pay.</div>
+              <p class="margin-y-1"><modal-link for="modal-job-gross-pay-period-en">How do I find the gross income per pay period?</modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/amountLastPaycheck" type="text" inputmode="numeric" name="/jobs/*/amountLastPaycheck" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/pastPaycheckIncome1" inputtype="dollar" condition="/jobs/*/consistentPay" operator="isFalse" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/pastPaycheckIncome1"> On the most recent paystub from <fg-show path="/taxYear"></fg-show>, what’s the gross income per pay period? <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/jobs/*/pastPaycheckIncome1-hint">This will include any bonus, tip, and overtime pay.</div>
+              <p class="margin-y-1"><modal-link for="modal-job-gross-pay-period-en">How do I find the gross income per pay period?</modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/pastPaycheckIncome1" type="text" inputmode="numeric" name="/jobs/*/pastPaycheckIncome1" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/pastPaycheckIncome2" inputtype="dollar" condition="/jobs/*/consistentPay" operator="isFalse" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/pastPaycheckIncome2"> On the second paystub, what’s the gross income per pay period? <span aria-hidden="true" class="usa-hint">(Required)</span> </label> 
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/pastPaycheckIncome2" type="text" inputmode="numeric" name="/jobs/*/pastPaycheckIncome2" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/pastPaycheckIncome3" inputtype="dollar" condition="/jobs/*/consistentPay" operator="isFalse" optional="true">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/pastPaycheckIncome3"> On the third paystub, what’s the gross income per pay period? </label>
+              <div class="usa-hint" id="/jobs/*/pastPaycheckIncome3-hint">If you don’t have a third paystub, leave this blank.</div>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/pastPaycheckIncome3" type="text" inputmode="numeric" name="/jobs/*/pastPaycheckIncome3" autocomplete="off" aria-invalid="false">
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/mostRecentPayPeriodHasBonus" inputtype="boolean" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+             <div class="usa-form-group">
+              <fieldset class="usa-fieldset">
+               <legend class="usa-legend twe-question"> Did <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> receive a bonus <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period?</span> <span condition="/jobs/*/consistentPay" operator="isFalse">in these pay periods?</span> </legend>
+               <p class="margin-y-1"><modal-link for="modal-job-check-bonus-en">How do I check if there's a bonus this pay period?</modal-link></p>
+               <div class="usa-radio">
+                <input id="/jobs/*/mostRecentPayPeriodHasBonus-yes" class="usa-radio__input" type="radio" value="true" name="/jobs/*/mostRecentPayPeriodHasBonus" aria-invalid="false"> <label for="/jobs/*/mostRecentPayPeriodHasBonus-yes" class="usa-radio__label">Yes, there's bonus pay in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period</span> <span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods</span></label>
+               </div>
+               <div class="usa-radio">
+                <input id="/jobs/*/mostRecentPayPeriodHasBonus-no" class="usa-radio__input" type="radio" value="false" name="/jobs/*/mostRecentPayPeriodHasBonus" aria-invalid="false"> <label for="/jobs/*/mostRecentPayPeriodHasBonus-no" class="usa-radio__label">No, there's only regular pay in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period</span> <span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods</span></label>
+               </div>
+              </fieldset>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/mostRecentPayPeriodBonusAmount" inputtype="dollar" condition="/jobs/*/mostRecentPayPeriodHasBonus" operator="isTrue" optional="true">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/mostRecentPayPeriodBonusAmount"> How much <span condition="/jobs/*/consistentPay" operator="isFalse">total </span> bonus pay did <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span><span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> earn in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period?</span><span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods?</span> </label> 
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/mostRecentPayPeriodBonusAmount" type="text" inputmode="numeric" name="/jobs/*/mostRecentPayPeriodBonusAmount" autocomplete="off" aria-invalid="false">
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/totalFutureBonus" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/totalFutureBonus"> Enter an estimate for any bonus pay you think <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> will earn for the rest of <fg-show path="/taxYear"></fg-show> </label>
+              <div class="usa-hint" id="/jobs/*/totalFutureBonus-hint">If you don’t know, leave this blank.</div>
+              <p class="margin-y-1"><modal-link for="modal-estimate-future-bonus-en">How do I estimate future bonus pay?</modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/totalFutureBonus" type="text" inputmode="numeric" name="/jobs/*/totalFutureBonus" autocomplete="off" aria-invalid="false">
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/yearToDateIncome" inputtype="dollar" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/yearToDateIncome"> What’s the gross income <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse has</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you have</span> received so far in <fg-show path="/taxYear"></fg-show>? <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/jobs/*/yearToDateIncome-hint">This might be labeled year-to-date or YTD on your paystub and will include any bonus, tip, and overtime pay.</div>
+              <p class="margin-y-1">
+               <modal-link for="modal-job-gross-ytd-end-en">
+                How do I find the gross income so far in <fg-show path="/taxYear"></fg-show>?
+               </modal-link>
+              </p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/yearToDateIncome" type="text" inputmode="numeric" name="/jobs/*/yearToDateIncome" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+           </div>
+           <div condition="/jobs/*/showTipAndOvertime" operator="isTrueAndComplete">
+            <h5>Estimated tips and overtime</h5>
+            <p>For 2025 through 2028, there are new deductions for tips and overtime. If you meet the eligibility requirements, you may be able to deduct (subtract) qualified tips and qualified overtime pay from your income.</p>
+            <p>If <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse meets</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you meet</span> the eligibility requirements, you may be able to deduct (subtract) tips and overtime pay from your income, so you won’t have to pay tax on it.</p>
+            <p>If this section doesn’t apply to <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span>, it’s okay to leave this blank.</p>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Estimated tips</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Tips are voluntary cash or credit card payments received from customers or through tip‑sharing arrangements.</p>
+              <p><a target="_blank" href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors">Learn more about the no tax on tips deduction.</a></p>
+              <p>To be eligible for the no tax on tips deduction, <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> must have an <a target="_blank" href="https://www.irs.gov/forms-pubs/occupations-that-customarily-and-regularly-received-tips-on-or-before-december-31-2024"> occupation</a> that's recognized by the IRS as regularly receiving tips.</p>
+              <fg-set path="/jobs/*/qualifiedTipIncome" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/qualifiedTipIncome"> Total estimated tips for <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/qualifiedTipIncome-hint">
+                 Leave this blank if <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse doesn’t</span><span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you don’t</span> have a Social Security number.
+                </div>
+                <p class="margin-y-1"><modal-link for="modal-estimate-tips-en">How can I estimate tips?</modal-link></p>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/qualifiedTipIncome" type="text" inputmode="numeric" name="/jobs/*/qualifiedTipIncome" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Estimated overtime</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Overtime is extra pay earned by working more than 40 hours per week. Only include overtime that your employer is required to pay you under the Fair Labor Standards Act.</p>
+              <p><a target="_blank" href="https://www.irs.gov/newsroom/one-big-beautiful-bill-act-tax-deductions-for-working-americans-and-seniors">Learn more about the no tax on overtime deduction</a></p>
+              <fg-set path="/jobs/*/overtimeCompensationTotal" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/overtimeCompensationTotal"> Total estimated overtime pay for <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/overtimeCompensationTotal-hint">
+                 Leave this blank if <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse doesn’t</span><span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you don’t</span> have a Social Security number.
+                </div>
+                <p class="margin-y-1"><modal-link for="modal-estimate-overtime-en">How can I estimate overtime?</modal-link></p>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/overtimeCompensationTotal" type="text" inputmode="numeric" name="/jobs/*/overtimeCompensationTotal" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/jobs/*/overtimeCompensationRate" inputtype="enum" optional="true">
+               <div class="usa-form-group">
+                <fieldset class="usa-fieldset">
+                 <legend class="usa-legend twe-question"> What is the rate at which you get paid overtime? </legend>
+                 <p class="margin-y-1"><modal-link for="modal-estimate-overtime-rate-en">What if I get paid a different overtime rate?</modal-link></p>
+                 <div class="usa-radio">
+                  <input id="/jobs/*/overtimeCompensationRate-onePointFive" class="usa-radio__input" type="radio" value="onePointFive" name="/jobs/*/overtimeCompensationRate" aria-invalid="false"> <label for="/jobs/*/overtimeCompensationRate-onePointFive" class="usa-radio__label radio-option"> <span>1.5 times my regular pay</span> </label>
+                 </div>
+                 <div class="usa-radio">
+                  <input id="/jobs/*/overtimeCompensationRate-two" class="usa-radio__input" type="radio" value="two" name="/jobs/*/overtimeCompensationRate" aria-invalid="false"> <label for="/jobs/*/overtimeCompensationRate-two" class="usa-radio__label radio-option"> <span>2.0 times my regular pay</span> </label>
+                 </div>
+                </fieldset>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+           </div>
+           <div condition="/jobs/*/flowInitialQuestionsComplete" operator="isTrueAndComplete">
+            <h5>Federal taxes</h5>
+            <p>Use the most recent paystub to enter the following information.</p>
+            <fg-set path="/jobs/*/amountWithheldLastPaycheck" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/amountWithheldLastPaycheck"> Federal taxes withheld (paid) for this pay period <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/jobs/*/amountWithheldLastPaycheck-hint">Don’t include state and local taxes, Medicare, or Social Security.</div>
+              <p class="margin-y-1"><modal-link for="modal-fed-tax-pay-period-en"> How do I find federal taxes withheld per pay period? </modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/amountWithheldLastPaycheck" type="text" inputmode="numeric" name="/jobs/*/amountWithheldLastPaycheck" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/jobs/*/yearToDateWithholding" inputtype="dollar" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/jobs/*/yearToDateWithholding"> Federal taxes withheld (paid) so far in <fg-show path="/taxYear"></fg-show> <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/jobs/*/yearToDateWithholding-hint">This might be labeled year-to-date or YTD on your paystub. Don't include state and local taxes, Medicare, or Social Security.</div>
+              <p class="margin-y-1">
+               <modal-link for="modal-fed-tax-ytd-en">
+                How do I find federal taxes withheld so far in <fg-show path="/taxYear"></fg-show>?
+               </modal-link>
+              </p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/jobs/*/yearToDateWithholding" type="text" inputmode="numeric" name="/jobs/*/yearToDateWithholding" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+           </div>
+           <div condition="/jobs/*/flowInitialQuestionsComplete" operator="isTrueAndComplete">
+            <h5>Contributions</h5>
+            <p>Check <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse's</span> <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> paystub for pre-tax contributions (or payroll deductions) to help pay for benefits.</p>
+            <p>These contribution amounts can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section.</p>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Retirement Plans</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter total contributions made to retirement plans.</p>
+              <p>Retirement contributions can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a paystub.</p>
+              <p>Include contributions made to any of these plans:</p>
+              <ul>
+               <li>401(k) plans</li>
+               <li>403(b) plans</li>
+               <li>457(b) plans</li>
+               <li>Thrift Savings Plan for federal employees</li>
+               <li>Salary Reduction Simplified Employee Pension (SARSEP) plans</li>
+               <li>Savings Incentive Match Plan for Employees (SIMPLE) IRA or SIMPLE 401(k) plans</li>
+               <li>Non-qualified deferred compensation plans</li>
+              </ul>
+              <p><strong>Don’t include</strong> contributions to Roth plans.</p>
+              <fg-set path="/jobs/*/retirementPlanContributionsPerPayPeriod" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/retirementPlanContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/retirementPlanContributionsPerPayPeriod" type="text" inputmode="numeric" name="/jobs/*/retirementPlanContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/jobs/*/retirementPlanContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/retirementPlanContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/retirementPlanContributionsToDate-hint">This might be labeled year-to-date or YTD on your paystub.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/retirementPlanContributionsToDate" type="text" inputmode="numeric" name="/jobs/*/retirementPlanContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Health insurance</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter the total contributions made to pay for health coverage.</p>
+              <p>Health coverage contributions can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a paystub.</p>
+              <p><strong>Include contributions for:</strong></p>
+              <ul>
+               <li>Health insurance plans</li>
+               <li>Dental or vision insurance plans</li>
+              </ul>
+              <p><strong>Don’t include:</strong></p>
+              <ul>
+               <li>Long-term care contributions</li>
+               <li>Employer contributions</li>
+              </ul>
+              <fg-set path="/jobs/*/healthInsuranceContributionsPerPayPeriod" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/healthInsuranceContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/healthInsuranceContributionsPerPayPeriod" type="text" inputmode="numeric" name="/jobs/*/healthInsuranceContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/jobs/*/healthInsuranceContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/healthInsuranceContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/healthInsuranceContributionsToDate-hint">This might be labeled year-to-date or YTD on your paystub.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/healthInsuranceContributionsToDate" type="text" inputmode="numeric" name="/jobs/*/healthInsuranceContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Other pre-tax benefits</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter the total contributions made to pay for other pre-tax benefits.</p>
+              <p>Benefits contributions can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a paystub.</p>
+              <p><strong>Common pre-tax benefits may include: </strong></p>
+              <ul>
+               <li>Accident insurance plans</li>
+               <li>Dependent care assistance plans</li>
+               <li>Group-term life insurance on the lives of employees</li>
+               <li>Qualified adoption assistance</li>
+               <li>Accidental death or dismemberment insurance</li>
+               <li>Long-term and short-term disability coverage</li>
+               <li>Qualified transportation fringe benefit</li>
+              </ul>
+              <p><strong>Don't include:</strong></p>
+              <ul>
+               <li>Long-term care contributions</li>
+               <li>Employer contributions</li>
+              </ul>
+              <fg-set path="/jobs/*/otherPreTaxContributionsPerPayPeriod" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/otherPreTaxContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/otherPreTaxContributionsPerPayPeriod" type="text" inputmode="numeric" name="/jobs/*/otherPreTaxContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/jobs/*/otherPreTaxContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/otherPreTaxContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/otherPreTaxContributionsToDate-hint">This might be labeled year-to-date or YTD on your paystub.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/otherPreTaxContributionsToDate" type="text" inputmode="numeric" name="/jobs/*/otherPreTaxContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Health Savings Account (HSA) or Flexible Spending Account (FSA)</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter total contributions to Health Savings Accounts (HSA) or Flexible Spending Account (FSA).</p>
+              <p>HSA and FSA contribution amounts can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a paystub.</p>
+              <p>Learn more about contributions to <a target="_blank" href="https://www.irs.gov/publications/p969#en_US_2024_publink1000204045">HSAs</a> and <a target="_blank" href="https://www.irs.gov/publications/p969#en_US_2024_publink1000204176">FSAs</a>.</p>
+              <fg-set path="/jobs/*/hsaOrFsaContributionsPerPayPeriod" inputtype="dollar" condition="/jobs/*/isPastJob" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/hsaOrFsaContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/hsaOrFsaContributionsPerPayPeriod" type="text" inputmode="numeric" name="/jobs/*/hsaOrFsaContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/jobs/*/hsaOrFsaContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/jobs/*/hsaOrFsaContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/jobs/*/hsaOrFsaContributionsToDate-hint">This might be labeled year-to-date or YTD on your paystub.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/jobs/*/hsaOrFsaContributionsToDate" type="text" inputmode="numeric" name="/jobs/*/hsaOrFsaContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+           </div>
+          </div>
+          <div class="fg-collection-item__controls">
+           <button type="button" class="fg-collection-item__remove-item usa-button usa-button--unstyled">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#delete"></use>
+            </svg>
+            <span> Remove Job <span class="collection-item-number"></span> </span> 
+           </button>
+          </div>
+         </div>
+        </template>
+       </div>
+       <button type="button" class="fg-collection__add-item usa-button usa-button--outline">
+        <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+         <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#add"></use>
+        </svg>
+         Add Job 
+       </button>
+      </fg-collection>
+      <h3>Pension or annuity income</h3>
+      <p><modal-link for="modal-what-counts-pension">What counts as a pension or annuity?</modal-link></p>
+      <fg-collection path="/pensions" itemname="Pension or annuity income">
+       <div class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable margin-bottom-3" data-allow-multiple>
+        <template class="fg-collection__item-template">
+         <h4 class="usa-accordion__heading">
+          <button class="usa-accordion__button usa-accordion__button--highlight" type="button" aria-expanded="true"> <span>Pension or annuity income</span> <span class="collection-item-number"></span> </button>
+         </h4>
+         <div class="usa-accordion__content">
+          <div class="fg-collection-item__fields">
+           <fg-set path="/pensions/*/filerAssignment" inputtype="enum" condition="/isFilingStatusMFJ" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Who is this pension or annuity paid to? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/pensions/*/filerAssignment-self" class="usa-radio__input" type="radio" value="self" name="/pensions/*/filerAssignment" aria-invalid="false" required> <label for="/pensions/*/filerAssignment-self" class="usa-radio__label radio-option"> <span>Myself</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/pensions/*/filerAssignment-spouse" class="usa-radio__input" type="radio" value="spouse" name="/pensions/*/filerAssignment" aria-invalid="false" required> <label for="/pensions/*/filerAssignment-spouse" class="usa-radio__label radio-option"> <span>My spouse</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <h5>Timing</h5>
+           <fg-set path="/pensions/*/isAllYear" inputtype="boolean" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Do <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span> expect to have this pension or annuity all year or only part of the year? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/pensions/*/isAllYear-yes" class="usa-radio__input" type="radio" value="true" name="/pensions/*/isAllYear" aria-invalid="false" required> <label for="/pensions/*/isAllYear-yes" class="usa-radio__label">All year (January 1–December 31, <fg-show path="/taxYear"></fg-show>)</label>
+              </div>
+              <div class="usa-radio">
+               <input id="/pensions/*/isAllYear-no" class="usa-radio__input" type="radio" value="false" name="/pensions/*/isAllYear" aria-invalid="false" required> <label for="/pensions/*/isAllYear-no" class="usa-radio__label">Part of the year</label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/pensions/*/startDate" inputtype="date" condition="/pensions/*/isAllYear" operator="isFalse" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the first day in <fg-show path="/taxYear"></fg-show> <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span> expect to receive this pension or annuity? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/pensions/*/startDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/pensions/*/startDate-month">Month</label> <select class="usa-select" id="/pensions/*/startDate-month" name="/pensions/*/startDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/pensions/*/startDate-day">Day</label> <input class="usa-input" id="/pensions/*/startDate-day" name="/pensions/*/startDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/pensions/*/startDate-year">Year</label> <input class="usa-input" id="/pensions/*/startDate-year" name="/pensions/*/startDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/pensions/*/endDate" inputtype="date" condition="/pensions/*/isAllYear" operator="isFalse" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the last day in <fg-show path="/taxYear"></fg-show> <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span> expect to receive this pension or annuity? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/pensions/*/endDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/pensions/*/endDate-month">Month</label> <select class="usa-select" id="/pensions/*/endDate-month" name="/pensions/*/endDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/pensions/*/endDate-day">Day</label> <input class="usa-input" id="/pensions/*/endDate-day" name="/pensions/*/endDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/pensions/*/endDate-year">Year</label> <input class="usa-input" id="/pensions/*/endDate-year" name="/pensions/*/endDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/pensions/*/payFrequency" inputtype="enum" condition="/pensions/*/flowIsAllYearComplete" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> How frequently are <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span> paid? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/pensions/*/payFrequency-weekly" class="usa-radio__input" type="radio" value="weekly" name="/pensions/*/payFrequency" aria-invalid="false" required> <label for="/pensions/*/payFrequency-weekly" class="usa-radio__label radio-option"> <span>Weekly</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/pensions/*/payFrequency-biWeekly" class="usa-radio__input" type="radio" value="biWeekly" name="/pensions/*/payFrequency" aria-invalid="false" required> <label for="/pensions/*/payFrequency-biWeekly" class="usa-radio__label radio-option"> <span>Every two weeks</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/pensions/*/payFrequency-semiMonthly" class="usa-radio__input" type="radio" value="semiMonthly" name="/pensions/*/payFrequency" aria-invalid="false" required> <label for="/pensions/*/payFrequency-semiMonthly" class="usa-radio__label radio-option"> <span>Twice monthly</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/pensions/*/payFrequency-monthly" class="usa-radio__input" type="radio" value="monthly" name="/pensions/*/payFrequency" aria-invalid="false" required> <label for="/pensions/*/payFrequency-monthly" class="usa-radio__label radio-option"> <span>Once a month</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <h5 condition="/pensions/*/flowIsAllYearComplete" operator="isFalse">Pension or annuity details</h5>
+           <p condition="/pensions/*/flowIsAllYearComplete" operator="isFalse">Once we know more about your pension or annuity, we’ll ask you additional questions.</p>
+           <div condition="/pensions/*/flowIsAllYearComplete" operator="isTrue">
+            <h5>Dates and income</h5>
+            <p>Use the most recent pension or annuity statement to enter the following information.</p>
+            <fg-set path="/pensions/*/mostRecentPayDate" inputtype="date" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isTrue" optional="false">
+             <div class="usa-form-group">
+              <fieldset class="usa-fieldset">
+               <legend class="usa-legend twe-question"> What’s the date of <span condition="/pensions/*/notSpouses" operator="isTrue">your</span><span condition="/pensions/*/notSpouses" operator="isFalse">their</span> most recent pension or annuity payment? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+               <div class="usa-memorable-date">
+                <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                 <label class="usa-label" for="/pensions/*/mostRecentPayDate-month">Month</label> <select class="usa-select" id="/pensions/*/mostRecentPayDate-month" name="/pensions/*/mostRecentPayDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+                </div>
+                <div class="usa-form-group usa-form-group--day">
+                 <label class="usa-label" for="/pensions/*/mostRecentPayDate-day">Day</label> <input class="usa-input" id="/pensions/*/mostRecentPayDate-day" name="/pensions/*/mostRecentPayDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+                <div class="usa-form-group usa-form-group--year">
+                 <label class="usa-label" for="/pensions/*/mostRecentPayDate-year">Year</label> <input class="usa-input" id="/pensions/*/mostRecentPayDate-year" name="/pensions/*/mostRecentPayDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+                </div>
+               </div>
+              </fieldset>
+             </div>
+            </fg-set>
+
+            <fg-set path="/pensions/*/averagePayPerPayPeriodForWithholding" inputtype="dollar" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isTrue" optional="true">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/pensions/*/averagePayPerPayPeriodForWithholding"> What’s the gross income for the most recent pension or annuity payment? </label>
+              <p class="margin-y-1"><modal-link for="modal-pension-gross-pay-period">How do I find the gross income for the most recent payment?</modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/pensions/*/averagePayPerPayPeriodForWithholding" type="text" inputmode="numeric" name="/pensions/*/averagePayPerPayPeriodForWithholding" autocomplete="off" aria-invalid="false">
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/pensions/*/yearToDateIncome" inputtype="dollar" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/pensions/*/yearToDateIncome"> What’s the gross income <span condition="/pensions/*/notSpouses" operator="isTrue">you have</span><span condition="/pensions/*/notSpouses" operator="isFalse">your spouse has</span> received so far in <fg-show path="/taxYear"></fg-show>? <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/pensions/*/yearToDateIncome-hint">
+               This might be labeled year-to-date or YTD on your statement.<span condition="/pensions/*/isPastJob" operator="isTrue"> If you’re expecting a final payment, include that additional amount.</span>
+              </div>
+              <p class="margin-y-1">
+               <modal-link for="modal-pension-gross-ytd-end">
+                How do I find the gross income so far in <fg-show path="/taxYear"></fg-show>?
+               </modal-link>
+              </p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/pensions/*/yearToDateIncome" type="text" inputmode="numeric" name="/pensions/*/yearToDateIncome" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+           </div>
+           <div condition="/pensions/*/flowIsAllYearComplete" operator="isTrue">
+            <h5>Federal taxes</h5>
+            <p>Use the most recent pension or annuity statement to enter the following information.</p>
+            <fg-set path="/pensions/*/averageWithholdingPerPayPeriod" inputtype="dollar" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isTrue" optional="true">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/pensions/*/averageWithholdingPerPayPeriod"> Federal taxes withheld (paid) for the most recent payment </label>
+              <div class="usa-hint" id="/pensions/*/averageWithholdingPerPayPeriod-hint">Don’t include state and local taxes, Medicare, or Social Security.</div>
+              <p class="margin-y-1"><modal-link for="modal-fed-tax-pension-pay-period">How do I find federal taxes withheld for the most recent payment?</modal-link></p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/pensions/*/averageWithholdingPerPayPeriod" type="text" inputmode="numeric" name="/pensions/*/averageWithholdingPerPayPeriod" autocomplete="off" aria-invalid="false">
+              </div>
+             </div>
+            </fg-set>
+
+            <fg-set path="/pensions/*/yearToDateWithholding" inputtype="dollar" optional="false">
+             <div class="usa-form-group">
+              <label class="usa-label twe-question" for="/pensions/*/yearToDateWithholding"> Federal taxes withheld (paid) so far in <fg-show path="/taxYear"></fg-show> <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+              <div class="usa-hint" id="/pensions/*/yearToDateWithholding-hint">This might be labeled year-to-date or YTD on your statement. Don't include state and local taxes, Medicare, or Social Security.</div>
+              <p class="margin-y-1">
+               <modal-link for="modal-fed-pension-tax-ytd">
+                How do I find federal taxes withheld so far in <fg-show path="/taxYear"></fg-show>?
+               </modal-link>
+              </p>
+              <div class="usa-input-group">
+               <div class="usa-input-prefix" aria-hidden="true">
+                <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                 <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                </svg>
+               </div>
+               <input class="usa-input" id="/pensions/*/yearToDateWithholding" type="text" inputmode="numeric" name="/pensions/*/yearToDateWithholding" autocomplete="off" aria-invalid="false" required>
+              </div>
+             </div>
+            </fg-set>
+
+           </div>
+           <div condition="/pensions/*/flowIsAllYearComplete" operator="isTrue">
+            <h5>Contributions</h5>
+            <p>Check your <span condition="/pensions/*/notSpouses" operator="isFalse">spouse’s</span> pension or annuity statement for pre-tax contributions to help pay for benefits.</p>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Health insurance</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter the total contributions made to pay for health coverage.</p>
+              <p>Health coverage contributions can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a statement.</p>
+              <p><strong>Include contributions for: </strong></p>
+              <ul>
+               <li>Health insurance plans</li>
+               <li>Dental or vision insurance plans</li>
+              </ul>
+              <p><strong>Don’t include:</strong></p>
+              <ul>
+               <li>Long-term care contributions</li>
+               <li>Employer contributions</li>
+              </ul>
+              <fg-set path="/pensions/*/healthInsuranceContributionsPerPayPeriod" inputtype="dollar" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/healthInsuranceContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/healthInsuranceContributionsPerPayPeriod" type="text" inputmode="numeric" name="/pensions/*/healthInsuranceContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/pensions/*/healthInsuranceContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/healthInsuranceContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/pensions/*/healthInsuranceContributionsToDate-hint">This might be labeled year-to-date or YTD on your statement.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/healthInsuranceContributionsToDate" type="text" inputmode="numeric" name="/pensions/*/healthInsuranceContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Other pre-tax benefits</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter the total contributions made to pay for other pre-tax benefits.</p>
+              <p>Benefits contributions can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a statement.</p>
+              <p><strong>Common pre-tax benefits may include: </strong></p>
+              <ul>
+               <li>Accident insurance plans</li>
+               <li>Dependent care assistance plans</li>
+               <li>Group-term life insurance on the lives of employees</li>
+               <li>Qualified adoption assistance</li>
+               <li>Accidental death or dismemberment insurance</li>
+               <li>Long-term and short-term disability coverage</li>
+               <li>Qualified transportation fringe benefit</li>
+              </ul>
+              <p><strong>Don’t include:</strong></p>
+              <ul>
+               <li>Long-term care contributions</li>
+               <li>Employer contributions</li>
+              </ul>
+              <fg-set path="/pensions/*/otherPreTaxContributionsPerPayPeriod" inputtype="dollar" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/otherPreTaxContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/otherPreTaxContributionsPerPayPeriod" type="text" inputmode="numeric" name="/pensions/*/otherPreTaxContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/pensions/*/otherPreTaxContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/otherPreTaxContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/pensions/*/otherPreTaxContributionsToDate-hint">This might be labeled year-to-date or YTD on your statement.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/otherPreTaxContributionsToDate" type="text" inputmode="numeric" name="/pensions/*/otherPreTaxContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+            <details class="fg-detail fg-detail--chevron">
+             <summary> 
+              <h4>Health Savings Account (HSA) or Flexible Spending Account (FSA)</h4> 
+             </summary>
+             <div class="usa-prose details-content">
+              <p>Enter total contributions to Health Savings Accounts (HSA) or Flexible Spending Account (FSA).</p>
+              <p>HSA and FSA contribution amounts can usually be found under a <strong>Deductions</strong> or <strong>Pre-Tax</strong> section on a statement.</p>
+              <p>Learn more about contributions to <a target="_blank" href="https://www.irs.gov/publications/p969#en_US_2024_publink1000204045">HSAs</a> and <a target="_blank" href="https://www.irs.gov/publications/p969#en_US_2024_publink1000204176">FSAs</a>.</p>
+              <fg-set path="/pensions/*/hsaOrFsaContributionsPerPayPeriod" inputtype="dollar" condition="/pensions/*/isPastJobIncompleteOrFalse" operator="isFalse" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/hsaOrFsaContributionsPerPayPeriod"> Amount per pay period </label> 
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/hsaOrFsaContributionsPerPayPeriod" type="text" inputmode="numeric" name="/pensions/*/hsaOrFsaContributionsPerPayPeriod" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+              <fg-set path="/pensions/*/hsaOrFsaContributionsToDate" inputtype="dollar" optional="true">
+               <div class="usa-form-group">
+                <label class="usa-label twe-question" for="/pensions/*/hsaOrFsaContributionsToDate"> Amount so far in <fg-show path="/taxYear"></fg-show> </label>
+                <div class="usa-hint" id="/pensions/*/hsaOrFsaContributionsToDate-hint">This might be labeled year-to-date or YTD on your statement.</div>
+                <div class="usa-input-group">
+                 <div class="usa-input-prefix" aria-hidden="true">
+                  <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                   <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+                  </svg>
+                 </div>
+                 <input class="usa-input" id="/pensions/*/hsaOrFsaContributionsToDate" type="text" inputmode="numeric" name="/pensions/*/hsaOrFsaContributionsToDate" autocomplete="off" aria-invalid="false">
+                </div>
+               </div>
+              </fg-set>
+
+             </div>
+            </details>
+           </div>
+          </div>
+          <div class="fg-collection-item__controls">
+           <button type="button" class="fg-collection-item__remove-item usa-button usa-button--unstyled">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#delete"></use>
+            </svg>
+            <span> Remove Pension or annuity income <span class="collection-item-number"></span> </span> 
+           </button>
+          </div>
+         </div>
+        </template>
+       </div>
+       <button type="button" class="fg-collection__add-item usa-button usa-button--outline">
+        <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+         <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#add"></use>
+        </svg>
+         Add Pension or annuity income 
+       </button>
+      </fg-collection>
+      <h3>Self-employment income</h3>
+      <p>This includes income from a partnership, trade, or business that you <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> own. It can also include income earned as a freelancer, contractor, or gig worker.</p>
+      <p><modal-link for="modal-what-counts-self-employment">What counts as self-employment income?</modal-link></p>
+      <fg-collection path="/selfEmploymentSources" itemname="Self-employment income">
+       <div class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable margin-bottom-3" data-allow-multiple>
+        <template class="fg-collection__item-template">
+         <h4 class="usa-accordion__heading">
+          <button class="usa-accordion__button usa-accordion__button--highlight" type="button" aria-expanded="true"> <span>Self-employment income</span> <span class="collection-item-number"></span> </button>
+         </h4>
+         <div class="usa-accordion__content">
+          <div class="fg-collection-item__fields">
+           <fg-set path="/selfEmploymentSources/*/filerAssignment" inputtype="enum" condition="/isFilingStatusMFJ" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Who is this income for? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/selfEmploymentSources/*/filerAssignment-self" class="usa-radio__input" type="radio" value="self" name="/selfEmploymentSources/*/filerAssignment" aria-invalid="false" required> <label for="/selfEmploymentSources/*/filerAssignment-self" class="usa-radio__label radio-option"> <span>Myself</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/selfEmploymentSources/*/filerAssignment-spouse" class="usa-radio__input" type="radio" value="spouse" name="/selfEmploymentSources/*/filerAssignment" aria-invalid="false" required> <label for="/selfEmploymentSources/*/filerAssignment-spouse" class="usa-radio__label radio-option"> <span>My spouse</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/selfEmploymentSources/*/grossIncome" inputtype="dollar" optional="true">
+            <div class="usa-form-group">
+             <label class="usa-label twe-question" for="/selfEmploymentSources/*/grossIncome"> What’s the total gross income <span condition="/selfEmploymentSources/*/notSpouses" operator="isTrue">you</span><span condition="/selfEmploymentSources/*/notSpouses" operator="isFalse">they</span> expect to earn from this self-employment work in <fg-show path="/taxYear"></fg-show>? </label>
+             <p class="margin-y-1"><modal-link for="modal-self-employment-gross-total">What’s total gross income and where do I find it?</modal-link></p>
+             <div class="usa-input-group">
+              <div class="usa-input-prefix" aria-hidden="true">
+               <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+               </svg>
+              </div>
+              <input class="usa-input" id="/selfEmploymentSources/*/grossIncome" type="text" inputmode="numeric" name="/selfEmploymentSources/*/grossIncome" autocomplete="off" aria-invalid="false">
+             </div>
+            </div>
+           </fg-set>
+
+           <fg-set path="/selfEmploymentSources/*/workRelatedExpenses" inputtype="dollar" optional="true">
+            <div class="usa-form-group">
+             <label class="usa-label twe-question" for="/selfEmploymentSources/*/workRelatedExpenses"> Total self-employment work-related expenses <span condition="/selfEmploymentSources/*/notSpouses" operator="isTrue">you</span><span condition="/selfEmploymentSources/*/notSpouses" operator="isFalse">they</span> expect to deduct in <fg-show path="/taxYear"></fg-show> </label>
+             <div class="usa-hint" id="/selfEmploymentSources/*/workRelatedExpenses-hint">It's okay to estimate or leave this blank.</div>
+             <p class="margin-y-1"><modal-link for="modal-self-employment-deductions">What does it mean to deduct expenses?</modal-link></p>
+             <div class="usa-input-group">
+              <div class="usa-input-prefix" aria-hidden="true">
+               <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+               </svg>
+              </div>
+              <input class="usa-input" id="/selfEmploymentSources/*/workRelatedExpenses" type="text" inputmode="numeric" name="/selfEmploymentSources/*/workRelatedExpenses" autocomplete="off" aria-invalid="false">
+             </div>
+            </div>
+           </fg-set>
+
+          </div>
+          <div class="fg-collection-item__controls">
+           <button type="button" class="fg-collection-item__remove-item usa-button usa-button--unstyled">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#delete"></use>
+            </svg>
+            <span> Remove Self-employment income <span class="collection-item-number"></span> </span> 
+           </button>
+          </div>
+         </div>
+        </template>
+       </div>
+       <button type="button" class="fg-collection__add-item usa-button usa-button--outline">
+        <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+         <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#add"></use>
+        </svg>
+         Add Self-employment income 
+       </button>
+      </fg-collection>
+      <h3>Social Security income</h3>
+      <p><modal-link for="modal-what-counts-social-security">What counts as Social Security income?</modal-link></p>
+      <fg-collection path="/socialSecuritySources" itemname="Social Security income">
+       <div class="usa-accordion usa-accordion--bordered usa-accordion--multiselectable margin-bottom-3" data-allow-multiple>
+        <template class="fg-collection__item-template">
+         <h4 class="usa-accordion__heading">
+          <button class="usa-accordion__button usa-accordion__button--highlight" type="button" aria-expanded="true"> <span>Social Security income</span> <span class="collection-item-number"></span> </button>
+         </h4>
+         <div class="usa-accordion__content">
+          <div class="fg-collection-item__fields">
+           <fg-set path="/socialSecuritySources/*/filerAssignment" inputtype="enum" condition="/isFilingStatusMFJ" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Who is this Social Security income paid to? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/filerAssignment-self" class="usa-radio__input" type="radio" value="self" name="/socialSecuritySources/*/filerAssignment" aria-invalid="false" required> <label for="/socialSecuritySources/*/filerAssignment-self" class="usa-radio__label radio-option"> <span>Myself</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/filerAssignment-spouse" class="usa-radio__input" type="radio" value="spouse" name="/socialSecuritySources/*/filerAssignment" aria-invalid="false" required> <label for="/socialSecuritySources/*/filerAssignment-spouse" class="usa-radio__label radio-option"> <span>My spouse</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <h5>Timing</h5>
+           <fg-set path="/socialSecuritySources/*/isAllYear" inputtype="boolean" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> Do <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span> expect to have this Social Security income all year or only part of the year? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/isAllYear-yes" class="usa-radio__input" type="radio" value="true" name="/socialSecuritySources/*/isAllYear" aria-invalid="false" required> <label for="/socialSecuritySources/*/isAllYear-yes" class="usa-radio__label">All year (January 1–December 31, <fg-show path="/taxYear"></fg-show>)</label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/isAllYear-no" class="usa-radio__input" type="radio" value="false" name="/socialSecuritySources/*/isAllYear" aria-invalid="false" required> <label for="/socialSecuritySources/*/isAllYear-no" class="usa-radio__label">Part of the year</label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/socialSecuritySources/*/startDate" inputtype="date" condition="/socialSecuritySources/*/isAllYear" operator="isFalse" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the first day in <fg-show path="/taxYear"></fg-show> <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span> expect to receive Social Security? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/socialSecuritySources/*/startDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/socialSecuritySources/*/startDate-month">Month</label> <select class="usa-select" id="/socialSecuritySources/*/startDate-month" name="/socialSecuritySources/*/startDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/socialSecuritySources/*/startDate-day">Day</label> <input class="usa-input" id="/socialSecuritySources/*/startDate-day" name="/socialSecuritySources/*/startDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/socialSecuritySources/*/startDate-year">Year</label> <input class="usa-input" id="/socialSecuritySources/*/startDate-year" name="/socialSecuritySources/*/startDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <fg-set path="/socialSecuritySources/*/endDate" inputtype="date" condition="/socialSecuritySources/*/isAllYear" operator="isFalse" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What’s the last day in <fg-show path="/taxYear"></fg-show> <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span> expect to receive Social Security? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/socialSecuritySources/*/endDate-hint">It’s okay to estimate.</div>
+              <div class="usa-memorable-date">
+               <div class="usa-form-group usa-form-group--month usa-form-group--select">
+                <label class="usa-label" for="/socialSecuritySources/*/endDate-month">Month</label> <select class="usa-select" id="/socialSecuritySources/*/endDate-month" name="/socialSecuritySources/*/endDate-month" aria-invalid="false" required> <option value="" disabled selected>- Select -</option> <option value="01">January</option> <option value="02">February</option> <option value="03">March</option> <option value="04">April</option> <option value="05">May</option> <option value="06">June</option> <option value="07">July</option> <option value="08">August</option> <option value="09">September</option> <option value="10">October</option> <option value="11">November</option> <option value="12">December</option> </select>
+               </div>
+               <div class="usa-form-group usa-form-group--day">
+                <label class="usa-label" for="/socialSecuritySources/*/endDate-day">Day</label> <input class="usa-input" id="/socialSecuritySources/*/endDate-day" name="/socialSecuritySources/*/endDate-day" maxlength="2" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+               <div class="usa-form-group usa-form-group--year">
+                <label class="usa-label" for="/socialSecuritySources/*/endDate-year">Year</label> <input class="usa-input" id="/socialSecuritySources/*/endDate-year" name="/socialSecuritySources/*/endDate-year" minlength="4" maxlength="4" pattern="[0-9]*" inputmode="numeric" value="" aria-invalid="false" required>
+               </div>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+           <h5 condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isFalse">Social Security details</h5>
+           <p condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isFalse">Once we know more about your income, we’ll ask you additional questions.</p>
+           <h5 condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isTrue">Income</h5>
+           <fg-set path="/socialSecuritySources/*/monthlyIncome" inputtype="dollar" condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <label class="usa-label twe-question" for="/socialSecuritySources/*/monthlyIncome"> What’s the monthly benefit amount <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span> <span condition="/socialSecuritySources/*/isFutureOrUnknown" operator="isTrue">receive</span><span condition="/socialSecuritySources/*/isFutureOrUnknown" operator="isFalse">received</span> from Social Security? <span aria-hidden="true" class="usa-hint">(Required)</span> </label>
+             <div class="usa-hint" id="/socialSecuritySources/*/monthlyIncome-hint">Include the total amount before any Medicare premiums and other deductions are taken out.</div>
+             <p class="margin-y-1"><modal-link for="modal-fed-tax-social-security-pay-period">What’s the monthly benefit amount and where do I find it?</modal-link></p>
+             <div class="usa-input-group">
+              <div class="usa-input-prefix" aria-hidden="true">
+               <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+                <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+               </svg>
+              </div>
+              <input class="usa-input" id="/socialSecuritySources/*/monthlyIncome" type="text" inputmode="numeric" name="/socialSecuritySources/*/monthlyIncome" autocomplete="off" aria-invalid="false" required>
+             </div>
+            </div>
+           </fg-set>
+
+           <h5 condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isTrue">Federal taxes</h5>
+           <fg-set path="/socialSecuritySources/*/withheldRate" inputtype="enum" condition="/socialSecuritySources/*/flowIsAllYearComplete" operator="isTrue" optional="false">
+            <div class="usa-form-group">
+             <fieldset class="usa-fieldset">
+              <legend class="usa-legend twe-question"> What percent of your monthly Social Security benefit <span condition="/socialSecuritySources/*/isFutureOrUnknown" operator="isTrue">is</span><span condition="/socialSecuritySources/*/isFutureOrUnknown" operator="isFalse">was</span> withheld for federal tax? <span aria-hidden="true" class="usa-hint">(Required)</span> </legend>
+              <div class="usa-hint" id="/socialSecuritySources/*/withheldRate-hint">
+               If <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span> haven’t chosen to withhold federal taxes, select 0%.
+              </div>
+              <p class="margin-y-1"><modal-link for="modal-fed-social-security-tax-withheld">How do I know if I have taxes withheld?</modal-link></p>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/withheldRate-zero" class="usa-radio__input" type="radio" value="zero" name="/socialSecuritySources/*/withheldRate" aria-invalid="false" required> <label for="/socialSecuritySources/*/withheldRate-zero" class="usa-radio__label radio-option"> <span>0%</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/withheldRate-seven" class="usa-radio__input" type="radio" value="seven" name="/socialSecuritySources/*/withheldRate" aria-invalid="false" required> <label for="/socialSecuritySources/*/withheldRate-seven" class="usa-radio__label radio-option"> <span>7%</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/withheldRate-ten" class="usa-radio__input" type="radio" value="ten" name="/socialSecuritySources/*/withheldRate" aria-invalid="false" required> <label for="/socialSecuritySources/*/withheldRate-ten" class="usa-radio__label radio-option"> <span>10%</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/withheldRate-twelve" class="usa-radio__input" type="radio" value="twelve" name="/socialSecuritySources/*/withheldRate" aria-invalid="false" required> <label for="/socialSecuritySources/*/withheldRate-twelve" class="usa-radio__label radio-option"> <span>12%</span> </label>
+              </div>
+              <div class="usa-radio">
+               <input id="/socialSecuritySources/*/withheldRate-twentyTwo" class="usa-radio__input" type="radio" value="twentyTwo" name="/socialSecuritySources/*/withheldRate" aria-invalid="false" required> <label for="/socialSecuritySources/*/withheldRate-twentyTwo" class="usa-radio__label radio-option"> <span>22%</span> </label>
+              </div>
+             </fieldset>
+            </div>
+           </fg-set>
+
+          </div>
+          <div class="fg-collection-item__controls">
+           <button type="button" class="fg-collection-item__remove-item usa-button usa-button--unstyled">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#delete"></use>
+            </svg>
+            <span> Remove Social Security income <span class="collection-item-number"></span> </span> 
+           </button>
+          </div>
+         </div>
+        </template>
+       </div>
+       <button type="button" class="fg-collection__add-item usa-button usa-button--outline">
+        <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-left-neg-1 margin-y-neg-05">
+         <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#add"></use>
+        </svg>
+         Add Social Security income 
+       </button>
+      </fg-collection>
+      <h3>Unemployment income</h3>
+      <p><modal-link for="modal-what-counts-unemployment">What counts as unemployment income?</modal-link></p>
+      <fg-set path="/unemploymentIncome" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/unemploymentIncome"> Total gross unemployment income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/unemploymentIncome-hint">Gross means the total amount of income before taxes or deductions.</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/unemploymentIncome" type="text" inputmode="numeric" name="/unemploymentIncome" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <fg-set path="/unemploymentIncomeWithholding" inputtype="boolean" optional="true">
+       <div class="usa-form-group">
+        <fieldset class="usa-fieldset">
+         <legend class="usa-legend twe-question"> Did you choose to withhold federal tax from your unemployment income? </legend>
+         <p class="margin-y-1"><modal-link for="modal-fed-unemployment-tax-withheld-en">How do I know if I have taxes withheld?</modal-link></p>
+         <div class="usa-radio">
+          <input id="/unemploymentIncomeWithholding-yes" class="usa-radio__input" type="radio" value="true" name="/unemploymentIncomeWithholding" aria-invalid="false"> <label for="/unemploymentIncomeWithholding-yes" class="usa-radio__label">Yes</label>
+         </div>
+         <div class="usa-radio">
+          <input id="/unemploymentIncomeWithholding-no" class="usa-radio__input" type="radio" value="false" name="/unemploymentIncomeWithholding" aria-invalid="false"> <label for="/unemploymentIncomeWithholding-no" class="usa-radio__label">No</label>
+         </div>
+        </fieldset>
+       </div>
+      </fg-set>
+
+      <h3>Pre-tax retirement account income</h3>
+      <p><modal-link for="modal-what-counts-pre-tax-retirement"> What counts as a distribution from pre-tax retirement accounts? </modal-link></p>
+      <fg-set path="/preTaxRetirementAccountIncome" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/preTaxRetirementAccountIncome"> Total distributions you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to receive from pre-tax retirement accounts in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/preTaxRetirementAccountIncome-hint">Don’t include distributions from Roth (post-tax) accounts.</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/preTaxRetirementAccountIncome" type="text" inputmode="numeric" name="/preTaxRetirementAccountIncome" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Investment income</h3>
+      <p>Even if you <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse </span>expect to earn a small amount of investment income, adding this amount will help get the most accurate withholding estimate.</p>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Interest income</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p><modal-link for="modal-estimate-interest-income-en">What's interest income and how can I estimate it?</modal-link></p>
+        <fg-set path="/taxableInterestIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/taxableInterestIncome"> Interest income you<span condition="/isFilingStatusMFJ" operator="isTrue"> and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/taxableInterestIncome" type="text" inputmode="numeric" name="/taxableInterestIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Ordinary or qualified dividends</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p>Enter the total amounts you expect to earn in <fg-show path="/taxYear"></fg-show>.</p>
+        <p><modal-link for="modal-what-are-dividends-en">What are dividends and how can I estimate them?</modal-link></p>
+        <fg-set path="/ordinaryDividendsIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/ordinaryDividendsIncome"> Ordinary dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/ordinaryDividendsIncome" type="text" inputmode="numeric" name="/ordinaryDividendsIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+        <fg-set path="/qualifiedDividendsIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/qualifiedDividendsIncome"> Qualified dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/qualifiedDividendsIncome" type="text" inputmode="numeric" name="/qualifiedDividendsIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Short-term or long-term gains and losses</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p>Enter the total amounts you expect to earn and lose in <fg-show path="/taxYear"></fg-show>.</p>
+        <p><modal-link for="modal-what-are-short-long-term-gains-losses-en">What are short- and long-term gains and losses, and how can I estimate them?</modal-link></p>
+        <fg-set path="/shortTermCapitalGainsIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/shortTermCapitalGainsIncome"> Short-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/shortTermCapitalGainsIncome" type="text" inputmode="numeric" name="/shortTermCapitalGainsIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+        <fg-set path="/shortTermCapitalLoss" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/shortTermCapitalLoss"> Short-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/shortTermCapitalLoss" type="text" inputmode="numeric" name="/shortTermCapitalLoss" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+        <fg-set path="/longTermCapitalGainsIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/longTermCapitalGainsIncome"> Long-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/longTermCapitalGainsIncome" type="text" inputmode="numeric" name="/longTermCapitalGainsIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+        <fg-set path="/longTermCapitalLoss" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/longTermCapitalLoss"> Long-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/longTermCapitalLoss" type="text" inputmode="numeric" name="/longTermCapitalLoss" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Rental income</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p><modal-link for="modal-rental-expenses-net-income-en">What are rental expenses and how can I estimate net rental income?</modal-link></p>
+        <fg-set path="/rentalIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/rentalIncome"> Net amount of rental income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label>
+          <div class="usa-hint" id="/rentalIncome-hint">Net is the total minus any expenses.</div>
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/rentalIncome" type="text" inputmode="numeric" name="/rentalIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Royalties</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p><modal-link for="modal-estimate-royalty-income-en">How can I estimate royalty income?</modal-link></p>
+        <fg-set path="/royaltyIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/royaltyIncome"> Royalty income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/royaltyIncome" type="text" inputmode="numeric" name="/royaltyIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <details class="fg-detail fg-detail--chevron">
+       <summary> 
+        <h4>Passive or non-passive income from S-corporations or partnerships</h4> 
+       </summary>
+       <div class="usa-prose details-content">
+        <p>Enter the total amounts you expect to earn in <fg-show path="/taxYear"></fg-show>.</p>
+        <p><modal-link for="modal-estimate-s-corp-partnership-income-en">How can I estimate income from S-corporations or partnerships?</modal-link></p>
+        <fg-set path="/sCorpPassiveIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/sCorpPassiveIncome"> Passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/sCorpPassiveIncome" type="text" inputmode="numeric" name="/sCorpPassiveIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+        <fg-set path="/sCorpNonPassiveIncome" inputtype="dollar" optional="true">
+         <div class="usa-form-group">
+          <label class="usa-label twe-question" for="/sCorpNonPassiveIncome"> Non-passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"></fg-show> </label> 
+          <div class="usa-input-group">
+           <div class="usa-input-prefix" aria-hidden="true">
+            <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+             <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+            </svg>
+           </div>
+           <input class="usa-input" id="/sCorpNonPassiveIncome" type="text" inputmode="numeric" name="/sCorpNonPassiveIncome" autocomplete="off" aria-invalid="false">
+          </div>
+         </div>
+        </fg-set>
+
+       </div>
+      </details>
+      <h3>Other taxable income not already included above</h3>
+      <p>Estimate any other taxable income that you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> think you'll receive in <fg-show path="/taxYear"></fg-show>, including:</p>
+      <ul>
+       <li>Taxable scholarships</li>
+       <li>Winnings from gambling</li>
+       <li>Alimony from pre-2019 divorce decrees</li>
+       <li>Court awards and damages (unless they're for physical injury or sickness)</li>
+       <li>Fees for services you've provided</li>
+      </ul>
+      <p><a target="_blank" href="https://www.irs.gov/filing/taxable-income" class="usa-link usa-link--external">Learn more about other taxable income.<span class="usa-sr-only"> (opens in a new tab)</span></a></p>
+      <fg-set path="/nonSpecificOtherIncome" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/nonSpecificOtherIncome"> Total amount of other income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/nonSpecificOtherIncome-hint">Enter one total amount for all other income.</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/nonSpecificOtherIncome" type="text" inputmode="numeric" name="/nonSpecificOtherIncome" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <fg-set path="/otherIncomeWithholding" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/otherIncomeWithholding"> Federal taxes withheld from your <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse's</span> other income so far in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/otherIncomeWithholding-hint">If you don't know, leave this blank.</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/otherIncomeWithholding" type="text" inputmode="numeric" name="/otherIncomeWithholding" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+      <h3>Estimated taxes paid</h3>
+      <p class="text-base-dark">In addition to taxes already withheld from your income, estimated payments are made directly to the IRS, usually through an IRS Online Account or with Form 1040-ES.</p>
+      <p><a target="_blank" href="https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes" class="usa-link usa-link--external">Learn more about estimated taxes.<span class="usa-sr-only"> (opens in a new tab)</span></a></p>
+      <fg-set path="/totalEstimatedTaxesPaid" inputtype="dollar" optional="true">
+       <div class="usa-form-group">
+        <label class="usa-label twe-question" for="/totalEstimatedTaxesPaid"> Estimated tax payments you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> made so far in <fg-show path="/taxYear"></fg-show> </label>
+        <div class="usa-hint" id="/totalEstimatedTaxesPaid-hint">Don't include taxes withheld from paychecks and other income.</div>
+        <div class="usa-input-group">
+         <div class="usa-input-prefix" aria-hidden="true">
+          <svg aria-hidden="true" role="img" focusable="false" class="usa-icon">
+           <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#attach_money"></use>
+          </svg>
+         </div>
+         <input class="usa-input" id="/totalEstimatedTaxesPaid" type="text" inputmode="numeric" name="/totalEstimatedTaxesPaid" autocomplete="off" aria-invalid="false">
+        </div>
+       </div>
+      </fg-set>
+
+     </section>
+     <dialog id="modal-pay-frequency-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Learn more about pay frequency</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Pay frequency is how often a person gets paid by an employer or pension.</p>
+         <ul>
+          <li><strong>Weekly</strong>: Paid once per week</li>
+          <li><strong>Every two weeks</strong>: Paid every other week and gets two-to-three payments per month</li>
+          <li><strong>Twice monthly</strong>: Always paid twice a month on certain days. For example, the 1st and the 15th of the month</li>
+          <li><strong>Once monthly</strong>: Paid one time per month</li>
+         </ul>
+         <p>If your pay frequency doesn’t match one of these, then choose the closest option and adjust your pay accordingly.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-job-pay-dates-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">Learn more about pay frequency</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>You can find the pay period and pay date on the paystub, the statement that comes with a paycheck and tells you about the details of the pay.</p>
+         <ul>
+          <li><strong>Pay period</strong>: The days that you worked and are being paid for, sometimes shown as a start and end date</li>
+          <li><strong>Pay date</strong>: The date when the paycheck is issued or dated</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-job-gross-pay-period-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find the gross income per pay period?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Gross income per pay period is the total amount you’re paid for the dates on a single paycheck before any taxes or deductions are taken out.</p>
+         <p>If there’s additional pay, like bonus pay, tips, or overtime for the pay period, it will be included in the gross amount.</p>
+         <p><strong>Where to find it</strong></p>
+         <p>Check the paystub for the <strong>gross amount per pay period</strong>, which only includes the pay for the days you worked on this current paystub.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-social-security" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as Social Security income?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Social security is benefit payments made to retirees, people with disabilities, and their families through the Social Security Administration (SSA). To report this income at the end of the year, the SSA sends Form SSA-1099.</p>
+         <p><strong>Don’t include</strong> Supplemental Security Income (SSI) payments. The estimator doesn’t currently support SSI payments.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-tax-social-security-pay-period" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What’s the monthly benefit amount and where do I find it?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>The monthly benefit amount is the total you receive from Social Security each month before any deductions, Medicare premiums, or taxes are taken out.</p>
+         <p>It’s okay to estimate. To find the exact amount:</p>
+         <ol>
+          <li>Log into <a target="_blank" href="https://www.ssa.gov/myaccount/" class="usa-link">my Social Security account<span class="usa-sr-only"></span></a></li>
+          <li>Scroll to the <strong>Benefits and Payments</strong> section</li>
+          <li>Under <strong>Benefit Summary</strong>, use the total monthly benefit before deductions</li>
+         </ol>
+         <p>If you need help finding the monthly benefit amount, call the Social Security Administration at 1-800-772-1213.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-social-security-tax-withheld" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I know if I have taxes withhheld?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>The Social Security Administration doesn’t automatically withhold federal taxes from your Social Security income.</p>
+         <p>You can request to withhold federal taxes from your Social Security income.</p>
+         <p>How to check if you have taxes withheld:</p>
+         <ol>
+          <li>Log into <a target="_blank" href="https://www.ssa.gov/myaccount/" class="usa-link">my Social Security account<span class="usa-sr-only"></span></a></li>
+          <li>Select <strong>Voluntary Tax Withholding</strong> to check the percentage withheld</li>
+         </ol>
+         <p>If you didn’t request to withhold taxes, the percentage will be 0%.</p>
+         <p>If you don’t have a my Social Security account, or need help checking your federal withholdings, call the Social Security Administration at 1-800-772-1213.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-job" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as a job?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>A job is when you earn income by working for an employer. At the end of the year, the employer will send a Form W-2 to report this income.</p>
+         <p><strong>Don’t include income earned through:</strong></p>
+         <ul>
+          <li>A partnership, trade, or business that you own</li>
+          <li>On-demand work, services, or goods as a freelancer, contractor, or gig worker</li>
+         </ul>
+         <p>Add this income in the <strong>Self-employment income</strong> section instead.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-pension" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as a pension or annuity?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>A pension is generally a series of definitely determinable payments made to you after you retire from work. Pension payments are made regularly and are based on factors such as years of service and past pay.</p>
+         <p>An annuity is a series of payments under a contract made at regular intervals over a period of more than 1 full year.</p>
+         <p>At the end of the year, a pension or annuity provider will send a Form 1099-R to report this income.</p>
+         <p>Don’t include distributions or withdrawals from 401(k), 403(b), or 457(b) plans or Individual Retirement Arrangements (IRAs). Add this income as <strong>Pre-tax retirement account income</strong> instead.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-pension-gross-pay-period" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find the gross income for the most recent payment?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>This is the total amount of your most recent pension or annuity payment, before any taxes or deductions are taken out.</p>
+         <p><strong>On your most recent statement</strong>, check for the gross payment amount.</p>
+         <p>If the annual amount of your pension or annuity will be the same as last year, you can also refer to your <fg-show path="/lastTaxYear"></fg-show> Form 1099-R. To estimate the gross amount for your most recent payment:</p>
+         <ol>
+          <li>Find Box 1 on the Form 1099-R, which shows the gross amount for all of last year</li>
+          <li>Divide last year’s gross amount by the number of payments you expect to receive in <fg-show path="/taxYear"></fg-show></li>
+         </ol>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-pension-gross-ytd-end" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find the gross income so far in <fg-show path="/taxYear"></fg-show>?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Gross income is the total amount you’ve been paid, before any taxes or deductions are taken out.</p>
+         <p><strong>On your most recent statement</strong>, check for the gross income so far this year. This might be labeled as gross income year-to-date or YTD.</p>
+         <p><strong>If you don’t have a statement</strong>, but know the gross amount per payment, you can estimate by multiplying it by the number of payments you’ve received so far in <fg-show path="/taxYear"></fg-show>.</p>
+         <p>If the annual amount of your pension or annuity will be the same as last year, you can also refer to your <fg-show path="/lastTaxYear"></fg-show> Form 1099-R. To estimate the gross income so far this year:</p>
+         <ol>
+          <li>Find Box 1 on the Form 1099-R, which shows the gross amount for all of last year</li>
+          <li>Divide last year’s gross amount by the number of payments you expect to receive in <fg-show path="/taxYear"></fg-show></li>
+          <li>Then, multiply by the number of payments you’ve received so far in <fg-show path="/taxYear"></fg-show></li>
+         </ol>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-tax-pension-pay-period" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find federal taxes withheld for the most recent payment?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>These are amounts withheld, or taken out of your pension or annuity payment to pay for federal taxes.</p>
+         <p><strong>On your most recent statement</strong>, check for the federal taxes paid for each payment.</p>
+         <ul>
+          <li>This may appear as a single line called Taxes, FIT, FITW, FITC, Fed W/H, Fed tax, Fed withholding, Federal income tax or similar.</li>
+          <li>If you have requested extra federal taxes to be withheld, that extra amount may appear on a separate line. Be sure to add these two amounts</li>
+         </ul>
+         <p>If the annual amount of your pension or annuity will be the same as last year, you can also refer to your <fg-show path="/lastTaxYear"></fg-show> Form 1099-R. To estimate federal taxes withheld for the most recent payment:</p>
+         <ol>
+          <li>Find Box 4 on the Form 1099-R, which shows the federal taxes withheld for all of last year</li>
+          <li>Divide last year’s withholding amount by the number of payments you expect to receive in <fg-show path="/taxYear"></fg-show></li>
+         </ol>
+         <p><strong>Don’t include</strong> state taxes, local taxes, Medicare, Social Security, or other amounts withheld.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-pension-tax-ytd" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find federal taxes withheld so far in <fg-show path="/taxYear"></fg-show>?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>These are amounts withheld, or taken out of a pension or annuity payment to pay for federal taxes throughout the year.</p>
+         <p><strong>On your most recent statement</strong>, check for the federal taxes paid so far this year. This might be labeled as year-to-date or YTD.</p>
+         <ul>
+          <li>This may appear as a single line called Taxes, FIT, FITW, FITC, Fed W/H, Fed tax, Fed withholding, Federal income tax or similar.</li>
+          <li>If you have requested extra federal taxes to be withheld, that extra amount may appear on a separate line. Be sure to add these two amounts</li>
+         </ul>
+         <p>If the annual amount of your pension or annuity will be the same as last year, you can also refer to your <fg-show path="/lastTaxYear"></fg-show> Form 1099-R. To estimate federal taxes withheld so far this year:</p>
+         <ol>
+          <li>Find Box 4 on the Form 1099-R, which shows federal taxes withheld last year</li>
+          <li>Divide last year’s withholding amount by the number of payments you expect to receive in <fg-show path="/taxYear"></fg-show></li>
+          <li>Then, multiply by the number of payments you’ve received so far in <fg-show path="/taxYear"></fg-show></li>
+         </ol>
+         <p><strong>Don’t include</strong> state taxes, local taxes, Medicare, Social Security, or other amounts withheld.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-self-employment" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as self-employment income?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Self-employment income is earned from a partnership, trade, or business that you own. It can also be earned by providing on-demand work, services, or goods as a freelancer, contractor, or gig worker.</p>
+         <p>To report this income at the end of the year, the payer (person, business, or organization that pays you) will send a Form 1099-NEC, Form 1099-K, or Form 1099-MISC.</p>
+         <p><strong>Don’t include</strong> income earned by working for an employer. If the payer sends a Form W-2 with federal taxes withheld, then add this income in the <strong>Jobs with an employer (W-2)</strong> section instead.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-self-employment-gross-total" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What's total gross income and where do I find it?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p><strong>What is it?</strong></p>
+         <p>Total gross income is the total amount you expect to earn this year, before any taxes, deductions, or expenses are taken out.</p>
+         <p>If you expect to earn any additional pay this year, like bonus pay, tips, or overtime, include it in the gross amount.</p>
+         <p><strong>Where to find it?</strong></p>
+         <p>You can estimate gross total income by tracking how much you earn from self-employment. You may need to estimate your self-employment income for the entire year.</p>
+         <p><strong>How to check last year's tax return?</strong></p>
+         <p>If you were self-employed last year and expect your earnings to stay the same, you can find your gross income on line 7 of Schedule C.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-self-employment-deductions" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What does it mean to deduct expenses?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>When you're self employed, a gig worker, or own and operate a business, you may be able to deduct certain business expenses from your income so you'll pay less tax.</p>
+         <p>Business expenses could include:</p>
+         <ul>
+          <li>Home office expenses</li>
+          <li>Car and truck expenses</li>
+          <li>Rent</li>
+          <li>Employee pay and pensions</li>
+          <li>Insurance</li>
+          <li>Interest on debts</li>
+          <li>Legal and professional fees</li>
+          <li>Taxes</li>
+          <li>Travel and meals</li>
+         </ul>
+         <p>These deductions are different from the personal deductions you'll make if you choose to itemize your deductions. You can deduct your business expenses here and still choose the standard deduction later.</p>
+         <p><strong>How to check last year's tax return?</strong></p>
+         <p>If you were self-employed last year and expect your work-related expenses to stay the same, you can find your deductible expenses on line 28 of Schedule C.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">Learn more about business expenses</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-unemployment" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as unemployment income?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Unemployment income is a joint state-federal program that provides cash benefits to eligible workers.</p>
+         <p>To receive unemployment, you must become unemployed through no fault of your own and meet other requirements.</p>
+         <p>At the end of the year, you should receive Form 1099-G showing the amount paid to you during the year.</p>
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/employees/unemployment-compensation">Learn more about unemployment income.</a></p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-unemployment-tax-withheld-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I know if I have taxes withheld?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>You can choose to have 10% federal income tax withheld from your unemployment compensation by submitting Form W-4V to the unemployment office.</p>
+         <p><strong>How to check if you have taxes withheld:</strong></p>
+         <ul>
+          <li>Check your unemployment statement for federal tax withholding</li>
+          <li>Call your unemployment office and ask about your withholding</li>
+         </ul>
+         <p>If you didn't request to withhold taxes, select no.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-counts-pre-tax-retirement" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What counts as a distribution from pre-tax retirement accounts?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Any withdrawal of pre-tax funds from a 401(k), 403(b), 457(b), or traditional Individual Retirement Arrangement (IRA) counts as a distribution. This includes distributions at retirement, early withdrawals, required minimum distributions (RMDs), and pretax-to-Roth conversions.</p>
+         <p>At the end of the year, your financial institution will send a Form 1099-R to report this income.</p>
+         <p><strong>Don’t include:</strong></p>
+         <ul>
+          <li>Distributions from Roth (post-tax) accounts.</li>
+          <li>Other forms of retirement income, like pensions, annuities, Social Security, or other investment income. You’ll enter them in other sections.</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-interest-income-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What's interest income and how can I estimate it?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Common types of interest income include interest earned from bank accounts or from lending money.</p>
+         <p>To estimate your interest income, look at your monthly bank statements to see how much you've been earning in interest each month. Multiply the monthly average by 12 to get an estimate for the year.</p>
+         <p>When estimating interest income, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+         <p><strong>How to check last year's tax return</strong></p>
+         <p>If you earned interest income last year and think you'll earn a similar amount this year, check for an amount in:</p>
+         <ul>
+          <li>Line 2b on Form 1040 of your <fg-show path="/lastTaxYear"></fg-show> federal tax return</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-are-dividends-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What are dividends and how can I estimate them?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Ordinary or qualified dividends are payments made by corporations to shareholders based on a company's profits. The main difference between the two is that qualified dividends are taxed at a lower rate.</p>
+         <p><strong>How to estimate dividends</strong></p>
+         <p>Dividends are often paid out quarterly. To estimate your dividends, look at your financial statements to see how much you've earned in dividends so far this year. Multiply your average quarterly dividend by four (or a different number if not quarterly) to get an estimate for the year.</p>
+         <p>When estimating dividends, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+         <p><strong>How to check last year's tax return</strong></p>
+         <p>If you earned these dividends last year and think you'll earn a similar amount this year, check:</p>
+         <ul>
+          <li>Line 3b on Form 1040 of your <fg-show path="/lastTaxYear"></fg-show> federal tax return for ordinary dividends</li>
+          <li>Line 3a on Form 1040 of your <fg-show path="/lastTaxYear"></fg-show> federal tax return for qualified dividends</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-what-are-short-long-term-gains-losses-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What are short- and long-term gains and losses, and how can I estimate them?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>The length of time you hold an asset determines what type of gain or loss it is:</p>
+         <ul>
+          <li><strong>Short-term gain or loss</strong>, if you held the asset for less than a year.</li>
+          <li><strong>Long-term gain or loss</strong>, if you held the asset for more than one year.</li>
+         </ul>
+         <p><strong>How to check for gains and losses</strong></p>
+         <p>If you have an investment or brokerage account, log in or review your latest statement to check for any short- or long-term gains and losses this year.</p>
+         <p><strong>How to estimate gains and losses</strong></p>
+         <p>If you plan to sell any assets before the end of the year, include the estimated gains or losses in your total.</p>
+         <p>When estimating short- and long-term gains, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-rental-expenses-net-income-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What are rental expenses and how can I estimate net rental income?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p><a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p527#en_US_2024_publink1000218977">Rental expenses<span class="usa-sr-only"> (opens in a new tab)</span></a> include maintenance costs, insurance, taxes, and interest.</p>
+         <p><strong>How to estimate net rental income</strong></p>
+         <p>First, add up all the money you expect to receive from tenants during the year. Next, subtract your rental expenses.</p>
+         <p>When estimating rental income, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+         <p><strong>How to check last year's tax return</strong></p>
+         <p>If you earned rental income last year and think you'll earn a similar amount this year, check your <fg-show path="/lastTaxYear"></fg-show> forms:</p>
+         <ul>
+          <li>Schedule E (Form 1040), Part I, line 21, Columns A - C</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-royalty-income-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How can I estimate royalty income?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Check your licensing agreements or publisher statements for expected payment schedules or percentages.</p>
+         <p>If estimating future royalty income, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+         <p><strong>How to check last year's tax return</strong></p>
+         <p>If you earned royalties last year and think you'll earn a similar amount this year, check your <fg-show path="/lastTaxYear"></fg-show> forms:</p>
+         <ul>
+          <li>Schedule E (Form 1040), Part I, line 23b</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-s-corp-partnership-income-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How can I estimate income from S-corporations or partnerships?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>You can use investor reports, profit/ loss statements, or other business data to predict annual earnings. Multiply those earnings by your ownership percentage or distributive share.</p>
+         <p>When estimating S-corporation or partnership income, it's better to guess a higher amount. If you underestimate, it can lead to not withholding enough federal tax throughout the year.</p>
+         <p>Don't include income previously entered under self-employment.</p>
+         <p><strong>How to check last year's return</strong></p>
+         <p>If you earned income from S-corporations or partnerships last year and think you'll earn a similar amount this year, check these <fg-show path="/lastTaxYear"></fg-show> forms:</p>
+         <ul>
+          <li>Schedule E (Form 1040), Part II, Line 29a, Column h, for passive income</li>
+          <li>Schedule E (Form 1040), Part II, Line 29a, Column k, for non-passive income</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-future-bonus-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I estimate future bonus pay?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Bonus pay is usually a one-time payment in addition to regular wages.</p>
+         <p>If you expect to receive a year-end or quarterly bonus from the employer, include that amount here.</p>
+         <p>It’s okay to enter your best guess of what you will receive. You can also leave future bonus pay blank.</p>
+         <p>Don’t include any past bonus pay that you already received this year.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-job-check-bonus-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I check if there's a bonus this pay period?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Bonus pay is usually a one-time payment in addition to your regular wages.</p>
+         <p>To check if you earned a bonus for the <strong>current pay period:</strong></p>
+         <ol>
+          <li>Find the gross or total earnings for the pay period, which only includes the pay for the days you worked on this current paystub.</li>
+          <li>Check if there's an amount labeled "Bonus" that's included in the gross or total earnings for the pay period.</li>
+         </ol>
+         <p><strong>Don’t include</strong> bonuses that appear in the year-to-date (YTD) amount. Only enter bonus pay from the current pay period. Don’t include overtime pay.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-job-gross-ytd-end-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find the gross income so far in <fg-show path="/taxYear"></fg-show>?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>Gross income is the total amount you’ve been paid, before any taxes or deductions are taken out.</p>
+         <p>If you earned any additional pay this year, like bonus pay, tips, or overtime, it will be included in the gross amount.</p>
+         <p><strong>Where to find it</strong></p>
+         <p>Check the paystub for the <strong>gross amount year-to-date</strong> or <strong>YTD</strong>, which includes all your pay so far in <fg-show path="/taxYear"></fg-show>.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-tips-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How can I estimate tips?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To estimate the total amount of tips you’ll get in <fg-show path="/taxYear"></fg-show>:</p>
+         <p><strong>First</strong>, check your paystub for <strong>year-to-date tips</strong>, which includes any tips you’ve received so far this year.</p>
+         <ul>
+          <li>Tips may be labeled as Other, or Tips (credit card) on a paystub</li>
+         </ul>
+         <p><strong>Then</strong>, add any amounts you think you’ll get for the rest of <fg-show path="/taxYear"></fg-show>.</p>
+         <p>If it’s hard to estimate, it’s ok to enter only what you’ve received so far, or to leave tips blank.</p>
+         <p>Avoid entering a higher amount than you’re sure of for tips, because this can make your estimate less accurate.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-overtime-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How can I estimate overtime?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>To estimate the total amount of overtime you’ll get in <fg-show path="/taxYear"></fg-show>:</p>
+         <p><strong>First</strong>, check your paystub for <strong>year-to-date overtime</strong>, which includes any overtime you’ve received so far this year.</p>
+         <ul>
+          <li>Overtime may be labeled as OT hours, OT pay, 1.5 pay, or time-and-a-half on a paystub</li>
+          <li>If overtime is split into multiple line items, add them together</li>
+          <li>Only include overtime that’s earned from working over 40 hours per week</li>
+         </ul>
+         <p><strong>Then</strong>, add any amounts you think you’ll get for the rest of <fg-show path="/taxYear"></fg-show>.</p>
+         <p>If it’s hard to estimate, it’s okay to enter only what you’ve received so far, or to leave it blank.</p>
+         <p>Avoid entering a higher amount than you’re sure of for overtime, because this can make your estimate less accurate.</p>
+         <p>Overtime pay that is not required by section 7 of the Fair Labor Standards Act (e.g., due to state law or union contract) is not deductible and should not be entered.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-estimate-overtime-rate-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">What if I get paid a different overtime rate?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>If you’re paid for overtime at a different rate than 1.5 times or 2.0 times your regular pay:</p>
+         <ul>
+          <li>Select the option that’s closest to your overtime pay rate</li>
+         </ul>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-tax-pay-period-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find federal taxes withheld per pay period?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>These are amounts withheld, or taken out of your paycheck to pay for federal taxes.</p>
+         <p>Where to find federal taxes paid <strong>per pay period</strong> on a paystub:</p>
+         <ul>
+          <li>Federal taxes paid may appear as a single line with a label of <strong>Taxes.</strong> If you have requested extra federal taxes withheld from your paycheck, that extra amount may appear on a separate line. Be sure to add these two amounts.</li>
+          <li>They may also be labeled as, FIT, FITW, FITC, Fed W/H, Fed tax, Fed withholding, Federal income tax or similar</li>
+          <li>Check for the <strong>per-pay-period</strong> amount, which only includes the federal taxes paid on this paycheck</li>
+         </ul>
+         <p><strong>Don’t include</strong> state taxes, local taxes, Medicare, Social Security, or other amounts withheld.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+     <dialog id="modal-fed-tax-ytd-en" class="usa-modal--dialog" closedby="any">
+      <div class="usa-modal__content">
+       <div class="usa-modal__main">
+        <h1 class="usa-modal__heading">How do I find federal taxes withheld so far in <fg-show path="/taxYear"></fg-show>?</h1>
+        <button type="button" class="usa-button usa-modal__close" aria-label="Close this window" data-close-modal>
+         <svg class="usa-icon" aria-hidden="true" focusable="false" role="img">
+          <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#close"></use>
+         </svg>
+        </button>
+        <div class="usa-prose">
+         <p>These are amounts withheld, or taken out of a paycheck to pay for federal taxes throughout the year.</p>
+         <p>Where to find the federal taxes paid <strong>so far this year (year-to-date)</strong> on a paystub:</p>
+         <ul>
+          <li>Federal taxes paid may appear as a single line with a label of <strong>Taxes.</strong>If you have requested extra federal taxes withheld from your paycheck, that extra amount may appear on a separate line. Be sure to add these two amounts.</li>
+          <li>They may also be labeled as, FIT, FITW, FITC, Fed W/H, Fed tax, Fed withholding, Federal income tax or similar</li>
+          <li>Check for the <strong>year-to-date</strong> or <strong>YTD</strong> amount, which includes all federal taxes paid so far for the year</li>
+         </ul>
+         <p><strong>Don’t include</strong> state taxes, local taxes, Medicare, Social Security, or other amounts withheld.</p>
+        </div>
+        <div class="usa-modal__footer"></div>
+       </div>
+      </div>
+     </dialog>
+    </div>
+    <div class="form-actions">
+     <a class="usa-button" href="/app/tax-withholding-estimator/adjustments/" onclick="return handleSectionContinue(event)"> Next 
+      <svg aria-hidden="true" role="img" focusable="false" class="usa-icon usa-icon--size-3 margin-right-neg-1 margin-y-neg-05">
+       <use href="/app/tax-withholding-estimator/resources/vendor/uswds-3.13.0/img/sprite.svg#navigate_next"></use>
+      </svg> </a>
+    </div>
+   </div>
+  </main>
+  <aside id="audit-panel" aria-label="Audit Panel" class="hidden">
+   <h1>TWE Audit Panel</h1>
+   <div class="fg-alert usa-alert usa-alert--warning">
+    <div class="usa-alert__body">
+     <h3 class="usa-alert__heading">Note</h3>
+     <div>The Audit Panel is a developer tool used to debug the Tax Withholding Estimator. It is intended for internal development purposes only and is not for taxpayer use. Results generated by the Audit Panel are not official IRS determinations and must not be used for filing, compliance, or decision-making purposes.</div>
+    </div>
+   </div>
+   <h2>Override Date</h2>
+   <div class="usa-form-group">
+    <p>Override date: <fg-show path="/overrideDate"></fg-show></p>
+    <p>
+     <fg-set path="/overrideDate" inputtype="text" optional="true">
+      <label class="usa-label twe-question" for="override-date-input">Set override date (YYYY-MM-DD):</label> <input id="override-date-input" class="usa-input" type="text">
+     </fg-set>
+
+    </p>
+   </div>
+   <h2>Load Fact Graph</h2>
+   <div class="usa-form-group">
+    <label class="usa-label" for="load-fact-graph">Load Fact Graph</label> <textarea class="usa-textarea" id="load-fact-graph"></textarea>
+    <button class="usa-button" type="button" onclick="loadFactGraph(document.querySelector('#load-fact-graph').value)">Set</button>
+   </div>
+   <h2>Reset Fact Graph</h2>
+   <fg-reset>
+    <button class="usa-button usa-button--outline" type="reset">Start over</button>
+   </fg-reset>
+   <h2>Fact Graph Audit Panel</h2>
+   <div class="usa-form-group">
+    <label class="usa-label twe-question" for="fact-select">Fact Path</label> <input list="fact-options" class="usa-input" onkeydown="pathSelectListener(event)" id="fact-select"> <datalist id="fact-options" aria-invalid="false"></datalist>
+   </div>
+   <div class="usa-form-group">
+    <label class="usa-label twe-question" for="fact-collection-id">Collection ID</label> <input id="fact-collection-id" class="usa-input" type="text" autocomplete="off" aria-invalid="false">
+   </div>
+   <button class="usa-button" id="add-fact-button" type="button" onclick="trackSelectedFact()">Add fact</button>
+   <div id="audit-panel__fact-list"></div>
+  </aside>
+  <template id="audit-panel__fact">
+   <h3 class="audit-panel__fact__path">REPLACE_ME_WITH_FACT_PATH</h3>
+   <dl>
+    <dt>Fact Type:</dt>
+    <dd class="audit-panel__fact__type"></dd>
+    <dt>Value:</dt>
+    <dd class="audit-panel__fact__value"></dd>
+   </dl>
+   <div class="audit-panel__fact__definition">
+    <pre><code><slot name="definition"></slot></code></pre>
+   </div>
+   <div class="audit-panel__fact__controls">
+    <button class="usa-button audit-panel__fact__remove" onlick="trackSelectedFact()" type="button">Remove fact</button>
+   </div>
+  </template>
+  <script type="module">
+    // If configured, automatically enable Audit Mode on startup
+    import { enable } from '/app/tax-withholding-estimator/resources/js/audit-panel.js'
+    enable()
+  </script>
+  <footer aria-label="Tax Withholding Estimator" class="footer">
+   <div data-testid="identifier" class="usa-identifier">
+    <section data-testid="identifierMasthead" class="usa-identifier__section usa-identifier__section--masthead" aria-label="Agency identifier">
+     <div class="usa-identifier__container">
+      <div data-testid="identifierLogos" class="usa-identifier__logos">
+       <a class="usa-identifier__logo" href="https://irs.gov" aria-label="IRS.gov"> <img src="/app/tax-withholding-estimator/resources/img/irs_logo_bk.svg" class="usa-identifier__logo-img" alt=""> </a>
+      </div>
+      <div data-testid="identifierIdentity" class="usa-identifier__identity">
+       <p class="usa-identifier__identity-domain">IRS.gov</p>
+       <p class="usa-identifier__identity-disclaimer">An official website of the <a class="usa-link" target="_blank" href="https://irs.gov">IRS<span class="usa-sr-only"> (opens in a new tab)</span></a></p>
+      </div>
+     </div>
+    </section>
+    <nav class="usa-identifier__section usa-identifier__section--required-links" aria-label="??layout.identifier.important-link_en_US??">
+     <div class="usa-identifier__container">
+      <ul class="usa-identifier__required-links-list">
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="/about/">About</a></li>
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="https://www.irs.gov/accessibility">Accessibility</a></li>
+       <li class="usa-identifier__required-links-item"><a target="_blank" class="usa-link usa-identifier__required-link" href="https://www.irs.gov/privacy-disclosure/irs-privacy-policy">Privacy policy</a></li>
+      </ul>
+     </div>
+    </nav>
+   </div>
+  </footer>
+  <template id="validate-alert-template">
+   <div class="usa-alert usa-alert--error validate-alert" role="alert">
+    <div class="usa-alert__body">
+     <h4 class="usa-alert__heading">Warning status</h4>
+     <p class="usa-alert__text" id="alert-message">Please complete the required fields</p>
+    </div>
+   </div>
+  </template>
+  <!-- I did this with text scripts because getting innerHTML from a template doesn't work for some reason -->
+  <script type="text" id="errors.InvalidCharacters">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidDollar">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidHyphens">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.InvalidParentheses">Enter only numbers and a decimal.</script>
+  <script type="text" id="errors.TooManyDecimals">Enter a number with only one decimal.</script>
+  <script type="text" id="errors.TooManyFractionalDigits">Enter only two digits after the decimal.</script>
+  <script type="text" id="errors.InvalidDay">Enter a valid day.</script>
+  <script type="text" id="errors.InvalidDayDueToLeapYear">Invalid day due to leap year.</script>
+  <script type="text" id="errors.InvalidMonth">Enter a valid month.</script>
+  <script type="text" id="errors.InvalidDate">Enter a valid date.</script>
+  <script type="text" id="errors.InvalidLimit">Invalid limit set.</script>
+  <script type="text" id="errors.BlankEnum">Value was blank.</script>
+  <script type="text" id="errors.InvalidEnum">Value not found.</script>
+  <script type="text" id="errors.Max">Enter an amount less than</script>
+  <script type="text" id="errors.Min">Enter an amount more than</script>
+  <script type="text" id="errors.Default">Sorry, something went wrong</script>
+ </body>
+</html>

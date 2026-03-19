@@ -1,0 +1,57 @@
+fg-collection {
+  display: block;
+}
+
+fg-collection-item {
+  display: block;
+  margin: var(--units-1) 0;
+}
+
+.flow details.fg-collection__details {
+  &:last-child {
+    margin-bottom:0;
+  }
+}
+
+.flow details > .fg-collection__item-button {
+    background-color: var(--primary-lightest);
+}
+
+.flow details > .fg-collection__item-button:hover {
+  background-color: var(--primary-lighter);
+}
+
+.flow details[open] .fg-collection__item-content {
+  border-color: var(--primary-lightest);
+}
+
+.fg-collection__add-item {
+  gap: 0.25rem;
+  margin-bottom: var(--units-3);
+}
+
+.fg-collection-item__controls {
+  border-top: 2px solid var(--base-lightest);
+  padding-top: var(--units-3);
+  padding-left: var(--units-05)
+}
+
+fg-collection-item .usa-form-group--error {
+  margin-left: 0;
+}
+
+fg-collection[disallowempty="true"] fg-collection-item:only-of-type  .fg-collection-item__controls {
+  display: none;
+}
+
+.fg-collection__with-determiner {
+  display: none;
+}
+
+fg-collection:has(fg-collection-item) .fg-collection__without-determiner {
+    display: none;
+}
+
+fg-collection:has(fg-collection-item) .fg-collection__with-determiner {
+  display: inline;
+}

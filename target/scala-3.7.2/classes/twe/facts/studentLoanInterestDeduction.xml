@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/studentLoanInterestAmount">
+      <Name>Student loan interest amount</Name>
+      <Description>The amount of interest that the TP affirms that they or their spouse paid on qualify student loans</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/maxStudentLoanDeduction">
+      <Name>Maximum student loan deduction</Name>
+      <Description>The maximum amount one is allowed to deduct because of student loan interest payments</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>2500</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/maxIncomeForStudentLoanInterestDeduction">
+      <Name>Max income for an MFJ filer student loan interest deduction</Name>
+      <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>205000</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>100000</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/studentLoanPhaseOutStart">
+      <Name>Student Loan Phase Out Start for MFJ filers</Name>
+      <Description>
+        The MAGI at which the student loan interest deduction begins to phase out for MFJ filers.
+        Rev Proc 30 Interest on Education Loans &#xA7;221(b)(2)(B)
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dollar>175000</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>85000</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/isEligibleForStudentLoanInterestDeduction">
+      <Name>Cannot deduct student loan interest because of income or filing status</Name>
+      <Description>
+        The TP may be ineligible to deduct student loan interest because of income or filing status
+      </Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/isFilingStatusMFS"/>
+          </Not>
+          <Dependency path="/neitherFilerIsClaimedOnAnotherReturn"/>
+          <LessThanOrEqual>
+            <Left>
+              <Dependency path="/magiForStudentLoanInterestDeduction"/>
+            </Left>
+            <Right>
+              <Dependency path="/maxIncomeForStudentLoanInterestDeduction"/>
+            </Right>
+          </LessThanOrEqual>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/studentLoanPhaseOutRange">
+      <Name>Student Loan Phase Out Range</Name>
+      <Description>
+        The denominator of the phaseout calculation for the student loan deduction for non-MFJ
+        filers
+      </Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/maxIncomeForStudentLoanInterestDeduction"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/studentLoanPhaseOutStart"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/studentLoanAmountPhaseOutAmount">
+      <Name>Student Loan Amount Phase Out Multiplier</Name>
+      <Description>
+        Phaseout amount for the student loan deduction. Described in instructions for 1040, schedule
+        1, line 21. Corresponds with Line 8 of the Student Loan Interest Deduction Worksheet.
+        Returns 0 if there is no phaseout
+      </Description>
+      <Derived>
+        <!-- We are required to round our multiplier to three decimals. To do this while
+                 respecting that our fact graph system automatically rounds dollar values to
+                 three decimal points, we multiply our numerator of dollars by ten and, after
+                 we calculate our final phaseout amount, we divide by ten to undo that damage.
+            -->
+        <Divide>
+          <!-- Eventually divided by 10 to undo our decimal hack -->
+          <Dividend>
+            <Multiply>
+              <Divide>
+                <Dividend>
+                  <Multiply>
+                    <!-- multiplied by 10 to get to our decimal hack -->
+                    <GreaterOf>
+                      <Subtract>
+                        <Minuend>
+                          <Dependency path="/magiForStudentLoanInterestDeduction"/>
+                        </Minuend>
+                        <Subtrahends>
+                          <Dependency path="/studentLoanPhaseOutStart"/>
+                        </Subtrahends>
+                      </Subtract>
+                      <!-- If the number is negative, we're not in the phaseout category and we
+                      simply use 0-->
+                      <Dollar>0</Dollar>
+                    </GreaterOf>
+                    <Dollar>10</Dollar>
+                  </Multiply>
+                </Dividend>
+                <Divisors>
+                  <!-- we divide this MAGI by 30k for MFJ, and 15k for others, to create a
+                        multiplier -->
+                  <Dependency path="/studentLoanPhaseOutRange"/>
+                </Divisors>
+              </Divide>
+              <LesserOf>
+                <Dependency path="/studentLoanInterestAmount"/>
+                <Dependency path="/maxStudentLoanDeduction"/>
+              </LesserOf>
+            </Multiply>
+          </Dividend>
+          <Divisors>
+            <Dollar>10</Dollar>
+          </Divisors>
+        </Divide>
+      </Derived>
+    </Fact>
+    <Fact path="/studentLoanInterestDeduction">
+      <Name>Student Loan Interest Deduction Amount</Name>
+      <Description>The amount of the student loan interest deduction. Line 21 of Form 1040 Schedule 1, Line 33
+        Calculated per requirements on Student Loan Interest Deduction Worksheet</Description>
+      <Derived>
+        <Round>
+          <Switch>
+            <Case>
+              <When>
+                <Not>
+                  <Dependency path="/isEligibleForStudentLoanInterestDeduction"/>
+                </Not>
+              </When>
+              <Then>
+                <Dollar>0</Dollar>
+              </Then>
+            </Case>
+            <Case>
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Subtract>
+                  <Minuend>
+                    <LesserOf>
+                      <Dependency path="/studentLoanInterestAmount"/>
+                      <Dependency path="/maxStudentLoanDeduction"/>
+                    </LesserOf>
+                  </Minuend>
+                  <Subtrahends>
+                    <Dependency path="/studentLoanAmountPhaseOutAmount"/>
+                  </Subtrahends>
+                </Subtract>
+              </Then>
+            </Case>
+          </Switch>
+        </Round>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

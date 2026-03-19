@@ -1,0 +1,267 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/w4Line4NetChange">
+      <Description>
+        Total other income minus adjustments to income; the net change to be entered on Forms W4
+        Lines 4a (when positive) or 4b (when negative; use absolute value).
+        This will not necessarily align with the value that would be produced by filling out the
+        worksheets manually.
+      </Description>
+      <Derived>
+        <Round>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/otherIncomeTotal"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/qualifiedBusinessIncomeDeduction"/>
+              <Dependency path="/excessItemizedOverStandard"/>
+              <Dependency path="/adjustmentsToIncome"/>
+            </Subtrahends>
+          </Subtract>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/w4Line4a">
+      <Description>Form W-4 Line 4(a); also Pub 15-T Worksheet 1A Line 1d.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <!-- When net change is positive ... -->
+                <GreaterThanOrEqual>
+                  <Left>
+                    <Dependency path="/w4Line4NetChange"/>
+                  </Left>
+                  <Right>
+                    <Dollar>0</Dollar>
+                  </Right>
+                </GreaterThanOrEqual>
+                <!-- ... the year end job, if any, with highest income proportion ... -->
+                <!-- ... OR the job with highest remaining standard withholding proportion ... -->
+                <Equal>
+                  <Left>
+                    <Dependency path=".."/>
+                  </Left>
+                  <Right>
+                    <Dependency path="/jobSelectedForExtraWithholding"/>
+                  </Right>
+                </Equal>
+              </All>
+            </When>
+            <Then>
+              <!-- ... gets the entire net change on its Line 4a. -->
+              <Dependency path="/w4Line4NetChange"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/shouldLeaveW4Line4aBlank">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="../w4Line4a"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/w4Line4b">
+      <Description>Form W-4 Line 4(b); also Pub 15-T Worksheet 1A Line 1f.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <!-- When the net change is negative ... -->
+              <All>
+                <LessThan>
+                  <Left>
+                    <Dependency path="/w4Line4NetChange"/>
+                  </Left>
+                  <Right>
+                    <Dollar>0</Dollar>
+                  </Right>
+                </LessThan>
+                <Equal>
+                  <Left>
+                    <Dependency path=".."/>
+                  </Left>
+                  <Right>
+                    <Dependency path="/jobSelectedForExtraWithholding"/>
+                  </Right>
+                </Equal>
+              </All>
+            </When>
+            <Then>
+              <!-- ... it gets absolute value of net change in proportion to income for year end jobs. -->
+              <Multiply>
+                <Dependency path="/w4Line4NetChange"/>
+                <Dollar>-1</Dollar>
+              </Multiply>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/shouldLeaveW4Line4bBlank">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="../w4Line4b"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/w4Line3">
+      <Description>W-4 Line 3. Pub. 15-T Worksheet 1A Line 3a</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <LessThan>
+                  <Left>
+                    <Dependency path="/taxGap"/>
+                  </Left>
+                  <Right>
+                    <Dollar>0</Dollar>
+                  </Right>
+                </LessThan>
+                <Equal>
+                  <Left>
+                    <Dependency path=".."/>
+                  </Left>
+                  <Right>
+                    <Dependency path="/jobSelectedForExtraWithholding"/>
+                  </Right>
+                </Equal>
+              </All>
+            </When>
+            <Then>
+              <Round>
+                <LesserOf>
+                  <!-- bridge gap to zero -->
+                  <Dependency path="../creditsNeededToFullyBridgeTaxGap"/>
+                  <!-- Withhold zero -->
+                  <Dependency path="../tentativeAnnualWithholdingAmount"/>
+                </LesserOf>
+              </Round>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/shouldLeaveW4Line3Blank">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="../w4Line3"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/w4Line4c">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <GreaterThan>
+                  <Left>
+                    <Dependency path="/taxGap"/>
+                  </Left>
+                  <Right>
+                    <Dollar>0</Dollar>
+                  </Right>
+                </GreaterThan>
+                <Equal>
+                  <Left>
+                    <Dependency path=".."/>
+                  </Left>
+                  <Right>
+                    <Dependency path="/jobSelectedForExtraWithholding"/>
+                  </Right>
+                </Equal>
+              </All>
+            </When>
+            <Then>
+              <Round>
+                <Divide>
+                  <Dividend>
+                    <Dependency path="/taxGap"/>
+                  </Dividend>
+                  <Divisors>
+                    <Subtract>
+                      <Minuend>
+                        <Dependency path="../fullPayPeriods"/>
+                      </Minuend>
+                      <Subtrahends>
+                        <Dependency path="../payPeriodsBeforeW4ChangesAppear"/>
+                      </Subtrahends>
+                    </Subtract>
+                  </Divisors>
+                </Divide>
+              </Round>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/jobs/*/shouldLeaveW4Line4cBlank">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="../w4Line4c"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

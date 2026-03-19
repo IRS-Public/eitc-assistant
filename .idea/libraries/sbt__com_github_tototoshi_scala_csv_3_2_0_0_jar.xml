@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sbt: com.github.tototoshi:scala-csv_3:2.0.0:jar" type="java-imported" external-system-id="SBT">
+    <properties groupId="com.github.tototoshi" artifactId="scala-csv_3" version="2.0.0" baseVersion="2.0.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/tototoshi/scala-csv_3/2.0.0/scala-csv_3-2.0.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../Library/Caches/Coursier/v1/https/repo1.maven.org/maven2/com/github/tototoshi/scala-csv_3/2.0.0/scala-csv_3-2.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

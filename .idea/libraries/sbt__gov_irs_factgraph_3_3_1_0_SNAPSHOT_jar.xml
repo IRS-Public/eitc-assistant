@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="sbt: gov.irs:factgraph_3:3.1.0-SNAPSHOT:jar" type="java-imported" external-system-id="SBT">
+    <properties groupId="gov.irs" artifactId="factgraph_3" version="3.1.0-SNAPSHOT" baseVersion="3.1.0-SNAPSHOT" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../.ivy2/local/gov.irs/factgraph_3/3.1.0-SNAPSHOT/jars/factgraph_3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/../.ivy2/local/gov.irs/factgraph_3/3.1.0-SNAPSHOT/srcs/factgraph_3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

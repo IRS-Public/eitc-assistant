@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/fifteenPercentTaxRate">
+      <Derived>
+        <Rational>15/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/twentyPercentTaxRate">
+      <Derived>
+        <Rational>20/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgTier1UpperLimit">
+      <Description>
+        Choose correct upper income limit for 0% calculations based on filing
+        status. Line 6 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusMFS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>49450.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>98900.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dollar>66200.00</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgTier2UpperLimit">
+      <Description>
+        Choose correct upper income limit for 15% calculations based on filing status.
+        Line 13 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusSingle"/>
+            </When>
+            <Then>
+              <Dollar>545500.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/isFilingStatusQSS"/>
+              </Any>
+            </When>
+            <Then>
+              <Dollar>613700.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusHOH"/>
+            </When>
+            <Then>
+              <Dollar>579600.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>306850.00</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine2">
+      <Derived>
+        <Dependency path="/qualifiedDividendsIncome"/>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine3">
+      <Derived>
+        <LesserOf>
+          <Dependency path="/scheduleDLine16"/>
+          <Dependency path="/netLongTermGainOrLoss"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine4">
+      <Description>The sum of Qualified Dividends and Long-Term Capital Gains.
+        Line 4 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/qdcgWorksheetLine2"/>
+          <Dependency path="/qdcgWorksheetLine3"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine7">
+      <Description>
+        The smaller value of taxable income vs tier 1 upper limit.
+        Line 7 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/taxableIncome"/>
+          <Dependency path="/qdcgTier1UpperLimit"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine8">
+      <Description>
+        The smaller value of taxable income vs [taxable income minus qualified dividends].
+        Line 8 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/taxableIncomeMinusQDAndNetGainsQDCGWorkSheetLine5"/>
+          <Dependency path="/qdcgWorksheetLine7"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/amountOfNetGainsTaxedAt0">
+      <Description>
+        Amount of Qualified Dividends Taxed at 0%.
+        Line 9 and Line 11 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/qdcgWorksheetLine7"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/qdcgWorksheetLine8"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine10">
+      <Description>
+        The lesser of either /taxableIncome or /qualifiedDividendsAndLongTermCapitalGain.
+        Line 10 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/taxableIncome"/>
+          <Dependency path="/qdcgWorksheetLine4"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine12">
+      <Description>
+        Subtract /amountOfNetGainsTaxedAt0 from /qdcgWorksheetLine10.
+        Line 12 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/qdcgWorksheetLine10"/>
+          </Minuend>
+          <Subtrahends>
+            <!-- Line 11-->
+            <Dependency path="/amountOfNetGainsTaxedAt0"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine14">
+      <Description>
+        Lesser of Lines 1 and 13
+        Line 14 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/taxableIncome"/>
+          <Dependency path="/qdcgTier2UpperLimit"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine15">
+      <Derived>
+        <Add>
+          <Dependency path="/taxableIncomeMinusQDAndNetGainsQDCGWorkSheetLine5"/>
+          <Dependency path="/amountOfNetGainsTaxedAt0"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/remainingTaxableFor15">
+      <Description>
+        Subtract Line 15 from Line 14 to calculate remaining amount eligible to be taxed at 15%.
+        Line 16 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/qdcgWorksheetLine14"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/qdcgWorksheetLine15"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine17">
+      <Description>Lesser amount when comparing /qdcgWorksheetLine12 and
+        /remainingTaxableFor15, Line 12 vs Line 16
+        Line 17 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/qdcgWorksheetLine12"/>
+          <Dependency path="/remainingTaxableFor15"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/netGainTaxAmountWith15PercentTax">
+      <Description>Tax withholding based on 15% tax of eligible qualified dividends.
+        Line 18 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/qdcgWorksheetLine17"/>
+          <Dependency path="/fifteenPercentTaxRate"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/qdcgWorksheetLine19">
+      <Derived>
+        <Add>
+          <Dependency path="/amountOfNetGainsTaxedAt0"/>
+          <Dependency path="/qdcgWorksheetLine17"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/remainingTaxableFor20">
+      <Description> Subtract Line 19 from Line 10 to calculate remaining amount eligible to be taxed
+        at 20%. Line 20 - Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/qdcgWorksheetLine10"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/qdcgWorksheetLine19"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/netGainTaxAmountWith20PercentTax">
+      <Description>Tax withholding based on 20% tax of eligible qualified dividends.
+        Line 21 -Qualified Dividends and Capital Gain Worksheet
+      </Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/twentyPercentTaxRate"/>
+          <Dependency path="/remainingTaxableFor20"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <!-- taxCalculations.xml has the remaining QDCG Worksheet Lines to determine the correct tentative tax-->
+  </Facts>
+</FactDictionaryModule>

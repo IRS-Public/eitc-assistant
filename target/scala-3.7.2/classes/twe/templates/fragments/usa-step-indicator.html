@@ -1,0 +1,49 @@
+<div class="usa-step-indicator margin-top-3" th:if="${exclude == false}">
+  <ol class="usa-step-indicator__segments">
+    <li class="usa-step-indicator__segment usa-step-indicator__segment--complete"
+        th:each="page, iterStat : ${pages}"
+        th:if="${iterStat.index < stepIndex}">
+        <span class="usa-step-indicator__segment-label">
+          <a class="usa-step-indicator__link" th:href="${page.href()}">
+            <span th:text="${page.title}"></span>
+            <span class="usa-sr-only" th:text="#{step-indicator.completed}"></span>
+          </a>
+        </span>
+    </li>
+    <li class="usa-step-indicator__segment usa-step-indicator__segment--current"
+        th:each="page, iterStat : ${pages}"
+        th:if="${iterStat.index == stepIndex}">
+        <span class="usa-step-indicator__segment-label">
+          <span aria-current="step" th:text="${page.title}"></span>
+        </span>
+    </li>
+    <li class="usa-step-indicator__segment"
+        th:each="page, iterStat : ${pages}"
+        th:if="${iterStat.index > stepIndex}">
+        <span class="usa-step-indicator__segment-label">
+        <span th:text="${page.title}"></span>
+        <span class="usa-sr-only" th:text="#{step-indicator.not-completed}"></span>
+        </span>
+      </li>
+  </ol>
+
+  <div class="usa-step-indicator__header">
+    <div class="usa-step-indicator__heading">
+      <span class="usa-sr-only">
+        <th:block th:text="#{step-indicator.step}"></th:block>
+        <th:block th:text="${stepIndex + 1}"></th:block>
+        <th:block th:text="#{step-indicator.of}"></th:block>
+        <th:block th:text="${stepTotal}"></th:block>:
+        <th:block th:text="${stepTitle}"></th:block>
+      </span>
+
+      <span class="usa-step-indicator__heading-counter" aria-hidden="true">
+        <span class="usa-step-indicator__current-step" th:text="${stepIndex + 1}"></span>
+        <span class="usa-step-indicator__total-steps">
+            <span th:text="#{step-indicator.of}"></span>
+            <span th:text="${stepTotal}"></span>
+        </span><span class="usa-step-indicator__heading-text" th:text="${stepTitle}"></span
+      >
+    </div>
+  </div>
+</div>

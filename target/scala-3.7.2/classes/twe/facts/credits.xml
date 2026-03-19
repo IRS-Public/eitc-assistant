@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/totalCredits">
+      <Description>Total sum of non-refundable and refundable credits.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/totalNonRefundableCredits"/>
+          <Dependency path="/totalRefundableCredits"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/totalNonRefundableCredits">
+      <Description>Form 1040 Line 21. Schedule 3 Line 8 + CTC/ODC nonrefundable portion.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/totalCtcAndOdc"/>
+          <Dependency path="/schedule3NonRefundableCreditsTotal"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/totalRefundableCredits">
+      <Description>Form 1040 Line 32. Schedule 3 Line 15 + EITC,ACTC, AOTC, refundable portion of Adoption</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/earnedIncomeCredit"/>
+          <Dependency path="/additionalCtc"/>
+          <Dependency path="/americanOpportunityCredit"/>
+          <Dependency path="/adoptionCreditRefundable"/>
+          <Dependency path="/schedule3OtherPaymentsAndRefundableCreditsTotal"/>
+        </Add>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

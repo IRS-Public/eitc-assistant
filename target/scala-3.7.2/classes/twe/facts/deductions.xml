@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/totalDeductions">
+      <Description>Total deductions as reported on the Form 1040</Description>
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/standardOrItemizedDeduction"/>
+            <Dependency path="/additionalDeductions"/>
+          </Add>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/additionalDeductions">
+      <Derived>
+        <Add>
+          <Dependency path="/qualifiedBusinessIncomeDeduction"/>
+          <Dependency path="/oB3Deductions"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/totalDeductionsNetQBI">
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/standardOrItemizedDeduction"/>
+            <Dependency path="/oB3Deductions"/>
+          </Add>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/excessItemizedOverStandard">
+      <Description>Itemized Deduction - Standard Deduction. Used for calculating Line 4b net change. </Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Round>
+            <Subtract>
+              <Minuend>
+                <Add>
+                  <Dependency path="/itemizedDeduction"/>
+                </Add>
+              </Minuend>
+              <Subtrahends>
+                <Dependency path="/standardDeduction"/>
+              </Subtrahends>
+            </Subtract>
+          </Round>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/totalDeductionsForQBIDeduction">
+      <Description>OB3 deductions + Standard or Itemized, with coordination from OB3 70111 to remove limitation on top bracket for itemizers
+        From Form 8995A:
+        Form 1040 or 1040-SR filers: Form 1040 or 1040-SR, line 11a, minus Schedule 1-A (Form 1040), Part II, line 13, and then minus Form 1040 or 1040-SR, line 12e
+      </Description>
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/standardOrItemizedDeductionForQBIDeduction"/>
+            <Dependency path="/qualifiedTipDeduction"/>
+          </Add>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/oB3Deductions">
+      <Name>OB3 Deductions</Name>
+      <Description>Sum of all OB3 below the line deductions</Description>
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Add>
+            <Dependency path="/oB3DeductionsExcludingNonItemizerCharity"/>
+            <Dependency path="/nonItemizerCharitableContributionDeduction"/>
+          </Add>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/oB3DeductionsExcludingNonItemizerCharity">
+      <Description>OB3 Deductions excluding the non-itemizer charity deduction,
+        to avoid circularity when calculating itemized deduction caps.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/qualifiedPersonalVehicleLoanInterestDeduction"/>
+          <Dependency path="/seniorDeduction"/>
+          <Dependency path="/qualifiedTipDeduction"/>
+          <Dependency path="/overtimeCompensationDeduction"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/wantsStandardDeduction">
+      <Name>Wants standard deduction</Name>
+      <Description>Will the taxpayer take the standard deduction?</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/wantsItemizedDeduction">
+      <Name>Wants itemized deduction</Name>
+      <Description>Will the taxpayer take the itemized deduction?</Description>
+      <Derived>
+        <Not>
+          <Dependency path="/wantsStandardDeduction"/>
+        </Not>
+      </Derived>
+    </Fact>
+    <Fact path="/standardDeductionWillBeUsed">
+      <Description>
+        Whether the standard deduction is used, based on the taxpayer's choice and net benefit.
+        Effectively, the only time we will *not* use the standard deduction is when non-MFS taxpayer wants to itemize,
+        and their itemized deduction amount is greater than the standard deduction amount that they are eligible for.
+        In all other cases, the standard deduction will be used.
+      </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dependency path="/wantsStandardDeduction"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Not>
+                <GreaterThan>
+                  <Left>
+                    <Dependency path="/itemizedDeduction"/>
+                  </Left>
+                  <Right>
+                    <Add>
+                      <Dependency path="/standardDeduction"/>
+                      <Dependency path="/nonItemizerCharitableContributionDeduction"/>
+                    </Add>
+                  </Right>
+                </GreaterThan>
+              </Not>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/standardDeductionOverridesItemizedDeduction">
+      <Description>Whether the taxpayer wanted to itemize, but the standard deduction was determined to be of greater benefit</Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/isFilingStatusMFS"/>
+          </Not>
+          <Dependency path="/wantsItemizedDeduction"/>
+          <Dependency path="/standardDeductionWillBeUsed"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/standardOrItemizedDeduction">
+      <Name>Standard or itemized deductions</Name>
+      <Description>The taxpayer's choice of standard or itemized deductions as reported on line 12
+        of Form 1040.
+      </Description>
+      <Derived>
+        <Round>
+          <Switch>
+            <Case>
+              <When>
+                <Dependency path="/standardDeductionWillBeUsed"/>
+              </When>
+              <Then>
+                <Dependency path="/standardDeduction"/>
+              </Then>
+            </Case>
+            <Case>
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Dependency path="/itemizedDeduction"/>
+              </Then>
+            </Case>
+          </Switch>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/standardOrItemizedDeductionForQBIDeduction">
+      <Description>Ignores /amountOfItemizedDeductionsToSubtract when computing /itemizedDeduction as this has a circular dependency on QBI deduction that is explicitly ignored when calculation QBID</Description>
+      <Derived>
+        <Round>
+          <Switch>
+            <Case>
+              <When>
+                <All>
+                  <Dependency path="/wantsItemizedDeduction"/>
+                  <GreaterThan>
+                    <Left>
+                      <Dependency path="/itemizedDeductionTotalForQBI"/>
+                    </Left>
+                    <Right>
+                      <Dependency path="/standardDeduction"/>
+                    </Right>
+                  </GreaterThan>
+                </All>
+              </When>
+              <Then>
+                <Dependency path="/itemizedDeductionTotalForQBI"/>
+              </Then>
+            </Case>
+            <Case>
+              <When>
+                <True/>
+              </When>
+              <Then>
+                <Dependency path="/standardDeduction"/>
+              </Then>
+            </Case>
+          </Switch>
+        </Round>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>
