@@ -1,7 +1,0 @@
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/parser/Flow.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/parser/Page.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/parser/PageNode.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/generators/Website.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/generators/WebsitePage.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m/Users/samuelswire/tax-withholding-estimator/target/scala-3.7.2/classes/gov/irs/twe/TweFactDictionary.class is out of sync with its TASTy file. Loaded TASTy file. Try cleaning the project to fix this issue[0m
-[0m[[0m[33mwarn[0m] [0m[0m6 warnings found[0m
