@@ -1,419 +1,23 @@
 fg-sets:
-  /jobs/*/pastPaycheckIncome1:
-    question: On the most recent paystub from <fg-show path="/taxYear"/>, what’s the
-      gross income per pay period?
-  /sCorpPassiveIncome:
-    question: Passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /educatorExpenses/:
-    question: Educator expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      expect to pay in <fg-show path="/taxYear"/>
-  /jobs/*/payFrequency:
-    question: |-
-      How frequently are <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span>
-                  <!-- isIncomplete default needed because this appears before filer selected -->
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isIncomplete">you</span> paid?
-    options:
-      weekly:
-        name: Weekly
-      biWeekly:
-        name: Every two weeks
-      semiMonthly:
-        name: Twice monthly
-      monthly:
-        name: Once a month
-  /pensions/*/hsaOrFsaContributionsPerPayPeriod:
-    question: Amount per pay period
-  /jobs/*/pastPaycheckIncome3:
-    question: On the third paystub, what’s the gross income per pay period?
-  /secondaryFilerIsClaimedOnAnotherReturn:
-    question: Can your spouse be claimed as a dependent on someone else's <fg-show
-      path="/taxYear"/> tax return?
-  /selfEmploymentRetirementPlanContributions:
-    question: Self-employed retirement contributions <span condition="/isFilingStatusMFJ"
-      operator="isFalse">your</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
-      and your spouse</span> expect to make in <fg-show path="/taxYear"/>
-  /alimonyPaid:
-    question: Alimony you expect to pay in <fg-show path="/taxYear"/>
-  /stateAndLocalTaxPayments:
-    question: State and local taxes you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /businessCreditsForEligible:
-    question: Eligible business expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      expect to pay in <fg-show path="/taxYear"/>
-  /pensions/*/otherPreTaxContributionsPerPayPeriod:
-    question: Amount per pay period
-  /pensions/*/startDate:
-    question: What’s the first day in <fg-show path="/taxYear"/> <span condition="/pensions/*/notSpouses"
-      operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span>
-      expect to receive this pension or annuity?
-  /schedule3Line1:
-    question: Foreign tax you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /socialSecuritySources/*/withheldRate:
-    question: What percent of your monthly Social Security benefit <span condition="/socialSecuritySources/*/isFutureOrUnknown"
-      operator="isTrue">is</span><span condition="/socialSecuritySources/*/isFutureOrUnknown"
-      operator="isFalse">was</span> withheld for federal tax?
-    options:
-      twelve:
-        name: 12%
-      zero:
-        name: 0%
-      seven:
-        name: 7%
-      ten:
-        name: 10%
-      twentyTwo:
-        name: 22%
-  /socialSecuritySources/*/endDate:
-    question: What’s the last day in <fg-show path="/taxYear"/> <span condition="/socialSecuritySources/*/notSpouses"
-      operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses"
-      operator="isFalse">they</span> expect to receive Social Security?
-  /qualifiedMortgageInterestAndInvestmentInterestExpenses:
-    question: Qualified interest you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /pensions/*/averagePayPerPayPeriodForWithholding:
-    question: What’s the gross income for the most recent pension or annuity payment?
-  /preTaxRetirementAccountIncome:
-    question: Total distributions you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to receive from pre-tax retirement accounts in <fg-show
-      path="/taxYear"/>
-  /primaryTaxpayerElectsForSeniorDeduction:
-    question: Do you plan to take the additional senior deduction?
-  /jobs/*/retirementPlanContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
+  /jobsIncomeTotal:
+    question: How much wages, salary, or tips do you expect to make this year where
+      federal income taxes are withheld
   /hsaContributionAmount:
     question: HSA contributions <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> expect
       to make in <fg-show path="/taxYear"/>
-  /pensions/*/healthInsuranceContributionsPerPayPeriod:
-    question: Amount per pay period
-  /medicalAndDentalExpenses:
-    question: Medical and dental expenses you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /pensions/*/mostRecentPayDate:
-    question: What’s the date of <span condition="/pensions/*/notSpouses" operator="isTrue">your</span><span
-      condition="/pensions/*/notSpouses" operator="isFalse">their</span> most recent
-      pension or annuity payment?
-  /pensions/*/isAllYear:
-    question: Do <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span
-      condition="/pensions/*/notSpouses" operator="isFalse">they</span> expect to
-      have this pension or annuity all year or only part of the year?
-    options:
-      'true':
-        name: All year (January 1–December 31, <fg-show path="/taxYear"/>)
-      'false':
-        name: Part of the year
-  /jobs/*/consistentPay:
-    question: How steady is the pay from paycheck to paycheck?
-    options:
-      'true':
-        name: The pay is about the same each paycheck
-      'false':
-        name: The pay is very different each paycheck
-  /otherDeductionsTotal:
-    question: Estimated other deductions in <fg-show path="/taxYear"/>
-  /jobs/*/overtimeCompensationRate:
-    question: What is the rate at which you get paid overtime?
-    options:
-      onePointFive:
-        name: 1.5 times my regular pay
-      two:
-        name: 2.0 times my regular pay
-  /qBIDeductionOverrideAmount:
-    question: Estimated QBI for you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> in <fg-show path="/taxYear"/>
   /sCorpNonPassiveIncome:
     question: Non-passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
       operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /selfEmploymentSources/*/workRelatedExpenses:
-    question: Total self-employment work-related expenses <span condition="/selfEmploymentSources/*/notSpouses"
-      operator="isTrue">you</span><span condition="/selfEmploymentSources/*/notSpouses"
-      operator="isFalse">they</span> expect to deduct in <fg-show path="/taxYear"/>
-  /qualifyingStudents:
-    question: Number of college students
-  /jobs/*/pastPaycheckIncome2:
-    question: On the second paystub, what’s the gross income per pay period?
-  /jobs/*/hsaOrFsaContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
-  /jobs/*/isAllYear:
-    question: |-
-      Do <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span>
-                  <!-- isIncomplete default needed because this appears before filer selected -->
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isIncomplete">you</span> expect to have this job all year or only part of the year?
-    options:
-      'true':
-        name: All year (January 1-December 31, <fg-show path="/taxYear"/>)
-      'false':
-        name: Part of the year
-  /wantsStandardDeduction:
-    question: Choose if you want to take the standard deduction or itemize your deductions.
-    options:
-      'true':
-        name: Use the standard deduction (<fg-show path="/standardDeduction"/>)
-      'false':
-        name: Itemize deductions
-  /jobs/*/otherPreTaxContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
-  /jobs/*/retirementPlanContributionsPerPayPeriod:
-    question: Amount per pay period
   /royaltyIncome:
     question: Royalty income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
       your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /primaryFilerAge25OrOlderForEitc:
-    question: Will you be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
-  /jobs/*/overtimeCompensationTotal:
-    question: Total estimated overtime pay for <fg-show path="/taxYear"/>
-  /socialSecuritySources/*/startDate:
-    question: What’s the first day in <fg-show path="/taxYear"/> <span condition="/socialSecuritySources/*/notSpouses"
-      operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses"
-      operator="isFalse">they</span> expect to receive Social Security?
-  /secondaryTaxpayerElectsForSeniorDeduction:
-    question: Does your spouse plan to take the additional senior deduction?
-  /shortTermCapitalLoss:
-    question: Short-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect in <fg-show path="/taxYear"/>
-  /retirementSavingsContributionsTaxCreditAmount:
-    question: Retirement savings credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to claim in <fg-show path="/taxYear"/>
-  /longTermCapitalLoss:
-    question: Long-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect in <fg-show path="/taxYear"/>
-  /jobs/*/healthInsuranceContributionsPerPayPeriod:
-    question: Amount per pay period
-  /ordinaryDividendsIncome:
-    question: Ordinary dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /socialSecuritySources/*/isAllYear:
-    question: Do <span condition="/socialSecuritySources/*/notSpouses" operator="isTrue">you</span><span
-      condition="/socialSecuritySources/*/notSpouses" operator="isFalse">they</span>
-      expect to have this Social Security income all year or only part of the year?
-    options:
-      'true':
-        name: All year (January 1–December 31, <fg-show path="/taxYear"/>)
-      'false':
-        name: Part of the year
-  /selfEmploymentSources/*/grossIncome:
-    question: What’s the total gross income <span condition="/selfEmploymentSources/*/notSpouses"
-      operator="isTrue">you</span><span condition="/selfEmploymentSources/*/notSpouses"
-      operator="isFalse">they</span> expect to earn from this self-employment work
-      in <fg-show path="/taxYear"/>?
-  /isMFSLivedTogether:
-    question: Will you and your spouse live together all year in <fg-show path="/taxYear"/>?
-    options:
-      'true':
-        name: Yes, we'll live together all year
-      'false':
-        name: No, we won't live together all year
-  /pensions/*/hsaOrFsaContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
-  /studentLoanInterestAmount:
-    question: |-
-      Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
-                <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /primaryFilerIsClaimingDependents:
-    question: Do you plan to claim dependents on your <fg-show path="/taxYear"/> tax
-      return?
-  /rentalIncome:
-    question: Net amount of rental income you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /jobs/*/yearToDateWithholding:
-    question: Federal taxes withheld (paid) so far in <fg-show path="/taxYear"/>
-  /penaltyForEarlySavingsWithdrawal:
-    question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      expect to pay in <fg-show path="/taxYear"/>
-  /secondaryFilerIsBlind:
-    question: Is your spouse blind?
-  /jobs/*/mostRecentPayPeriodHasBonus:
-    question: |-
-      Did <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your
-                      spouse</span>
-                    <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> receive a bonus <span condition="/jobs/*/consistentPay" operator="isTrue">this pay
-                      period?</span>
-                    <span condition="/jobs/*/consistentPay" operator="isFalse">in these pay
-                      periods?</span>
-    options:
-      'true':
-        name: |-
-          Yes, there's bonus pay in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period</span>
-                          <span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods</span>
-      'false':
-        name: |-
-          No, there's only regular pay in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period</span>
-                          <span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods</span>
-  /qualifiedDividendsIncome:
-    question: Qualified dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /longTermCapitalGainsIncome:
-    question: Long-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /primaryFilerAge65OrOlder:
-    question: Will you be 65 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
-  /primaryFilerIsBlind:
-    question: Are you blind?
-  /nonSpecificOtherIncome:
-    question: Total amount of other income you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"/>
-  /unemploymentIncome:
-    question: Total gross unemployment income you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"/>
-  /jobs/*/amountLastPaycheck:
-    question: What’s the gross income for this pay period?
-  /jobs/*/qualifiedTipIncome:
-    question: Total estimated tips for <fg-show path="/taxYear"/>
-  /jobs/*/filerAssignment:
-    question: Who is this income for?
-    options:
-      self:
-        name: Myself
-      spouse:
-        name: My spouse
-  /totalEstimatedTaxesPaid:
-    question: Estimated tax payments you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> made so far in <fg-show path="/taxYear"/>
-  /llcQualifiedEducationExpenses:
-    question: Estimated total tuition or fees in <fg-show path="/taxYear"/>?
-  /pensions/*/yearToDateIncome:
-    question: What’s the gross income <span condition="/pensions/*/notSpouses" operator="isTrue">you
-      have</span><span condition="/pensions/*/notSpouses" operator="isFalse">your
-      spouse has</span> received so far in <fg-show path="/taxYear"/>?
-  /jobs/*/mostRecentPayPeriodBonusAmount:
-    question: |-
-      How much <span condition="/jobs/*/consistentPay" operator="isFalse">total </span> bonus pay did <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your
-                      spouse</span><span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> earn in <span condition="/jobs/*/consistentPay" operator="isTrue">this pay period?</span><span condition="/jobs/*/consistentPay" operator="isFalse">these pay periods?</span>
-  /elderlyAndDisabledTaxCreditAmount:
-    question: Amount of the elderly and disabled credit you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/>
-  /taxableInterestIncome:
-    question: Interest income you<span condition="/isFilingStatusMFJ" operator="isTrue">
-      and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /cdccQualifyingPersons:
-    question: Number of qualifying children and dependents
-  /jobs/*/totalFutureBonus:
-    question: |-
-      Enter an estimate for any bonus pay you think <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse</span>
-                    <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you</span> will earn for the rest of <fg-show path="/taxYear"/>
-  /alternativeMinimumTaxCreditAmount:
-    question: AMT tax credit you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to claim in <fg-show path="/taxYear"/>
   /shortTermCapitalGainsIncome:
     question: Short-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
       your spouse</span> expect to earn in <fg-show path="/taxYear"/>
-  /pensions/*/healthInsuranceContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
-  /socialSecuritySources/*/monthlyIncome:
-    question: What’s the monthly benefit amount <span condition="/socialSecuritySources/*/notSpouses"
-      operator="isTrue">you</span><span condition="/socialSecuritySources/*/notSpouses"
-      operator="isFalse">they</span> <span condition="/socialSecuritySources/*/isFutureOrUnknown"
-      operator="isTrue">receive</span><span condition="/socialSecuritySources/*/isFutureOrUnknown"
-      operator="isFalse">received</span> from Social Security?
-  /jobs/*/writableStartDate:
-    question: |-
-      What’s the first day in <fg-show path="/taxYear"/>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> expect to have this job?
-  /pensions/*/yearToDateWithholding:
-    question: Federal taxes withheld (paid) so far in <fg-show path="/taxYear"/>
-  /jobs/*/otherPreTaxContributionsPerPayPeriod:
-    question: Amount per pay period
-  /pensions/*/filerAssignment:
-    question: Who is this pension or annuity paid to?
-    options:
-      self:
-        name: Myself
-      spouse:
-        name: My spouse
   /primaryFilerIsClaimedOnAnotherReturn:
     question: Can you be claimed as a dependent on someone else’s <fg-show path="/taxYear"/>
       tax return?
-  /nonItemizerCharitableContributionDeductionAmount:
-    question: Cash charitable contributions you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to make in <fg-show path="/taxYear"/>
-  /aotcQualifiedEducationExpenses:
-    question: Estimated total college tuition or fees in <fg-show path="/taxYear"/>
-  /jobs/*/mostRecentPayDate:
-    question: |-
-      When was <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">their</span>
-                    <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> most recent pay date in <fg-show path="/taxYear"/>?
-  /estimatedTotalQualifiedAdoptionExpenses:
-    question: Adoption expenses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /jobs/*/yearToDateIncome:
-    question: |-
-      What’s the gross income <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">your spouse has</span>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">you have</span> received so far in <fg-show path="/taxYear"/>?
-  /unemploymentIncomeWithholding:
-    question: Did you choose to withhold federal tax from your unemployment income?
-  /pensions/*/averageWithholdingPerPayPeriod:
-    question: Federal taxes withheld (paid) for the most recent payment
-  /cashCharitableContributions:
-    question: Gifts to charity you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to make in <fg-show path="/taxYear"/>
-  /selfEmploymentSources/*/filerAssignment:
-    question: Who is this income for?
-    options:
-      self:
-        name: Myself
-      spouse:
-        name: My spouse
-  /odcEligibleDependents:
-    question: Number of other dependents
-  /deductionForTraditionalIRAContribution:
-    question: Traditional (pre-tax) IRA contributions <span condition="/isFilingStatusMFJ"
-      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
-      and your spouse</span> expect to make in <fg-show path="/taxYear"/>
-  /ctcEligibleDependents:
-    question: Number of children
-  /eitcQualifyingChildren:
-    question: Number of qualifying children
-  /secondaryFilerAge25OrOlderForEitc:
-    question: Will your spouse be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
-  /selfEmploymentHealthInsuranceContributions:
-    question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      expect to pay in <fg-show path="/taxYear"/>
-  /wantsDerivedQBIDeduction:
-    question: Choose if you want to use the QBI amount we calculated from your answers
-      or if you want to enter a different amount.
-    options:
-      'true':
-        name: Use <fg-show path="/derivedQualifiedBusinessIncomeDeduction"/> for this
-          estimate
-      'false':
-        name: Enter a different amount for this estimate
-  /pensions/*/endDate:
-    question: What’s the last day in <fg-show path="/taxYear"/> <span condition="/pensions/*/notSpouses"
-      operator="isTrue">you</span><span condition="/pensions/*/notSpouses" operator="isFalse">they</span>
-      expect to receive this pension or annuity?
-  /jobs/*/writableEndDate:
-    question: |-
-      What’s the last day in <fg-show path="/taxYear"/>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isFalse">they</span>
-                  <span condition="/jobs/*/isFilerAssignmentSelf" operator="isTrue">your</span> expect to have this job?
-  /tentativeSchedule3Line6g:
-    question: Estimated mortgage interest credit you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/>
-  /adoptionEligibleChildren:
-    question: Number of adopted children
-  /pensions/*/payFrequency:
-    question: How frequently are <span condition="/pensions/*/notSpouses" operator="isTrue">you</span><span
-      condition="/pensions/*/notSpouses" operator="isFalse">they</span> paid?
-    options:
-      weekly:
-        name: Weekly
-      biWeekly:
-        name: Every two weeks
-      semiMonthly:
-        name: Twice monthly
-      monthly:
-        name: Once a month
-  /pensions/*/otherPreTaxContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
   /filingStatus:
     question: Which filing status will you use to file federal taxes in <fg-show path="/taxYear"/>?
     options:
@@ -427,48 +31,111 @@ fg-sets:
         name: Married Filing Jointly
       marriedFilingSeparately:
         name: Married Filing Separately
-  /schedule3Line6a:
-    question: Amount in business credits you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to claim in <fg-show path="/taxYear"/>
-  /jobs/*/healthInsuranceContributionsToDate:
-    question: Amount so far in <fg-show path="/taxYear"/>
-  /otherIncomeWithholding:
-    question: Federal taxes withheld from your <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse's</span> other income so far in <fg-show path="/taxYear"/>
-  /casualtyLossesTotal:
-    question: Estimated casualty losses in <fg-show path="/taxYear"/>
-  /jobs/*/isHourlyJob:
-    question: Is this an hourly or salary job
-    options:
-      'true':
-        name: Hourly (the pay changes based on how many hours you work)
-      'false':
-        name: Salary (the pay is about the same each pay period)
   /secondaryFilerAge65OrOlder:
     question: Will your spouse be 65 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
-  /cdccQualifyingExpenses:
-    question: Estimated annual care expenses for <fg-show path="/taxYear"/>
-  /jobs/*/hsaOrFsaContributionsPerPayPeriod:
-    question: Amount per pay period
-  /socialSecuritySources/*/filerAssignment:
-    question: Who is this Social Security income paid to?
-    options:
-      self:
-        name: Myself
-      spouse:
-        name: My spouse
-  /jobs/*/mostRecentPayPeriodEnd:
-    question: When did the most recent pay period in <fg-show path="/taxYear"/> end?
-  /qualifiedMortgageInsurancePremiums:
-    question: Mortgage insurance premiums you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> expect to pay in <fg-show path="/taxYear"/>
   /movingExpensesForArmedServicesMembers:
     question: Moving expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
       expect to pay in <fg-show path="/taxYear"/>
-  /personalVehicleLoanInterestAmount:
-    question: Car loan interest you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-      your spouse</span> expect to pay in <fg-show path="/taxYear"/>
-  /jobs/*/amountWithheldLastPaycheck:
-    question: Federal taxes withheld (paid) for this pay period
+  /sCorpPassiveIncome:
+    question: Passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
+      operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /educatorExpenses/:
+    question: Educator expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      expect to pay in <fg-show path="/taxYear"/>
+  /secondaryFilerIsClaimedOnAnotherReturn:
+    question: Can your spouse be claimed as a dependent on someone else's <fg-show
+      path="/taxYear"/> tax return?
+  /selfEmploymentRetirementPlanContributions:
+    question: Self-employed retirement contributions <span condition="/isFilingStatusMFJ"
+      operator="isFalse">your</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+      and your spouse</span> expect to make in <fg-show path="/taxYear"/>
+  /alimonyPaid:
+    question: Alimony you expect to pay in <fg-show path="/taxYear"/>
+  /businessCreditsForEligible:
+    question: Eligible business expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      expect to pay in <fg-show path="/taxYear"/>
+  /socialSecurityIncome:
+    question: What’s the total taxable amount of social security or Railroad Retirement
+      Benefits you expect to make this year
+  /preTaxRetirementAccountIncome:
+    question: Total distributions you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect to receive from pre-tax retirement accounts in <fg-show
+      path="/taxYear"/>
+  /primaryFilerAge25OrOlderForEitc:
+    question: Will you be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
+  /shortTermCapitalLoss:
+    question: Short-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect in <fg-show path="/taxYear"/>
+  /longTermCapitalLoss:
+    question: Long-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect in <fg-show path="/taxYear"/>
+  /ordinaryDividendsIncome:
+    question: Ordinary dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /isMFSLivedTogether:
+    question: Will you and your spouse live together all year in <fg-show path="/taxYear"/>?
+    options:
+      'true':
+        name: Yes, we'll live together all year
+      'false':
+        name: No, we won't live together all year
+  /studentLoanInterestAmount:
+    question: |-
+      Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
+                <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> expect to pay in <fg-show path="/taxYear"/>
+  /rentalIncome:
+    question: Net amount of rental income you <span condition="/isFilingStatusMFJ"
+      operator="isTrue">and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /primaryFilerIsClaimingDependents:
+    question: Do you plan to claim dependents on your <fg-show path="/taxYear"/> tax
+      return?
+  /penaltyForEarlySavingsWithdrawal:
+    question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      expect to pay in <fg-show path="/taxYear"/>
+  /selfEmplomentGrossIncomeWorkRelatedExpenses:
+    question: Total self-employment work-related expenses <span condition="/isFilingStatusMFJ"
+      operator="isTrue">or your spouse</span> expect to deduct in <fg-show path="/taxYear"/>
+  /secondaryFilerIsBlind:
+    question: Is your spouse blind?
+  /qualifiedDividendsIncome:
+    question: Qualified dividend income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /longTermCapitalGainsIncome:
+    question: Long-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+      your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /primaryFilerAge65OrOlder:
+    question: Will you be 65 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
+  /unemploymentIncome:
+    question: Total gross unemployment income you <span condition="/isFilingStatusMFJ"
+      operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"/>
+  /primaryFilerIsBlind:
+    question: Are you blind?
+  /nonSpecificOtherIncome:
+    question: Total amount of other income you <span condition="/isFilingStatusMFJ"
+      operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"/>
+  /pensionsIncomeTotal:
+    question: How much do you expect to receive from your pension this year?
+  /taxableInterestIncome:
+    question: Interest income you<span condition="/isFilingStatusMFJ" operator="isTrue">
+      and your spouse</span> expect to earn in <fg-show path="/taxYear"/>
+  /selfEmplomentGrossIncome:
+    question: What’s the total gross income <span condition="/isFilingStatusMFJ" operator="isTrue">or
+      your spouse</span> expect to earn from this self-employment work in <fg-show
+      path="/taxYear"/>?
+  /deductionForTraditionalIRAContribution:
+    question: Traditional (pre-tax) IRA contributions <span condition="/isFilingStatusMFJ"
+      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+      and your spouse</span> expect to make in <fg-show path="/taxYear"/>
+  /eitcQualifyingChildren:
+    question: Number of qualifying children
+  /secondaryFilerAge25OrOlderForEitc:
+    question: Will your spouse be 25 years old or older on January 1, <fg-show path="/nextTaxYear"/>?
+  /selfEmploymentHealthInsuranceContributions:
+    question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      expect to pay in <fg-show path="/taxYear"/>
 section-gates: {}

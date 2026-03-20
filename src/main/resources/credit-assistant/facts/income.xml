@@ -1,0 +1,342 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/jobsIncomeTotal">
+      <Description>Total income for all jobs for both self and spouse</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/pensionsIncomeTotal">
+      <Description>Total income for all pensions</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonTaxableCombatPay">
+      <Description>You can also choose to include your nontaxable combat pay in earned income for the EITC. Your employer reported your nontaxable combat pay in box 12 with code Q on your Form W-2.  This choice may increase or decrease your EITC. Calculate your EITC both ways to see which option provides the greater benefit. For more information, see Nontaxable combat pay in Publication 596, Earned Income Credit.</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/selfEmplomentGrossIncome">
+      <Description>Gross self-employment income for this source</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/selfEmplomentGrossIncomeWorkRelatedExpenses">
+      <Description>Work-related business expenses for this self-employment source</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/unemploymentIncome">
+      <Description>Unemployment income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/socialSecurityIncome">
+      <Description>Social Security income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/preTaxRetirementAccountIncome">
+      <Description>Total distributions from pre-tax retirement accounts</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxExemptInterestIncome">
+      <Description>Form 1040 Line 2a. Non-taxable interest</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxableInterestIncome">
+      <Description>Form 1040 Line 2b. Interest income excluding non-taxable interest</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/shortTermCapitalGainsIncome">
+      <Description>Short term capital gains income</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/longTermCapitalGainsIncome">
+      <Description>Long term capital gains income</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/shortTermCapitalLoss">
+      <Description>Short term capital losses. Losses are captured as positive amounts</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/longTermCapitalLoss">
+      <Description>Long term capital losses. Losses are captured as positive amounts</Description>
+      <Writable>
+        <Dollar/>
+        <Limit type="Min">
+          <Dollar>0</Dollar>
+        </Limit>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/ordinaryDividendsIncome">
+      <Description>Form 1040 Line 3b. Ordinary dividends income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/qualifiedDividendsIncome">
+      <Description>Form 1040 Line 3a. Amount of qualified dividends estimated by tax payer.</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/sCorpPassiveIncome">
+      <Description>Passive income from S-corporations or partnerships</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/sCorpNonPassiveIncome">
+      <Description>Non-passive income from S-corporations or partnerships</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonRentalRoyaltyScheduleEIncome">
+      <Description>Net Schedule E income. Input is not accessible in the Flow and not accessible for taxpayers to provide values.Used for backwards compatibility with certain test scenarios where Net Schedule E was a separate input than Rentals and Royalties</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonSpecificOtherIncome">
+      <Description>Non-specific other income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/rentalIncome">
+      <Description>Schedule E Line 21</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/royaltyIncome">
+      <Description>Schedule E Line 23b</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/nonJobsIncomeTotal">
+      <Derived>
+        <GreaterOf>
+          <Dollar>0</Dollar>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/incomeTotal"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/jobsIncomeTotal"/>
+              <Dependency path="/netSelfEmploymentIncomeTotal"/>
+            </Subtrahends>
+          </Subtract>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+    <Fact path="/earnedIncomeTotal">
+      <!--      TODO: update this and the other income writables to include all the categories-->
+      <Description>
+        Earned Income includes:
+        Wages, salary, or tips where federal income taxes are withheld on Form W-2, box 1
+        Income from a job where your employer didn&#x2019;t withhold tax (such as gig economy work) including:
+        Driving a car for booked rides or deliveries
+        Running errands or doing tasks
+        Selling goods online
+        Providing creative or professional services
+        Providing other temporary, on-demand or freelance work
+        Money made from self-employment, including if you:
+        Own or operate a business or farm
+        Are a minister or member of a religious order
+        Are a statutory employee and have income
+        Benefits from a union strike
+        Certain disability benefits you got before you were the minimum retirement age
+        Nontaxable Combat Pay (Form W-2, box 12 with code Q)
+
+        Earned income does not include:
+        Pay you got for work when you were an inmate in a penal institution
+        Interest and dividends
+        Pensions or annuities
+        Social Security
+        Unemployment benefits
+        Alimony
+        Child support
+
+
+      </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/netSelfEmploymentIncomeTotal"/>
+          <Dependency path="/jobsIncomeTotal"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal">
+      <Description> Other sources of income. Taxable portion of SSA benefits not included. Used to
+        calculate taxable portion onf SSA benefits</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/netSelfEmploymentIncomeTotal"/>
+          <Dependency path="/unemploymentIncome"/>
+          <Dependency path="/taxableInterestIncome"/>
+          <Dependency path="/netCapitalGainOrLoss"/>
+          <Dependency path="/sCorpPassiveIncome"/>
+          <Dependency path="/sCorpNonPassiveIncome"/>
+          <Dependency path="/nonRentalRoyaltyScheduleEIncome"/>
+          <Dependency path="/rentalIncome"/>
+          <Dependency path="/royaltyIncome"/>
+          <Dependency path="/nonSpecificOtherIncome"/>
+          <Dependency path="/ordinaryDividendsIncome"/>
+          <Dependency path="/qualifiedDividendsIncome"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/otherIncomeTotal">
+      <Description>Used for W-4 calculations</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
+          <Dependency path="/ssaBenefitsTaxableAmount"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/incomeTotalMinusTaxableSSABenefits">
+      <Description>Sum of 1z, 2b, 3b, 4b, 5b, 7, and 8 on the 1040 (Line 9 - 6b) </Description>
+      <Derived>
+        <Add>
+          <Dependency path="/jobsIncomeTotal"/>
+          <Dependency path="/pensionsIncomeTotal"/>
+          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
+          <Dependency path="/excessBusinessLossAdjustment"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/incomeTotal">
+      <Description>Form 1040 Line 9</Description>
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/incomeTotalMinusTaxableSSABenefits"/>
+            <Dependency path="/ssaBenefitsTaxableAmount"/>
+          </Add>
+        </Round>
+      </Derived>
+    </Fact>
+    <Fact path="/agi">
+      <Name>Adjusted Gross Income</Name>
+      <Description>Total income to report on line 11 of Form 1040.</Description>
+      <Derived>
+        <Round>
+          <Subtract>
+            <Minuend>
+              <Dependency path="/incomeTotal"/>
+            </Minuend>
+            <Subtrahends>
+              <Dependency path="/adjustmentsToIncome"/>
+            </Subtrahends>
+          </Subtract>
+        </Round>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

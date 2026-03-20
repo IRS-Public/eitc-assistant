@@ -2,7 +2,7 @@ ThisBuild / version := "0.1.0-SNAPSHOT"
 ThisBuild / scalaVersion := "3.7.2"
 
 // Set default class for "run"
-Compile / mainClass := Some("gov.irs.twe.main")
+Compile / mainClass := Some("gov.irs.creditassistant.main")
 
 scalafmtConfig := file(".scalafmt.conf")
 
@@ -12,7 +12,7 @@ scalafmtConfig := file(".scalafmt.conf")
 
 lazy val root = (project in file("."))
   .settings(
-    name := "twe",
+    name := "credit-assistant",
 
     // Core dependencies
     libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.19" % Test,

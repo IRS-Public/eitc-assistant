@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/capitalLossLimit">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>1500.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>3000.00</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/netShortTermGainOrLoss">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/shortTermCapitalGainsIncome"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/shortTermCapitalLoss"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/netLongTermGainOrLoss">
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/longTermCapitalGainsIncome"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/longTermCapitalLoss"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/scheduleDLine16">
+      <Derived>
+        <Add>
+          <Dependency path="/netShortTermGainOrLoss"/>
+          <Dependency path="/netLongTermGainOrLoss"/>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/netCapitalGainOrLoss">
+      <Description> Form 1040 Line 7</Description>
+      <Derived>
+        <GreaterOf>
+          <!--          You cannot offset ordinary income by more than the capital loss limit, so we ensure that combined losses do not exceed the limit separate from the individual caps on the loss facts themselves-->
+          <Multiply>
+            <Dependency path="/capitalLossLimit"/>
+            <Dollar>-1.00</Dollar>
+          </Multiply>
+          <Dependency path="/scheduleDLine16"/>
+        </GreaterOf>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

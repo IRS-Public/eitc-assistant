@@ -1,0 +1,59 @@
+.hidden {
+  opacity: 0;
+  display: none;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  font-size: var(--font-size-md);
+}
+
+.back-link:visited {
+  color: var(--primary);
+}
+
+.usa-prose a,
+.usa-prose a:visited {
+  color: var(--primary);
+}
+
+/* Automatically style external links (those with http:// or https:// in the main content area. This should account for everything in the flow and modals, but exclude areas like the header and footer*/
+main a[href^="http"]:not(.usa-button)::after {
+  content: '';
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-left: 0.25rem;
+  background-image: url("/app/eitc/resources/vendor/uswds-3.13.0/img/usa-icons/launch.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.15em;
+}
+
+@supports ((-webkit-mask:url()) or (mask:url())) {
+  main a[href^="http"]:not(.usa-button)::after {
+    background: 0 0;
+    background-color: currentColor;
+    -webkit-mask-image: url("/app/eitc/resources/vendor/uswds-3.13.0/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+    mask-image: url("/app/eitc/resources/vendor/uswds-3.13.0/img/usa-icons/launch.svg"), linear-gradient(transparent, transparent);
+    -webkit-mask-position: center center;
+    mask-position: center center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: 1.75ex 1.75ex;
+    mask-size: 1.75ex 1.75ex;
+  }
+}
+/* Use white icon for external links in dark backgrounds (e.g., identifier section) */
+.usa-identifier a[href^="http"]:not(.usa-button)::after {
+  background-image: url("/app/eitc/resources/vendor/uswds-3.13.0/img/usa-icons-bg/launch--white.svg");
+}
+
+.usa-identifier__logo-img {
+  height: 3rem;
+  width: 3rem;
+}

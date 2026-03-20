@@ -1,0 +1,558 @@
+/* Scenario.scala - Translate the UAT Spreadsheet to Fact Graphs
+ *
+ * The User Acceptance Testing (UAT) Spreadsheet is a set of tests maintained internally at IRS.
+ * They model a wide breadth of possible taxpayers, and the withholdings that we should
+ * recommend them given their current situation.
+ *
+ * The Scenario class represents one column of that spreadsheet. The rows in that column are used to
+ * build a corresponding Fact Graph that maps deterministically to the inputs described by each row.
+ * Adding new tests (or updating old ones) is as simple as uploading a new version of the
+ * spreadsheet, provided that the names of the scenarios (row B) remain the same. New spreadsheets
+ * can (and must) be uploaded WITHOUT MODIFICATION; just save the XLSX as CSV and commit it.
+ *
+ * These spreadsheets were originally built for an older version of TWE. As such, the inputs don't
+ * match perfectly with the questions the current TWE asks, nor does "one question per row" match
+ * the model of a web applicaiton. What's important isn't that these two models match, but that the
+ * former can be deterministically mapped to the latter.
+ *
+ * For instance, when the taxpayer has no children, the spreadsheet shows Child1Age as 0. We know
+ * that this means there's no child, and we only add children to the Fact Graph if there's a
+ * Child1Age greater than zero. That doesn't mean that children under the age of one don't count, it
+ * means that we understand the spreadsheet is telling us not to test children for that scenario.
+ *
+ * The result of building out the tests this way is that Scenario.scala represents a translation of
+ * the tax model represented by these testing spreadsheets to the tax model represented by our Fact
+ * Dictionary. Over time, we can work to make the delta smaller, but today, it already increases the
+ * robustness of BOTH models by checking the assumptions of each one against the other.
+ */
+package gov.irs.creditassistant.scenarios
+
+import com.github.tototoshi.csv.*
+import gov.irs.factgraph.{ types, FactDefinition, Graph }
+import gov.irs.factgraph.compnodes.{ EnumNode, MultiEnumNode }
+import gov.irs.factgraph.types.{ Day, Dollar, Enum as FgEnum }
+import gov.irs.creditassistant.loadTweFactDictionary
+import scala.util.{ Failure, Success, Try }
+
+val INPUT_NAME_COL = 0
+
+val PREVIOUS_SELF_JOB_ID = "9A21FD95-1CE1-4AEE-957C-109443A646BC"
+val PREVIOUS_SPOUSE_JOB_ID = "78CCB2A9-6A0C-4918-B88C-8A1A87CE1FC8"
+val JOB_1_ID = "A3006AF1-A040-4235-9D31-68C5830C55FD"
+val JOB_2_ID = "8955625F-6317-451B-BCE9-48893D60E766"
+val JOB_3_ID = "20B48125-6DB6-4719-8FD3-96C9DAA17E57" // Spouse job 1
+val JOB_4_ID = "9141223F-AF3D-42EF-8AA7-3EC454D5CCBC" // Spouse job 2
+val ALL_JOBS = List(PREVIOUS_SELF_JOB_ID, PREVIOUS_SPOUSE_JOB_ID, JOB_1_ID, JOB_2_ID, JOB_3_ID, JOB_4_ID)
+
+val SE_SELF_ID = "9f5e25b9-5f6c-4c93-b327-27b1c21a4ff3"
+val SE_SPOUSE_ID = "2e4b8107-f72b-4ea0-8081-8012d256373f"
+val ALL_SE_SOURCES = List(SE_SELF_ID, SE_SPOUSE_ID)
+
+val SS_ID = "9f5e25b9-5f6c-4c93-b327-27b1c21a4ff3"
+val SS_SPOUSE_ID = "2e4b8107-f72b-4ea0-8081-8012d256373f"
+val ALL_SS_SOURCES = List(SS_ID, SS_SPOUSE_ID)
+
+@main def convertSpreadsheet(file: String): Unit = {
+  val path = os.Path(file)
+  val scenario = loadScenarioByColumnLetter(path, "B")
+  println(scenario.graphToJson())
+}
+
+case class Scenario(csv: Map[String, String], graph: Graph) {
+  def getFact(path: String): Any = {
+    this.graph.get(path).get
+  }
+
+  private def getInput(rowName: String): String = {
+    this.csv(rowName).replace("$", "").strip()
+  }
+
+  def getExpectedSheetValueByFactPath(factPath: String): (String, String) = {
+    val rowName = DERIVED_FACT_TO_SHEET_ROW(factPath)
+    val input = getInput(rowName)
+    (rowName, input)
+  }
+
+  def graphToJson(): String = {
+    this.graph.persister.toJson(2)
+  }
+}
+
+def loadScenarioByColumnLetter(path: os.ReadablePath, columnLetter: String): Scenario = {
+  val reader = CSVReader.open(path.toString)
+  val rows = reader.all()
+  reader.close()
+
+  // Convert column letter into a row index
+  var column = 0
+  val length = columnLetter.length
+  for (i <- 0.until(length))
+    column += ((columnLetter(i).toInt - 64) * Math.pow(26, length - i - 1)).toInt
+
+  parseScenario(rows, column - 1)
+}
+
+def loadScenarioByName(path: os.ReadablePath, scenarioName: String): Scenario = {
+  val reader = CSVReader.open(path.toString)
+  val rows = reader.all()
+  reader.close()
+
+  val namesRow = rows(1)
+  val col = namesRow.indexOf(scenarioName)
+  parseScenario(rows, col)
+}
+
+private def parseScenario(rows: List[List[String]], scenarioColumn: Int): Scenario = {
+  // We don't support SS benefit YTD or SS withholding YTD
+  val socialSecurityOverrideFields =
+    List("Start date", "End date", "SS monthly benefit", "SS monthly withholding")
+
+  var job1IsPension = false
+  var hasSeenJob1 = false
+  var job2IsPension = false
+
+  val csv: Map[String, String] = rows.foldLeft(Map()) { (dict, row) =>
+    var inputName = row(INPUT_NAME_COL)
+    // work around for handling Social security labels, since they aren't unique
+    if (socialSecurityOverrideFields.contains(inputName) && dict.contains(inputName)) {
+      inputName = inputName + "2"
+    }
+    val inputValue = row(scenarioColumn)
+    if (inputName == "Pension? (1=yes)") {
+      if (inputValue == "1" && hasSeenJob1) {
+        job2IsPension = true
+      } else if (inputValue == "1") {
+        job1IsPension = true
+      }
+      hasSeenJob1 = true
+    }
+    dict + (inputName -> inputValue)
+  }
+
+  // Get each row of the scenario and map it to a specific fact
+  // The resulting map is factPath -> spreadsheetRowValue
+  var spreadsheetFacts = SHEET_ROW_TO_WRITABLE_FACT.map((sheetKey, factPath) => factPath -> csv(sheetKey))
+
+  // Create the fact graph
+  val tweFactDictionary = loadTweFactDictionary()
+  val factGraph = Graph(tweFactDictionary.factDictionary)
+
+  // Add the Social Security sources to the fact graph
+  ALL_SS_SOURCES.foreach(source => factGraph.addToCollection("/socialSecuritySources", source))
+
+  // Add the self-employment jobs the fact graph
+  ALL_SE_SOURCES.foreach(source => factGraph.addToCollection("/selfEmploymentSources", source))
+  factGraph.set(s"/selfEmploymentSources/#$SE_SELF_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+  factGraph.set(s"/selfEmploymentSources/#$SE_SPOUSE_ID/filerAssignment", FgEnum("spouse", "/filerAssignmentOption"))
+
+  // Add the W-2 jobs to the fact graph
+  ALL_JOBS.foreach(job => factGraph.addToCollection("/jobs", job))
+  factGraph.set(s"/jobs/#$PREVIOUS_SELF_JOB_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+  factGraph.set(s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/filerAssignment", FgEnum("spouse", "/filerAssignmentOption"))
+  factGraph.set(s"/jobs/#$JOB_1_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+  factGraph.set(s"/jobs/#$JOB_2_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+  factGraph.set(s"/jobs/#$JOB_3_ID/filerAssignment", FgEnum("spouse", "/filerAssignmentOption"))
+  factGraph.set(s"/jobs/#$JOB_4_ID/filerAssignment", FgEnum("spouse", "/filerAssignmentOption"))
+
+  // TODO: get pensions on their own rows
+  if (job1IsPension) {
+    factGraph.addToCollection("/pensions", JOB_1_ID)
+    factGraph.set(s"/pensions/#$JOB_1_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+
+    // Set job to be deleted and add info as pension
+    spreadsheetFacts = spreadsheetFacts + (s"/jobs/#$JOB_1_ID/amountLastPaycheck" -> "$0")
+    spreadsheetFacts = spreadsheetFacts + (s"/jobs/#$JOB_1_ID/yearToDateIncome" -> "$0")
+
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_1_ID/startDate" -> csv("Job start1"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_1_ID/endDate" -> csv("Job end1"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_1_ID/payFrequency" -> csv("payFrequency1 (1=W; 2=BW; 3=SM; 4=M)"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_1_ID/mostRecentPayDate" -> csv("recentPayDate1"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_1_ID/averagePayPerPayPeriodForWithholding" -> csv("paymentPerPPd1"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_1_ID/yearToDateIncome" -> csv("paymentYTD1"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_1_ID/averageWithholdingPerPayPeriod" -> csv("taxWhPerPPd1"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_1_ID/yearToDateWithholding" -> csv("taxWhYTD1"))
+  }
+  if (job2IsPension) {
+    factGraph.addToCollection("/pensions", JOB_2_ID)
+    factGraph.set(s"/pensions/#$JOB_2_ID/filerAssignment", FgEnum("self", "/filerAssignmentOption"))
+
+    // Set job to be deleted and add info as pension
+    spreadsheetFacts = spreadsheetFacts + (s"/jobs/#$JOB_2_ID/amountLastPaycheck" -> "$0")
+    spreadsheetFacts = spreadsheetFacts + (s"/jobs/#$JOB_2_ID/yearToDateIncome" -> "$0")
+
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_2_ID/startDate" -> csv("Job start2"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_2_ID/endDate" -> csv("Job end2"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_2_ID/payFrequency" -> csv("payFrequency2 (1=W; 2=BW; 3=SM; 4=M)"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_2_ID/mostRecentPayDate" -> csv("recentPayDate2"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_2_ID/averagePayPerPayPeriodForWithholding" -> csv("paymentPerPPd2"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_2_ID/yearToDateIncome" -> csv("paymentYTD2"))
+    spreadsheetFacts =
+      spreadsheetFacts + (s"/pensions/#$JOB_2_ID/averageWithholdingPerPayPeriod" -> csv("taxWhPerPPd2"))
+    spreadsheetFacts = spreadsheetFacts + (s"/pensions/#$JOB_2_ID/yearToDateWithholding" -> csv("taxWhYTD2"))
+  }
+
+  def ssWithholding(benefitFactName: String, withholdingFactName: String): types.Enum = {
+    val ssBenefit = csv(benefitFactName).replace("$", "").replace(",", "").toDouble
+    val ssWithholding = csv(withholdingFactName).replace("$", "").replace(",", "").toDouble
+    val withholdingRate = ssWithholding / ssBenefit match {
+      case 0            => "zero"
+      case 0.07         => "seven"
+      case 0.1          => "ten"
+      case 0.12         => "twelve"
+      case 0.22         => "twentyTwo"
+      case x if x.isNaN => "zero"
+      case x            => throw Exception(s"Invalid ratio for self social security tax withholdings: $x")
+    }
+    FgEnum(withholdingRate, "/socialSecurityWithheldTaxesOptions")
+  }
+  val ssWithholdingRateSelf = ssWithholding("SS monthly benefit", "SS monthly withholding")
+  val ssWithholdingRateSpouse = ssWithholding("SS monthly benefit2", "SS monthly withholding2")
+  factGraph.set(s"/socialSecuritySources/#$SS_ID/withheldRate", ssWithholdingRateSelf)
+  factGraph.set(s"/socialSecuritySources/#$SS_SPOUSE_ID/withheldRate", ssWithholdingRateSpouse)
+
+  // Set dummy dates for the past jobs
+  // This is sort of a hack; we should just ask for spreadsheets that include "previous jobs" as regular jobs
+  List(PREVIOUS_SELF_JOB_ID, PREVIOUS_SPOUSE_JOB_ID).foreach(jobId => {
+    factGraph.set(s"/jobs/#$jobId/writableStartDate", Day("2026-01-01"))
+    factGraph.set(s"/jobs/#$jobId/writableEndDate", Day("2026-01-15"))
+  })
+
+  // There's no spreadsheet field for this, we assume it's false
+  factGraph.set("/secondaryFilerIsClaimedOnAnotherReturn", false)
+
+  // Set the rest of the facts based on mappings
+  spreadsheetFacts.foreach { (factPath, value) =>
+    val definition = tweFactDictionary.factDictionary.getDefinition(factPath)
+    val result = Try {
+      definition.typeNode match {
+        case "BooleanNode" => convertBoolean(value)
+        case "DayNode"     => convertDate(value)
+        case "EnumNode"    => convertEnum(value, definition)
+        case "DollarNode"  => Dollar(value.replace("$", "").strip())
+        case "IntNode"     => value.toInt
+        case _             => value
+      }
+    }
+    result match {
+      case Success(convertedValue) => factGraph.set(factPath, convertedValue)
+      case Failure(e) => throw Exception(s"Unable to process fact '$factPath' with value '$value': ${e.getMessage}")
+    }
+  }
+
+  val wantsItemizedDeduction = csv("Itemize even if smaller (1=yes)") == "1"
+  factGraph.set(s"/wantsStandardDeduction", !wantsItemizedDeduction)
+
+  // Calculate CTC and ODC eligible dependents
+  val childKeys = (1 to 4).map(i => s"Child${i}Age")
+  val ages = childKeys.flatMap(key => csv.get(key).map(_.toInt))
+  val ctcCount = ages.count(age => age > 0 && age < 18)
+  factGraph.set("/ctcEligibleDependents", ctcCount)
+
+  // Set age facts
+  factGraph.set("/primaryFilerAge25OrOlderForEitc", csv("User Age").toInt >= 25)
+  val spouseAge = csv("Spouse Age").toInt
+  if (spouseAge > 0) {
+    factGraph.set("/secondaryFilerAge25OrOlderForEitc", spouseAge >= 25)
+  }
+
+  // Set OB3 questions to zero if there's no SSN
+  if (csv("Valid SSN (self)") == "0") {
+    factGraph.set(s"/jobs/#$PREVIOUS_SELF_JOB_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$PREVIOUS_SELF_JOB_ID/overtimeCompensationTotal", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_1_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_1_ID/overtimeCompensationTotal", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_2_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_2_ID/overtimeCompensationTotal", Dollar(0))
+  } else if (factGraph.get("/primaryFilerAge65OrOlder").value.get == true) {
+    factGraph.set("/primaryTaxpayerElectsForSeniorDeduction", true)
+  }
+
+  if (csv("Valid SSN (spouse)") == "0") {
+    factGraph.set(s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/overtimeCompensationTotal", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_3_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_3_ID/overtimeCompensationTotal", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_4_ID/qualifiedTipIncome", Dollar(0))
+    factGraph.set(s"/jobs/#$JOB_4_ID/overtimeCompensationTotal", Dollar(0))
+  } else if (factGraph.get("/secondaryFilerAge65OrOlder").value.get == true) {
+    factGraph.set("/secondaryTaxpayerElectsForSeniorDeduction", true)
+  }
+
+  if (csv("Valid SSN (self)") == "0" && csv("Valid SSN (spouse)") == "0") {
+    factGraph.set("/ctcEligibleDependents", 0)
+    factGraph.set("/odcEligibleDependents", 0)
+  }
+
+  // TODO there is one scenario (CA) where the spreadsheet is accidentally set for 2025
+  if (csv("DateRun") == "2/5/2025") { factGraph.set("/overrideDate", Day("2026-02-05")) }
+
+  // Remove jobs that don't have any income
+  ALL_JOBS.foreach(jobId => {
+    val income = factGraph.get(s"/jobs/#$jobId/income")
+    if (income.get == 0) {
+      factGraph.delete(s"/jobs/#$jobId")
+    }
+  })
+
+  // Remove self-employment sources that have no gross income
+  ALL_SE_SOURCES.foreach(selfEmployId => {
+    val grossIncome = factGraph.get(s"/selfEmploymentSources/#$selfEmployId/grossIncome")
+    if (!grossIncome.hasValue || grossIncome.get == Dollar("0")) {
+      factGraph.delete(s"/selfEmploymentSources/#$selfEmployId")
+    }
+  })
+
+  factGraph.save()
+  Scenario(csv, factGraph)
+}
+
+def convertBoolean(raw: String): Boolean = {
+  raw match {
+    case "0" => false
+    case "1" => true
+    case _   => throw Exception(s"Unexpected value $raw for boolean")
+  }
+}
+
+def convertDate(raw: String): Day = {
+  val split = raw.split("/")
+  val month = split(0).toInt
+  var day = split(1).toInt
+  var year = split(2).toInt
+  if (day < 1) {
+    day = 1
+  }
+  if (year < 100) {
+    year += 2000
+  }
+  Day(f"$year-$month%02d-$day%02d")
+}
+
+def convertEnum(value: String, factDefinition: FactDefinition): types.Enum = {
+  val factPath = factDefinition.path.toString
+  val optionsEnumPath = factDefinition.value match
+    case value: EnumNode      => value.enumOptionsPath
+    case value: MultiEnumNode => value.enumOptionsPath.toString
+    case _                    => throw Exception(s"Fact $factPath is not an enum")
+
+  optionsEnumPath match {
+    case "/filingStatusOptions" =>
+      value match {
+        case "1" => FgEnum("single", "/filingStatusOptions")
+        case "2" => FgEnum("marriedFilingJointly", "/filingStatusOptions")
+        case "3" => FgEnum("marriedFilingSeparately", "/filingStatusOptions")
+        case "4" => FgEnum("headOfHousehold", "/filingStatusOptions")
+        case "5" => FgEnum("qualifiedSurvivingSpouse", "/filingStatusOptions")
+        case _   => throw Exception(s"$value is not a known enum for /$optionsEnumPath")
+      }
+    case "/payFrequencyOptions" =>
+      value match {
+        case "1" => FgEnum("weekly", "/payFrequencyOptions")
+        case "2" => FgEnum("biWeekly", "/payFrequencyOptions")
+        case "3" => FgEnum("semiMonthly", "/payFrequencyOptions")
+        case "4" => FgEnum("monthly", "/payFrequencyOptions")
+        case _   => throw Exception(s"$value is not a known enum for /$optionsEnumPath")
+      }
+    case "/socialSecurityWithheldTaxesOptions" =>
+      value match {
+        case "zero"      => FgEnum("zero", "/socialSecurityWithheldTaxesOptions")
+        case "seven"     => FgEnum("seven", "/socialSecurityWithheldTaxesOptions")
+        case "ten"       => FgEnum("ten", "/socialSecurityWithheldTaxesOptions")
+        case "twelve"    => FgEnum("twelve", "/socialSecurityWithheldTaxesOptions")
+        case "twentyTwo" => FgEnum("twentyTwo", "/socialSecurityWithheldTaxesOptions")
+        case _           => throw Exception(s"$value is not a known enum for /$optionsEnumPath")
+      }
+    case "/overtimeCompensationRateOptions" =>
+      value match {
+        case "1.5" => FgEnum("onePointFive", "/overtimeCompensationRateOptions")
+        case "2.0" => FgEnum("two", "/overtimeCompensationRateOptions")
+        case "2"   => FgEnum("two", "/overtimeCompensationRateOptions")
+        // 0 is not a real overtime factor, it's just a placeholder in the spreadsheet, so this doesn't matter
+        case "0.0" => FgEnum("onePointFive", "/overtimeCompensationRateOptions")
+        case "0"   => FgEnum("onePointFive", "/overtimeCompensationRateOptions")
+        case _     => throw Exception(s"$value is not a known enum for $optionsEnumPath")
+      }
+    case _ => throw Exception(s"Unknown options path: $optionsEnumPath")
+  }
+}
+
+private val SHEET_ROW_TO_WRITABLE_FACT = Map(
+  "DateRun" -> "/overrideDate",
+  "F-Status (1=S; 2=MJ; 3=MS; 4=HH; 5=QW)" -> "/filingStatus",
+  "65 or Older (1=yes)" -> "/primaryFilerAge65OrOlder",
+  "Spouse 65 or Older (1=yes)" -> "/secondaryFilerAge65OrOlder",
+  "Blind (1=yes)" -> "/primaryFilerIsBlind",
+  "Spouse Blind (1=yes)" -> "/secondaryFilerIsBlind",
+  "Claimed as a Dependent" -> "/primaryFilerIsClaimedOnAnotherReturn",
+  "Plan to claim dependents?" -> "/primaryFilerIsClaimingDependents",
+  // Previous self job
+  "Previous job income-User" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/yearToDateIncome",
+  "Withholding from previous job-User" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/yearToDateWithholding",
+  "Tip Income on previous job self" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/qualifiedTipIncome",
+  "Overtime income on previous job self" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/overtimeCompensationTotal",
+  "Overtime factor on previous job self" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/overtimeCompensationRate",
+  // Previous spouse job
+  "Previous job income-Spouse" -> s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/yearToDateIncome",
+  "Withholding from previous job-Spouse" -> s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/yearToDateWithholding",
+  "Tip income on previous job - spouse" -> s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/qualifiedTipIncome",
+  "Overtime income on previous job - spouse" -> s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/overtimeCompensationTotal",
+  "Overtime factor on previous job -spouse" -> s"/jobs/#$PREVIOUS_SPOUSE_JOB_ID/overtimeCompensationRate",
+  // Job 1
+  "Job start1" -> s"/jobs/#$JOB_1_ID/writableStartDate",
+  "Job end1" -> s"/jobs/#$JOB_1_ID/writableEndDate",
+  "payFrequency1 (1=W; 2=BW; 3=SM; 4=M)" -> s"/jobs/#$JOB_1_ID/payFrequency",
+  "recentPPd End1" -> s"/jobs/#$JOB_1_ID/mostRecentPayPeriodEnd",
+  "recentPayDate1" -> s"/jobs/#$JOB_1_ID/mostRecentPayDate",
+  "paymentPerPPd1" -> s"/jobs/#$JOB_1_ID/amountLastPaycheck",
+  "paymentYTD1" -> s"/jobs/#$JOB_1_ID/yearToDateIncome",
+  "taxWhPerPPd1" -> s"/jobs/#$JOB_1_ID/amountWithheldLastPaycheck",
+  "taxWhYTD1" -> s"/jobs/#$JOB_1_ID/yearToDateWithholding",
+  "401kYTD1" -> s"/jobs/#$JOB_1_ID/retirementPlanContributionsToDate",
+  "401kPerPPd1" -> s"/jobs/#$JOB_1_ID/retirementPlanContributionsPerPayPeriod",
+  "HSAYTD1" -> s"/jobs/#$JOB_1_ID/hsaOrFsaContributionsToDate",
+  "HSAPerPPd1" -> s"/jobs/#$JOB_1_ID/hsaOrFsaContributionsPerPayPeriod",
+  "Annual Tip Income from Job 1" -> s"/jobs/#$JOB_1_ID/qualifiedTipIncome",
+  "Annual Overtime Income from Job1" -> s"/jobs/#$JOB_1_ID/overtimeCompensationTotal",
+  "Overtime factor Job 1" -> s"/jobs/#$JOB_1_ID/overtimeCompensationRate",
+  // Job 2
+  "Job start2" -> s"/jobs/#$JOB_2_ID/writableStartDate",
+  "Job end2" -> s"/jobs/#$JOB_2_ID/writableEndDate",
+  "payFrequency2 (1=W; 2=BW; 3=SM; 4=M)" -> s"/jobs/#$JOB_2_ID/payFrequency",
+  "recentPPd End2" -> s"/jobs/#$JOB_2_ID/mostRecentPayPeriodEnd",
+  "recentPayDate2" -> s"/jobs/#$JOB_2_ID/mostRecentPayDate",
+  "paymentPerPPd2" -> s"/jobs/#$JOB_2_ID/amountLastPaycheck",
+  "paymentYTD2" -> s"/jobs/#$JOB_2_ID/yearToDateIncome",
+  "taxWhPerPPd2" -> s"/jobs/#$JOB_2_ID/amountWithheldLastPaycheck",
+  "taxWhYTD2" -> s"/jobs/#$JOB_2_ID/yearToDateWithholding",
+  "Annual Tip Income from Job 2" -> s"/jobs/#$JOB_2_ID/qualifiedTipIncome",
+  "Annual Overtime Income from Job 2" -> s"/jobs/#$JOB_2_ID/overtimeCompensationTotal",
+  "Overtime factor Job 2" -> s"/jobs/#$JOB_2_ID/overtimeCompensationRate",
+  // Job 3
+  "Job start3" -> s"/jobs/#$JOB_3_ID/writableStartDate",
+  "Job end3" -> s"/jobs/#$JOB_3_ID/writableEndDate",
+  "payFrequency3 (1=W; 2=BW; 3=SM; 4=M)" -> s"/jobs/#$JOB_3_ID/payFrequency",
+  "recentPPd End3" -> s"/jobs/#$JOB_3_ID/mostRecentPayPeriodEnd",
+  "recentPayDate3" -> s"/jobs/#$JOB_3_ID/mostRecentPayDate",
+  "paymentPerPPd3" -> s"/jobs/#$JOB_3_ID/amountLastPaycheck",
+  "paymentYTD3" -> s"/jobs/#$JOB_3_ID/yearToDateIncome",
+  "taxWhPerPPd3" -> s"/jobs/#$JOB_3_ID/amountWithheldLastPaycheck",
+  "taxWhYTD3" -> s"/jobs/#$JOB_3_ID/yearToDateWithholding",
+  "Annual Tip Income from Job 3" -> s"/jobs/#$JOB_3_ID/qualifiedTipIncome",
+  "Annual Overtime Income from Job 3" -> s"/jobs/#$JOB_3_ID/overtimeCompensationTotal",
+  "Overtime factor Job 3" -> s"/jobs/#$JOB_3_ID/overtimeCompensationRate",
+  // Job 4
+  "Job start4" -> s"/jobs/#$JOB_4_ID/writableStartDate",
+  "Job end4" -> s"/jobs/#$JOB_4_ID/writableEndDate",
+  "payFrequency4 (1=W; 2=BW; 3=SM; 4=M)" -> s"/jobs/#$JOB_4_ID/payFrequency",
+  "recentPPd End4" -> s"/jobs/#$JOB_4_ID/mostRecentPayPeriodEnd",
+  "recentPayDate4" -> s"/jobs/#$JOB_4_ID/mostRecentPayDate",
+  "paymentPerPPd4" -> s"/jobs/#$JOB_4_ID/amountLastPaycheck",
+  "paymentYTD4" -> s"/jobs/#$JOB_4_ID/yearToDateIncome",
+  "taxWhPerPPd4" -> s"/jobs/#$JOB_4_ID/amountWithheldLastPaycheck",
+  "taxWhYTD4" -> s"/jobs/#$JOB_4_ID/yearToDateWithholding",
+  "Annual Tip Income from Job 4" -> s"/jobs/#$JOB_4_ID/qualifiedTipIncome",
+  "Annual Overtime Income from Job 4" -> s"/jobs/#$JOB_4_ID/overtimeCompensationTotal",
+  "Overtime factor Job 4" -> s"/jobs/#$JOB_4_ID/overtimeCompensationRate",
+  // Self employment income
+  "selfEmploymentAmount-User" -> s"/selfEmploymentSources/#$SE_SELF_ID/grossIncome",
+  "selfEmploymentAmount-Spouse" -> s"/selfEmploymentSources/#$SE_SPOUSE_ID/grossIncome",
+  // Social Security #1
+  "Start date" -> s"/socialSecuritySources/#$SS_ID/startDate",
+  "End date" -> s"/socialSecuritySources/#$SS_ID/endDate",
+  "SS monthly benefit" -> s"/socialSecuritySources/#$SS_ID/monthlyIncome",
+  // Social Security #2
+  "Start date2" -> s"/socialSecuritySources/#$SS_SPOUSE_ID/startDate",
+  "End date2" -> s"/socialSecuritySources/#$SS_SPOUSE_ID/endDate",
+  "SS monthly benefit2" -> s"/socialSecuritySources/#$SS_SPOUSE_ID/monthlyIncome",
+  // Other Income
+  "InterestOrdinaryDividends" -> "/ordinaryDividendsIncome",
+  "QualifiedDividends" -> "/qualifiedDividendsIncome",
+  "ShortTermGains(or losses)" -> "/shortTermCapitalGainsIncome",
+  "OtherLongTermGains(or losses)" -> "/longTermCapitalGainsIncome",
+  // Adjustments, Deductions, Credits
+  "HSAdeduction" -> "/hsaContributionAmount",
+  "studentLoanInterest" -> "/studentLoanInterestAmount",
+  "Car loan interest" -> "/personalVehicleLoanInterestAmount",
+  "qualChildrenCDCC" -> "/cdccQualifyingPersons",
+  "ChildCareExpenses" -> "/cdccQualifyingExpenses",
+  "How many QC for EITC" -> "/eitcQualifyingChildren",
+  "movingExpense" -> "/movingExpensesForArmedServicesMembers",
+  "educatorExpense" -> "/educatorExpenses",
+  "IRAcontribution" -> "/deductionForTraditionalIRAContribution",
+  "AMT Credit" -> "/alternativeMinimumTaxCreditAmount",
+  "Foreign Tax Credit" -> "/schedule3Line1",
+  "Number of students" -> "/qualifyingStudents",
+  "AOTC" -> "/aotcQualifiedEducationExpenses",
+  "LLC" -> "/llcQualifiedEducationExpenses",
+  "Elderly or Disabled Credit" -> "/elderlyAndDisabledTaxCreditAmount",
+  "Adoption Tax Credit" -> "/estimatedTotalQualifiedAdoptionExpenses",
+  "QualifiedChildrenAdoptionCredit" -> "/adoptionEligibleChildren",
+  // Itemized Deductions
+  "Interest you Paid" -> "/qualifiedMortgageInterestAndInvestmentInterestExpenses",
+  "Mortgage Insurance Premium" -> "/qualifiedMortgageInsurancePremiums",
+  "SALT you paid" -> "/stateAndLocalTaxPayments",
+  "MedicalExpenses" -> "/medicalAndDentalExpenses",
+  "Gifts to Charity" -> "/nonCashCharitableContributions",
+  "Cash gift to charity" -> "/cashCharitableContributions",
+  "Casualty Lossess" -> "/casualtyLossesTotal",
+  "Other Itemized Deductions" -> "/otherDeductionsTotal",
+  "alimonyPaid" -> "/alimonyPaid",
+  // Other Income
+  "RentsRoyalties (or losses)" -> "/rentalIncome",
+  "SchedEpassive" -> "/nonRentalRoyaltyScheduleEIncome",
+  // "S-CorpPassive" -> "/sCorpPassiveIncome", // Not in the spreadsheet
+  "S-CorpNonPassive" -> "/sCorpNonPassiveIncome",
+  "EstdTaxPymntsToDate" -> "/totalEstimatedTaxesPaid",
+  "Itemize even if smaller (1=yes)" -> "/wantsStandardDeduction",
+)
+
+// Note that this is the opposite direction of the writable fact mappings
+private val DERIVED_FACT_TO_SHEET_ROW = Map(
+  "/agi" -> "AGI",
+  "/tentativeTaxFromTaxableIncome" -> "Income tax before credits",
+  // TODO: Needs to be updated, likely totaldeductions - QBI
+  "/standardOrItemizedDeduction" -> "Total standard or itemized deductions",
+  "/taxableIncome" -> "Taxable income",
+  "/tentativeTaxNetNonRefundableCredits" -> "Income tax before refundable credits",
+  "/totalTaxNetRefundableCredits" -> "Total tax after refundable credits",
+  "/earnedIncomeCredit" -> "EITC",
+  "/qualifiedPersonalVehicleLoanInterestDeduction" -> "No tax on car loan interest deduction",
+  "/seniorDeduction" -> "Additional Elder Deduction (70103)",
+  "/qualifiedBusinessIncomeDeduction" -> "QBI deduction",
+  "/studentLoanInterestDeduction" -> "studentLoanInterest allowed",
+  "/stateAndLocalTaxDeduction" -> "SALT deduction allowed",
+  "/additionalMedicareTax" -> "Additional Medicare Tax:",
+  "/selfEmploymentTax" -> "Self-Employment Tax",
+  "/netInvestmentIncomeTax" -> "NetInvestmentIncomeTax",
+  // TODO: Not always the right mapping
+  "/totalEndOfYearProjectedWithholding" -> "do-nothingTaxWithholding",
+  "/totalCtcAndOdc" -> "CTC + Credit for Other Dep",
+  "/additionalCtc" -> "Addl CTC",
+  "/totalRefundableCredits" -> "Total refundable credits",
+  "/qualifiedBusinessIncomeDeduction" -> "QBI deduction",
+  "/incomeTotal" -> "Net pre-tax income",
+  "/qualifiedTipDeduction" -> "No tax on tips deduction",
+  "/overtimeCompensationDeduction" -> "No tax on overtime deduction",
+  "/medicalAndDentalExpensesTotal" -> "medicalExpenses allowed",
+  "/totalNonRefundableCredits" -> "Total non-refundable credits",
+  "/lifetimeLearningCredit" -> "Non-Ref Edn credits",
+  "/americanOpportunityCredit" -> "Refundable Edn credits",
+  "/adoptionCreditRefundable" -> "Refundable Adoption credit",
+  "/adoptionCreditNonRefundable" -> "Non-Ref Adoption credit",
+  "/qualifiedMortgageInsurancePremiumDeductionTotal" -> "Mortgate insurance premium deduction",
+  // TODO: This is not going to scale when the jobs that aren't Job 1 have withholdings
+  // TODO: This doesn't work if Job 1 isn't the highest paying job and is selected for extra withholdings
+  "/jobSelectedForExtraWithholding/w4Line3" -> "W-4 Line3Amount1",
+  "/jobSelectedForExtraWithholding/w4Line4a" -> "W-4 Line4aAmount1",
+  "/jobSelectedForExtraWithholding/w4Line4b" -> "W-4 Line4bAmount1",
+  "/jobSelectedForExtraWithholding/w4Line4c" -> "W-4 Line4cAmount1",
+  "/pensionSelectedForExtraWithholding/w4pLine3" -> "W-4 Line3Amount1",
+  "/pensionSelectedForExtraWithholding/w4pLine4a" -> "W-4 Line4aAmount1",
+  "/pensionSelectedForExtraWithholding/w4pLine4b" -> "W-4 Line4bAmount1",
+  "/pensionSelectedForExtraWithholding/w4pLine4c" -> "W-4 Line4cAmount1",
+)
