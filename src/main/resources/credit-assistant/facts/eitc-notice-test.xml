@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <!--    NOTICE, IMPROPER CLAIM, DISALLOWANCE-->
+    <Fact path="/eitcHadImproperClaims">
+      <Name>EITC Had Improper Claims</Name>
+      <Description>Whether the TP (or their spouse, if applicable) has had their EITC reduced or
+    disallowed for any
+    reason other than a math error.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/eitcImproperClaimsDueToQc">
+      <Name>EITC Improper Claims Due to QC</Name>
+      <Description>Whether the EITC was reduced or disallowed due to a child not being qualifying</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/eitcImproperClaimTakenSinceDisallowal">
+      <Name>EITC Had Improper Claims</Name>
+      <Description>Whether the TP (or their spouse, if applicable) has taken the EITC again since
+  they were disallowed</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/eitcReceivedImproperClaimsNotice">
+      <Name>Received Eitc improper Claims notice</Name>
+      <Description>Whether the TP received a letter from the IRS telling them they're not allowed to
+  take EITC for a
+  number of years</Description>
+      <Writable>
+        <Enum optionsPath="/improperClaimsNoticeOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/eitcImproperClaimsNoticeExpired">
+      <Name>EITC Improper Claims Notice Expired</Name>
+      <Description>Whether the improper claims notice that the TP previously received is far enough
+  in the past to be
+  expired. E.g. They could not file for 2 years, and it has been at least 2 years</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/hasImproperClaimsAndNoQc">
+      <Name>Has improper claims and no qc</Name>
+      <Description>Whether the TP has had improper EITC claims and has no qualifying children</Description>
+      <Derived>
+        <All>
+          <Dependency path="/eitcHadImproperClaims"/>
+          <Dependency path="/hasZeroEitcQualifyingChildren"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowHasImproperClaimsAndAskAboutLastClaimedCredit">
+      <Name>Show EITC credits taken since disallowal question</Name>
+      <Description>Checks whether the TP has taken improper claims and has qualifying children to
+  determine if they
+  should be asked about the last time they have taken the earned income tax credit</Description>
+      <Derived>
+        <Any>
+          <All>
+            <Dependency path="/hasImproperClaimsAndNoQc"/>
+            <Not>
+              <Dependency path="/eitcImproperClaimsDueToQc"/>
+            </Not>
+          </All>
+          <All>
+            <Dependency path="/eitcHadImproperClaims"/>
+            <Dependency path="/maybeEligibleForEitcWithQc"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/hadEitcImproperClaimsBan">
+      <Name>EITC had an improper claims ban</Name>
+      <Description>Whether the flow should ask a person if their CTC improper claims notice has
+  expired</Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/eitcImproperClaimTakenSinceDisallowal"/>
+          </Not>
+          <Any>
+            <Equal>
+              <Left>
+                <Dependency path="/eitcReceivedImproperClaimsNotice"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/improperClaimsNoticeOptions">twoYears</Enum>
+              </Right>
+            </Equal>
+            <Equal>
+              <Left>
+                <Dependency path="/eitcReceivedImproperClaimsNotice"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/improperClaimsNoticeOptions">tenYears</Enum>
+              </Right>
+            </Equal>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eitc8862Required">
+      <Name>EITC 8862 Required</Name>
+      <Description>Whether the TP is required to file form 8862 to receive the EITC Part V is
+  currently out of scope.</Description>
+      <Derived>
+        <All>
+          <!-- has received a notice about improper claims also checks if notice was not just due to
+    incorrectly
+    claiming a QC if applicable-->
+          <Dependency path="/flowHasImproperClaimsAndAskAboutLastClaimedCredit"/>
+          <!-- and the TP has not taken the credit again yet-->
+          <Not>
+            <Dependency path="/eitcImproperClaimTakenSinceDisallowal"/>
+          </Not>
+          <Any>
+            <!-- and they were not banned for a number of years -->
+            <Equal>
+              <Left>
+                <Dependency path="/eitcReceivedImproperClaimsNotice"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/improperClaimsNoticeOptions">zeroYears</Enum>
+              </Right>
+            </Equal>
+            <!-- Or that ban has expired-->
+            <All>
+              <IsComplete>
+                <Dependency path="/eitcReceivedImproperClaimsNotice"/>
+              </IsComplete>
+              <Dependency path="/eitcImproperClaimsNoticeExpired"/>
+            </All>
+          </Any>
+          <Dependency path="/isReceivingEitc"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcNoticeTest">
+      <Name>EITC Notice Test</Name>
+      <Description>Whether the TP is qualified for the EITC w.r.t having received an improper claims
+        notice in the past</Description>
+      <Derived>
+        <Any>
+          <Not>
+            <!-- has not received a notice about improper claims -->
+            <Dependency path="/eitcHadImproperClaims"/>
+          </Not>
+          <!-- Received a notice but it was due to claiming QCs -->
+          <All>
+            <Dependency path="/hasImproperClaimsAndNoQc"/>
+            <Dependency path="/eitcImproperClaimsDueToQc"/>
+          </All>
+          <!-- Received a notice but has taken it again since then-->
+          <All>
+            <Dependency path="/flowHasImproperClaimsAndAskAboutLastClaimedCredit"/>
+            <Dependency path="/eitcImproperClaimTakenSinceDisallowal"/>
+          </All>
+          <!-- Received a notice but has taken it did not contain a ban for a certain number of
+            years -->
+          <All>
+            <Dependency path="/eitcHadImproperClaims"/>
+            <Equal>
+              <Left>
+                <Dependency path="/eitcReceivedImproperClaimsNotice"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/improperClaimsNoticeOptions">zeroYears</Enum>
+              </Right>
+            </Equal>
+          </All>
+          <!-- Received a notice but it has expired -->
+          <All>
+            <Dependency path="/eitcHadImproperClaims"/>
+            <Dependency path="/eitcImproperClaimsNoticeExpired"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

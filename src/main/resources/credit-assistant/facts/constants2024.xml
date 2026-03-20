@@ -101,5 +101,119 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/eitcMfjLimitWithThreeOrMoreChildren">
+      <Name>EITC (MFJ) limit with 3 or more children</Name>
+      <Description>EITC limit with 3 or more children when filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>66819</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcSelfLimitWithThreeOrMoreChildren">
+      <Name>EITC (self) limit with 3 or more children</Name>
+      <Description>EITC limit with 3 or more children when not filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>59899</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcMfjLimitWithTwoChildren">
+      <Name>EITC (MFJ) limit with 2 children</Name>
+      <Description>EITC limit with 2 children when filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>62688</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcSelfLimitWithTwoChildren">
+      <Name>EITC (self) limit with 2 children</Name>
+      <Description>EITC limit with 2 children when not filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>55768</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcMfjLimitWithOneChild">
+      <Name>EITC (MFJ) limit with 1 child</Name>
+      <Description>EITC limit with 1 child when filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>56004</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcSelfLimitWithOneChild">
+      <Name>EITC (self) limit with 1 child</Name>
+      <Description>EITC limit with 1 child when not filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>49084</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcMfjLimitWithZeroChildren">
+      <Name>EITC (MFJ) limit with 0 children</Name>
+      <Description>EITC limit with 0 children when filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>25511</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcSelfLimitWithZeroChildren">
+      <Name>EITC (self) limit with 0 children</Name>
+      <Description>EITC limit with 0 children when not filing as MFJ
+        Rev Proc .06 Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>18591</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInEndsFor0QualifyingChildren">
+      <Name>Maximum phase in amount with 0 children</Name>
+      <Description>The earned income amount which provides the max EITC with 0 qualifying children
+        Rev Proc .06 Earned
+        Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>8260</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInEndsFor1QualifyingChild">
+      <Name>Maximum phase in amount with 1 child</Name>
+      <Description>The earned income amount which provides the max EITC with 1 qualifying child
+        Rev Proc .06 Earned
+        Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>12390</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInEndsFor2OrMoreQualifyingChildren">
+      <Name>Maximum phase in amount with 2 or more children</Name>
+      <Description>The earned income amount which provides the max EITC with 2 or more qualifying
+        children
+        Rev Proc .06
+        Earned Income Credit &#xA7;32(b)
+      </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>17400</Dollar>
+      </Derived>
+    </Fact>
   </Facts>
 </FactDictionaryModule>
