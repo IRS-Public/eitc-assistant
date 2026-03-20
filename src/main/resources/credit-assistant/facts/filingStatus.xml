@@ -87,5 +87,326 @@
         </Equal>
       </Derived>
     </Fact>
+    <Fact path="/yearOfSpouseDeathOptions">
+      <Name>Year of Spouse Death Options</Name>
+      <Description>The year that a taxpayer's spouse died</Description>
+      <Derived>
+        <EnumOptions>
+          <String>taxYear</String>
+          <String>taxYearMinusOne</String>
+          <String>taxYearMinusTwo</String>
+          <String>beforeTaxYearMinusTwo</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/yearOfSpouseDeath">
+      <Name>Year of spouse's death</Name>
+      <Description>The relative year a widowed filer's spouse died.</Description>
+      <Export downstreamFacts="true"/>
+      <Writable>
+        <Enum optionsPath="/yearOfSpouseDeathOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/isWidowedInTaxYear">
+      <Name>Is (really Was) Widowed in Tax Year</Name>
+      <Description>Was the filer widowed in the current tax year?</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <All>
+          <Dependency path="/isWidowed"/>
+          <Equal>
+            <Left>
+              <Dependency path="/yearOfSpouseDeath"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/yearOfSpouseDeathOptions">taxYear</Enum>
+            </Right>
+          </Equal>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/maritalStatusAllowsFilingMarried">
+      <Name>Marital status allows filing married</Name>
+      <Description>The TP's declared marital status (either married or widowed in tax year) allows them to file as MFS
+        or MFJ.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Any>
+          <Dependency module="filers" path="/isMarried"/>
+          <Dependency module="filers" path="/isWidowedInTaxYear"/>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleForMFJ">
+      <Name>Eligible for joint return</Name>
+      <Description>
+        Whether the taxpayer is eligible to file jointly. This requires them being married or widowed during
+        their tax year and the spouse must meet appropriate residency requirements.
+      </Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <All>
+          <Dependency path="/maritalStatusAllowsFilingMarried"/>
+          <Dependency module="filers" path="/secondaryFilerResidencyEligibleForMFJ"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleForMFS">
+      <Name>Eligible to file as MFS</Name>
+      <Description>The TP is eligible to file as MFS</Description>
+      <Derived>
+        <Dependency path="/maritalStatusAllowsFilingMarried"/>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleForSingle">
+      <Name>Eligible to file as single</Name>
+      <Description>The TP is eligible to file as single</Description>
+      <Derived>
+        <Not>
+          <Dependency path="/maritalStatusAllowsFilingMarried"/>
+        </Not>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleForHoh">
+      <Name>Eligible for Head of Household</Name>
+      <Description>Whether the taxpayer is eligible for Head of Household filing status.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <All>
+          <GreaterThan>
+            <Left>
+              <Count>
+                <Dependency module="familyAndHousehold" path="/familyAndHousehold/*/hohQualifyingPerson"/>
+              </Count>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </GreaterThan>
+          <Dependency module="filers" path="/filerCouldQualifyForHoh"/>
+          <!-- Filers who are eligible for QSS are not eligible for HOH, preventing them from taking a less
+               advantageous refund 26 U.S.C. § 2(b)(1) -->
+          <Not>
+            <Dependency path="/eligibleForQss"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eligibleForQss">
+      <Name>Eligible for Qualified Surviving Spouse</Name>
+      <Description>Whether the taxpayer is eligible for Qualified Surviving Spouse filing status.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <All>
+          <Dependency module="filers" path="/filerCouldQualifyForQss"/>
+          <GreaterThan>
+            <Left>
+              <Count>
+                <Dependency module="familyAndHousehold" path="/familyAndHousehold/*/qssQualifyingPerson"/>
+              </Count>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </GreaterThan>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/treatAsMFJ">
+      <Name>Treat as MFJ</Name>
+      <Description>Treat the TP as MFJ. They have either declared an MFJ filing status, or are attempting for an MFJ
+        filing status</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency path="/filingStatus"/>
+            </IsComplete>
+            <!-- The TP is filing a joint return -->
+            <Dependency path="/isFilingStatusMFJ"/>
+            <Dependency path="/eligibleForMFJ"/>
+          </All>
+          <All>
+            <!-- or the TP is trying for a joint return, but hasn't yet declared their filing
+            status. -->
+            <Not>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </Not>
+            <Dependency path="/wantsJointReturn"/>
+            <Dependency path="/eligibleForMFJ"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/treatAsMFS">
+      <Description>Treat the TP as MFS. They have either declared an MFS filing status, or are attempting for an MFS
+        filing status</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency path="/filingStatus"/>
+            </IsComplete>
+            <!-- The TP is filing a separate return -->
+            <Dependency path="/isFilingStatusMFS"/>
+          </All>
+          <All>
+            <!-- or the TP is trying for a separate return, but hasn't yet declared their filing
+            status. -->
+            <Not>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </Not>
+            <Dependency path="/wantsSeparateReturn"/>
+            <Dependency path="/eligibleForMFS"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/treatAsHoh">
+      <Description>Treat the TP as HoH. They have either declared an Hoh filing status, or are attempting for an HoH
+        filing status</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency path="/filingStatus"/>
+            </IsComplete>
+            <Dependency path="/isFilingStatusHOH"/>
+          </All>
+          <All>
+            <Not>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </Not>
+            <Dependency path="/wantsHeadOfHousehold"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/wantsJointReturn">
+      <Name>Wants joint return</Name>
+      <Description>Whether the taxpayer wants to file jointly with their spouse.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </When>
+            <Then>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Equal>
+                <Left>
+                  <Dependency path="/filingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusInitialOptions">wantsMarriedFilingJointly</Enum>
+                </Right>
+              </Equal>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/wantsSeparateReturn">
+      <Name>Wants separate return</Name>
+      <Description>Whether the taxpayer wants to file separately with their spouse.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </When>
+            <Then>
+              <Dependency path="/isFilingStatusMFS"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Equal>
+                <Left>
+                  <Dependency path="/filingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusInitialOptions">wantsMarriedFilingSeparately</Enum>
+                </Right>
+              </Equal>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/wantsHeadOfHousehold">
+      <Name>Wants head of household</Name>
+      <Description>Whether the taxpayer wants to head of household status.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="/filingStatus"/>
+          </Left>
+          <Right>
+            <Enum optionsPath="/filingStatusInitialOptions">wantsToSeeIfTheyQualifyHeadOfHousehold</Enum>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/wantsJointReturn">
+      <Name>Wants joint return</Name>
+      <Description>Whether the taxpayer wants to file jointly with their spouse.</Description>
+      <Export downstreamFacts="true"/>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <IsComplete>
+                <Dependency path="/filingStatus"/>
+              </IsComplete>
+            </When>
+            <Then>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Equal>
+                <Left>
+                  <Dependency path="/filingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusInitialOptions">wantsMarriedFilingJointly</Enum>
+                </Right>
+              </Equal>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
   </Facts>
 </FactDictionaryModule>
