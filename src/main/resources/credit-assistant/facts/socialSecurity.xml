@@ -5,7 +5,7 @@
     <Fact path="/socialSecurityBenefitsIncome">
       <Description>Gross SSA Income from forms SSA-1099 and RRB-1099</Description>
       <Derived>
-          <Dependency path="/socialSecurityIncome"/>
+        <Dependency path="/socialSecurityIncome"/>
       </Derived>
     </Fact>
     <Fact path="/totalTaxesPaidOnSocialSecurityIncome">

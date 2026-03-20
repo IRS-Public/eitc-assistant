@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.generators
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.parser.{ Flow, Page, PageNode }
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.FactDictionary
 import org.jsoup.parser.Tag
 import org.jsoup.Jsoup
 import org.thymeleaf.context.Context

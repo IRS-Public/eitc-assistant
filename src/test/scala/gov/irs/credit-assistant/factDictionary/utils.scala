@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.factDictionary
 
+import gov.irs.creditassistant.loadFactXml
 import gov.irs.factgraph.{ FactDictionary, FactDictionaryForTests, Graph, Path }
 import gov.irs.factgraph.types.WritableType
-import gov.irs.creditassistant.loadFactXml
 
 def setupFactDictionary(): FactDictionary =
   val factXml = loadFactXml()

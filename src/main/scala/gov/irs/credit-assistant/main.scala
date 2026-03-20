@@ -1,9 +1,9 @@
 package gov.irs.creditassistant
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.generators.Website
 import gov.irs.creditassistant.parser.Flow
+import gov.irs.factgraph.FactDictionary
 import java.io.File
 import scala.io.Source
 import scala.util.matching.Regex
@@ -49,7 +49,8 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   val flow = Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
   val site = Website.generate(flow, tweFactDictionary.xml, flags)
 
-  val recursiveFlow = gov.irs.creditassistant.parser.recursive.Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
+  val recursiveFlow =
+    gov.irs.creditassistant.parser.recursive.Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
   val recursiveSite = Website.generate(recursiveFlow, tweFactDictionary.xml, flags)
 
   // assert legacy and recursive output are identical

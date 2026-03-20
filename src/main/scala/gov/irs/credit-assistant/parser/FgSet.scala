@@ -1,9 +1,9 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.{ FactDictionary, Path }
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Utils.validateFact
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.{ FactDictionary, Path }
 import org.thymeleaf.context.Context
 import scala.collection.JavaConverters.asJavaIterableConverter
 

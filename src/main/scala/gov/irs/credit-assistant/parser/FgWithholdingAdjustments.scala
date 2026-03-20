@@ -1,7 +1,7 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
 
 enum FormType(val typeString: String):

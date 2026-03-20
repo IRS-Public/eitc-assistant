@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.generators
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.generateFlowLocalFile
 import gov.irs.creditassistant.parser.Flow
+import gov.irs.factgraph.FactDictionary
 import org.jsoup.Jsoup
 import org.scalatest.funspec.AnyFunSpec
 

@@ -1,7 +1,7 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.FactDictionary
 
 enum SectionNode {
   case fgCollection(fgCollection: FgCollection)
