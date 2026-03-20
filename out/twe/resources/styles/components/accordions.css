@@ -1,7 +1,0 @@
-.usa-accordion__button--highlight {
-  background-color: var(--primary-lightest);
-}
-
-.usa-accordion__button--highlight:hover {
-  background-color: var(--primary-lighter);
-}

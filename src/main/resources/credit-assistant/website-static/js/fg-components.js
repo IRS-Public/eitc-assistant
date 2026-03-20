@@ -1,0 +1,873 @@
+import * as fg from '../vendor/fact-graph/factgraph-3.1.0.js'
+
+// This blocks the rest of the file because you can't set up the web components the fact dictionary
+// is set up
+const res = await fetch('/app/eitc/resources/fact-dictionary.xml')
+const text = await res.text()
+const factDictionary = fg.FactDictionaryFactory.importFromXml(text)
+
+let factGraph
+const serializedGraphJSON = sessionStorage.getItem('factGraph')
+if (serializedGraphJSON) {
+  factGraph = fg.GraphFactory.fromJSON(factDictionary, serializedGraphJSON)
+} else {
+  factGraph = fg.GraphFactory.apply(factDictionary)
+}
+window.factGraph = factGraph
+document.dispatchEvent(new CustomEvent('fg-load'))
+
+function saveFactGraph () {
+  sessionStorage.setItem('factGraph', factGraph.toJSON())
+}
+
+/**
+ * Debug utility to load a fact graph from the console
+ * @param {string} factGraphAsString - stringified version of a JSON object
+ */
+function loadFactGraph (factGraphAsString) {
+  factGraph = fg.GraphFactory.fromJSON(factDictionary, factGraphAsString)
+  saveFactGraph()
+  window.location.reload()
+}
+window.loadFactGraph = loadFactGraph
+
+// Presence of an unload event listener will disable bfcache in Firefox.
+window.addEventListener('unload', () => {})
+
+const COLLECTION_ID_PLACEHOLDER = '{{COLLECTION_ID}}'
+/**
+ * Update all abstract paths in the template to include the collection id
+ * @param template
+ * @param collectionId
+ */
+function configureCollectionIds (template, collectionId) {
+  const attributes = ['path', 'condition', 'id', 'for', 'name', 'aria-describedby']
+  const nodesWithAbstractPaths = template.querySelectorAll(attributes.map(attr => `[${attr}*="/*/"]`).join(','))
+  for (const node of nodesWithAbstractPaths) {
+    for (const attribute of attributes) {
+      const path = node.getAttribute(attribute)
+      if (path) {
+        node.setAttribute(attribute, makeCollectionIdPath(path, collectionId))
+      }
+    }
+  }
+
+  for (const button of template.querySelectorAll('button.pdf-download')) {
+    const onclick = button.getAttribute('onclick')
+    button.setAttribute('onclick', onclick.replaceAll(COLLECTION_ID_PLACEHOLDER, collectionId))
+  }
+}
+
+function makeCollectionIdPath (abstractPath, id) {
+  return abstractPath.replace('*', `#${id}`)
+}
+
+/*
+ * <fg-set> - An input that sets a fact
+ */
+class FgSet extends HTMLElement {
+  constructor () {
+    super()
+
+    this.DEFAULT_ERROR_ELEMENT_ID = 'errors.Default'
+
+    this.tabListener = (event) => {
+      // Conditions must be re-evaluated before the keydown event resolves, so that focusable elements are updated
+      // before the focus moves. The `blur` and `change` events don't fire until *after* the focus has already moved.
+      if (event.key === 'Tab') {
+        // TODO: Prevent these from being called twice (once here, once through onChange)
+        this.setFact()
+        showOrHideAllElements()
+      }
+    }
+  }
+
+  connectedCallback () {
+    this.condition = this.getAttribute('condition')
+    this.operator = this.getAttribute('operator')
+    this.inputType = this.getAttribute('inputtype')
+    this.inputs = this.querySelectorAll('input, select')
+    this.optional = this.getAttribute('optional') === 'true'
+
+    switch (this.inputType) {
+      // This switch statement is intentionally not exhaustive
+      case 'date': {
+        this.addEventListener('change', () => {
+          const allFilled = Array.from(this.inputs).every(input => {
+            return input.value.trim() !== '' && input.value !== '- Select -'
+          })
+
+          if (allFilled) {
+            this.onChange()
+          }
+        })
+
+        break
+      }
+      case 'dollar':
+        this.addEventListener('change', () => {
+          this.onChange()
+        })
+        break
+      case 'select':
+      case 'boolean':
+      case 'enum':
+      case 'multi-enum':
+        for (const input of this.inputs) {
+          input.addEventListener('change', () => {
+            this.onChange()
+            // Clear validation error once user makes a selection
+            this.clearValidationError()
+          })
+        }
+        break
+      default:
+        for (const input of this.inputs) {
+          input.addEventListener('blur', () => this.onChange())
+          input.addEventListener('keydown', this.tabListener)
+        }
+    }
+
+    this.path = this.getAttribute('path')
+    this.error = null
+
+    console.debug(`Adding fg-set with path ${this.path} of inputType ${this.inputType}`)
+
+    // This is done with bind, rather than an arrow function, so that it can be removed later
+    this.clear = this.clear.bind(this)
+    document.addEventListener('fg-clear', this.clear)
+
+    this.render()
+  }
+
+  disconnectedCallback () {
+    console.debug(`Removing fg-set with path ${this.path}`)
+    document.removeEventListener('fg-clear', this.clear)
+  }
+
+  clearAlerts () {
+    this.querySelector('div.alert--warning')?.remove()
+  }
+
+  clearValidationError () {
+    const errorElement = this.querySelector('.usa-error-message')
+    const errorId = errorElement?.id
+
+    // Remove errorId from aria-describedby
+    const elementWithDescription = this.querySelector('[aria-describedby]')
+    const ariaDescription = elementWithDescription?.getAttribute('aria-describedby')
+
+    if (elementWithDescription) {
+      const updatedIds = ariaDescription
+        .split(' ')
+        .filter(id => id.trim() && id !== errorId)
+        .join(' ')
+
+      updatedIds
+        ? elementWithDescription.setAttribute('aria-describedby', updatedIds)
+        : elementWithDescription.removeAttribute('aria-describedby')
+    }
+
+    // Remove the error treatment
+    errorElement?.remove()
+    this.querySelector('.validate-alert')?.remove()
+    this.querySelector('.usa-form-group')?.classList.remove('usa-form-group--error')
+    this.querySelector('.usa-label--error')?.classList.remove('usa-label--error')
+    this.querySelectorAll('.usa-input-group, .usa-select, .usa-input').forEach(item => {
+      item.classList.remove('usa-input--error')
+      item.removeAttribute('aria-describedby')
+    })
+    this.querySelectorAll('.usa-input[aria-invalid="true"], .usa-select[aria-invalid="true"]').forEach(item => item?.setAttribute('aria-invalid', 'false'))
+  }
+
+  setValidationError (errorText) {
+    this.clearValidationError()
+    const errorId = `${this.path}-error` // Keep the slash for primary filer
+
+    // Set up the error div
+    const errorDiv = document.createElement('div')
+    errorDiv.classList.add('usa-error-message')
+    errorDiv.setAttribute('id', errorId)
+    errorDiv.textContent = errorText
+
+    const elementWithDescription = this.querySelector('.usa-fieldset, .usa-select, .usa-input')
+    const errorLocation = this.querySelector('.usa-radio, .usa-memorable-date, .usa-checkbox, .usa-select, .usa-input-group, .usa-input')
+
+    // Place the error div just before the invalid field location
+    errorLocation.insertAdjacentElement('beforebegin', errorDiv)
+
+    // If the element is inside of a closed accordion, open it
+    const detailsContent = this.closest('details')
+    if (detailsContent && detailsContent.open === false) {
+      detailsContent.open = true
+    }
+
+    // Set aria-description
+    const existingAriaDescribedby = elementWithDescription.getAttribute('aria-describedby')
+    elementWithDescription.setAttribute('aria-describedby', `${existingAriaDescribedby || ''} ${errorId}`.trim())
+
+    // Set the modifier classes for errors
+    this.querySelector('.usa-form-group')?.classList.add('usa-form-group--error')
+    this.querySelector('.usa-legend, .usa-label')?.classList.add('usa-label--error')
+    this.querySelectorAll('.usa-input-group, .usa-select, .usa-input').forEach(item => {
+      item.classList.add('usa-input--error')
+      item.setAttribute('aria-describedby', `${errorId}`)
+    })
+    this.querySelectorAll('.usa-input[aria-invalid="false"], .usa-select[aria-invalid="false"]').forEach(item => {
+      item.setAttribute('aria-invalid', 'true')
+    })
+  }
+
+  validateRequiredFields () {
+    const isMissing = !this.isComplete()
+    if (isMissing) {
+      this.setValidationError('This question is required')
+    } else {
+      this.clearValidationError()
+    }
+    return isMissing
+  }
+
+  render () {
+    this.setInputValueFromFactValue()
+  }
+
+  onChange () {
+    try {
+      const res = this.setFact()
+      if (res.errorType) {
+        const errorTextKey = `errors.${res.errorName}`
+        const errorElement = document.getElementById(errorTextKey) || document.getElementById(this.DEFAULT_ERROR_ELEMENT_ID)
+        const errorText = errorElement.innerText + ' ' + (res.expectedValue || '')
+        this.setValidationError(errorText)
+      } else {
+        this.clearValidationError()
+      }
+    } catch (error) {
+      this.setValidationError(error.message)
+    }
+  }
+
+  isComplete () {
+    return factGraph.get(this.path).complete
+  }
+
+  clear () {
+    switch (this.inputType) {
+      case 'boolean':
+      case 'enum': {
+        const checkedRadio = this.querySelector('input:checked')
+        if (checkedRadio) {
+          checkedRadio.checked = false
+        };
+        break
+      }
+      case 'multi-enum': {
+        const checkedBoxes = this.querySelectorAll('input:checked')
+        for (const checkbox of checkedBoxes) {
+          checkbox.checked = false
+        }
+        break
+      }
+      case 'select': {
+        this.querySelector('select').value = ''
+        break
+      }
+      case 'text':
+      case 'date': {
+        this.querySelector('select[name*="-month"]').value = ''
+        this.querySelector('input[name*="-day"]').value = ''
+        this.querySelector('input[name*="-year"]').value = ''
+        break
+      }
+      case 'int':
+      case 'dollar': {
+        this.querySelector('input').value = ''
+        break
+      }
+      default: {
+        console.warn(`Unknown input type "${this.inputType}" for input with path "${this.path}"`)
+      }
+    }
+
+    // Clear error and alerts
+    this.error = null
+    this.clearAlerts()
+    this.clearValidationError()
+  }
+
+  setInputValueFromFactValue () {
+    console.debug(`Setting input value for ${this.path} of type ${this.inputType}`)
+    const fact = factGraph.get(this.path)
+
+    let value
+    if (fact.complete === false) {
+      value = ''
+    } else {
+      value = fact.get?.toString()
+    }
+
+    switch (this.inputType) {
+      case 'boolean':
+      case 'enum': {
+        if (value !== '') {
+          this.querySelector(`input[value=${value}]`).checked = true
+        }
+        break
+      }
+      case 'multi-enum': {
+        // MultiEnum stores Set of values - convert from Scala Set to JS Set
+        const selectedValues = fact.hasValue ? fg.scalaSetToJsSet(fact.get.getValue()) : new Set()
+        const checkboxes = this.querySelectorAll('input[type="checkbox"]')
+        for (const checkbox of checkboxes) {
+          checkbox.checked = selectedValues.has(checkbox.value)
+        }
+        break
+      }
+      case 'select': {
+        this.querySelector('select').value = value
+        break
+      }
+      case 'text':
+      case 'int': {
+        this.querySelector('input').value = value
+        break
+      }
+      case 'date': {
+        const monthSelect = this.querySelector('select[name*="-month"]')
+        const dayInput = this.querySelector('input[name*="-day"]')
+        const yearInput = this.querySelector('input[name*="-year"]')
+
+        if (value) {
+          // When the fact has all three fields filled out, set it up
+          const [year, month, day] = value.split('-')
+          monthSelect.value = month
+          dayInput.value = day
+          yearInput.value = year
+        } else if (!monthSelect.value && !dayInput.value && !yearInput.value) {
+          // Only clear if the inputs are truly empty (not just fact incomplete)
+          // This preserves partial user input during fg-update events
+          monthSelect.value = ''
+          dayInput.value = ''
+          yearInput.value = ''
+          // If there are existing values, leave them alone
+        }
+        break
+      }
+      case 'dollar': {
+        this.querySelector('input').value = value
+        break
+      }
+      default: {
+        console.warn(`Unknown input type "${this.inputType}" for input with path "${this.path}"`)
+      }
+    }
+  }
+
+  getFactValueFromInputValue () {
+    console.debug(`Getting input value for ${this.path} of type ${this.inputType}`)
+    switch (this.inputType) {
+      case 'boolean':
+      case 'enum': {
+        return this.querySelector('input:checked')?.value
+      }
+      case 'multi-enum': {
+        // Collect all checked checkbox values into Set, convert to Scala Set, wrap in MultiEnum
+        const checkboxes = this.querySelectorAll('input[type="checkbox"]:checked')
+        const values = new Set(Array.from(checkboxes).map(cb => cb.value))
+        // Return null if empty (not empty Set) to match optional field semantics
+        return values.size > 0 ? fg.MultiEnum(fg.jsSetToScalaSet(values), '') : null
+      }
+      case 'select': {
+        return this.querySelector('select')?.value
+      }
+      case 'date': {
+        const month = this.querySelector('select[name*="-month"]')?.value
+        const day = this.querySelector('input[name*="-day"]')?.value
+        const year = this.querySelector('input[name*="-year"]')?.value
+        // Adding padStart to day changes user's input from 1 to 01
+        return `${year}-${month}-${day.padStart(2, '0')}`
+      }
+      case 'text':
+      case 'int':
+      case 'dollar': {
+        return this.querySelector('input')?.value
+      }
+      default: {
+        console.warn(`Unknown input type "${this.inputType}" for input with path "${this.path}"`)
+        return undefined
+      }
+    }
+  }
+
+  setFact () {
+    console.debug(`Setting fact ${this.path}`)
+    const value = this.getFactValueFromInputValue()
+
+    let res = {}
+    if (value === '' || value === null) {
+      console.debug('Value was blank, deleting fact')
+      factGraph.delete(this.path)
+    } else {
+      res = factGraph.set(this.path, value)
+    }
+
+    saveFactGraph()
+    document.dispatchEvent(new CustomEvent('fg-update'))
+    return res
+  }
+
+  /**
+   * Deletes the current fact without sending fg-update.
+   *
+   * This method is used when processing the fg-update event, to delete facts that are no longer
+   * visible. It will get called multiple times per fg-update, because deleting some facts may
+   * trigger other facts to get deleted. It does not itself dispatch fg-update, because that would
+   * throw off a lot of unnecessary events.
+   *
+   * At present, it is impossible for users to delete facts, so deleting a fact should never trigger
+   * a new UI update.
+   */
+  deleteFactNoUpdate () {
+    console.debug(`Deleting fact ${this.path}`)
+
+    switch (this.inputType) {
+      case 'boolean':
+      case 'enum': {
+        const input = this.querySelector('input:checked')
+        if (input) input.checked = false
+        break
+      }
+      case 'multi-enum': {
+        const checkboxes = this.querySelectorAll('input[type="checkbox"]:checked')
+        for (const checkbox of checkboxes) {
+          checkbox.checked = false
+        }
+        break
+      }
+      case 'select': {
+        this.querySelector('select').value = ''
+        break
+      }
+      case 'text':
+      case 'date':
+      case 'int':
+      case 'dollar': {
+        this.querySelector('input').value = ''
+        break
+      }
+      default: {
+        console.warn(`Unknown input type "${this.inputType}" for input with path "${this.path}"`)
+      }
+    }
+    factGraph.delete(this.path)
+    saveFactGraph()
+  }
+}
+customElements.define('fg-set', FgSet)
+
+/*
+ * <fg-collection> - Expandable collection list
+ */
+class FgCollection extends HTMLElement {
+  constructor () {
+    super()
+
+    // Make listener a persistent function so we can remove it later
+    this.addItemListener = () => this.addItem()
+
+    /*
+    * Set item numbers for items in `<fg-collection>`
+    * Changes headings to Item 1, Item 2, etc.
+    */
+
+    this.setCollectionItemNumbers = () => {
+      const collectionItems = this.querySelectorAll('fg-collection-item')
+      collectionItems.forEach((item, index) => {
+        const itemNumberSlot = item.querySelectorAll('.collection-item-number')
+        if (itemNumberSlot) {
+          itemNumberSlot.forEach(slot => { slot.textContent = `#${index + 1}` })
+        }
+      })
+    }
+  }
+
+  connectedCallback () {
+    this.path = this.getAttribute('path')
+    this.addItemButton = this.querySelector('.fg-collection__add-item')
+    this.addItemButton.addEventListener('click', this.addItemListener)
+
+    // Add any items that currently exist in this collection
+    const ids = factGraph.getCollectionIds(this.path)
+    ids.map(id => this.addItem(id))
+
+    // If disallowempty="true" and no items, add one
+    if (this.getAttribute('disallowempty') === 'true' && this.querySelectorAll('fg-collection-item').length === 0) {
+      this.addItem()
+    }
+  }
+
+  disconnectedCallback () {
+    this.addItemButton.removeEventListener('click', this.addItemListener)
+  }
+
+  addItem (id) {
+    const collectionId = id ?? generateUUID()
+
+    if (!id) {
+      factGraph.addToCollection(this.path, collectionId)
+      saveFactGraph()
+    }
+
+    const collectionItem = document.createElement('fg-collection-item')
+    collectionItem.setAttribute('collectionPath', this.path)
+    collectionItem.setAttribute('collectionId', collectionId)
+    const collectionItemsContainer = this.querySelector('.fg-collection__item-container')
+    collectionItemsContainer.appendChild(collectionItem)
+    const collectionItemButton = collectionItem.querySelector('summary')
+
+    const detailsElement = collectionItem.querySelector('details')
+    if (detailsElement) {
+      detailsElement.open = true
+    }
+
+    collectionItemButton?.focus()
+    document.dispatchEvent(new CustomEvent('fg-update'))
+  }
+}
+customElements.define('fg-collection', FgCollection)
+
+class FgCollectionItem extends HTMLElement {
+  constructor () {
+    super()
+
+    // Make listener a persistent function so we can remove it later
+    this.clearListener = () => this.clear()
+  }
+
+  connectedCallback () {
+    console.debug('Connecting', this)
+
+    // Get our template from the parent fg-collection
+    const fgCollection = this.closest('fg-collection')
+    const templateContent = fgCollection.querySelector('.fg-collection__item-template').content.cloneNode(true)
+
+    const collectionId = this.getAttribute('collectionId')
+    configureCollectionIds(templateContent, collectionId)
+
+    this.append(templateContent)
+
+    // Set up collection item detail IDs to enable interactions
+    const collectionItemButton = this.querySelector('.fg-collection__item-container summary')
+    const collectionItemContent = this.querySelector('.fg-collection__item-container details')
+    collectionItemButton.setAttribute('aria-controls', `collection-item-${collectionId}`)
+    collectionItemContent.setAttribute('id', `collection-item-${collectionId}`)
+
+    // Open the details element by default.
+    if (collectionItemContent.open === false) {
+      collectionItemContent.open = true
+    }
+
+    this.removeButton = this.querySelector('.fg-collection-item__remove-item')
+    const modalId = this.removeButton.getAttribute('for')
+    // Make listener a persistent function so that we can remove it later
+    this.clickRemoveItemListener = () => this.handleClickRemoveItem(modalId)
+    this.removeButton.addEventListener('click', this.clickRemoveItemListener)
+
+    document.addEventListener('fg-clear', this.clearListener)
+
+    // Set collection item numbers
+    fgCollection.setCollectionItemNumbers()
+  }
+
+  disconnectedCallback () {
+    console.debug('Disconnecting', this)
+
+    this.removeButton.removeEventListener('click', this.clickRemoveItemListener)
+    document.removeEventListener('fg-clear', this.clearListener)
+
+    // Reset content
+    this.innerHTML = ''
+  }
+
+  handleClickRemoveItem (modalId) {
+    // Override the corresponding modal's onclick to remove this collection item
+    const modal = document.querySelector(`#${modalId}`)
+    const confirmButton = modal.querySelector('.fg-collection__remove-item-modal__button-confirm')
+    confirmButton.onclick = () => {
+      const fgCollection = this.closest('fg-collection')
+      const addButton = fgCollection.querySelector('.fg-collection__add-item')
+
+      this.clear()
+      addButton.focus()
+      this.dispatchEvent(new CustomEvent('fg-update'))
+    }
+  }
+
+  clear () {
+    for (const fgSet of this.querySelectorAll(customElements.getName(FgSet))) {
+      fgSet.remove()
+    }
+
+    const fgCollection = this.closest('fg-collection')
+    const collectionPath = this.getAttribute('collectionPath')
+    const collectionId = this.getAttribute('collectionId')
+    factGraph.delete(makeCollectionIdPath(`${collectionPath}/*`, collectionId))
+    saveFactGraph()
+
+    // Remove this element and its parent fieldset from the DOM after removing the item from the fact graph
+    this.remove()
+    fgCollection.setCollectionItemNumbers()
+  }
+}
+customElements.define('fg-collection-item', FgCollectionItem)
+
+class FgWithholdingAdjustments extends HTMLElement {
+  constructor () {
+    super()
+    this.updateListener = () => this.render()
+  }
+
+  connectedCallback () {
+    this.path = this.getAttribute('path')
+    this.render()
+  }
+
+  render () {
+    const collectionIds = factGraph.getCollectionIds(this.path)
+    collectionIds.forEach(collectionId => this.renderJob(collectionId))
+  }
+
+  renderJob (collectionId) {
+    const fgWithholdingAdjustments = this.closest('fg-withholding-adjustments')
+    const templateContent = fgWithholdingAdjustments.querySelector('.fg-withholding-adjustment__template').content.cloneNode(true)
+    configureCollectionIds(templateContent, collectionId)
+    this.append(templateContent)
+  }
+}
+customElements.define('fg-withholding-adjustments', FgWithholdingAdjustments)
+
+/*
+ * <fg-show> - Display the current value and/or status of a fact.
+ */
+class FgShow extends HTMLElement {
+  constructor () {
+    super()
+    this.updateListener = () => this.render()
+  }
+
+  connectedCallback () {
+    this.path = this.getAttribute('path')
+    document.addEventListener('fg-update', this.updateListener)
+    this.render()
+  }
+
+  disconnectedCallback () {
+    document.removeEventListener('fg-update', this.updateListener)
+  }
+
+  render () {
+    // TODO: Eventually remove as part of https://github.com/IRSDigitalService/tax-withholding-estimator/issues/414
+    // This is a temporary enhancement to allow showing all values of a fact without knowing the collection id
+    const results = (this.path.indexOf('*') !== -1)
+      ? factGraph.getVect(this.path).Lgov_irs_factgraph_monads_MaybeVector$Multiple__f_vect.sci_Vector__f_prefix1.u
+      : [factGraph.get(this.path)]
+
+    let outputHtml = ''
+    for (const result of results) {
+      if (outputHtml !== '') outputHtml += ', '
+      if (result.hasValue) {
+        const value = result.get.toString()
+        if (result.get.s_math_BigDecimal__f_bigDecimal) {
+          const minimumFractionDigits = (value % 1 === 0) ? 0 : 2
+          const options = { style: 'currency', currency: 'USD', minimumFractionDigits }
+          outputHtml += new Intl.NumberFormat('en-US', options).format(value)
+        } else {
+          outputHtml += value
+        }
+      } else {
+        outputHtml += '<span class="text-base">-</span>'
+      }
+    }
+
+    this.innerHTML = outputHtml
+  }
+}
+customElements.define('fg-show', FgShow)
+
+/*
+ * <fg-reset> - button to reset the Fact Graph.
+ */
+class FgReset extends HTMLElement {
+  connectedCallback () {
+    this.addEventListener('click', this)
+  }
+
+  handleEvent () {
+    sessionStorage.removeItem('factGraph')
+    window.location = '/app/eitc/'
+  }
+}
+customElements.define('fg-reset', FgReset)
+
+function checkCondition (condition, operator) {
+  let value
+  // This guards against this `.get` throwing an exception for reasons such as an unexpected fact
+  // graph update, or a misconfigured flow. Since this runs before the spinner unblocks, an
+  // exception bricks the entire page (bad). It defaults to true because having to answer an
+  // unnecessary question is likely preferable to not being presented a necessary question.
+  try {
+    value = factGraph.get(condition)
+  } catch (e) {
+    console.error(`Error attempting to fetch ${condition}, ignoring condition:\n`, e)
+    return true
+  }
+
+  switch (operator) {
+    // We need to explicitly check for true/false to account for incompletes
+    case 'isTrue': {
+      return value.hasValue && (value.get === true)
+    } case 'isFalse': {
+      return value.hasValue && (value.get === false)
+    } case 'isTrueAndComplete': {
+      return value.complete === true && value.hasValue && (value.get === true)
+    } case 'isZero': {
+      return value.hasValue && (value.get === 0)
+    } case 'isGreaterThanZero': {
+      return value.hasValue && (value.get > 0)
+    } case 'isIncomplete': {
+      return value.complete === false
+    } case 'notHasValue': {
+      return value.hasValue === false
+    } default: {
+      console.error(`Unknown condition operator ${operator}`)
+      return false
+    }
+  }
+}
+
+/**
+ * Show or hide the elements in the document based on the Fact Graph config.
+ *
+ * This method will delete facts that are hidden, making them incomplete.
+ */
+function showOrHideAllElements () {
+  // At present, this naive implementation relies on <fg-set>s not having conditions on facts that
+  // are set after them in the DOM order. This is a deliberate choice to limit complexity at this
+  // stage, but it is not set in stone. If you see bugs related to showing/hiding, this is the place
+  // to start looking.
+  const hideableElements = document.querySelectorAll('[condition][operator]')
+  for (const element of hideableElements) {
+    const condition = element.getAttribute('condition')
+    const operator = element.getAttribute('operator')
+    const meetsCondition = checkCondition(condition, operator)
+
+    // Show/hide based on conditions
+    if (!meetsCondition && !element.classList.contains('hidden')) {
+      element.classList.add('hidden')
+      // Only delete facts for <fg-set>, not other elements that might have conditions
+      if (element.tagName === 'FG-SET') {
+        element?.deleteFactNoUpdate()
+      } else {
+        const fgSetChildren = element.querySelectorAll('fg-set')
+        for (const fgSetChild of fgSetChildren) fgSetChild.deleteFactNoUpdate()
+      }
+    } else if (meetsCondition && element.classList.contains('hidden')) {
+      element.classList.remove('hidden')
+    }
+  }
+}
+
+function handleSectionContinue (event) {
+  if (!validateSectionForNavigation()) {
+    event.preventDefault()
+    return false
+  }
+  return true
+}
+
+function validateSectionForNavigation () {
+  const fgSets = document.querySelectorAll('fg-set:not(.hidden)')
+  const missingFields = []
+  let hasValidationErrors = false
+
+  // Loop through fields and mark incomplete if empty and required
+  for (const fgSet of fgSets) {
+    // It's only blocking if it's not optional, not complete, and not the child of a hidden element
+    if (!fgSet.optional && !fgSet.isComplete() && !fgSet.closest('.hidden')) {
+      const fieldName = fgSet.path
+      missingFields.push(fieldName)
+      if (!fgSet.validateRequiredFields()) {
+        hasValidationErrors = false
+      }
+    }
+  }
+  // Display validation error if there are missing fields/incomplete
+  if (missingFields.length > 0 || hasValidationErrors) {
+    showValidationError()
+    return false
+  }
+
+  return true
+}
+
+function showValidationError () {
+  // Target custom class validate-alert
+  const existingAlert = document.querySelector('.validate-alert')
+  if (existingAlert) {
+    existingAlert.remove()
+  }
+  // Clone the alert
+  const template = document.getElementById('validate-alert-template')
+  const alertElement = template.content.cloneNode(true)
+  const mainContent = document.getElementById('main-content')
+  // Place the alert at the top of the main content
+  mainContent.insertBefore(alertElement, mainContent.firstChild)
+
+  // Focus the first invalid field
+  const firstErrorFocusTarget = document.querySelector(
+    'fg-alert[blocking]:not(.hidden) :is(.usa-alert__heading, .usa-alert__text),' +
+    'fg-set:not(.hidden) .usa-form-group--error .usa-fieldset,' +
+    'fg-set:not(.hidden) [aria-invalid="true"]'
+  )
+
+  firstErrorFocusTarget.scrollIntoView({ behavior: 'instant', block: 'center' })
+  if (firstErrorFocusTarget instanceof HTMLFieldSetElement || firstErrorFocusTarget.closest('fg-alert')) {
+    firstErrorFocusTarget.setAttribute('tabindex', '-1')
+    firstErrorFocusTarget.focus()
+
+    // Remove tabindex after focus to prevent outline from appearing on subsequent clicks
+    firstErrorFocusTarget.addEventListener('blur', () => {
+      firstErrorFocusTarget.removeAttribute('tabindex')
+    }, { once: true })
+  } else { firstErrorFocusTarget.focus() }
+}
+
+// Generate UUID function for collections with fallback
+// in non-secure contexts, where crypto.randomUUID is not available,
+// for example, local development on a Windows VM
+// See: https://developer.mozilla.org/en-US/docs/Web/API/Crypto/randomUUID
+function generateUUID () {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+    return crypto.randomUUID()
+  }
+  // 0 is the placeholder, 1 and - are static
+  return '00000000-0000-1000-0000-000000000000'.replace(/0/g, () => {
+    return (Math.random() * 16 | 0).toString(16)
+  })
+}
+
+window.handleSectionContinue = handleSectionContinue
+
+// Add show/hide functionality to all elements
+document.addEventListener('fg-update', showOrHideAllElements)
+showOrHideAllElements()
+document.querySelector('#page-content-wrapper').classList.remove('hidden')
+document.querySelector('#loading-spinner').classList.add('hidden')
+
+// This opens all <details> elements that have a complete fact, to help users see information they've entered if they need to return to a page.
+for (const fgSet of document.querySelectorAll('.fg-detail fg-set:not(.hidden)')) {
+  if (fgSet.isComplete()) {
+    fgSet.closest('.fg-detail').setAttribute('open', '')
+  }
+}

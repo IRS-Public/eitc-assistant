@@ -1,6 +1,6 @@
 PORT ?= 3000
 DEBUGGER_PORT ?= 5005
-TWE_RESOURCES_DIR := ./src/main/resources/twe
+TWE_RESOURCES_DIR := ./src/main/resources/credit-assistant
 TWE_OUTPUT_DIR := ./out
 HTML_VALIDATE_TARGET := ../../../../out/**/*.html
 
@@ -11,7 +11,7 @@ FACTS_DIR := $(TWE_RESOURCES_DIR)/facts
 FACTS_CONFIG := $(FACTS_DIR)/FactDictionaryModule.rng
 
 FG_SOURCE_DIR := ../fact-graph/js/target/scala-3.3.6/factgraph-fastopt
-FG_TARGET_DIR := ./src/main/resources/twe/website-static/vendor/fact-graph
+FG_TARGET_DIR := ./src/main/resources/credit-assistant/website-static/vendor/fact-graph
 
 .PHONY: dev
 dev: ## Build and run development server, watching for changes (Default)
@@ -24,8 +24,8 @@ debug: ## Same as `dev`, but also opens a port to attach a debugger (like your I
 help: ## Print the help documentation
 	@grep -E '^[/a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-.PHONY: twe
-twe: ## Build site for production
+.PHONY: credit-assistant
+credit-assistant: ## Build site for production
 	sbt run
 
 
@@ -63,7 +63,7 @@ ci-setup: ## Install validation and linting tools
 
 .PHONY: ci
 ci: ## Run most of the CI checks locally
-	make twe
+	make credit-assistant
 	make validate-xml
 	make validate-html
 	make validate-js

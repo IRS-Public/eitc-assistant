@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <!--    TODO: each constant in a year versionsed constant.xml file should have a case statement here that compares the chosen tax year to the applicable constant
+for instance, if tax year is 2024, in each of the case statements the 2024 version of the constant should be chosen for the fact, which will not have a <TaxYear> associated with it -->
+    <Fact path="/taxYear">
+      <Description>Current tax year</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Int>2026</Int>
+      </Derived>
+    </Fact>
+    <Fact path="/nextTaxYear">
+      <Description>Next tax year</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/taxYear"/>
+          <Int>1</Int>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/lastTaxYear">
+      <Description>Previous tax year</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/taxYear"/>
+          </Minuend>
+          <Subtrahends>
+            <Int>1</Int>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/taxYearMinusTwo">
+      <Description>Tax year minus two years</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/taxYear"/>
+          </Minuend>
+          <Subtrahends>
+            <Int>2</Int>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>

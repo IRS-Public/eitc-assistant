@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<?xml-model href="./FlowConfig.rng"?>
+<FlowConfig>
+  <page title="Results" route="/results">
+    <section>
+      <h2>Your EITC results</h2>
+    </section>
+  </page>
+</FlowConfig>
