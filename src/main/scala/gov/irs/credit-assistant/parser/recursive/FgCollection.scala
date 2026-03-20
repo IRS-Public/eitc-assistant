@@ -1,10 +1,10 @@
 package gov.irs.creditassistant.parser.recursive
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Condition
 import gov.irs.creditassistant.parser.Utils.validateFact
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 

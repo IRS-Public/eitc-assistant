@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.parser.recursive
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.parser.{ Condition, FgDetail, SectionNode }
 import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
 import org.thymeleaf.TemplateEngine
 import scala.xml.Elem

@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.Log
+import gov.irs.factgraph.FactDictionary
 
 case class Flow(pages: List[Page])
 

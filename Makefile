@@ -1,13 +1,13 @@
 PORT ?= 3000
 DEBUGGER_PORT ?= 5005
-TWE_RESOURCES_DIR := ./src/main/resources/credit-assistant
-TWE_OUTPUT_DIR := ./out
+RESOURCES_DIR := ./src/main/resources/credit-assistant
+OUTPUT_DIR := ./out
 HTML_VALIDATE_TARGET := ../../../../out/**/*.html
 
-FLOW_DIR := $(TWE_RESOURCES_DIR)/flow
+FLOW_DIR := $(RESOURCES_DIR)/flow
 FLOW_CONFIG := $(FLOW_DIR)/FlowConfig.rng
 
-FACTS_DIR := $(TWE_RESOURCES_DIR)/facts
+FACTS_DIR := $(RESOURCES_DIR)/facts
 FACTS_CONFIG := $(FACTS_DIR)/FactDictionaryModule.rng
 
 FG_SOURCE_DIR := ../fact-graph/js/target/scala-3.3.6/factgraph-fastopt
@@ -48,17 +48,17 @@ format: ## Format the Scala and XML code
 	@# We only automatically format the fact configs
 	find $(FACTS_DIR) -name '*.xml' | xargs -I {} xmllint --format {} --output {}
 	sbt scalafmtAll
-	npm --prefix $(TWE_RESOURCES_DIR) run format
+	npm --prefix $(RESOURCES_DIR) run format
 
 .PHONY: clean
 clean: ## Clean all the build artifacts
 	rm -rf ./target/
 	find ./project -name target | xargs rm -rf
-	rm -rf $(TWE_OUTPUT_DIR)
+	rm -rf $(OUTPUT_DIR)
 
 .PHONY: ci-setup
 ci-setup: ## Install validation and linting tools
-	npm --prefix $(TWE_RESOURCES_DIR) install
+	npm --prefix $(RESOURCES_DIR) install
 
 
 .PHONY: ci
@@ -76,11 +76,11 @@ validate-xml: ## Validate .xml files
 
 .PHONY: validate-html
 validate-html: ## Validate .html files
-	npm --prefix $(TWE_RESOURCES_DIR) run html-validate -- "$(HTML_VALIDATE_TARGET)"
+	npm --prefix $(RESOURCES_DIR) run html-validate -- "$(HTML_VALIDATE_TARGET)"
 
 .PHONY: validate-js
 validate-js: ## Run javascript linter
-	npm --prefix $(TWE_RESOURCES_DIR) run lint
+	npm --prefix $(RESOURCES_DIR) run lint
 
 .PHONY: validate-scala
 validate-scala: ## Validate Scala code

@@ -21,9 +21,9 @@
  * between rows from the spreadsheet and fact paths.
  */
 package gov.irs.creditassistant.factDictionary.scenarios
-import gov.irs.factgraph.types.Dollar
 import gov.irs.creditassistant.scenarios
 import gov.irs.creditassistant.scenarios.Scenario
+import gov.irs.factgraph.types.Dollar
 import org.scalatest.funsuite
 import os.Path
 import scala.math.Fractional.Implicits.infixFractionalOps

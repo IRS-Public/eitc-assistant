@@ -1,9 +1,9 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.{ FlowResourceRoot, TweTemplateEngine }
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Utils.optionString
+import gov.irs.factgraph.FactDictionary
 import scala.io.Source
 import scala.util.matching.Regex
 
