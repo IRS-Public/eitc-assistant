@@ -106,7 +106,7 @@
       <Description>EITC limit with 3 or more children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>66819</Dollar>
       </Derived>
@@ -116,7 +116,7 @@
       <Description>EITC limit with 3 or more children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>59899</Dollar>
       </Derived>
@@ -126,7 +126,7 @@
       <Description>EITC limit with 2 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>62688</Dollar>
       </Derived>
@@ -136,7 +136,7 @@
       <Description>EITC limit with 2 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>55768</Dollar>
       </Derived>
@@ -146,7 +146,7 @@
       <Description>EITC limit with 1 child when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>56004</Dollar>
       </Derived>
@@ -156,7 +156,7 @@
       <Description>EITC limit with 1 child when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>49084</Dollar>
       </Derived>
@@ -166,7 +166,7 @@
       <Description>EITC limit with 0 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>25511</Dollar>
       </Derived>
@@ -176,7 +176,7 @@
       <Description>EITC limit with 0 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>18591</Dollar>
       </Derived>
@@ -187,7 +187,7 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>8260</Dollar>
       </Derived>
@@ -198,7 +198,7 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>12390</Dollar>
       </Derived>
@@ -210,7 +210,7 @@
         Rev Proc .06
         Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>17400</Dollar>
       </Derived>

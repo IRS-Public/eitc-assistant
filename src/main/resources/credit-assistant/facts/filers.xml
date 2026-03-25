@@ -1581,7 +1581,7 @@
     <Fact path="/secondaryFilerDateOfDeath">
       <Description>The date of death of the secondary filer.</Description>
       <Export downstreamFacts="true"/>
-      <TaxYear>2024</TaxYear>
+
       <Writable>
         <Day/>
         <Limit type="Max">
