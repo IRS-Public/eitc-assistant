@@ -1,8 +1,8 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.parser.{ Condition, FgDetail, SectionNode }
-import gov.irs.creditassistant.TweTemplateEngine
 import gov.irs.factgraph.FactDictionary
+import gov.irs.creditassistant.parser.{ Condition, FgDetail }
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 import org.thymeleaf.TemplateEngine
 import scala.xml.Elem
@@ -15,7 +15,7 @@ case class FgDetail(
     open: Boolean,
     condition: Option[Condition],
 ) extends FlowNode {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
     context.setVariable("summary", summary)
     val childrenHtml = children.html(templateEngine)
@@ -33,7 +33,7 @@ case class FgDetail(
 object FgDetail extends FlowNodeParser {
   private val VALID_HEADING_TAGS = Set("h2", "h3", "h4", "h5", "h6")
 
-  override def fromXml(fgDetailElement: Elem, flowNodeParser: FlowParser, level: Int): FgDetail = {
+  override def fromXml(fgDetailElement: Elem, flowNodeParser: FlowParser, level: Int = 0): FgDetail = {
     val summary = (fgDetailElement \ "summary").headOption match {
       case Some(summaryNode) => summaryNode.child.map(_.toString).mkString.trim
       case None              => ""

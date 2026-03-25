@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.generators
 
-import gov.irs.creditassistant.parser.{ Flow, Page, PageNode }
-import gov.irs.creditassistant.TweTemplateEngine
 import gov.irs.factgraph.FactDictionary
+import gov.irs.creditassistant.parser.{ Flow, Page }
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.jsoup.parser.Tag
 import org.jsoup.Jsoup
 import org.thymeleaf.context.Context
@@ -30,7 +30,7 @@ case class AllScreens(pages: List[WebsitePage], factDictionary: xml.Elem) {
 
 object AllScreens {
   def generate(flow: Flow): WebsitePage = {
-    val templateEngine = new TweTemplateEngine()
+    val templateEngine = new CreditAssistantTemplateEngine()
     val context = new Context()
     context.setVariable("title", "All Screens")
 

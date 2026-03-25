@@ -1,7 +1,8 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
 import gov.irs.creditassistant.parser.{ Condition, ConditionOperator }
-import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.creditassistant.parser.{ FgAlert, FlowNode, FlowNodeParser, FlowParser }
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 
@@ -11,7 +12,7 @@ case class FgAlert(
     heading: String,
     children: Seq[FlowNode],
 ) extends FlowNode {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
     context.setVariable("condition", condition.map(_.path).orNull)
     context.setVariable("operator", condition.map(_.operator.toString).orNull)
@@ -30,14 +31,13 @@ object FgAlert extends FlowNodeParser {
     val alertType = fgAlertElement \@ "alert-type"
 
     val heading = (fgAlertElement \ "heading").head.child.mkString.trim
+    val children = flowParser.parseChildElements(fgAlertElement, List("heading"), level)
 
     val conditionPath = fgAlertElement \@ "condition"
     val conditionOperator = fgAlertElement \@ "operator"
     val condition = Option.when(conditionPath.nonEmpty && conditionOperator.nonEmpty)(
       Condition(conditionPath, ConditionOperator.fromAttribute(conditionOperator)),
     )
-
-    val children = flowParser.parseChildElements(fgAlertElement, List("heading"), level)
 
     FgAlert(condition, alertType, heading, children)
   }

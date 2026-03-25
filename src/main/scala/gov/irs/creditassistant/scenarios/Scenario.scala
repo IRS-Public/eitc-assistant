@@ -28,10 +28,10 @@
 package gov.irs.creditassistant.scenarios
 
 import com.github.tototoshi.csv.*
-import gov.irs.creditassistant.loadTweFactDictionary
 import gov.irs.factgraph.{ types, FactDefinition, Graph }
 import gov.irs.factgraph.compnodes.{ EnumNode, MultiEnumNode }
 import gov.irs.factgraph.types.{ Day, Dollar, Enum as FgEnum }
+import gov.irs.creditassistant.loadTweFactDictionary
 import scala.util.{ Failure, Success, Try }
 
 val INPUT_NAME_COL = 0

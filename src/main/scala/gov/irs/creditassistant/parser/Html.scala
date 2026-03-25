@@ -1,18 +1,18 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import scala.xml.Elem
 
 abstract class Html extends FlowNode
 
 case class HtmlLeafNode(htmlElement: Elem) extends Html {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     htmlElement.mkString.strip
   }
 }
 
 case class HtmlWithChildren(tag: String, attrs: String, children: Seq[FlowNode]) extends Html {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     // get current element as HTML element
     val openTag = if (attrs.isEmpty) s"<$tag>" else s"<$tag $attrs>"
     val closeTag = s"</$tag>"

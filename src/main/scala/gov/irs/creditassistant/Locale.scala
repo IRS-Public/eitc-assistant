@@ -12,7 +12,7 @@ import scala.io.Source
 private val generatedFlowContentPath = os.pwd / "target" / s"flow_en.yaml"
 
 case class Locale(languageCode: String) {
-  private val localeFilePath = s"credit-assistant/locales/${languageCode}.yaml"
+  private val localeFilePath = s"twe/locales/${languageCode}.yaml"
   private val localeFile = Source.fromResource(localeFilePath)
   private val mainContent = yaml.scalayaml.Parser
     .parse(localeFile.reader())
