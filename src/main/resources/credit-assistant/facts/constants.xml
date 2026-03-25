@@ -7,9 +7,9 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
     <Fact path="/taxYearOptions">
       <Derived>
         <EnumOptions>
-          <String>_2025</String>
-          <String>_2024</String>
-          <String>_2023</String>
+          <String>2025</String>
+          <String>2024</String>
+          <String>2023</String>
         </EnumOptions>
       </Derived>
     </Fact>
@@ -18,7 +18,7 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
         <Enum optionsPath="/taxYearOptions"/>
       </Writable>
       <Placeholder>
-        <Enum optionsPath="/filingStatusOptions">_2025</Enum>
+        <Enum optionsPath="/filingStatusOptions">2025</Enum>
       </Placeholder>
     </Fact>
     <Fact path="/taxYear">
@@ -32,7 +32,7 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
                   <Dependency path="/chosenTaxYear"/>
                 </Left>
                 <Right>
-                  <Enum optionsPath="/taxYearOptions">_2025</Enum>
+                  <Enum optionsPath="/taxYearOptions">2025</Enum>
                 </Right>
               </Equal>
             </When>
@@ -47,7 +47,7 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
                   <Dependency path="/chosenTaxYear"/>
                 </Left>
                 <Right>
-                  <Enum optionsPath="/taxYearOptions">_2024</Enum>
+                  <Enum optionsPath="/taxYearOptions">2024</Enum>
                 </Right>
               </Equal>
             </When>
@@ -62,7 +62,7 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
                   <Dependency path="/chosenTaxYear"/>
                 </Left>
                 <Right>
-                  <Enum optionsPath="/taxYearOptions">_2023</Enum>
+                  <Enum optionsPath="/taxYearOptions">2023</Enum>
                 </Right>
               </Equal>
             </When>
