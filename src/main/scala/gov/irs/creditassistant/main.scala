@@ -42,13 +42,13 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   val resolvedConfig = <FlowConfig>{resolvedChildren}</FlowConfig>
   generateFlowLocalFile(resolvedConfig)
 
-  val tweFactDictionary = loadTweFactDictionary()
-  val flow = Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
-  val site = Website.generate(flow, tweFactDictionary.xml, flags)
+  val creditAssistantFactDictionary = loadCreditAssistantFactDictionary()
+  val flow = Flow.fromXmlConfig(resolvedConfig, creditAssistantFactDictionary.factDictionary)
+  val site = Website.generate(flow, creditAssistantFactDictionary.xml, flags)
 
   // Delete out/ directory and add files to it
   val outDir = os.pwd / "out"
-  site.save(outDir / "app/tax-withholding-estimator")
+  site.save(outDir / "app/eitc")
 
   if !flags.contains("serve") then return // Only start smol if 'serve' flag is set
 
@@ -64,7 +64,7 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   try
     val server = smol.Smol.start(config)
     sys.addShutdownHook(server.stop(0))
-    val url = s"http://${host}:${port}/app/tax-withholding-estimator"
+    val url = s"http://${host}:${port}/app/eitc"
     val green = "\u001b[32m"
     val cyan = "\u001b[36m"
     val bold = "\u001b[1m"
@@ -73,7 +73,7 @@ case class FgAlertContent(heading: String, body: Map[String, String])
     println(s"  ${bold}Local:${reset}   ${cyan}${url}${reset}\n")
   catch
     case _: java.net.BindException =>
-      val url = s"http://${host}:${port}/app/tax-withholding-estimator"
+      val url = s"http://${host}:${port}/app/eitc"
       val yellow = "\u001b[33m"
       val cyan = "\u001b[36m"
       val bold = "\u001b[1m"
