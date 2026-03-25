@@ -1,12 +1,12 @@
 package gov.irs.creditassistant.parser
 
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
-import gov.irs.creditassistant.loadTweFactDictionary
+import gov.irs.creditassistant.loadCreditAssistantFactDictionary
 import org.scalatest.funspec.AnyFunSpec
 
 class FgDetailSpec extends AnyFunSpec {
 
-  val factDictionary = loadTweFactDictionary().factDictionary
+  val factDictionary = loadCreditAssistantFactDictionary().factDictionary
 
   describe("FgDetail.parse") {
     it("parses summary and children from XML") {

@@ -12,7 +12,7 @@ case class Page(
     exclude: Boolean,
     children: Seq[FlowNode],
 ) extends FlowNode {
-  val href: String = "/app/tax-withholding-estimator" + route + (if (route == "/") "" else "/")
+  val href: String = "/app/eitc" + route + (if (route == "/") "" else "/")
 
   override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val pageContent = children.html(templateEngine)

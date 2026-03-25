@@ -31,7 +31,7 @@ import com.github.tototoshi.csv.*
 import gov.irs.factgraph.{ types, FactDefinition, Graph }
 import gov.irs.factgraph.compnodes.{ EnumNode, MultiEnumNode }
 import gov.irs.factgraph.types.{ Day, Dollar, Enum as FgEnum }
-import gov.irs.creditassistant.loadTweFactDictionary
+import gov.irs.creditassistant.loadCreditAssistantFactDictionary
 import scala.util.{ Failure, Success, Try }
 
 val INPUT_NAME_COL = 0
@@ -134,8 +134,8 @@ private def parseScenario(rows: List[List[String]], scenarioColumn: Int): Scenar
   var spreadsheetFacts = SHEET_ROW_TO_WRITABLE_FACT.map((sheetKey, factPath) => factPath -> csv(sheetKey))
 
   // Create the fact graph
-  val tweFactDictionary = loadTweFactDictionary()
-  val factGraph = Graph(tweFactDictionary.factDictionary)
+  val creditAssistantFactDictionary = loadCreditAssistantFactDictionary()
+  val factGraph = Graph(creditAssistantFactDictionary.factDictionary)
 
   // Add the Social Security sources to the fact graph
   ALL_SS_SOURCES.foreach(source => factGraph.addToCollection("/socialSecuritySources", source))
@@ -227,7 +227,7 @@ private def parseScenario(rows: List[List[String]], scenarioColumn: Int): Scenar
 
   // Set the rest of the facts based on mappings
   spreadsheetFacts.foreach { (factPath, value) =>
-    val definition = tweFactDictionary.factDictionary.getDefinition(factPath)
+    val definition = creditAssistantFactDictionary.factDictionary.getDefinition(factPath)
     val result = Try {
       definition.typeNode match {
         case "BooleanNode" => convertBoolean(value)
