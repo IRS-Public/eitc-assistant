@@ -297,7 +297,7 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>8680</Dollar>
       </Derived>
@@ -308,7 +308,7 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>13020</Dollar>
       </Derived>
@@ -319,7 +319,7 @@
         Rev Proc .06
         Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>18290</Dollar>
       </Derived>
@@ -366,28 +366,28 @@
     </Fact>
     <Fact path="/phaseInRatesFor0Qc">
       <Name>Phase in rate for 0 qualifying children</Name>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Rational>765/10000</Rational>
       </Derived>
     </Fact>
     <Fact path="/phaseInRatesFor1Qc">
       <Name>Phase in rate for 1 qualifying child</Name>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Rational>34/100</Rational>
       </Derived>
     </Fact>
     <Fact path="/phaseInRatesFor2Qc">
       <Name>Phase in rate for 2 qualifying children</Name>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Rational>40/100</Rational>
       </Derived>
     </Fact>
     <Fact path="/phaseInRatesFor3OrMoreQc">
       <Name>Phase in rate for 3 or more qualifying children</Name>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Rational>45/100</Rational>
       </Derived>
@@ -463,7 +463,7 @@
     <Fact path="/eitcPhaseOutRate">
       <Name>EITC phase out rate</Name>
       <Description>The rate at which EITC phases out as income exceeds the threshold amount.</Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Switch>
           <Case>
@@ -520,7 +520,7 @@
         Rev Proc .06 Earned Income
         Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Switch>
           <Case>
@@ -614,7 +614,7 @@
       <Description>EITC limit with 3 or more children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>70244</Dollar>
       </Derived>
@@ -624,7 +624,7 @@
       <Description>EITC limit with 3 or more children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>62974</Dollar>
       </Derived>
@@ -634,7 +634,7 @@
       <Description>EITC limit with 2 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>65899</Dollar>
       </Derived>
@@ -644,7 +644,7 @@
       <Description>EITC limit with 2 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>58629</Dollar>
       </Derived>
@@ -654,7 +654,7 @@
       <Description>EITC limit with 1 child when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>58863</Dollar>
       </Derived>
@@ -664,7 +664,7 @@
       <Description>EITC limit with 1 child when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>51593</Dollar>
       </Derived>
@@ -674,7 +674,7 @@
       <Description>EITC limit with 0 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>26820</Dollar>
       </Derived>
@@ -684,7 +684,7 @@
       <Description>EITC limit with 0 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>19540</Dollar>
       </Derived>
@@ -1250,7 +1250,7 @@
       <Description>Whether the TP's Investment Income is low enough for the EITC
         Rev Proc .06 Earned Income Credit &#xA7;32(i)
       </Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>12200</Dollar>
       </Derived>

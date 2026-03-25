@@ -2,6 +2,56 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
+    <Fact path="/isUSCitizenOrResidentAlien">
+      <Name>U.S. Citizen or Resident Alien</Name>
+      <Description>Whether the taxpayer was a U.S. citizen or resident alien for the entire tax year.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+
+    <Fact path="/hasValidSSN">
+      <Name>Valid SSN</Name>
+      <Description>Whether the taxpayer has a valid SSN issued on or before the due date of the return.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+
+    <Fact path="/hasForeignEarnedIncome">
+      <Name>Foreign Earned Income</Name>
+      <Description>Whether the taxpayer is filing Form 2555 to exclude foreign earned income.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+
+    <Fact path="/isClaimedAsDependent">
+      <Name>Claimed as Dependent</Name>
+      <Description>Whether someone else will claim the taxpayer as a dependent or qualifying child.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+
+    <Fact path="/ageRangeOptions">
+      <Name>Age Range Options</Name>
+      <Description>Options for the taxpayer's age range at the end of the tax year.</Description>
+      <Derived>
+        <EnumOptions>
+          <String>under24</String>
+          <String>age25to64</String>
+          <String>65andOlder</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/ageRange">
+      <Name>Age Range</Name>
+      <Description>The selected age range of the taxpayer at the end of the tax year.</Description>
+      <Writable>
+        <Enum optionsPath="/ageRangeOptions"/>
+      </Writable>
+    </Fact>
     <Fact path="/canFileJointlyYearOfSpouseDeath">
       <Name>Qualified to file jointly in year of spouse death</Name>
       <Description>Whether the taxpayer was qualified to file jointly for the year in which their

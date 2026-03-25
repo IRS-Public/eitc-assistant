@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="./FlowConfig.rng"?>
 <FlowConfig>
-  <page title="Credits" route="/credits">
+  <page title="Household and Family" route="/household">
     <section>
-      <h2>Credits</h2>
+      <h2>Household and Family</h2>
       <h3 condition="/flowShouldShowEitcSection" operator="isTrue">Earned Income Tax Credit (EITC)</h3>
       <p condition="/flowShouldShowEitcSection" operator="isTrue">The EITC helps low- to moderate-income workers and families lower their taxes.</p>
       <p condition="/flowShouldShowEitcSection" operator="isTrue"><modal-link for="modal-eitc-who-can-claim">Who can claim the EITC?</modal-link></p>

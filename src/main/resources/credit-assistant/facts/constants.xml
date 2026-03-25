@@ -4,11 +4,73 @@
   <Facts>
     <!--    TODO: each constant in a year versionsed constant.xml file should have a case statement here that compares the chosen tax year to the applicable constant
 for instance, if tax year is 2024, in each of the case statements the 2024 version of the constant should be chosen for the fact, which will not have a <TaxYear> associated with it -->
-    <Fact path="/taxYear">
-      <Description>Current tax year</Description>
-      <TaxYear>2026</TaxYear>
+    <Fact path="/taxYearOptions">
       <Derived>
-        <Int>2026</Int>
+        <EnumOptions>
+          <String>_2025</String>
+          <String>_2024</String>
+          <String>_2023</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/chosenTaxYear">
+      <Writable>
+        <Enum optionsPath="/taxYearOptions"/>
+      </Writable>
+      <Placeholder>
+        <Enum optionsPath="/filingStatusOptions">_2025</Enum>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxYear">
+      <Description>Chosen tax year</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Equal>
+                <Left>
+                  <Dependency path="/chosenTaxYear"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/taxYearOptions">_2025</Enum>
+                </Right>
+              </Equal>
+            </When>
+            <Then>
+              <Int>2025</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Equal>
+                <Left>
+                  <Dependency path="/chosenTaxYear"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/taxYearOptions">_2024</Enum>
+                </Right>
+              </Equal>
+            </When>
+            <Then>
+              <Int>2024</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Equal>
+                <Left>
+                  <Dependency path="/chosenTaxYear"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/taxYearOptions">_2023</Enum>
+                </Right>
+              </Equal>
+            </When>
+            <Then>
+              <Int>2023</Int>
+            </Then>
+          </Case>
+        </Switch>
       </Derived>
     </Fact>
     <Fact path="/nextTaxYear">
