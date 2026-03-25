@@ -67,7 +67,7 @@ object Website {
     val excludedPageLength = flow.pages.length - navPages.size
 
     val pages = flow.pages.zipWithIndex.map { (page, index) =>
-      val title = s"Tax Withholding Estimator - ${page.title} | Internal Revenue Service"
+      val title = s"EITC Assistant - ${page.title} | Internal Revenue Service"
       val stepTitle = page.title
 
       val context = new Context()

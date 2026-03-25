@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <?xml-model href="./FlowConfig.rng"?>
 <FlowConfig>
-  <page title="Income &amp; tax payments" route="/income">
+  <page title="Income" route="/income">
     <section>
-      <h2><fg-show path="/taxYear"/> Income &amp; tax payments</h2>
-      <p>Tell us about the total income, federal tax withholding, and estimated tax payments you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to have for <fg-show path="/taxYear"/>.</p>
+      <h2><fg-show path="/taxYear"/> Income </h2>
+      <p>Tell us about the total income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to have for <fg-show path="/taxYear"/>.</p>
       <div class="usa-alert usa-alert--info">
         <div class="usa-alert__body">
           <p class="usa-alert__text">
-            To use this estimator, you need to have income from a job, pension, or annuity.
+            To be eligible for EITC, you must have at least some income
           </p>
         </div>
       </div>

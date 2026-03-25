@@ -12,7 +12,7 @@
     </Fact>
     <Fact path="/hsaTotalDeductibleAmountMax">
       <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Dollar>17000</Dollar>
       </Derived>

@@ -4,7 +4,7 @@
   <Facts>
     <Fact path="/excessBusinessLossThreshold">
       <Description>Form 461 line 15</Description>
-      <TaxYear>2026</TaxYear>
+
       <Derived>
         <Switch>
           <Case>
