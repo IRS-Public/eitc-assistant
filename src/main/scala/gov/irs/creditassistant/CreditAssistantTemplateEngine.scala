@@ -8,7 +8,7 @@ import org.thymeleaf.templatemode.TemplateMode
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import org.thymeleaf.TemplateEngine
 
-case class TweMessageResolver(locale: Locale) extends AbstractMessageResolver:
+case class CreditAssistantMessageResolver(locale: Locale) extends AbstractMessageResolver:
   def createAbsentMessageRepresentation(
       context: ITemplateContext,
       origin: Class[?],
@@ -31,7 +31,7 @@ case class TweMessageResolver(locale: Locale) extends AbstractMessageResolver:
       .map(pattern => MessageFormat.format(pattern, messageParameters*))
       .getOrElse(null)
 
-class TweTemplateEngine {
+class CreditAssistantTemplateEngine {
   private val resolver = new ClassLoaderTemplateResolver()
   resolver.setTemplateMode(TemplateMode.HTML)
   resolver.setCharacterEncoding("UTF-8")
@@ -40,7 +40,7 @@ class TweTemplateEngine {
 
   private val locale = Locale("en")
   private val templateEngine = new TemplateEngine()
-  private val messageResolver = TweMessageResolver(locale)
+  private val messageResolver = CreditAssistantMessageResolver(locale)
   templateEngine.setTemplateResolver(resolver)
   templateEngine.addMessageResolver(messageResolver)
 

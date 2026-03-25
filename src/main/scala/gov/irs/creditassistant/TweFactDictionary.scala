@@ -5,10 +5,10 @@ import java.io.File
 import scala.io.Source
 import scala.xml.{ Elem, NodeBuffer }
 
-case class CreditAssistantFactDictionary(factDictionary: FactDictionary, xml: Elem)
+case class TweFactDictionary(factDictionary: FactDictionary, xml: Elem)
 
 def loadFactXml(): Elem = {
-  val factDirectoryPath = os.pwd / "src" / "main" / "resources" / "credit-assistant" / "facts"
+  val factDirectoryPath = os.pwd / "src" / "main" / "resources" / "twe" / "facts"
   val factsDirectory = new File(factDirectoryPath.toString)
   val listOfFiles = if (factsDirectory.exists && factsDirectory.isDirectory) {
     factsDirectory.listFiles.filter(_.isFile).filter(_.getName.endsWith(".xml")).toList
@@ -19,7 +19,7 @@ def loadFactXml(): Elem = {
   val facts = new NodeBuffer()
   for (file <- listOfFiles) {
     val fileName = file.getName()
-    val factsFile = Source.fromResource(s"credit-assistant/facts/$fileName").getLines().mkString("\n")
+    val factsFile = Source.fromResource(s"twe/facts/$fileName").getLines().mkString("\n")
     val factXmlNodes = xml.XML.loadString(factsFile)
     val factNodes = factXmlNodes \ "Facts" \ "_"
     facts ++= factNodes
@@ -32,8 +32,8 @@ def loadFactXml(): Elem = {
   </FactDictionaryModule>
 }
 
-def loadTweFactDictionary(): CreditAssistantFactDictionary = {
+def loadTweFactDictionary(): TweFactDictionary = {
   val factXml = loadFactXml()
   val factDictionary = FactDictionary.fromXml(factXml)
-  CreditAssistantFactDictionary(factDictionary, factXml)
+  TweFactDictionary(factDictionary, factXml)
 }

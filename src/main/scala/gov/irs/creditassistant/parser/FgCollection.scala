@@ -1,10 +1,10 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
+import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Condition
 import gov.irs.creditassistant.parser.Utils.validateFact
-import gov.irs.creditassistant.TweTemplateEngine
-import gov.irs.factgraph.FactDictionary
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 
@@ -16,7 +16,7 @@ case class FgCollection(
     children: Seq[FlowNode],
     determiner: String,
 ) extends FlowNode {
-  def html(templateEngine: TweTemplateEngine): String = {
+  def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
     context.setVariable("path", path)
     context.setVariable("itemName", itemName)

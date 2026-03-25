@@ -1,11 +1,11 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 
 case class Section(children: Seq[FlowNode]) extends FlowNode {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val childrenHtml = children.html(templateEngine)
 
     val context = new Context()

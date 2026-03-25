@@ -1,6 +1,6 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 
 case class FgSectionGate(
@@ -8,7 +8,7 @@ case class FgSectionGate(
     operator: String,
     state: String,
 ) {
-  def html(templateEngine: TweTemplateEngine): String = {
+  def html(templateEngine: CreditAssistantTemplateEngine): String = {
 
     val context = new Context()
     context.setVariable("gateCondition", this.condition)

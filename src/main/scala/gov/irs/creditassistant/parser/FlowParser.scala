@@ -1,7 +1,7 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.factgraph.FactDictionary
+import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import scala.xml.Elem
 
 enum FlowNodeType {
@@ -43,7 +43,9 @@ case class FlowParser(
       throw InvalidFormConfig(s"Encountered an empty element for which there is no parser configured: $parent")
     }
 
-    childElements.map { case element: Elem => parseElement(element, level + 1) }
+    childElements.collect { case element: Elem =>
+      parseElement(element, level + 1)
+    }
   }
 
   private def parseElement(element: Elem, level: Int = 0): FlowNode = FlowNodeType.fromLabel(element.label) match {

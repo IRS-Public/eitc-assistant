@@ -1,10 +1,8 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.creditassistant.{ Log, TweTemplateEngine }
-import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.factgraph.FactDictionary
-import org.thymeleaf.context.Context
-import scala.collection.JavaConverters.asJavaIterableConverter
+import gov.irs.creditassistant.exceptions.InvalidFormConfig
+import gov.irs.creditassistant.Log
 
 case class HtmlOption(name: String, value: String, description: Option[String] = None)
 

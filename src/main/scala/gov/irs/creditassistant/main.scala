@@ -3,14 +3,11 @@ package gov.irs.creditassistant
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.generators.Website
 import gov.irs.creditassistant.parser.Flow
-import gov.irs.factgraph.FactDictionary
-import java.io.File
 import scala.io.Source
 import scala.util.matching.Regex
 import scala.util.Try
 import scala.xml.Elem
 import scala.xml.NodeBuffer
-import smol.*
 
 val FlowResourceRoot = "credit-assistant/flow"
 val flagRegex = new Regex("""--(\w*)""")
@@ -49,25 +46,9 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   val flow = Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
   val site = Website.generate(flow, tweFactDictionary.xml, flags)
 
-  val recursiveFlow =
-    gov.irs.creditassistant.parser.recursive.Flow.fromXmlConfig(resolvedConfig, tweFactDictionary.factDictionary)
-  val recursiveSite = Website.generate(recursiveFlow, tweFactDictionary.xml, flags)
-
-  // assert legacy and recursive output are identical
-  assert(site.pages.length == recursiveSite.pages.length)
-
-  site.pages.zipWithIndex.foreach((page, index) => {
-    val pageContent = page.content.replaceAll(">\\s+<", "><").trim()
-    val recursivePageContent = recursiveSite.pages(index).content.replaceAll(">\\s+<", "><").trim()
-    assert(
-      recursivePageContent == pageContent,
-      s"Recursive parsing of ${page.route} did not match non-recursive output.",
-    )
-  })
-
   // Delete out/ directory and add files to it
   val outDir = os.pwd / "out"
-  recursiveSite.save(outDir / "app/eitc")
+  site.save(outDir / "app/tax-withholding-estimator")
 
   if !flags.contains("serve") then return // Only start smol if 'serve' flag is set
 
@@ -83,16 +64,16 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   try
     val server = smol.Smol.start(config)
     sys.addShutdownHook(server.stop(0))
-    val url = s"http://${host}:${port}/app/eitc"
+    val url = s"http://${host}:${port}/app/tax-withholding-estimator"
     val green = "\u001b[32m"
     val cyan = "\u001b[36m"
     val bold = "\u001b[1m"
     val reset = "\u001b[0m"
-    println(s"\n${green}${bold}✓${reset} ${bold}Credit Assistant Server${reset} ${cyan}ready${reset}")
+    println(s"\n${green}${bold}✓${reset} ${bold}Credit-Assistant Server${reset} ${cyan}ready${reset}")
     println(s"  ${bold}Local:${reset}   ${cyan}${url}${reset}\n")
   catch
     case _: java.net.BindException =>
-      val url = s"http://${host}:${port}/app/eitc"
+      val url = s"http://${host}:${port}/app/tax-withholding-estimator"
       val yellow = "\u001b[33m"
       val cyan = "\u001b[36m"
       val bold = "\u001b[1m"

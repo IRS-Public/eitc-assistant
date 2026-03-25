@@ -1,7 +1,7 @@
-package gov.irs.creditassistant.parser.recursive
+package gov.irs.creditassistant.parser
 
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
-import gov.irs.creditassistant.TweTemplateEngine
+import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 
@@ -10,7 +10,7 @@ case class Modal(
     modalHeading: String,
     modalElements: Seq[FlowNode],
 ) extends FlowNode {
-  override def html(templateEngine: TweTemplateEngine): String = {
+  override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
     context.setVariable("modalId", this.id)
     context.setVariable("modalHeading", modalHeading)

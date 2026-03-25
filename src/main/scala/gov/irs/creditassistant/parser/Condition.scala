@@ -1,9 +1,9 @@
 package gov.irs.creditassistant.parser
 
+import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Utils.optionString
 import gov.irs.creditassistant.parser.Utils.validateFact
-import gov.irs.factgraph.FactDictionary
 
 // Building this out in anticipation that we will add other types of conditions, such as isComplete
 enum ConditionOperator {
