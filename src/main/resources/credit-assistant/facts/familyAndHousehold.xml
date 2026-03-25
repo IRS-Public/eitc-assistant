@@ -205,7 +205,7 @@
         works regardless of whether it is a leap year or not.
       </Description>
       <Export downstreamFacts="true"/>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Switch>
           <Case>
@@ -820,7 +820,7 @@
         &#xA7;152(d)(1)(B).
         Rev Proc .24 Gross Income Limitation for a Qualifying Relative &#xA7;152(d)(1)(B)
       </Description>
-      <TaxYear>2024</TaxYear>
+
       <Derived>
         <Dollar>5050</Dollar>
       </Derived>
