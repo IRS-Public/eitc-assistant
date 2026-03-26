@@ -15,12 +15,20 @@
         </EnumOptions>
       </Derived>
     </Fact>
-    <Fact path="/filingStatus">
+    <Fact path="/chosenFilingStatus">
       <Name>Filing status</Name>
       <Description>The filing status selected by the taxpayer.</Description>
       <Writable>
         <Enum optionsPath="/filingStatusOptions"/>
       </Writable>
+    </Fact>
+    <Fact path="/filingStatus">
+      <Name>Filing status</Name>
+      <Description>The filing status derived by EITC Assistant based on the chosen filing status and additional questions.</Description>
+<!--      TODO: implement the derivation logic here-->
+      <Derived>
+        <Enum optionsPath="/filingStatusOptions">single</Enum>
+      </Derived>
     </Fact>
     <Fact path="/isFilingStatusSingle">
       <Description>Is taxpayer filing status single</Description>
