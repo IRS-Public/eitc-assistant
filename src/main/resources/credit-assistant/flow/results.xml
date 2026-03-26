@@ -3,7 +3,110 @@
 <FlowConfig>
   <page title="Results" route="/results">
     <section>
-      <h2>Your EITC results</h2>
+      <h2>Your Results</h2>
+      <p>
+        Based on the information you provided, you are eligible for the Earned Income Tax Credit estimated amount of:
+        <strong><fg-show path="/earnedIncomeCredit"/></strong>*
+      </p>
+      <p>
+        This credit amount will reduce your <fg-show path="/taxYear"/> taxes when you file your tax return with the IRS.
+        If the credit reduces your tax to less than zero, you may get a refund.
+      </p>
+      <h2>Next Steps: How to file for the EITC</h2>
+      <p>
+        In order to receive the estimated amount of <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
+        you must file your <fg-show path="/taxYear"/> federal tax return.
+        If you claim the EITC, by law the IRS cannot issue your tax refund before mid-February <fg-show path="/nextTaxYear"/>,
+        even the portion that is not associated with the EITC.
+      </p>
+      <h3>Online</h3>
+      <p>
+        If you'd like to file your taxes online, you qualify to use the IRS Free File Program.
+        Please note the program is only available from January through October.
+      </p>
+      <p>
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+          File online now<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+      </p>
+      <h3>In Person</h3>
+      <p>
+        If you'd prefer to work with an in-person tax preparer, you have the option for doing this at an IRS Volunteer
+        Income Tax Assistance (VITA) clinic.
+      </p>
+      <p>
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+          Free in-person help<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+      </p>
+      <h3 condition="/eitcQualifyingChildren" operator="isGreaterThanZero">Paper Forms</h3>
+      <p condition="/eitcQualifyingChildren" operator="isGreaterThanZero">
+        Since you have a qualifying child, you must fill out
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040">
+          Schedule EIC (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+        and attach it to your
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+          Form 1040 (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+        or
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+          Form 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+        for tax year <fg-show path="/taxYear"/>.
+      </p>
+      <h2>Your Information Summary</h2>
+      <p>
+        The table below is a summary of the information you entered in the tool. If any of this information is
+        incorrect please click edit to update it, otherwise, it could affect your results.
+      </p>
+      <table class="usa-table">
+        <tbody>
+          <tr>
+            <th scope="row">Year</th>
+            <td><fg-show path="/taxYear"/></td>
+            <td>
+              <a class="usa-link" href="/app/eitc/">Edit year in About you</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Filing Status</th>
+            <td><fg-show path="/filingStatus"/></td>
+            <td>
+              <a class="usa-link" href="/app/eitc/">Edit filing status in About you</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Adjusted Gross Income</th>
+            <td><fg-show path="/agi"/></td>
+            <td>
+              <a class="usa-link" href="/app/eitc/income/">Edit adjusted gross income in Income &amp; tax payments</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Earned Income</th>
+            <td>Total wages &amp; salary: <fg-show path="/jobsIncomeTotal"/></td>
+            <td>
+              <a class="usa-link" href="/app/eitc/income/">Edit earned income in Income &amp; tax payments</a>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Qualifying Children</th>
+            <td><fg-show path="/eitcQualifyingChildren"/></td>
+            <td>
+              <a class="usa-link" href="/app/eitc/credits/">Edit qualifying children in Credits</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        You can use the
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/help/irs2goapp">
+          IRS2Go app<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+        to check your refund status, make a payment, find free tax preparation assistance, sign up for helpful tax tips,
+        and more!
+      </p>
     </section>
   </page>
 </FlowConfig>
