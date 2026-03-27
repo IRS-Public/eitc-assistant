@@ -3,7 +3,7 @@ out/
 
 # sbt
 target/
-projects/*/
+project/target/
 
 # node
 node_modules/
@@ -27,4 +27,4 @@ metals.sbt
 !.vscode/fg-helpers.code-snippets
 
 # macOS
-.DS_STORE
+.DS_Store
