@@ -8,7 +8,8 @@ trait FlowNode {
 }
 
 extension (flowNodes: Seq[FlowNode]) {
-  def html(templateEngine: CreditAssistantTemplateEngine): String = flowNodes.map(node => node.html(templateEngine)).mkString("")
+  def html(templateEngine: CreditAssistantTemplateEngine): String =
+    flowNodes.map(node => node.html(templateEngine)).mkString("")
 }
 
 trait FlowNodeParser {

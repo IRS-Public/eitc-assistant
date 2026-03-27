@@ -4,9 +4,12 @@
   <page title="Filing Status" route="/filing-status">
     <section>
       <h2>Filing Status</h2>
-      <p>On this step you will be asked about how you plan to file your 2025 taxes.</p>
-
-      <fg-set path="/chosenFilingStatus">
+      <p>On this step you will be asked about how you plan to file your <fg-show path="/taxYear"/> taxes.</p>
+      <fg-set path="/knowsFilingStatus">
+        <question>Do you know the filing status you will use when filing your <fg-show path="/taxYear"/> taxes?</question>
+        <input type="boolean"/>
+      </fg-set>
+      <fg-set path="/initialFilingStatus" if-true="/knowsFilingStatus">
         <question>Which filing status will you use to file federal taxes in <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-filing-status">Which filing status should I use?</modal-link>
         <input type="enum" options-path="/filingStatusOptions">
@@ -17,17 +20,183 @@
           <option value="qualifiedSurvivingSpouse">Qualified Surviving Spouse</option>
         </input>
       </fg-set>
+      <!--      DERIVE FILING STATUS -->
+      <fg-set path="/maritalStatus" if-false="/knowsFilingStatus">
+        <question>What is your marital status?</question>
+        <modal-link for="modal-legal-separation">What does married and legally separated mean?</modal-link>
+        <input type="enum" options-path="/maritalStatusOptions">
+          <option value="married">Married</option>
+          <option value="divorced">Divorced or Legally separated</option>
+          <option value="widowed">Widow</option>
+          <option value="single">Never Married</option>
+        </input>
+      </fg-set>
+      <fg-set path="/yearOfSpouseDeathCurrentTaxYearIsChosen" if-true="/isWidowedAndCurrentTaxYear">
+        <question>When did your spouse pass away?</question>
+        <input type="enum" options-path="/yearOfSpouseDeath">
+          <option value="taxYear">During 2025</option>
+          <option value="taxYearMinusOneOrTwo">During 2023 or 2024</option>
+          <option value="beforeTaxYearMinusTwo">Before 2023</option>
+        </input>
+      </fg-set>
+      <fg-set path="/yearOfSpouseDeathLastTaxYearIsChosen" if-true="/isWidowedAndLastTaxYear">
+        <question>When did your spouse pass away?</question>
+        <input type="enum" options-path="/yearOfSpouseDeath">
+          <option value="taxYear">During 2024</option>
+          <option value="taxYearMinusOneOrTwo">During 2022 or 2023</option>
+          <option value="beforeTaxYearMinusTwo">Before 2022</option>
+        </input>
+      </fg-set>
+      <fg-set path="/yearOfSpouseDeathTwoTaxYearsAgoIsChosen" if-true="/isWidowedAndTwoTaxYearsAgo">
+        <question>When did your spouse pass away?</question>
+        <input type="enum" options-path="/yearOfSpouseDeath">
+          <option value="taxYear">During 2023</option>
+          <option value="taxYearMinusOneOrTwo">During 2021 or 2022</option>
+          <option value="beforeTaxYearMinusTwo">Before 2021</option>
+        </input>
+      </fg-set>
 
-      <h3>Spouse</h3>
-      <p condition="/filingStatus" operator="isIncomplete">If you plan to file using Married Filing Jointly, we need to ask more questions about your spouse.</p>
-      <p condition="/isFilingStatusMFJ" operator="isFalse">You can continue. Since you don't plan to file using Married Filing Jointly, we don't need to ask any more questions.</p>
-      <p condition="/isFilingStatusMFJ" operator="isTrue">If you plan to file using Married Filing Jointly, we need to ask more questions about your spouse.</p>
+      <fg-set path="/isHOHMarried" if-true="/isInitialFilingStatusHOH">
+        <question>Are you married?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+
+      <fg-set path="/intendsToFileJointlyWidow" if-true="/flowShouldSeeDeceasedSpouseJointReturnIntent">
+        <question>Do you intend to file joint returns with your deceased spouse <fg-show path="/taxYear"/>?</question>
+        <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased Spouse</modal-link>
+        <input type="boolean"/>
+      </fg-set>
+      <fg-set path="/intendsToFileJointlyMFJ" if-true="/flowShouldSeeMFJJointReturnIntent">
+        <question>Do you intend to file joint returns for <fg-show path="/taxYear"/>?</question>
+        <modal-link for="modal-joint-return-mfj">What is a Joint Return?</modal-link>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/spouseLivedWithTaxpayerLastSixMonths" if-true="/flowShouldSeeSpouseSeparationTest">
+        <question>Did your spouse live with you in your home at any time during the last six months of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
+        <modal-link for="modal-spouse-lived-together">Spouse - Lived Together</modal-link>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/samePrincipalResidenceLast6Months" if-true="/flowShouldSeeSamePrincipalResidenceLast6Months">
+        <question>Did you and your spouse have the same principal residence for the last 6 months of <fg-show path="/taxYear"/>?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/writableSeparationAgreement" if-true="/flowShouldSeeWritableSeparationAgreement">
+        <question>Were you legally separated according to your state law under a written separation agreement, or a decree of separate maintenance and you did not live with your spouse on the last day of <fg-show path="/taxYear"/>?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/entitledToPreviouslyFileJointReturn" if-true="/isWidowedInPastTwoTaxYears">
+        <question>Were you entitled to file a joint return with your spouse for the year your spouse died?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/paidMoreThanHalfHomeCostsForChild" if-true="/flowShouldSeeHalfOfHomeCosts">
+        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your dependent child, stepchild, or foster child for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
+        <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/canClaimChildAsDependentInCurrentTaxYear" if-true="/flowShouldSeeHalfOfHomeCostsCanClaimChildAsDependentInCurrentTaxYear">
+        <question>Can you claim your child or stepchild who lived with you as a dependent for <fg-show path="/taxYear"/>?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/couldClaimChildAsDependentInCurrentTaxYearWithExceptions" if-false="/canClaimChildAsDependentInCurrentTaxYear">
+        <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of $4,400 for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/homeUpkeepScenario" if-true="/flowShouldSeeTentativeHOHHomeUpkeepScenario">
+        <question>Did you pay more than 50% of the cost of keeping up a home in <fg-show path="/taxYear"/>?</question>
+        <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
+        <input type="enum">
+          <option value="livedWithDependent">Where you lived more than half the year with a dependent (child, sibling, parent, etc.)</option>
+          <option value="custodialParentNonDependent">Where you lived more than half the year with a child who isn't your dependent (custodial parent rule)</option>
+          <option value="dependentParentElsewhere">For a parent you can claim as a dependent, but who didn't live with you</option>
+          <option value="none">None of the above</option>
+        </input>
+      </fg-set>
+
+
+    <!--      AFTER THIS POINT, THE FILING STATUS SHOULD BE KNOWN AND COMPLETE-->
+
+    <fg-set path="/secondaryFilerHasValidSSN" if-true="/flowShouldSeeAliveSecondaryValidSSN">
+      <question>Does your spouse have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?</question>
+      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <input type="boolean"/>
+    </fg-set>
+    <fg-set path="/deceasedSpouseValidSSNOnDateOfDeath" if-true="/intendsToFileJointlyWidow">
+      <question>Did your spouse have a valid Social Security number on the day they passed away?</question>
+      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <input type="boolean"/>
+    </fg-set>
       <fg-set path="/secondaryFilerIsClaimedOnAnotherReturn" if-true="/isFilingStatusMFJ">
         <question>Can your spouse be claimed as a dependent on someone else's <fg-show path="/taxYear"/> tax return?</question>
         <modal-link for="modal-secondary-claimed-as-dependent">How do I know if my spouse could be a dependent?</modal-link>
         <input type="boolean"/>
       </fg-set>
+    <fg-set path="/spouseAliveEndOfTaxYear" if-true="/flowShouldSeeSpouseAliveEndOfTaxYear">
+      <question>Was your spouse alive on December 31, <fg-show path="/taxYear"/>?</question>
+      <input type="boolean"/>
+    </fg-set>
+
+    <fg-set path="/ageRangeSecondary" if-true="/flowShouldSeeSpouseAgeRange">
+      <question>Please select the range that describes the age of your spouse <span condition="/spouseAliveEndOfTaxYear" operator="isFalse">when they died</span><span condition="/spouseAliveEndOfTaxYear" operator="isTrue">at the end of <fg-show path="/taxYear"/></span></question>
+      <input type="enum" options-path="/ageRangeOptions">
+        <option value="under24">24 and under</option>
+        <option value="age25to64">Between 25 and 64</option>
+        <option value="65andOlder">65 and older</option>
+      </input>
+    </fg-set>
+<!--    TODO: update the gate to occur only after filing status is fully determined-->
+    <fg-set path="/hasLivedInUSMore6Months" if-true="/flowShouldSeeResidencyKnockOut">
+      <question>Was the main home of <span condition="/isFilingStatusMFJ" operator="isFalse">yours</span><span condition="/isFilingStatusMFJ" operator="isTrue">yours and your spouse</span> in the U.S. for more than half of <fg-show path="/taxYear"/>?</question>
+      <modal-link for="modal-main-home-us">What counts as a main home in the U.S.?</modal-link>
+      <input type="boolean"/>
+    </fg-set>
+
+
+    <h2 condition="/isFilingStatusComplete" operator="isTrue">Your Filing Status is <fg-show path="/flowReadableFilingStatus"/></h2>
+
     </section>
+
+    <fg-alert alert-type="error" alert-key="eitc-marriage-disqualified" condition="/isDisqualifiedMarriedNotFilingJointly" operator="isTrue">
+      <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
+      <p class="usa-alert__text">
+        You can claim the EIC if you are married, not filing a joint return, had a qualifying child who lived with you for more than half of 2025, and either of the following apply:
+      </p>
+      <ul class="usa-alert__text">
+        <li>You lived apart from your spouse for the last 6 months of 2025, or</li>
+        <li>You are legally separated according to your state law under a written separation agreement, or a decree of separate maintenance and you didn't live in the same household as your spouse at the end of 2025.</li>
+      </ul>
+      <p class="usa-alert__text">
+        For more information see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501" class="usa-link">About Publication 501, Dependents, Standard Deduction, and Filing Information.<span class="usa-sr-only"> (opens in a new tab)</span></a>
+      </p>
+    </fg-alert>
+
+    <fg-alert alert-type="error" alert-key="secondary-filer-invalid-ssn" condition="/secondaryFilerHasValidSSN" operator="isFalse">
+      <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
+      <p class="usa-alert__text">
+        You can't claim the EITC because your spouse doesn't have a valid Social Security number issued on or before the due date of your tax return.
+      </p>
+    </fg-alert>
+    <fg-alert alert-type="error" alert-key="deceased-filer-invalid-ssn" condition="/deceasedSpouseValidSSNOnDateOfDeath" operator="isFalse">
+      <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
+      <p class="usa-alert__text">
+        You can't claim the EITC if you choose to file a joint return with your deceased spouse because your spouse did not have a valid social security number on the day they passed away.</p>
+      <p>You may qualify for the EITC if you don't file a joint return with your deceased spouse.</p>
+    </fg-alert>
+    <fg-alert alert-type="error" alert-key="eitc-residency-disqualified" condition="/hasLivedInUSMore6Months" operator="isFalse">
+      <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
+      <p class="usa-alert__text">
+        To claim the EITC, your home must have been in the United States for more than half the year. The United States includes the 50 states and the District of Columbia.
+      </p>
+    </fg-alert>
+
     <modal-dialog id="modal-filing-status">
       <modal-heading>Which filing status should I use?</modal-heading>
       <modal-content>
@@ -87,6 +256,113 @@
         </ul>
         <p>Review Table 5 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">IRS Publication 501</a> to determine if someone else might be able to claim your spouse.</p>
         <p>Keep in mind that your spouse isn’t someone else’s dependent if your spouse paid for more than half of their own support (or if you did).</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-qualifying-child-eitc">
+      <modal-heading>Qualifying Child</modal-heading>
+      <modal-content>
+        <p>To claim EITC with a qualifying child your child must have a valid SSN issued on or before the due date of your <fg-show path="/taxYear"/> return (including extensions).</p>
+        <p>If the Social Security card reads "Valid for work with DHS authorization" or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization is still valid.</p>
+        <p>For the EITC, we don't accept:</p>
+        <ul>
+          <li>IRS Individual taxpayer identification number (ITIN)</li>
+          <li>Adoption taxpayer identification number (ATIN)</li>
+          <li>Social Security number issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit such as Medicaid</li>
+        </ul>
+        <p>Your child is a qualifying child if your child meets four tests. The four tests are:</p>
+        <ul>
+          <li>Relationship</li>
+          <li>Age</li>
+          <li>Residency</li>
+          <li>Joint Return</li>
+        </ul>
+        <p>Review <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">IRS Publication 596</a> for more information on a valid Social Security Number and if you have a qualifying child.</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-main-home-us">
+      <modal-heading>Main Home in the United States</modal-heading>
+      <modal-content>
+        <p>Your home must have been in the United States for more than half of <fg-show path="/taxYear"/>.</p>
+        <p>The United States includes the 50 states and the District of Columbia. It does not include United States possessions such as Guam, the Virgin Islands, or Puerto Rico.</p>
+
+        <h3>Military Personnel Stationed Outside the United States</h3>
+        <p>If you're a member of the United States military and you were stationed outside the United States on extended active duty, select <strong>Yes</strong>.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-keeping-up-home">
+      <modal-heading>Keeping Up a Home</modal-heading>
+      <modal-content>
+        <p>If the total amount you paid is more than half the total cost, you meet the requirement of paying more than half the cost of keeping up the home.</p>
+
+        <h3>Costs include:</h3>
+        <ul>
+          <li>Rent, mortgage interest, real estate taxes, and home insurance</li>
+          <li>Repairs and utilities</li>
+          <li>Food eaten in the home</li>
+        </ul>
+        <p><strong>Note:</strong> Costs paid with public assistance are considered costs paid by the taxpayer.</p>
+
+        <h3>Costs don't include:</h3>
+        <ul>
+          <li>Clothing, education, and vacations expenses</li>
+          <li>Medical treatment, medical insurance payments, and prescription drugs</li>
+          <li>Life insurance</li>
+          <li>Transportation costs like insurance, lease payments, or public transportation</li>
+          <li>Value of your services or those of a member of your household</li>
+        </ul>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-legal-separation">
+      <modal-heading>Legal Separation and Common Law</modal-heading>
+      <modal-content>
+        <h3>Legally Separated</h3>
+        <p>"Legally separated" for this purpose means legally separated under a decree of divorce or separate maintenance.</p>
+
+        <h3>Common Law Marriage</h3>
+        <p>Some states allow common law marriages. Check with your state to see if you are considered married under common law.</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-joint-return-mfj">
+      <modal-heading>Joint Return</modal-heading>
+      <modal-content>
+        <p>You can choose to file one return with your spouse by selecting Married as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-joint-deceased-spouse">
+      <modal-heading>Joint Return</modal-heading>
+      <modal-content>
+        <p>If your spouse died during <fg-show path="/taxYear"/>, you can choose to file one return with your spouse by selecting Married Filing Jointly as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-spouse-lived-together">
+      <modal-heading>Spouse - Lived Together</modal-heading>
+      <modal-content>
+        <p>A person is considered to have lived with you during periods of time when one or both of you are temporarily absent due to special circumstances such as:</p>
+        <ul>
+          <li>Illness</li>
+          <li>Education</li>
+          <li>Business</li>
+          <li>Vacation</li>
+          <li>Military service</li>
+        </ul>
+        <p>It must be reasonable to assume that the absent person will return to the home after the temporary absence.</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-valid-ssn">
+      <modal-heading>Valid Social Security Number</modal-heading>
+      <modal-content>
+        <p>You must have a valid Social Security number (SSN) that is issued by the Social Security Administration on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions).</p>
+        <p>If your Social Security card reads “Valid for work with DHS authorization” or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization is still valid.</p>
+        <p>For the EITC, we don't accept:</p>
+        <ul>
+          <li>IRS Individual taxpayer identification number (ITIN)</li>
+          <li>Adoption taxpayer identification number (ATIN)</li>
+          <li>Social Security number issued after the due date of the return, including extensions</li>
+          <li>Social Security number issued solely to apply for or receive a federally funded benefit such as Medicaid</li>
+        </ul>
+        <p>See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a> for more information on a valid Social Security Number.</p>
       </modal-content>
     </modal-dialog>
   </page>

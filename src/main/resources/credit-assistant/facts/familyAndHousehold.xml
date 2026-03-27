@@ -81,7 +81,6 @@
     <Fact path="/familyAndHousehold/*/dateOfBirth">
       <Name>Date of birth</Name>
       <Description>The date of birth of the dependent.</Description>
-      <Export stateSystems="true"/>
       <Writable>
         <Day/>
         <Limit type="Max">
@@ -92,7 +91,6 @@
     <Fact path="/familyAndHousehold/*/yearOfBirth">
       <Name>Year of birth</Name>
       <Description>The year of the dependent's birth</Description>
-      <Export mef="true"/>
       <Derived>
         <Dependency path="../dateOfBirth/year"/>
       </Derived>
@@ -112,7 +110,6 @@
     </Fact>
     <Fact path="/familyAndHousehold/*/birthDateIfBornInTaxYear">
       <Description>Date dependent was born if born in the tax year</Description>
-      <Export mef="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -129,7 +126,6 @@
     <Fact path="/familyAndHousehold/*/age">
       <Name>Age</Name>
       <Description>The age of the dependent at the end of the tax year.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Subtract>
           <Minuend>
@@ -153,7 +149,6 @@
         2. The person is not
         18.5, but they are younger than the filer (or spouse if MFJ)
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <GreaterThanOrEqual>
@@ -188,7 +183,6 @@
     <Fact path="/familyAndHousehold/*/ageUnderNineteen">
       <Name>Under Age 19</Name>
       <Description>Whether or not the dependent is under the age of 19</Description>
-      <Export mef="true"/>
       <Derived>
         <LessThan>
           <Left>
@@ -204,8 +198,6 @@
       <Description>The age of the dependent for the majority of the year, i.e. their age on July 2. Note that July 2
         works regardless of whether it is a leap year or not.
       </Description>
-      <Export downstreamFacts="true"/>
-
       <Derived>
         <Switch>
           <Case>
@@ -288,7 +280,6 @@
         "../disabilityStatusMayAffectBenefits" in our MeF export, as that would mark people as "not disabled" when the
         app simply did not ask them about their disability status.
       </Description>
-      <Export downstreamFacts="true" mef="true"/>
       <Writable>
         <Boolean/>
       </Writable>
@@ -327,7 +318,6 @@
     <Fact path="/familyAndHousehold/*/residencyDuration">
       <Name>Residency duration</Name>
       <Description>What portion of the year did the dependent live with you?</Description>
-      <Export stateSystems="true"/>
       <Writable>
         <Enum optionsPath="/residencyDurationOptions"/>
       </Writable>
@@ -335,7 +325,6 @@
     <Fact path="/familyAndHousehold/*/residencyTest">
       <Name>Residency test</Name>
       <Description>Did the dependent live with you for more than half the year? Used for dependents other than QSS.</Description>
-      <Export downstreamFacts="true" mef="true"/>
       <Derived>
         <NotEqual>
           <Left>
@@ -471,7 +460,6 @@
     <Fact path="/familyAndHousehold/*/qualifyingChild">
       <Name>Qualifying child</Name>
       <Description>Does the dependent pass all five qualifying child tests?</Description>
-      <Export stateSystems="true"/>
       <Derived>
         <All>
           <Dependency module="dependentsRelationship" path="../qcRelationshipTest"/>
@@ -513,7 +501,6 @@
 
         TODO: take into account QC of another
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Dependency path="../eitcRelAgeResJointTest"/>
@@ -569,7 +556,6 @@
     <Fact path="/numEitcDependentsCollectionForCalculation">
       <Name>EITC Eligible Dependents Collection For Calculation</Name>
       <Description>The subset of people who qualify as qualifying children for EITC</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Count>
           <Dependency path="/familyAndHousehold/*/eitcQualifyingChildForCalculation"/>
@@ -820,7 +806,6 @@
         &#xA7;152(d)(1)(B).
         Rev Proc .24 Gross Income Limitation for a Qualifying Relative &#xA7;152(d)(1)(B)
       </Description>
-
       <Derived>
         <Dollar>5050</Dollar>
       </Derived>
@@ -954,7 +939,6 @@
       <Name>Citizen or U.S. resident test</Name>
       <Description>A narrower Citizen or Resident Test for purposes of CTC and ODC, excluding residents of Canada and
         Mexico who are not U.S. nationals.</Description>
-      <Export mef="true"/>
       <Derived>
         <Any>
           <Dependency path="../isUsCitizenFullYear"/>
@@ -998,7 +982,6 @@
         TODO: This does not account for qualifying child
         tiebreakers
         TODO: This does not account for MSAs, divorced/separated, etc.</Description>
-      <Export stateSystems="true"/>
       <Derived>
         <All>
           <Not>
@@ -1022,7 +1005,6 @@
       <Description>Whether the person is both allowed to be claimed as a dependent, and has been claimed as a dependent.
         Exists as a derived fact to ensure that an edit that disqualifies a person as a dependent causes them to no
         longer count as a dependent.</Description>
-      <Export downstreamFacts="true" stateSystems="true"/>
       <Derived>
         <All>
           <Dependency path="../tpClaims"/>
@@ -1047,7 +1029,6 @@
       <Description>
         The person can qualify you for Head of Household filing status.
       </Description>
-      <Export downstreamFacts="true" stateSystems="true"/>
       <Derived>
         <All>
           <!-- If the filer is eligible to file married, but is filing HOH by being considered unmarried, by having
@@ -1157,7 +1138,6 @@
       <Description>
         The person can qualify you for Head of Household filing status.
       </Description>
-      <Export downstreamFacts="true" stateSystems="true"/>
       <Derived>
         <All>
           <!-- If the filer is eligible to file married, but is filing HOH by being considered unmarried, by having
@@ -1245,7 +1225,6 @@
     <Fact path="/familyAndHousehold/*/qssQualifyingPerson">
       <Name>Qualifying person for Qualified Surviving Spouse</Name>
       <Description>The person can qualify you for Qualified Surviving Spouse filing status.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Dependency path="../tpPaidMostOfHomeUpkeep"/>
@@ -1393,14 +1372,12 @@
     </Fact>
     <Fact path="/familyAndHousehold/*/monthsLivedWithTPInUS">
       <Description>How many months did the person live with the TP in the US?</Description>
-      <Export mef="true" stateSystems="true"/>
       <Writable>
         <Enum optionsPath="/monthsLivedWithTPInUSOptions"/>
       </Writable>
     </Fact>
     <Fact path="/familyAndHousehold/*/daysLivedWithTPInUS">
       <Description>How many days did the person live with the TP in the US?</Description>
-      <Export mef="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -1514,7 +1491,6 @@
     <Fact path="/familyAndHousehold/*/tpPaidMostOfHomeUpkeep">
       <Name>Taxpayer paid most of home upkeep</Name>
       <Description>Did taxpayer pay more than half the cost of keeping up the home shared with the dependent?</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Boolean/>
       </Writable>
@@ -1546,7 +1522,6 @@
       <Name>DeceasedEitcEligibleQcCollection</Name>
       <Description>The collection of EITC eligible QCs who died during the tax year. Required for form 8862, if the TP
         has to file form 8862.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Filter path="/eitcDependentsCollection">
           <Dependency path="deceased"/>
@@ -1556,7 +1531,6 @@
     <Fact path="/numEitcQualifyingChildren">
       <Name>Number of EITC Qualifying Children</Name>
       <Description>The number of dependents who qualify as QCs for EITC.</Description>
-      <Export downstreamFacts="true" mef="true"/>
       <Derived>
         <Count>
           <Dependency path="/familyAndHousehold/*/eitcQualifyingChild"/>
@@ -1593,7 +1567,6 @@
       <Description> Allows the student person to pass the age test as a student. The same age test applies to QC for
         dependents and EITC.
       </Description>
-      <Export mef="true"/>
       <Derived>
         <All>
           <Dependency path="../fullTimeStudent"/>
@@ -1659,14 +1632,12 @@
     <Fact path="/familyAndHousehold/*/deceased">
       <Name>Deceased</Name>
       <Description>Whether the dependent died during the tax year</Description>
-      <Export mef="true"/>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
     <Fact path="/familyAndHousehold/*/deathDateIfDiedInTaxYear">
       <Description>Date dependent died if died in the tax year</Description>
-      <Export mef="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -1683,7 +1654,6 @@
     <Fact path="/familyAndHousehold/*/dateOfDeath">
       <Name>Date of death</Name>
       <Description>The date on which the person died</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Day/>
       </Writable>

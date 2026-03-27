@@ -9,7 +9,6 @@
         <Boolean/>
       </Writable>
     </Fact>
-
     <Fact path="/hasValidSSN">
       <Name>Valid SSN</Name>
       <Description>Whether the taxpayer has a valid SSN issued on or before the due date of the return.</Description>
@@ -17,7 +16,12 @@
         <Boolean/>
       </Writable>
     </Fact>
-
+    <Fact path="/secondaryFilerHasValidSSN">
+      <Description>Whether the spouse has a valid SSN issued on or before the due date of the return.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
     <Fact path="/hasForeignEarnedIncome">
       <Name>Foreign Earned Income</Name>
       <Description>Whether the taxpayer is filing Form 2555 to exclude foreign earned income.</Description>
@@ -25,7 +29,6 @@
         <Boolean/>
       </Writable>
     </Fact>
-
     <Fact path="/isClaimedAsDependent">
       <Name>Claimed as Dependent</Name>
       <Description>Whether someone else will claim the taxpayer as a dependent or qualifying child.</Description>
@@ -33,7 +36,6 @@
         <Boolean/>
       </Writable>
     </Fact>
-
     <Fact path="/ageRangeOptions">
       <Name>Age Range Options</Name>
       <Description>Options for the taxpayer's age range at the end of the tax year.</Description>
@@ -52,11 +54,45 @@
         <Enum optionsPath="/ageRangeOptions"/>
       </Writable>
     </Fact>
+    <Fact path="/ageRangeSecondary">
+      <Name>Age Range</Name>
+      <Description>The selected age range of the secondary taxpayer at the end of the tax year.</Description>
+      <Writable>
+        <Enum optionsPath="/ageRangeOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/hasLivedInUSMore6Months">
+      <Name>Main home in the U.S.</Name>
+      <Description>Whether the taxpayer's main home was in the United States for more than half of the tax year, including military personnel stationed abroad.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+      <Placeholder>
+        <True/>
+      </Placeholder>
+    </Fact>
+    <Fact path="/spouseLivedWithTaxpayerLastSixMonths">
+      <Name>Spouse lived in home last 6 months</Name>
+      <Description>Whether the spouse lived in the taxpayer's home at any time during the last six months of the tax year, including temporary absences.</Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/flowShouldSeeResidencyKnockOut">
+      <Description>Whether the taxpayer should be asked if their main home was in the US for more than 6 months, based on if they are claiming QCs and if Filing status is determined</Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+          <Dependency path="/isFilingStatusComplete"/>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/canFileJointlyYearOfSpouseDeath">
       <Name>Qualified to file jointly in year of spouse death</Name>
       <Description>Whether the taxpayer was qualified to file jointly for the year in which their
         spouse died.</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Boolean/>
       </Writable>
@@ -102,61 +138,14 @@
     <Fact path="/maritalStatus">
       <Name>Marital status</Name>
       <Description>The marital status the primary filer tells us.</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Enum optionsPath="/maritalStatusOptions"/>
       </Writable>
-    </Fact>
-    <Fact path="/isMarried">
-      <Name>The filer declared they are married</Name>
-      <Description>The filer stated they are married</Description>
-      <Export downstreamFacts="true"/>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="/maritalStatus"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/maritalStatusOptions">married</Enum>
-          </Right>
-        </Equal>
-      </Derived>
-    </Fact>
-    <Fact path="/isSingle">
-      <Name>Single</Name>
-      <Description>The filer stated they were never married.</Description>
-      <Export downstreamFacts="true"/>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="/maritalStatus"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/maritalStatusOptions">single</Enum>
-          </Right>
-        </Equal>
-      </Derived>
-    </Fact>
-    <Fact path="/isWidowed">
-      <Name>Widowed</Name>
-      <Description>The primary filer's marital status is widowed.</Description>
-      <Export downstreamFacts="true"/>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="/maritalStatus"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/maritalStatusOptions">widowed</Enum>
-          </Right>
-        </Equal>
-      </Derived>
     </Fact>
     <Fact path="/minimumFilerDateOfBirth">
       <Name>Date of birth of oldest filer</Name>
       <Description>The date of birth of the oldest filer, for purposes of the age test for
         qualifying children.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -198,7 +187,6 @@
     <Fact path="/livedTogetherAllYearWithSpouse">
       <Name>Lived with the spouse during the entire tax year</Name>
       <Description>Whether the taxpayer lived together with their spouse the entire Tax Year</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Boolean/>
       </Writable>
@@ -395,7 +383,7 @@
         </Not>
       </Derived>
     </Fact>
-    <Fact path="/primaryFilerIsClaimingDependents">
+    <Fact path="/primaryFilerIsClaimingQualifyingChildren">
       <Writable>
         <Boolean/>
       </Writable>
@@ -508,7 +496,6 @@
       <Description>
         Based on filer + spouse information, the filer may qualify for EITC
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <!--          <Not>-->
@@ -551,7 +538,6 @@
     <Fact path="/specialRuleForSeparatedSpouses">
       <Name>Special rule for separated spouses</Name>
       <Description>Checks whether the spouse lived apart the last 6 months or are legally separated</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Dependency path="/livedApartLastSixMonths"/>
@@ -563,7 +549,6 @@
       <Description>Whether the taxpayer lived apart from their spouse for the last six months of the
         year. Takes into
         account implied answers based on previous information.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Switch>
           <!-- They did not live apart the last six months if they lived together more than six months or all year -->
@@ -602,7 +587,6 @@
     <Fact path="/livedApartAllYear">
       <Name>Lived apart from spouse the whole year</Name>
       <Description>Whether the taxpayer lived apart from their spouse for the whole year.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Not>
@@ -625,7 +609,6 @@
         agreement on the last
         day
         of the year.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -650,7 +633,6 @@
     <Fact path="/filers/*/isPrimaryFiler">
       <Name>Filer is primary</Name>
       <Description>The primary filer is listed first on the tax return.</Description>
-      <Export downstreamFacts="true" stateSystems="true"/>
       <Writable>
         <Boolean/>
       </Writable>
@@ -658,7 +640,6 @@
     <Fact path="/filers/*/isSecondaryFiler">
       <Name>Filer is secondary</Name>
       <Description>The secondary filer is listed second on the tax return.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <NotEqual>
           <Left>
@@ -676,7 +657,6 @@
       <Name>Filers</Name>
       <Description>The filers of the tax return. If a joint return, there are two filers; otherwise,
         there is only one.</Description>
-      <Export downstreamFacts="true"/>
       <Writable>
         <Collection/>
       </Writable>
@@ -684,7 +664,6 @@
     <Fact path="/primaryFiler">
       <Name>Primary filer</Name>
       <Description>The primary filer of the tax return.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Find path="/filers">
           <Dependency path="isPrimaryFiler"/>
@@ -694,7 +673,6 @@
     <Fact path="/secondaryFiler">
       <Name>Secondary filer</Name>
       <Description>The secondary filer of the tax return, if there is one.</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Find path="/filers">
           <Dependency path="isSecondaryFiler"/>
@@ -795,7 +773,6 @@
     </Fact>
     <Fact path="/filers/*/ssnNotValidForEmployment">
       <Description>The SSN is marked "not valid" for employment</Description>
-      <Export stateSystems="true"/>
       <Derived>
         <Any>
           <All>
@@ -955,7 +932,6 @@
         them to file jointly.
         https://www.irs.gov/publications/p519
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Dependency path="/secondaryFiler/isUsCitizenFullYear"/>
@@ -967,7 +943,6 @@
     <Fact path="/filers/*/dateOfBirth">
       <Name>Date of birth</Name>
       <Description>The date of birth of the filer.</Description>
-      <Export downstreamFacts="true" mef="true" stateSystems="true"/>
       <Writable>
         <Day/>
         <Limit type="Max">
@@ -978,7 +953,6 @@
     <Fact path="/eitherFilerUSCitizenOrNational">
       <Name>Either filer is a US citizen or US national</Name>
       <Description>Whether at least one of the TPs is a U.S. citizen or U.S. national</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -1038,7 +1012,6 @@
         spouse
         must have been a noncitizen who was not a resident for the fully TY.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Not>
@@ -1056,7 +1029,6 @@
     </Fact>
     <Fact path="/filerCouldQualifyForQss">
       <Description>Based on filer information, the filer may qualify for QSS</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Dependency path="/widowedCouldQualifyForQSS"/>
@@ -1068,7 +1040,6 @@
       <Description>
         Based on filer + spouse information, the filer may qualify for EITC
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <!--          <Not>-->
@@ -1109,7 +1080,6 @@
       </Derived>
     </Fact>
     <Fact path="/widowedCouldQualifyForQSS">
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Dependency path="/isWidowed"/>
@@ -1119,15 +1089,7 @@
                 <Dependency path="/yearOfSpouseDeath"/>
               </Left>
               <Right>
-                <Enum optionsPath="/yearOfSpouseDeathOptions">taxYearMinusOne</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="/yearOfSpouseDeath"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/yearOfSpouseDeathOptions">taxYearMinusTwo</Enum>
+                <Enum optionsPath="/yearOfSpouseDeathOptions">taxYearMinusOneOrTwo</Enum>
               </Right>
             </Equal>
           </Any>
@@ -1229,7 +1191,6 @@
         on the person's
         birthday, not the day after. Because the tax code is silly.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <GreaterThanOrEqual>
           <Left>
@@ -1323,7 +1284,6 @@
       <Description>
         Whether the filer is 64 or younger for EITC.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <LessThanOrEqual>
           <Left>
@@ -1566,7 +1526,6 @@
         as the day before
         their birthday. Cannot be used for the EIC calculation.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <GreaterThanOrEqual>
           <Left>
@@ -1580,8 +1539,6 @@
     </Fact>
     <Fact path="/secondaryFilerDateOfDeath">
       <Description>The date of death of the secondary filer.</Description>
-      <Export downstreamFacts="true"/>
-
       <Writable>
         <Day/>
         <Limit type="Max">

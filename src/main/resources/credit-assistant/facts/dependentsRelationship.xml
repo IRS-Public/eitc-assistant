@@ -172,7 +172,6 @@
     <Fact path="/familyAndHousehold/*/relationship">
       <Name>Relationship to taxpayer</Name>
       <Description>The relationship of the dependent to the taxpayer(s).</Description>
-      <Export downstreamFacts="true" stateSystems="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -619,7 +618,6 @@
     </Fact>
     <Fact path="/familyAndHousehold/*/relationshipCategoryIsImmediateChild">
       <Description>This is a biological, adopted, step, or foster child of the taxpayer</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <All>
           <Dependency path="../relationshipCategoryIsChild"/>
@@ -646,7 +644,6 @@
         example, the DF values biologicalChild, adoptedChild, and childInLaw all map to the MeF value DAUGHTER. DAUGHTER
         was chosen for the mapped MeF value, but SON could have been used instead.
       </Description>
-      <Export downstreamFacts="true" mef="true"/>
       <Derived>
         <Switch>
           <Case>
@@ -959,7 +956,6 @@
       <Name>Relationship test</Name>
       <Description>Does the dependent's relationship to the taxpayer pass the Relationship test to be a qualifying
         child?</Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Equal>
@@ -1082,7 +1078,6 @@
       <Description>The dependent has a relationship to the taxpayer for purposes of the relationship/member of household
         test that does not require the dependent to be a member of the household all year.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Equal>
@@ -1246,7 +1241,6 @@
         If a filer is married, but filing as HoH, their QP must be one of these relationship types for HoH.
         This more restrictive relationship test does not apply to EITC, Dependents, or other credits.
       </Description>
-      <Export downstreamFacts="true"/>
       <Derived>
         <Any>
           <Equal>
