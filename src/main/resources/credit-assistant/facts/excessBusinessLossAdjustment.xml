@@ -4,7 +4,6 @@
   <Facts>
     <Fact path="/excessBusinessLossThreshold">
       <Description>Form 461 line 15</Description>
-
       <Derived>
         <Switch>
           <Case>

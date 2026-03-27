@@ -1,8 +1,8 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.parser.{ Condition, FgDetail }
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
+import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
 import org.thymeleaf.TemplateEngine
 import scala.xml.Elem

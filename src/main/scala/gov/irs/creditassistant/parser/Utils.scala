@@ -1,7 +1,7 @@
 package gov.irs.creditassistant.parser
 
-import gov.irs.factgraph.FactDictionary
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
+import gov.irs.factgraph.FactDictionary
 
 object Utils {
   def optionString(string: String): Option[String] =

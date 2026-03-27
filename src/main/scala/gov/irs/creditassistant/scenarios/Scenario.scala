@@ -28,10 +28,10 @@
 package gov.irs.creditassistant.scenarios
 
 import com.github.tototoshi.csv.*
+import gov.irs.creditassistant.loadCreditAssistantFactDictionary
 import gov.irs.factgraph.{ types, FactDefinition, Graph }
 import gov.irs.factgraph.compnodes.{ EnumNode, MultiEnumNode }
 import gov.irs.factgraph.types.{ Day, Dollar, Enum as FgEnum }
-import gov.irs.creditassistant.loadCreditAssistantFactDictionary
 import scala.util.{ Failure, Success, Try }
 
 val INPUT_NAME_COL = 0
@@ -389,7 +389,7 @@ private val SHEET_ROW_TO_WRITABLE_FACT = Map(
   "Blind (1=yes)" -> "/primaryFilerIsBlind",
   "Spouse Blind (1=yes)" -> "/secondaryFilerIsBlind",
   "Claimed as a Dependent" -> "/primaryFilerIsClaimedOnAnotherReturn",
-  "Plan to claim dependents?" -> "/primaryFilerIsClaimingDependents",
+  "Plan to claim dependents?" -> "/primaryFilerIsClaimingQualifyingChildren",
   // Previous self job
   "Previous job income-User" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/yearToDateIncome",
   "Withholding from previous job-User" -> s"/jobs/#$PREVIOUS_SELF_JOB_ID/yearToDateWithholding",

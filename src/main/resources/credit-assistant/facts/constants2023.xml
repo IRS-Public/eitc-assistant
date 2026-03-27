@@ -5,37 +5,31 @@
     <Fact path="/maxIncomeSubjectToSocialSecurityTax">
       <Description> Schedule SE Line 7. Maximum amount of combined wages and self-employment earnings subject to social security tax or
         the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>
-
       <Derived>
         <Dollar>184500</Dollar>
       </Derived>
     </Fact>
     <Fact path="/seIncomeThreshold">
-
       <Derived>
         <Dollar>400</Dollar>
       </Derived>
     </Fact>
     <Fact path="/socialSecuritySelfEmploymentTaxPortion">
-
       <Derived>
         <Rational>31/250</Rational>
       </Derived>
     </Fact>
     <Fact path="/medicareSelfEmploymentTaxPortion">
-
       <Derived>
         <Rational>29/1000</Rational>
       </Derived>
     </Fact>
     <Fact path="/selfEmploymentTaxDeductionMultiplier">
-
       <Derived>
         <Rational>1/2</Rational>
       </Derived>
     </Fact>
     <Fact path="/percentageOfSEIncomeSubjectToTax">
-
       <Derived>
         <Rational>1847/2000</Rational>
       </Derived>
@@ -43,7 +37,6 @@
     <Fact path="/maxStudentLoanDeduction">
       <Name>Maximum student loan deduction</Name>
       <Description>The maximum amount one is allowed to deduct because of student loan interest payments</Description>
-
       <Derived>
         <Dollar>2500</Dollar>
       </Derived>
@@ -51,7 +44,6 @@
     <Fact path="/maxIncomeForStudentLoanInterestDeduction">
       <Name>Max income for an MFJ filer student loan interest deduction</Name>
       <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
-
       <Derived>
         <Switch>
           <Case>
@@ -79,7 +71,6 @@
         The MAGI at which the student loan interest deduction begins to phase out for MFJ filers.
         Rev Proc 30 Interest on Education Loans &#xA7;221(b)(2)(B)
       </Description>
-
       <Derived>
         <Switch>
           <Case>
@@ -106,7 +97,6 @@
       <Description>EITC limit with 3 or more children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>66819</Dollar>
       </Derived>
@@ -116,7 +106,6 @@
       <Description>EITC limit with 3 or more children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>59899</Dollar>
       </Derived>
@@ -126,7 +115,6 @@
       <Description>EITC limit with 2 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>62688</Dollar>
       </Derived>
@@ -136,7 +124,6 @@
       <Description>EITC limit with 2 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>55768</Dollar>
       </Derived>
@@ -146,7 +133,6 @@
       <Description>EITC limit with 1 child when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>56004</Dollar>
       </Derived>
@@ -156,7 +142,6 @@
       <Description>EITC limit with 1 child when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>49084</Dollar>
       </Derived>
@@ -166,7 +151,6 @@
       <Description>EITC limit with 0 children when filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>25511</Dollar>
       </Derived>
@@ -176,7 +160,6 @@
       <Description>EITC limit with 0 children when not filing as MFJ
         Rev Proc .06 Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>18591</Dollar>
       </Derived>
@@ -187,7 +170,6 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>8260</Dollar>
       </Derived>
@@ -198,7 +180,6 @@
         Rev Proc .06 Earned
         Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>12390</Dollar>
       </Derived>
@@ -210,7 +191,6 @@
         Rev Proc .06
         Earned Income Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Dollar>17400</Dollar>
       </Derived>
@@ -221,7 +201,6 @@
         Rev Proc .06 Earned Income
         Credit &#xA7;32(b)
       </Description>
-
       <Derived>
         <Switch>
           <Case>
@@ -315,7 +294,6 @@
       <Description>Whether the TP's Investment Income is low enough for the EITC
         Rev Proc .06 Earned Income Credit &#xA7;32(i)
       </Description>
-
       <Derived>
         <LessThanOrEqual>
           <Left>
