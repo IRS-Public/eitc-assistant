@@ -336,20 +336,67 @@
     </element>
   </define>
 
+  <define name="FlowConfigUlElement">
+    <element name="ul">
+      <optional>
+        <attribute name="class">
+          <text/>
+        </attribute>
+      </optional>
+      <optional>
+        <group>
+          <attribute name="condition">
+            <data type="anyURI"/>
+          </attribute>
+          <attribute name="operator">
+            <choice>
+              <value>isTrue</value>
+              <value>isFalse</value>
+            </choice>
+          </attribute>
+        </group>
+      </optional>
+      <oneOrMore>
+        <element name="li">
+          <optional>
+            <attribute name="class">
+              <text/>
+            </attribute>
+          </optional>
+          <ref name="FlowConfigModuleInlineContent"/>
+        </element>
+      </oneOrMore>
+    </element>
+  </define>
+
   <define name="fg-alert-module">
     <element name="fg-alert">
       <attribute name="alert-key">
         <text/>
       </attribute>
-      <attribute name="alert-type">
-        <choice>
-          <value>info</value>
-          <value>warning</value>
-          <value>success</value>
-          <value>error</value>
-          <value>emergency</value>
-        </choice>
-      </attribute>
+      <!-- knockout="true" is only valid when alert-type is error -->
+      <choice>
+        <group>
+          <attribute name="alert-type">
+            <value>error</value>
+          </attribute>
+          <optional>
+            <attribute name="knockout">
+              <value>true</value>
+            </attribute>
+          </optional>
+        </group>
+        <group>
+          <attribute name="alert-type">
+            <choice>
+              <value>info</value>
+              <value>warning</value>
+              <value>success</value>
+              <value>emergency</value>
+            </choice>
+          </attribute>
+        </group>
+      </choice>
       <optional>
         <attribute name="slim">
           <value>true</value>
@@ -370,14 +417,32 @@
           </attribute>
         </choice>
       </optional>
-
+      <optional>
+        <attribute name="condition">
+          <data type="anyURI"/>
+        </attribute>
+        <attribute name="operator">
+          <choice>
+            <value>isTrue</value>
+            <value>isFalse</value>
+          </choice>
+        </attribute>
+      </optional>
       <element name="heading">
         <ref name="FlowConfigModuleInlineContent"/>
       </element>
       <oneOrMore>
-        <element name="p">
-          <ref name="FlowConfigModuleInlineContent"/>
-        </element>
+        <choice>
+          <element name="p">
+            <optional>
+              <attribute name="class">
+                <text/>
+              </attribute>
+            </optional>
+            <ref name="FlowConfigModuleInlineContent"/>
+          </element>
+          <ref name="FlowConfigUlElement"/>
+        </choice>
       </oneOrMore>
     </element>
   </define>
@@ -511,6 +576,27 @@
           </optional>
           <ref name="FlowConfigModuleInlineContent"/>
         </element>
+        <!-- USWDS-style info alert: outer wrapper + __body, paragraphs only (no recursive div). -->
+        <element name="div">
+          <attribute name="class">
+            <text/>
+          </attribute>
+          <element name="div">
+            <attribute name="class">
+              <text/>
+            </attribute>
+            <oneOrMore>
+              <element name="p">
+                <optional>
+                  <attribute name="class">
+                    <text/>
+                  </attribute>
+                </optional>
+                <ref name="FlowConfigModuleInlineContent"/>
+              </element>
+            </oneOrMore>
+          </element>
+        </element>
         <element name="ol">
           <optional>
             <attribute name="class">
@@ -524,49 +610,11 @@
                   <text/>
                 </attribute>
               </optional>
-              <mixed>
-                <zeroOrMore>
-                  <ref name="HtmlBlockContent"/>
-                </zeroOrMore>
-              </mixed>
+              <ref name="FlowConfigModuleInlineContent"/>
             </element>
           </oneOrMore>
         </element>
-        <element name="ul">
-          <optional>
-            <attribute name="class">
-              <text/>
-            </attribute>
-          </optional>
-          <optional>
-            <group>
-              <attribute name="condition">
-                <data type="anyURI"/>
-              </attribute>
-              <attribute name="operator">
-                <choice>
-                  <value>isTrue</value>
-                  <value>isFalse</value>
-                </choice>
-              </attribute>
-            </group>
-          </optional>
-          <oneOrMore>
-            <element name="li">
-              <optional>
-                <attribute name="class">
-                  <text/>
-                </attribute>
-              </optional>
-              <mixed>
-                <zeroOrMore>
-                  <ref name="HtmlBlockContent"/>
-                  <ref name="fg-show-module"/>
-                </zeroOrMore>
-              </mixed>
-            </element>
-          </oneOrMore>
-        </element>
+        <ref name="FlowConfigUlElement"/>
         <element name="table">
           <attribute name="class">
             <text/>

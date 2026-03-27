@@ -21,6 +21,14 @@ for instance, if tax year is 2024, in each of the case statements the 2024 versi
         <Enum optionsPath="/filingStatusOptions">2025</Enum>
       </Placeholder>
     </Fact>
+    <Fact path="/hasSelectedChosenTaxYear">
+      <Description>True when the user has selected a tax year (chosenTaxYear is complete).</Description>
+      <Derived>
+        <IsComplete>
+          <Dependency path="/chosenTaxYear"/>
+        </IsComplete>
+      </Derived>
+    </Fact>
     <Fact path="/taxYear">
       <Description>Chosen tax year</Description>
       <Derived>

@@ -62,8 +62,8 @@
       </p>
       <fg-set path="/unemploymentIncome">
         <question>Total gross unemployment income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to receive in <fg-show path="/taxYear"/></question>
-        <input type="dollar"/>
         <hint>Gross means the total amount of income before taxes or deductions.</hint>
+        <input type="dollar"/>
       </fg-set>
 
       <h3>Pre-tax retirement account income</h3>

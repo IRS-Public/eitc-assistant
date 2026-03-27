@@ -14,7 +14,8 @@
           <option value="2023">2023</option>
         </input>
       </fg-set>
-      <fg-set path="/isUSCitizenOrResidentAlien">
+      
+      <fg-set path="/isUSCitizenOrResidentAlien" if-true="/hasSelectedChosenTaxYear">
         <question>Were you a U.S. Citizen or Resident Alien for all of <fg-show path="/taxYear"/>?*</question>
         <modal-link for="modal-citizen">U.S. Citizen or Resident Alien</modal-link>
         <input type="boolean">
@@ -22,8 +23,17 @@
           <option value="false">No</option>
         </input>
       </fg-set>
+      <fg-alert alert-type="error" alert-key="must-be-us-citizen-or-ra" knockout="true" condition="/isUSCitizenOrResidentAlien" operator="isFalse">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          You must be a U.S. citizen or resident alien to claim the Earned Income Tax Credit. See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Publication 519, U.S. Tax Guide for Aliens</a>, to determine if you are a U.S. resident alien for the entire year.
+        </p>
+        <p class="usa-alert__text">
+          <strong>Note:</strong> Select Yes if you are filing a joint return with your spouse for <fg-show path="/taxYear"/> and either you or your spouse were a U.S. citizen or resident alien for the entire year.
+        </p>
+      </fg-alert>
 
-      <fg-set path="/hasValidSSN">
+      <fg-set path="/hasValidSSN" if-true="/isUSCitizenOrResidentAlien">
         <question>Do you have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?*</question>
         <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
         <input type="boolean">
@@ -31,8 +41,17 @@
           <option value="false">No</option>
         </input>
       </fg-set>
+      <fg-alert alert-type="error" alert-key="must-have-valid-ssn" knockout="true" condition="/hasValidSSN" operator="isFalse">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          You can’t claim the EITC because you don’t have a valid Social Security number issued on or before the due date of your tax return.
+        </p>
+        <p class="usa-alert__text">
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </fg-alert>
 
-      <fg-set path="/hasForeignEarnedIncome">
+      <fg-set path="/hasForeignEarnedIncome" if-true="/hasValidSSN">
         <question>Are you filing Form 2555, Foreign Earned Income?*</question>
         <modal-link for="modal-foreign-income">Foreign Earned Income excluded from Gross Income</modal-link>
         <input type="boolean">
@@ -40,14 +59,17 @@
           <option value="false">No</option>
         </input>
       </fg-set>
-      <!-- In EITCAST 1.0 this fact is on the Filing Status page, but it is always asked so we should just include it here      -->
-      <fg-set path="/primaryFilerIsClaimingQualifyingChildren">
-        <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
-        <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
-        <input type="boolean"/>
-      </fg-set>
+      <fg-alert alert-type="error" alert-key="form-2555-no-eitc" knockout="true" condition="/hasForeignEarnedIncome" operator="isTrue">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          You can’t claim the earned income credit if you file <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Form 2555</a>, Foreign Earned Income.
+        </p>
+        <p class="usa-alert__text">
+          See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-54">Publication 54</a>, Tax Guide for U.S. Citizens and Resident Aliens Abroad, for more information.
+        </p>
+      </fg-alert>
 
-      <fg-set path="/isClaimedAsDependent">
+      <fg-set path="/isClaimedAsDependent" if-false="/hasForeignEarnedIncome">
         <question>Will someone else claim you as a dependent or qualifying child for the EITC on their tax return?*</question>
         <modal-link for="modal-claimed-dependent">You as a Dependent or Qualifying Child</modal-link>
         <input type="boolean">
@@ -55,14 +77,33 @@
           <option value="false">No</option>
         </input>
       </fg-set>
+      <fg-alert alert-type="error" alert-key="claimed-dependent-no-eitc" knockout="true" condition="/isClaimedAsDependent" operator="isTrue">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          You don’t qualify for the EITC if you are someone else’s qualifying child for the EITC.
+        </p>
+        <p class="usa-alert__text">
+          For more information about whether someone can claim you as a qualifying child for the EITC, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit, You Cannot Be a Qualifying Child of Another Taxpayer.
+        </p>
+        <p class="usa-alert__text">
+          You don’t qualify for the EITC if you are someone else’s dependent unless you have a qualifying child for the EITC.
+        </p>
+      </fg-alert>
 
-      <fg-set path="/primaryFilerIsClaimedOnAnotherReturn">
+      <!-- In EITCAST 1.0 this fact is on the Filing Status page, but it is always asked so we should just include it here      -->
+      <fg-set path="/primaryFilerIsClaimingQualifyingChildren" if-false="/isClaimedAsDependent">
+        <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
+        <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
+        <input type="boolean"/>
+      </fg-set>
+
+      <fg-set path="/primaryFilerIsClaimedOnAnotherReturn" if-false="/isClaimedAsDependent">
         <question>Can you be claimed as a dependent on someone else’s <fg-show path="/taxYear"/> tax return?</question>
         <modal-link for="modal-primary-claimed-as-dependent">How do I know if I’m someone’s dependent?</modal-link>
         <input type="boolean"/>
       </fg-set>
 
-      <fg-set path="/ageRange">
+      <fg-set path="/ageRange" if-false="/isClaimedAsDependent">
         <question>Please select the range that describes your age at the end of <fg-show path="/taxYear"/>.*</question>
         <input type="enum" options-path="/ageRangeOptions">
           <option value="under24">24 and under</option>
