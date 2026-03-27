@@ -1,5 +1,5 @@
 <fg-alert
-    th:attr="alert-type=${alertType}, condition=${condition}, operator=${operator}, blocking=${alertType == 'error'}"
+    th:attr="alert-type=${alertType}, condition=${condition}, operator=${operator}, blocking=${alertType == 'error'}, knockout=${knockout ? 'true' : 'false'}"
     th:class="${condition ? '' : 'hidden'}"
 >
   <div th:class="'fg-alert usa-alert usa-alert--' + ${alertType}">

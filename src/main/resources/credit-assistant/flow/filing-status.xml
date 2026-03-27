@@ -113,7 +113,7 @@
       <fg-set path="/homeUpkeepScenario" if-true="/flowShouldSeeTentativeHOHHomeUpkeepScenario">
         <question>Did you pay more than 50% of the cost of keeping up a home in <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
-        <input type="enum">
+        <input type="enum" options-path="/homeUpkeepScenarioOptions">
           <option value="livedWithDependent">Where you lived more than half the year with a dependent (child, sibling, parent, etc.)</option>
           <option value="custodialParentNonDependent">Where you lived more than half the year with a child who isn't your dependent (custodial parent rule)</option>
           <option value="dependentParentElsewhere">For a parent you can claim as a dependent, but who didn't live with you</option>

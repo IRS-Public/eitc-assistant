@@ -9,6 +9,7 @@ import scala.xml.Elem
 case class FgAlert(
     condition: Option[Condition],
     alertType: String,
+    knockout: Boolean,
     heading: String,
     children: Seq[FlowNode],
 ) extends FlowNode {
@@ -17,6 +18,7 @@ case class FgAlert(
     context.setVariable("condition", condition.map(_.path).orNull)
     context.setVariable("operator", condition.map(_.operator.toString).orNull)
     context.setVariable("alertType", alertType)
+    context.setVariable("knockout", java.lang.Boolean.valueOf(knockout))
 
     context.setVariable("heading", heading)
     val childrenHtml = children.html(templateEngine)
@@ -39,6 +41,8 @@ object FgAlert extends FlowNodeParser {
       Condition(conditionPath, ConditionOperator.fromAttribute(conditionOperator)),
     )
 
-    FgAlert(condition, alertType, heading, children)
+    val knockout = (fgAlertElement \@ "knockout") == "true"
+
+    FgAlert(condition, alertType, knockout, heading, children)
   }
 }

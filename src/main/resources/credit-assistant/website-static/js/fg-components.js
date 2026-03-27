@@ -311,7 +311,13 @@ class FgSet extends HTMLElement {
       case 'boolean':
       case 'enum': {
         if (value !== '') {
-          this.querySelector(`input[value=${value}]`).checked = true
+          // Quoted value + CSS.escape so numeric values (e.g. 2024) are valid selectors
+          // Risk: CSS.escape follows identifier rules; values with " or \ could still break a quoted
+          // attribute selector but these are controlled, so maybe this is acceptable.
+          // An alternative: iterate this.querySelectorAll('input[type="radio"]') and set
+          // checked where input.value === value (no selector parsing).
+          const input = this.querySelector(`input[value="${CSS.escape(value)}"]`)
+          if (input) input.checked = true
         }
         break
       }
@@ -808,7 +814,28 @@ function validateSectionForNavigation () {
     return false
   }
 
+  const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')
+  if (knockoutAlert) {
+    focusKnockoutAlert(knockoutAlert)
+    return false
+  }
+
   return true
+}
+
+/**
+ * Move keyboard / screen-reader focus to a visible knockout alert after Next is blocked.
+ * Runs only when required fields passed but a knockout fg-alert is still visible.
+ */
+function focusKnockoutAlert (knockoutAlert) {
+  const heading = knockoutAlert.querySelector('.usa-alert__heading')
+  const target = heading ?? knockoutAlert
+  target.scrollIntoView({ behavior: 'instant', block: 'center' })
+  target.setAttribute('tabindex', '-1')
+  target.focus()
+  target.addEventListener('blur', () => {
+    target.removeAttribute('tabindex')
+  }, { once: true })
 }
 
 function showValidationError () {
