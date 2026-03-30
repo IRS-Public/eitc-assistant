@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/relationshipOptions">
+      <Name>Relationship Options</Name>
+      <Description>The IRS allowed relationship options for a qualifying child</Description>
+      <Derived>
+        <EnumOptions>
+          <String>childStepFoster</String>
+          <String>sibling</String>
+          <String>descendant</String>
+          <String>none</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/ageRangeOptionsQC">
+      <Name>Age Range Options</Name>
+      <Description>Qualifying child age brackets</Description>
+      <Derived>
+        <EnumOptions>
+          <String>under19</String>
+          <String>between19And23</String>
+          <String>over24</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/name">
+      <Name>Name of child</Name>
+      <Writable>
+        <String/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/livedWithYouUS">
+      <Name>Lived with you in the US</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/someoneElseCanClaim">
+      <Name>Someone else can claim this child</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isClaimingQCRegardless">
+      <Name>Taxpayer is claiming this QC even though someone else can claim them</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/marriedFilingJointly">
+      <Name>Child is filing a joint return</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/mfjForRefundOnly">
+      <Name>Child is filing a joint return solely for the purposes of claiming a refund</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isPermanentlyDisabled">
+      <Name>Child is permanently and totally disabled</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/relationship">
+      <Name>Child relationship to taxpayer</Name>
+      <Writable>
+        <Enum optionsPath="/relationshipOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/ageRange">
+      <Name>Child age range</Name>
+      <Writable>
+        <Enum optionsPath="/ageRangeOptionsQC"/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isFullTimeStudent">
+      <Name>Child is full-time student</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/validSSN">
+      <Name>Child has valid SSN</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse">
+      <Name>Child is younger than self or spouse, if MFJ</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming">
+      <Derived>
+        <All>
+          <Dependency path="../someoneElseCanClaim"/>
+          <Not>
+            <Dependency path="../isClaimingQCRegardless"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="../ageRange"/>
+          </Left>
+          <Right>
+            <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldSeeAgeComparison">
+      <Derived>
+        <All>
+          <Equal>
+            <Left>
+              <Dependency path="../ageRange"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
+            </Right>
+          </Equal>
+          <Any>
+            <Equal>
+              <Left>
+                <Dependency path="/ageRange"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptions">under24</Enum>
+              </Right>
+            </Equal>
+            <Equal>
+              <Left>
+                <Dependency path="/ageRangeSecondary"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptions">under24</Enum>
+              </Right>
+            </Equal>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldShowMFJFiling">
+      <Derived>
+        <Any>
+          <Not>
+            <Dependency path="../someoneElseCanClaim"/>
+          </Not>
+          <All>
+            <IsComplete>
+              <Dependency path="../isClaimingQCRegardless"/>
+            </IsComplete>
+            <Dependency path="../isClaimingQCRegardless"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/mfjFilingTest">
+      <Derived>
+        <Any>
+          <Not>
+            <Dependency path="../marriedFilingJointly"/>
+          </Not>
+          <All>
+            <IsComplete>
+              <Dependency path="../mfjForRefundOnly"/>
+            </IsComplete>
+            <Dependency path="../mfjForRefundOnly"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldShowDisability">
+      <Derived>
+        <Dependency path="../mfjFilingTest"/>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldShowRelationship">
+      <Derived>
+        <IsComplete>
+          <Dependency path="../isPermanentlyDisabled"/>
+        </IsComplete>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/flowShouldShowValidSSN">
+      <Derived>
+        <Any>
+          <All>
+            <Dependency path="../isPermanentlyDisabled"/>
+            <Dependency path="../meetsRelationshipTest"/>
+          </All>
+          <All>
+            <IsComplete>
+              <Dependency path="../mfjForRefundOnly"/>
+            </IsComplete>
+            <Dependency path="../mfjForRefundOnly"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/meetsRelationshipTest">
+      <Derived>
+        <Not>
+          <Equal>
+            <Left>
+              <Dependency path="../relationship"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/relationshipOptions">none</Enum>
+            </Right>
+          </Equal>
+        </Not>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/meetsAgeTestDisability">
+      <Derived>
+        <Any>
+          <Dependency path="../isPermanentlyDisabled"/>
+          <Equal>
+            <Left>
+              <Dependency path="../ageRange"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
+            </Right>
+          </Equal>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/meetsAgeTestStudent">
+      <Derived>
+        <All>
+          <Equal>
+            <Left>
+              <Dependency path="../ageRange"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
+            </Right>
+          </Equal>
+          <Dependency path="../isFullTimeStudent"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/meetsAgeTest">
+      <Derived>
+        <Any>
+          <Dependency path="../meetsAgeTestDisability"/>
+          <Dependency path="../meetsAgeTestStudent"/>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
+      <Name>Is an EITC Qualifying Child without asking about SSN (yet) </Name>
+      <Derived>
+        <All>
+          <Dependency path="../livedWithYouUS"/>
+          <Not>
+            <Dependency path="../canSomeoneElseClaimAndTPNotClaiming"/>
+          </Not>
+          <Dependency path="../mfjFilingTest"/>
+          <Dependency path="../meetsAgeTest"/>
+          <Dependency path="../meetsRelationshipTest"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isEitcQualifyingChild">
+      <Name>Is an EITC Qualifying Child</Name>
+      <Description>True if the child passes all criteria to be counted as a qualifying child for the EITC.</Description>
+      <Derived>
+        <All>
+          <Dependency path="../isTentativeEitcQualifyingChild"/>
+          <Dependency path="../validSSN"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/countEitcQualifyingChildren">
+      <Derived>
+        <LesserOf>
+          <Count>
+            <Dependency path="/familyAndHousehold/*/isEitcQualifyingChild"/>
+          </Count>
+          <Int>3</Int>
+        </LesserOf>
+      </Derived>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>
