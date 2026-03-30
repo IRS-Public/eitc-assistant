@@ -5,6 +5,6 @@
   <module src="./filing-status.xml"/>
   <module src="./income.xml"/>
   <module src="./adjustments.xml"/>
-  <module src="./household.xml"/>
+  <module src="./qualifying-children.xml"/>
   <module src="./results.xml"/>
 </FlowConfig>

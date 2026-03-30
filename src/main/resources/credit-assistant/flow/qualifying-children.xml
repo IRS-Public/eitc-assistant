@@ -1,0 +1,256 @@
+<?xml version="1.0"?>
+<?xml-model href="./FlowConfig.rng"?>
+<FlowConfig>
+  <page title="Qualifying Children" route="/qualifying-children">
+    <section>
+      <h2>Qualifying Children</h2>
+      <p>In this step, we'll see how many of your children or other relatives are your qualifying children for the purposes of claiming and calculating the EITC. </p>
+      <p>You can claim up to three qualifying children for the EITC.</p>
+
+      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another">
+
+        <fg-set path="/familyAndHousehold/*/livedWithYouUS">
+          <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>
+          <modal-link for="modal-residency">Residency</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/livedWithYouUS" operator="isFalse">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+        <fg-set path="/familyAndHousehold/*/someoneElseCanClaim" if-true="/familyAndHousehold/*/livedWithYouUS">
+          <question>Can someone else claim this child for the EITC?</question>
+          <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-set path="/familyAndHousehold/*/isClaimingQCRegardless" if-true="/familyAndHousehold/*/someoneElseCanClaim">
+          <question>You might not be able to claim a child for the EITC if they are also claimed by certain eligible people. Do you still want to claim this child?</question>
+          <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming" operator="isTrue">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+        <fg-set path="/familyAndHousehold/*/marriedFilingJointly" if-true="/familyAndHousehold/*/flowShouldShowMFJFiling">
+          <question>Is this child married and will file a joint return with his or her spouse for <fg-show path="/taxYear"/>?</question>
+          <modal-link for="modal-joint-return">Joint Return</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-set path="/familyAndHousehold/*/mfjForRefundOnly" if-true="/familyAndHousehold/*/marriedFilingJointly">
+          <question>Is this child filing a joint return for <fg-show path="/taxYear"/> only to claim a refund of withheld taxes or estimated taxes paid, and won't claim any tax credits such as the EITC?</question>
+          <modal-link for="-with-another-person-exception">Joint Return</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/mfjForRefundOnly" operator="isFalse">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+        <fg-set path="/familyAndHousehold/*/isPermanentlyDisabled" if-true="/familyAndHousehold/*/flowShouldShowDisability">
+          <question>Is this child permanently and totally disabled?</question>
+          <modal-link for="modal-disabled">Permanently and totally disabled</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-set path="/familyAndHousehold/*/relationship" if-true="/familyAndHousehold/*/flowShouldShowRelationship">
+          <question>Select this child's relationship to you:</question>
+          <modal-link for="modal-relationship">Relationships</modal-link>
+          <input type="enum" options-path="/relationshipOptions">
+            <option value="childStepFoster">Child, stepchild, adopted child, or foster child</option>
+            <option value="sibling">Sibling, half-sibling, or stepsibling</option>
+            <option value="descendant">Grandchild, niece or nephew</option>
+            <option value="none">None of the above</option>
+          </input>
+        </fg-set>
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsRelationshipTest" operator="isFalse">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+
+        <fg-set path="/familyAndHousehold/*/ageRange" if-false="/familyAndHousehold/*/isPermanentlyDisabled">
+          <question>How old was this child at the end of <fg-show path="/taxYear"/>?</question>
+          <input type="enum" options-path="/ageRangeOptionsQC">
+            <option value="under19">18 and under</option>
+            <option value="between19And23">Between 19 and 23</option>
+            <option value="over24">24 or over</option>
+          </input>
+        </fg-set>
+
+        <fg-set path="/familyAndHousehold/*/isFullTimeStudent" if-true="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
+          <question>Was the child a full-time student during some part of any 5 months during the year?</question>
+          <modal-link for="modal-student">Full-time student defined</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-set path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" if-true="/familyAndHousehold/*/flowShouldSeeAgeComparison">
+          <question>Is the dependent younger than you (or your spouse, if filing a joint return)?</question>
+          <modal-link for="modal-age-comparison">Age Comparison between Child and Filer</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsAgeTest" operator="isFalse">
+          <heading>This child does not qualify for EITC.</heading>
+          <p class="usa-alert__text">
+            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
+          </p>
+        </fg-alert>
+
+        <fg-set path="/familyAndHousehold/*/validSSN" if-true="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
+          <question>Does this child have a valid Social Security number issued on or before the due date of the return (including extensions)?</question>
+          <modal-link for="modal-valid-ssn-qc">Valid Social Security Number for Qualifying Child</modal-link>
+          <input type="boolean"/>
+        </fg-set>
+
+        <fg-alert alert-type="warning" alert-key="qc-disqualified-ssn-warning" condition="/familyAndHousehold/*/validSSN" operator="isFalse">
+          <heading>Please note</heading>
+          <p class="usa-alert__text">
+            This child does not have a valid SSN. Because they don't have a valid SSN, they cannot be claimed for the EITC with a Qualifying Child. However, you may be eligible for the smaller EITC without a qualifying child.
+          </p>
+        </fg-alert>
+
+        <h2 condition="/familyAndHousehold/*/isEitcQualifyingChild" operator="isTrue">Your child qualifies for the purposes of claiming and calculating EITC</h2>
+
+      </fg-collection>
+        <h2> You have <fg-show path="/countEitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
+    </section>
+
+    <modal-dialog id="modal-residency">
+      <modal-heading>Residency Test</modal-heading>
+      <modal-content>
+        <p>Your child must have lived with you in the United States for more than half of <fg-show path="/taxYear"/>. </p>
+        <p>This means the 50 states and the District of Columbia.  It doesn't include Puerto Rico or U.S. territories such as Guam. </p>
+        <p>Your home can be any location where you regularly live. You don't need a traditional home.  For example, if your child lived with you for more than half the year in one or more homeless shelters, your child meets the residency test. </p>
+        <p>Count time that you or your child is away from home on a temporary absence due to a special circumstance as time the child lived with you.  Examples of a special circumstance include illness, school attendance, business, vacation, military service, and detention in a juvenile facility. </p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-joint-return">
+      <modal-heading>Joint Return with Another Person</modal-heading>
+      <modal-content>
+        <p>You generally can't claim a married person as a qualifying child for the EITC if he or she files a joint return. </p>
+        <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298157">Publication 596</a>, Earned Income Credit, Joint Return Test.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-joint-return-with-another-person-exception">
+      <modal-heading>Joint Return with Another Person Exception</modal-heading>
+      <modal-content>
+        <p>You can claim a married person who files a joint return as a qualifying child for the EITC if the child and their spouse file the joint return only to claim a refund of withheld income taxes from their paychecks or estimated taxes they paid. They may not claim any credits such as the EITC on their return.</p>
+        <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298157">Publication 596</a>, Earned Income Credit, Joint Return Test.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-disabled">
+      <modal-heading>Permanently and Totally Disabled</modal-heading>
+      <modal-content>
+        <p>For the EITC, we consider a child permanently and totally disabled if both of the following are true:</p>
+        <ul>
+          <li>The child can't perform significant duties over a reasonable period of time while working for pay or profit in a competitive work situation for at least the minimum wage because of a physical or mental condition, and</li>
+          <li>A physician determines the condition has lasted or can be expected to last continuously for at least a year or can lead to death</li>
+        </ul>
+        <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298147">Publication 596</a>, Earned Income Credit, Permanently and Totally Disabled.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-relationship">
+      <modal-heading>Child Relationship Definitions</modal-heading>
+      <modal-content>
+        <h3>Stepchild</h3>
+        <p>A step relationship is one formed by a marriage. For the EITC, a relationship formed by a marriage, such as a stepdaughter, stepson, stepbrother, or stepsister, doesn't end if the marriage ends.</p>
+
+        <h3>Adopted Child</h3>
+        <p>An adopted child is always treated as your own child. This term includes a child who was lawfully placed with you for legal adoption.</p>
+
+        <h3>Foster Child</h3>
+        <p>You can claim a foster child only if the child is placed with you by an authorized placement agency or by court order.</p>
+
+        <h3>Authorized placement agency</h3>
+        <p>This term includes a state or local government agency or an Indian tribal government. It also includes a tax-exempt organization licensed by a state or an Indian tribal government.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-student">
+      <modal-heading>Full-time Student and School Defined</modal-heading>
+      <modal-content>
+        <h3>Full-time Student</h3>
+        <p>To be considered full-time, the student must have enrolled for the number of hours or courses the school considers to be full-time attendance.</p>
+        <p>Students who work on "co-op" jobs in private industry as a part of a school's regular course of classroom and practical training are considered full-time students.</p>
+
+        <h3>School Defined</h3>
+        <p>For the EITC, a school is:</p>
+        <ul>
+          <li>Elementary school</li>
+          <li>Junior or senior high school</li>
+          <li>College or university</li>
+          <li>Technical, trade, or mechanical school</li>
+        </ul>
+        <p>A school is <strong>not</strong>:</p>
+        <ul>
+          <li>On-the-job training course</li>
+          <li>Correspondence school</li>
+          <li>School offering courses only through the Internet</li>
+        </ul>
+        <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298144">Publication 596</a>, Earned Income Credit, Student Defined and School Defined.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-valid-ssn-qc">
+      <modal-heading>Valid Social Security Number for Qualifying Children</modal-heading>
+      <modal-content>
+        <p>The amount of your EITC depends on the number of qualifying children you have with valid SSNs. Each child or relative you claim for purposes of calculating the amount of the EITC must have a valid Social Security number (SSN) that is issued by the Social Security Administration on or before the due date of your tax return (including extensions).</p>
+
+        <p>For the EITC, an SSN is a valid SSN unless “Not Valid for Employment” is printed on the Social Security card and the number was issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit. An example of a federally funded benefit is Medicaid.</p>
+
+        <p>We accept a Social Security card with "Valid for work with DHS authorization" on it only as long as the DHS authorization is still valid.</p>
+
+        <p>For the EITC, we don't accept:</p>
+        <ul>
+          <li>IRS Individual taxpayer identification number (ITIN)</li>
+          <li>Adoption taxpayer identification number (ATIN)</li>
+          <li>Social Security number issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit such as Medicaid</li>
+        </ul>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-claimed-someone-else">
+      <modal-heading>Claimed on Someone Else's Tax Return</modal-heading>
+      <modal-content>
+        <p>Only one person can claim each child for the EITC. If more than one person claims the child, then the IRS applies tiebreaker rules.</p>
+        <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit, Your Qualifying Child Cannot Be Used By More Than One Person.</p>
+      </modal-content>
+    </modal-dialog>
+    <modal-dialog id="modal-age-comparison">
+      <modal-heading>Child Must be Younger Than You or Your Spouse</modal-heading>
+      <modal-content>
+        <p>To be a qualifying child, the child must be younger than you or your spouse unless the child is permanently and totally disabled at any time during 2025.</p>
+        <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Publication 596</a>, Earned Income Credit, Age Test.</p>
+      </modal-content>
+    </modal-dialog>
+  </page>
+</FlowConfig>
