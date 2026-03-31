@@ -164,7 +164,7 @@
 
     </section>
 
-    <fg-alert alert-type="error" alert-key="eitc-marriage-disqualified" condition="/isDisqualifiedMarriedNotFilingJointly" operator="isTrue">
+    <fg-alert alert-type="error" alert-key="eitc-marriage-disqualified" knockout="true" condition="/isDisqualifiedMarriedNotFilingJointly" operator="isTrue">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         You can claim the EIC if you are married, not filing a joint return, had a qualifying child who lived with you for more than half of 2025, and either of the following apply:
@@ -178,19 +178,19 @@
       </p>
     </fg-alert>
 
-    <fg-alert alert-type="error" alert-key="secondary-filer-invalid-ssn" condition="/secondaryFilerHasValidSSN" operator="isFalse">
+    <fg-alert alert-type="error" alert-key="secondary-filer-invalid-ssn" knockout="true" condition="/secondaryFilerHasValidSSN" operator="isFalse">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         You can't claim the EITC because your spouse doesn't have a valid Social Security number issued on or before the due date of your tax return.
       </p>
     </fg-alert>
-    <fg-alert alert-type="error" alert-key="deceased-filer-invalid-ssn" condition="/deceasedSpouseValidSSNOnDateOfDeath" operator="isFalse">
+    <fg-alert alert-type="error" alert-key="deceased-filer-invalid-ssn" knockout="true" condition="/deceasedSpouseValidSSNOnDateOfDeath" operator="isFalse">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         You can't claim the EITC if you choose to file a joint return with your deceased spouse because your spouse did not have a valid social security number on the day they passed away.</p>
       <p>You may qualify for the EITC if you don't file a joint return with your deceased spouse.</p>
     </fg-alert>
-    <fg-alert alert-type="error" alert-key="eitc-residency-disqualified" condition="/hasLivedInUSMore6Months" operator="isFalse">
+    <fg-alert alert-type="error" alert-key="eitc-residency-disqualified" knockout="true" condition="/hasLivedInUSMore6Months" operator="isFalse">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         To claim the EITC, your home must have been in the United States for more than half the year. The United States includes the 50 states and the District of Columbia.
