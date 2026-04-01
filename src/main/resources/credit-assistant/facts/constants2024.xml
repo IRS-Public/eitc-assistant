@@ -2,48 +2,56 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
-    <Fact path="/maxIncomeSubjectToSocialSecurityTax">
+    <Fact path="/maxIncomeSubjectToSocialSecurityTax2024">
       <Description> Schedule SE Line 7. Maximum amount of combined wages and self-employment earnings subject to social security tax or
-        the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>
+                the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2024. See https://www.ssa.gov/oact/cola/cbb.html</Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
-        <Dollar>184500</Dollar>
+        <Dollar>168600</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/seIncomeThreshold">
+    <Fact path="/seIncomeThreshold2024">
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>400</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/socialSecuritySelfEmploymentTaxPortion">
+    <Fact path="/socialSecuritySelfEmploymentTaxPortion2024">
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Rational>31/250</Rational>
       </Derived>
     </Fact>
-    <Fact path="/medicareSelfEmploymentTaxPortion">
+    <Fact path="/medicareSelfEmploymentTaxPortion2024">
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Rational>29/1000</Rational>
       </Derived>
     </Fact>
-    <Fact path="/selfEmploymentTaxDeductionMultiplier">
+    <Fact path="/selfEmploymentTaxDeductionMultiplier2024">
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Rational>1/2</Rational>
       </Derived>
     </Fact>
-    <Fact path="/percentageOfSEIncomeSubjectToTax">
+    <Fact path="/percentageOfSEIncomeSubjectToTax2024">
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Rational>1847/2000</Rational>
       </Derived>
     </Fact>
-    <Fact path="/maxStudentLoanDeduction">
+    <Fact path="/maxStudentLoanDeduction2024">
       <Name>Maximum student loan deduction</Name>
       <Description>The maximum amount one is allowed to deduct because of student loan interest payments</Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>2500</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/maxIncomeForStudentLoanInterestDeduction">
+    <Fact path="/maxIncomeForStudentLoanInterestDeduction2024">
       <Name>Max income for an MFJ filer student loan interest deduction</Name>
       <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Switch>
           <Case>
@@ -51,7 +59,7 @@
               <Dependency path="/isFilingStatusMFJ"/>
             </When>
             <Then>
-              <Dollar>205000</Dollar>
+              <Dollar>195000</Dollar>
             </Then>
           </Case>
           <Case>
@@ -59,18 +67,19 @@
               <True/>
             </When>
             <Then>
-              <Dollar>100000</Dollar>
+              <Dollar>95000</Dollar>
             </Then>
           </Case>
         </Switch>
       </Derived>
     </Fact>
-    <Fact path="/studentLoanPhaseOutStart">
+    <Fact path="/studentLoanPhaseOutStart2024">
       <Name>Student Loan Phase Out Start for MFJ filers</Name>
       <Description>
-        The MAGI at which the student loan interest deduction begins to phase out for MFJ filers.
-        Rev Proc 30 Interest on Education Loans &#xA7;221(b)(2)(B)
-      </Description>
+                The MAGI at which the student loan interest deduction begins to phase out for MFJ filers.
+                Rev Proc 30 Interest on Education Loans &#xA7;221(b)(2)(B)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Switch>
           <Case>
@@ -78,7 +87,7 @@
               <Dependency path="/isFilingStatusMFJ"/>
             </When>
             <Then>
-              <Dollar>175000</Dollar>
+              <Dollar>165000</Dollar>
             </Then>
           </Case>
           <Case>
@@ -86,113 +95,320 @@
               <True/>
             </When>
             <Then>
-              <Dollar>85000</Dollar>
+              <Dollar>80000</Dollar>
             </Then>
           </Case>
         </Switch>
       </Derived>
     </Fact>
-    <Fact path="/eitcMfjLimitWithThreeOrMoreChildren">
+    <Fact path="/eitcMfjLimitWithThreeOrMoreChildren2024">
       <Name>EITC (MFJ) limit with 3 or more children</Name>
       <Description>EITC limit with 3 or more children when filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>66819</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcSelfLimitWithThreeOrMoreChildren">
+    <Fact path="/eitcSelfLimitWithThreeOrMoreChildren2024">
       <Name>EITC (self) limit with 3 or more children</Name>
       <Description>EITC limit with 3 or more children when not filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>59899</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcMfjLimitWithTwoChildren">
+    <Fact path="/eitcMfjLimitWithTwoChildren2024">
       <Name>EITC (MFJ) limit with 2 children</Name>
       <Description>EITC limit with 2 children when filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>62688</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcSelfLimitWithTwoChildren">
+    <Fact path="/eitcSelfLimitWithTwoChildren2024">
       <Name>EITC (self) limit with 2 children</Name>
       <Description>EITC limit with 2 children when not filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>55768</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcMfjLimitWithOneChild">
+    <Fact path="/eitcMfjLimitWithOneChild2024">
       <Name>EITC (MFJ) limit with 1 child</Name>
       <Description>EITC limit with 1 child when filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>56004</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcSelfLimitWithOneChild">
+    <Fact path="/eitcSelfLimitWithOneChild2024">
       <Name>EITC (self) limit with 1 child</Name>
       <Description>EITC limit with 1 child when not filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>49084</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcMfjLimitWithZeroChildren">
+    <Fact path="/eitcMfjLimitWithZeroChildren2024">
       <Name>EITC (MFJ) limit with 0 children</Name>
       <Description>EITC limit with 0 children when filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>25511</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/eitcSelfLimitWithZeroChildren">
+    <Fact path="/eitcSelfLimitWithZeroChildren2024">
       <Name>EITC (self) limit with 0 children</Name>
       <Description>EITC limit with 0 children when not filing as MFJ
-        Rev Proc .06 Earned Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>18591</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/phaseInEndsFor0QualifyingChildren">
+    <Fact path="/phaseInEndsFor0QualifyingChildren2024">
       <Name>Maximum phase in amount with 0 children</Name>
       <Description>The earned income amount which provides the max EITC with 0 qualifying children
-        Rev Proc .06 Earned
-        Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned
+                Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>8260</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/phaseInEndsFor1QualifyingChild">
+    <Fact path="/phaseInEndsFor1QualifyingChild2024">
       <Name>Maximum phase in amount with 1 child</Name>
       <Description>The earned income amount which provides the max EITC with 1 qualifying child
-        Rev Proc .06 Earned
-        Income Credit &#xA7;32(b)
-      </Description>
+                Rev Proc .06 Earned
+                Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>12390</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/phaseInEndsFor2OrMoreQualifyingChildren">
+    <Fact path="/phaseInEndsFor2OrMoreQualifyingChildren2024">
       <Name>Maximum phase in amount with 2 or more children</Name>
-      <Description>The earned income amount which provides the max EITC with 2 or more qualifying
-        children
-        Rev Proc .06
-        Earned Income Credit &#xA7;32(b)
-      </Description>
+      <Description>The earned income amount which provides the max EITC with 2 or more qualifying children
+                Rev Proc .06
+                Earned Income Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
       <Derived>
         <Dollar>17400</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInRatesFor0Qc2024">
+      <Name>Phase in rate for 0 qualifying children</Name>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>765/10000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInRatesFor1Qc2024">
+      <Name>Phase in rate for 1 qualifying child</Name>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>34/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInRatesFor2Qc2024">
+      <Name>Phase in rate for 2 qualifying children</Name>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>40/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/phaseInRatesFor3OrMoreQc2024">
+      <Name>Phase in rate for 3 or more qualifying children</Name>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>45/100</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcInvestmentIncomeLimit2024">
+      <Name>Below EITC Investment Income Limit</Name>
+      <Description>Whether the TP's Investment Income is low enough for the EITC
+                Rev Proc .06 Earned Income Credit &#xA7;32(i)
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>11600</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutRate0QC2024">
+      <Name>EITC phase out rate</Name>
+      <Description>The rate at which EITC phases out as income exceeds the threshold amount.</Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>765/10000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutRate1QC2024">
+      <Name>EITC phase out rate</Name>
+      <Description>The rate at which EITC phases out as income exceeds the threshold amount.</Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>1598/10000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutRate2OrMoreQC2024">
+      <Name>EITC phase out rate</Name>
+      <Description>The rate at which EITC phases out as income exceeds the threshold amount.</Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Rational>2106/10000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThreshold2024">
+      <Name>EITC phaseout amount threshold</Name>
+      <Description>The amount of income above which the amount of EITC begins to be reduced.
+                Rev Proc .06 Earned Income
+                Credit &#xA7;32(b)
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusHOH"/>
+                <Dependency path="/isFilingStatusQSS"/>
+                <Dependency path="/isFilingStatusMFS"/>
+              </Any>
+            </When>
+            <Then>
+              <Switch>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                      </Left>
+                      <Right>
+                        <Int>0</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dependency path="/eitcPhaseOutThreshold0QCNonMFJ2024"/>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                      </Left>
+                      <Right>
+                        <Int>1</Int>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Dependency path="/eitcPhaseOutThreshold1OrMoreQCNonMFJ2024"/>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Switch>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                      </Left>
+                      <Right>
+                        <Int>0</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dependency path="/eitcPhaseOutThreshold0QCMFJ2024"/>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                      </Left>
+                      <Right>
+                        <Int>1</Int>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Dependency path="/eitcPhaseOutThreshold1OrMoreQCMFJ2024"/>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThreshold0QCNonMFJ2024">
+      <Name>EITC phaseout amount threshold</Name>
+      <Description>The amount of income above which the amount of EITC begins to be reduced.
+                https://www.irs.gov/irb/2023-48_IRB
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>10330</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThreshold1OrMoreQCNonMFJ2024">
+      <Name>EITC phaseout amount threshold</Name>
+      <Description>The amount of income above which the amount of EITC begins to be reduced.
+                https://www.irs.gov/irb/2023-48_IRB
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>22720</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThreshold0QCMFJ2024">
+      <Name>EITC phaseout amount threshold</Name>
+      <Description>The amount of income above which the amount of EITC begins to be reduced.
+                https://www.irs.gov/irb/2023-48_IRB
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>17250</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThreshold1OrMoreQCMFJ2024">
+      <Name>EITC phaseout amount threshold</Name>
+      <Description>The amount of income above which the amount of EITC begins to be reduced.
+                https://www.irs.gov/irb/2023-48_IRB
+            </Description>
+      <TaxYear>2024</TaxYear>
+      <Derived>
+        <Dollar>29640</Dollar>
       </Derived>
     </Fact>
   </Facts>
