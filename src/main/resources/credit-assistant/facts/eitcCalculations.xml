@@ -86,7 +86,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -101,7 +101,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -116,7 +116,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -131,7 +131,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>3</Int>
@@ -262,7 +262,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -277,7 +277,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -292,7 +292,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -307,7 +307,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>3</Int>
@@ -330,7 +330,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -345,7 +345,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -360,7 +360,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                  <Dependency path="/countEitcQualifyingChildren"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -390,7 +390,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>3</Int>
@@ -405,7 +405,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>2</Int>
@@ -420,7 +420,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>1</Int>
@@ -435,7 +435,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -460,7 +460,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>3</Int>
@@ -475,7 +475,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>2</Int>
@@ -490,7 +490,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>1</Int>
@@ -505,7 +505,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/countEitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -670,140 +670,121 @@
         https://www.irs.gov/pub/irs-drop/rp-21-45.pdf and will need to be updated for 2023 with
         https://www.irs.gov/pub/irs-drop/rp-22-38.pdf</Description>
       <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Not>
-                <Dependency path="/eitcQualified"/>
-              </Not>
-            </When>
-            <Then>
-              <Dollar>0</Dollar>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <True/>
-            </When>
-            <Then>
-              <GreaterOf>
-                <!-- Cannot be less than zero -->
-                <Dollar>0</Dollar>
-                <Round>
-                  <LesserOf>
-                    <Dependency path="/maxEitcFromAGI"/>
-                    <Subtract>
-                      <Minuend>
-                        <Switch>
-                          <!-- If the upper band of the row would exceed the max credit, use the max
-                          credit -->
-                          <Case>
-                            <When>
-                              <GreaterThanOrEqual>
-                                <Left>
-                                  <Multiply>
-                                    <!-- Multiply earned income by the phase in rate -->
-                                    <Dependency path="/eitcPhaseInRate"/>
-                                    <Add>
-                                      <Dependency path="/eitcRoundedEarnedIncome"/>
-                                      <Dollar>24</Dollar>
-                                    </Add>
-                                  </Multiply>
-                                </Left>
-                                <Right>
-                                  <Dependency path="/eitcMaxCredit"/>
-                                </Right>
-                              </GreaterThanOrEqual>
-                            </When>
-                            <Then>
-                              <Dependency path="/eitcMaxCredit"/>
-                            </Then>
-                          </Case>
-                          <!-- Otherwise, use the normal calculation -->
-                          <Case>
-                            <When>
-                              <True/>
-                            </When>
-                            <Then>
+        <GreaterOf>
+          <!-- Cannot be less than zero -->
+          <Dollar>0</Dollar>
+          <Round>
+            <LesserOf>
+              <Dependency path="/maxEitcFromAGI"/>
+              <Subtract>
+                <Minuend>
+                  <Switch>
+                    <!-- If the upper band of the row would exceed the max credit, use the max
+                                  credit -->
+                    <Case>
+                      <When>
+                        <GreaterThanOrEqual>
+                          <Left>
+                            <Multiply>
+                              <!-- Multiply earned income by the phase in rate -->
+                              <Dependency path="/eitcPhaseInRate"/>
+                              <Add>
+                                <Dependency path="/eitcRoundedEarnedIncome"/>
+                                <Dollar>24</Dollar>
+                              </Add>
+                            </Multiply>
+                          </Left>
+                          <Right>
+                            <Dependency path="/eitcMaxCredit"/>
+                          </Right>
+                        </GreaterThanOrEqual>
+                      </When>
+                      <Then>
+                        <Dependency path="/eitcMaxCredit"/>
+                      </Then>
+                    </Case>
+                    <!-- Otherwise, use the normal calculation -->
+                    <Case>
+                      <When>
+                        <True/>
+                      </When>
+                      <Then>
+                        <LesserOf>
+                          <!-- Cannot exceed the limit -->
+                          <Dependency path="/eitcMaxCredit"/>
+                          <Multiply>
+                            <!-- Multiply earned income by the phase in rate -->
+                            <Dependency path="/eitcPhaseInRate"/>
+                            <Dependency path="/eitcRoundedEarnedIncome"/>
+                          </Multiply>
+                        </LesserOf>
+                      </Then>
+                    </Case>
+                  </Switch>
+                </Minuend>
+                <Subtrahends>
+                  <Switch>
+                    <Case>
+                      <!-- If the threshold is greater than the lower bound of the row, we don't
+                                      apply any phaseout -->
+                      <When>
+                        <GreaterThan>
+                          <Left>
+                            <Add>
+                              <Dependency path="/eitcPhaseOutThreshold"/>
+                              <Dollar>25</Dollar>
+                            </Add>
+                          </Left>
+                          <Right>
+                            <Dependency path="/eitcRoundedEarnedIncome"/>
+                          </Right>
+                        </GreaterThan>
+                      </When>
+                      <Then>
+                        <Dollar>0</Dollar>
+                      </Then>
+                    </Case>
+                    <Case>
+                      <When>
+                        <True/>
+                      </When>
+                      <Then>
+                        <Multiply>
+                          <!-- Phaseout for income over the threshold -->
+                          <Dependency path="/eitcPhaseOutRate"/>
+                          <Subtract>
+                            <Minuend>
                               <LesserOf>
-                                <!-- Cannot exceed the limit -->
-                                <Dependency path="/eitcMaxCredit"/>
-                                <Multiply>
-                                  <!-- Multiply earned income by the phase in rate -->
-                                  <Dependency path="/eitcPhaseInRate"/>
-                                  <Dependency path="/eitcRoundedEarnedIncome"/>
-                                </Multiply>
+                                <!-- The midpoint of the row -->
+                                <Dependency path="/eitcRoundedEarnedIncome"/>
+                                <!-- The midpoint of the lower bound of the row and the completed
+                                                          phaseout amount-->
+                                <Divide>
+                                  <Dividend>
+                                    <Add>
+                                      <Dependency path="/eitcPhaseoutAmountLowerBound"/>
+                                      <Dependency path="/eitcCompletedPhaseoutAmount"/>
+                                    </Add>
+                                  </Dividend>
+                                  <Divisors>
+                                    <Int>2</Int>
+                                  </Divisors>
+                                </Divide>
                               </LesserOf>
-                            </Then>
-                          </Case>
-                        </Switch>
-                      </Minuend>
-                      <Subtrahends>
-                        <Switch>
-                          <Case>
-                            <!-- If the threshold is greater than the lower bound of the row, we don't
-                            apply any phaseout -->
-                            <When>
-                              <GreaterThan>
-                                <Left>
-                                  <Add>
-                                    <Dependency path="/eitcPhaseOutThreshold"/>
-                                    <Dollar>25</Dollar>
-                                  </Add>
-                                </Left>
-                                <Right>
-                                  <Dependency path="/eitcRoundedEarnedIncome"/>
-                                </Right>
-                              </GreaterThan>
-                            </When>
-                            <Then>
-                              <Dollar>0</Dollar>
-                            </Then>
-                          </Case>
-                          <Case>
-                            <When>
-                              <True/>
-                            </When>
-                            <Then>
-                              <Multiply>
-                                <!-- Phaseout for income over the threshold -->
-                                <Dependency path="/eitcPhaseOutRate"/>
-                                <Subtract>
-                                  <Minuend>
-                                    <LesserOf>
-                                      <!-- The midpoint of the row -->
-                                      <Dependency path="/eitcRoundedEarnedIncome"/>
-                                      <!-- The midpoint of the lower bound of the row and the completed
-                                      phaseout amount-->
-                                      <Divide>
-                                        <Dividend>
-                                          <Add>
-                                            <Dependency path="/eitcPhaseoutAmountLowerBound"/>
-                                            <Dependency path="/eitcCompletedPhaseoutAmount"/>
-                                          </Add>
-                                        </Dividend>
-                                        <Divisors>
-                                          <Int>2</Int>
-                                        </Divisors>
-                                      </Divide>
-                                    </LesserOf>
-                                  </Minuend>
-                                  <Subtrahends>
-                                    <Dependency path="/eitcPhaseOutThreshold"/>
-                                  </Subtrahends>
-                                </Subtract>
-                              </Multiply>
-                            </Then>
-                          </Case>
-                        </Switch>
-                      </Subtrahends>
-                    </Subtract>
-                  </LesserOf>
-                </Round>
-              </GreaterOf>
-            </Then>
-          </Case>
-        </Switch>
+                            </Minuend>
+                            <Subtrahends>
+                              <Dependency path="/eitcPhaseOutThreshold"/>
+                            </Subtrahends>
+                          </Subtract>
+                        </Multiply>
+                      </Then>
+                    </Case>
+                  </Switch>
+                </Subtrahends>
+              </Subtract>
+            </LesserOf>
+          </Round>
+        </GreaterOf>
       </Derived>
     </Fact>
     <Fact path="/isReceivingEitc">
