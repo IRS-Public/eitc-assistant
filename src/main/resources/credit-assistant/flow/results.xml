@@ -71,7 +71,7 @@
           </tr>
           <tr>
             <th scope="row">Filing Status</th>
-            <td><fg-show path="/filingStatus"/></td>
+            <td><fg-show path="/flowReadableFilingStatus"/></td>
             <td>
               <a class="usa-link" href="/app/eitc/">Edit filing status in About you</a>
             </td>
