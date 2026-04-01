@@ -2,6 +2,16 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
+    <Fact path="/numEitcDependentsCollectionForCalculation">
+      <Derived>
+        <LesserOf>
+          <Count>
+            <Dependency path="/familyAndHousehold/*/isEitcQualifyingChild"/>
+          </Count>
+          <Int>3</Int>
+        </LesserOf>
+      </Derived>
+    </Fact>
     <Fact path="/earnedIncomeTotal">
       <!--      TODO: update this and the other income writables to include all the categories-->
       <Description>
@@ -86,7 +96,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -101,7 +111,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -116,7 +126,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -131,7 +141,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>3</Int>
@@ -229,30 +239,6 @@
         </Round>
       </Derived>
     </Fact>
-    <Fact path="/phaseInRatesFor0Qc">
-      <Name>Phase in rate for 0 qualifying children</Name>
-      <Derived>
-        <Rational>765/10000</Rational>
-      </Derived>
-    </Fact>
-    <Fact path="/phaseInRatesFor1Qc">
-      <Name>Phase in rate for 1 qualifying child</Name>
-      <Derived>
-        <Rational>34/100</Rational>
-      </Derived>
-    </Fact>
-    <Fact path="/phaseInRatesFor2Qc">
-      <Name>Phase in rate for 2 qualifying children</Name>
-      <Derived>
-        <Rational>40/100</Rational>
-      </Derived>
-    </Fact>
-    <Fact path="/phaseInRatesFor3OrMoreQc">
-      <Name>Phase in rate for 3 or more qualifying children</Name>
-      <Derived>
-        <Rational>45/100</Rational>
-      </Derived>
-    </Fact>
     <Fact path="/eitcPhaseInRate">
       <Name>EITC phase in rate</Name>
       <Description>The rate at which EITC phases in with income.</Description>
@@ -262,7 +248,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -277,7 +263,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -292,7 +278,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -307,7 +293,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>3</Int>
@@ -330,7 +316,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>0</Int>
@@ -345,7 +331,7 @@
             <When>
               <Equal>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>1</Int>
@@ -360,7 +346,7 @@
             <When>
               <GreaterThanOrEqual>
                 <Left>
-                  <Dependency path="/countEitcQualifyingChildren"/>
+                  <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                 </Left>
                 <Right>
                   <Int>2</Int>
@@ -390,7 +376,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>3</Int>
@@ -405,7 +391,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>2</Int>
@@ -420,7 +406,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>1</Int>
@@ -435,7 +421,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -460,7 +446,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>3</Int>
@@ -475,7 +461,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>2</Int>
@@ -490,7 +476,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>1</Int>
@@ -505,7 +491,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/countEitcQualifyingChildren"/>
+                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -799,6 +785,35 @@
             <Dollar>0</Dollar>
           </Right>
         </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/belowEitcInvestmentIncomeLimit">
+      <Name>Below EITC Investment Income Limit</Name>
+      <Description>Whether the TP's Investment Income is low enough for the EITC
+              Rev Proc .06 Earned Income Credit &#xA7;32(i)
+          </Description>
+      <Derived>
+        <LessThanOrEqual>
+          <Left>
+            <!-- The investment income from lines 2a, 2b, 3b, and 7 per 1040 instructions -->
+            <Add>
+              <Dependency path="/taxExemptInterestIncome"/>
+              <Dependency path="/taxableInterestIncome"/>
+              <Dependency path="/ordinaryDividendsIncome"/>
+              <GreaterOf>
+                <Dependency path="/netShortTermGainOrLoss"/>
+                <Dollar>0</Dollar>
+              </GreaterOf>
+              <GreaterOf>
+                <Dependency path="/netLongTermGainOrLoss"/>
+                <Dollar>0</Dollar>
+              </GreaterOf>
+            </Add>
+          </Left>
+          <Right>
+            <Dependency path="/eitcInvestmentIncomeLimit"/>
+          </Right>
+        </LessThanOrEqual>
       </Derived>
     </Fact>
   </Facts>

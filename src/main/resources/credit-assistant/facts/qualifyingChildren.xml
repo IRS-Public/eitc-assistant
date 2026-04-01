@@ -285,15 +285,5 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/countEitcQualifyingChildren">
-      <Derived>
-        <LesserOf>
-          <Count>
-            <Dependency path="/familyAndHousehold/*/isEitcQualifyingChild"/>
-          </Count>
-          <Int>3</Int>
-        </LesserOf>
-      </Derived>
-    </Fact>
   </Facts>
 </FactDictionaryModule>
