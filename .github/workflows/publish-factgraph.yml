@@ -1,0 +1,108 @@
+name: Publish Fact Graph
+
+on:
+  workflow_call:
+    outputs:
+      artifact-name:
+        description: "Published Fact Graph artifact"
+        value: fact-graph-target
+
+env:
+  JAVA_VERSION: 21
+  SBT_VERSION: 1.11.4
+  FACT_GRAPH_PATH: fact-graph
+
+jobs:
+
+  publish-fact-graph:
+    if: vars.build == 'false'
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout Fact Graph
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      with:
+        repository: IRSDigitalService/${{ env.FACT_GRAPH_PATH }}
+        path: ${{ env.FACT_GRAPH_PATH }}
+
+    - name: Get latest fact-graph commit SHA
+      id: fg_sha
+      working-directory: ${{ env.FACT_GRAPH_PATH }}
+      run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+
+    - name: Retrieve cached local sbt dependencies
+      id: ivy_local_cache
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: ~/.ivy2/local
+        key: ${{ env.FACT_GRAPH_PATH }}-ivy-local-${{ steps.fg_sha.outputs.sha }}
+
+    - name: Restore fact-graph target directory from cache
+      id: target_cache
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: ${{ env.FACT_GRAPH_PATH }}/target
+        key: ${{ env.FACT_GRAPH_PATH }}-target-${{ steps.fg_sha.outputs.sha }}
+
+    - name: Check if target and ivy-local caches exist
+      id: check_cache
+      run: |
+        echo "target cache hit: ${{ steps.target_cache.outputs.cache-hit }}"
+        echo "ivy-local cache hit: ${{ steps.ivy_local_cache.outputs.cache-hit }}"
+
+        if [[ "${{ steps.target_cache.outputs.cache-hit }}" == 'true' && "${{ steps.ivy_local_cache.outputs.cache-hit }}" == 'true' ]]; then
+          echo "skip_compile=true" >> "$GITHUB_OUTPUT"
+        else
+          echo "skip_compile=false" >> "$GITHUB_OUTPUT"
+        fi
+
+    - name: Show skip_compile output
+      run: |
+        echo "skip_compile: ${{ steps.check_cache.outputs.skip_compile }}"
+
+    - name: Install sbt via shared action
+      uses: IRSDigitalService/shared-actions/.github/actions/setup_sbt_coursier@d39382f7b23cb52c0762b5e321f29f2ed66e8189
+      with:
+        java_version: ${{ env.JAVA_VERSION }}
+        sbt_version: ${{ env.SBT_VERSION }}
+
+    - name: Retrieve cached global sbt dependencies
+      if: steps.check_cache.outputs.skip_compile == 'false'
+      id: global_sbt_dependencies_cache
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: |
+          ~/.ivy2/cache
+          ~/.sbt
+          ~/.coursier
+        key: ${{ runner.os }}-sbt-${{ steps.fg_sha.outputs.sha }}
+
+    - name: Compile and publish Fact Graph locally
+      if: steps.check_cache.outputs.skip_compile == 'false'
+      working-directory: ${{ env.FACT_GRAPH_PATH }}
+      run: make ci_publish
+
+    - name: Save ivy-local cache
+      if: steps.check_cache.outputs.skip_compile == 'false'
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: ~/.ivy2/local
+        key: ${{ env.FACT_GRAPH_PATH }}-ivy-local-${{ steps.fg_sha.outputs.sha }}
+
+    - name: Save fact-graph target directory
+      if: steps.check_cache.outputs.skip_compile == 'false'
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: ${{ env.FACT_GRAPH_PATH }}/target
+        key: ${{ env.FACT_GRAPH_PATH }}-target-${{ steps.fg_sha.outputs.sha }}
+
+    - name: Save cached global sbt dependencies
+      if: steps.check_cache.outputs.skip_compile == 'false'
+      uses: actions/cache@d4323d4df104b026a6aa633fdb11d772146be0bf #v4.2.2
+      with:
+        path: |
+          ~/.ivy2/cache
+          ~/.sbt
+          ~/.coursier
+        key: ${{ runner.os }}-sbt-${{ steps.fg_sha.outputs.sha }}
