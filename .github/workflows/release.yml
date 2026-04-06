@@ -17,8 +17,8 @@ concurrency:
 
 jobs:
   release-credit-assistant:
-      if: vars.release == 'true'
-      uses: IRSDigitalService/shared-actions/.github/workflows/release.yml@main
-      secrets: inherit
-      with:
-        sha: ${{ github.sha }}
+    if: vars.release == 'true'
+    uses: IRSDigitalService/shared-actions/.github/workflows/release-credit-assistant.yml@faa8732c4328b88b607c5d562d25eddbb584f40f
+    secrets: inherit
+    with:
+      sha: ${{ github.sha }}

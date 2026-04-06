@@ -202,38 +202,38 @@
         </Switch>
       </Derived>
     </Fact>
-      <Fact path="/seIncomeThreshold">
-          <Derived>
-              <Dollar>400</Dollar>
-          </Derived>
-      </Fact>
-      <Fact path="/socialSecuritySelfEmploymentTaxPortion">
-          <Derived>
-              <Rational>31/250</Rational>
-          </Derived>
-      </Fact>
-      <Fact path="/medicareSelfEmploymentTaxPortion">
-          <Derived>
-              <Rational>29/1000</Rational>
-          </Derived>
-      </Fact>
-      <Fact path="/selfEmploymentTaxDeductionMultiplier">
-          <Derived>
-              <Rational>1/2</Rational>
-          </Derived>
-      </Fact>
-      <Fact path="/percentageOfSEIncomeSubjectToTax">
-          <Derived>
-              <Rational>1847/2000</Rational>
-          </Derived>
-      </Fact>
-      <Fact path="/maxStudentLoanDeduction">
-          <Name>Maximum student loan deduction</Name>
-          <Description>The maximum amount one is allowed to deduct because of student loan interest payments</Description>
-          <Derived>
-              <Dollar>2500</Dollar>
-          </Derived>
-      </Fact>
+    <Fact path="/seIncomeThreshold">
+      <Derived>
+        <Dollar>400</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/socialSecuritySelfEmploymentTaxPortion">
+      <Derived>
+        <Rational>31/250</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/medicareSelfEmploymentTaxPortion">
+      <Derived>
+        <Rational>29/1000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/selfEmploymentTaxDeductionMultiplier">
+      <Derived>
+        <Rational>1/2</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/percentageOfSEIncomeSubjectToTax">
+      <Derived>
+        <Rational>1847/2000</Rational>
+      </Derived>
+    </Fact>
+    <Fact path="/maxStudentLoanDeduction">
+      <Name>Maximum student loan deduction</Name>
+      <Description>The maximum amount one is allowed to deduct because of student loan interest payments</Description>
+      <Derived>
+        <Dollar>2500</Dollar>
+      </Derived>
+    </Fact>
     <Fact path="/maxIncomeForStudentLoanInterestDeduction">
       <Name>Max income for an MFJ filer student loan interest deduction</Name>
       <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
