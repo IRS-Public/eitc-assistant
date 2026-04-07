@@ -50,7 +50,7 @@
         <All>
           <GreaterThan>
             <Left>
-              <Dependency path="/numEitcQualifyingChildren"/>
+              <Dependency path="/eitcQualifyingChildren"/>
             </Left>
             <Right>
               <Int>0</Int>
@@ -89,7 +89,7 @@
             <!-- or they did not have any qualifying children -->
             <Equal>
               <Left>
-                <Dependency path="/numEitcQualifyingChildren"/>
+                <Dependency path="/eitcQualifyingChildren"/>
               </Left>
               <Right>
                 <Int>0</Int>
@@ -109,7 +109,7 @@
             resident so we do not worry about that req. -->
           <Equal>
             <Left>
-              <Dependency path="/numEitcQualifyingChildren"/>
+              <Dependency path="/eitcQualifyingChildren"/>
             </Left>
             <Right>
               <Int>0</Int>
@@ -199,7 +199,7 @@
       <Derived>
         <Equal>
           <Left>
-            <Dependency path="/numEitcQualifyingChildren"/>
+            <Dependency path="/eitcQualifyingChildren"/>
           </Left>
           <Right>
             <Int>0</Int>
@@ -227,7 +227,7 @@
       <Derived>
         <GreaterThan>
           <Left>
-            <Dependency path="/numEitcQualifyingChildren"/>
+            <Dependency path="/eitcQualifyingChildren"/>
           </Left>
           <Right>
             <Int> 1 </Int>
@@ -297,6 +297,61 @@
           <!--          EITC Assistant does not support the notice test-->
           <!--          <Dependency path="/eitcNoticeTest"/>-->
         </All>
+      </Derived>
+    </Fact>
+    <Fact path="/highestEitcPhaseoutAmount">
+      <Description>
+        Used for a tentative eligibility check for the flow.
+        Until the taxpayer is able to enter their number of qualifying dependents, assume they may be eligible based on
+        the greatest phaseout amount for their filing status.
+      </Description>
+      <Derived>
+        <Switch>
+          <!-- MFJ Limits -->
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Dependency path="/eitcMfjLimitWithThreeOrMoreChildren"/>
+            </Then>
+          </Case>
+          <!-- Not MFJ Limits -->
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dependency path="/eitcSelfLimitWithThreeOrMoreChildren"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/belowHighestEitcAgiLimit">
+      <Description>Whether the TP's AGI is low enough to potentially be eligible for the EITC</Description>
+      <Derived>
+        <LessThan>
+          <Left>
+            <Dependency path="/agi"/>
+          </Left>
+          <Right>
+            <Dependency path="/highestEitcPhaseoutAmount"/>
+          </Right>
+        </LessThan>
+      </Derived>
+    </Fact>
+    <Fact path="/belowHighestEitcEarnedIncomeLimit">
+      <Description>Whether the TP's Earned Income is low enough to potentially be eligible for the EITC.</Description>
+      <Derived>
+        <LessThan>
+          <Left>
+            <Dependency path="/earnedIncomeTotal"/>
+          </Left>
+          <Right>
+            <Dependency path="/highestEitcPhaseoutAmount"/>
+          </Right>
+        </LessThan>
       </Derived>
     </Fact>
   </Facts>

@@ -152,6 +152,16 @@
         <question>Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> expect to pay in <fg-show path="/taxYear"/></question>
         <input type="dollar"/>
       </fg-set>
+
+      <fg-alert alert-type="error" alert-key="agi-knockout" knockout="true" condition="/belowHighestEitcAgiLimit" operator="isFalse">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          Based on your adjusted gross income (including the adjustments you entered), you don’t qualify for the EITC for <fg-show path="/taxYear"/>.
+        </p>
+        <p class="usa-alert__text">
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </fg-alert>
     </section>
 
     <modal-dialog id="modal-what-are-adjustments">

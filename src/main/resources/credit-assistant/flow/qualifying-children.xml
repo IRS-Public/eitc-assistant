@@ -6,7 +6,7 @@
       <h2>Qualifying Children</h2>
       <p>In this step, we'll see how many of your children or other relatives are your qualifying children for the purposes of claiming and calculating the EITC. </p>
       <p>You can claim up to three qualifying children for the EITC.</p>
-
+      <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
       <fg-collection path="/familyAndHousehold" item-name="child" determiner="another">
 
         <fg-set path="/familyAndHousehold/*/livedWithYouUS">
@@ -137,7 +137,7 @@
         <h2 condition="/familyAndHousehold/*/isEitcQualifyingChild" operator="isTrue">Your child qualifies for the purposes of claiming and calculating EITC</h2>
 
       </fg-collection>
-        <h2> You have <fg-show path="/countEitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
+        <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
     </section>
 
     <modal-dialog id="modal-residency">

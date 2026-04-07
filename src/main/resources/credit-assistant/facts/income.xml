@@ -11,15 +11,6 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
-    <Fact path="/jobsIncomeTotal">
-      <Description>Total income for all jobs for both self and spouse</Description>
-      <Writable>
-        <Dollar/>
-      </Writable>
-      <Placeholder>
-        <Dollar>0</Dollar>
-      </Placeholder>
-    </Fact>
     <Fact path="/pensionsIncomeTotal">
       <Description>Total income for all pensions</Description>
       <Writable>
@@ -281,6 +272,30 @@
           <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
           <Dependency path="/excessBusinessLossAdjustment"/>
         </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/investmentIncomeTotal">
+      <Description>Used for calculating EITC eligibility for Rule 6</Description>
+      <Derived>
+        <Round>
+          <Add>
+            <Dependency path="/sCorpPassiveIncome"/>
+            <Dependency path="/sCorpNonPassiveIncome"/>
+            <Dependency path="/nonRentalRoyaltyScheduleEIncome"/>
+            <Dependency path="/rentalIncome"/>
+            <Dependency path="/taxExemptInterestIncome"/>
+            <Dependency path="/taxableInterestIncome"/>
+            <Dependency path="/ordinaryDividendsIncome"/>
+            <GreaterOf>
+              <Dependency path="/netShortTermGainOrLoss"/>
+              <Dollar>0</Dollar>
+            </GreaterOf>
+            <GreaterOf>
+              <Dependency path="/netLongTermGainOrLoss"/>
+              <Dollar>0</Dollar>
+            </GreaterOf>
+          </Add>
+        </Round>
       </Derived>
     </Fact>
     <Fact path="/incomeTotal">

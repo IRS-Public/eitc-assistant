@@ -300,7 +300,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/eitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -315,7 +315,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/eitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>1</Int>
@@ -339,7 +339,7 @@
                   <When>
                     <Equal>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/eitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>0</Int>
@@ -354,7 +354,7 @@
                   <When>
                     <GreaterThanOrEqual>
                       <Left>
-                        <Dependency path="/numEitcDependentsCollectionForCalculation"/>
+                        <Dependency path="/eitcQualifyingChildren"/>
                       </Left>
                       <Right>
                         <Int>1</Int>

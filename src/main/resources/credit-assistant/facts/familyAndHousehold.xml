@@ -553,15 +553,6 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/numEitcDependentsCollectionForCalculation">
-      <Name>EITC Eligible Dependents Collection For Calculation</Name>
-      <Description>The subset of people who qualify as qualifying children for EITC</Description>
-      <Derived>
-        <Count>
-          <Dependency path="/familyAndHousehold/*/eitcQualifyingChildForCalculation"/>
-        </Count>
-      </Derived>
-    </Fact>
     <Fact path="/eitcDependentsWhoQualify">
       <Name>Qualified EIC Dependents</Name>
       <Description>The qualified people to list on Schedule EIC</Description>
@@ -1526,15 +1517,6 @@
         <Filter path="/eitcDependentsCollection">
           <Dependency path="deceased"/>
         </Filter>
-      </Derived>
-    </Fact>
-    <Fact path="/numEitcQualifyingChildren">
-      <Name>Number of EITC Qualifying Children</Name>
-      <Description>The number of dependents who qualify as QCs for EITC.</Description>
-      <Derived>
-        <Count>
-          <Dependency path="/familyAndHousehold/*/eitcQualifyingChild"/>
-        </Count>
       </Derived>
     </Fact>
     <Fact path="/familyAndHousehold/*/studentStatusMayAffectBenefits">
