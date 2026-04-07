@@ -47,6 +47,7 @@
           <modal-link for="modal-self-employment-deductions">What does it mean to deduct expenses?</modal-link>
           <input type="dollar"/>
         </fg-set>
+
       <h3>Social Security income</h3>
       <p>
         <modal-link for="modal-what-counts-social-security">What counts as Social Security income?</modal-link>
@@ -184,6 +185,34 @@
       </fg-set>
     </section>
 
+    <fg-alert alert-type="error" alert-key="non-positive-earned-income-knockout" knockout="true" condition="/hasEarnedIncome" operator="isFalse">
+      <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+      <p class="usa-alert__text">
+        To claim the EITC, you must have earned income (for example, wages or net earnings from self-employment). Based on the income you entered, your earned income for <fg-show path="/taxYear"/> is zero or less, so you don’t qualify for the EITC.
+      </p>
+      <p class="usa-alert__text">
+        For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+      </p>
+    </fg-alert>
+
+    <fg-alert alert-type="error" alert-key="investment-income-knockout" knockout="true" condition="/belowEitcInvestmentIncomeLimit" operator="isFalse">
+      <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+      <div class="usa-alert__text">
+        <p>You don't qualify for the Earned Income Tax Credit (EITC) if your investment income is more than <fg-show path="/eitcInvestmentIncomeLimit"/>. </p>
+        <p><strong>Investment income includes:</strong></p>
+        <ul>
+          <li>Interest (both taxable and tax-exempt)</li>
+          <li>Dividends</li>
+          <li>Capital gains income</li>
+          <li>Some rent and royalty income</li>
+          <li>Net income from passive activities</li>
+        </ul>
+        <p>
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">Publication 550</a>, Investment Income and Expenses.
+          To figure your total investment income, use Worksheet 1 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </div>
+    </fg-alert>
 
     <modal-dialog id="modal-what-counts-social-security">
       <modal-heading>What counts as Social Security income?</modal-heading>

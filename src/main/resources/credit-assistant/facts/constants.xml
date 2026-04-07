@@ -202,6 +202,11 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/maxNumberOfEitcQcs">
+      <Derived>
+        <Int>3</Int>
+      </Derived>
+    </Fact>
     <Fact path="/seIncomeThreshold">
       <Derived>
         <Dollar>400</Dollar>
