@@ -6,6 +6,9 @@ on:
       artifact-name:
         description: "Published Fact Graph artifact"
         value: fact-graph-target
+    secrets:
+      SVC_ACCOUNT_PAT:
+        required: true
 
 env:
   JAVA_VERSION: 21
@@ -25,6 +28,7 @@ jobs:
       with:
         repository: IRSDigitalService/${{ env.FACT_GRAPH_PATH }}
         path: ${{ env.FACT_GRAPH_PATH }}
+        token: ${{ secrets.SVC_ACCOUNT_PAT }}
 
     - name: Get latest fact-graph commit SHA
       id: fg_sha
