@@ -41,7 +41,6 @@ jobs:
       with:
         repository: IRSDigitalService/${{ env.FACT_GRAPH_PATH }}
         path: ${{ env.FACT_GRAPH_PATH }}
-        token: ${{ secrets.SVC_ACCOUNT_PAT }}
 
     - name: Install sbt via shared action
       id: sbt-setup
