@@ -1,7 +1,7 @@
 ---
 name: Engineering Task
 about: Use for engineering tickets
-assignees: ''
+assignees: ' '
 ---
 
 # Development Task

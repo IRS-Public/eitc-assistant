@@ -17,13 +17,15 @@ env:
   JAVA_VERSION: 21
   SBT_VERSION: 1.11.4
   FACT_GRAPH_PATH: fact-graph
-  CREDIT_ASSISTANT_PATH: credit_assistant
+  CREDIT_ASSISTANT_PATH: credit-assistant
   CREDIT_ASSISTANT_RESOURCES_PATH: src/main/resources/credit-assistant
 
 jobs:
   call-publish-fact-graph:
     if: vars.build == 'false'
     uses: ./.github/workflows/publish-factgraph.yml
+    secrets:
+      SVC_ACCOUNT_PAT: ${{ secrets.SVC_ACCOUNT_PAT }}
 
   security-scan:
     if: vars.build == 'false'
@@ -36,6 +38,7 @@ jobs:
       with:
         repository: IRSDigitalService/${{ env.FACT_GRAPH_PATH }}
         path: ${{ env.FACT_GRAPH_PATH }}
+        token: ${{ secrets.SVC_ACCOUNT_PAT }}
 
     - name: Get latest fact-graph commit SHA
       id: fg_sha
@@ -79,7 +82,7 @@ jobs:
 
     - name: Generate static site for scanning
       working-directory: ${{ env.CREDIT_ASSISTANT_PATH }}
-      run: make twe
+      run: make credit-assistant
 
     - name: Install Node (for ESLint and HTML-validate)
       uses: actions/setup-node@a0853c24544627f65ddf259abe73b1d18a591444 #v5.0.0

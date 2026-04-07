@@ -22,7 +22,7 @@ env:
   JAVA_VERSION: 21
   SBT_VERSION: 1.11.4
   FACT_GRAPH_PATH: fact-graph
-  CREDIT_ASSISTANT_PATH: credit_assistant
+  CREDIT_ASSISTANT_PATH: credit-assistant
 
 jobs:
 
@@ -41,6 +41,7 @@ jobs:
       with:
         repository: IRSDigitalService/${{ env.FACT_GRAPH_PATH }}
         path: ${{ env.FACT_GRAPH_PATH }}
+        token: ${{ secrets.SVC_ACCOUNT_PAT }}
 
     - name: Install sbt via shared action
       id: sbt-setup
