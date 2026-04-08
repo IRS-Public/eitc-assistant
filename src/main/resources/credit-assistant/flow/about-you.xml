@@ -90,12 +90,6 @@
         </p>
       </fg-alert>
 
-      <fg-set path="/primaryFilerIsClaimedOnAnotherReturn" if-false="/isClaimedAsDependent">
-        <question>Can you be claimed as a dependent on someone else’s <fg-show path="/taxYear"/> tax return?</question>
-        <modal-link for="modal-primary-claimed-as-dependent">How do I know if I’m someone’s dependent?</modal-link>
-        <input type="boolean"/>
-      </fg-set>
-
       <fg-set path="/ageRange" if-false="/isClaimedAsDependent">
         <question>Please select the range that describes your age at the end of <fg-show path="/taxYear"/>.*</question>
         <input type="enum" options-path="/ageRangeOptions">
