@@ -90,13 +90,6 @@
         </p>
       </fg-alert>
 
-      <!-- In EITCAST 1.0 this fact is on the Filing Status page, but it is always asked so we should just include it here      -->
-      <fg-set path="/primaryFilerIsClaimingQualifyingChildren" if-false="/isClaimedAsDependent">
-        <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
-        <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
-        <input type="boolean"/>
-      </fg-set>
-
       <fg-set path="/primaryFilerIsClaimedOnAnotherReturn" if-false="/isClaimedAsDependent">
         <question>Can you be claimed as a dependent on someone else’s <fg-show path="/taxYear"/> tax return?</question>
         <modal-link for="modal-primary-claimed-as-dependent">How do I know if I’m someone’s dependent?</modal-link>

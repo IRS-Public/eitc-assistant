@@ -152,6 +152,12 @@
         <option value="65andOlder">65 and older</option>
       </input>
     </fg-set>
+
+    <fg-set path="/primaryFilerIsClaimingQualifyingChildren" if-true="/isFilingStatusComplete">
+      <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
+      <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
+      <input type="boolean"/>
+    </fg-set>
 <!--    TODO: update the gate to occur only after filing status is fully determined-->
     <fg-set path="/hasLivedInUSMore6Months" if-true="/flowShouldSeeResidencyKnockOut">
       <question>Was the main home of <span condition="/isFilingStatusMFJ" operator="isFalse">yours</span><span condition="/isFilingStatusMFJ" operator="isTrue">yours and your spouse</span> in the U.S. for more than half of <fg-show path="/taxYear"/>?</question>
