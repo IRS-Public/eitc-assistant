@@ -216,6 +216,16 @@
         </Equal>
       </Derived>
     </Fact>
+    <Fact path="/isFilingStatusMFSOrHOH">
+      <Name>Filing status is MFS or HOH</Name>
+      <Description>True if derived filing status is married filing separately or head of household.</Description>
+      <Derived>
+        <Any>
+          <Dependency path="/isFilingStatusMFS"/>
+          <Dependency path="/isFilingStatusHOH"/>
+        </Any>
+      </Derived>
+    </Fact>
     <Fact path="/isFilingStatusQSS">
       <Description>Is taxpayer filing status QSS</Description>
       <Derived>
