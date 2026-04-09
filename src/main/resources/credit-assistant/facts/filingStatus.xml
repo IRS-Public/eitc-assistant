@@ -569,100 +569,232 @@
         </Any>
       </Derived>
     </Fact>
+    <Fact path="/isDisqualifiedFlowSeparationTestNotMarriedLivedNotSeparated">
+      <Name>EITC disqualified: separation-test flow, not married, lived together, not separated</Name>
+      <Description>Spouse separation questions apply, filer is not treated as married, spouse lived with taxpayer, and no legal separation agreement.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowShouldSeeSpouseSeparationTest"/>
+          <Not>
+            <Dependency path="/isMarried"/>
+          </Not>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedHohMarriedLivedTogetherNotSeparatedNoQcs">
+      <Name>EITC disqualified: initial HOH and married, lived together, not separated, no QCs</Name>
+      <Description>User indicated initial head-of-household while married, spouse lived together last six months, no separation agreement, and not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isInitialFilingStatusHOHAndMarried"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedMfsLivedNotSeparatedNoQcs">
+      <Name>EITC disqualified: MFS, lived together, not separated, no QCs</Name>
+      <Description>Derived filing status MFS, spouse lived together, no separation agreement, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFS"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedMfsSameResidenceNotSeparated">
+      <Name>EITC disqualified: MFS, same principal residence, lived together, not separated</Name>
+      <Description>Derived MFS with same principal residence as spouse, lived together, no legal separation agreement.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFS"/>
+          <Dependency path="/samePrincipalResidenceLast6Months"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedInitialMfsLivedNotSeparated">
+      <Name>EITC disqualified: initial MFS, lived together, not separated</Name>
+      <Description>User selected initial married filing separately, spouse lived together, no separation agreement.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isInitialFilingStatusMFS"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedHohMarriedLivedTogetherNotSeparated">
+      <Name>EITC disqualified: HOH married, lived together, not separated</Name>
+      <Description>Head-of-household filer is married, spouse lived together, no separation agreement.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isHOHMarried"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/writableSeparationAgreement"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedMarriedNotMfjSameResidenceSeparatedNoQcs">
+      <Name>EITC disqualified: married not MFJ, same residence, separated, no QCs</Name>
+      <Description>Married not filing jointly, same principal residence, separation agreement, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isMarried"/>
+          <Not>
+            <Dependency path="/intendsToFileJointlyMFJ"/>
+          </Not>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Dependency path="/samePrincipalResidenceLast6Months"/>
+          <Dependency path="/writableSeparationAgreement"/>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedWidowedNotJointlySameResidenceSeparatedNoQcs">
+      <Name>EITC disqualified: widowed not filing jointly with deceased spouse, same residence, separated, no QCs</Name>
+      <Derived>
+        <All>
+          <Dependency path="/isWidowedInTaxYear"/>
+          <Not>
+            <Dependency path="/intendsToFileJointlyWidow"/>
+          </Not>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Dependency path="/samePrincipalResidenceLast6Months"/>
+          <Dependency path="/writableSeparationAgreement"/>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedWidowedNotJointlyDifferentResidenceNoQcs">
+      <Name>EITC disqualified: widowed not filing jointly, different residence, no QCs</Name>
+      <Derived>
+        <All>
+          <Dependency path="/isWidowedInTaxYear"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Not>
+            <Dependency path="/intendsToFileJointlyWidow"/>
+          </Not>
+          <Not>
+            <Dependency path="/samePrincipalResidenceLast6Months"/>
+          </Not>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedMfsDifferentResidenceNoQcs">
+      <Name>EITC disqualified: MFS, different principal residence, no QCs</Name>
+      <Description>MFS, spouse lived together, same-residence question complete and false, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFS"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <IsComplete>
+            <Dependency path="/samePrincipalResidenceLast6Months"/>
+          </IsComplete>
+          <Not>
+            <Dependency path="/samePrincipalResidenceLast6Months"/>
+          </Not>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedMfsOrHohSpouseDidNotLiveNoQcs">
+      <Name>EITC disqualified: MFS or HOH, spouse did not live with taxpayer, no QCs</Name>
+      <Description>Filing status MFS or HOH, spouse-lived question complete and false, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusMFSOrHOH"/>
+          <IsComplete>
+            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          </IsComplete>
+          <Not>
+            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          </Not>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedHohMarriedSeparatedNoQcs">
+      <Name>EITC disqualified: HOH married, lived together, legally separated, no QCs</Name>
+      <Description>HOH filing status, married for HOH rules, spouse lived together, separation agreement, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isFilingStatusHOH"/>
+          <Dependency path="/isHOHMarried"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Dependency path="/writableSeparationAgreement"/>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedInitialAndFilingMfsSeparatedNoQcs">
+      <Name>EITC disqualified: initial and derived MFS, lived together, separated, no QCs</Name>
+      <Description>User selected initial MFS and derived filing status is MFS, spouse lived together, separation agreement, not claiming EITC qualifying children.</Description>
+      <Derived>
+        <All>
+          <Dependency path="/isInitialFilingStatusMFS"/>
+          <Dependency path="/isFilingStatusMFS"/>
+          <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
+          <Dependency path="/writableSeparationAgreement"/>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/isDisqualifiedMarriedNotFilingJointly">
       <Name>Disqualified for EITC as Married Not Filing Jointly</Name>
-      <Description>True if the taxpayer is married filing separately or HOH but does not meet the residency or legal separation requirements to claim EITC. Can also be true if Filer is HOH and meets the preceding test, but is not claiming any qualifying children</Description>
+      <Description>True if any EITC married-not-filing-jointly disqualification sub-rule applies. See composed facts /isDisqualified* under this module.</Description>
       <Derived>
         <Any>
-          <All>
-            <Dependency path="/flowShouldSeeSpouseSeparationTest"/>
-            <Not>
-              <Dependency path="/isMarried"/>
-            </Not>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isInitialFilingStatusHOHAndMarried"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-            <Not>
-              <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isFilingStatusMFS"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-            <Not>
-              <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isFilingStatusMFS"/>
-            <Dependency path="/samePrincipalResidenceLast6Months"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isInitialFilingStatusMFS"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isHOHMarried"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/writableSeparationAgreement"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isMarried"/>
-            <Not>
-              <Dependency path="/intendsToFileJointlyMFJ"/>
-            </Not>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Dependency path="/samePrincipalResidenceLast6Months"/>
-            <Dependency path="/writableSeparationAgreement"/>
-            <Not>
-              <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isWidowedInTaxYear"/>
-            <Not>
-              <Dependency path="/intendsToFileJointlyWidow"/>
-            </Not>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Dependency path="/samePrincipalResidenceLast6Months"/>
-            <Dependency path="/writableSeparationAgreement"/>
-            <Not>
-              <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-            </Not>
-          </All>
-          <All>
-            <Dependency path="/isWidowedInTaxYear"/>
-            <Dependency path="/spouseLivedWithTaxpayerLastSixMonths"/>
-            <Not>
-              <Dependency path="/intendsToFileJointlyWidow"/>
-            </Not>
-            <Not>
-              <Dependency path="/samePrincipalResidenceLast6Months"/>
-            </Not>
-            <Not>
-              <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-            </Not>
-          </All>
+          <Dependency path="/isDisqualifiedFlowSeparationTestNotMarriedLivedNotSeparated"/>
+          <Dependency path="/isDisqualifiedHohMarriedLivedTogetherNotSeparatedNoQcs"/>
+          <Dependency path="/isDisqualifiedMfsLivedNotSeparatedNoQcs"/>
+          <Dependency path="/isDisqualifiedMfsSameResidenceNotSeparated"/>
+          <Dependency path="/isDisqualifiedInitialMfsLivedNotSeparated"/>
+          <Dependency path="/isDisqualifiedHohMarriedLivedTogetherNotSeparated"/>
+          <Dependency path="/isDisqualifiedMarriedNotMfjSameResidenceSeparatedNoQcs"/>
+          <Dependency path="/isDisqualifiedWidowedNotJointlySameResidenceSeparatedNoQcs"/>
+          <Dependency path="/isDisqualifiedWidowedNotJointlyDifferentResidenceNoQcs"/>
+          <Dependency path="/isDisqualifiedMfsDifferentResidenceNoQcs"/>
+          <Dependency path="/isDisqualifiedMfsOrHohSpouseDidNotLiveNoQcs"/>
+          <Dependency path="/isDisqualifiedHohMarriedSeparatedNoQcs"/>
+          <Dependency path="/isDisqualifiedInitialAndFilingMfsSeparatedNoQcs"/>
         </Any>
       </Derived>
     </Fact>
