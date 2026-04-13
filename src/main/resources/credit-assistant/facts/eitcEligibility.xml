@@ -175,6 +175,198 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/failsEitcAgeBandWithoutQualifyingChildren">
+      <Name>Fails EITC age band without qualifying children (age range buckets)</Name>
+      <Description>
+        True when no one in scope is in the &quot;Between 25 and 64&quot; age band at the end of the tax year,
+        for purposes of the EITC without a qualifying child. Uses /ageRange and /ageRangeSecondary only
+        (not DOB). When MFJ and the flow collects spouse age (/flowShouldSeeSpouseAgeRange), either
+        filer in that band passes; otherwise only the primary filer&apos;s /ageRange is used.
+      </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <Dependency path="/isFilingStatusMFJ"/>
+                <Dependency path="/flowShouldSeeSpouseAgeRange"/>
+              </All>
+            </When>
+            <Then>
+              <All>
+                <IsComplete>
+                  <Dependency path="/ageRange"/>
+                </IsComplete>
+                <IsComplete>
+                  <Dependency path="/ageRangeSecondary"/>
+                </IsComplete>
+                <Not>
+                  <Any>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/ageRange"/>
+                      </Left>
+                      <Right>
+                        <Enum optionsPath="/ageRangeOptions">age25to64</Enum>
+                      </Right>
+                    </Equal>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/ageRangeSecondary"/>
+                      </Left>
+                      <Right>
+                        <Enum optionsPath="/ageRangeOptions">age25to64</Enum>
+                      </Right>
+                    </Equal>
+                  </Any>
+                </Not>
+              </All>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <All>
+                <IsComplete>
+                  <Dependency path="/ageRange"/>
+                </IsComplete>
+                <Not>
+                  <Equal>
+                    <Left>
+                      <Dependency path="/ageRange"/>
+                    </Left>
+                    <Right>
+                      <Enum optionsPath="/ageRangeOptions">age25to64</Enum>
+                    </Right>
+                  </Equal>
+                </Not>
+              </All>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/userDeclinesEitcQualifyingChildrenForDisqualifier">
+      <Name>User declines EITC qualifying children (for disqualifier)</Name>
+      <Description>
+        True when the filing-status question is complete and the taxpayer answered that they do not plan
+        to claim EITC qualifying children. For-disqualifier only: does not read /eitcQualifyingChildren,
+        which can stay incomplete when /lesserOf operands are incomplete.
+      </Description>
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </IsComplete>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/filingAllowsEitcWithoutQualifyingChildrenForDisqualifier">
+      <Name>Filing status allows EITC without qualifying children (for disqualifier)</Name>
+      <Description>
+        Mirrors the MFJ-or-not-married intent of /maybeEligibleForEitcWithoutQc without relying on
+        /isMarried when /maritalStatus was never collected (knows-filing-status path). Uses /isFilingStatusSingle
+        when /filingStatus is complete. For-disqualifier only; does not change /isMarried or
+        /maybeEligibleForEitcWithoutQc.
+      </Description>
+      <Derived>
+        <Any>
+          <Dependency path="/isFilingStatusMFJ"/>
+          <Not>
+            <Dependency module="filers" path="/isMarried"/>
+          </Not>
+          <All>
+            <Dependency path="/knowsFilingStatus"/>
+            <Any>
+              <Equal>
+                <Left>
+                  <Dependency path="/initialFilingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusOptions">single</Enum>
+                </Right>
+              </Equal>
+              <Equal>
+                <Left>
+                  <Dependency path="/initialFilingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusOptions">headOfHousehold</Enum>
+                </Right>
+              </Equal>
+              <Equal>
+                <Left>
+                  <Dependency path="/initialFilingStatus"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/filingStatusOptions">qualifiedSurvivingSpouse</Enum>
+                </Right>
+              </Equal>
+            </Any>
+          </All>
+          <All>
+            <Dependency path="/isFilingStatusComplete"/>
+            <Dependency path="/isFilingStatusSingle"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/notBlockedAsDependentForEitcForDisqualifier">
+      <Name>Not blocked as another&apos;s dependent for EITC (for disqualifier)</Name>
+      <Description>
+        True when /treatFilersAsDependents is known false, or /isClaimedAsDependent is known false, or
+        derived filing status is single with filing complete. For-disqualifier bridge when
+        /treatFilersAsDependents stays incomplete because /primaryFilerIsClaimedOnAnotherReturn is not
+        collected. Does not redefine /treatFilersAsDependents.
+      </Description>
+      <Derived>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency module="filers" path="/treatFilersAsDependents"/>
+            </IsComplete>
+            <Not>
+              <Dependency module="filers" path="/treatFilersAsDependents"/>
+            </Not>
+          </All>
+          <All>
+            <IsComplete>
+              <Dependency path="/isClaimedAsDependent"/>
+            </IsComplete>
+            <Not>
+              <Dependency path="/isClaimedAsDependent"/>
+            </Not>
+          </All>
+          <All>
+            <Dependency path="/isFilingStatusComplete"/>
+            <Dependency path="/isFilingStatusSingle"/>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren">
+      <Name>Disqualified for EITC due to age without qualifying children</Name>
+      <Description>
+        True when the taxpayer does not qualify for EITC without a qualifying child because they (or
+        their spouse on a joint return, when that age is collected) are not in the &quot;Between 25 and 64&quot;
+        age band at the end of the tax year. Uses /ageRange (and /ageRangeSecondary when applicable), not
+        DOB. Uses ForDisqualifier bridge facts so /eitcQualifyingChildren, /isMarried, and
+        /treatFilersAsDependents need not be changed globally.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/userDeclinesEitcQualifyingChildrenForDisqualifier"/>
+          <Dependency path="/filingAllowsEitcWithoutQualifyingChildrenForDisqualifier"/>
+          <Dependency path="/notBlockedAsDependentForEitcForDisqualifier"/>
+          <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/maybeEligibleForEitcBase">
       <Name>Whether the TP may be eligible for the EITC Base</Name>
       <Description>Base rules that define whether the TP passes various tests to be eligible for
