@@ -134,11 +134,6 @@
       <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
-      <fg-set path="/secondaryFilerIsClaimedOnAnotherReturn" if-true="/isFilingStatusMFJ">
-        <question>Can your spouse be claimed as a dependent on someone else's <fg-show path="/taxYear"/> tax return?</question>
-        <modal-link for="modal-secondary-claimed-as-dependent">How do I know if my spouse could be a dependent?</modal-link>
-        <input type="boolean"/>
-      </fg-set>
     <fg-set path="/spouseAliveEndOfTaxYear" if-true="/flowShouldSeeSpouseAliveEndOfTaxYear">
       <question>Was your spouse alive on December 31, <fg-show path="/taxYear"/>?</question>
       <input type="boolean"/>
@@ -257,21 +252,6 @@
         <p>
           <a target="_blank" href="https://www.irs.gov/filing/filing-status">Learn more about filing statuses<span class="usa-sr-only"> (opens in a new tab)</span>.</a>
         </p>
-      </modal-content>
-    </modal-dialog>
-    <modal-dialog id="modal-secondary-claimed-as-dependent">
-      <modal-heading>How do I know if my spouse could be a dependent?</modal-heading>
-      <modal-content>
-        <p>You can’t claim your spouse as a dependent, even if they relied on you financially.</p>
-        <p>If your spouse relied on someone else (other than you) for support in <fg-show path="/taxYear"/>, the other person might be able to claim your spouse as a dependent on their federal tax return.</p>
-        <p>There are a few factors that determine whether someone can claim your spouse as a dependent, including:</p>
-        <ul>
-          <li>Your spouse's relationship to that person</li>
-          <li>How much they supported your spouse, financially and in other ways</li>
-          <li>If your spouse lived with them and for how long</li>
-        </ul>
-        <p>Review Table 5 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">IRS Publication 501</a> to determine if someone else might be able to claim your spouse.</p>
-        <p>Keep in mind that your spouse isn’t someone else’s dependent if your spouse paid for more than half of their own support (or if you did).</p>
       </modal-content>
     </modal-dialog>
     <modal-dialog id="modal-qualifying-child-eitc">

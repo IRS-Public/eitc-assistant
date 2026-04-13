@@ -308,6 +308,9 @@
       <Writable>
         <Boolean/>
       </Writable>
+      <Placeholder>
+        <False/>
+      </Placeholder>
     </Fact>
     <Fact path="/onlyPrimaryFilerIsClaimedOnAnotherReturn">
       <Derived>
