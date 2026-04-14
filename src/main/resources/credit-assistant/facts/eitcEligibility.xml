@@ -178,10 +178,10 @@
     <Fact path="/failsEitcAgeBandWithoutQualifyingChildren">
       <Name>Fails EITC age band without qualifying children (age range buckets)</Name>
       <Description>
-        True when no one in scope is in the &quot;Between 25 and 64&quot; age band at the end of the tax year,
+        True when no one in scope is in the "Between 25 and 64" age band at the end of the tax year,
         for purposes of the EITC without a qualifying child. Uses /ageRange and /ageRangeSecondary only
         (not DOB). When MFJ and the flow collects spouse age (/flowShouldSeeSpouseAgeRange), either
-        filer in that band passes; otherwise only the primary filer&apos;s /ageRange is used.
+        filer in that band passes; otherwise only the primary filer's /ageRange is used.
       </Description>
       <Derived>
         <Switch>
@@ -317,7 +317,7 @@
       </Derived>
     </Fact>
     <Fact path="/notBlockedAsDependentForEitcForDisqualifier">
-      <Name>Not blocked as another&apos;s dependent for EITC (for disqualifier)</Name>
+      <Name>Not blocked as another's dependent for EITC (for disqualifier)</Name>
       <Description>
         True when /treatFilersAsDependents is known false, or /isClaimedAsDependent is known false, or
         derived filing status is single with filing complete. For-disqualifier bridge when
@@ -353,7 +353,7 @@
       <Name>Disqualified for EITC due to age without qualifying children</Name>
       <Description>
         True when the taxpayer does not qualify for EITC without a qualifying child because they (or
-        their spouse on a joint return, when that age is collected) are not in the &quot;Between 25 and 64&quot;
+        their spouse on a joint return, when that age is collected) are not in the "Between 25 and 64"
         age band at the end of the tax year. Uses /ageRange (and /ageRangeSecondary when applicable), not
         DOB. Uses ForDisqualifier bridge facts so /eitcQualifyingChildren, /isMarried, and
         /treatFilersAsDependents need not be changed globally.

@@ -416,27 +416,80 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/flowShouldSeeSpouseAliveEndOfTaxYear">
+    <Fact path="/flowShouldSeeMfjSpouseFollowUpForEitcAgeRules">
+      <Description>
+        Living MFJ filers whose primary age is under 25 or 65+ at end of year, after the spouse has a valid SSN,
+        need spouse-alive and spouse-age for EITC flow alignment (IRS assistant parity).
+      </Description>
       <Derived>
         <All>
-          <Dependency path="/isWidowedInPastTwoTaxYears"/>
-          <Not>
-            <Dependency path="/entitledToPreviouslyFileJointReturn"/>
-          </Not>
+          <Any>
+            <Dependency path="/isInitialFilingStatusMFJ"/>
+            <All>
+              <Dependency path="/isFilingStatusMFJ"/>
+              <Dependency path="/intendsToFileJointlyMFJ"/>
+            </All>
+          </Any>
+          <IsComplete>
+            <Dependency path="/ageRange"/>
+          </IsComplete>
+          <Any>
+            <Equal>
+              <Left>
+                <Dependency path="/ageRange"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptions">under24</Enum>
+              </Right>
+            </Equal>
+            <Equal>
+              <Left>
+                <Dependency path="/ageRange"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptions">65andOlder</Enum>
+              </Right>
+            </Equal>
+          </Any>
+          <IsComplete>
+            <Dependency path="/secondaryFilerHasValidSSN"/>
+          </IsComplete>
+          <Dependency path="/secondaryFilerHasValidSSN"/>
         </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldSeeSpouseAliveEndOfTaxYear">
+      <Derived>
+        <Any>
+          <All>
+            <Dependency path="/isWidowedInPastTwoTaxYears"/>
+            <Not>
+              <Dependency path="/entitledToPreviouslyFileJointReturn"/>
+            </Not>
+          </All>
+          <Dependency path="/flowShouldSeeMfjSpouseFollowUpForEitcAgeRules"/>
+        </Any>
       </Derived>
     </Fact>
     <Fact path="/flowShouldSeeSpouseAgeRange">
       <Derived>
-        <All>
-          <IsComplete>
-            <Dependency path="/spouseAliveEndOfTaxYear"/>
-          </IsComplete>
-          <Dependency path="/isWidowedInPastTwoTaxYears"/>
-          <Not>
-            <Dependency path="/entitledToPreviouslyFileJointReturn"/>
-          </Not>
-        </All>
+        <Any>
+          <All>
+            <IsComplete>
+              <Dependency path="/spouseAliveEndOfTaxYear"/>
+            </IsComplete>
+            <Dependency path="/isWidowedInPastTwoTaxYears"/>
+            <Not>
+              <Dependency path="/entitledToPreviouslyFileJointReturn"/>
+            </Not>
+          </All>
+          <All>
+            <IsComplete>
+              <Dependency path="/spouseAliveEndOfTaxYear"/>
+            </IsComplete>
+            <Dependency path="/flowShouldSeeMfjSpouseFollowUpForEitcAgeRules"/>
+          </All>
+        </Any>
       </Derived>
     </Fact>
     <Fact path="/flowShouldSeeHalfOfHomeCosts">
