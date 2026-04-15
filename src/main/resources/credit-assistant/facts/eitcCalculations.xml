@@ -84,6 +84,31 @@
         </GreaterThan>
       </Derived>
     </Fact>
+    <Fact path="/flowShouldShowNonPositiveEarnedIncomeKnockout">
+      <Name>Show non-positive earned income EITC knockout (Income flow)</Name>
+      <Description>
+        When to show the Income page knockout for EITC requiring earned income. True only after the
+        W-2 wages and self-employment gross and expense fields that feed earned income are complete
+        and combined earned income is still not positive, so the disqualifier is not shown on
+        initial page load before those answers exist.
+      </Description>
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/jobsIncomeTotal"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="/selfEmplomentGrossIncome"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="/selfEmplomentGrossIncomeWorkRelatedExpenses"/>
+          </IsComplete>
+          <Not>
+            <Dependency path="/hasEarnedIncome"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/eitcMaxCredit">
       <Name>EITC maximum credit amount</Name>
       <Description>The maximum amount of EITC a taxpayer can receive, depending on the number of
