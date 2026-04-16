@@ -511,6 +511,19 @@ class FgCollection extends HTMLElement {
     if (this.getAttribute('disallowempty') === 'true' && this.querySelectorAll('fg-collection-item').length === 0) {
       this.addItem()
     }
+
+    // Qualifying Children: cohort must enter at least one EITC QC (outside 25–64, Single/QSS/MFJ, claiming QCs).
+    // Seed one empty /familyAndHousehold row on first paint. If this pattern repeats elsewhere, consider a
+    // flow attribute (e.g. default-if-complete) instead of hard-coded path + fact.
+    if (this.path === '/familyAndHousehold' && this.querySelectorAll('fg-collection-item').length === 0) {
+      try {
+        if (checkCondition('/flowCohortEitcRequiresQualifyingChildEntry', 'isTrue')) {
+          this.addItem()
+        }
+      } catch (e) {
+        console.error('Error seeding default /familyAndHousehold row for required-QC cohort:\n', e)
+      }
+    }
   }
 
   disconnectedCallback () {

@@ -2,6 +2,14 @@ fg-collection {
   display: block;
 }
 
+/* Section divider like .flow h3 (main-content.css) when an info alert precedes the collection.
+   :not(.hidden) so the border only shows when the cohort alert is visible (Qualifying Children). */
+.flow .usa-alert.usa-alert--info:not(.hidden) + fg-collection {
+  border-top: 2px solid var(--base-lighter);
+  padding-top: var(--flow-spacing);
+  margin: var(--flow-spacing--offset) 0 var(--flow-spacing--sm);
+}
+
 fg-collection-item {
   display: block;
   margin: var(--units-1) 0;
