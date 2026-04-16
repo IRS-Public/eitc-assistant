@@ -335,29 +335,6 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/flowFamilyAndHouseholdHasMemberRowsForQcGating">
-      <Name>QC flow: at least one household member row</Name>
-      <Description>
-        True when /familyAndHousehold is complete and CollectionSize is greater than zero (at least one dependent row).
-      </Description>
-      <Derived>
-        <All>
-          <IsComplete>
-            <Dependency path="/familyAndHousehold"/>
-          </IsComplete>
-          <GreaterThan>
-            <Left>
-              <CollectionSize>
-                <Dependency path="/familyAndHousehold"/>
-              </CollectionSize>
-            </Left>
-            <Right>
-              <Int>0</Int>
-            </Right>
-          </GreaterThan>
-        </All>
-      </Derived>
-    </Fact>
     <Fact path="/flowCohortEitcRequiresQualifyingChildEntry">
       <Name>Flow cohort: must have an EITC qualifying child when claiming QC and outside age 25&#x2013;64 (Single, QSS, MFJ)</Name>
       <Description>
@@ -396,27 +373,11 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/flowShouldShowQcRequiredNoEitcChildKnockout">
-      <Name>Show QC flow knockout: no EITC qualifying child after adding dependents</Name>
-      <Description>
-        True when the cohort must have an EITC qualifying child, at least one dependent row exists, but no one
-        counts as an EITC qualifying child yet.
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
-          <Dependency path="/flowFamilyAndHouseholdHasMemberRowsForQcGating"/>
-          <Not>
-            <Dependency path="/hasEitcQualifyingChildren"/>
-          </Not>
-        </All>
-      </Derived>
-    </Fact>
     <Fact path="/flowClickedNextOnQualifyingChildrenPage">
       <Name>User clicked Next on Qualifying Children page</Name>
       <Description>
-        Set in the browser when the user clicks Continue from Qualifying Children while a required-QC knockout
-        condition is true, so the page-level required-QC knockout alerts do not show on initial page load.
+        Set in the browser when the user clicks Continue from Qualifying Children while the add-child required-QC
+        knockout condition is true, so that page-level knockout does not show on initial page load.
       </Description>
       <Writable>
         <Boolean/>
@@ -431,19 +392,6 @@
       <Derived>
         <All>
           <Dependency path="/flowShouldShowQcRequiredAddChildKnockout"/>
-          <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue">
-      <Name>Show QC no-EITC-child knockout after Continue</Name>
-      <Description>
-        Wraps /flowShouldShowQcRequiredNoEitcChildKnockout and only shows it after Continue has been clicked on
-        Qualifying Children.
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="/flowShouldShowQcRequiredNoEitcChildKnockout"/>
           <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
         </All>
       </Derived>
