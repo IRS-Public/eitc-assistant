@@ -30,7 +30,9 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     applyCohortSingleUnder24ClaimingQc(g)
     g.save()
     booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue")
     assertBooleanGateOff(g, "/flowShouldShowQcRequiredNoEitcChildKnockout")
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue")
   }
 
   it should "be false when cohort applies but primary is in the 25–64 age band" in {
@@ -51,5 +53,28 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     g.save()
     assertBooleanGateOff(g, "/flowShouldShowQcRequiredAddChildKnockout")
     booleanAt(g, "/flowShouldShowQcRequiredNoEitcChildKnockout") shouldBe true
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue")
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue")
+  }
+
+  "QC required knockout wrapper facts" should "turn on after Continue flag is set for the empty-household path" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    g.set("/flowClickedNextOnQualifyingChildrenPage", true)
+    g.save()
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe true
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue")
+  }
+
+  it should "turn on after Continue flag is set for the has-member path" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    val childId = UUID.fromString("550e8400-e29b-41d4-a716-446655440000")
+    g.addToCollection("/familyAndHousehold", childId.toString)
+    g.set(s"/familyAndHousehold/#$childId/livedWithYouUS", false)
+    g.set("/flowClickedNextOnQualifyingChildrenPage", true)
+    g.save()
+    assertBooleanGateOff(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue")
+    booleanAt(g, "/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue") shouldBe true
   }
 }

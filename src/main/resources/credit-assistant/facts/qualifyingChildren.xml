@@ -412,5 +412,41 @@
         </All>
       </Derived>
     </Fact>
+    <Fact path="/flowClickedNextOnQualifyingChildrenPage">
+      <Name>User clicked Next on Qualifying Children page</Name>
+      <Description>
+        Set in the browser when the user clicks Continue from Qualifying Children while a required-QC knockout
+        condition is true, so the page-level required-QC knockout alerts do not show on initial page load.
+      </Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredAddChildKnockoutAfterContinue">
+      <Name>Show QC add-child knockout after Continue</Name>
+      <Description>
+        Wraps /flowShouldShowQcRequiredAddChildKnockout and only shows it after Continue has been clicked on
+        Qualifying Children.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowShouldShowQcRequiredAddChildKnockout"/>
+          <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredNoEitcChildKnockoutAfterContinue">
+      <Name>Show QC no-EITC-child knockout after Continue</Name>
+      <Description>
+        Wraps /flowShouldShowQcRequiredNoEitcChildKnockout and only shows it after Continue has been clicked on
+        Qualifying Children.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowShouldShowQcRequiredNoEitcChildKnockout"/>
+          <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
+        </All>
+      </Derived>
+    </Fact>
   </Facts>
 </FactDictionaryModule>

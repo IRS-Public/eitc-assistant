@@ -790,9 +790,55 @@ function handleSectionContinue (event) {
     event.preventDefault()
     return false
   }
+  if (handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue(event)) {
+    return false
+  }
   if (handleAdjustmentsAgiKnockoutRevealOnContinue(event)) {
     return false
   }
+  return true
+}
+
+/**
+ * First Continue from Qualifying Children when the required-QC page-level knockout condition is true:
+ * set /flowClickedNextOnQualifyingChildrenPage, reveal the knockout in-place (no navigation), then
+ * subsequent Continue attempts are blocked by validateSectionForNavigation while knockout is visible.
+ */
+function handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue (event) {
+  const path = window.location.pathname
+  if (!path.includes('/eitc/qualifying-children')) {
+    return false
+  }
+  let shouldShowRequiredQcKnockout
+  try {
+    const shouldShowAddChild = factGraph.get('/flowShouldShowQcRequiredAddChildKnockout')
+    const shouldShowNoEitcChild = factGraph.get('/flowShouldShowQcRequiredNoEitcChildKnockout')
+    if (!shouldShowAddChild.hasValue || !shouldShowNoEitcChild.hasValue) return false
+    shouldShowRequiredQcKnockout = shouldShowAddChild.get === true || shouldShowNoEitcChild.get === true
+  } catch (e) {
+    console.error('Error reading QC required knockout conditions in handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue', e)
+    return false
+  }
+  if (!shouldShowRequiredQcKnockout) {
+    return false
+  }
+  try {
+    const clicked = factGraph.get('/flowClickedNextOnQualifyingChildrenPage')
+    if (clicked.hasValue && clicked.get === true) {
+      return false
+    }
+  } catch (e) {
+    console.error('Error reading /flowClickedNextOnQualifyingChildrenPage in handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue', e)
+    return false
+  }
+  factGraph.set('/flowClickedNextOnQualifyingChildrenPage', true)
+  saveFactGraph()
+  document.dispatchEvent(new CustomEvent('fg-update'))
+  const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')
+  if (knockoutAlert) {
+    focusKnockoutAlert(knockoutAlert)
+  }
+  event.preventDefault()
   return true
 }
 
