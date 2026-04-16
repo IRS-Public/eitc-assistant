@@ -813,7 +813,7 @@ function handleSectionContinue (event) {
 }
 
 /**
- * First Continue from Qualifying Children when the required-QC page-level knockout condition is true:
+ * First Continue from Qualifying Children when the add-child required-QC knockout condition is true:
  * set /flowClickedNextOnQualifyingChildrenPage, reveal the knockout in-place (no navigation), then
  * subsequent Continue attempts are blocked by validateSectionForNavigation while knockout is visible.
  */
@@ -825,9 +825,8 @@ function handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue (event) {
   let shouldShowRequiredQcKnockout
   try {
     const shouldShowAddChild = factGraph.get('/flowShouldShowQcRequiredAddChildKnockout')
-    const shouldShowNoEitcChild = factGraph.get('/flowShouldShowQcRequiredNoEitcChildKnockout')
-    if (!shouldShowAddChild.hasValue || !shouldShowNoEitcChild.hasValue) return false
-    shouldShowRequiredQcKnockout = shouldShowAddChild.get === true || shouldShowNoEitcChild.get === true
+    if (!shouldShowAddChild.hasValue) return false
+    shouldShowRequiredQcKnockout = shouldShowAddChild.get === true
   } catch (e) {
     console.error('Error reading QC required knockout conditions in handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue', e)
     return false
