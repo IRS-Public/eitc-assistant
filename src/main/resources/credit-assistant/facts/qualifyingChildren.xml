@@ -304,5 +304,113 @@
         </GreaterThan>
       </Derived>
     </Fact>
+    <Fact path="/flowFamilyAndHouseholdEmptyForQcGating">
+      <Name>QC flow: household has no member rows (unset or empty collection)</Name>
+      <Description>
+        True when /familyAndHousehold is not yet complete in the graph, or is complete with zero UUIDs. Used so
+        Qualifying Children knockouts do not require client-side initialization of an empty Collection.
+      </Description>
+      <Derived>
+        <Any>
+          <Not>
+            <IsComplete>
+              <Dependency path="/familyAndHousehold"/>
+            </IsComplete>
+          </Not>
+          <All>
+            <IsComplete>
+              <Dependency path="/familyAndHousehold"/>
+            </IsComplete>
+            <Equal>
+              <Left>
+                <CollectionSize>
+                  <Dependency path="/familyAndHousehold"/>
+                </CollectionSize>
+              </Left>
+              <Right>
+                <Int>0</Int>
+              </Right>
+            </Equal>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/flowFamilyAndHouseholdHasMemberRowsForQcGating">
+      <Name>QC flow: at least one household member row</Name>
+      <Description>
+        True when /familyAndHousehold is complete and CollectionSize is greater than zero (at least one dependent row).
+      </Description>
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/familyAndHousehold"/>
+          </IsComplete>
+          <GreaterThan>
+            <Left>
+              <CollectionSize>
+                <Dependency path="/familyAndHousehold"/>
+              </CollectionSize>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </GreaterThan>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowCohortEitcRequiresQualifyingChildEntry">
+      <Name>Flow cohort: must have an EITC qualifying child when claiming QC and outside age 25&#x2013;64 (Single, QSS, MFJ)</Name>
+      <Description>
+        True when filing status is Single, Qualifying Surviving Spouse, or Married Filing Jointly; the taxpayer
+        completed and answered yes to claiming EITC qualifying children; and they are not in the 25&#x2013;64 age band
+        for EITC without a qualifying child (same basis as /failsEitcAgeBandWithoutQualifyingChildren).
+      </Description>
+      <Derived>
+        <All>
+          <Any>
+            <Dependency path="/isFilingStatusSingle"/>
+            <Dependency path="/isFilingStatusQSS"/>
+            <Dependency path="/isFilingStatusMFJ"/>
+          </Any>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredAddChildKnockout">
+      <Name>Show QC flow knockout: add a child (empty household)</Name>
+      <Description>
+        True when the cohort must enter at least one qualifying child for EITC, the household list is still empty,
+        and there are no EITC qualifying children yet.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
+          <Dependency path="/flowFamilyAndHouseholdEmptyForQcGating"/>
+          <Not>
+            <Dependency path="/hasEitcQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredNoEitcChildKnockout">
+      <Name>Show QC flow knockout: no EITC qualifying child after adding dependents</Name>
+      <Description>
+        True when the cohort must have an EITC qualifying child, at least one dependent row exists, but no one
+        counts as an EITC qualifying child yet.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
+          <Dependency path="/flowFamilyAndHouseholdHasMemberRowsForQcGating"/>
+          <Not>
+            <Dependency path="/hasEitcQualifyingChildren"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
   </Facts>
 </FactDictionaryModule>

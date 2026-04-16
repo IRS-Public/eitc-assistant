@@ -606,7 +606,6 @@ class FgCollectionItem extends HTMLElement {
 
       this.clear()
       addButton.focus()
-      this.dispatchEvent(new CustomEvent('fg-update'))
     }
   }
 
@@ -619,11 +618,13 @@ class FgCollectionItem extends HTMLElement {
     const collectionPath = this.getAttribute('collectionPath')
     const collectionId = this.getAttribute('collectionId')
     factGraph.delete(makeCollectionIdPath(`${collectionPath}/*`, collectionId))
+    factGraph.removeFromCollection(collectionPath, collectionId)
     saveFactGraph()
 
     // Remove this element and its parent fieldset from the DOM after removing the item from the fact graph
     this.remove()
     fgCollection.setCollectionItemNumbers()
+    document.dispatchEvent(new CustomEvent('fg-update'))
   }
 }
 customElements.define('fg-collection-item', FgCollectionItem)
