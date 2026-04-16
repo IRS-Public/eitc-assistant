@@ -153,7 +153,7 @@
         <input type="dollar"/>
       </fg-set>
 
-      <fg-alert alert-type="error" alert-key="agi-knockout" knockout="true" condition="/belowHighestEitcAgiLimit" operator="isFalse">
+      <fg-alert alert-type="error" alert-key="agi-knockout" knockout="true" condition="/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage" operator="isTrue">
         <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
         <p class="usa-alert__text">
           Based on your adjusted gross income (including the adjustments you entered), you don’t qualify for the EITC for <fg-show path="/taxYear"/>.
