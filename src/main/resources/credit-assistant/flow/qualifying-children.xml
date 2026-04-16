@@ -137,6 +137,25 @@
         <h2 condition="/familyAndHousehold/*/isEitcQualifyingChild" operator="isTrue">Your child qualifies for the purposes of claiming and calculating EITC</h2>
 
       </fg-collection>
+
+      <fg-alert alert-type="error" alert-key="qc-required-add-child-knockout" knockout="true" condition="/flowShouldShowQcRequiredAddChildKnockout" operator="isTrue">
+        <heading>Add a qualifying child to continue</heading>
+        <p class="usa-alert__text">
+          You said you have qualifying children for the EITC. Add at least one qualifying child below to continue.
+        </p>
+      </fg-alert>
+
+      <fg-alert alert-type="error" alert-key="qc-required-no-eitc-child-knockout" knockout="true" condition="/flowShouldShowQcRequiredNoEitcChildKnockout" operator="isTrue">
+        <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
+        <p class="usa-alert__text">
+          You don’t qualify for EITC without a qualifying child unless you, or your spouse if filing a joint return,
+          are between age 25 and 64.
+        </p>
+        <p class="usa-alert__text">
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </fg-alert>
+
         <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
     </section>
 
