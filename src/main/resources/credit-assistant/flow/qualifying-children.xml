@@ -4,6 +4,13 @@
   <page title="Qualifying Children" route="/qualifying-children">
     <section>
       <h2>Qualifying Children</h2>
+      <div class="usa-alert usa-alert--info" condition="/flowCohortEitcRequiresQualifyingChildEntry" operator="isTrue">
+        <div class="usa-alert__body">
+          <p class="usa-alert__text">
+            To be eligible for EITC, you must have at least one qualifying child.
+          </p>
+        </div>
+      </div>
       <p>In this step, we'll see how many of your children or other relatives are your qualifying children for the purposes of claiming and calculating the EITC. </p>
       <p>You can claim up to three qualifying children for the EITC.</p>
       <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
