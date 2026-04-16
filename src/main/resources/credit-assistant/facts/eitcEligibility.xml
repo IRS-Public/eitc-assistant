@@ -533,6 +533,21 @@
         </LessThan>
       </Derived>
     </Fact>
+    <Fact path="/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage">
+      <Name>Show AGI knockout on Adjustments</Name>
+      <Description>
+        True when tentative AGI is over the highest EITC phaseout line and the user has clicked Continue from Adjustments once
+        (see /flowClickedNextOnAdjustmentsPage), so the knockout does not appear before that interaction.
+      </Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/belowHighestEitcAgiLimit"/>
+          </Not>
+          <Dependency path="/flowClickedNextOnAdjustmentsPage"/>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/belowHighestEitcEarnedIncomeLimit">
       <Description>Whether the TP's Earned Income is low enough to potentially be eligible for the EITC.</Description>
       <Derived>

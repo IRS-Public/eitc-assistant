@@ -160,5 +160,15 @@
         </GreaterOf>
       </Derived>
     </Fact>
+    <Fact path="/flowClickedNextOnAdjustmentsPage">
+      <Name>User clicked Next on Adjustments with AGI evaluated</Name>
+      <Description>
+        Set in the browser when the taxpayer clicks Continue from the Adjustments page while over the tentative EITC AGI limit,
+        so the AGI knockout is not shown on first paint before that attempt.
+      </Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
   </Facts>
 </FactDictionaryModule>

@@ -790,6 +790,51 @@ function handleSectionContinue (event) {
     event.preventDefault()
     return false
   }
+  if (handleAdjustmentsAgiKnockoutRevealOnContinue(event)) {
+    return false
+  }
+  return true
+}
+
+/**
+ * First Continue from Adjustments while over the tentative EITC AGI limit: set /flowClickedNextOnAdjustmentsPage,
+ * reveal the AGI knockout in-place (no navigation). Subsequent Continue attempts are blocked by validateSectionForNavigation
+ * while the knockout is visible.
+ */
+function handleAdjustmentsAgiKnockoutRevealOnContinue (event) {
+  const path = window.location.pathname
+  if (!path.includes('/eitc/adjustments')) {
+    return false
+  }
+  let belowLimitTrue
+  try {
+    const below = factGraph.get('/belowHighestEitcAgiLimit')
+    if (!below.hasValue) return false
+    belowLimitTrue = below.get === true
+  } catch (e) {
+    console.error('Error reading /belowHighestEitcAgiLimit in handleAdjustmentsAgiKnockoutRevealOnContinue', e)
+    return false
+  }
+  if (belowLimitTrue) {
+    return false
+  }
+  try {
+    const clicked = factGraph.get('/flowClickedNextOnAdjustmentsPage')
+    if (clicked.hasValue && clicked.get === true) {
+      return false
+    }
+  } catch (e) {
+    console.error('Error reading /flowClickedNextOnAdjustmentsPage in handleAdjustmentsAgiKnockoutRevealOnContinue', e)
+    return false
+  }
+  factGraph.set('/flowClickedNextOnAdjustmentsPage', true)
+  saveFactGraph()
+  document.dispatchEvent(new CustomEvent('fg-update'))
+  const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')
+  if (knockoutAlert) {
+    focusKnockoutAlert(knockoutAlert)
+  }
+  event.preventDefault()
   return true
 }
 
