@@ -589,5 +589,67 @@
         </LessThan>
       </Derived>
     </Fact>
+    <Fact path="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits">
+      <Name>EITC disqualified: AGI or earned income at or above completed phase-out line</Name>
+      <Description>
+        True when /belowEitcAgiLimit or /belowEitcEarnedIncomeLimit is false (Pub 596: must be strictly less than
+        the applicable limit from filing status and number of EITC qualifying children). Used after QC count is known.
+      </Description>
+      <Derived>
+        <Any>
+          <Not>
+            <Dependency path="/belowEitcAgiLimit"/>
+          </Not>
+          <Not>
+            <Dependency path="/belowEitcEarnedIncomeLimit"/>
+          </Not>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/flowEitcIncomeLimitKnockoutPrerequisitesComplete">
+      <Name>Qualifying Children page: prerequisites to evaluate final EITC income limits</Name>
+      <Description>
+        True when the taxpayer has finished claiming vs not claiming qualifying children and, if claiming, the
+        household collection is complete so /eitcQualifyingChildren reflects the entered stories.
+      </Description>
+      <Derived>
+        <Any>
+          <All>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+            <IsComplete>
+              <Dependency path="/familyAndHousehold"/>
+            </IsComplete>
+          </All>
+          <Dependency path="/userDeclinesEitcQualifyingChildrenForDisqualifier"/>
+        </Any>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue">
+      <Name>Show EITC income-limit knockout on Qualifying Children after Continue</Name>
+      <Description>
+        True when prerequisites are met and AGI or earned income is at or above the applicable completed phase-out
+        amount. The browser sets /flowClickedNextOnQualifyingChildrenPageForIncomeLimit on first Continue to reveal
+        the alert (mirrors Adjustments AGI knockout).
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowEitcIncomeLimitKnockoutPrerequisitesComplete"/>
+          <Dependency path="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldShowEitcIncomeLimitKnockoutAfterContinue">
+      <Name>Show EITC income-limit knockout after Continue on Qualifying Children</Name>
+      <Description>
+        Wraps /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue so the knockout appears only after the
+        user has clicked Continue once (see /flowClickedNextOnQualifyingChildrenPageForIncomeLimit).
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue"/>
+          <Dependency path="/flowClickedNextOnQualifyingChildrenPageForIncomeLimit"/>
+        </All>
+      </Derived>
+    </Fact>
   </Facts>
 </FactDictionaryModule>

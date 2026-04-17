@@ -420,6 +420,17 @@
         <Boolean/>
       </Writable>
     </Fact>
+    <Fact path="/flowClickedNextOnQualifyingChildrenPageForIncomeLimit">
+      <Name>User clicked Next on Qualifying Children for EITC income-limit knockout</Name>
+      <Description>
+        Set in the browser when the taxpayer clicks Continue from Qualifying Children while
+        /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue is true, so the income-limit knockout does not
+        appear before that interaction.
+      </Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
     <Fact path="/flowShouldShowQcRequiredAddChildKnockoutAfterContinue">
       <Name>Show QC add-child knockout after Continue</Name>
       <Description>

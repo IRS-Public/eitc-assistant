@@ -165,6 +165,16 @@
         </p>
       </fg-alert>
 
+      <fg-alert alert-type="error" alert-key="eitc-income-limit-knockout" knockout="true" condition="/flowShouldShowEitcIncomeLimitKnockoutAfterContinue" operator="isTrue">
+        <heading>You don’t qualify for the Earned Income Tax Credit</heading>
+        <p class="usa-alert__text">
+          Based on the information you provided, you can’t claim the earned income credit because your earned income is over the limit for your filing status and number of qualifying children.
+        </p>
+        <p class="usa-alert__text">
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </fg-alert>
+
       <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
     </section>
 
