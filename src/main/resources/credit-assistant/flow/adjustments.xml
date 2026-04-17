@@ -153,6 +153,8 @@
         <input type="dollar"/>
       </fg-set>
 
+      <h3>Your AGI is: <fg-show path="/agi"/></h3>
+
       <fg-alert alert-type="error" alert-key="agi-knockout" knockout="true" condition="/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage" operator="isTrue">
         <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
         <p class="usa-alert__text">
