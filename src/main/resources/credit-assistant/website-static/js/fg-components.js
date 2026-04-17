@@ -859,6 +859,9 @@ function handleSectionContinue (event) {
   if (handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue(event)) {
     return false
   }
+  if (handleQualifyingChildrenIncomeLimitKnockoutRevealOnContinue(event)) {
+    return false
+  }
   if (handleAdjustmentsAgiKnockoutRevealOnContinue(event)) {
     return false
   }
@@ -897,6 +900,48 @@ function handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue (event) {
     return false
   }
   factGraph.set('/flowClickedNextOnQualifyingChildrenPage', true)
+  saveFactGraph()
+  document.dispatchEvent(new CustomEvent('fg-update'))
+  const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')
+  if (knockoutAlert) {
+    focusKnockoutAlert(knockoutAlert)
+  }
+  event.preventDefault()
+  return true
+}
+
+/**
+ * First Continue from Qualifying Children when final AGI/earned income is at or above the completed phase-out line:
+ * set /flowClickedNextOnQualifyingChildrenPageForIncomeLimit, reveal the knockout in-place (no navigation).
+ * Subsequent Continue attempts are blocked by validateSectionForNavigation while the knockout is visible.
+ */
+function handleQualifyingChildrenIncomeLimitKnockoutRevealOnContinue (event) {
+  const path = window.location.pathname
+  if (!path.includes('/eitc/qualifying-children')) {
+    return false
+  }
+  let shouldReveal
+  try {
+    const reveal = factGraph.get('/flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue')
+    if (!reveal.hasValue) return false
+    shouldReveal = reveal.get === true
+  } catch (e) {
+    console.error('Error reading /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue in handleQualifyingChildrenIncomeLimitKnockoutRevealOnContinue', e)
+    return false
+  }
+  if (!shouldReveal) {
+    return false
+  }
+  try {
+    const clicked = factGraph.get('/flowClickedNextOnQualifyingChildrenPageForIncomeLimit')
+    if (clicked.hasValue && clicked.get === true) {
+      return false
+    }
+  } catch (e) {
+    console.error('Error reading /flowClickedNextOnQualifyingChildrenPageForIncomeLimit in handleQualifyingChildrenIncomeLimitKnockoutRevealOnContinue', e)
+    return false
+  }
+  factGraph.set('/flowClickedNextOnQualifyingChildrenPageForIncomeLimit', true)
   saveFactGraph()
   document.dispatchEvent(new CustomEvent('fg-update'))
   const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')

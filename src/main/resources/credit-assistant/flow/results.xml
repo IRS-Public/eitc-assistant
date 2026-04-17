@@ -4,16 +4,25 @@
   <page title="Results" route="/results">
     <section>
       <h2>Your Results</h2>
-      <p>
+      <fg-alert alert-type="error" alert-key="eitc-income-limit-results" condition="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits" operator="isTrue">
+        <heading>You don’t qualify for the Earned Income Tax Credit</heading>
+        <p class="usa-alert__text">
+          Based on the information you provided, you can’t claim the earned income credit because your earned income is over the limit for your filing status and number of qualifying children.
+        </p>
+        <p class="usa-alert__text">
+          For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+        </p>
+      </fg-alert>
+      <p condition="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits" operator="isFalse">
         Based on the information you provided, you are eligible for the Earned Income Tax Credit estimated amount of:
         <strong><fg-show path="/earnedIncomeCredit"/></strong>*
       </p>
-      <p>
+      <p condition="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits" operator="isFalse">
         This credit amount will reduce your <fg-show path="/taxYear"/> taxes when you file your tax return with the IRS.
         If the credit reduces your tax to less than zero, you may get a refund.
       </p>
       <h2>Next Steps: How to file for the EITC</h2>
-      <p>
+      <p condition="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits" operator="isFalse">
         In order to receive the estimated amount of <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
         you must file your <fg-show path="/taxYear"/> federal tax return.
         If you claim the EITC, by law the IRS cannot issue your tax refund before mid-February <fg-show path="/nextTaxYear"/>,
