@@ -14,7 +14,7 @@
         </div>
       </div>
       <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
-      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another">
+      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild">
 
         <fg-set path="/familyAndHousehold/*/livedWithYouUS">
           <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>

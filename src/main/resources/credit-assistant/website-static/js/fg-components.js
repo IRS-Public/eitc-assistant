@@ -482,6 +482,12 @@ class FgCollection extends HTMLElement {
     // Make listener a persistent function so we can remove it later
     this.addItemListener = () => this.addItem()
 
+    this.boundUpdateAddItemButton = () => {
+      if (this.getAddItemIfTruePath()) {
+        this.updateAddItemButton()
+      }
+    }
+
     /*
     * Set item numbers for items in `<fg-collection>`
     * Changes headings to Item 1, Item 2, etc.
@@ -498,10 +504,41 @@ class FgCollection extends HTMLElement {
     }
   }
 
+  /** Flow `add-item-if-true` on `<fg-collection>`: fact path that must be true (or incomplete) to allow adding a row. */
+  getAddItemIfTruePath () {
+    const p = this.getAttribute('data-add-item-if-true')
+    return p && p.length > 0 ? p : null
+  }
+
+  /**
+   * Disable "Add …" when the configured fact is complete false. If incomplete, keep enabled (same as isTrue UX
+   * without blocking mid-edit).
+   */
+  updateAddItemButton () {
+    const factPath = this.getAddItemIfTruePath()
+    if (!factPath) return
+    const btn = this.querySelector('.fg-collection__add-item')
+    if (!btn) return
+    try {
+      const r = factGraph.get(factPath)
+      const allow = !r.hasValue || r.get === true
+      btn.disabled = !allow
+      btn.setAttribute('aria-disabled', String(!allow))
+    } catch (e) {
+      console.error(`Error updating collection add button (${factPath}):\n`, e)
+      btn.disabled = false
+      btn.setAttribute('aria-disabled', 'false')
+    }
+  }
+
   connectedCallback () {
     this.path = this.getAttribute('path')
     this.addItemButton = this.querySelector('.fg-collection__add-item')
     this.addItemButton.addEventListener('click', this.addItemListener)
+
+    if (this.getAddItemIfTruePath()) {
+      document.addEventListener('fg-update', this.boundUpdateAddItemButton)
+    }
 
     // Add any items that currently exist in this collection
     const ids = factGraph.getCollectionIds(this.path)
@@ -513,24 +550,40 @@ class FgCollection extends HTMLElement {
     }
 
     // Qualifying Children: cohort must enter at least one EITC QC (Single/QSS/MFJ age; MFS; married HOH; claiming QCs).
-    // Seed one empty /familyAndHousehold row on first paint. If this pattern repeats elsewhere, consider a
-    // flow attribute (e.g. default-if-complete) instead of hard-coded path + fact.
-    if (this.path === '/familyAndHousehold' && this.querySelectorAll('fg-collection-item').length === 0) {
+    // Seed one empty row on first paint when this collection uses add-item-if-true (QC household).
+    if (this.getAddItemIfTruePath() && this.querySelectorAll('fg-collection-item').length === 0) {
       try {
         if (checkCondition('/flowCohortEitcRequiresQualifyingChildEntry', 'isTrue')) {
           this.addItem()
         }
       } catch (e) {
-        console.error('Error seeding default /familyAndHousehold row for required-QC cohort:\n', e)
+        console.error('Error seeding default household row for required-QC cohort:\n', e)
       }
+    }
+
+    if (this.getAddItemIfTruePath()) {
+      this.updateAddItemButton()
     }
   }
 
   disconnectedCallback () {
+    if (this.getAddItemIfTruePath()) {
+      document.removeEventListener('fg-update', this.boundUpdateAddItemButton)
+    }
     this.addItemButton.removeEventListener('click', this.addItemListener)
   }
 
   addItem (id) {
+    const addIfPath = this.getAddItemIfTruePath()
+    if (!id && addIfPath) {
+      try {
+        const r = factGraph.get(addIfPath)
+        if (r.hasValue && r.get === false) return
+      } catch (e) {
+        console.error('Error checking collection add-item-if-true fact:\n', e)
+      }
+    }
+
     const collectionId = id ?? generateUUID()
 
     if (!id) {
