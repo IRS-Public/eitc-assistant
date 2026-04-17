@@ -214,6 +214,11 @@
           </choice>
         </attribute>
       </optional>
+      <optional>
+        <attribute name="add-item-if-true">
+          <data type="anyURI"/>
+        </attribute>
+      </optional>
       <interleave>
         <oneOrMore>
           <ref name="fg-set-module"></ref>

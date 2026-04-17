@@ -2,7 +2,7 @@ package gov.irs.creditassistant.parser
 
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Condition
-import gov.irs.creditassistant.parser.Utils.validateFact
+import gov.irs.creditassistant.parser.Utils.{ optionString, validateFact }
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
@@ -15,6 +15,7 @@ case class FgCollection(
     condition: Option[Condition],
     children: Seq[FlowNode],
     determiner: String,
+    addItemIfTrue: Option[String],
 ) extends FlowNode {
   def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
@@ -26,6 +27,7 @@ case class FgCollection(
     context.setVariable("condition", condition.map(_.path).orNull)
     context.setVariable("operator", condition.map(_.operator.toString).orNull)
     context.setVariable("determiner", determiner)
+    context.setVariable("addItemIfTrue", addItemIfTrue.getOrElse(""))
 
     templateEngine.process("nodes/fg-collection", context)
   }
@@ -40,6 +42,7 @@ object FgCollection extends FlowNodeParser {
     val disallowEmpty = fgCollectionElement \@ "disallow-empty"
     val condition = Condition.getCondition(fgCollectionElement, factDictionary)
     val determiner = fgCollectionElement \@ "determiner"
+    val addItemIfTrue = optionString(fgCollectionElement \@ "add-item-if-true")
 
     if (itemName.isEmpty) {
       throw InvalidFormConfig("item-name is a required property of FgCollection but was blank")
@@ -47,9 +50,16 @@ object FgCollection extends FlowNodeParser {
 
     validateFgCollection(path, factDictionary)
 
+    addItemIfTrue.foreach { factPath =>
+      validateFact(factPath, factDictionary)
+      if (!factDictionary.getDefinition(factPath).isBoolean) {
+        throw InvalidFormConfig(s"add-item-if-true $factPath must be a boolean fact")
+      }
+    }
+
     val children = flowParser.parseChildElements(fgCollectionElement, level)
 
-    FgCollection(path, itemName, disallowEmpty, condition, children, determiner)
+    FgCollection(path, itemName, disallowEmpty, condition, children, determiner, addItemIfTrue)
   }
 
   private def validateFgCollection(path: String, factDictionary: FactDictionary): Unit = {

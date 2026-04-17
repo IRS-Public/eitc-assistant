@@ -304,6 +304,32 @@
         </GreaterThan>
       </Derived>
     </Fact>
+    <Fact path="/flowShouldAllowAddAnotherQualifyingChild">
+      <Name>QC flow: allow Add another child while fewer than max EITC qualifying children</Name>
+      <Description>
+        True when the raw count of /familyAndHousehold members who are EITC qualifying children is still below
+        /maxNumberOfEitcQcs (3), or when that count is not yet complete so the user is not blocked mid-edit.
+        Used to enable the Qualifying Children collection add button; when three successful EITC QCs are already
+        counted, adding more rows is disabled (EITC does not increase past the third QC).
+      </Description>
+      <Derived>
+        <Any>
+          <Not>
+            <IsComplete>
+              <Dependency path="/countEitcQualifyingChildren"/>
+            </IsComplete>
+          </Not>
+          <LessThan>
+            <Left>
+              <Dependency path="/countEitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Dependency path="/maxNumberOfEitcQcs"/>
+            </Right>
+          </LessThan>
+        </Any>
+      </Derived>
+    </Fact>
     <Fact path="/flowFamilyAndHouseholdEmptyForQcGating">
       <Name>QC flow: household has no member rows (unset or empty collection)</Name>
       <Description>

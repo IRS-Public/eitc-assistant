@@ -98,6 +98,13 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired") shouldBe true
   }
 
+  "/flowShouldAllowAddAnotherQualifyingChild" should "be true when fewer than three EITC QCs are counted" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    g.save()
+    booleanAt(g, "/flowShouldAllowAddAnotherQualifyingChild") shouldBe true
+  }
+
   "QC required knockout wrapper facts" should "turn on after Continue flag is set for the empty-household path" in {
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
