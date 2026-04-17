@@ -18,7 +18,7 @@
         <modal-link for="modal-what-counts-job">What counts as a job?</modal-link>
       </p>
           <fg-set path="/jobsIncomeTotal">
-            <question>How much wages, salary, or tips do you expect to make this year where federal income taxes are withheld</question>
+            <question>How much wages, salary, or tips do you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to make this year where federal income taxes are withheld</question>
             <input type="dollar"/>
           </fg-set>
 
@@ -27,22 +27,22 @@
         <modal-link for="modal-what-counts-pension">What counts as a pension or annuity?</modal-link>
       </p>
       <fg-set path="/pensionsIncomeTotal">
-        <question>How much do you expect to receive from your pension this year?</question>
+        <question>How much do you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to receive in pension or annuity income this year?</question>
         <input type="dollar"/>
       </fg-set>
 
       <h3>Self-employment income</h3>
-      <p>This includes income from a partnership, trade, or business that you <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> own. It can also include income earned as a freelancer, contractor, or gig worker.</p>
+      <p>This includes income from a partnership, trade, or business that you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> own. It can also include income earned as a freelancer, contractor, or gig worker.</p>
       <p>
         <modal-link for="modal-what-counts-self-employment">What counts as self-employment income?</modal-link>
       </p>
         <fg-set path="/selfEmplomentGrossIncome">
-          <question>What’s the total gross income <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> expect to earn from this self-employment work in <fg-show path="/taxYear"/>?</question>
+          <question>What’s the total gross income you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to earn from this self-employment work in <fg-show path="/taxYear"/>?</question>
           <modal-link for="modal-self-employment-gross-total">What’s total gross income and where do I find it?</modal-link>
           <input type="dollar"/>
         </fg-set>
         <fg-set path="/selfEmplomentGrossIncomeWorkRelatedExpenses">
-          <question>Total self-employment work-related expenses <span condition="/isFilingStatusMFJ" operator="isTrue">or your spouse</span> expect to deduct in <fg-show path="/taxYear"/></question>
+          <question>Total self-employment work-related expenses you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to deduct in <fg-show path="/taxYear"/></question>
           <hint>It's okay to estimate or leave this blank.</hint>
           <modal-link for="modal-self-employment-deductions">What does it mean to deduct expenses?</modal-link>
           <input type="dollar"/>
@@ -53,7 +53,7 @@
         <modal-link for="modal-what-counts-social-security">What counts as Social Security income?</modal-link>
       </p>
         <fg-set path="/socialSecurityIncome">
-          <question>What’s the total taxable amount of social security or Railroad Retirement Benefits you expect to make this year</question>
+          <question>What’s the total taxable amount of social security or Railroad Retirement Benefits you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to make this year</question>
           <input type="dollar"/>
         </fg-set>
 
