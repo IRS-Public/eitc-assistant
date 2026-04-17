@@ -336,24 +336,35 @@
       </Derived>
     </Fact>
     <Fact path="/flowCohortEitcRequiresQualifyingChildEntry">
-      <Name>Flow cohort: must have an EITC qualifying child when claiming QC and outside age 25&#x2013;64 (Single, QSS, MFJ)</Name>
+      <Name>Flow cohort: must have an EITC qualifying child when claiming QC (Single/QSS/MFJ age; MFS; married HOH)</Name>
       <Description>
-        True when filing status is Single, Qualifying Surviving Spouse, or Married Filing Jointly; the taxpayer
-        completed and answered yes to claiming EITC qualifying children; and they are not in the 25&#x2013;64 age band
-        for EITC without a qualifying child (same basis as /failsEitcAgeBandWithoutQualifyingChildren).
+        True when the taxpayer completed and answered yes to claiming EITC qualifying children, and any of:
+        (1) Single, QSS, or MFJ and outside the 25&#x2013;64 age band for EITC without a qualifying child
+        (same basis as /failsEitcAgeBandWithoutQualifyingChildren); (2) Married Filing Separately; or
+        (3) Head of Household and married (considered married for HOH). MFS and married HOH cannot use EITC
+        without a qualifying child under flow rules and must enter at least one EITC QC story on Qualifying Children.
       </Description>
       <Derived>
         <All>
-          <Any>
-            <Dependency path="/isFilingStatusSingle"/>
-            <Dependency path="/isFilingStatusQSS"/>
-            <Dependency path="/isFilingStatusMFJ"/>
-          </Any>
           <IsComplete>
             <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
           </IsComplete>
           <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
-          <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+          <Any>
+            <All>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusQSS"/>
+                <Dependency path="/isFilingStatusMFJ"/>
+              </Any>
+              <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+            </All>
+            <Dependency path="/isFilingStatusMFS"/>
+            <All>
+              <Dependency path="/isFilingStatusHOH"/>
+              <Dependency path="/isHOHMarried"/>
+            </All>
+          </Any>
         </All>
       </Derived>
     </Fact>

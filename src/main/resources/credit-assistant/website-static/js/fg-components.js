@@ -512,7 +512,7 @@ class FgCollection extends HTMLElement {
       this.addItem()
     }
 
-    // Qualifying Children: cohort must enter at least one EITC QC (outside 25–64, Single/QSS/MFJ, claiming QCs).
+    // Qualifying Children: cohort must enter at least one EITC QC (Single/QSS/MFJ age; MFS; married HOH; claiming QCs).
     // Seed one empty /familyAndHousehold row on first paint. If this pattern repeats elsewhere, consider a
     // flow attribute (e.g. default-if-complete) instead of hard-coded path + fact.
     if (this.path === '/familyAndHousehold' && this.querySelectorAll('fg-collection-item').length === 0) {

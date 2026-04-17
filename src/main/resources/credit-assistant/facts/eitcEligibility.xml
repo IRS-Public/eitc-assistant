@@ -457,6 +457,31 @@
         </Any>
       </Derived>
     </Fact>
+    <Fact path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired">
+      <Name>Results guard: QC entry cohort but zero EITC qualifying children</Name>
+      <Description>
+        True when /flowCohortEitcRequiresQualifyingChildEntry applies (user must enter at least one EITC QC story),
+        /familyAndHousehold is complete, and /eitcQualifyingChildren equals 0. Used so /maybeEligibleForEitc cannot
+        read as eligible when the household list is resolved but no EITC QCs remain. Gating on a complete
+        /familyAndHousehold avoids treating an unset collection as &#x201C;zero children&#x201D; mid-flow.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
+          <IsComplete>
+            <Dependency path="/familyAndHousehold"/>
+          </IsComplete>
+          <Equal>
+            <Left>
+              <Dependency path="/eitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </Equal>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/maybeEligibleForEitc">
       <Name>Whether the TP may be eligible for the EITC</Name>
       <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
@@ -470,6 +495,9 @@
           <Dependency path="/maybeEligibleForEitcBase"/>
           <Not>
             <Dependency path="/noEitcDueToSeparateFilingFromSpouse"/>
+          </Not>
+          <Not>
+            <Dependency path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired"/>
           </Not>
           <Any>
             <Dependency path="/maybeEligibleForEitcWithQc"/>
