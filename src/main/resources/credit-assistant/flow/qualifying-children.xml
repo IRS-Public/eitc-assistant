@@ -4,8 +4,18 @@
   <page title="Qualifying Children" route="/qualifying-children">
     <section>
       <h2>Qualifying Children</h2>
-      <p>In this step, we'll see how many of your children or other relatives are your qualifying children for the purposes of claiming and calculating the EITC. </p>
-      <p>You can claim up to three qualifying children for the EITC.</p>
+      <div class="usa-alert usa-alert--info" condition="/primaryFilerIsClaimingQualifyingChildren" operator="isFalse">
+        <div class="usa-alert__body">
+          <p class="usa-alert__text">
+            Based on your previous inputs, you don't have any qualifying children. If this isn't correct, please return to Filing Status and change your responses.
+          </p>
+          <p class="usa-alert__text">
+            Please go to the next step to see your results.
+          </p>
+        </div>
+      </div>
+      <p condition="/primaryFilerIsClaimingQualifyingChildren" operator="isTrue">In this step, we'll see how many of your children or other relatives are your qualifying children for the purposes of claiming and calculating the EITC. </p>
+      <p condition="/primaryFilerIsClaimingQualifyingChildren" operator="isTrue">You can claim up to three qualifying children for the EITC.</p>
       <div class="usa-alert usa-alert--info" condition="/flowCohortEitcRequiresQualifyingChildEntry" operator="isTrue">
         <div class="usa-alert__body">
           <p class="usa-alert__text">
@@ -14,7 +24,7 @@
         </div>
       </div>
       <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
-      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild">
+      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild" if-true="/primaryFilerIsClaimingQualifyingChildren">
 
         <fg-set path="/familyAndHousehold/*/livedWithYouUS">
           <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>
@@ -155,7 +165,7 @@
         </p>
       </fg-alert>
 
-        <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
+      <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
     </section>
 
     <modal-dialog id="modal-residency">

@@ -9,3 +9,11 @@
 .fg-alert {
   margin-top: 1em
 }
+
+/*
+ * USWDS sets .usa-alert .usa-alert__text { margin-top: 0 }, which wins over utility classes
+ * like .margin-top-2 (higher specificity). Space stacked body paragraphs when we use two <p>.
+ */
+.flow .usa-alert__body > p.usa-alert__text + p.usa-alert__text {
+  margin-top: var(--units-2);
+}
