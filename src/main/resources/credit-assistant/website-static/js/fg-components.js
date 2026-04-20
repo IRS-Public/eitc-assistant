@@ -105,7 +105,7 @@ class FgSet extends HTMLElement {
         break
       }
       case 'dollar':
-        this.addEventListener('change', () => {
+        this.addEventListener('input', () => {
           this.onChange()
         })
         break
