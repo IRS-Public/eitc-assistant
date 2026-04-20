@@ -18,7 +18,7 @@
         <modal-link for="modal-what-counts-job">What counts as a job?</modal-link>
       </p>
           <fg-set path="/jobsIncomeTotal">
-            <question>How much wages, salary, or tips do you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to make this year where federal income taxes are withheld</question>
+            <question>How much wages, salary, or tips do you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> expect to make this year where federal income taxes are withheld?</question>
             <input type="dollar"/>
           </fg-set>
 
