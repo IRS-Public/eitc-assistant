@@ -330,6 +330,25 @@
         </Any>
       </Derived>
     </Fact>
+    <Fact path="/hasReachedMaxEitcQualifyingChildren">
+      <Name>QC flow: reached maximum EITC qualifying children</Name>
+      <Description>
+        True when the taxpayer is claiming EITC qualifying children and /eitcQualifyingChildren equals /maxNumberOfEitcQcs (3).
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          <Equal>
+            <Left>
+              <Dependency path="/eitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Dependency path="/maxNumberOfEitcQcs"/>
+            </Right>
+          </Equal>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/flowFamilyAndHouseholdEmptyForQcGating">
       <Name>QC flow: household has no member rows (unset or empty collection)</Name>
       <Description>
