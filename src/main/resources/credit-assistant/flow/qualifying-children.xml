@@ -7,7 +7,7 @@
       <div class="usa-alert usa-alert--info" condition="/primaryFilerIsClaimingQualifyingChildren" operator="isFalse">
         <div class="usa-alert__body">
           <p class="usa-alert__text">
-            Based on your previous inputs, you don't have any qualifying children. If this isn't correct, please return to Filing Status and change your responses.
+            Based on your previous inputs, you don't have any qualifying children. If this isn't correct, please return to <a class="usa-link" href="/app/eitc/filing-status/">Filing Status</a> and change your responses.
           </p>
           <p class="usa-alert__text">
             Please go to the next step to see your results.
