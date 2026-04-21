@@ -122,31 +122,57 @@
     <Fact path="/familyAndHousehold/*/flowShouldSeeAgeComparison">
       <Derived>
         <All>
-          <Equal>
-            <Left>
-              <Dependency path="../ageRange"/>
-            </Left>
-            <Right>
-              <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
-            </Right>
-          </Equal>
           <Any>
             <Equal>
               <Left>
-                <Dependency path="/ageRange"/>
+                <Dependency path="../ageRange"/>
               </Left>
               <Right>
-                <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
               </Right>
             </Equal>
             <Equal>
               <Left>
-                <Dependency path="/ageRangeSecondary"/>
+                <Dependency path="../ageRange"/>
               </Left>
               <Right>
-                <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
               </Right>
             </Equal>
+          </Any>
+          <Any>
+            <All>
+              <Not>
+                <Dependency path="/isFilingStatusMFJ"/>
+              </Not>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRange"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+            </All>
+            <All>
+              <Dependency path="/isFilingStatusMFJ"/>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRange"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRangeSecondary"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+            </All>
           </Any>
         </All>
       </Derived>
