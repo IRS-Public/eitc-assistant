@@ -10,12 +10,6 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
-    <Fact path="/hsaTotalDeductibleAmountMax">
-      <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
-      <Derived>
-        <Dollar>17000</Dollar>
-      </Derived>
-    </Fact>
     <Fact path="/hsaDeduction">
       <Description>HSA total deductible amount</Description>
       <Derived>
@@ -33,14 +27,6 @@
       <Placeholder>
         <Dollar>0</Dollar>
       </Placeholder>
-    </Fact>
-    <Fact path="/deductionForTraditionalIRAContributionMax">
-      <Description>Max contribution for traditional IRAs (excluding payroll deductions) is $8000 per year. $7000 is the limit for those under 50, but we only know if someone is under 65 or not
-        We are agnostic to filing status so double to 16000 and do not take MAGI into account for simplified computation
-      </Description>
-      <Derived>
-        <Dollar>16000</Dollar>
-      </Derived>
     </Fact>
     <Fact path="/traditionalIRAContributionDeduction">
       <Description>Deduction for contributions to traditional IRAs (excluding payroll deductions)</Description>

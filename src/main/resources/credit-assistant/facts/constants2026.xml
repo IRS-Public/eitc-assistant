@@ -2,6 +2,22 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
+    <Fact path="/deductionForTraditionalIRAContributionMax2026">
+      <Description>Max contribution for traditional IRAs (excluding payroll deductions) is $8000 per year. $7000 is the limit for those under 50, but we only know if someone is under 65 or not
+        We are agnostic to filing status so double to 16000 and do not take MAGI into account for simplified computation
+      </Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>17200</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/hsaTotalDeductibleAmountMax2026">
+      <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>17000</Dollar>
+      </Derived>
+    </Fact>
     <Fact path="/maxIncomeSubjectToSocialSecurityTax2026">
       <Description> Schedule SE Line 7. Maximum amount of combined wages and self-employment earnings subject to social security tax or
               the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>

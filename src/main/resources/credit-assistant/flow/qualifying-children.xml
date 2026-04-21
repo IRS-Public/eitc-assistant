@@ -24,66 +24,66 @@
         </div>
       </div>
       <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
-      <fg-collection path="/familyAndHousehold" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild" if-true="/primaryFilerIsClaimingQualifyingChildren">
+      <fg-collection path="/qualifyingChildren" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild" if-true="/primaryFilerIsClaimingQualifyingChildren">
 
-        <fg-set path="/familyAndHousehold/*/livedWithYouUS">
+        <fg-set path="/qualifyingChildren/*/livedWithYouUS">
           <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>
           <modal-link for="modal-residency">Residency</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/livedWithYouUS" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/livedWithYouUS" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
           </p>
         </fg-alert>
 
-        <fg-set path="/familyAndHousehold/*/someoneElseCanClaim" if-true="/familyAndHousehold/*/livedWithYouUS">
+        <fg-set path="/qualifyingChildren/*/someoneElseCanClaim" if-true="/qualifyingChildren/*/livedWithYouUS">
           <question>Can someone else claim this child for the EITC?</question>
           <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-set path="/familyAndHousehold/*/isClaimingQCRegardless" if-true="/familyAndHousehold/*/someoneElseCanClaim">
+        <fg-set path="/qualifyingChildren/*/isClaimingQCRegardless" if-true="/qualifyingChildren/*/someoneElseCanClaim">
           <question>You might not be able to claim a child for the EITC if they are also claimed by certain eligible people. Do you still want to claim this child?</question>
           <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming" operator="isTrue">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/canSomeoneElseClaimAndTPNotClaiming" operator="isTrue">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
           </p>
         </fg-alert>
 
-        <fg-set path="/familyAndHousehold/*/marriedFilingJointly" if-true="/familyAndHousehold/*/flowShouldShowMFJFiling">
+        <fg-set path="/qualifyingChildren/*/marriedFilingJointly" if-true="/qualifyingChildren/*/flowShouldShowMFJFiling">
           <question>Is this child married and will file a joint return with his or her spouse for <fg-show path="/taxYear"/>?</question>
           <modal-link for="modal-joint-return">Joint Return</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-set path="/familyAndHousehold/*/mfjForRefundOnly" if-true="/familyAndHousehold/*/marriedFilingJointly">
+        <fg-set path="/qualifyingChildren/*/mfjForRefundOnly" if-true="/qualifyingChildren/*/marriedFilingJointly">
           <question>Is this child filing a joint return for <fg-show path="/taxYear"/> only to claim a refund of withheld taxes or estimated taxes paid, and won't claim any tax credits such as the EITC?</question>
           <modal-link for="-with-another-person-exception">Joint Return</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/mfjForRefundOnly" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/mfjForRefundOnly" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
           </p>
         </fg-alert>
 
-        <fg-set path="/familyAndHousehold/*/isPermanentlyDisabled" if-true="/familyAndHousehold/*/flowShouldShowDisability">
+        <fg-set path="/qualifyingChildren/*/isPermanentlyDisabled" if-true="/qualifyingChildren/*/flowShouldShowDisability">
           <question>Is this child permanently and totally disabled?</question>
           <modal-link for="modal-disabled">Permanently and totally disabled</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-set path="/familyAndHousehold/*/relationship" if-true="/familyAndHousehold/*/flowShouldShowRelationship">
+        <fg-set path="/qualifyingChildren/*/relationship" if-true="/qualifyingChildren/*/flowShouldShowRelationship">
           <question>Select this child's relationship to you:</question>
           <modal-link for="modal-relationship">Relationships</modal-link>
           <input type="enum" options-path="/relationshipOptions">
@@ -94,7 +94,7 @@
           </input>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsRelationshipTest" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/meetsRelationshipTest" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -102,7 +102,7 @@
         </fg-alert>
 
 
-        <fg-set path="/familyAndHousehold/*/ageRange" if-false="/familyAndHousehold/*/isPermanentlyDisabled">
+        <fg-set path="/qualifyingChildren/*/ageRange" if-false="/qualifyingChildren/*/isPermanentlyDisabled">
           <question>How old was this child at the end of <fg-show path="/taxYear"/>?</question>
           <input type="enum" options-path="/ageRangeOptionsQC">
             <option value="under19">18 and under</option>
@@ -111,19 +111,19 @@
           </input>
         </fg-set>
 
-        <fg-set path="/familyAndHousehold/*/isFullTimeStudent" if-true="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
+        <fg-set path="/qualifyingChildren/*/isFullTimeStudent" if-true="/qualifyingChildren/*/flowShouldSeeStudentQuestion">
           <question>Was the child a full-time student during some part of any 5 months during the year?</question>
           <modal-link for="modal-student">Full-time student defined</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-set path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" if-true="/familyAndHousehold/*/flowShouldSeeAgeComparison">
+        <fg-set path="/qualifyingChildren/*/isQCYoungerThanSelfOrSpouse" if-true="/qualifyingChildren/*/flowShouldSeeAgeComparison">
           <question>Is the dependent younger than you (or your spouse, if filing a joint return)?</question>
           <modal-link for="modal-age-comparison">Age Comparison between Child and Filer</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -131,27 +131,27 @@
         </fg-alert>
 
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsAgeTest" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/qualifyingChildren/*/meetsAgeTest" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
           </p>
         </fg-alert>
 
-        <fg-set path="/familyAndHousehold/*/validSSN" if-true="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
+        <fg-set path="/qualifyingChildren/*/validSSN" if-true="/qualifyingChildren/*/isTentativeEitcQualifyingChild">
           <question>Does this child have a valid Social Security number issued on or before the due date of the return (including extensions)?</question>
           <modal-link for="modal-valid-ssn-qc">Valid Social Security Number for Qualifying Child</modal-link>
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="warning" alert-key="qc-disqualified-ssn-warning" condition="/familyAndHousehold/*/validSSN" operator="isFalse">
+        <fg-alert alert-type="warning" alert-key="qc-disqualified-ssn-warning" condition="/qualifyingChildren/*/validSSN" operator="isFalse">
           <heading>Please note</heading>
           <p class="usa-alert__text">
             This child does not have a valid SSN. Because they don't have a valid SSN, they cannot be claimed for the EITC with a Qualifying Child. However, you may be eligible for the smaller EITC without a qualifying child.
           </p>
         </fg-alert>
 
-        <h2 condition="/familyAndHousehold/*/isEitcQualifyingChild" operator="isTrue">Your child qualifies for the purposes of claiming and calculating EITC</h2>
+        <h2 condition="/qualifyingChildren/*/isEitcQualifyingChild" operator="isTrue">Your child qualifies for the purposes of claiming and calculating EITC</h2>
 
       </fg-collection>
 
