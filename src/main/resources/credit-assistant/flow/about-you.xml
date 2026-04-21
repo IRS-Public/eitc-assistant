@@ -4,7 +4,7 @@
   <page title="About you" route="/">
     <section>
       <h2>About You</h2>
-      <p>Tell us about yourself. Your responses will help us learn which tax benefits you could be eligible for, which can impact how much tax you withhold.</p>
+      <p>Tell us about yourself. Your responses will help us determine whether you qualify for the Earned Income Tax Credit (EITC).</p>
 
       <fg-set path="/chosenTaxYear">
         <question>Select the tax year you would like to check your EITC eligibility for:</question>
