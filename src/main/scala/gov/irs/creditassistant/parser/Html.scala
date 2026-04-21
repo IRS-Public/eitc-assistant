@@ -39,7 +39,7 @@ object Html extends FlowNodeParser {
     }
   }
 
-  private val LEAF_NODES = Set("p", "li", "caption", "th", "td", "h1", "h2", "h3", "h4", "h5", "h6")
+  private val LEAF_NODES = Set("p", "li", "caption", "th", "td", "h1", "h2", "h3", "h4", "h5", "h6", "button")
   private def isLeafNode(element: xml.Elem) = {
     LEAF_NODES.contains(element.label)
   }

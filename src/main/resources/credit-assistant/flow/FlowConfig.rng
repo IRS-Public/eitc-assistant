@@ -650,6 +650,14 @@
           <ref name="TableContent"/>
         </element>
         <element name="button">
+          <optional>
+            <attribute name="id">
+              <text/>
+            </attribute>
+          </optional>
+          <optional>
+            <attribute name="data-close-modal"/>
+          </optional>
           <attribute name="onclick">
             <text/>
           </attribute>

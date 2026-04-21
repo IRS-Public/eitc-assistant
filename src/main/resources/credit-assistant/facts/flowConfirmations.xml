@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<?xml-model href="./FactDictionaryModule.rng"?>
+<FactDictionaryModule>
+  <Facts>
+    <Fact path="/flowShowTaxYearChangeConfirm">
+      <Name>Show tax year change confirmation</Name>
+      <Description>
+        Set in the browser when the user selects a different tax year and must confirm clearing prior answers.
+        Pending year is stored in /flowPendingChosenTaxYear.
+      </Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/flowPendingChosenTaxYear">
+      <Name>Pending tax year after destructive change request</Name>
+      <Description>Enum value the user chose; applied on Continue after reset.</Description>
+      <Writable>
+        <Enum optionsPath="/taxYearOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/flowShowMfjToNonmfjQcClearConfirm">
+      <Name>Show MFJ to non-MFJ QC clear confirmation</Name>
+      <Description>
+        Set when an under-24 filer with qualifying children changes from MFJ to another status.
+        Pending status is stored in /flowPendingInitialFilingStatus.
+      </Description>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/flowPendingInitialFilingStatus">
+      <Name>Pending filing status after MFJ clear request</Name>
+      <Description>Filing status enum to apply on Continue after clearing qualifying children.</Description>
+      <Writable>
+        <Enum optionsPath="/filingStatusOptions"/>
+      </Writable>
+    </Fact>
+  </Facts>
+</FactDictionaryModule>
