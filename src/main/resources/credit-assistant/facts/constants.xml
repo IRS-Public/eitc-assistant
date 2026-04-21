@@ -15,9 +15,6 @@
       <Writable>
         <Enum optionsPath="/taxYearOptions"/>
       </Writable>
-      <Placeholder>
-        <Enum optionsPath="/filingStatusOptions">2025</Enum>
-      </Placeholder>
     </Fact>
     <Fact path="/hasSelectedChosenTaxYear">
       <Description>True when the user has selected a tax year (chosenTaxYear is complete).</Description>
