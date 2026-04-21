@@ -283,9 +283,11 @@
             <Dependency path="/sCorpNonPassiveIncome"/>
             <Dependency path="/nonRentalRoyaltyScheduleEIncome"/>
             <Dependency path="/rentalIncome"/>
+            <Dependency path="/royaltyIncome"/>
             <Dependency path="/taxExemptInterestIncome"/>
             <Dependency path="/taxableInterestIncome"/>
             <Dependency path="/ordinaryDividendsIncome"/>
+            <Dependency path="/qualifiedDividendsIncome"/>
             <GreaterOf>
               <Dependency path="/netShortTermGainOrLoss"/>
               <Dollar>0</Dollar>
