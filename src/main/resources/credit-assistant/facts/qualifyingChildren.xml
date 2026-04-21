@@ -2,6 +2,13 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
+    <Fact path="/qualifyingChildren">
+      <Name>Qualifying Children</Name>
+      <Description>A possible qualifying child</Description>
+      <Writable>
+        <Collection/>
+      </Writable>
+    </Fact>
     <Fact path="/relationshipOptions">
       <Name>Relationship Options</Name>
       <Description>The IRS allowed relationship options for a qualifying child</Description>
@@ -25,79 +32,79 @@
         </EnumOptions>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/name">
+    <Fact path="/qualifyingChildren/*/name">
       <Name>Name of child</Name>
       <Writable>
         <String/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/livedWithYouUS">
+    <Fact path="/qualifyingChildren/*/livedWithYouUS">
       <Name>Lived with you in the US</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/someoneElseCanClaim">
+    <Fact path="/qualifyingChildren/*/someoneElseCanClaim">
       <Name>Someone else can claim this child</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isClaimingQCRegardless">
+    <Fact path="/qualifyingChildren/*/isClaimingQCRegardless">
       <Name>Taxpayer is claiming this QC even though someone else can claim them</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/marriedFilingJointly">
+    <Fact path="/qualifyingChildren/*/marriedFilingJointly">
       <Name>Child is filing a joint return</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/mfjForRefundOnly">
+    <Fact path="/qualifyingChildren/*/mfjForRefundOnly">
       <Name>Child is filing a joint return solely for the purposes of claiming a refund</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isPermanentlyDisabled">
+    <Fact path="/qualifyingChildren/*/isPermanentlyDisabled">
       <Name>Child is permanently and totally disabled</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/relationship">
+    <Fact path="/qualifyingChildren/*/relationship">
       <Name>Child relationship to taxpayer</Name>
       <Writable>
         <Enum optionsPath="/relationshipOptions"/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/ageRange">
+    <Fact path="/qualifyingChildren/*/ageRange">
       <Name>Child age range</Name>
       <Writable>
         <Enum optionsPath="/ageRangeOptionsQC"/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isFullTimeStudent">
+    <Fact path="/qualifyingChildren/*/isFullTimeStudent">
       <Name>Child is full-time student</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/validSSN">
+    <Fact path="/qualifyingChildren/*/validSSN">
       <Name>Child has valid SSN</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse">
+    <Fact path="/qualifyingChildren/*/isQCYoungerThanSelfOrSpouse">
       <Name>Child is younger than self or spouse, if MFJ</Name>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming">
+    <Fact path="/qualifyingChildren/*/canSomeoneElseClaimAndTPNotClaiming">
       <Derived>
         <All>
           <Dependency path="../someoneElseCanClaim"/>
@@ -107,7 +114,7 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
+    <Fact path="/qualifyingChildren/*/flowShouldSeeStudentQuestion">
       <Derived>
         <Equal>
           <Left>
@@ -119,7 +126,7 @@
         </Equal>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldSeeAgeComparison">
+    <Fact path="/qualifyingChildren/*/flowShouldSeeAgeComparison">
       <Derived>
         <All>
           <Any>
@@ -177,7 +184,7 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldShowMFJFiling">
+    <Fact path="/qualifyingChildren/*/flowShouldShowMFJFiling">
       <Derived>
         <Any>
           <Not>
@@ -192,7 +199,7 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/mfjFilingTest">
+    <Fact path="/qualifyingChildren/*/mfjFilingTest">
       <Derived>
         <Any>
           <Not>
@@ -207,19 +214,19 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldShowDisability">
+    <Fact path="/qualifyingChildren/*/flowShouldShowDisability">
       <Derived>
         <Dependency path="../mfjFilingTest"/>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldShowRelationship">
+    <Fact path="/qualifyingChildren/*/flowShouldShowRelationship">
       <Derived>
         <IsComplete>
           <Dependency path="../isPermanentlyDisabled"/>
         </IsComplete>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShouldShowValidSSN">
+    <Fact path="/qualifyingChildren/*/flowShouldShowValidSSN">
       <Derived>
         <Any>
           <All>
@@ -235,7 +242,7 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/meetsRelationshipTest">
+    <Fact path="/qualifyingChildren/*/meetsRelationshipTest">
       <Derived>
         <Not>
           <Equal>
@@ -249,7 +256,7 @@
         </Not>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/meetsAgeTestDisability">
+    <Fact path="/qualifyingChildren/*/meetsAgeTestDisability">
       <Derived>
         <Any>
           <Dependency path="../isPermanentlyDisabled"/>
@@ -264,7 +271,7 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/meetsAgeTestStudent">
+    <Fact path="/qualifyingChildren/*/meetsAgeTestStudent">
       <Derived>
         <All>
           <Equal>
@@ -279,7 +286,7 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/meetsAgeTest">
+    <Fact path="/qualifyingChildren/*/meetsAgeTest">
       <Derived>
         <Any>
           <Dependency path="../meetsAgeTestDisability"/>
@@ -287,7 +294,7 @@
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
+    <Fact path="/qualifyingChildren/*/isTentativeEitcQualifyingChild">
       <Name>Is an EITC Qualifying Child without asking about SSN (yet) </Name>
       <Derived>
         <All>
@@ -301,7 +308,7 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isEitcQualifyingChild">
+    <Fact path="/qualifyingChildren/*/isEitcQualifyingChild">
       <Name>Is an EITC Qualifying Child</Name>
       <Description>True if the child passes all criteria to be counted as a qualifying child for the EITC.</Description>
       <Derived>
@@ -314,7 +321,7 @@
     <Fact path="/countEitcQualifyingChildren">
       <Derived>
         <Count>
-          <Dependency path="/familyAndHousehold/*/isEitcQualifyingChild"/>
+          <Dependency path="/qualifyingChildren/*/isEitcQualifyingChild"/>
         </Count>
       </Derived>
     </Fact>
@@ -333,7 +340,7 @@
     <Fact path="/flowShouldAllowAddAnotherQualifyingChild">
       <Name>QC flow: allow Add another child while fewer than max EITC qualifying children</Name>
       <Description>
-        True when the raw count of /familyAndHousehold members who are EITC qualifying children is still below
+        True when the raw count of /qualifyingChildren members who are EITC qualifying children is still below
         /maxNumberOfEitcQcs (3), or when that count is not yet complete so the user is not blocked mid-edit.
         Used to enable the Qualifying Children collection add button; when three successful EITC QCs are already
         counted, adding more rows is disabled (EITC does not increase past the third QC).
@@ -375,27 +382,27 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/flowFamilyAndHouseholdEmptyForQcGating">
+    <Fact path="/flowQualifyingChildrenEmptyForQcGating">
       <Name>QC flow: household has no member rows (unset or empty collection)</Name>
       <Description>
-        True when /familyAndHousehold is not yet complete in the graph, or is complete with zero UUIDs. Used so
+        True when /qualifyingChildren is not yet complete in the graph, or is complete with zero UUIDs. Used so
         Qualifying Children knockouts do not require client-side initialization of an empty Collection.
       </Description>
       <Derived>
         <Any>
           <Not>
             <IsComplete>
-              <Dependency path="/familyAndHousehold"/>
+              <Dependency path="/qualifyingChildren"/>
             </IsComplete>
           </Not>
           <All>
             <IsComplete>
-              <Dependency path="/familyAndHousehold"/>
+              <Dependency path="/qualifyingChildren"/>
             </IsComplete>
             <Equal>
               <Left>
                 <CollectionSize>
-                  <Dependency path="/familyAndHousehold"/>
+                  <Dependency path="/qualifyingChildren"/>
                 </CollectionSize>
               </Left>
               <Right>
@@ -448,7 +455,7 @@
       <Derived>
         <All>
           <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
-          <Dependency path="/flowFamilyAndHouseholdEmptyForQcGating"/>
+          <Dependency path="/flowQualifyingChildrenEmptyForQcGating"/>
           <Not>
             <Dependency path="/hasEitcQualifyingChildren"/>
           </Not>

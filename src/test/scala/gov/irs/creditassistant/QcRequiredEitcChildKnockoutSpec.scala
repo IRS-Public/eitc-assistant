@@ -36,14 +36,14 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.set("/primaryFilerIsClaimingQualifyingChildren", true)
   }
 
-  /** Materialize an empty committed collection so /familyAndHousehold is IsComplete (mirrors `FgCollectionItem.clear`).
+  /** Materialize an empty committed collection so /qualifyingChildren is IsComplete (mirrors `FgCollectionItem.clear`).
     */
   private def materializeEmptyFamilyAndHousehold(graph: Graph): Unit = {
     val id = UUID.randomUUID().toString
-    graph.addToCollection("/familyAndHousehold", id)
+    graph.addToCollection("/qualifyingChildren", id)
     // Remove the row by deleting the member root. (`removeFromCollection` calls `set` without
     // allowCollectionItemDelete; deleting `/…/#id` lets Fact.delete shrink the parent Collection.)
-    graph.delete(s"/familyAndHousehold/#$id")
+    graph.delete(s"/qualifyingChildren/#$id")
   }
 
   "/flowCohortEitcRequiresQualifyingChildEntry" should "be true for single, under 24, claiming EITC qualifying children" in {

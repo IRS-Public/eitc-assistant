@@ -84,6 +84,14 @@
         <input type="boolean"/>
       </fg-set>
 
+      <fg-set path="/isMFSLivedTogether" if-true="/flowShouldSeeMFSLivedTogetherFullYear">
+        <question>Will you and your spouse live together all year in <fg-show path="/taxYear"/>?</question>
+        <input type="boolean">
+          <option value="true">Yes, we'll live together all year</option>
+          <option value="false">No, we won't live together all year</option>
+        </input>
+      </fg-set>
+
       <fg-set path="/writableSeparationAgreement" if-true="/flowShouldSeeWritableSeparationAgreement">
         <question>Were you legally separated according to your state law under a written separation agreement, or a decree of separate maintenance and you did not live with your spouse on the last day of <fg-show path="/taxYear"/>?</question>
         <input type="boolean"/>
@@ -283,6 +291,20 @@
 
         <h3>Military Personnel Stationed Outside the United States</h3>
         <p>If you're a member of the United States military and you were stationed outside the United States on extended active duty, select <strong>Yes</strong>.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-claiming-dependents">
+      <modal-heading>Who can I claim as a dependent?</modal-heading>
+      <modal-content>
+        <p>Dependents are typically:</p>
+        <ul>
+          <li>Children under the age of 19</li>
+          <li>Students under the age of 24 who live with their parents</li>
+          <li>Relatives or members of your household who get more than half of their financial support from you and who have a gross income under $5,050</li>
+        </ul>
+        <p>You can’t claim your spouse as a dependent if you file jointly.</p>
+        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn more about dependents.</a></p>
       </modal-content>
     </modal-dialog>
 

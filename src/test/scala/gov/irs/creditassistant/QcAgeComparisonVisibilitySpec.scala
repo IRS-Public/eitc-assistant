@@ -11,20 +11,20 @@ final class QcAgeComparisonVisibilitySpec extends AnyFlatSpec with Matchers with
 
   private def withChild(graph: Graph, childAgeRange: String): String = {
     val id = UUID.randomUUID().toString
-    graph.addToCollection("/familyAndHousehold", id)
-    graph.set(s"/familyAndHousehold/#$id/isPermanentlyDisabled", false)
-    graph.set(s"/familyAndHousehold/#$id/ageRange", FgEnum(childAgeRange, "/ageRangeOptionsQC"))
+    graph.addToCollection("/qualifyingChildren", id)
+    graph.set(s"/qualifyingChildren/#$id/isPermanentlyDisabled", false)
+    graph.set(s"/qualifyingChildren/#$id/ageRange", FgEnum(childAgeRange, "/ageRangeOptionsQC"))
     id
   }
 
-  "/familyAndHousehold/*/flowShouldSeeAgeComparison" should "be true for non-MFJ under24 when child is 19-23" in {
+  "/qualifyingChildren/*/flowShouldSeeAgeComparison" should "be true for non-MFJ under24 when child is 19-23" in {
     val g = newFactGraph()
     g.set("/knowsFilingStatus", true)
     g.set("/initialFilingStatus", FgEnum("qualifiedSurvivingSpouse", "/filingStatusOptions"))
     g.set("/ageRange", FgEnum("under24", "/ageRangeOptions"))
     val id = withChild(g, "between19And23")
     g.save()
-    booleanAt(g, s"/familyAndHousehold/#$id/flowShouldSeeAgeComparison") shouldBe true
+    booleanAt(g, s"/qualifyingChildren/#$id/flowShouldSeeAgeComparison") shouldBe true
   }
 
   it should "be true for MFJ when both spouses are under24 and child is under19" in {
@@ -37,7 +37,7 @@ final class QcAgeComparisonVisibilitySpec extends AnyFlatSpec with Matchers with
     g.set("/ageRangeSecondary", FgEnum("under24", "/ageRangeOptions"))
     val id = withChild(g, "under19")
     g.save()
-    booleanAt(g, s"/familyAndHousehold/#$id/flowShouldSeeAgeComparison") shouldBe true
+    booleanAt(g, s"/qualifyingChildren/#$id/flowShouldSeeAgeComparison") shouldBe true
   }
 
   it should "be false for MFJ mixed ages when spouse is 25-64 and child is under19" in {
@@ -50,6 +50,6 @@ final class QcAgeComparisonVisibilitySpec extends AnyFlatSpec with Matchers with
     g.set("/ageRangeSecondary", FgEnum("age25to64", "/ageRangeOptions"))
     val id = withChild(g, "under19")
     g.save()
-    assertBooleanGateOff(g, s"/familyAndHousehold/#$id/flowShouldSeeAgeComparison")
+    assertBooleanGateOff(g, s"/qualifyingChildren/#$id/flowShouldSeeAgeComparison")
   }
 }

@@ -159,6 +159,108 @@
         </Equal>
       </Derived>
     </Fact>
+    <Fact path="/capitalLossLimit">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFS"/>
+            </When>
+            <Then>
+              <Dollar>1500.00</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Dollar>3000.00</Dollar>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/deductionForTraditionalIRAContributionMax">
+      <Description>Max contribution for traditional IRAs (excluding payroll deductions) is $8000 per year. $7000 is the limit for those under 50, but we only know if someone is under 65 or not
+        We are agnostic to filing status so double to 16000 and do not take MAGI into account for simplified computation
+      </Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/deductionForTraditionalIRAContributionMax2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/deductionForTraditionalIRAContributionMax2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/deductionForTraditionalIRAContributionMax2025"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2026"/>
+            </When>
+            <Then>
+              <Dependency path="/deductionForTraditionalIRAContributionMax2026"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/hsaTotalDeductibleAmountMax">
+      <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/hsaTotalDeductibleAmountMax2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/hsaTotalDeductibleAmountMax2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/hsaTotalDeductibleAmountMax2025"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2026"/>
+            </When>
+            <Then>
+              <Dependency path="/hsaTotalDeductibleAmountMax2026"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
     <Fact path="/maxIncomeSubjectToSocialSecurityTax">
       <Description> Schedule SE Line 7. Maximum amount of combined wages and self-employment earnings subject to social security tax or
               the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>
