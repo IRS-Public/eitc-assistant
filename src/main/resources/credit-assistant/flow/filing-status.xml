@@ -361,5 +361,14 @@
         <p>See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a> for more information on a valid Social Security Number.</p>
       </modal-content>
     </modal-dialog>
+
+    <modal-dialog id="modal-confirm-mfj-to-nonmfj-qc-clear">
+      <modal-heading>Confirmation</modal-heading>
+      <modal-content>
+        <p>Changing from Married Filing Jointly to a different filing status will clear your previously entered qualifying child data. Do you still wish to continue?</p>
+        <button type="button" class="usa-button" id="modal-confirm-mfj-to-nonmfj-continue" onclick="void(0)">Continue</button>
+        <button type="button" class="usa-button usa-button--outline" data-close-modal="" id="modal-confirm-mfj-to-nonmfj-cancel" onclick="void(0)">Cancel</button>
+      </modal-content>
+    </modal-dialog>
   </page>
 </FlowConfig>
