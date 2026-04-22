@@ -75,7 +75,6 @@ buttons:
 
 alerts:
   warning:
-    heading: Warning status
     complete-required: Please complete the required fields
 
 step-indicator:
