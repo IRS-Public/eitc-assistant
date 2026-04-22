@@ -51,15 +51,6 @@
       </fg-detail>
 
       <fg-detail icon="chevron">
-        <summary>Pension income</summary>
-        <fg-set path="/pensionsIncomeTotal">
-          <question>Taxable portion of any pension</question>
-          <modal-link for="modal-taxable-pension">What is the taxable portion of a pension?</modal-link>
-          <input type="dollar"/>
-        </fg-set>
-      </fg-detail>
-
-      <fg-detail icon="chevron">
         <summary>Disability retirement benefits</summary>
         <fg-set path="/disabilityRetirementBenefits">
           <question>Disability retirement benefits before minimum retirement age</question>
@@ -69,10 +60,10 @@
       </fg-detail>
 
       <fg-detail icon="chevron">
-        <summary>Inmate pay</summary>
-        <fg-set path="/inmatePay">
-          <question>Pay received for work while an inmate in a penal institution</question>
-          <modal-link for="modal-inmate-pay">What is inmate pay?</modal-link>
+        <summary>Foreign earned income</summary>
+        <fg-set path="/non2555ForeignIncome">
+          <question>Foreign earned income not reported on Form 2555</question>
+          <modal-link for="modal-foreign-income">What is foreign earned income?</modal-link>
           <input type="dollar"/>
         </fg-set>
       </fg-detail>
@@ -167,6 +158,15 @@
       <h3>Other Income</h3>
 
       <fg-detail icon="chevron">
+        <summary>Pension income</summary>
+        <fg-set path="/pensionsIncomeTotal">
+          <question>Taxable portion of any pension</question>
+          <modal-link for="modal-taxable-pension">What is the taxable portion of a pension?</modal-link>
+          <input type="dollar"/>
+        </fg-set>
+      </fg-detail>
+
+      <fg-detail icon="chevron">
         <summary>Pre-tax retirement accounts</summary>
         <fg-set path="/preTaxRetirementAccountIncome">
           <question>Total distributions you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> received from pre-tax retirement accounts in <fg-show path="/taxYear"/></question>
@@ -202,6 +202,14 @@
           <input type="dollar"/>
         </fg-set>
       </fg-detail>
+      <fg-detail icon="chevron">
+        <summary>Pay earned as an inmate</summary>
+        <fg-set path="/inmatePay">
+          <question>Pay received for work while an inmate in a penal institution</question>
+          <modal-link for="modal-inmate-pay">What is inmate pay?</modal-link>
+          <input type="dollar"/>
+        </fg-set>
+      </fg-detail>
 
       <fg-detail icon="chevron">
         <summary>Other miscellaneous income</summary>
@@ -225,7 +233,7 @@
 
         <h3>Military &amp; Combat Pay</h3>
         <p>You can also choose to include your nontaxable combat pay in earned income for the EITC. Your employer reported your nontaxable combat pay in box 12 with code Q on your Form W-2.</p>
-        <p>This choice may increase or decrease your EITC. Calculate your EITC both ways to see which option provides the greater benefit. For more information, see Nontaxable combat pay in Publication 596, Earned Income Credit.</p>
+        <p>This choice may increase or decrease your EITC. Calculate your EITC both ways to see which option provides the greater benefit. For more information, see Nontaxable combat pay in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">Publication 596</a>, Earned Income Credit.</p>
 
         <h3>Temporary &amp; Short-term Disability Insurance</h3>
         <p>If you took parental leave or were temporarily disabled during the year and your employer paid you, they reported your income on your W-2. Enter that income here.</p>
@@ -246,7 +254,7 @@
           <li>Provide other temporary, on-demand or freelance work</li>
         </ul>
         <p>Your gross income includes all the income you received. We will subtract your expenses later.</p>
-        <p>For more information, visit Manage Taxes for Your Gig Work</p>
+        <p>For more information, visit <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">Manage Taxes for Your Gig Work</a></p>
       </modal-content>
     </modal-dialog>
 
@@ -262,7 +270,7 @@
           <li>Are a minister or member of a religious order</li>
         </ul>
         <p>Your gross income includes all the income you received. We will subtract your expenses later.</p>
-        <p>For more information, visit Self-employed individuals tax center | Internal Revenue Service</p>
+        <p>For more information, visit <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">Self-employed individuals tax center</a></p>
       </modal-content>
     </modal-dialog>
 
@@ -279,7 +287,19 @@
       <modal-content>
         <p>Pay you received for work you performed while an inmate in a penal institution isn't earned income when figuring the earned income credit.</p>
         <p>This includes paid work performed while in a work release program or while in a halfway house.</p>
-        <p>For more information, see Publication 596, Earned Income Credit, Earnings while an inmate.</p>
+        <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297688">Publication 596</a>, Earned Income Credit, Earnings while an inmate.</p>
+      </modal-content>
+    </modal-dialog>
+
+    <modal-dialog id="modal-foreign-income">
+      <modal-heading>Pay Earned as an Inmate</modal-heading>
+      <modal-content>
+
+        <p>Foreign earned income is income earned while living and working outside the United States, District of Columbia, or U.S. possessions or territories.</p>
+        <p>If you’re a U.S. government employee working outside the United States, that income is not considered foreign earned.</p>
+        <p>If you're not a government employee and you work at an embassy, we consider that income as foreign income for the EITC.</p>
+        <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Form 2555</a>, Foreign Earned Income.</p>
+        <p> Note: If you elect to file Form 2555, you are not eligible to claim the EITC.</p>
       </modal-content>
     </modal-dialog>
 
@@ -297,7 +317,7 @@
         <ul>
           <li>You contributed after-tax dollars (use the General Rule and Simplified Method to calculate)</li>
         </ul>
-        <p>Additional rules apply if you received payments before age 59 and a half, are a survivor or beneficiary, or have other situations. For more information visit Tax Topic 410.</p>
+        <p>Additional rules apply if you received payments before age 59 and a half, are a survivor or beneficiary, or have other situations. For more information visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc410">Tax Topic 410</a>.</p>
       </modal-content>
     </modal-dialog>
 
@@ -313,8 +333,8 @@
       <modal-heading>Social Security and Railroad Retirement Benefits</modal-heading>
       <modal-content>
         <p>For the EITC, include only the taxable amount of your Social Security and railroad retirement benefits.</p>
-        <p>IRS Notice 703 can help you determine if any of your Social Security benefits are taxable. For more information visit Tax Topic 423.</p>
-        <p>To compute the taxable amount of your benefits, see "Which worksheet to use" in Publication 915, Social Security and Equivalent Railroad Retirement Benefits.</p>
+        <p>IRS Notice 703 can help you determine if any of your Social Security benefits are taxable. For more information visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc423">Tax Topic 423</a>.</p>
+        <p>To compute the taxable amount of your benefits, see "Which worksheet to use" in <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">Publication 915</a>, Social Security and Equivalent Railroad Retirement Benefits.</p>
       </modal-content>
     </modal-dialog>
 
@@ -328,7 +348,7 @@
           <li>Received as payment for teaching, research, or other services required as a condition for receiving the scholarship or fellowship grant</li>
         </ul>
         <p>Don't include amounts you received for services required by the National Health Service Corps Scholarship Program, the Armed Forces Health Professions Scholarship and Financial Assistance Program, or a comprehensive student work-learning-service program operated by a work college.</p>
-        <p>For more information visit Tax Topic 421.</p>
+        <p>For more information visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">Tax Topic 421</a>.</p>
       </modal-content>
     </modal-dialog>
 
