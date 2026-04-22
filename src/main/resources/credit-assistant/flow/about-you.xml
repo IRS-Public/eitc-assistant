@@ -186,7 +186,7 @@
     <modal-dialog id="modal-confirm-tax-year-change">
       <modal-heading>Confirmation</modal-heading>
       <modal-content>
-        <p>Changing year will clear your previously entered data. Do you still wish to continue?</p>
+        <p>Changing <strong>year</strong> will clear your previously entered data. Do you still wish to continue?</p>
         <button type="button" class="usa-button" id="modal-confirm-tax-year-change-continue" onclick="void(0)">Continue</button>
         <button type="button" class="usa-button usa-button--outline" data-close-modal="" id="modal-confirm-tax-year-change-cancel" onclick="void(0)">Cancel</button>
       </modal-content>
