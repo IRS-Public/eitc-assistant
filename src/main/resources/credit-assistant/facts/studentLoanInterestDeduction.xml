@@ -36,9 +36,7 @@
           <Not>
             <Dependency path="/isFilingStatusMFS"/>
           </Not>
-          <Not>
-            <Dependency path="/treatFilersAsDependents "/>
-          </Not>
+          <Dependency path="/neitherFilerIsClaimedOnAnotherReturn"/>
           <LessThanOrEqual>
             <Left>
               <Dependency path="/magiForStudentLoanInterestDeduction"/>
