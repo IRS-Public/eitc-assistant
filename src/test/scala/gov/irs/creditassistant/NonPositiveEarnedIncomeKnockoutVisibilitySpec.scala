@@ -13,9 +13,9 @@ final class NonPositiveEarnedIncomeKnockoutVisibilitySpec
 
   private val knockoutPath = "/flowShouldShowNonPositiveEarnedIncomeKnockout"
 
-  it should "not be complete true on a fresh graph (before income answers)" in {
+  it should "be true on a fresh graph when earned-income inputs are still blank" in {
     val graph = newFactGraph()
-    assertBooleanGateOff(graph, knockoutPath)
+    booleanAt(graph, knockoutPath) shouldBe true
   }
 
   it should "be true when wage and self-employment inputs are complete and earned income is not positive" in {
@@ -36,6 +36,13 @@ final class NonPositiveEarnedIncomeKnockoutVisibilitySpec
     booleanAt(graph, "/hasEarnedIncome") shouldBe true
   }
 
+  it should "be false when jobs income is positive and self-employment fields remain blank" in {
+    val graph = newFactGraph()
+    graph.set("/jobsIncomeTotal", Dollar(5000))
+    booleanAt(graph, knockoutPath) shouldBe false
+    booleanAt(graph, "/hasEarnedIncome") shouldBe true
+  }
+
   it should "be false when net self-employment makes earned income positive" in {
     val graph = newFactGraph()
     graph.set("/jobsIncomeTotal", Dollar(0))
@@ -43,5 +50,14 @@ final class NonPositiveEarnedIncomeKnockoutVisibilitySpec
     graph.set("/selfEmploymentGrossIncomeWorkRelatedExpenses", Dollar(0))
     booleanAt(graph, knockoutPath) shouldBe false
     booleanAt(graph, "/hasEarnedIncome") shouldBe true
+  }
+
+  it should "be true when self-employment gross is non-zero but net earned income is not positive" in {
+    val graph = newFactGraph()
+    graph.set("/jobsIncomeTotal", Dollar(0))
+    graph.set("/selfEmploymentGrossIncome", Dollar(100))
+    graph.set("/selfEmploymentGrossIncomeWorkRelatedExpenses", Dollar(200))
+    booleanAt(graph, knockoutPath) shouldBe true
+    booleanAt(graph, "/hasEarnedIncome") shouldBe false
   }
 }

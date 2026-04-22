@@ -332,7 +332,7 @@
       </modal-content>
     </modal-dialog>
 
-    <fg-alert alert-type="error" alert-key="non-positive-earned-income-knockout" knockout="true" condition="/flowShouldShowNonPositiveEarnedIncomeKnockout" operator="isTrue">
+    <fg-alert alert-type="error" alert-key="non-positive-earned-income-knockout" knockout="true" condition="/flowShouldShowNonPositiveEarnedIncomeKnockoutAfterContinue" operator="isTrue">
       <heading>You don’t qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         To claim the EITC, you must have had earned income (for example, wages or net earnings from self-employment). Based on the income you entered, your earned income for <fg-show path="/taxYear"/> was zero or less, so you don’t qualify for the EITC.
