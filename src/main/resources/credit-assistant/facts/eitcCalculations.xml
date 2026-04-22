@@ -51,8 +51,8 @@
       <Name>Show non-positive earned income EITC knockout (Income flow)</Name>
       <Description>
         When to show the Income page knockout for EITC requiring earned income. True when all
-        earned-income inputs are still blank, or when at least one earned-income input is present
-        and combined earned income is still not positive.
+        inputs that feed /earnedIncomeTotal (income module) are still blank, or when at least one
+        of those inputs is present and /earnedIncomeTotal is still not positive.
       </Description>
       <Derived>
         <Any>
@@ -60,6 +60,21 @@
             <Not>
               <IsComplete>
                 <Dependency path="/jobsIncomeTotal"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <IsComplete>
+                <Dependency path="/workNoTaxesWithheld"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <IsComplete>
+                <Dependency path="/disabilityRetirementBenefits"/>
+              </IsComplete>
+            </Not>
+            <Not>
+              <IsComplete>
+                <Dependency path="/non2555ForeignIncome"/>
               </IsComplete>
             </Not>
             <Not>
@@ -77,6 +92,15 @@
             <Any>
               <IsComplete>
                 <Dependency path="/jobsIncomeTotal"/>
+              </IsComplete>
+              <IsComplete>
+                <Dependency path="/workNoTaxesWithheld"/>
+              </IsComplete>
+              <IsComplete>
+                <Dependency path="/disabilityRetirementBenefits"/>
+              </IsComplete>
+              <IsComplete>
+                <Dependency path="/non2555ForeignIncome"/>
               </IsComplete>
               <IsComplete>
                 <Dependency path="/selfEmploymentGrossIncome"/>
