@@ -11,6 +11,7 @@
       </Derived>
     </Fact>
     <Fact path="/earnedIncomeTotal">
+      <!--      TODO: update this and the other income writables to include all the categories-->
       <Description>
         Earned Income includes:
         Wages, salary, or tips where federal income taxes are withheld on Form W-2, box 1
@@ -795,6 +796,20 @@
         </GreaterOf>
       </Derived>
     </Fact>
+    <Fact path="/isReceivingEitc">
+      <Name>Is receiving EITC</Name>
+      <Description>Whether the TP is receiving EITC</Description>
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/earnedIncomeCredit"/>
+          </Left>
+          <Right>
+            <Dollar>0</Dollar>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
     <Fact path="/belowEitcInvestmentIncomeLimit">
       <Name>Below EITC Investment Income Limit</Name>
       <Description>Whether the TP's Investment Income is low enough for the EITC
@@ -809,6 +824,155 @@
             <Dependency path="/eitcInvestmentIncomeLimit"/>
           </Right>
         </LessThanOrEqual>
+      </Derived>
+    </Fact>
+    <Fact path="/specialTransitionEitcAmounts">
+      <Name>Special transition EITC amounts</Name>
+      <Description>The amount EITC given when the user is close to the phaseout amount for their filing status and
+        number of QC</Description>
+      <Derived>
+        <Switch>
+          <!-- MFJ Limits -->
+          <Case>
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <Switch>
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>3</Int>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Dollar>5</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>2</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>3</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>1</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>2</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>0</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>0</Dollar>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+          <!-- Not MFJ Limits -->
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Switch>
+                <Case>
+                  <When>
+                    <GreaterThanOrEqual>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>3</Int>
+                      </Right>
+                    </GreaterThanOrEqual>
+                  </When>
+                  <Then>
+                    <Dollar>4</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>2</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>2</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>1</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>1</Dollar>
+                  </Then>
+                </Case>
+                <Case>
+                  <When>
+                    <Equal>
+                      <Left>
+                        <Dependency path="/eitcQualifyingChildren"/>
+                      </Left>
+                      <Right>
+                        <Int>0</Int>
+                      </Right>
+                    </Equal>
+                  </When>
+                  <Then>
+                    <Dollar>2</Dollar>
+                  </Then>
+                </Case>
+              </Switch>
+            </Then>
+          </Case>
+        </Switch>
       </Derived>
     </Fact>
   </Facts>

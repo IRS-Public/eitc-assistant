@@ -42,6 +42,139 @@
       </Writable>
     </Fact>
     <!--FLOW ELIGIBILITY AND TESTS-->
+    <Fact path="/maybeEligibleForEitcWithQc">
+      <Name>Whether the TP may be eligible for the EITC</Name>
+      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
+        Credit (EITC)</Description>
+      <Derived>
+        <All>
+          <GreaterThan>
+            <Left>
+              <Dependency path="/eitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </GreaterThan>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/noEitcDueToSeparateFilingFromSpouse">
+      <Description>
+        Used for display in the flow. The TP doesn't have EITC because they are filing separately
+        from their
+        spouse (either MFS or HOH) and have no qualifying children or they did not meet the special
+        rule for spearated
+        spouses
+      </Description>
+      <Derived>
+        <All>
+          <!-- If we don't have the information we need, don't rule out EITC yet -->
+          <IsComplete>
+            <Dependency path="/filingStatus" module="filingStatus"/>
+          </IsComplete>
+          <IsComplete>
+            <Dependency path="/specialRuleForSeparatedSpouses" module="filers"/>
+          </IsComplete>
+          <!-- They are married and not filing jointly-->
+          <Dependency module="filers" path="/isMarried"/>
+          <Not>
+            <Dependency path="/isFilingStatusMFJ"/>
+          </Not>
+          <Any>
+            <!-- and either they did not meet the special rule for separated spouses -->
+            <Not>
+              <Dependency module="filers" path="/specialRuleForSeparatedSpouses"/>
+            </Not>
+            <!-- or they did not have any qualifying children -->
+            <Equal>
+              <Left>
+                <Dependency path="/eitcQualifyingChildren"/>
+              </Left>
+              <Right>
+                <Int>0</Int>
+              </Right>
+            </Equal>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/maybeEligibleForEitcWithoutQc">
+      <Name>Whether the TP may be eligible for the EITC</Name>
+      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
+        Credit (EITC)</Description>
+      <Derived>
+        <All>
+          <!-- Due to scope, every TP and their spouse at this point has been a full year US
+            resident so we do not worry about that req. -->
+          <Equal>
+            <Left>
+              <Dependency path="/eitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </Equal>
+          <Any>
+            <!-- Married filers must file jointly. They cannot file as MFS or as HOH
+                 and receive EITC without having QCs -->
+            <Dependency path="/isFilingStatusMFJ"/>
+            <Not>
+              <Dependency module="filers" path="/isMarried"/>
+            </Not>
+          </Any>
+          <!-- The filer cannot be claimed as a dependent -->
+          <Not>
+            <Dependency module="filers" path="/treatFilersAsDependents"/>
+          </Not>
+          <Dependency path="/filersAgeTestForEitcWithNoQC"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/filersAgeTestForEitcWithNoQC">
+      <Name>TP(s) age test for EITC with no QC</Name>
+      <Description>TP(s) age test for EITC with no qualifying children</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <!-- if MFJ, you and your spouse must meet these requirements -->
+            <When>
+              <Dependency path="/isFilingStatusMFJ"/>
+            </When>
+            <Then>
+              <All>
+                <Any>
+                  <!-- You or your spouse must be greater than or equal to 25 but less than 65 at
+                    the end of the tax year -->
+                  <All>
+                    <Dependency module="filers" path="/primaryFiler/age25OrOlderForEitc"/>
+                    <Dependency module="filers" path="/primaryFiler/age64OrYoungerForEitc"/>
+                  </All>
+                  <All>
+                    <Dependency module="filers" path="/secondaryFiler/age25OrOlderForEitc"/>
+                    <Dependency module="filers" path="/secondaryFiler/age64OrYoungerForEitc"/>
+                  </All>
+                </Any>
+              </All>
+            </Then>
+          </Case>
+          <Case>
+            <!-- if not MFJ, only you -->
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <!-- You must be greater than or equal to 25 but less than 65 at the
+                end of the tax year -->
+              <All>
+                <Dependency module="filers" path="/primaryFiler/age25OrOlderForEitc"/>
+                <Dependency module="filers" path="/primaryFiler/age64OrYoungerForEitc"/>
+              </All>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
     <Fact path="/failsEitcAgeBandWithoutQualifyingChildren">
       <Name>Fails EITC age band without qualifying children (age range buckets)</Name>
       <Description>
@@ -195,10 +328,10 @@
         <Any>
           <All>
             <IsComplete>
-              <Dependency path="/treatFilersAsDependents"/>
+              <Dependency module="filers" path="/treatFilersAsDependents"/>
             </IsComplete>
             <Not>
-              <Dependency path="/treatFilersAsDependents"/>
+              <Dependency module="filers" path="/treatFilersAsDependents"/>
             </Not>
           </All>
           <All>
@@ -234,19 +367,109 @@
         </All>
       </Derived>
     </Fact>
+    <Fact path="/maybeEligibleForEitcBase">
+      <Name>Whether the TP may be eligible for the EITC Base</Name>
+      <Description>Base rules that define whether the TP passes various tests to be eligible for
+        the Earned Income Tax
+        Credit (EITC) before running child-specific tests</Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/hasForm2555ForeignEarnedIncome"/>
+          </Not>
+          <Dependency path="/hasEarnedIncome"/>
+          <Dependency path="/belowEitcEarnedIncomeLimit"/>
+          <Dependency path="/belowEitcAgiLimit"/>
+          <Dependency path="/belowEitcInvestmentIncomeLimit"/>
+          <Dependency module="filers" path="/filersCouldQualifyForEitc"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/hasZeroEitcQualifyingChildren">
+      <Name>Has zero EITC Qualifying Children</Name>
+      <Description>Whether the TP(s) has zero EITC qualifying children</Description>
+      <Derived>
+        <Equal>
+          <Left>
+            <Dependency path="/eitcQualifyingChildren"/>
+          </Left>
+          <Right>
+            <Int>0</Int>
+          </Right>
+        </Equal>
+      </Derived>
+    </Fact>
+    <Fact path="/hasMoreThanZeroEitcQualifyingChildren">
+      <Name>Number of EITC Qualifying Children is greater than zero.</Name>
+      <Description>The number of dependents who qualify as QCs for EITC is greater than zero.</Description>
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Count>
+              <Dependency path="/familyAndHousehold/*/eitcQualifyingChild"/>
+            </Count>
+          </Left>
+          <Right>
+            <Int>0</Int>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/hasManyEitcQualifyingChildren">
+      <Derived>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/eitcQualifyingChildren"/>
+          </Left>
+          <Right>
+            <Int> 1 </Int>
+          </Right>
+        </GreaterThan>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcQcTest">
+      <Name>EITC QC Test</Name>
+      <Description>Whether the TP qualifies for EITC when accounting for the possibility that they could be the QC of another TP.</Description>
+      <Derived>
+        <Any>
+          <Not>
+            <!-- TP is not QC of another -->
+            <Dependency path="/eitcQcOfAnother"/>
+          </Not>
+          <!-- TP QC of another and they are not required to file -->
+          <All>
+            <Dependency path="/eitcQcOfAnother"/>
+            <Not>
+              <Dependency path="/eitcQcOfAnotherRequiredToFile"/>
+            </Not>
+            <Any>
+              <!-- and they choose not to file, so TP is not a QC -->
+              <Not>
+                <Dependency path="/eitcQcOfAnotherIsFiling"/>
+              </Not>
+              <!-- or they file for refund only, so TP is not a QC -->
+              <All>
+                <Dependency path="/eitcQcOfAnotherIsFiling"/>
+                <Dependency path="/eitcQcOfAnotherIsFilingRefundOnly"/>
+              </All>
+            </Any>
+          </All>
+        </Any>
+      </Derived>
+    </Fact>
     <Fact path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired">
       <Name>Results guard: QC entry cohort but zero EITC qualifying children</Name>
       <Description>
         True when /flowCohortEitcRequiresQualifyingChildEntry applies (user must enter at least one EITC QC story),
-        /qualifyingChildren is complete, and /eitcQualifyingChildren equals 0. Used so /maybeEligibleForEitc cannot
+        /familyAndHousehold is complete, and /eitcQualifyingChildren equals 0. Used so /maybeEligibleForEitc cannot
         read as eligible when the household list is resolved but no EITC QCs remain. Gating on a complete
-        /qualifyingChildren avoids treating an unset collection as &#x201C;zero children&#x201D; mid-flow.
+        /familyAndHousehold avoids treating an unset collection as &#x201C;zero children&#x201D; mid-flow.
       </Description>
       <Derived>
         <All>
           <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
           <IsComplete>
-            <Dependency path="/qualifyingChildren"/>
+            <Dependency path="/familyAndHousehold"/>
           </IsComplete>
           <Equal>
             <Left>
@@ -256,6 +479,43 @@
               <Int>0</Int>
             </Right>
           </Equal>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/maybeEligibleForEitc">
+      <Name>Whether the TP may be eligible for the EITC</Name>
+      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
+        Credit (EITC) prior to
+        the EITC section of the flow. After this, we still need to test
+        1. If the TP is the QC of another TP
+        2. If they
+        have been disqualified from taking EITC by the IRS</Description>
+      <Derived>
+        <All>
+          <Dependency path="/maybeEligibleForEitcBase"/>
+          <Not>
+            <Dependency path="/noEitcDueToSeparateFilingFromSpouse"/>
+          </Not>
+          <Not>
+            <Dependency path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired"/>
+          </Not>
+          <Any>
+            <Dependency path="/maybeEligibleForEitcWithQc"/>
+            <Dependency path="/maybeEligibleForEitcWithoutQc"/>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcQualified">
+      <Name>Whether the TP is eligible for the EITC</Name>
+      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
+        Credit (EITC) in finality, after the EITC sections of the flow</Description>
+      <Derived>
+        <All>
+          <Dependency path="/maybeEligibleForEitc"/>
+          <Dependency path="/eitcQcTest"/>
+          <!--          EITC Assistant does not support the notice test-->
+          <!--          <Dependency path="/eitcNoticeTest"/>-->
         </All>
       </Derived>
     </Fact>
@@ -357,7 +617,7 @@
           <All>
             <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
             <IsComplete>
-              <Dependency path="/qualifyingChildren"/>
+              <Dependency path="/familyAndHousehold"/>
             </IsComplete>
           </All>
           <Dependency path="/userDeclinesEitcQualifyingChildrenForDisqualifier"/>
