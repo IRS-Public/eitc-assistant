@@ -407,13 +407,15 @@
       </Derived>
     </Fact>
     <Fact path="/flowCohortEitcRequiresQualifyingChildEntry">
-      <Name>Flow cohort: must have an EITC qualifying child when claiming QC (Single/QSS/MFJ age; MFS; married HOH)</Name>
+      <Name>Flow cohort: must have an EITC qualifying child when claiming QC (Single/QSS/MFJ age; MFS; HOH)</Name>
       <Description>
         True when the taxpayer completed and answered yes to claiming EITC qualifying children, and any of:
         (1) Single, QSS, or MFJ and outside the 25&#x2013;64 age band for EITC without a qualifying child
-        (same basis as /failsEitcAgeBandWithoutQualifyingChildren); (2) Married Filing Separately; or
-        (3) Head of Household and married (considered married for HOH). MFS and married HOH cannot use EITC
-        without a qualifying child under flow rules and must enter at least one EITC QC story on Qualifying Children.
+        (same basis as /failsEitcAgeBandWithoutQualifyingChildren); (2) Married Filing Separately;
+        (3) Head of Household and married (considered married for HOH); or (4) Head of Household not married
+        (Are you married? No) and outside the 25&#x2013;64 age band for EITC without a qualifying child.
+        MFS and either HOH variant cannot use EITC without a qualifying child under flow rules and must enter
+        at least one EITC QC story on Qualifying Children.
       </Description>
       <Derived>
         <All>
@@ -434,6 +436,16 @@
             <All>
               <Dependency path="/isFilingStatusHOH"/>
               <Dependency path="/isHOHMarried"/>
+            </All>
+            <All>
+              <Dependency path="/isFilingStatusHOH"/>
+              <IsComplete>
+                <Dependency path="/isHOHMarried"/>
+              </IsComplete>
+              <Not>
+                <Dependency path="/isHOHMarried"/>
+              </Not>
+              <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
             </All>
           </Any>
         </All>
