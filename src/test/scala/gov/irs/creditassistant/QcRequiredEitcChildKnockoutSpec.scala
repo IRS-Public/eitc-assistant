@@ -7,8 +7,8 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 /** Fact-graph checks for Qualifying Children page knockouts when EITC requires a QC: Single/QSS/MFJ (claiming QC,
-  * outside 25–64); MFS; or married HOH — plus results-layer /maybeEligibleForEitc guard when cohort applies but
-  * /eitcQualifyingChildren is zero.
+  * outside 25–64); MFS; married HOH; or unmarried HOH (outside 25–64) — plus results-layer /maybeEligibleForEitc guard
+  * when cohort applies but /eitcQualifyingChildren is zero.
   */
 final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers with CreditAssistantTestHelpers {
 
@@ -33,6 +33,15 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.set("/isHOHMarried", true)
     graph.set("/spouseLivedWithTaxpayerLastSixMonths", false)
     graph.set("/ageRange", FgEnum("age25to64", "/ageRangeOptions"))
+    graph.set("/primaryFilerIsClaimingQualifyingChildren", true)
+  }
+
+  private def applyCohortUnmarriedHohUnder24ClaimingQc(graph: Graph): Unit = {
+    graph.set("/knowsFilingStatus", true)
+    graph.set("/initialFilingStatus", FgEnum("headOfHousehold", "/filingStatusOptions"))
+    graph.set("/isHOHMarried", false)
+    graph.set("/spouseLivedWithTaxpayerLastSixMonths", false)
+    graph.set("/ageRange", FgEnum("under24", "/ageRangeOptions"))
     graph.set("/primaryFilerIsClaimingQualifyingChildren", true)
   }
 
@@ -83,6 +92,29 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/flowCohortEitcRequiresQualifyingChildEntry") shouldBe true
   }
 
+  it should "be true for unmarried HOH, under 24, claiming EITC qualifying children" in {
+    val g = newFactGraph()
+    applyCohortUnmarriedHohUnder24ClaimingQc(g)
+    g.save()
+    booleanAt(g, "/flowCohortEitcRequiresQualifyingChildEntry") shouldBe true
+  }
+
+  it should "be true for unmarried HOH, 65 and older, claiming EITC qualifying children" in {
+    val g = newFactGraph()
+    applyCohortUnmarriedHohUnder24ClaimingQc(g)
+    g.set("/ageRange", FgEnum("65andOlder", "/ageRangeOptions"))
+    g.save()
+    booleanAt(g, "/flowCohortEitcRequiresQualifyingChildEntry") shouldBe true
+  }
+
+  it should "be false for unmarried HOH, 25–64, claiming EITC qualifying children" in {
+    val g = newFactGraph()
+    applyCohortUnmarriedHohUnder24ClaimingQc(g)
+    g.set("/ageRange", FgEnum("age25to64", "/ageRangeOptions"))
+    g.save()
+    assertBooleanGateOff(g, "/flowCohortEitcRequiresQualifyingChildEntry")
+  }
+
   "/flowShouldShowQcRequiredAddChildKnockout" should "be true for MFS 25–64 when household is empty" in {
     val g = newFactGraph()
     applyCohortMfsAge25to64ClaimingQc(g)
@@ -90,9 +122,24 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
   }
 
+  it should "be true for unmarried HOH under 24 when household is empty" in {
+    val g = newFactGraph()
+    applyCohortUnmarriedHohUnder24ClaimingQc(g)
+    g.save()
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
+  }
+
   "/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired" should "be true when MFS cohort applies and eitc QC count is zero" in {
     val g = newFactGraph()
     applyCohortMfsAge25to64ClaimingQc(g)
+    materializeEmptyFamilyAndHousehold(g)
+    g.save()
+    booleanAt(g, "/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired") shouldBe true
+  }
+
+  it should "be true when unmarried HOH under 24 cohort applies and eitc QC count is zero" in {
+    val g = newFactGraph()
+    applyCohortUnmarriedHohUnder24ClaimingQc(g)
     materializeEmptyFamilyAndHousehold(g)
     g.save()
     booleanAt(g, "/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired") shouldBe true

@@ -560,7 +560,8 @@ class FgCollection extends HTMLElement {
       this.addItem()
     }
 
-    // Qualifying Children: cohort must enter at least one EITC QC (Single/QSS/MFJ age; MFS; married HOH; claiming QCs).
+    // Qualifying Children: cohort must enter at least one EITC QC (Single/QSS/MFJ age; MFS; HOH married or
+    // unmarried outside 25–64; claiming QCs).
     // Seed one empty row on first paint when this collection uses add-item-if-true (QC household).
     if (this.getAddItemIfTruePath() && this.querySelectorAll('fg-collection-item').length === 0) {
       try {
