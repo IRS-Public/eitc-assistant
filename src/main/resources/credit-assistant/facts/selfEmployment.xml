@@ -7,10 +7,10 @@
       <Derived>
         <Subtract>
           <Minuend>
-            <Dependency path="/selfEmplomentGrossIncome"/>
+            <Dependency path="/selfEmploymentGrossIncome"/>
           </Minuend>
           <Subtrahends>
-            <Dependency path="/selfEmplomentGrossIncomeWorkRelatedExpenses"/>
+            <Dependency path="/selfEmploymentGrossIncomeWorkRelatedExpenses"/>
           </Subtrahends>
         </Subtract>
       </Derived>

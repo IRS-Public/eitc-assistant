@@ -11,6 +11,42 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
+    <Fact path="/workNoTaxesWithheld">
+      <Description>Work where federal income taxes were not withheld, such as gig work</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/inmatePay">
+      <Description>Pay received for work while an inmate in a penal institution</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/taxableScholarship">
+      <Description>A scholarship or grant that must be counted as income</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
+    <Fact path="/disabilityRetirementBenefits">
+      <Description>Disability retirement benefits before minimum retirement age</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
     <Fact path="/pensionsIncomeTotal">
       <Description>Total income for all pensions</Description>
       <Writable>
@@ -29,7 +65,7 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
-    <Fact path="/selfEmplomentGrossIncome">
+    <Fact path="/selfEmploymentGrossIncome">
       <Description>Gross self-employment income for this source</Description>
       <Writable>
         <Dollar/>
@@ -41,7 +77,7 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
-    <Fact path="/selfEmplomentGrossIncomeWorkRelatedExpenses">
+    <Fact path="/selfEmploymentGrossIncomeWorkRelatedExpenses">
       <Description>Work-related business expenses for this self-employment source</Description>
       <Writable>
         <Dollar/>
@@ -228,6 +264,10 @@
             </Minuend>
             <Subtrahends>
               <Dependency path="/jobsIncomeTotal"/>
+              <Dependency path="/workNoTaxesWithheld"/>
+              <Dependency path="/inmatePay"/>
+              <Dependency path="/taxableScholarship"/>
+              <Dependency path="/disabilityRetirementBenefits"/>
               <Dependency path="/netSelfEmploymentIncomeTotal"/>
             </Subtrahends>
           </Subtract>
@@ -268,6 +308,10 @@
       <Derived>
         <Add>
           <Dependency path="/jobsIncomeTotal"/>
+          <Dependency path="/workNoTaxesWithheld"/>
+          <Dependency path="/inmatePay"/>
+          <Dependency path="/disabilityRetirementBenefits"/>
+          <Dependency path="/taxableScholarship"/>
           <Dependency path="/pensionsIncomeTotal"/>
           <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
           <Dependency path="/excessBusinessLossAdjustment"/>
