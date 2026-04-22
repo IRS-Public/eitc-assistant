@@ -98,10 +98,10 @@
             <Dependency path="/jobsIncomeTotal"/>
           </IsComplete>
           <IsComplete>
-            <Dependency path="/selfEmplomentGrossIncome"/>
+            <Dependency path="/selfEmploymentGrossIncome"/>
           </IsComplete>
           <IsComplete>
-            <Dependency path="/selfEmplomentGrossIncomeWorkRelatedExpenses"/>
+            <Dependency path="/selfEmploymentGrossIncomeWorkRelatedExpenses"/>
           </IsComplete>
           <Not>
             <Dependency path="/hasEarnedIncome"/>
