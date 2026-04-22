@@ -867,6 +867,9 @@ function handleSectionContinue (event) {
     event.preventDefault()
     return false
   }
+  if (handleIncomeNonPositiveEarnedIncomeKnockoutRevealOnContinue(event)) {
+    return false
+  }
   if (handleQualifyingChildrenRequiredQcKnockoutRevealOnContinue(event)) {
     return false
   }
@@ -876,6 +879,49 @@ function handleSectionContinue (event) {
   if (handleAdjustmentsAgiKnockoutRevealOnContinue(event)) {
     return false
   }
+  return true
+}
+
+/**
+ * First Continue from Income while earned income is non-positive:
+ * set /flowClickedNextOnIncomePageForNonPositiveEarnedIncomeKnockout, reveal the knockout in-place
+ * (no navigation). Subsequent Continue attempts are blocked by validateSectionForNavigation while
+ * the knockout is visible.
+ */
+function handleIncomeNonPositiveEarnedIncomeKnockoutRevealOnContinue (event) {
+  const path = window.location.pathname
+  if (!path.includes('/eitc/income')) {
+    return false
+  }
+  let shouldReveal
+  try {
+    const reveal = factGraph.get('/flowShouldShowNonPositiveEarnedIncomeKnockout')
+    if (!reveal.hasValue) return false
+    shouldReveal = reveal.get === true
+  } catch (e) {
+    console.error('Error reading /flowShouldShowNonPositiveEarnedIncomeKnockout in handleIncomeNonPositiveEarnedIncomeKnockoutRevealOnContinue', e)
+    return false
+  }
+  if (!shouldReveal) {
+    return false
+  }
+  try {
+    const clicked = factGraph.get('/flowClickedNextOnIncomePageForNonPositiveEarnedIncomeKnockout')
+    if (clicked.hasValue && clicked.get === true) {
+      return false
+    }
+  } catch (e) {
+    console.error('Error reading /flowClickedNextOnIncomePageForNonPositiveEarnedIncomeKnockout in handleIncomeNonPositiveEarnedIncomeKnockoutRevealOnContinue', e)
+    return false
+  }
+  factGraph.set('/flowClickedNextOnIncomePageForNonPositiveEarnedIncomeKnockout', true)
+  saveFactGraph()
+  document.dispatchEvent(new CustomEvent('fg-update'))
+  const knockoutAlert = document.querySelector('fg-alert[knockout="true"]:not(.hidden)')
+  if (knockoutAlert) {
+    focusKnockoutAlert(knockoutAlert)
+  }
+  event.preventDefault()
   return true
 }
 
