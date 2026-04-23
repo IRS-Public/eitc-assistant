@@ -11,15 +11,6 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
-    <Fact path="/workNoTaxesWithheld">
-      <Description>Work where federal income taxes were not withheld, such as gig work</Description>
-      <Writable>
-        <Dollar/>
-      </Writable>
-      <Placeholder>
-        <Dollar>0</Dollar>
-      </Placeholder>
-    </Fact>
     <Fact path="/inmatePay">
       <Description>Pay received for work while an inmate in a penal institution</Description>
       <Writable>
@@ -273,7 +264,6 @@
             </Minuend>
             <Subtrahends>
               <Dependency path="/jobsIncomeTotal"/>
-              <Dependency path="/workNoTaxesWithheld"/>
               <Dependency path="/inmatePay"/>
               <Dependency path="/taxableScholarship"/>
               <Dependency path="/disabilityRetirementBenefits"/>
@@ -318,7 +308,6 @@
       <Derived>
         <Add>
           <Dependency path="/jobsIncomeTotal"/>
-          <Dependency path="/workNoTaxesWithheld"/>
           <Dependency path="/inmatePay"/>
           <Dependency path="/disabilityRetirementBenefits"/>
           <Dependency path="/non2555ForeignIncome"/>
@@ -399,7 +388,6 @@
       <Derived>
         <Add>
           <Dependency path="/jobsIncomeTotal"/>
-          <Dependency path="/workNoTaxesWithheld"/>
           <Dependency path="/disabilityRetirementBenefits"/>
           <Dependency path="/non2555ForeignIncome"/>
           <Dependency path="/netSelfEmploymentIncomeTotal"/>

@@ -26,14 +26,6 @@
         </fg-set>
       </fg-detail>
 
-      <fg-detail icon="chevron">
-        <summary>Work with no federal taxes withheld</summary>
-        <fg-set path="/workNoTaxesWithheld">
-          <question>Work where federal income taxes were not withheld</question>
-          <modal-link for="modal-work-no-taxes-withheld">What are jobs where federal taxes aren't withheld?</modal-link>
-          <input type="dollar"/>
-        </fg-set>
-      </fg-detail>
 
       <fg-detail icon="chevron">
         <summary>Self-employment income and expenses</summary>
