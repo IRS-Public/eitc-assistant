@@ -64,11 +64,6 @@
             </Not>
             <Not>
               <IsComplete>
-                <Dependency path="/workNoTaxesWithheld"/>
-              </IsComplete>
-            </Not>
-            <Not>
-              <IsComplete>
                 <Dependency path="/disabilityRetirementBenefits"/>
               </IsComplete>
             </Not>
@@ -92,9 +87,6 @@
             <Any>
               <IsComplete>
                 <Dependency path="/jobsIncomeTotal"/>
-              </IsComplete>
-              <IsComplete>
-                <Dependency path="/workNoTaxesWithheld"/>
               </IsComplete>
               <IsComplete>
                 <Dependency path="/disabilityRetirementBenefits"/>

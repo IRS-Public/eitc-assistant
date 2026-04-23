@@ -43,13 +43,6 @@ final class NonPositiveEarnedIncomeKnockoutVisibilitySpec
     booleanAt(graph, "/hasEarnedIncome") shouldBe true
   }
 
-  it should "be false when work with no federal taxes withheld alone makes earned income positive" in {
-    val graph = newFactGraph()
-    graph.set("/workNoTaxesWithheld", Dollar(3000))
-    booleanAt(graph, knockoutPath) shouldBe false
-    booleanAt(graph, "/hasEarnedIncome") shouldBe true
-  }
-
   it should "be false when disability retirement benefits alone make earned income positive" in {
     val graph = newFactGraph()
     graph.set("/disabilityRetirementBenefits", Dollar(1500))
