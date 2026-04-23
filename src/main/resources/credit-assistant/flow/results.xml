@@ -75,35 +75,35 @@
             <th scope="row">Year</th>
             <td><fg-show path="/taxYear"/></td>
             <td>
-              <a class="usa-link" href="/app/eitc/">Edit year in About you</a>
+              <a class="usa-link" href="/app/eitc/">Edit about you</a>
             </td>
           </tr>
           <tr>
             <th scope="row">Filing Status</th>
             <td><fg-show path="/flowReadableFilingStatus"/></td>
             <td>
-              <a class="usa-link" href="/app/eitc/">Edit filing status in About you</a>
+              <a class="usa-link" href="/app/eitc/filing-status/">Edit filing status</a>
             </td>
           </tr>
           <tr>
             <th scope="row">Adjusted Gross Income</th>
             <td><fg-show path="/agi"/></td>
             <td>
-              <a class="usa-link" href="/app/eitc/income/">Edit adjusted gross income in Income &amp; tax payments</a>
+              <a class="usa-link" href="/app/eitc/income/">Edit income and adjustments</a>
             </td>
           </tr>
           <tr>
             <th scope="row">Earned Income</th>
             <td>Total wages &amp; salary: <fg-show path="/jobsIncomeTotal"/></td>
             <td>
-              <a class="usa-link" href="/app/eitc/income/">Edit earned income in Income &amp; tax payments</a>
+              <a class="usa-link" href="/app/eitc/income/">Edit income</a>
             </td>
           </tr>
           <tr>
             <th scope="row">Qualifying Children</th>
             <td><fg-show path="/eitcQualifyingChildren"/></td>
             <td>
-              <a class="usa-link" href="/app/eitc/credits/">Edit qualifying children in Credits</a>
+              <a class="usa-link" href="/app/eitc/qualifying-children/">Edit qualifying children</a>
             </td>
           </tr>
         </tbody>
