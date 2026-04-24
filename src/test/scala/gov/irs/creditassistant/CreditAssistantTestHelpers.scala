@@ -23,6 +23,12 @@ trait CreditAssistantTestHelpers:
   def booleanOptionAt(graph: Graph, path: String): Option[Boolean] =
     graph.get(path).value.map(_.asInstanceOf[Boolean])
 
+  /** Complete numeric fact interpreted as whole-dollar long. */
+  def longAt(graph: Graph, path: String): Long =
+    graph.get(path).value match
+      case Some(v) => BigDecimal(v.toString).toLong
+      case None    => throw new AssertionError(s"Incomplete numeric fact at $path")
+
   /** For flow gates: not shown / not active means either incomplete or explicitly false, never complete true. */
   def assertBooleanGateOff(graph: Graph, path: String): Unit =
     if booleanOptionAt(graph, path).contains(true) then
