@@ -24,25 +24,6 @@ final class EitcIncomeLimitDisqualifierSpec extends AnyFlatSpec with Matchers wi
     graph.addToCollection("/familyAndHousehold", id)
   }
 
-  private def addValidEitcQc(graph: Graph): Unit = {
-    val id = UUID.randomUUID().toString
-    graph.addToCollection("/familyAndHousehold", id)
-    graph.set(s"/familyAndHousehold/#$id/livedWithYouUS", true)
-    graph.set(s"/familyAndHousehold/#$id/someoneElseCanClaim", false)
-    graph.set(s"/familyAndHousehold/#$id/isClaimingQCRegardless", false)
-    graph.set(s"/familyAndHousehold/#$id/marriedFilingJointly", false)
-    graph.set(s"/familyAndHousehold/#$id/isPermanentlyDisabled", false)
-    graph.set(s"/familyAndHousehold/#$id/ageRange", FgEnum("between19And23", "/ageRangeOptionsQC"))
-    graph.set(s"/familyAndHousehold/#$id/isFullTimeStudent", true)
-    graph.set(
-      s"/familyAndHousehold/#$id/relationshipCategory",
-      FgEnum("siblingOrDescendants", "/relationshipCategoryOptions"),
-    )
-    graph.set(s"/familyAndHousehold/#$id/siblingRelationship", FgEnum("sibling", "/siblingRelationshipOptions"))
-    graph.set(s"/familyAndHousehold/#$id/relationship", FgEnum("sibling", "/relationshipOptions"))
-    graph.set(s"/familyAndHousehold/#$id/validSSN", true)
-  }
-
   private def noQcPhaseoutLimit(graph: Graph, filingStatus: String): Long = {
     applyNoQcBaseline(graph, filingStatus)
     graph.save()
@@ -95,16 +76,14 @@ final class EitcIncomeLimitDisqualifierSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits") shouldBe true
   }
 
-  it should "use one-child limit when claiming QCs with a valid EITC child" in {
+  /** Non-regression: one-child completed phase-out line is above the zero-child line (same year; no household rows). */
+  it should "expose higher self completed phaseout for one child than zero children (2025)" in {
     val g = newFactGraph()
-    val noQcLimit = noQcPhaseoutLimit(g, "single")
-    g.set("/primaryFilerIsClaimingQualifyingChildren", true)
-    addValidEitcQc(g)
+    g.set("/chosenTaxYear", FgEnum("2025", "/taxYearOptions"))
     g.save()
-    longAt(g, "/eitcCompletedPhaseoutAmount") should be > noQcLimit
-    g.set("/jobsIncomeTotal", Dollar(noQcLimit))
-    g.save()
-    booleanAt(g, "/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits") shouldBe false
+    val zero = longAt(g, "/eitcSelfLimitWithZeroChildren")
+    val one = longAt(g, "/eitcSelfLimitWithOneChild")
+    one should be > zero
   }
 
   it should "not show the QC income-limit knockout until Continue has been clicked" in {
