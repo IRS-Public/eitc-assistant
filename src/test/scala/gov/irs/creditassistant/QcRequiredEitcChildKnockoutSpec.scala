@@ -55,6 +55,20 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.delete(s"/familyAndHousehold/#$id")
   }
 
+  private def addTentativeQcWithoutValidSsn(graph: Graph): String = {
+    val id = UUID.randomUUID().toString
+    graph.addToCollection("/familyAndHousehold", id)
+    graph.set(s"/familyAndHousehold/#$id/livedWithYouUS", true)
+    graph.set(s"/familyAndHousehold/#$id/someoneElseCanClaim", false)
+    graph.set(s"/familyAndHousehold/#$id/marriedFilingJointly", false)
+    graph.set(s"/familyAndHousehold/#$id/isPermanentlyDisabled", false)
+    graph.set(s"/familyAndHousehold/#$id/ageRange", FgEnum("between19And23", "/ageRangeOptionsQC"))
+    graph.set(s"/familyAndHousehold/#$id/isFullTimeStudent", true)
+    graph.set(s"/familyAndHousehold/#$id/relationship", FgEnum("sibling", "/relationshipOptions"))
+    graph.set(s"/familyAndHousehold/#$id/validSSN", false)
+    id
+  }
+
   "/flowCohortEitcRequiresQualifyingChildEntry" should "be true for single, under 24, claiming EITC qualifying children" in {
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
@@ -68,6 +82,23 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     g.save()
     booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
     assertBooleanGateOff(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue")
+  }
+
+  it should "be true when cohort applies, household has a child, and no EITC QC remains due to invalid child SSN" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    addTentativeQcWithoutValidSsn(g)
+    g.save()
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
+  }
+
+  it should "be true when cohort applies for age 65+, household has a child, and no EITC QC remains due to invalid child SSN" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    g.set("/ageRange", FgEnum("65andOlder", "/ageRangeOptions"))
+    addTentativeQcWithoutValidSsn(g)
+    g.save()
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
   }
 
   it should "be false when cohort applies but primary is in the 25–64 age band (single)" in {

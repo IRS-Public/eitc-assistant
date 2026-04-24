@@ -454,16 +454,23 @@
     <Fact path="/flowShouldShowQcRequiredAddChildKnockout">
       <Name>Show QC flow knockout: add a child (empty household)</Name>
       <Description>
-        True when the cohort must enter at least one qualifying child for EITC, the household list is still empty,
-        and there are no EITC qualifying children yet.
+        True when the cohort must enter at least one qualifying child for EITC and there are no EITC qualifying
+        children yet, either because no household rows exist yet or because entered rows do not qualify for EITC.
       </Description>
       <Derived>
         <All>
           <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
-          <Dependency path="/flowFamilyAndHouseholdEmptyForQcGating"/>
-          <Not>
-            <Dependency path="/hasEitcQualifyingChildren"/>
-          </Not>
+          <Any>
+            <Dependency path="/flowFamilyAndHouseholdEmptyForQcGating"/>
+            <All>
+              <IsComplete>
+                <Dependency path="/familyAndHousehold"/>
+              </IsComplete>
+              <Not>
+                <Dependency path="/hasEitcQualifyingChildren"/>
+              </Not>
+            </All>
+          </Any>
         </All>
       </Derived>
     </Fact>
