@@ -10,8 +10,10 @@ case class CreditAssistantFactDictionary(factDictionary: FactDictionary, xml: El
 def loadFactXml(): Elem = {
   val factDirectoryPath = os.pwd / "src" / "main" / "resources" / "credit-assistant" / "facts"
   val factsDirectory = new File(factDirectoryPath.toString)
+  // Deterministic order: duplicate `<Fact path="...">` from different files are merged
+  // last-wins; `File.listFiles` order is undefined and varies by OS (see e.g. relationship on collection items).
   val listOfFiles = if (factsDirectory.exists && factsDirectory.isDirectory) {
-    factsDirectory.listFiles.filter(_.isFile).filter(_.getName.endsWith(".xml")).toList
+    factsDirectory.listFiles.filter(_.isFile).filter(_.getName.endsWith(".xml")).toList.sortBy(_.getName)
   } else {
     List.empty[File]
   }
