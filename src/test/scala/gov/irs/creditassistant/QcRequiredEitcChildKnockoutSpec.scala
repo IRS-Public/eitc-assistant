@@ -64,7 +64,11 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.set(s"/familyAndHousehold/#$id/isPermanentlyDisabled", false)
     graph.set(s"/familyAndHousehold/#$id/ageRange", FgEnum("between19And23", "/ageRangeOptionsQC"))
     graph.set(s"/familyAndHousehold/#$id/isFullTimeStudent", true)
-    graph.set(s"/familyAndHousehold/#$id/relationship", FgEnum("sibling", "/relationshipOptions"))
+    graph.set(
+      s"/familyAndHousehold/#$id/relationshipCategory",
+      FgEnum("siblingOrDescendants", "/relationshipCategoryOptions"),
+    )
+    graph.set(s"/familyAndHousehold/#$id/siblingRelationship", FgEnum("sibling", "/siblingRelationshipOptions"))
     graph.set(s"/familyAndHousehold/#$id/validSSN", false)
     id
   }
