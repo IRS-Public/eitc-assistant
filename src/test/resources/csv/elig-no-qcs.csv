@@ -1,0 +1,9 @@
+Read me,,,,,,,,,,,,,,,,
+About you,,,,,Filing status,,,,,Income & adjustments,,,QCs,Results,,
+U.S. Citizen,Valid SSN,Form 2555,Someone else claim as QC?,TP Age,Spouse age,Filing Status,Marital Status,Claim children?,US >6m,Earned income,"Investment income < 11,950",AGI (Total income - adjustments),#QCs pg. 5,Expectation,Pass/Fail,FG
+Column1,Column2,Column3,Column4,Column5,Column6,Column7,Column8,Column9,Column10,Column11,Column12,Column13,Column14,Column15,Column16,Column17
+Y,Y,N,N,Between 25 and 64,NA,Single,NA,N,Y,"< $19,104","? $11,950","< $19,104",0,Eligible for EITC,,
+Y,Y,N,N,Between 25 and 64,NA,HOH,Unmarried,N,Y,"< $19,104","? $11,950","< $19,104",0,Eligible for EITC,,
+Y,Y,N,N,Between 25 and 64,NA,QSS,NA,N,Y,"< $19,104","? $11,950","< $19,104",0,Eligible for EITC,,
+Y,Y,N,N,Between 25 and 64,Any age,MFJ,Married,N,Y,"< $26,214","? $11,950","< $26,214",0,Eligible for EITC,,
+Y,Y,N,N,Any age,Between 25 and 64,MFJ,Married,N,Y,"< $26,214","? $11,950","< $26,214",0,Eligible for EITC,,
