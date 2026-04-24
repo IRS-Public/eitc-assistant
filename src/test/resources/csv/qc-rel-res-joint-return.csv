@@ -1,0 +1,8 @@
+*Read me,,,,,,,,,,
+Child,,,,,,,,Notes,,
+Child lived with TP > half the year,Can someone else claim?,Still want to claim?,Child married?,Filing only to claim a refund?,Relationship,Pass age tests,Valid SSN?,Expectation,Pass/Fail,FG
+,,,,,,,,,,
+Column1,Column2,Column3,Column4,Column5,Column6,Column7,Column8,Column9,Column10,Column11
+Y,Y,Y,Y,Y,Anything but 'None of the above',Y,Y,QC,,
+Y,N,NA,Y,Y,Anything but 'None of the above',Y,Y,QC,,
+Y,N,NA,N,NA,Anything but 'None of the above',Y,Y,QC,,
