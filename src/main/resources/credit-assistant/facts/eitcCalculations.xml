@@ -4,10 +4,34 @@
   <Facts>
     <Fact path="/eitcQualifyingChildren">
       <Derived>
-        <LesserOf>
-          <Dependency path="/countEitcQualifyingChildren"/>
-          <Dependency path="/maxNumberOfEitcQcs"/>
-        </LesserOf>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <IsComplete>
+                  <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+                </IsComplete>
+                <Not>
+                  <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+                </Not>
+              </All>
+            </When>
+            <Then>
+              <Int>0</Int>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <LesserOf>
+                <Dependency path="/countEitcQualifyingChildren"/>
+                <Dependency path="/maxNumberOfEitcQcs"/>
+              </LesserOf>
+            </Then>
+          </Case>
+        </Switch>
       </Derived>
     </Fact>
     <Fact path="/eitcRoundedAGI">
