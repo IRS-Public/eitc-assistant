@@ -64,6 +64,15 @@
         <Dollar>0</Dollar>
       </Placeholder>
     </Fact>
+    <Fact path="/otherAdjustments">
+      <Description>Other Adjustments</Description>
+      <Writable>
+        <Dollar/>
+      </Writable>
+      <Placeholder>
+        <Dollar>0</Dollar>
+      </Placeholder>
+    </Fact>
     <Fact path="/selfEmploymentHealthInsuranceContributions">
       <Description>Self-employed health insurance contributions for both self and spouse. Implements Form 7206</Description>
       <Override>
@@ -128,6 +137,7 @@
           <Dependency path="/penaltyForEarlySavingsWithdrawal"/>
           <Dependency path="/alimonyPaid"/>
           <Dependency path="/traditionalIRAContributionDeduction"/>
+          <Dependency path="/otherAdjustments"/>
         </Add>
       </Derived>
     </Fact>

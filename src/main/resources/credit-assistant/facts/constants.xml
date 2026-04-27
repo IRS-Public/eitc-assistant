@@ -222,6 +222,84 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/maxEducatorExpensesMFJ">
+      <Description>The maximum deduction an individual can take for educator expense and is MFJ</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesMFJ2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesMFJ2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesMFJ2025"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2026"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesMFJ2026"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/maxEducatorExpensesNonMFJ">
+      <Description>The maximum deduction an individual can take for educator expense and is not MFJ</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesNonMFJ2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesNonMFJ2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesNonMFJ2025"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2026"/>
+            </When>
+            <Then>
+              <Dependency path="/maxEducatorExpensesNonMFJ2026"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
     <Fact path="/hsaTotalDeductibleAmountMax">
       <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
       <Derived>

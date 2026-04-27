@@ -720,122 +720,163 @@
         </Add>
       </Derived>
     </Fact>
+    <Fact path="/eitcStandardPhaseInAmount">
+      <Name>Standard EITC Phase-In Amount</Name>
+      <Description>The un-capped credit amount based strictly on rounded earned income and the phase-in rate.</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/eitcPhaseInRate"/>
+          <Dependency path="/eitcRoundedEarnedIncome"/>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcUpperBandPhaseInProjection">
+      <Name>EITC Upper Band Phase-In Projection</Name>
+      <Description>Projects the phase-in amount for the upper edge of the $50 income bracket (midpoint + $24) to see if it triggers the max credit limit.</Description>
+      <Derived>
+        <Multiply>
+          <Dependency path="/eitcPhaseInRate"/>
+          <Add>
+            <Dependency path="/eitcRoundedEarnedIncome"/>
+            <Dollar>24</Dollar>
+          </Add>
+        </Multiply>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPreliminaryCredit">
+      <Name>Preliminary EITC from Earned Income</Name>
+      <Description>Calculates the initial phase-in amount of the credit, capped at the maximum credit.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <GreaterThanOrEqual>
+                <Left>
+                  <Dependency path="/eitcUpperBandPhaseInProjection"/>
+                </Left>
+                <Right>
+                  <Dependency path="/eitcMaxCredit"/>
+                </Right>
+              </GreaterThanOrEqual>
+            </When>
+            <Then>
+              <Dependency path="/eitcMaxCredit"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <LesserOf>
+                <Dependency path="/eitcMaxCredit"/>
+                <Dependency path="/eitcStandardPhaseInAmount"/>
+              </LesserOf>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutThresholdUpperBound">
+      <Name>EITC Phase-Out Threshold Upper Bound</Name>
+      <Description>The threshold plus $25 to represent the upper bound of the phase-out trigger bracket.</Description>
+      <Derived>
+        <Add>
+          <Dependency path="/eitcPhaseOutThreshold"/>
+          <Dollar>25</Dollar>
+        </Add>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcCompletedPhaseoutMidpoint">
+      <Name>EITC Completed Phase-Out Midpoint</Name>
+      <Description>The midpoint between the lower bound of the row and the absolute completed phase-out amount.</Description>
+      <Derived>
+        <Divide>
+          <Dividend>
+            <Add>
+              <Dependency path="/eitcPhaseoutAmountLowerBound"/>
+              <Dependency path="/eitcCompletedPhaseoutAmount"/>
+            </Add>
+          </Dividend>
+          <Divisors>
+            <Int>2</Int>
+          </Divisors>
+        </Divide>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutApplicableIncome">
+      <Name>EITC Applicable Income for Phase-Out</Name>
+      <Description>Determines the income figure used to calculate the phase-out, capping it at the final phase-out midpoint so it doesn't drop the credit below $0.</Description>
+      <Derived>
+        <LesserOf>
+          <Dependency path="/eitcRoundedEarnedIncome"/>
+          <Dependency path="/eitcCompletedPhaseoutMidpoint"/>
+        </LesserOf>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcIncomeSubjectToPhaseOut">
+      <Name>Income Subject to EITC Phase-Out</Name>
+      <Description>The exact dollar amount of income that exceeds the threshold and is subject to the phase-out rate.</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/eitcPhaseOutApplicableIncome"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/eitcPhaseOutThreshold"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
+    <Fact path="/eitcPhaseOutAmount">
+      <Name>EITC Phase-Out Amount</Name>
+      <Description>The final dollar amount the EITC is reduced based on earned income exceeding the phase-out threshold.</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <GreaterThan>
+                <Left>
+                  <Dependency path="/eitcPhaseOutThresholdUpperBound"/>
+                </Left>
+                <Right>
+                  <Dependency path="/eitcRoundedEarnedIncome"/>
+                </Right>
+              </GreaterThan>
+            </When>
+            <Then>
+              <Dollar>0</Dollar>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Multiply>
+                <Dependency path="/eitcPhaseOutRate"/>
+                <Dependency path="/eitcIncomeSubjectToPhaseOut"/>
+              </Multiply>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
     <Fact path="/earnedIncomeCredit">
-      <Name>The amount of the Earned Income Tax Credit, excluding combat pay recommendation logic</Name>
-      <Description>The amount of EITC, if the taxpayer is eligible. Magic numbers come from
-        https://www.irs.gov/pub/irs-drop/rp-21-45.pdf and will need to be updated for 2023 with
-        https://www.irs.gov/pub/irs-drop/rp-22-38.pdf</Description>
+      <Name>The amount of the Earned Income Tax Credit</Name>
+      <Description>The amount of EITC, if the taxpayer is eligible. Excludes specific combat pay recommendation logic.</Description>
       <Derived>
         <GreaterOf>
-          <!-- Cannot be less than zero -->
           <Dollar>0</Dollar>
           <Round>
             <LesserOf>
               <Dependency path="/maxEitcFromAGI"/>
               <Subtract>
                 <Minuend>
-                  <Switch>
-                    <!-- If the upper band of the row would exceed the max credit, use the max
-                                  credit -->
-                    <Case>
-                      <When>
-                        <GreaterThanOrEqual>
-                          <Left>
-                            <Multiply>
-                              <!-- Multiply earned income by the phase in rate -->
-                              <Dependency path="/eitcPhaseInRate"/>
-                              <Add>
-                                <Dependency path="/eitcRoundedEarnedIncome"/>
-                                <Dollar>24</Dollar>
-                              </Add>
-                            </Multiply>
-                          </Left>
-                          <Right>
-                            <Dependency path="/eitcMaxCredit"/>
-                          </Right>
-                        </GreaterThanOrEqual>
-                      </When>
-                      <Then>
-                        <Dependency path="/eitcMaxCredit"/>
-                      </Then>
-                    </Case>
-                    <!-- Otherwise, use the normal calculation -->
-                    <Case>
-                      <When>
-                        <True/>
-                      </When>
-                      <Then>
-                        <LesserOf>
-                          <!-- Cannot exceed the limit -->
-                          <Dependency path="/eitcMaxCredit"/>
-                          <Multiply>
-                            <!-- Multiply earned income by the phase in rate -->
-                            <Dependency path="/eitcPhaseInRate"/>
-                            <Dependency path="/eitcRoundedEarnedIncome"/>
-                          </Multiply>
-                        </LesserOf>
-                      </Then>
-                    </Case>
-                  </Switch>
+                  <Dependency path="/eitcPreliminaryCredit"/>
                 </Minuend>
                 <Subtrahends>
-                  <Switch>
-                    <Case>
-                      <!-- If the threshold is greater than the lower bound of the row, we don't
-                                      apply any phaseout -->
-                      <When>
-                        <GreaterThan>
-                          <Left>
-                            <Add>
-                              <Dependency path="/eitcPhaseOutThreshold"/>
-                              <Dollar>25</Dollar>
-                            </Add>
-                          </Left>
-                          <Right>
-                            <Dependency path="/eitcRoundedEarnedIncome"/>
-                          </Right>
-                        </GreaterThan>
-                      </When>
-                      <Then>
-                        <Dollar>0</Dollar>
-                      </Then>
-                    </Case>
-                    <Case>
-                      <When>
-                        <True/>
-                      </When>
-                      <Then>
-                        <Multiply>
-                          <!-- Phaseout for income over the threshold -->
-                          <Dependency path="/eitcPhaseOutRate"/>
-                          <Subtract>
-                            <Minuend>
-                              <LesserOf>
-                                <!-- The midpoint of the row -->
-                                <Dependency path="/eitcRoundedEarnedIncome"/>
-                                <!-- The midpoint of the lower bound of the row and the completed
-                                                          phaseout amount-->
-                                <Divide>
-                                  <Dividend>
-                                    <Add>
-                                      <Dependency path="/eitcPhaseoutAmountLowerBound"/>
-                                      <Dependency path="/eitcCompletedPhaseoutAmount"/>
-                                    </Add>
-                                  </Dividend>
-                                  <Divisors>
-                                    <Int>2</Int>
-                                  </Divisors>
-                                </Divide>
-                              </LesserOf>
-                            </Minuend>
-                            <Subtrahends>
-                              <Dependency path="/eitcPhaseOutThreshold"/>
-                            </Subtrahends>
-                          </Subtract>
-                        </Multiply>
-                      </Then>
-                    </Case>
-                  </Switch>
+                  <Dependency path="/eitcPhaseOutAmount"/>
                 </Subtrahends>
               </Subtract>
             </LesserOf>
@@ -843,6 +884,127 @@
         </GreaterOf>
       </Derived>
     </Fact>
+    <!--    <Fact path="/earnedIncomeCredit">-->
+    <!--      <Name>The amount of the Earned Income Tax Credit</Name>-->
+    <!--      <Description>The amount of EITC, if the taxpayer is eligible. Excludes specific combat pay recommendation logic </Description>-->
+    <!--      <Derived>-->
+    <!--        <GreaterOf>-->
+    <!--          &lt;!&ndash; Cannot be less than zero &ndash;&gt;-->
+    <!--          <Dollar>0</Dollar>-->
+    <!--          <Round>-->
+    <!--            <LesserOf>-->
+    <!--              <Dependency path="/maxEitcFromAGI"/>-->
+    <!--              <Subtract>-->
+    <!--                <Minuend>-->
+    <!--                  <Switch>-->
+    <!--                    &lt;!&ndash; If the upper band of the row would exceed the max credit, use the max-->
+    <!--                                  credit &ndash;&gt;-->
+    <!--                    <Case>-->
+    <!--                      <When>-->
+    <!--                        <GreaterThanOrEqual>-->
+    <!--                          <Left>-->
+    <!--                            <Multiply>-->
+    <!--                              &lt;!&ndash; Multiply earned income by the phase in rate &ndash;&gt;-->
+    <!--                              <Dependency path="/eitcPhaseInRate"/>-->
+    <!--                              <Add>-->
+    <!--                                <Dependency path="/eitcRoundedEarnedIncome"/>-->
+    <!--                                <Dollar>24</Dollar>-->
+    <!--                              </Add>-->
+    <!--                            </Multiply>-->
+    <!--                          </Left>-->
+    <!--                          <Right>-->
+    <!--                            <Dependency path="/eitcMaxCredit"/>-->
+    <!--                          </Right>-->
+    <!--                        </GreaterThanOrEqual>-->
+    <!--                      </When>-->
+    <!--                      <Then>-->
+    <!--                        <Dependency path="/eitcMaxCredit"/>-->
+    <!--                      </Then>-->
+    <!--                    </Case>-->
+    <!--                    &lt;!&ndash; Otherwise, use the normal calculation &ndash;&gt;-->
+    <!--                    <Case>-->
+    <!--                      <When>-->
+    <!--                        <True/>-->
+    <!--                      </When>-->
+    <!--                      <Then>-->
+    <!--                        <LesserOf>-->
+    <!--                          &lt;!&ndash; Cannot exceed the limit &ndash;&gt;-->
+    <!--                          <Dependency path="/eitcMaxCredit"/>-->
+    <!--                          <Multiply>-->
+    <!--                            &lt;!&ndash; Multiply earned income by the phase in rate &ndash;&gt;-->
+    <!--                            <Dependency path="/eitcPhaseInRate"/>-->
+    <!--                            <Dependency path="/eitcRoundedEarnedIncome"/>-->
+    <!--                          </Multiply>-->
+    <!--                        </LesserOf>-->
+    <!--                      </Then>-->
+    <!--                    </Case>-->
+    <!--                  </Switch>-->
+    <!--                </Minuend>-->
+    <!--                <Subtrahends>-->
+    <!--                  <Switch>-->
+    <!--                    <Case>-->
+    <!--                      &lt;!&ndash; If the threshold is greater than the lower bound of the row, we don't-->
+    <!--                                      apply any phaseout &ndash;&gt;-->
+    <!--                      <When>-->
+    <!--                        <GreaterThan>-->
+    <!--                          <Left>-->
+    <!--                            <Add>-->
+    <!--                              <Dependency path="/eitcPhaseOutThreshold"/>-->
+    <!--                              <Dollar>25</Dollar>-->
+    <!--                            </Add>-->
+    <!--                          </Left>-->
+    <!--                          <Right>-->
+    <!--                            <Dependency path="/eitcRoundedEarnedIncome"/>-->
+    <!--                          </Right>-->
+    <!--                        </GreaterThan>-->
+    <!--                      </When>-->
+    <!--                      <Then>-->
+    <!--                        <Dollar>0</Dollar>-->
+    <!--                      </Then>-->
+    <!--                    </Case>-->
+    <!--                    <Case>-->
+    <!--                      <When>-->
+    <!--                        <True/>-->
+    <!--                      </When>-->
+    <!--                      <Then>-->
+    <!--                        <Multiply>-->
+    <!--                          &lt;!&ndash; Phaseout for income over the threshold &ndash;&gt;-->
+    <!--                          <Dependency path="/eitcPhaseOutRate"/>-->
+    <!--                          <Subtract>-->
+    <!--                            <Minuend>-->
+    <!--                              <LesserOf>-->
+    <!--                                &lt;!&ndash; The midpoint of the row &ndash;&gt;-->
+    <!--                                <Dependency path="/eitcRoundedEarnedIncome"/>-->
+    <!--                                &lt;!&ndash; The midpoint of the lower bound of the row and the completed-->
+    <!--                                                          phaseout amount&ndash;&gt;-->
+    <!--                                <Divide>-->
+    <!--                                  <Dividend>-->
+    <!--                                    <Add>-->
+    <!--                                      <Dependency path="/eitcPhaseoutAmountLowerBound"/>-->
+    <!--                                      <Dependency path="/eitcCompletedPhaseoutAmount"/>-->
+    <!--                                    </Add>-->
+    <!--                                  </Dividend>-->
+    <!--                                  <Divisors>-->
+    <!--                                    <Int>2</Int>-->
+    <!--                                  </Divisors>-->
+    <!--                                </Divide>-->
+    <!--                              </LesserOf>-->
+    <!--                            </Minuend>-->
+    <!--                            <Subtrahends>-->
+    <!--                              <Dependency path="/eitcPhaseOutThreshold"/>-->
+    <!--                            </Subtrahends>-->
+    <!--                          </Subtract>-->
+    <!--                        </Multiply>-->
+    <!--                      </Then>-->
+    <!--                    </Case>-->
+    <!--                  </Switch>-->
+    <!--                </Subtrahends>-->
+    <!--              </Subtract>-->
+    <!--            </LesserOf>-->
+    <!--          </Round>-->
+    <!--        </GreaterOf>-->
+    <!--      </Derived>-->
+    <!--    </Fact>-->
     <Fact path="/isReceivingEitc">
       <Name>Is receiving EITC</Name>
       <Description>Whether the TP is receiving EITC</Description>

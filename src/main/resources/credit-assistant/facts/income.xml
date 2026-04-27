@@ -356,7 +356,6 @@
       </Derived>
     </Fact>
     <Fact path="/earnedIncomeTotal">
-      <!--      TODO: update this and the other income writables to include all the categories-->
       <Description>
         Earned Income includes:
         Wages, salary, or tips where federal income taxes are withheld on Form W-2, box 1
