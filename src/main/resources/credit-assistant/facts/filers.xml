@@ -82,6 +82,10 @@
       <Description>Whether the taxpayer should be asked if their main home was in the US for more than 6 months, based on if they are claiming QCs and if Filing status is determined</Description>
       <Derived>
         <All>
+          <!-- If they are already disqualified, don't show them the question-->
+          <Not>
+            <Dependency path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren"/>
+          </Not>
           <Not>
             <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
           </Not>

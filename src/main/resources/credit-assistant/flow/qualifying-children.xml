@@ -118,7 +118,7 @@
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" if-true="/familyAndHousehold/*/flowShouldSeeAgeComparison">
-          <question>Is the dependent younger than you (or your spouse, if filing a joint return)?</question>
+          <question>Is the dependent younger than <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></question>
           <modal-link for="modal-age-comparison">Age Comparison between Child and Filer</modal-link>
           <input type="boolean"/>
         </fg-set>

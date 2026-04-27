@@ -2,6 +2,22 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
+    <Fact path="/maxEducatorExpensesMFJ2026">
+      <Name>Maximum Deduction for educator expenses</Name>
+      <Description>The maximum deduction an individual can take for educator expense and is MFJ</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>700</Dollar>
+      </Derived>
+    </Fact>
+    <Fact path="/maxEducatorExpensesNonMFJ2026">
+      <Name>Maximum Deduction for educator expenses</Name>
+      <Description>The maximum deduction an individual can take for educator expense and is not MFJ</Description>
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>350</Dollar>
+      </Derived>
+    </Fact>
     <Fact path="/maxIncomeSubjectToSocialSecurityTax2026">
       <Description> Schedule SE Line 7. Maximum amount of combined wages and self-employment earnings subject to social security tax or
               the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>

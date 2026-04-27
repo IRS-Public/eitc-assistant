@@ -26,7 +26,7 @@
       </fg-set>
 
       <h3>Educator expense deduction</h3>
-      <p>If you were a K-12 educator, you could have deducted up to <fg-show path="/maxEducatorExpensesNotMFJ"/> of unreimbursed expenses in <fg-show path="/taxYear"/>.<span condition="/isFilingStatusMFJ" operator="isTrue"> If you filed a joint tax return and both of you were educators, you could have deducted up to <fg-show path="/maxEducatorExpensesMFJ"/>.</span></p>
+      <p>If you were a K-12 educator, you could have deducted up to <fg-show path="/maxEducatorExpensesNonMFJ"/> of unreimbursed expenses in <fg-show path="/taxYear"/>.<span condition="/isFilingStatusMFJ" operator="isTrue"> If you filed a joint tax return and both of you were educators, you could have deducted up to <fg-show path="/maxEducatorExpensesMFJ"/>.</span></p>
       <p>Qualified expenses includes:</p>
       <ul>
         <li>Professional development courses</li>
@@ -141,6 +141,7 @@
         <input type="dollar"/>
       </fg-set>
 
+
       <h3 condition="/eitherTPHasSelfEmploymentIncome" operator="isTrue">Self-employed health insurance deduction</h3>
       <p condition="/eitherTPHasSelfEmploymentIncome" operator="isTrue">If <span condition="/isFilingStatusMFJ" operator="isFalse">you were</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse were</span> self employed and had a net profit for the year, you could have deducted your <fg-show path="/taxYear"/> health insurance premiums.</p>
       <p condition="/eitherTPHasSelfEmploymentIncome" operator="isTrue">Eligible premiums were medical, dental, vision, and long-term care insurance. The policy could be for yourself, your spouse, and your dependents. The policy could also cover your child who was under the age of 27 at the end of the year, even if the child wasn't your dependent.</p>
@@ -151,6 +152,13 @@
         <question>Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
         <input type="dollar"/>
       </fg-set>
+
+      <h3>Other adjustments</h3>
+      <fg-set path="/otherAdjustments">
+        <question>Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
+        <input type="dollar"/>
+      </fg-set>
+
 
       <h3>Your AGI was: <fg-show path="/agi"/></h3>
 
