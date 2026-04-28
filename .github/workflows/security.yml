@@ -1,4 +1,4 @@
-name: TWE Security Scan
+name: Credit Assistant Security Scan
 
 on:
   workflow_dispatch:
@@ -63,7 +63,7 @@ jobs:
         java_version: ${{ env.JAVA_VERSION }}
         sbt_version: ${{ env.SBT_VERSION }}
 
-    - name: Checkout TWE
+    - name: Checkout Credit Assistant
       uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       with:
         path: ${{ env.CREDIT_ASSISTANT_PATH }}
