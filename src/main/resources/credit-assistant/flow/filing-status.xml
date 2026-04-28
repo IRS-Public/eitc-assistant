@@ -165,7 +165,7 @@
 
     </section>
 
-    <fg-alert alert-type="error" alert-key="eitc-age-without-qc-disqualified" knockout="true" condition="/flowSouldSeeAgeWithoutQCDisqualification" operator="isTrue">
+    <fg-alert alert-type="error" alert-key="eitc-age-without-qc-disqualified" knockout="true" condition="/flowShouldSeeAgeWithoutQCDisqualification" operator="isTrue">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
         You don't qualify for EITC without a qualifying child unless you, or your spouse if filing a joint return, are between age 25 and 64.
