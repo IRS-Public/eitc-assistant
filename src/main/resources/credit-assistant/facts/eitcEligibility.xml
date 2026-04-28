@@ -367,7 +367,7 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/flowSouldSeeAgeWithoutQCDisqualification">
+    <Fact path="/flowShouldSeeAgeWithoutQCDisqualification">
       <Name>Disqualified for EITC due to age without qualifying children</Name>
       <Description>
         True when the taxpayer does not qualify for EITC without a qualifying child based on the age test,
@@ -377,9 +377,16 @@
       <Derived>
         <All>
           <Dependency path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren"/>
-          <Not>
-            <Dependency path="/isDisqualifiedMarriedNotFilingJointly"/>
-          </Not>
+          <Any>
+            <Dependency path="/isFilingStatusSingle"/>
+            <Dependency path="/isFilingStatusQSS"/>
+            <All>
+              <Dependency path="/isMarried"/>
+              <Not>
+                <Dependency path="/isDisqualifiedMarriedNotFilingJointly"/>
+              </Not>
+            </All>
+          </Any>
         </All>
       </Derived>
     </Fact>
