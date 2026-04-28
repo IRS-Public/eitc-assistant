@@ -533,7 +533,6 @@
         <All>
           <Dependency path="/flowShouldShowQcRequiredAddChildKnockout"/>
           <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
-          <Dependency path="/hasEitcQualifyingChildren"/>
         </All>
       </Derived>
     </Fact>

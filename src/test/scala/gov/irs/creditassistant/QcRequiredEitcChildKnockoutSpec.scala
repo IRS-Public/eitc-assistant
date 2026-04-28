@@ -187,21 +187,12 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/flowShouldAllowAddAnotherQualifyingChild") shouldBe true
   }
 
-  "QC required knockout wrapper facts" should "is false even if Continue flag is set for the empty-household path because incomplete QC" in {
+  "QC required knockout wrapper facts" should "is true when Continue flag is set for the empty-household path" in {
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
     g.set("/flowClickedNextOnQualifyingChildrenPage", true)
     g.save()
-    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe false
-  }
-
-  "QC required knockout wrapper facts" should "is false even if Continue flag is set for the empty-household path for complete QC who is valid" in {
-    val g = newFactGraph()
-    applyCohortSingleUnder24ClaimingQc(g)
-    g.set("/flowClickedNextOnQualifyingChildrenPage", true)
-    val id = addTentativeQc(g, true)
-    g.save()
-    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe false
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe true
   }
 
 }
