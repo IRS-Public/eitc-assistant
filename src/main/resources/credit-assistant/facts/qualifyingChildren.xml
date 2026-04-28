@@ -499,12 +499,13 @@
       <Name>Show QC add-child knockout after Continue</Name>
       <Description>
         Wraps /flowShouldShowQcRequiredAddChildKnockout and only shows it after Continue has been clicked on
-        Qualifying Children.
+        Qualifying Children. At least one QC must have been fully completed before this alert should show.
       </Description>
       <Derived>
         <All>
           <Dependency path="/flowShouldShowQcRequiredAddChildKnockout"/>
           <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
+          <Dependency path="/hasEitcQualifyingChildren"/>
         </All>
       </Derived>
     </Fact>

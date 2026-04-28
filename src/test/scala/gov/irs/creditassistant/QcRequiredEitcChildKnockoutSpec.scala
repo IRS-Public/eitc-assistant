@@ -55,7 +55,7 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.delete(s"/familyAndHousehold/#$id")
   }
 
-  private def addTentativeQcWithoutValidSsn(graph: Graph): String = {
+  private def addTentativeQc(graph: Graph, ssn: Boolean): String = {
     val id = UUID.randomUUID().toString
     graph.addToCollection("/familyAndHousehold", id)
     graph.set(s"/familyAndHousehold/#$id/livedWithYouUS", true)
@@ -65,11 +65,11 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     graph.set(s"/familyAndHousehold/#$id/ageRange", FgEnum("between19And23", "/ageRangeOptionsQC"))
     graph.set(s"/familyAndHousehold/#$id/isFullTimeStudent", true)
     graph.set(
-      s"/familyAndHousehold/#$id/relationshipCategory",
-      FgEnum("siblingOrDescendants", "/relationshipCategoryOptions"),
+      s"/familyAndHousehold/#$id/relationship",
+      FgEnum("sibling", "/relationshipOption"),
     )
     graph.set(s"/familyAndHousehold/#$id/siblingRelationship", FgEnum("sibling", "/siblingRelationshipOptions"))
-    graph.set(s"/familyAndHousehold/#$id/validSSN", false)
+    graph.set(s"/familyAndHousehold/#$id/validSSN", ssn)
     id
   }
 
@@ -91,7 +91,7 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
   it should "be true when cohort applies, household has a child, and no EITC QC remains due to invalid child SSN" in {
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
-    addTentativeQcWithoutValidSsn(g)
+    addTentativeQc(g, false)
     g.save()
     booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
   }
@@ -100,7 +100,7 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
     g.set("/ageRange", FgEnum("65andOlder", "/ageRangeOptions"))
-    addTentativeQcWithoutValidSsn(g)
+    addTentativeQc(g, false)
     g.save()
     booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockout") shouldBe true
   }
@@ -187,11 +187,21 @@ final class QcRequiredEitcChildKnockoutSpec extends AnyFlatSpec with Matchers wi
     booleanAt(g, "/flowShouldAllowAddAnotherQualifyingChild") shouldBe true
   }
 
-  "QC required knockout wrapper facts" should "turn on after Continue flag is set for the empty-household path" in {
+  "QC required knockout wrapper facts" should "is false even if Continue flag is set for the empty-household path because incomplete QC" in {
     val g = newFactGraph()
     applyCohortSingleUnder24ClaimingQc(g)
     g.set("/flowClickedNextOnQualifyingChildrenPage", true)
     g.save()
-    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe true
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe false
   }
+
+  "QC required knockout wrapper facts" should "is false even if Continue flag is set for the empty-household path for complete QC who is valid" in {
+    val g = newFactGraph()
+    applyCohortSingleUnder24ClaimingQc(g)
+    g.set("/flowClickedNextOnQualifyingChildrenPage", true)
+    val id = addTentativeQc(g, true)
+    g.save()
+    booleanAt(g, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue") shouldBe false
+  }
+
 }
