@@ -1,0 +1,81 @@
+{
+    "name": "eitc-assistant",
+    "version": "2.0",
+    "organization": "Internal Revenue Service",
+    "description": "EITC Assistant is an online tool provided by the Internal Revenue Service (IRS) designed to help taxpayers check if they are eligible for EITC and estimate their credit.",
+    "longDescription": "The Earned Income Tax Credit (EITC) helps low to moderate-income workers and families get a tax break. Claiming the credit can reduce the tax you owe and may also give you a larger refund. The EITC Assistant helps taxpayers calculate if they are eligible for the EITC, if they have any qualifying children or relatives, the estimated amount of their credit, and their filing status.",
+    "status": "Production",
+    "permissions": {
+        "licenses": [
+            {
+                "name": "CC0-1.0",
+                "URL": "https://github.com/IRS-Public/eitc-assistant/blob/main/LICENSE.md"
+            }
+        ],
+        "usageType": [
+            "openSource"
+        ],
+        "exemptionText": ""
+    },
+    "repositoryHost": [
+        "github.com/IRS-Public"
+    ],
+    "repositoryURL": "https://github.com/IRS-Public/eitc-assistant",
+    "repositoryVisibility": "public",
+    "homepageURL": "https://apps.irs.gov/app/eitc/",
+    "disclaimerURL": "https://github.com/IRS-public/eitc-assitant?tab=readme-ov-file#legal-disclaimer-public-repository-access",
+    "vcs": "git",
+    "platforms": [
+        "web"
+    ],
+    "categories": [
+        "other"
+    ],
+    "softwareType": [
+        "standalone/mobile",
+        "standalone/desktop",
+        "standalone/web"
+    ],
+    "languages": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Scala",
+        "Shell",
+        "Makefile"
+    ],
+    "sbom": "https://github.com/IRS-Public/eitc-assistant/network/dependencies",
+    "relatedCode": [
+        "https://github.com/IRS-Public/fact-graph",
+        "https://github.com/IRS-Public/direct-file",
+        "https://github.com/IRS-Public/tax-withholding-estimator"
+    ],
+    "reusedCode": [
+        "https://github.com/IRS-Public/fact-graph",
+        "https://github.com/IRS-Public/direct-file",
+        "https://github.com/IRS-Public/tax-withholding-estimator"
+    ],
+    "tags": [
+        "Open Source",
+        "IRS",
+        "EITC",
+        "Earned Income Tax Credit",
+        "Tax Credits",
+        "Refundable credits"
+    ],
+    "feedbackMechanism": "https://github.com/IRS-Public/eitc-assistant/issues",
+    "AIUseCaseID": "0",
+    "repositoryType": "application",
+    "userInput": true,
+    "group": "IRS/IT",
+    "userType": [
+        "government",
+        "taxpayers"
+    ],
+    "maturityModelTier": 3,
+    "date": {
+        "created": "2026-04-28T22:34:18Z",
+        "lastModified": "2026-04-28T22:34:18Z",
+        "metadataLastUpdated": "2026-04-28T22:34:18Z"
+    }
+}
