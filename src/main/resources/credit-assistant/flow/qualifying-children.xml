@@ -32,7 +32,7 @@
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/livedWithYouUS" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/livedWithYouUS" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -51,7 +51,7 @@
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming" operator="isTrue">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming" operator="isTrue">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -70,7 +70,7 @@
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/mfjForRefundOnly" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/mfjForRefundOnly" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -94,7 +94,7 @@
           </input>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsRelationshipTest" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/meetsRelationshipTest" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -123,7 +123,7 @@
           <input type="boolean"/>
         </fg-set>
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
@@ -131,7 +131,7 @@
         </fg-alert>
 
 
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="true" condition="/familyAndHousehold/*/meetsAgeTest" operator="isFalse">
+        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/meetsAgeTest" operator="isFalse">
           <heading>This child does not qualify for EITC.</heading>
           <p class="usa-alert__text">
             For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
