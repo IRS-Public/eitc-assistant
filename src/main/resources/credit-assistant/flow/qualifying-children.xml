@@ -157,7 +157,7 @@
       </div>
 
       <fg-alert alert-type="warning" alert-key="qc-required-add-child-knockout" knockout="true" condition="/flowShouldShowQcRequiredAddChildKnockoutAfterContinue" operator="isTrue">
-        <heading>Please note</heading>
+        <heading>Qualifying child requirement</heading>
         <p class="usa-alert__text">
           You don't qualify for EITC without a qualifying child unless you, or your spouse if filing a joint return, are between age 25 and 64.
         </p>
