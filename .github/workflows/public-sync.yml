@@ -1,0 +1,59 @@
+name: public-sync
+
+on:
+  push:
+    branches: [ "main" ]
+
+# Cancel redundant builds on same branch
+concurrency:
+  group: public-sync
+  cancel-in-progress: true
+
+env:
+  CA_PATH: credit-assistant
+  EITCAST_PATH: eitc-assistant
+
+permissions:
+  contents: read
+
+jobs:
+  sync-to-public:
+    name: Sync to IRS-Public/eitc-assistant ${{ inputs.dry_run && '(dry-run)' || '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ${{ env.CA_PATH }}
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+        with:
+          path: ${{ env.CA_PATH }}
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Remove checkout auth header
+        run: |
+          git config --global --unset-all http.https://github.com/.extraheader || true
+
+      - name: Mirror to IRS-Public/${{ env.CA_PATH }}
+        env:
+          PAT: ${{ secrets.IRS_PUBLIC_CA_SVC_ACCT_PAT }}
+          USER: df-irs-svc
+          REPO: ${{ env.EITCAST_PATH }}
+        working-directory: ${{ env.CA_PATH }}
+        run: |
+          set -uxo pipefail
+          : "${PAT:?missing IRS_PUBLIC_CA_SVC_ACCT_PAT}"
+          : "${USER:?missing service account username}"
+
+          git config --global user.name "$USER"
+          git config --global user.email "200273578+df-irs-svc@users.noreply.github.com"
+
+          REMOTE_URL="https://${USER}:${PAT}@github.com/IRS-Public/${REPO}.git"
+
+          # Create/update remote
+          git remote remove public 2>/dev/null || true
+          git remote add public "$REMOTE_URL"
+
+          git fetch public --prune || true
+
+          git remote -v
+          git config --global --get-all http.https://github.com/.extraheader || echo "no extraheader"
+          git push public HEAD:main --force-with-lease
