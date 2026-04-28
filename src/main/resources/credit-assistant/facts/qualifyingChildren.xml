@@ -281,10 +281,38 @@
     </Fact>
     <Fact path="/familyAndHousehold/*/meetsAgeTest">
       <Derived>
-        <Any>
-          <Dependency path="../meetsAgeTestDisability"/>
-          <Dependency path="../meetsAgeTestStudent"/>
-        </Any>
+        <Switch>
+          <Case>
+            <When>
+              <All>
+                <Any>
+                  <Dependency path="../meetsAgeTestDisability"/>
+                  <Dependency path="../meetsAgeTestStudent"/>
+                </Any>
+                <IsComplete>
+                  <Dependency path="../isQCYoungerThanSelfOrSpouse"/>
+                </IsComplete>
+                <Not>
+                  <Dependency path="../isQCYoungerThanSelfOrSpouse"/>
+                </Not>
+              </All>
+            </When>
+            <Then>
+              <False/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <True/>
+            </When>
+            <Then>
+              <Any>
+                <Dependency path="../meetsAgeTestDisability"/>
+                <Dependency path="../meetsAgeTestStudent"/>
+              </Any>
+            </Then>
+          </Case>
+        </Switch>
       </Derived>
     </Fact>
     <Fact path="/familyAndHousehold/*/isTentativeEitcQualifyingChild">

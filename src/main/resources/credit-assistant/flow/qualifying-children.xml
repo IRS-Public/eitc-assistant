@@ -118,17 +118,10 @@
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" if-true="/familyAndHousehold/*/flowShouldSeeAgeComparison">
-          <question>Is the dependent younger than <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></question>
+          <question>Is the dependent younger than <span condition="/isFilingStatusMFJ" operator="isFalse">you?</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></question>
           <modal-link for="modal-age-comparison">Age Comparison between Child and Filer</modal-link>
           <input type="boolean"/>
         </fg-set>
-
-        <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" operator="isFalse">
-          <heading>This child does not qualify for EITC.</heading>
-          <p class="usa-alert__text">
-            For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a>
-          </p>
-        </fg-alert>
 
 
         <fg-alert alert-type="error" alert-key="qc-disqualified" knockout="false" condition="/familyAndHousehold/*/meetsAgeTest" operator="isFalse">
