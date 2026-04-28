@@ -381,9 +381,17 @@
             <Dependency path="/isFilingStatusSingle"/>
             <Dependency path="/isFilingStatusQSS"/>
             <All>
+              <IsComplete>
+                <Dependency path="/isMarried"/>
+              </IsComplete>
               <Dependency path="/isMarried"/>
+            </All>
+            <All>
+              <IsComplete>
+                <Dependency path="/isHOHMarried"/>
+              </IsComplete>
               <Not>
-                <Dependency path="/isDisqualifiedMarriedNotFilingJointly"/>
+                <Dependency path="/isHOHMarried"/>
               </Not>
             </All>
           </Any>
