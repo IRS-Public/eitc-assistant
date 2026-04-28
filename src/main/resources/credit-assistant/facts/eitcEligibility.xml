@@ -367,6 +367,22 @@
         </All>
       </Derived>
     </Fact>
+    <Fact path="/flowSouldSeeAgeWithoutQCDisqualification">
+      <Name>Disqualified for EITC due to age without qualifying children</Name>
+      <Description>
+        True when the taxpayer does not qualify for EITC without a qualifying child based on the age test,
+        and when the filer is NOT disqualified due to non-MFJ filing status disqualifications. Used to ensure that only the correct
+        knockout is shown to the taxpayer.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren"/>
+          <Not>
+            <Dependency path="/isDisqualifiedMarriedNotFilingJointly"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/maybeEligibleForEitcBase">
       <Name>Whether the TP may be eligible for the EITC Base</Name>
       <Description>Base rules that define whether the TP passes various tests to be eligible for
