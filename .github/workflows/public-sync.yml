@@ -32,7 +32,7 @@ jobs:
         run: |
           git config --global --unset-all http.https://github.com/.extraheader || true
 
-      - name: Mirror to IRS-Public/${{ env.CA_PATH }}
+      - name: Mirror to IRS-Public/${{ env.EITCAST_PATH }}
         env:
           PAT: ${{ secrets.IRS_PUBLIC_CA_SVC_ACCT_PAT }}
           USER: df-irs-svc
