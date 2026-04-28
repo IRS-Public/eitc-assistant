@@ -5,7 +5,7 @@ EITC Assistant is an online tool provided by the Internal Revenue Service (IRS) 
 
 This codebase is actively maintained and represents a version of EITC Assistant that went live on April 29, 2026.
 
-By open-sourcing this project, we aim to provide deeper insight into how the EITC Assistant assesses eligibility for EITC, including filing status and qualifying children rules, and figures the credit.
+By open-sourcing this project, we aim to provide deeper insight into how the EITC Assistant determines eligibility for EITC and related components, such as filing status and qualifying children rules, as well as how it figures the credit.
 
 ### Contributing
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
