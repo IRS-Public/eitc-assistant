@@ -1,6 +1,6 @@
 # Security and Responsible Disclosure Policy
 
-The Internal Revenue Service is committed to ensuring the security and privacy of the American public. The EITC Assistant is a client-side only application that is accessed in an unauthenticated manner and does not store Personally Identifiable Information (PII) or Federal Tax Information(FTI). As a result, there is no bug bounty program associated with this repository.
+The Internal Revenue Service is committed to ensuring the security and privacy of the American public. The EITC Assistant is a client-side only application that is accessed in an unauthenticated manner and does not store Personally Identifiable Information (PII) or Federal Tax Information (FTI). As a result, there is no bug bounty program associated with this repository.
 
 However, we still value the integrity of our application and want security researchers to feel comfortable reporting any vulnerabilities they discover so we can address them and keep our users safe. We developed our disclosure policy to reflect our values and uphold our sense of responsibility to security researchers who share their expertise with us in good faith.
 
