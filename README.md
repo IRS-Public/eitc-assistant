@@ -1,11 +1,17 @@
 # Earned Income Tax Credit (EITC) Assistant
 
-### Overview
-EITC Assistant is an online tool provided by the Internal Revenue Service (IRS) designed to help taxpayers check if they are eligible for EITC and estimate their credit.
+## Overview
+### EITC Assistant
+The EITC Assistant is an online tool provided by the Internal Revenue Service (IRS) to help taxpayers determine whether they are eligible for the [Earned Income Tax Credit (EITC)](https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit-eitc) and, if so, estimate the amount of the credit. By guiding users through the relevant questions and rules, it can reduce common errors, improve claim accuracy, and help taxpayers better understand the basis for their eligibility and credit calculation.
 
-This codebase is actively maintained and represents a version of EITC Assistant that went live on April 29, 2026.
+This codebase is actively maintained and reflects the version of the EITC Assistant that went live on April 29, 2026. Releases starting with v26.1.1 use the [Fact-Graph](https://github.com/IRS-Public/fact-graph) to model the Internal Revenue Code, following similar projects like the [Tax Withholding Estimator](https://github.com/IRS-Public/tax-withholding-estimator) and [Direct File](https://github.com/IRS-Public/direct-file). Prior versions of the application using an imperative, Javascript approach can be seen in the first few commits in this repository.    
 
-By open-sourcing this project, we aim to provide deeper insight into how the EITC Assistant determines eligibility for EITC and related components, such as filing status and qualifying children rules, as well as how it figures the credit.
+### EITC
+EITC is a refundable federal tax credit for workers and families with low to moderate income. If a taxpayer qualifies, the credit can reduce the taxes they owe and may increase their refund. Eligibility depends on many factors including earned income, adjusted gross income, filing status, investment income, Social Security number requirements, and whether the taxpayer has qualifying children. Taxpayers without qualifying children may also qualify if they meet the applicable rules.
+
+EITC eligibility and credit calculations are complex. If a taxpayer improperly claims EITC, the IRS may delay the refund, [deny all or part of the credit](https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/what-to-do-if-we-deny-your-claim-for-a-credit), and/or [audit the return](https://www.irs.gov/credits-deductions/individuals/earned-income-tax-credit/common-errors-for-the-earned-income-tax-credit-eitc). In more serious cases, the IRS may bar a taxpayer from claiming EITC for 2 years if the claim was due to intentional disregard of the rules, or for 10 years if the claim was due to fraud. After a prior disallowance, a taxpayer may also need to file [Form 8862](https://www.irs.gov/instructions/i8862) before claiming the credit again. 
+
+For more information about EITC, see [Publication 596](https://www.irs.gov/publications/p596).
 
 ### Contributing
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
