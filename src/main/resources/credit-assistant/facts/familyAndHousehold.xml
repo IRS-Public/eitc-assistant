@@ -2,60 +2,6 @@
 <?xml-model href="./FactDictionaryModule.rng"?>
 <FactDictionaryModule>
   <Facts>
-    <Fact path="/eitcDependentsCollection">
-      <Name>EITC Eligible Dependents Collection</Name>
-      <Description>The subset of people who qualify as qualifying children for EITC</Description>
-      <Derived>
-        <Filter path="/familyAndHousehold">
-          <Dependency path="eitcQualifyingChild"/>
-        </Filter>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ssnOnlyForFederallyFundedBenefit">
-      <Description> The dependent received their social security number solely to apply for a federally funded benefit,
-        like Medicaid.
-      </Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/monthsLivedWithTPInUSOptions">
-      <Description>Months lived with TP in US Options</Description>
-      <Derived>
-        <EnumOptions>
-          <String>twelve</String>
-          <String>eleven</String>
-          <String>ten</String>
-          <String>nine</String>
-          <String>eight</String>
-          <String>seven</String>
-          <String>six</String>
-        </EnumOptions>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHouseholdSsnEmploymentValidityOptions">
-      <Name>SSN Employment Validity Options</Name>
-      <Description>Options for SSN Employment validity</Description>
-      <Derived>
-        <EnumOptions>
-          <String>neither</String>
-          <String>notValid</String>
-          <String>validOnlyWithDhsAuthorizationInEffect</String>
-          <String>validOnlyWithDhsAuthorizationExpired</String>
-        </EnumOptions>
-      </Derived>
-    </Fact>
-    <Fact path="/residencyDurationOptions">
-      <Name>Residency duration Options</Name>
-      <Description>Options for residency duration</Description>
-      <Derived>
-        <EnumOptions>
-          <String>allYear</String>
-          <String>sixToElevenMonths</String>
-          <String>lessThanSixMonths</String>
-        </EnumOptions>
-      </Derived>
-    </Fact>
     <Fact path="/familyAndHousehold">
       <Name>Family and Household</Name>
       <Description>The people entered in the family and household section who may qualify as QPs or dependents</Description>
@@ -63,789 +9,299 @@
         <Collection/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/fullName">
-      <Name>Dependent's full name</Name>
-      <Description>
-        The full name of the dependent, used for the frontend
-      </Description>
+    <Fact path="/relationshipOptions">
+      <Name>Relationship Options</Name>
+      <Description>The IRS allowed relationship options for a qualifying child</Description>
+      <Derived>
+        <EnumOptions>
+          <String>childStepFoster</String>
+          <String>sibling</String>
+          <String>descendant</String>
+          <String>none</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/ageRangeOptionsQC">
+      <Name>Age Range Options</Name>
+      <Description>Qualifying child age brackets</Description>
+      <Derived>
+        <EnumOptions>
+          <String>under19</String>
+          <String>between19And23</String>
+          <String>over24</String>
+        </EnumOptions>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/name">
+      <Name>Name of child</Name>
       <Writable>
         <String/>
-        <Limit type="Match">
-          <String><![CDATA[[\sA-Za-z\-]+]]></String>
-        </Limit>
-        <Limit type="MaxLength">
-          <Int>20</Int>
-        </Limit>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/dateOfBirth">
-      <Name>Date of birth</Name>
-      <Description>The date of birth of the dependent.</Description>
+    <Fact path="/familyAndHousehold/*/livedWithYouUS">
+      <Name>Lived with you in the US</Name>
       <Writable>
-        <Day/>
-        <Limit type="Max">
-          <Day>2025-01-01</Day>
-        </Limit>
+        <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/yearOfBirth">
-      <Name>Year of birth</Name>
-      <Description>The year of the dependent's birth</Description>
+    <Fact path="/familyAndHousehold/*/someoneElseCanClaim">
+      <Name>Someone else can claim this child</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isClaimingQCRegardless">
+      <Name>Taxpayer is claiming this QC even though someone else can claim them</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/marriedFilingJointly">
+      <Name>Child is filing a joint return</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/mfjForRefundOnly">
+      <Name>Child is filing a joint return solely for the purposes of claiming a refund</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isPermanentlyDisabled">
+      <Name>Child is permanently and totally disabled</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/relationship">
+      <Name>Child relationship to taxpayer</Name>
+      <Writable>
+        <Enum optionsPath="/relationshipOptions"/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/ageRange">
+      <Name>Child age range</Name>
+      <Writable>
+        <Enum optionsPath="/ageRangeOptionsQC"/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isFullTimeStudent">
+      <Name>Child is full-time student</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/validSSN">
+      <Name>Child has valid SSN</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse">
+      <Name>Child is younger than self or spouse, if MFJ</Name>
+      <Writable>
+        <Boolean/>
+      </Writable>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/canSomeoneElseClaimAndTPNotClaiming">
       <Derived>
-        <Dependency path="../dateOfBirth/year"/>
+        <All>
+          <Dependency path="../someoneElseCanClaim"/>
+          <Not>
+            <Dependency path="../isClaimingQCRegardless"/>
+          </Not>
+        </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/yearOfBirthSameAsTaxYear">
-      <Description>The year of the dependent's birth is the same as the tax year</Description>
+    <Fact path="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
       <Derived>
         <Equal>
           <Left>
-            <Dependency module="constants" path="/taxYear"/>
+            <Dependency path="../ageRange"/>
           </Left>
           <Right>
-            <Dependency path="../dateOfBirth/year"/>
+            <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
           </Right>
         </Equal>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/birthDateIfBornInTaxYear">
-      <Description>Date dependent was born if born in the tax year</Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Dependency path="../yearOfBirthSameAsTaxYear"/>
-            </When>
-            <Then>
-              <Dependency path="../dateOfBirth"/>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/age">
-      <Name>Age</Name>
-      <Description>The age of the dependent at the end of the tax year.</Description>
-      <Derived>
-        <Subtract>
-          <Minuend>
-            <Dependency module="constants" path="/taxYear"/>
-          </Minuend>
-          <Subtrahends>
-            <Dependency path="../dateOfBirth/year"/>
-          </Subtrahends>
-        </Subtract>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/disabilityStatusMayAffectBenefits">
-      <Description>
-        Disability status is used to qualify someone as a dependent, passing the age test. E.g. Even if a
-        person is 99 years old, they can still pass the age test to be a qualifying child.
-
-        A disabled person may also be
-        eligible to be claimed for a benefit split. Therefore we need to ask about disability status whenever:
-        1. The
-        person is 18.5 or older, so they may be eligible for the benefit split due to disability
-        2. The person is not
-        18.5, but they are younger than the filer (or spouse if MFJ)
-      </Description>
-      <Derived>
-        <Any>
-          <GreaterThanOrEqual>
-            <Left>
-              <Dependency path="../ageAtFirstHalfOfYear"/>
-            </Left>
-            <Right>
-              <Int>18</Int>
-            </Right>
-          </GreaterThanOrEqual>
-          <All>
-            <LessThan>
-              <Left>
-                <Dependency path="../ageAtFirstHalfOfYear"/>
-              </Left>
-              <Right>
-                <Int>18</Int>
-              </Right>
-            </LessThan>
-            <LessThan>
-              <Left>
-                <Dependency path="../dateOfBirth"/>
-              </Left>
-              <Right>
-                <Dependency module="filers" path="/minimumFilerDateOfBirth"/>
-              </Right>
-            </LessThan>
-          </All>
-        </Any>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ageUnderNineteen">
-      <Name>Under Age 19</Name>
-      <Description>Whether or not the dependent is under the age of 19</Description>
-      <Derived>
-        <LessThan>
-          <Left>
-            <Dependency path="../age"/>
-          </Left>
-          <Right>
-            <Int>19</Int>
-          </Right>
-        </LessThan>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ageAtFirstHalfOfYear">
-      <Description>The age of the dependent for the majority of the year, i.e. their age on July 2. Note that July 2
-        works regardless of whether it is a leap year or not.
-      </Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Any>
-                <GreaterThan>
-                  <Left>
-                    <Dependency path="../dateOfBirth/month"/>
-                  </Left>
-                  <Right>
-                    <Int>7</Int>
-                  </Right>
-                </GreaterThan>
-                <All>
-                  <Equal>
-                    <Left>
-                      <Dependency path="../dateOfBirth/month"/>
-                    </Left>
-                    <Right>
-                      <Int>7</Int>
-                    </Right>
-                  </Equal>
-                  <GreaterThan>
-                    <Left>
-                      <Dependency path="../dateOfBirth/day"/>
-                    </Left>
-                    <Right>
-                      <Int>2</Int>
-                    </Right>
-                  </GreaterThan>
-                </All>
-              </Any>
-            </When>
-            <Then>
-              <Subtract>
-                <Minuend>
-                  <Dependency path="../age"/>
-                </Minuend>
-                <Subtrahends>
-                  <Int>1</Int>
-                </Subtrahends>
-              </Subtract>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <True/>
-            </When>
-            <Then>
-              <Dependency path="../age"/>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/youngerThanEighteenAtEndOfYear">
-      <Name>Younger than eighteen at end of year</Name>
-      <Description>Whether the dependent is younger than 18 at the end of the year.</Description>
-      <Derived>
-        <LessThan>
-          <Left>
-            <Dependency path="../age"/>
-          </Left>
-          <Right>
-            <Int>18</Int>
-          </Right>
-        </LessThan>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/fullTimeStudent">
-      <Name>Full-time student</Name>
-      <Description>Is the dependent a full-time student?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/permanentTotalDisability">
-      <Name>Permanent and total disability</Name>
-      <Description> Is the dependent permanently and totally disabled? We intentionally do not AND this with
-        "../disabilityStatusMayAffectBenefits" in our MeF export, as that would mark people as "not disabled" when the
-        app simply did not ask them about their disability status.
-      </Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ageTest">
-      <Name>Age test</Name>
-      <Description>Does the dependent pass the Age test to be a qualifying child?</Description>
-      <Derived>
-        <Any>
-          <All>
-            <LessThan>
-              <Left>
-                <Dependency path="../age"/>
-              </Left>
-              <Right>
-                <Int>19</Int>
-              </Right>
-            </LessThan>
-            <GreaterThan>
-              <Left>
-                <Dependency path="../dateOfBirth"/>
-              </Left>
-              <Right>
-                <Dependency module="filers" path="/minimumFilerDateOfBirth"/>
-              </Right>
-            </GreaterThan>
-          </All>
-          <Dependency path="../isAStudentUnder24"/>
-          <All>
-            <Dependency path="../permanentTotalDisability"/>
-            <Dependency path="../disabilityStatusMayAffectBenefits"/>
-          </All>
-        </Any>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/residencyDuration">
-      <Name>Residency duration</Name>
-      <Description>What portion of the year did the dependent live with you?</Description>
-      <Writable>
-        <Enum optionsPath="/residencyDurationOptions"/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/residencyTest">
-      <Name>Residency test</Name>
-      <Description>Did the dependent live with you for more than half the year? Used for dependents other than QSS.</Description>
-      <Derived>
-        <NotEqual>
-          <Left>
-            <Dependency path="../residencyDuration"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/residencyDurationOptions">lessThanSixMonths</Enum>
-          </Right>
-        </NotEqual>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qssPersonResidencyTest">
-      <Name>Residency test</Name>
-      <Description>Did the dependent live with you for the whole year? This is the rule for QSS Persons. See
-        https://www.irs.gov/publications/p501</Description>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="../residencyDuration"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/residencyDurationOptions">allYear</Enum>
-          </Right>
-        </Equal>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/married">
-      <Name>Married</Name>
-      <Description>Is the dependent married?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writableJointReturn">
-      <Name>Filing a joint return</Name>
-      <Description>Are the dependent and their spouse filing a joint return?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/jointReturn">
-      <Name>Filing a joint return</Name>
-      <Description>Are the dependent and their spouse filing a joint return?</Description>
+    <Fact path="/familyAndHousehold/*/flowShouldSeeAgeComparison">
       <Derived>
         <All>
-          <Dependency path="../married"/>
-          <Dependency path="../writableJointReturn"/>
+          <Any>
+            <Equal>
+              <Left>
+                <Dependency path="../ageRange"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
+              </Right>
+            </Equal>
+            <Equal>
+              <Left>
+                <Dependency path="../ageRange"/>
+              </Left>
+              <Right>
+                <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
+              </Right>
+            </Equal>
+          </Any>
+          <Any>
+            <All>
+              <Not>
+                <Dependency path="/isFilingStatusMFJ"/>
+              </Not>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRange"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+            </All>
+            <All>
+              <Dependency path="/isFilingStatusMFJ"/>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRange"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+              <Equal>
+                <Left>
+                  <Dependency path="/ageRangeSecondary"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/ageRangeOptions">under24</Enum>
+                </Right>
+              </Equal>
+            </All>
+          </Any>
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/writableRequiredToFile">
-      <Description>
-        Are the dependent and their spouse required to file?
-      </Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/requiredToFile">
-      <Description>
-        Are the dependent and their spouse required to file?
-      </Description>
+    <Fact path="/familyAndHousehold/*/flowShouldShowMFJFiling">
       <Derived>
-        <All>
-          <Dependency path="../married"/>
-          <Dependency path="../jointReturn"/>
-          <Dependency path="../writableRequiredToFile"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writableFilingOnlyForRefund">
-      <Name>Filing only for refund</Name>
-      <Description> Are the dependent and their spousefiling a return only to claim a refund of income tax withheld or
-        estimated tax paid?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/filingOnlyForRefund">
-      <Name>Filing only for refund</Name>
-      <Description> Are the dependent and their spousefiling a return only to claim a refund of income tax withheld or
-        estimated tax paid?</Description>
-      <Derived>
-        <All>
-          <Dependency path="../married"/>
-          <Dependency path="../jointReturn"/>
-          <Dependency path="../writableFilingOnlyForRefund"/>
-          <!-- We only ask either requiredToFile or filingOnlyForRefund, so if required to file is complete and true, we
-          know this is false. Using the <All> below basically as parens -->
+        <Any>
+          <Not>
+            <Dependency path="../someoneElseCanClaim"/>
+          </Not>
           <All>
             <IsComplete>
-              <Dependency path="../requiredToFile"/>
+              <Dependency path="../isClaimingQCRegardless"/>
             </IsComplete>
-            <Not>
-              <Dependency path="../requiredToFile"/>
-            </Not>
+            <Dependency path="../isClaimingQCRegardless"/>
           </All>
-        </All>
+        </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/jointReturnTest">
-      <Name>Joint Return test</Name>
-      <Description>Does the dependent pass the Joint Return test to be a qualifying child?</Description>
+    <Fact path="/familyAndHousehold/*/mfjFilingTest">
       <Derived>
         <Any>
           <Not>
-            <Dependency path="../married"/>
-          </Not>
-          <Not>
-            <Dependency path="../jointReturn"/>
+            <Dependency path="../marriedFilingJointly"/>
           </Not>
           <All>
-            <Dependency path="../filingOnlyForRefund"/>
-            <Not>
-              <Dependency path="../requiredToFile"/>
-            </Not>
+            <IsComplete>
+              <Dependency path="../mfjForRefundOnly"/>
+            </IsComplete>
+            <Dependency path="../mfjForRefundOnly"/>
           </All>
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/flowShowQcSupportTest">
-      <Name>Flow should show QC support test.</Name>
-      <Description>Used by the flow to decide whether to show screens to run the support test for the qualifying child.
-        Comes before the joint return test.</Description>
+    <Fact path="/familyAndHousehold/*/flowShouldShowDisability">
       <Derived>
-        <All>
-          <Dependency module="dependentsRelationship" path="../qcRelationshipTest"/>
-          <Dependency path="../ageTest"/>
-          <Dependency path="../residencyTest"/>
-        </All>
+        <Dependency path="../mfjFilingTest"/>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/qualifyingChild">
-      <Name>Qualifying child</Name>
-      <Description>Does the dependent pass all five qualifying child tests?</Description>
+    <Fact path="/familyAndHousehold/*/flowShouldShowRelationship">
       <Derived>
-        <All>
-          <Dependency module="dependentsRelationship" path="../qcRelationshipTest"/>
-          <Dependency path="../ageTest"/>
-          <Dependency path="../residencyTest"/>
-          <Dependency path="../qcSupportTest"/>
-          <Dependency path="../jointReturnTest"/>
-        </All>
+        <IsComplete>
+          <Dependency path="../isPermanentlyDisabled"/>
+        </IsComplete>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/eitcRelAgeResJointTest">
-      <Name>EITC relationship age residency and joint return test</Name>
-      <Description>Determines whether a dependent passes the relationship, age, residency and joint return test</Description>
-      <Derived>
-        <All>
-          <Dependency module="dependentsRelationship" path="../qcRelationshipTest"/>
-          <Dependency path="../ageTest"/>
-          <Dependency path="../livedWithTpInUsMostOfYear"/>
-          <Dependency path="../jointReturnTest"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/personQualifiesTPforEitc">
-      <Description>
-        The family member can be a QP for EITC, and the TP is eligible to receive EITC
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="../eitcQualifyingChild"/>
-          <Dependency module="filers" path="/filersCouldQualifyForEitc"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/eitcQualifyingChild">
-      <Name>EITC Qualifying child</Name>
-      <Description>
-        Does the child qualify as a QC for EITC? This is mostly the same as the QC test, but omits the
-        support test and has a different residency test.
-
-        TODO: take into account QC of another
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="../eitcRelAgeResJointTest"/>
-          <Dependency path="../isClaimedIfClaimable"/>
-          <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../disqualifiedDueToParentalCustody"/>-->
-          <!--          </Not>-->
-          <Any>
-            <!-- If the child is the QC of another, the TP must claim that child in order to receive
-            EITC for the child. This will happen when both the TP and the other TP are eligible to claim
-            the child as a QC, and they apply tiebreaker rules. -->
-            <Not>
-              <Dependency path="../isQualifyingChildOfAnother"/>
-            </Not>
-            <Dependency path="../isClaimedDependent"/>
-          </Any>
-          <Any>
-            <!-- If the person is married, they must be a claimed dependent -->
-            <Not>
-              <Dependency path="../married"/>
-            </Not>
-            <Dependency path="../isClaimedDependent"/>
-          </Any>
-          <!--          IGNORE BENEFIT SPLIT FOR EITC, HANDLE THIS IN CONTENT-->
-          <!--          <Any>-->
-          <!--            &lt;!&ndash; Either the QC is not eligible for a benefit split, or they are eligible and this TP-->
-          <!--                 is the one eligible to claim them &ndash;&gt;-->
-          <!--            <Not>-->
-          <!--              <Dependency module="dependentsBenefitSplit" path="../eligibleForBenefitSplit"/>-->
-          <!--            </Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-          <!--          </Any>-->
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/eitcQualifyingChildForCalculation">
-      <Description>
-        The child both qualifies the TP for EITC, and qualifies to increase the amount of EITC they will
-        receive.
-
-        EITC qualifying children use different paths for eligibility and calculation. A child may make a
-        taxpayer eligible for the credit, but if they don't have an SSN, they will not increase the amount of the
-        credit.
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="../eitcQualifyingChild"/>
-          <Dependency path="../ssnValidForEITCCalculation"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/eitcDependentsWhoQualify">
-      <Name>Qualified EIC Dependents</Name>
-      <Description>The qualified people to list on Schedule EIC</Description>
-      <Derived>
-        <Filter path="/familyAndHousehold">
-          <Dependency path="eitcQualifyingChildForCalculation"/>
-        </Filter>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/couldntBeQCOfAnother">
-      <Name>Flow variable for qualifying child of another</Name>
-      <Description>Whether to display the qualifying child of another subsubsection</Description>
-      <Derived>
-        <Not>
-          <Dependency path="../askAboutQCOfAnother"/>
-        </Not>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/askAboutQCOfAnother">
-      <Description>
-        Whether we need to see if the person is a QC of another to make a determination
-      </Description>
-      <Derived>
-        <All>
-          <!-- If the person doesn't meet the age test, they couldn't be anyone's QC -->
-          <!-- We may be able to add a joint return test here as well -->
-          <Dependency path="../ageTest"/>
-          <Any>
-            <!-- The person is trying to qualify as a QR, so we need to know if they can be QC of
-            another -->
-            <All>
-              <!-- We only show this if they've filled out all the QR info and it's true -->
-              <IsComplete>
-                <Dependency path="../qualifyingRelativeMinusNotQcTest"/>
-              </IsComplete>
-              <Dependency path="../qualifyingRelativeMinusNotQcTest"/>
-            </All>
-            <!-- Or the person is the TP's QC, but not their biological or adopted child so we need
-            to see if they could
-               be someone else's QC as well. -->
-            <Dependency path="../qualifyingChild"/>
-          </Any>
-          <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-          <!--          <Not>-->
-          <!--            &lt;!&ndash; If involved in a benefit split, we know who the qualifying people are &ndash;&gt;-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-          <!--          </Not>-->
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writableCouldBeQualifyingChildOfAnother">
-      <Name>Qualifying child of another taxpayer</Name>
-      <Description>(writable) Is the dependent the qualifying child of any other taxpayer?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/couldBeQualifyingChildOfAnother">
-      <Description>Is the dependent the qualifying child of any other taxpayer?</Description>
-      <Derived>
-        <All>
-          <Not>
-            <Dependency path="../couldntBeQCOfAnother"/>
-          </Not>
-          <Dependency path="../writableCouldBeQualifyingChildOfAnother"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qrPathCouldBeQualifyingChildOfAnother">
-      <Description>The dependent is not our qualifying child, but could be someone else's.</Description>
-      <Derived>
-        <All>
-          <Not>
-            <Dependency path="../qualifyingChild"/>
-          </Not>
-          <Dependency path="../couldBeQualifyingChildOfAnother"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writablePotentialClaimerMustFile">
-      <Description>Is the other taxpayer (for whom the dependent could be a qualifying child) required to file a return?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/potentialClaimerMustFile">
-      <Description>Is the other taxpayer (for whom the dependent could be a qualifying child) required to file a return?</Description>
-      <Derived>
-        <All>
-          <Dependency path="../couldBeQualifyingChildOfAnother"/>
-          <Dependency path="../writablePotentialClaimerMustFile"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writablePotentialClaimerDidFile">
-      <Description>Is the other taxpayer (for whom the dependent could be a qualifying child) filing a return?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/potentialClaimerDidFile">
-      <Description>Is the other taxpayer (for whom the dependent could be a qualifying child) filing a return?</Description>
-      <Derived>
-        <All>
-          <Dependency path="../couldBeQualifyingChildOfAnother"/>
-          <Not>
-            <Dependency path="../potentialClaimerMustFile"/>
-          </Not>
-          <Dependency path="../writablePotentialClaimerDidFile"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/writablePotentialClaimerFiledOnlyForRefund">
-      <Name>Other taxpayer is filing</Name>
-      <Description>Is the other taxpayer (for whom the dependent is a qualifying child) filing solely for refund of
-        income tax withheld or estimated tax paid?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/potentialClaimerFiledOnlyForRefund">
-      <Name>Other taxpayer is filing</Name>
-      <Description>Is the other taxpayer (for whom the dependent is a qualifying child) filing solely for refund of
-        income tax withheld or estimated tax paid?</Description>
-      <Derived>
-        <All>
-          <Dependency path="../couldBeQualifyingChildOfAnother"/>
-          <Not>
-            <Dependency path="../potentialClaimerMustFile"/>
-          </Not>
-          <Dependency path="../potentialClaimerDidFile"/>
-          <Dependency path="../writablePotentialClaimerFiledOnlyForRefund"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qcOfAnotherButNot">
-      <Description>The dependent would have been a qc of another but they are not filing, or not filing for
-        credits/dependents</Description>
-      <Derived>
-        <All>
-          <Dependency path="../couldBeQualifyingChildOfAnother"/>
-          <Not>
-            <Dependency path="../potentialClaimerMustFile"/>
-          </Not>
-          <Any>
-            <Not>
-              <Dependency path="../potentialClaimerDidFile"/>
-            </Not>
-            <Dependency path="../potentialClaimerFiledOnlyForRefund"/>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/isQualifyingChildOfAnother">
-      <Description> Whether the dependent is the qualifying child of another taxpayer. This includes tests that they can
-        be the qualifying child of another taxpayer, and makes sure that that they count as a QC of another taxpayer due
-        to how that taxpayer is filing.
-      </Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <All>
-                <IsComplete>
-                  <Dependency path="../qualifyingChild"/>
-                </IsComplete>
-                <Dependency path="../qualifyingChild"/>
-              </All>
-            </When>
-            <Then>
-              <All>
-                <Not>
-                  <Dependency path="../couldntBeQCOfAnother"/>
-                </Not>
-                <Dependency path="../couldBeQualifyingChildOfAnother"/>
-              </All>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <True/>
-            </When>
-            <Then>
-              <All>
-                <Not>
-                  <Dependency path="../couldntBeQCOfAnother"/>
-                </Not>
-                <Dependency path="../couldBeQualifyingChildOfAnother"/>
-                <Not>
-                  <Dependency path="../qcOfAnotherButNot"/>
-                </Not>
-              </All>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/tpClaims">
-      <Name>Taxpayer claims dependent</Name>
-      <Description>Whether the taxpayer wants to claim the dependent.</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/notQualifyingChildTest">
-      <Name>Not qualifying child test</Name>
-      <Description>The dependent passes the not qualifying child test for purposes of determining qualifying relative.</Description>
-      <Derived>
-        <Not>
-          <Dependency path="../isQualifyingChildOfAnother"/>
-        </Not>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/memberOfHouseholdTest">
-      <Name>Lived with you all year</Name>
-      <Description>Did the dependent live with you all year as a member of your household?</Description>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="../residencyDuration"/>
-          </Left>
-          <Right>
-            <Enum optionsPath="/residencyDurationOptions">allYear</Enum>
-          </Right>
-        </Equal>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/relationshipMemberOfHouseholdTest">
-      <Name>Relationship or member of household test</Name>
-      <Description>The dependent passes the relationship/member of household test for purposes of determining qualifying
-        relative.</Description>
+    <Fact path="/familyAndHousehold/*/flowShouldShowValidSSN">
       <Derived>
         <Any>
-          <Dependency module="dependentsRelationship" path="../qrRelationshipTest"/>
-          <Dependency path="../memberOfHouseholdTest"/>
+          <All>
+            <Dependency path="../isPermanentlyDisabled"/>
+            <Dependency path="../meetsRelationshipTest"/>
+          </All>
+          <All>
+            <IsComplete>
+              <Dependency path="../mfjForRefundOnly"/>
+            </IsComplete>
+            <Dependency path="../mfjForRefundOnly"/>
+          </All>
         </Any>
       </Derived>
     </Fact>
-    <Fact path="/grossIncomeLimit">
-      <Name>Gross income limit</Name>
-      <Description>The gross income limit for purposes of the qualifying relative gross income test referenced in
-        &#xA7;152(d)(1)(B).
-        Rev Proc .24 Gross Income Limitation for a Qualifying Relative &#xA7;152(d)(1)(B)
-      </Description>
-      <Derived>
-        <Dollar>5050</Dollar>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/grossIncomeTest">
-      <Name>Gross income test</Name>
-      <Description>The dependent passes the gross income test for purposes of determining qualifying relative (their
-        gross income was less than /grossIncomeLimit).</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ownSupport">
-      <Name>Own support</Name>
-      <Description>Did the dependent provide more than half their own support?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qcSupportTest">
-      <Name>Support test</Name>
-      <Description>Does the dependent pass the Support test to be a qualifying child?</Description>
+    <Fact path="/familyAndHousehold/*/meetsRelationshipTest">
       <Derived>
         <Not>
-          <Dependency path="../ownSupport"/>
+          <Equal>
+            <Left>
+              <Dependency path="../relationship"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/relationshipOptions">none</Enum>
+            </Right>
+          </Equal>
         </Not>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/writableQrSupportTest">
-      <Name>Support test (for qualifying relative)</Name>
-      <Description>The dependent passes the support test for purposes of determining qualifying relative (you provided
-        more than half their support).</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
+    <Fact path="/familyAndHousehold/*/meetsAgeTestDisability">
+      <Derived>
+        <Any>
+          <Dependency path="../isPermanentlyDisabled"/>
+          <Equal>
+            <Left>
+              <Dependency path="../ageRange"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/ageRangeOptionsQC">under19</Enum>
+            </Right>
+          </Equal>
+        </Any>
+      </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/qrSupportTest">
-      <Name>Support test (for qualifying relative)</Name>
-      <Description>The dependent passes the support test for purposes of determining qualifying relative (you provided
-        more than half their support).</Description>
+    <Fact path="/familyAndHousehold/*/meetsAgeTestStudent">
+      <Derived>
+        <All>
+          <Equal>
+            <Left>
+              <Dependency path="../ageRange"/>
+            </Left>
+            <Right>
+              <Enum optionsPath="/ageRangeOptionsQC">between19And23</Enum>
+            </Right>
+          </Equal>
+          <Dependency path="../isFullTimeStudent"/>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/familyAndHousehold/*/meetsAgeTest">
       <Derived>
         <Switch>
           <Case>
             <When>
               <All>
+                <Any>
+                  <Dependency path="../meetsAgeTestDisability"/>
+                  <Dependency path="../meetsAgeTestStudent"/>
+                </Any>
                 <IsComplete>
-                  <Dependency path="../ownSupport"/>
+                  <Dependency path="../isQCYoungerThanSelfOrSpouse"/>
                 </IsComplete>
-                <Dependency path="../ownSupport"/>
+                <Not>
+                  <Dependency path="../isQCYoungerThanSelfOrSpouse"/>
+                </Not>
               </All>
             </When>
             <Then>
@@ -857,788 +313,249 @@
               <True/>
             </When>
             <Then>
-              <Dependency path="../writableQrSupportTest"/>
+              <Any>
+                <Dependency path="../meetsAgeTestDisability"/>
+                <Dependency path="../meetsAgeTestStudent"/>
+              </Any>
             </Then>
           </Case>
         </Switch>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/qualifyingRelative">
-      <Name>Qualifying relative</Name>
-      <Description>Does the dependent pass all four qualifying relative tests?</Description>
+    <Fact path="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
+      <Name>Is an EITC Qualifying Child without asking about SSN (yet) </Name>
       <Derived>
         <All>
-          <Dependency path="../notQualifyingChildTest"/>
-          <Dependency path="../qualifyingRelativeMinusNotQcTest"/>
+          <Dependency path="../livedWithYouUS"/>
+          <Not>
+            <Dependency path="../canSomeoneElseClaimAndTPNotClaiming"/>
+          </Not>
+          <Dependency path="../mfjFilingTest"/>
+          <Dependency path="../meetsAgeTest"/>
+          <Dependency path="../meetsRelationshipTest"/>
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/qualifyingRelativeMinusNotQcTest">
-      <Description>Does the dependent pass the three tests that precede QC of another</Description>
+    <Fact path="/familyAndHousehold/*/isEitcQualifyingChild">
+      <Name>Is an EITC Qualifying Child</Name>
+      <Description>True if the child passes all criteria to be counted as a qualifying child for the EITC.</Description>
       <Derived>
         <All>
-          <Dependency path="../relationshipMemberOfHouseholdTest"/>
-          <Dependency path="../grossIncomeTest"/>
-          <Dependency path="../qrSupportTest"/>
+          <Dependency path="../isTentativeEitcQualifyingChild"/>
+          <Dependency path="../validSSN"/>
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/childIsAdopted">
-      <Description>Is the person an adopted child?</Description>
+    <Fact path="/countEitcQualifyingChildren">
       <Derived>
-        <Equal>
+        <Count>
+          <Dependency path="/familyAndHousehold/*/isEitcQualifyingChild"/>
+        </Count>
+      </Derived>
+    </Fact>
+    <Fact path="/hasQcAndShouldSeeAgeComparisonTest">
+      <Derived>
+        <GreaterThan>
           <Left>
-            <Dependency module="dependentsRelationship" path="../relationship"/>
+            <Count>
+              <Dependency path="/familyAndHousehold/*/flowShouldSeeAgeComparison"/>
+            </Count>
           </Left>
           <Right>
-            <Enum optionsPath="/relationshipOptions">adoptedChild</Enum>
+            <Int> 0 </Int>
           </Right>
-        </Equal>
+        </GreaterThan>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/adoptedChildException">
-      <Name>Adopted child exception to the citizen or resident test</Name>
-      <Description>If the taxpayer is a U.S. citizen or U.S. national and legally adopts a child who isn't a U.S.
-        citizen, U.S. resident alien, or U.S. national, then that child can pass the dependent residency test if they
-        lived with the taxpayer all year as a member of the household. This exception also applies if the child was
-        lawfully placed with the taxpayer for legal adoption and the child lived with the taxpayer for the rest of the
-        year after placement (even if it wasn't all year).</Description>
+    <Fact path="/hasEitcQualifyingChildren">
       <Derived>
-        <All>
-          <Dependency path="../childIsAdopted"/>
-          <Equal>
-            <Left>
-              <Dependency module="dependentsRelationship" path="../relationship"/>
-            </Left>
-            <Right>
-              <Enum optionsPath="/relationshipOptions">adoptedChild</Enum>
-            </Right>
-          </Equal>
-          <Dependency module="filers" path="/eitherFilerUSCitizenOrNational"/>
-          <Equal>
-            <Left>
-              <Dependency path="../residencyDuration"/>
-            </Left>
-            <Right>
-              <Enum optionsPath="/residencyDurationOptions">allYear</Enum>
-            </Right>
-          </Equal>
-        </All>
+        <GreaterThan>
+          <Left>
+            <Dependency path="/countEitcQualifyingChildren"/>
+          </Left>
+          <Right>
+            <Int>0</Int>
+          </Right>
+        </GreaterThan>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/citizenOrUsResidentTest">
-      <Name>Citizen or U.S. resident test</Name>
-      <Description>A narrower Citizen or Resident Test for purposes of CTC and ODC, excluding residents of Canada and
-        Mexico who are not U.S. nationals.</Description>
-      <Derived>
-        <Any>
-          <Dependency path="../isUsCitizenFullYear"/>
-          <Dependency path="../usResident"/>
-          <Dependency path="../usNational"/>
-          <Dependency path="../adoptedChildException"/>
-        </Any>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/eligibleDependentMinusFilerInformation">
-      <Description> The person is an eligible dependent, but that's without taking into account whether the filer is
-        eligible to claim dependents
+    <Fact path="/flowShouldAllowAddAnotherQualifyingChild">
+      <Name>QC flow: allow Add another child while fewer than max EITC qualifying children</Name>
+      <Description>
+        True when the raw count of /familyAndHousehold members who are EITC qualifying children is still below
+        /maxNumberOfEitcQcs (3), or when that count is not yet complete so the user is not blocked mid-edit.
+        Used to enable the Qualifying Children collection add button; when three successful EITC QCs are already
+        counted, adding more rows is disabled (EITC does not increase past the third QC).
       </Description>
       <Derived>
-        <All>
-          <Dependency path="../qcOrQr"/>
-          <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../disqualifiedDueToParentalCustody"/>-->
-          <!--          </Not>-->
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-          <!--          </Not>-->
-          <Dependency path="../citizenOrResidentTest"/>
-          <Dependency path="../jointReturnTest"/>
-          <!--          <NotEqual>-->
-          <!--            <Left>-->
-          <!--              <Dependency path="../tinType"/>-->
-          <!--            </Left>-->
-          <!--            <Right>-->
-          <!--              <Enum optionsPath="/tinTypeOptions">none</Enum>-->
-          <!--            </Right>-->
-          <!--          </NotEqual>-->
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/eligibleDependent">
-      <Name>Eligible to be claimed as dependent</Name>
-      <Description>The person is eligible to be claimed as a dependent.
-
-        TODO: This does not account for qualifying child
-        tiebreakers
-        TODO: This does not account for MSAs, divorced/separated, etc.</Description>
-      <Derived>
-        <All>
+        <Any>
           <Not>
-            <Dependency module="filers" path="/treatFilersAsDependents"/>
+            <IsComplete>
+              <Dependency path="/countEitcQualifyingChildren"/>
+            </IsComplete>
           </Not>
-          <Dependency path="../eligibleDependentMinusFilerInformation"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qcOrQr">
-      <Description>The person is a Qualifying Child or a Qualifying Relative</Description>
-      <Derived>
-        <Any>
-          <Dependency path="../qualifyingChild"/>
-          <Dependency path="../qualifyingRelative"/>
-        </Any>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/isClaimedDependent">
-      <Name>Is claimed dependent</Name>
-      <Description>Whether the person is both allowed to be claimed as a dependent, and has been claimed as a dependent.
-        Exists as a derived fact to ensure that an edit that disqualifies a person as a dependent causes them to no
-        longer count as a dependent.</Description>
-      <Derived>
-        <All>
-          <Dependency path="../tpClaims"/>
-          <Dependency path="../eligibleDependent"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/isNotClaimedDependent">
-      <Name>Is not claimed dependent</Name>
-      <Description>The negation of is claimed dependent</Description>
-      <Derived>
-        <Not>
-          <Dependency path="../isClaimedDependent"/>
-        </Not>
-      </Derived>
-    </Fact>
-    <!-- Either the filer edited the dependents to make them ineligible or made themselves ineligible to even claim
-    dependents -->
-    <!-- The filer has changed themselves to be a dependent after claiming some -->
-    <Fact path="/familyAndHousehold/*/hohQualifyingPerson">
-      <Name>Qualifying person for Head of Household</Name>
-      <Description>
-        The person can qualify you for Head of Household filing status.
-      </Description>
-      <Derived>
-        <All>
-          <!-- If the filer is eligible to file married, but is filing HOH by being considered unmarried, by having
-          lived apart for six months then the QP needs to be in a more restrictive set of relationships BUT if the
-          spouse is a nonresident alien, then the set of restrictive relationship is not used -->
-          <Any>
-            <Not>
-              <Dependency module="filingStatus" path="/eligibleForMFJ"/>
-            </Not>
-            <Dependency module="dependentsRelationship" path="../marriedHohRelationshipTest"/>
-          </Any>
-          <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../disqualifiedDueToParentalCustody"/>-->
-          <!--          </Not>-->
-          <Dependency path="../isClaimedIfClaimable"/>
-          <Any>
-            <All>
-              <Dependency path="../qualifyingChild"/>
-              <Dependency path="../tpPaidMostOfHomeUpkeep"/>
-              <!-- If the person is a QC of another, they have to be claimed in order to count as an hoh qualifying
-              person-->
-              <Any>
-                <Not>
-                  <Dependency path="../isQualifyingChildOfAnother"/>
-                </Not>
-                <Dependency path="../isClaimedDependent"/>
-              </Any>
-              <Any>
-                <!-- The person is a QC who is single or is only not eligible to be a dependent because they're married -->
-                <All>
-                  <Dependency path="../qualifyingChild"/>
-                  <Any>
-                    <Not>
-                      <Dependency path="../married"/>
-                    </Not>
-                    <Dependency path="../eligibleDependentMinusFilerInformation"/>
-                  </Any>
-                </All>
-                <!-- OR the person is either an eligible dependent -->
-                <Dependency path="../eligibleDependent"/>
-                <!-- Or they're eligible for a benefit split, and the taxpayer is the one who can claim them for HoH -->
-                <All>
-                  <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-                  <!--                  <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-                  <!-- But also in this case, they are not allowed to be married -->
-                  <Not>
-                    <Dependency path="../married"/>
-                  </Not>
-                </All>
-              </Any>
-            </All>
-            <All>
-              <Dependency path="../qualifyingRelative"/>
-              <Dependency path="../eligibleDependent"/>
-              <!--              <Dependency path="../flowAddPersonKeepingUpParentsHome"/>-->
-              <Dependency path="../tpPaidMostOfParentHomeUpkeep"/>
-              <Equal>
-                <Left>
-                  <Dependency module="dependentsRelationship" path="../relationship"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/relationshipOptions">parent</Enum>
-                </Right>
-              </Equal>
-            </All>
-            <All>
-              <Dependency path="../qualifyingRelative"/>
-              <Any>
-                <!-- The person is either an eligible dependent -->
-                <Dependency path="../eligibleDependent"/>
-                <!-- Or they're eligible for a benefit split, and the taxpayer is the one who can claim them for HoH -->
-                <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-                <!--                <All>-->
-                <!--                  <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-                <!--                </All>-->
-              </Any>
-              <Dependency module="dependentsRelationship" path="../qrRelationshipTest"/>
-              <Dependency path="../residencyTest"/>
-              <Dependency path="../tpPaidMostOfHomeUpkeep"/>
-              <!--              <Dependency path="../flowAddPersonKeepingUpHome"/>-->
-            </All>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/isClaimedIfClaimable">
-      <Description>
-        Per the decision record
-        https://git.irslabs.org/irslabs-prototypes/direct-file/-/wikis/Decision-log/Your-dependents,-qualifying-persons/Must-claim-dependent-on-return
-        a claimable dependent must be claimed to act as a QP in TY2023
-
-        This fact tests if the person is either claimed,
-        or not claimable. This is necessary to be a QP for HOH, QSS, EITC, or CDCC.
-      </Description>
-      <Derived>
-        <Any>
-          <Dependency path="../isClaimedDependent"/>
-          <Not>
-            <Dependency path="../eligibleDependent"/>
-          </Not>
-        </Any>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/hohQualifyingPerson">
-      <Name>Qualifying person for Head of Household</Name>
-      <Description>
-        The person can qualify you for Head of Household filing status.
-      </Description>
-      <Derived>
-        <All>
-          <!-- If the filer is eligible to file married, but is filing HOH by being considered unmarried, by having
-          lived apart for six months then the QP needs to be in a more restrictive set of relationships BUT if the
-          spouse is a nonresident alien, then the set of restrictive relationship is not used -->
-          <Any>
-            <Not>
-              <Dependency module="filingStatus" path="/eligibleForMFJ"/>
-            </Not>
-            <Dependency module="dependentsRelationship" path="../marriedHohRelationshipTest"/>
-          </Any>
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../disqualifiedDueToParentalCustody" />-->
-          <!--          </Not>-->
-          <Dependency path="../isClaimedIfClaimable"/>
-          <Any>
-            <All>
-              <Dependency path="../qualifyingChild"/>
-              <Dependency path="../tpPaidMostOfHomeUpkeep"/>
-              <!-- If the person is a QC of another, they have to be claimed in order to count as an hoh qualifying
-              person-->
-              <Any>
-                <Not>
-                  <Dependency path="../isQualifyingChildOfAnother"/>
-                </Not>
-                <Dependency path="../isClaimedDependent"/>
-              </Any>
-              <Any>
-                <!-- The person is a QC who is single or is only not eligible to be a dependent because they're married -->
-                <All>
-                  <Dependency path="../qualifyingChild"/>
-                  <Any>
-                    <Not>
-                      <Dependency path="../married"/>
-                    </Not>
-                    <Dependency path="../eligibleDependentMinusFilerInformation"/>
-                  </Any>
-                </All>
-                <!-- OR the person is either an eligible dependent -->
-                <Dependency path="../eligibleDependent"/>
-                <!-- Or they're eligible for a benefit split, and the taxpayer is the one who can claim them for HoH -->
-                <All>
-                  <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-                  <!--                  <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc" />-->
-                  <!-- But also in this case, they are not allowed to be married -->
-                  <Not>
-                    <Dependency path="../married"/>
-                  </Not>
-                </All>
-              </Any>
-            </All>
-            <All>
-              <Dependency path="../qualifyingRelative"/>
-              <Dependency path="../eligibleDependent"/>
-              <!--              <Dependency path="../flowAddPersonKeepingUpParentsHome" />-->
-              <Dependency path="../tpPaidMostOfParentHomeUpkeep"/>
-              <Equal>
-                <Left>
-                  <Dependency module="dependentsRelationship" path="../relationship"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/relationshipOptions">parent</Enum>
-                </Right>
-              </Equal>
-            </All>
-            <All>
-              <Dependency path="../qualifyingRelative"/>
-              <Any>
-                <!-- The person is either an eligible dependent -->
-                <Dependency path="../eligibleDependent"/>
-                <!-- Or they're eligible for a benefit split, and the taxpayer is the one who can claim them for HoH -->
-                <!--                <All>-->
-                <!--                  <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc" />-->
-                <!--                </All>-->
-              </Any>
-              <Dependency module="dependentsRelationship" path="../qrRelationshipTest"/>
-              <Dependency path="../residencyTest"/>
-              <Dependency path="../tpPaidMostOfHomeUpkeep"/>
-              <!--              <Dependency path="../flowAddPersonKeepingUpHome" />-->
-            </All>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/qssQualifyingPerson">
-      <Name>Qualifying person for Qualified Surviving Spouse</Name>
-      <Description>The person can qualify you for Qualified Surviving Spouse filing status.</Description>
-      <Derived>
-        <All>
-          <Dependency path="../tpPaidMostOfHomeUpkeep"/>
-          <Dependency path="../isClaimedIfClaimable"/>
-          <Any>
-            <Equal>
-              <Left>
-                <Dependency module="dependentsRelationship" path="../relationship"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/relationshipOptions">biologicalChild</Enum>
-              </Right>
-            </Equal>
-            <Dependency path="../childIsAdopted"/>
-            <Equal>
-              <Left>
-                <Dependency module="dependentsRelationship" path="../relationship"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/relationshipOptions">stepChild</Enum>
-              </Right>
-            </Equal>
-          </Any>
-          <!-- The child who meets any of the above three relationships must also meet requirements to be an eligible
-          dependent, except for:
-              * The joint return test
-              * Gross income test
-              * TP may be claimed as a dependent of another TP.
-            This includes the citizen or resident test (specific rules for QSS) and the below
-          -->
-          <Dependency path="../citizenOrResidentTest"/>
-          <Dependency path="../qssPersonResidencyTest"/>
-          <!-- A Person can either qualify as a QC (hence the age test) OR a QR -->
-          <!-- And then we need to look at the support test -->
-          <Any>
-            <All>
-              <Dependency path="../ageTest"/>
-              <Dependency path="../qcSupportTest"/>
-            </All>
-            <All>
-              <Dependency path="../notQualifyingChildTest"/>
-              <Dependency path="../qrSupportTest"/>
-            </All>
-          </Any>
-          <!-- If the TP is on the custodial side of the benefit split, the person is not
-               eligible to be claimed as a dependent, and therefore cannot be used for QSS-->
-          <!--          IGNORE BENEFIT SPLIT AND HANDLE IN CONTENT-->
-          <!--          <Not>-->
-          <!--            <Dependency module="dependentsBenefitSplit" path="../tpCanClaimSplitBenefitsHohEitcCdcc"/>-->
-          <!--          </Not>-->
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/flowAddPersonLivedWithTpInUs">
-      <Name>Need to show AddPersonLivedWithTpInUs screen</Name>
-      <Description>
-        Flow variable for AddPersonLivedWithTpInUs screen. We only ask if we're still trying to validate if
-        the person may qualify as a QC for EITC. So we ask if:
-        1. The filers are eligible for EITC
-        2. The person already
-        passes the age test and relationship test for EITC QC
-        3. They've lived with the TP most of the year
-      </Description>
-      <Derived>
-        <All>
-          <Dependency module="filers" path="/filersCouldQualifyForEitc"/>
-          <Dependency path="../ageTest"/>
-          <Dependency module="dependentsRelationship" path="../qcRelationshipTest"/>
-          <Dependency path="../residencyTest"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/livedWithTpInUsMostOfYear">
-      <Name>Lived with taxpayer in U.S. most of the year</Name>
-      <Description>
-        Did the dependent live with the taxpayer in the U.S for most of the year?
-
-        Note that "six" corresponds
-        with the text "more than 6 months but less than 7 months." When reported on schedule EIC, this will be rounded
-        up to a "7."
-      </Description>
-      <Derived>
-        <All>
-          <Dependency path="../residencyTest"/>
-          <Any>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">six</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">seven</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">eight</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">nine</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">ten</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">eleven</Enum>
-              </Right>
-            </Equal>
-            <Equal>
-              <Left>
-                <Dependency path="../monthsLivedWithTPInUS"/>
-              </Left>
-              <Right>
-                <Enum optionsPath="/monthsLivedWithTPInUSOptions">twelve</Enum>
-              </Right>
-            </Equal>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/monthsLivedWithTPInUS">
-      <Description>How many months did the person live with the TP in the US?</Description>
-      <Writable>
-        <Enum optionsPath="/monthsLivedWithTPInUSOptions"/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/daysLivedWithTPInUS">
-      <Description>How many days did the person live with the TP in the US?</Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">six</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>183</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">seven</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>212</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">eight</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>242</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">nine</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>273</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">ten</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>303</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">eleven</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>334</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="../monthsLivedWithTPInUS"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/monthsLivedWithTPInUSOptions">twelve</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>365</Int>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/tpPaidMostOfHomeUpkeep">
-      <Name>Taxpayer paid most of home upkeep</Name>
-      <Description>Did taxpayer pay more than half the cost of keeping up the home shared with the dependent?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/tpPaidMostOfParentHomeUpkeep">
-      <Name>Taxpayer paid most of parent's home upkeep</Name>
-      <Description>Did taxpayer pay more than half the cost of keeping up their dependent parent's main home?</Description>
-      <Writable>
-        <Boolean/>
-      </Writable>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/ssnEmploymentValidity">
-      <Name>Employment validity</Name>
-      <Description>Employment validity statements printed on dependent's Social Security card.</Description>
-      <Writable>
-        <Enum optionsPath="/familyAndHouseholdSsnEmploymentValidityOptions"/>
-      </Writable>
-    </Fact>
-    <!--    KEEP-->
-    <Fact path="/familyAndHousehold/*/isEITCQCUnclaimedDependent">
-      <Derived>
-        <All>
-          <Dependency path="../eitcQualifyingChild"/>
-          <Dependency path="../isNotClaimedDependent"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/deceasedEitcEligibleQcCollection">
-      <Name>DeceasedEitcEligibleQcCollection</Name>
-      <Description>The collection of EITC eligible QCs who died during the tax year. Required for form 8862, if the TP
-        has to file form 8862.</Description>
-      <Derived>
-        <Filter path="/eitcDependentsCollection">
-          <Dependency path="deceased"/>
-        </Filter>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/studentStatusMayAffectBenefits">
-      <Description>
-        Whether the dependent is older than 18 and under 24 at the end of the year. In the future, when we
-        support more tax credits, we may want to ask this of everyone.
-      </Description>
-      <Derived>
-        <All>
-          <GreaterThan>
-            <Left>
-              <Dependency path="../age"/>
-            </Left>
-            <Right>
-              <Int>18</Int>
-            </Right>
-          </GreaterThan>
           <LessThan>
             <Left>
-              <Dependency path="../age"/>
+              <Dependency path="/countEitcQualifyingChildren"/>
             </Left>
             <Right>
-              <Int>24</Int>
+              <Dependency path="/maxNumberOfEitcQcs"/>
             </Right>
           </LessThan>
-        </All>
+        </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/isAStudentUnder24">
-      <Description> Allows the student person to pass the age test as a student. The same age test applies to QC for
-        dependents and EITC.
+    <Fact path="/hasReachedMaxEitcQualifyingChildren">
+      <Name>QC flow: reached maximum EITC qualifying children</Name>
+      <Description>
+        True when the taxpayer is claiming EITC qualifying children and /eitcQualifyingChildren equals /maxNumberOfEitcQcs (3).
       </Description>
       <Derived>
         <All>
-          <Dependency path="../fullTimeStudent"/>
-          <Dependency path="../studentStatusMayAffectBenefits"/>
-          <GreaterThan>
+          <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          <Equal>
             <Left>
-              <Dependency path="../dateOfBirth"/>
+              <Dependency path="/eitcQualifyingChildren"/>
             </Left>
             <Right>
-              <Dependency module="filers" path="/minimumFilerDateOfBirth"/>
+              <Dependency path="/maxNumberOfEitcQcs"/>
             </Right>
-          </GreaterThan>
+          </Equal>
         </All>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/ssnValidForEITCCalculation">
-      <Name>Has an SSN valid for employemnt</Name>
-      <Description>The dependent has a Social Security Number that is not marked "Not Valid For Employment", or that
-        requires work authorization but that authorization is no longer valid.</Description>
+    <Fact path="/flowFamilyAndHouseholdEmptyForQcGating">
+      <Name>QC flow: household has no member rows (unset or empty collection)</Name>
+      <Description>
+        True when /familyAndHousehold is not yet complete in the graph, or is complete with zero UUIDs. Used so
+        Qualifying Children knockouts do not require client-side initialization of an empty Collection.
+      </Description>
       <Derived>
-        <True/>
-        <!--        <All>-->
-        <!--          &lt;!&ndash; They must have an ssn, not an ITIN or ATIN &ndash;&gt;-->
-        <!--          <Equal>-->
-        <!--            <Left>-->
-        <!--              <Dependency path="../tinType" />-->
-        <!--            </Left>-->
-        <!--            <Right>-->
-        <!--              <Enum optionsPath="/tinTypeOptions">ssn</Enum>-->
-        <!--            </Right>-->
-        <!--          </Equal>-->
-        <!--          <Any>-->
-        <!--            &lt;!&ndash; The SSN has no restrictions &ndash;&gt;-->
-        <!--            <Equal>-->
-        <!--              <Left>-->
-        <!--                <Dependency path="../ssnEmploymentValidity" />-->
-        <!--              </Left>-->
-        <!--              <Right>-->
-        <!--                <Enum optionsPath="/familyAndHouseholdSsnEmploymentValidityOptions">neither</Enum>-->
-        <!--              </Right>-->
-        <!--            </Equal>-->
-        <!--            &lt;!&ndash; The SSN requires work authorization, and the authorization is currently in effect &ndash;&gt;-->
-        <!--            <Equal>-->
-        <!--              <Left>-->
-        <!--                <Dependency path="../ssnEmploymentValidity" />-->
-        <!--              </Left>-->
-        <!--              <Right>-->
-        <!--                <Enum optionsPath="/familyAndHouseholdSsnEmploymentValidityOptions">-->
-        <!--                  validOnlyWithDhsAuthorizationInEffect</Enum>-->
-        <!--              </Right>-->
-        <!--            </Equal>-->
-        <!--            &lt;!&ndash; The SSN is not valid for employment, but was not issued solely for a federally funded benefit &ndash;&gt;-->
-        <!--            <All>-->
-        <!--              <Dependency path="../ssnNotValidForEmployment" />-->
-        <!--              <Not>-->
-        <!--                <Dependency path="../ssnOnlyForFederallyFundedBenefit" />-->
-        <!--              </Not>-->
-        <!--            </All>-->
-        <!--          </Any>-->
-        <!--        </All>-->
+        <Any>
+          <Not>
+            <IsComplete>
+              <Dependency path="/familyAndHousehold"/>
+            </IsComplete>
+          </Not>
+          <All>
+            <IsComplete>
+              <Dependency path="/familyAndHousehold"/>
+            </IsComplete>
+            <Equal>
+              <Left>
+                <CollectionSize>
+                  <Dependency path="/familyAndHousehold"/>
+                </CollectionSize>
+              </Left>
+              <Right>
+                <Int>0</Int>
+              </Right>
+            </Equal>
+          </All>
+        </Any>
       </Derived>
     </Fact>
-    <Fact path="/familyAndHousehold/*/deceased">
-      <Name>Deceased</Name>
-      <Description>Whether the dependent died during the tax year</Description>
+    <Fact path="/flowCohortEitcRequiresQualifyingChildEntry">
+      <Name>Flow cohort: must have an EITC qualifying child when claiming QC (Single/QSS/MFJ age; MFS; HOH)</Name>
+      <Description>
+        True when the taxpayer completed and answered yes to claiming EITC qualifying children, and any of:
+        (1) Single, QSS, or MFJ and outside the 25&#x2013;64 age band for EITC without a qualifying child
+        (same basis as /failsEitcAgeBandWithoutQualifyingChildren); (2) Married Filing Separately;
+        (3) Head of Household and married (considered married for HOH); or (4) Head of Household not married
+        (Are you married? No) and outside the 25&#x2013;64 age band for EITC without a qualifying child.
+        MFS and either HOH variant cannot use EITC without a qualifying child under flow rules and must enter
+        at least one EITC QC story on Qualifying Children.
+      </Description>
+      <Derived>
+        <All>
+          <IsComplete>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </IsComplete>
+          <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          <Any>
+            <All>
+              <Any>
+                <Dependency path="/isFilingStatusSingle"/>
+                <Dependency path="/isFilingStatusQSS"/>
+                <Dependency path="/isFilingStatusMFJ"/>
+              </Any>
+              <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+            </All>
+            <Dependency path="/isFilingStatusMFS"/>
+            <All>
+              <Dependency path="/isFilingStatusHOH"/>
+              <Dependency path="/isHOHMarried"/>
+            </All>
+            <All>
+              <Dependency path="/isFilingStatusHOH"/>
+              <IsComplete>
+                <Dependency path="/isHOHMarried"/>
+              </IsComplete>
+              <Not>
+                <Dependency path="/isHOHMarried"/>
+              </Not>
+              <Dependency path="/failsEitcAgeBandWithoutQualifyingChildren"/>
+            </All>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredAddChildKnockout">
+      <Name>Show QC flow knockout: add a child (empty household)</Name>
+      <Description>
+        True when the cohort must enter at least one qualifying child for EITC and there are no EITC qualifying
+        children yet, either because no household rows exist yet or because entered rows do not qualify for EITC.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
+          <Any>
+            <Dependency path="/flowFamilyAndHouseholdEmptyForQcGating"/>
+            <All>
+              <IsComplete>
+                <Dependency path="/familyAndHousehold"/>
+              </IsComplete>
+              <Not>
+                <Dependency path="/hasEitcQualifyingChildren"/>
+              </Not>
+            </All>
+          </Any>
+        </All>
+      </Derived>
+    </Fact>
+    <Fact path="/flowClickedNextOnQualifyingChildrenPage">
+      <Name>User clicked Next on Qualifying Children page</Name>
+      <Description>
+        Set in the browser when the user clicks Continue from Qualifying Children while the add-child required-QC
+        knockout condition is true, so that page-level knockout does not show on initial page load.
+      </Description>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
-    <Fact path="/familyAndHousehold/*/deathDateIfDiedInTaxYear">
-      <Description>Date dependent died if died in the tax year</Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Dependency path="../deceased"/>
-            </When>
-            <Then>
-              <Dependency path="../dateOfDeath"/>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/familyAndHousehold/*/dateOfDeath">
-      <Name>Date of death</Name>
-      <Description>The date on which the person died</Description>
+    <Fact path="/flowClickedNextOnQualifyingChildrenPageForIncomeLimit">
+      <Name>User clicked Next on Qualifying Children for EITC income-limit knockout</Name>
+      <Description>
+        Set in the browser when the taxpayer clicks Continue from Qualifying Children while
+        /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue is true, so the income-limit knockout does not
+        appear before that interaction.
+      </Description>
       <Writable>
-        <Day/>
+        <Boolean/>
       </Writable>
+    </Fact>
+    <Fact path="/flowShouldShowQcRequiredAddChildKnockoutAfterContinue">
+      <Name>Show QC add-child knockout after Continue</Name>
+      <Description>
+        Wraps /flowShouldShowQcRequiredAddChildKnockout and only shows it after Continue has been clicked on
+        Qualifying Children. At least one QC must have been fully completed before this alert should show.
+      </Description>
+      <Derived>
+        <All>
+          <Dependency path="/flowShouldShowQcRequiredAddChildKnockout"/>
+          <Dependency path="/flowClickedNextOnQualifyingChildrenPage"/>
+        </All>
+      </Derived>
     </Fact>
   </Facts>
 </FactDictionaryModule>

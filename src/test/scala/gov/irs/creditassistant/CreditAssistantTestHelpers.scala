@@ -184,8 +184,7 @@ trait CreditAssistantTestHelpers extends Matchers:
       booleanOptionAt(graph, "/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage").contains(true)
     val incLimitQc = booleanOptionAt(graph, "/flowShouldShowEitcIncomeLimitKnockoutAfterContinue").contains(true)
     val qcAddKo = booleanOptionAt(graph, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue").contains(true)
-    val maybe = booleanOptionAt(graph, "/maybeEligibleForEitc")
-    val notMaybe = maybe.contains(false)
+    val koWithQC = booleanOptionAt(graph, "/isDisqualifiedForEitcAgeWithQualifyingChildren").contains(true)
     atLeastOneInelig(
       eitcDisq,
       investmentKo,
@@ -198,7 +197,7 @@ trait CreditAssistantTestHelpers extends Matchers:
       agiGate,
       incLimitQc,
       qcAddKo,
-      notMaybe,
+      koWithQC,
     )
 
   private def atLeastOneInelig(f: Boolean*): Unit =

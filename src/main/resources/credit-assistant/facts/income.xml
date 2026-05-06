@@ -294,15 +294,6 @@
         </Add>
       </Derived>
     </Fact>
-    <Fact path="/otherIncomeTotal">
-      <Description>Used for W-4 calculations</Description>
-      <Derived>
-        <Add>
-          <Dependency path="/otherIncomeWithoutSSABenefitsTaxableAmountTotal"/>
-          <Dependency path="/ssaBenefitsTaxableAmount"/>
-        </Add>
-      </Derived>
-    </Fact>
     <Fact path="/incomeTotalMinusTaxableSSABenefits">
       <Description>Sum of 1z, 2b, 3b, 4b, 5b, 7, and 8 on the 1040 (Line 9 - 6b) </Description>
       <Derived>
