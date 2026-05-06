@@ -155,19 +155,6 @@
         <p>We'll ask about children or relatives you might claim later.</p>
       </modal-content>
     </modal-dialog>
-    <modal-dialog id="modal-claiming-dependents">
-      <modal-heading>Who can I claim as a dependent?</modal-heading>
-      <modal-content>
-        <p>Dependents are typically:</p>
-        <ul>
-          <li>Children under the age of 19</li>
-          <li>Students under the age of 24 who live with their parents</li>
-          <li>Relatives or members of your household who get more than half of their financial support from you and who have a gross income under $5,050</li>
-        </ul>
-        <p>You can’t claim your spouse as a dependent if you file jointly.</p>
-        <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn more about dependents.</a></p>
-      </modal-content>
-    </modal-dialog>
     <modal-dialog id="modal-primary-claimed-as-dependent">
       <modal-heading>How do I know if I’m someone’s dependent?</modal-heading>
       <modal-content>

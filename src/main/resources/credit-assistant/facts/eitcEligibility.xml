@@ -14,7 +14,7 @@
     <Fact path="/eitcQcOfAnother">
       <Name>EITC QC Of Another</Name>
       <Description>Whether the TP or their spouse, if applicable, could be someone else's QC for
-        EITC</Description>
+                EITC</Description>
       <Writable>
         <Boolean/>
       </Writable>
@@ -36,153 +36,20 @@
     <Fact path="/eitcQcOfAnotherIsFilingRefundOnly">
       <Name>EITC QC Of Another is filing</Name>
       <Description>Whether the person who can claim TP or SP as a QC for EITC is filing for a refund
-        only</Description>
+                only</Description>
       <Writable>
         <Boolean/>
       </Writable>
     </Fact>
     <!--FLOW ELIGIBILITY AND TESTS-->
-    <Fact path="/maybeEligibleForEitcWithQc">
-      <Name>Whether the TP may be eligible for the EITC</Name>
-      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
-        Credit (EITC)</Description>
-      <Derived>
-        <All>
-          <GreaterThan>
-            <Left>
-              <Dependency path="/eitcQualifyingChildren"/>
-            </Left>
-            <Right>
-              <Int>0</Int>
-            </Right>
-          </GreaterThan>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/noEitcDueToSeparateFilingFromSpouse">
-      <Description>
-        Used for display in the flow. The TP doesn't have EITC because they are filing separately
-        from their
-        spouse (either MFS or HOH) and have no qualifying children or they did not meet the special
-        rule for spearated
-        spouses
-      </Description>
-      <Derived>
-        <All>
-          <!-- If we don't have the information we need, don't rule out EITC yet -->
-          <IsComplete>
-            <Dependency path="/filingStatus" module="filingStatus"/>
-          </IsComplete>
-          <IsComplete>
-            <Dependency path="/specialRuleForSeparatedSpouses" module="filers"/>
-          </IsComplete>
-          <!-- They are married and not filing jointly-->
-          <Dependency module="filers" path="/isMarried"/>
-          <Not>
-            <Dependency path="/isFilingStatusMFJ"/>
-          </Not>
-          <Any>
-            <!-- and either they did not meet the special rule for separated spouses -->
-            <Not>
-              <Dependency module="filers" path="/specialRuleForSeparatedSpouses"/>
-            </Not>
-            <!-- or they did not have any qualifying children -->
-            <Equal>
-              <Left>
-                <Dependency path="/eitcQualifyingChildren"/>
-              </Left>
-              <Right>
-                <Int>0</Int>
-              </Right>
-            </Equal>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/maybeEligibleForEitcWithoutQc">
-      <Name>Whether the TP may be eligible for the EITC</Name>
-      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
-        Credit (EITC)</Description>
-      <Derived>
-        <All>
-          <!-- Due to scope, every TP and their spouse at this point has been a full year US
-            resident so we do not worry about that req. -->
-          <Equal>
-            <Left>
-              <Dependency path="/eitcQualifyingChildren"/>
-            </Left>
-            <Right>
-              <Int>0</Int>
-            </Right>
-          </Equal>
-          <Any>
-            <!-- Married filers must file jointly. They cannot file as MFS or as HOH
-                 and receive EITC without having QCs -->
-            <Dependency path="/isFilingStatusMFJ"/>
-            <Not>
-              <Dependency module="filers" path="/isMarried"/>
-            </Not>
-          </Any>
-          <!-- The filer cannot be claimed as a dependent -->
-          <Not>
-            <Dependency module="filers" path="/treatFilersAsDependents"/>
-          </Not>
-          <Dependency path="/filersAgeTestForEitcWithNoQC"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/filersAgeTestForEitcWithNoQC">
-      <Name>TP(s) age test for EITC with no QC</Name>
-      <Description>TP(s) age test for EITC with no qualifying children</Description>
-      <Derived>
-        <Switch>
-          <Case>
-            <!-- if MFJ, you and your spouse must meet these requirements -->
-            <When>
-              <Dependency path="/isFilingStatusMFJ"/>
-            </When>
-            <Then>
-              <All>
-                <Any>
-                  <!-- You or your spouse must be greater than or equal to 25 but less than 65 at
-                    the end of the tax year -->
-                  <All>
-                    <Dependency module="filers" path="/primaryFiler/age25OrOlderForEitc"/>
-                    <Dependency module="filers" path="/primaryFiler/age64OrYoungerForEitc"/>
-                  </All>
-                  <All>
-                    <Dependency module="filers" path="/secondaryFiler/age25OrOlderForEitc"/>
-                    <Dependency module="filers" path="/secondaryFiler/age64OrYoungerForEitc"/>
-                  </All>
-                </Any>
-              </All>
-            </Then>
-          </Case>
-          <Case>
-            <!-- if not MFJ, only you -->
-            <When>
-              <True/>
-            </When>
-            <Then>
-              <!-- You must be greater than or equal to 25 but less than 65 at the
-                end of the tax year -->
-              <All>
-                <Dependency module="filers" path="/primaryFiler/age25OrOlderForEitc"/>
-                <Dependency module="filers" path="/primaryFiler/age64OrYoungerForEitc"/>
-              </All>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
     <Fact path="/failsEitcAgeBandWithoutQualifyingChildren">
       <Name>Fails EITC age band without qualifying children (age range buckets)</Name>
       <Description>
-        True when no one in scope is in the "Between 25 and 64" age band at the end of the tax year,
-        for purposes of the EITC without a qualifying child. Uses /ageRange and /ageRangeSecondary only
-        (not DOB). When MFJ and the flow collects spouse age (/flowShouldSeeSpouseAgeRange), either
-        filer in that band passes; otherwise only the primary filer's /ageRange is used.
-      </Description>
+                True when no one in scope is in the "Between 25 and 64" age band at the end of the tax year,
+                for purposes of the EITC without a qualifying child. Uses /ageRange and /ageRangeSecondary only
+                (not DOB). When MFJ and the flow collects spouse age (/flowShouldSeeSpouseAgeRange), either
+                filer in that band passes; otherwise only the primary filer's /ageRange is used.
+            </Description>
       <Derived>
         <Switch>
           <Case>
@@ -251,10 +118,10 @@
     <Fact path="/userDeclinesEitcQualifyingChildrenForDisqualifier">
       <Name>User declines EITC qualifying children (for disqualifier)</Name>
       <Description>
-        True when the filing-status question is complete and the taxpayer answered that they do not plan
-        to claim EITC qualifying children. For-disqualifier only: does not read /eitcQualifyingChildren,
-        which can stay incomplete when /lesserOf operands are incomplete.
-      </Description>
+                True when the filing-status question is complete and the taxpayer answered that they do not plan
+                to claim EITC qualifying children. For-disqualifier only: does not read /eitcQualifyingChildren,
+                which can stay incomplete when /lesserOf operands are incomplete.
+            </Description>
       <Derived>
         <All>
           <IsComplete>
@@ -269,11 +136,11 @@
     <Fact path="/filingAllowsEitcWithoutQualifyingChildrenForDisqualifier">
       <Name>Filing status allows EITC without qualifying children (for disqualifier)</Name>
       <Description>
-        Mirrors the MFJ-or-not-married intent of /maybeEligibleForEitcWithoutQc without relying on
-        /isMarried when /maritalStatus was never collected (knows-filing-status path). Uses /isFilingStatusSingle
-        when /filingStatus is complete. For-disqualifier only; does not change /isMarried or
-        /maybeEligibleForEitcWithoutQc.
-      </Description>
+                Mirrors the MFJ-or-not-married intent of /maybeEligibleForEitcWithoutQc without relying on
+                /isMarried when /maritalStatus was never collected (knows-filing-status path). Uses /isFilingStatusSingle
+                when /filingStatus is complete. For-disqualifier only; does not change /isMarried or
+                /maybeEligibleForEitcWithoutQc.
+            </Description>
       <Derived>
         <Any>
           <Dependency path="/isFilingStatusMFJ"/>
@@ -319,11 +186,11 @@
     <Fact path="/notBlockedAsDependentForEitcForDisqualifier">
       <Name>Not blocked as another's dependent for EITC (for disqualifier)</Name>
       <Description>
-        True when /treatFilersAsDependents is known false, or /isClaimedAsDependent is known false, or
-        derived filing status is single with filing complete. For-disqualifier bridge when
-        /treatFilersAsDependents stays incomplete because /primaryFilerIsClaimedOnAnotherReturn is not
-        collected. Does not redefine /treatFilersAsDependents.
-      </Description>
+                True when /treatFilersAsDependents is known false, or /isClaimedAsDependent is known false, or
+                derived filing status is single with filing complete. For-disqualifier bridge when
+                /treatFilersAsDependents stays incomplete because /primaryFilerIsClaimedOnAnotherReturn is not
+                collected. Does not redefine /treatFilersAsDependents.
+            </Description>
       <Derived>
         <Any>
           <All>
@@ -352,12 +219,12 @@
     <Fact path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren">
       <Name>Disqualified for EITC due to age without qualifying children</Name>
       <Description>
-        True when the taxpayer does not qualify for EITC without a qualifying child because they (or
-        their spouse on a joint return, when that age is collected) are not in the "Between 25 and 64"
-        age band at the end of the tax year. Uses /ageRange (and /ageRangeSecondary when applicable), not
-        DOB. Uses ForDisqualifier bridge facts so /eitcQualifyingChildren, /isMarried, and
-        /treatFilersAsDependents need not be changed globally.
-      </Description>
+                True when the taxpayer does not qualify for EITC without a qualifying child because they (or
+                their spouse on a joint return, when that age is collected) are not in the "Between 25 and 64"
+                age band at the end of the tax year. Uses /ageRange (and /ageRangeSecondary when applicable), not
+                DOB. Uses ForDisqualifier bridge facts so /eitcQualifyingChildren, /isMarried, and
+                /treatFilersAsDependents need not be changed globally.
+            </Description>
       <Derived>
         <All>
           <Dependency path="/userDeclinesEitcQualifyingChildrenForDisqualifier"/>
@@ -367,13 +234,32 @@
         </All>
       </Derived>
     </Fact>
+    <Fact path="/isDisqualifiedForEitcAgeWithQualifyingChildren">
+      <Name>Disqualified for EITC due to age with qualifying children</Name>
+      <Description>
+                True when the taxpayer has QCs and they should see the age comparison Test but there are no tentatively eligible QCs for EITC. Used in Testing eligibility 
+            </Description>
+      <Derived>
+        <All>
+          <Dependency path="/hasQcAndShouldSeeAgeComparisonTest"/>
+          <Equal>
+            <Left>
+              <Dependency path="/eitcQualifyingChildren"/>
+            </Left>
+            <Right>
+              <Int>0</Int>
+            </Right>
+          </Equal>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/flowShouldSeeAgeWithoutQCDisqualification">
       <Name>Disqualified for EITC due to age without qualifying children</Name>
       <Description>
-        True when the taxpayer does not qualify for EITC without a qualifying child based on the age test,
-        and when the filer is NOT disqualified due to non-MFJ filing status disqualifications. Used to ensure that only the correct
-        knockout is shown to the taxpayer.
-      </Description>
+                True when the taxpayer does not qualify for EITC without a qualifying child based on the age test,
+                and when the filer is NOT disqualified due to non-MFJ filing status disqualifications. Used to ensure that only the correct
+                knockout is shown to the taxpayer.
+            </Description>
       <Derived>
         <All>
           <Dependency path="/isDisqualifiedForEitcAgeWithoutQualifyingChildren"/>
@@ -398,104 +284,14 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/maybeEligibleForEitcBase">
-      <Name>Whether the TP may be eligible for the EITC Base</Name>
-      <Description>Base rules that define whether the TP passes various tests to be eligible for
-        the Earned Income Tax
-        Credit (EITC) before running child-specific tests</Description>
-      <Derived>
-        <All>
-          <Not>
-            <Dependency path="/hasForm2555ForeignEarnedIncome"/>
-          </Not>
-          <Dependency path="/hasEarnedIncome"/>
-          <Dependency path="/belowEitcEarnedIncomeLimit"/>
-          <Dependency path="/belowEitcAgiLimit"/>
-          <Dependency path="/belowEitcInvestmentIncomeLimit"/>
-          <Dependency module="filers" path="/filersCouldQualifyForEitc"/>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/hasZeroEitcQualifyingChildren">
-      <Name>Has zero EITC Qualifying Children</Name>
-      <Description>Whether the TP(s) has zero EITC qualifying children</Description>
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="/eitcQualifyingChildren"/>
-          </Left>
-          <Right>
-            <Int>0</Int>
-          </Right>
-        </Equal>
-      </Derived>
-    </Fact>
-    <Fact path="/hasMoreThanZeroEitcQualifyingChildren">
-      <Name>Number of EITC Qualifying Children is greater than zero.</Name>
-      <Description>The number of dependents who qualify as QCs for EITC is greater than zero.</Description>
-      <Derived>
-        <GreaterThan>
-          <Left>
-            <Count>
-              <Dependency path="/familyAndHousehold/*/eitcQualifyingChild"/>
-            </Count>
-          </Left>
-          <Right>
-            <Int>0</Int>
-          </Right>
-        </GreaterThan>
-      </Derived>
-    </Fact>
-    <Fact path="/hasManyEitcQualifyingChildren">
-      <Derived>
-        <GreaterThan>
-          <Left>
-            <Dependency path="/eitcQualifyingChildren"/>
-          </Left>
-          <Right>
-            <Int> 1 </Int>
-          </Right>
-        </GreaterThan>
-      </Derived>
-    </Fact>
-    <Fact path="/eitcQcTest">
-      <Name>EITC QC Test</Name>
-      <Description>Whether the TP qualifies for EITC when accounting for the possibility that they could be the QC of another TP.</Description>
-      <Derived>
-        <Any>
-          <Not>
-            <!-- TP is not QC of another -->
-            <Dependency path="/eitcQcOfAnother"/>
-          </Not>
-          <!-- TP QC of another and they are not required to file -->
-          <All>
-            <Dependency path="/eitcQcOfAnother"/>
-            <Not>
-              <Dependency path="/eitcQcOfAnotherRequiredToFile"/>
-            </Not>
-            <Any>
-              <!-- and they choose not to file, so TP is not a QC -->
-              <Not>
-                <Dependency path="/eitcQcOfAnotherIsFiling"/>
-              </Not>
-              <!-- or they file for refund only, so TP is not a QC -->
-              <All>
-                <Dependency path="/eitcQcOfAnotherIsFiling"/>
-                <Dependency path="/eitcQcOfAnotherIsFilingRefundOnly"/>
-              </All>
-            </Any>
-          </All>
-        </Any>
-      </Derived>
-    </Fact>
     <Fact path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired">
       <Name>Results guard: QC entry cohort but zero EITC qualifying children</Name>
       <Description>
-        True when /flowCohortEitcRequiresQualifyingChildEntry applies (user must enter at least one EITC QC story),
-        /familyAndHousehold is complete, and /eitcQualifyingChildren equals 0. Used so /maybeEligibleForEitc cannot
-        read as eligible when the household list is resolved but no EITC QCs remain. Gating on a complete
-        /familyAndHousehold avoids treating an unset collection as &#x201C;zero children&#x201D; mid-flow.
-      </Description>
+                True when /flowCohortEitcRequiresQualifyingChildEntry applies (user must enter at least one EITC QC story),
+                /familyAndHousehold is complete, and /eitcQualifyingChildren equals 0. Used so /maybeEligibleForEitc cannot
+                read as eligible when the household list is resolved but no EITC QCs remain. Gating on a complete
+                /familyAndHousehold avoids treating an unset collection as &#x201C;zero children&#x201D; mid-flow.
+            </Description>
       <Derived>
         <All>
           <Dependency path="/flowCohortEitcRequiresQualifyingChildEntry"/>
@@ -513,49 +309,12 @@
         </All>
       </Derived>
     </Fact>
-    <Fact path="/maybeEligibleForEitc">
-      <Name>Whether the TP may be eligible for the EITC</Name>
-      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
-        Credit (EITC) prior to
-        the EITC section of the flow. After this, we still need to test
-        1. If the TP is the QC of another TP
-        2. If they
-        have been disqualified from taking EITC by the IRS</Description>
-      <Derived>
-        <All>
-          <Dependency path="/maybeEligibleForEitcBase"/>
-          <Not>
-            <Dependency path="/noEitcDueToSeparateFilingFromSpouse"/>
-          </Not>
-          <Not>
-            <Dependency path="/flowDisqualifiedEitcZeroEitcChildrenWhenQcEntryRequired"/>
-          </Not>
-          <Any>
-            <Dependency path="/maybeEligibleForEitcWithQc"/>
-            <Dependency path="/maybeEligibleForEitcWithoutQc"/>
-          </Any>
-        </All>
-      </Derived>
-    </Fact>
-    <Fact path="/eitcQualified">
-      <Name>Whether the TP is eligible for the EITC</Name>
-      <Description>Whether the TP passes various tests to be eligible for the Earned Income Tax
-        Credit (EITC) in finality, after the EITC sections of the flow</Description>
-      <Derived>
-        <All>
-          <Dependency path="/maybeEligibleForEitc"/>
-          <Dependency path="/eitcQcTest"/>
-          <!--          EITC Assistant does not support the notice test-->
-          <!--          <Dependency path="/eitcNoticeTest"/>-->
-        </All>
-      </Derived>
-    </Fact>
     <Fact path="/highestEitcPhaseoutAmount">
       <Description>
-        Used for a tentative eligibility check for the flow.
-        Until the taxpayer is able to enter their number of qualifying dependents, assume they may be eligible based on
-        the greatest phaseout amount for their filing status.
-      </Description>
+                Used for a tentative eligibility check for the flow.
+                Until the taxpayer is able to enter their number of qualifying dependents, assume they may be eligible based on
+                the greatest phaseout amount for their filing status.
+            </Description>
       <Derived>
         <Switch>
           <!-- MFJ Limits -->
@@ -595,9 +354,9 @@
     <Fact path="/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage">
       <Name>Show AGI knockout on Adjustments</Name>
       <Description>
-        True when tentative AGI is over the highest EITC phaseout line and the user has clicked Continue from Adjustments once
-        (see /flowClickedNextOnAdjustmentsPage), so the knockout does not appear before that interaction.
-      </Description>
+                True when tentative AGI is over the highest EITC phaseout line and the user has clicked Continue from Adjustments once
+                (see /flowClickedNextOnAdjustmentsPage), so the knockout does not appear before that interaction.
+            </Description>
       <Derived>
         <All>
           <Not>
@@ -623,9 +382,9 @@
     <Fact path="/eitcDisqualifiedDueToAgiOrEarnedIncomeLimits">
       <Name>EITC disqualified: AGI or earned income at or above completed phase-out line</Name>
       <Description>
-        True when /belowEitcAgiLimit or /belowEitcEarnedIncomeLimit is false (Pub 596: must be strictly less than
-        the applicable limit from filing status and number of EITC qualifying children). Used after QC count is known.
-      </Description>
+                True when /belowEitcAgiLimit or /belowEitcEarnedIncomeLimit is false (Pub 596: must be strictly less than
+                the applicable limit from filing status and number of EITC qualifying children). Used after QC count is known.
+            </Description>
       <Derived>
         <Any>
           <Not>
@@ -640,9 +399,9 @@
     <Fact path="/flowEitcIncomeLimitKnockoutPrerequisitesComplete">
       <Name>Qualifying Children page: prerequisites to evaluate final EITC income limits</Name>
       <Description>
-        True when the taxpayer has finished claiming vs not claiming qualifying children and, if claiming, the
-        household collection is complete so /eitcQualifyingChildren reflects the entered stories.
-      </Description>
+                True when the taxpayer has finished claiming vs not claiming qualifying children and, if claiming, the
+                household collection is complete so /eitcQualifyingChildren reflects the entered stories.
+            </Description>
       <Derived>
         <Any>
           <All>
@@ -658,10 +417,10 @@
     <Fact path="/flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue">
       <Name>Show EITC income-limit knockout on Qualifying Children after Continue</Name>
       <Description>
-        True when prerequisites are met and AGI or earned income is at or above the applicable completed phase-out
-        amount. The browser sets /flowClickedNextOnQualifyingChildrenPageForIncomeLimit on first Continue to reveal
-        the alert (mirrors Adjustments AGI knockout).
-      </Description>
+                True when prerequisites are met and AGI or earned income is at or above the applicable completed phase-out
+                amount. The browser sets /flowClickedNextOnQualifyingChildrenPageForIncomeLimit on first Continue to reveal
+                the alert (mirrors Adjustments AGI knockout).
+            </Description>
       <Derived>
         <All>
           <Dependency path="/flowEitcIncomeLimitKnockoutPrerequisitesComplete"/>
@@ -672,9 +431,9 @@
     <Fact path="/flowShouldShowEitcIncomeLimitKnockoutAfterContinue">
       <Name>Show EITC income-limit knockout after Continue on Qualifying Children</Name>
       <Description>
-        Wraps /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue so the knockout appears only after the
-        user has clicked Continue once (see /flowClickedNextOnQualifyingChildrenPageForIncomeLimit).
-      </Description>
+                Wraps /flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue so the knockout appears only after the
+                user has clicked Continue once (see /flowClickedNextOnQualifyingChildrenPageForIncomeLimit).
+            </Description>
       <Derived>
         <All>
           <Dependency path="/flowShouldRevealEitcIncomeLimitOnQualifyingChildrenContinue"/>
