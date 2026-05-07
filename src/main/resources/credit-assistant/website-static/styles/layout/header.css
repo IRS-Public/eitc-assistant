@@ -1,7 +1,14 @@
 .logo-banner {
-  width: 100%;
   background-color: var(--primary);
   padding: var(--units-2) 0;
+  width: 100%;
+}
+
+.logo-banner .grid-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .logo-banner a {
@@ -17,7 +24,7 @@
   width: 6.25rem;
   max-height: 36px;
   vertical-align: middle;
-  @media (min-width: 880px) {
+  @container app (min-width: 880px) {
     width: 7.25rem;
   }
 }

@@ -1,5 +1,6 @@
 package gov.irs.creditassistant.generators
 
+import gov.irs.creditassistant.build.Flags
 import gov.irs.creditassistant.parser.Flow
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import org.jsoup.parser.Tag
@@ -66,7 +67,7 @@ object Website {
     val navPages = flow.pages.filter(p => !p.exclude)
     val excludedPageLength = flow.pages.length - navPages.size
 
-    val pages = flow.pages.zipWithIndex.map { (page, index) =>
+    var pages = flow.pages.zipWithIndex.map { (page, index) =>
       val title = s"EITC Assistant - ${page.title} | Internal Revenue Service"
       val stepTitle = page.title
 
@@ -78,6 +79,7 @@ object Website {
       context.setVariable("stepTotal", navPages.size)
       context.setVariable("pages", navPages.asJava) // th:each requires Java Iterables
       context.setVariable("flags", flags.asJava)
+      context.setVariable("languageCode", "en")
 
       // Add a link for the next page if it's not the last one
       if (index < flow.pages.size - 1) {
@@ -99,6 +101,11 @@ object Website {
 
       val content = templateEngine.process("page", context)
       WebsitePage(page.route, content)
+    }
+
+    if (flags.contains(Flags.allScreens)) {
+      val allScreens = AllScreens.generate(flow)
+      pages = pages :+ allScreens
     }
     Website(pages, dictionaryXml)
   }

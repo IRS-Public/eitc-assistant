@@ -55,7 +55,7 @@
         <summary>Foreign earned income</summary>
         <fg-set path="/non2555ForeignIncome">
           <question>Foreign earned income not reported on Form 2555</question>
-          <modal-link for="modal-foreign-income">What is foreign earned income?</modal-link>
+          <modal-link for="modal-foreign-income-non2555">What is foreign earned income?</modal-link>
           <input type="dollar"/>
         </fg-set>
       </fg-detail>
@@ -283,7 +283,7 @@
       </modal-content>
     </modal-dialog>
 
-    <modal-dialog id="modal-foreign-income">
+    <modal-dialog id="modal-foreign-income-non2555">
       <modal-heading>Pay Earned as an Inmate</modal-heading>
       <modal-content>
 

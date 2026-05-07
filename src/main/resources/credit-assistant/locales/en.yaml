@@ -42,6 +42,10 @@ components:
   select:
     select: "--Select one --"
 
+title:
+  prefix: EITC Assistant
+  suffix: Internal Revenue Service
+
 layout:
   title: EITC Assistant
   skip-to-main: Skip to main content
@@ -105,11 +109,13 @@ errors:
   InvalidMonth: Enter a valid month.
   InvalidDate: Enter a valid date.
   InvalidLimit: Invalid limit set. # Server error
+  IncompleteWritableDate: Enter a complete date or leave blank
 
   # Enum errors
   BlankEnum: Value was blank. # Server error
   InvalidEnum: Value not found. # Server error
 
+  Required: This question is required
   Default: Sorry, something went wrong # Server error
 
   # Limit errors
