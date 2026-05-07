@@ -13,5 +13,5 @@ extension (flowNodes: Seq[FlowNode]) {
 }
 
 trait FlowNodeParser {
-  def fromXml(element: Elem, flowParser: FlowParser, level: Int): FlowNode
+  def fromXml(element: Elem, flowParser: FlowParser, parentTranslationContext: TranslationContext): FlowNode
 }

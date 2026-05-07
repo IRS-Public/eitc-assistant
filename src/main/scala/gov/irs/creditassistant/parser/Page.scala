@@ -7,12 +7,18 @@ import scala.util.matching.Regex
 import scala.xml.Elem
 
 case class Page(
-    title: String,
+    translationContext: TranslationContext,
     route: String,
     exclude: Boolean,
     children: Seq[FlowNode],
 ) extends FlowNode {
-  val href: String = "/app/eitc" + route + (if (route == "/") "" else "/")
+  val titleKey: String = translationContext.fullKey("title")
+
+  def href(languageCode: String): String = {
+    val languagePortion = if (languageCode == "en") "" else s"/$languageCode"
+    val routePortion = if (route == "/") "/" else s"$route/"
+    s"/app/eitc$languagePortion$routePortion"
+  }
 
   override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val pageContent = children.html(templateEngine)
@@ -28,15 +34,17 @@ case class Page(
 }
 
 object Page extends FlowNodeParser {
-  override def fromXml(page: Elem, flowParser: FlowParser, level: Int = 0): Page = {
+  override def fromXml(page: Elem, flowParser: FlowParser, parentTranslationContext: TranslationContext): Page = {
     val route =
       optionString(page \@ "route").getOrElse(throw InvalidFormConfig("<page> is missing a route attribute"))
     val title =
       optionString(page \@ "title").getOrElse(throw InvalidFormConfig("<page> is missing a title attribute"))
     val exclude = (page \@ "exclude-from-stepper").toBooleanOption.getOrElse(false)
 
-    val children = flowParser.parseChildElements(page)
+    val translationContext = parentTranslationContext.forChildWithId(route)
+    translationContext.updateValue("title", title)
 
-    Page(title, route, exclude, children)
+    val children = flowParser.parseChildElements(page, translationContext)
+    Page(translationContext, route, exclude, children)
   }
 }

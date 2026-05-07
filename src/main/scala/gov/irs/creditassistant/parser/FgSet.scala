@@ -11,12 +11,11 @@ import scala.xml.Elem
 case class ThymeleafOption(name: String, value: String, description: String)
 case class FgSet(
     path: String,
-    question: String,
     condition: Option[Condition],
     input: Input,
-    hint: Option[String],
     optional: Boolean,
-    modalLink: Option[String],
+    hasHint: Boolean,
+    translationContext: TranslationContext,
 ) extends FlowNode {
   override def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val usesFieldset =
@@ -29,11 +28,9 @@ case class FgSet(
     context.setVariable("typeString", input.typeString)
     context.setVariable("optional", optional)
     context.setVariable("usesFieldset", usesFieldset)
-    context.setVariable("hint", hint.orNull)
-    context.setVariable("modalLink", modalLink.orNull)
-
-    val contentKey = "fg-sets." + path
+    val contentKey = translationContext.fullKey()
     context.setVariable("contentKey", contentKey)
+    context.setVariable("hintId", if (hasHint) s"$path-hint" else null)
 
     input match {
       case Input.select(options, optionsPath, _) =>
@@ -66,8 +63,18 @@ case class FgSet(
   }
 }
 
+case class FgSetOption(
+    value: String,
+    name: String,
+    description: Option[String],
+)
+
 object FgSet extends FlowNodeParser {
-  override def fromXml(fgSetElement: Elem, flowParser: FlowParser, level: Int): FgSet = {
+  override def fromXml(
+      fgSetElement: Elem,
+      flowParser: FlowParser,
+      parentTranslationContext: TranslationContext,
+  ): FgSet = {
     val factDictionary = flowParser.factDictionary
     val path = fgSetElement \@ "path"
     if (path.isEmpty) {
@@ -94,7 +101,7 @@ object FgSet extends FlowNodeParser {
     if (inputAndNodeTypeMismatch) throw InvalidFormConfig(s"Path $path must be of type $input")
 
     // Use .child.mkString instead of .text to preserve XML tags (e.g., <span>, <fg-show>) in mixed content
-    val question = (fgSetElement \ "question").head.child.mkString.trim
+    val question = (fgSetElement \ "question").head.child.mkString.strip
     if (question.isEmpty) {
       throw InvalidFormConfig(s"fg-set at path: $path has an empty question tag. This is required.")
     }
@@ -104,15 +111,42 @@ object FgSet extends FlowNodeParser {
     val hint = if (hintNode.isEmpty) {
       None
     } else {
-      Some(hintNode.head.child.mkString.trim)
+      Some(hintNode.head.child.mkString.strip)
     }
     val modalLinkNode = fgSetElement \ "modal-link"
     val modalLink = if (modalLinkNode.isEmpty) {
       None
     } else {
-      Some(modalLinkNode.head.toString.trim)
+      Some(modalLinkNode.head.toString.strip)
     }
 
-    FgSet(path, question, condition, input, hint, isOptional, modalLink)
+    val options = (fgSetElement \\ "option").map { option =>
+      val value = option \@ "value"
+      val name = option.head.child.mkString.strip
+      val description = option \@ "description-key"
+      val descriptionValue = Option(description).filter(_.nonEmpty)
+      FgSetOption(value, name, descriptionValue)
+    }
+
+    val translationContext = parentTranslationContext.forChildWithId(path)
+
+    translationContext.updateValue("question", question)
+    if (hint.nonEmpty) {
+      translationContext.updateValue("hint", hint.get)
+    }
+    if (modalLink.nonEmpty) {
+      translationContext.updateValue("modalLink", modalLink.get)
+    }
+
+    if (options.nonEmpty) {
+      val optionsContext = translationContext.forChildWithId("options")
+      options.foreach(option => {
+        val specificOptionContext = optionsContext.forChildWithId(option.value)
+        specificOptionContext.updateValue("name", option.name)
+        if (option.description.isDefined) specificOptionContext.updateValue("description", option.description.get)
+      })
+    }
+
+    FgSet(path, condition, input, isOptional, hint.nonEmpty, translationContext)
   }
 }

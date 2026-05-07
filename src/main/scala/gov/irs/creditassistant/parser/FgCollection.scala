@@ -2,7 +2,8 @@ package gov.irs.creditassistant.parser
 
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Condition
-import gov.irs.creditassistant.parser.Utils.{ optionString, validateFact }
+import gov.irs.creditassistant.parser.Utils.optionString
+import gov.irs.creditassistant.parser.Utils.validateFact
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
@@ -13,6 +14,7 @@ case class FgCollection(
     itemName: String,
     disallowEmpty: String,
     condition: Option[Condition],
+    translationContext: TranslationContext,
     children: Seq[FlowNode],
     determiner: String,
     addItemIfTrue: Option[String],
@@ -20,21 +22,26 @@ case class FgCollection(
   def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
     context.setVariable("path", path)
-    context.setVariable("itemName", itemName)
+    val translationKeyBase = translationContext.fullKey()
     context.setVariable("disallowEmpty", disallowEmpty)
     val childrenHtml = children.html(templateEngine)
     context.setVariable("collectionFacts", childrenHtml)
     context.setVariable("condition", condition.map(_.path).orNull)
     context.setVariable("operator", condition.map(_.operator.toString).orNull)
-    context.setVariable("determiner", determiner)
     context.setVariable("addItemIfTrue", addItemIfTrue.getOrElse(""))
+    context.setVariable("itemName", itemName)
+    context.setVariable("determiner", determiner)
 
     templateEngine.process("nodes/fg-collection", context)
   }
 }
 
 object FgCollection extends FlowNodeParser {
-  override def fromXml(fgCollectionElement: Elem, flowParser: FlowParser, level: Int): FgCollection = {
+  override def fromXml(
+      fgCollectionElement: Elem,
+      flowParser: FlowParser,
+      parentTranslationContext: TranslationContext,
+  ): FgCollection = {
     val factDictionary = flowParser.factDictionary
 
     val path = fgCollectionElement \@ "path"
@@ -57,9 +64,11 @@ object FgCollection extends FlowNodeParser {
       }
     }
 
-    val children = flowParser.parseChildElements(fgCollectionElement, level)
+    val translationContext = parentTranslationContext.forChildWithId("collection" + path)
 
-    FgCollection(path, itemName, disallowEmpty, condition, children, determiner, addItemIfTrue)
+    val children = flowParser.parseChildElements(fgCollectionElement, translationContext)
+
+    FgCollection(path, itemName, disallowEmpty, condition, translationContext, children, determiner, addItemIfTrue)
   }
 
   private def validateFgCollection(path: String, factDictionary: FactDictionary): Unit = {

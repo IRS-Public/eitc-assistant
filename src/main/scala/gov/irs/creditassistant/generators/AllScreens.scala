@@ -1,6 +1,8 @@
 package gov.irs.creditassistant.generators
 
-import gov.irs.creditassistant.parser.{ Flow, Page }
+import gov.irs.creditassistant.generators.WebsitePage
+import gov.irs.creditassistant.parser.Flow
+import gov.irs.creditassistant.parser.Page
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
 import gov.irs.factgraph.FactDictionary
 import org.jsoup.parser.Tag
@@ -37,7 +39,7 @@ object AllScreens {
     val pages = flow.pages.map(page =>
       Map(
         "route" -> page.route,
-        "title" -> page.title,
+        "title" -> templateEngine.messageResolver.resolveMessage(page.titleKey),
         "content" -> page.html(templateEngine),
       ).asJava,
     )
@@ -45,6 +47,6 @@ object AllScreens {
 
     val content = templateEngine.process("all-screens", context)
 
-    WebsitePage("/all-screens", content)
+    WebsitePage("/all-screens", content, "en")
   }
 }

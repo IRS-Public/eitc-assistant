@@ -40,7 +40,6 @@ span.hidden{
     h4[condition],
     h5[condition],
     fg-set[condition],
-    fg-withholding-adjustments[condition],
     fg-alert[condition] {
       border: 4px solid var(--accent-warm);
       padding: 0 var(--units-2) var(--units-2);

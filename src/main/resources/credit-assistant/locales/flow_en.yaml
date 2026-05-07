@@ -1,0 +1,1407 @@
+# DO NOT EDIT, THIS IS A GENERATED FILE
+/:
+  title: About you
+  h2-5e286b: About You
+  p-c2c8a0: Tell us about yourself. Your responses will help us determine whether
+    you qualify for the Earned Income Tax Credit (EITC).
+  /chosenTaxYear:
+    question: 'Select the tax year you would like to check your EITC eligibility for:'
+    options:
+      '2025':
+        name: '2025'
+      '2024':
+        name: '2024'
+      '2023':
+        name: '2023'
+  /isUSCitizenOrResidentAlien:
+    question: Were you a U.S. Citizen or Resident Alien for all of <fg-show path="/taxYear"/>?*
+    modalLink: <modal-link for="modal-citizen">U.S. Citizen or Resident Alien</modal-link>
+    options:
+      'true':
+        name: 'Yes'
+      'false':
+        name: 'No'
+  fg-alert-8b7db9:
+    heading: You don’t qualify for the Earned Income Tax Credit (EITC)
+    p-091688: You must be a U.S. citizen or resident alien to claim the Earned Income
+      Tax Credit. See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Publication
+      519, U.S. Tax Guide for Aliens</a>, to determine if you are a U.S. resident
+      alien for the entire year.
+    p-f72c3e: <strong>Note:</strong> Select Yes if you are filing a joint return with
+      your spouse for <fg-show path="/taxYear"/> and either you or your spouse were
+      a U.S. citizen or resident alien for the entire year.
+    p-b85d77: You can’t claim the EITC because you don’t have a valid Social Security
+      number issued on or before the due date of your tax return.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+    p-4c0c0d: You can’t claim the earned income credit if you file <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Form
+      2555</a>, Foreign Earned Income.
+    p-236b69: See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-54">Publication
+      54</a>, Tax Guide for U.S. Citizens and Resident Aliens Abroad, for more information.
+    p-5e637b: You don’t qualify for the EITC if you are someone else’s qualifying
+      child for the EITC.
+    p-ec145e: For more information about whether someone can claim you as a qualifying
+      child for the EITC, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit, You Cannot Be a Qualifying Child of Another Taxpayer.
+    p-363ef2: You don’t qualify for the EITC if you are someone else’s dependent unless
+      you have a qualifying child for the EITC.
+  /hasValidSSN:
+    question: Do you have a valid Social Security number that was issued on or before
+      the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?*
+    modalLink: <modal-link for="modal-valid-ssn-filer">Valid Social Security Number</modal-link>
+    options:
+      'true':
+        name: 'Yes'
+      'false':
+        name: 'No'
+  /hasForeignEarnedIncome:
+    question: Are you filing Form 2555, Foreign Earned Income?*
+    modalLink: <modal-link for="modal-foreign-income">Foreign Earned Income excluded
+      from Gross Income</modal-link>
+    options:
+      'true':
+        name: 'Yes'
+      'false':
+        name: 'No'
+  /isClaimedAsDependent:
+    question: Will someone else claim you as a dependent or qualifying child for the
+      EITC on their tax return?*
+    modalLink: <modal-link for="modal-claimed-dependent">You as a Dependent or Qualifying
+      Child</modal-link>
+    options:
+      'true':
+        name: 'Yes'
+      'false':
+        name: 'No'
+  /ageRange:
+    question: Please select the range that describes your age at the end of <fg-show
+      path="/taxYear"/>.*
+    options:
+      under24:
+        name: 24 and under
+      age25to64:
+        name: Between 25 and 64
+      65andOlder:
+        name: 65 and older
+  modal-tax-year:
+    heading: Tax Year
+    p-aa5a47: 'For wages and other income earned in:'
+    ul-0:
+      li-28dd34: 2025, select 2025
+      li-174a8b: 2024, select 2024
+      li-0a25dc: 2023, select 2023
+  modal-citizen:
+    heading: U.S. Citizen or Resident Alien
+    p-18e680: If you are not a U.S. citizen, you're considered an alien.
+    p-fe70ca: You're considered a resident alien for the EITC if you have a green
+      card, or you lived in the U.S. for more than a certain number of days.
+    p-2c8f8f: For more information and important exceptions, see <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Publication
+      519, U.S. Tax Guide for Aliens</a>.
+  modal-valid-ssn-filer:
+    heading: Valid Social Security Number
+    p-527528: You must have a valid Social Security number (SSN) that is issued by
+      the Social Security Administration on or before the due date of your <fg-show
+      path="/taxYear"/> tax return (including extensions).
+    p-45ae0e: If your Social Security card reads “Valid for work with DHS authorization”
+      or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization
+      is still valid.
+    p-558a40: 'For the EITC, we don''t accept:'
+    ul-0:
+      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
+      li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-9f487b: Social Security number issued after the due date of the return, including
+        extensions
+      li-a69a30: Social Security number issued solely to apply for or receive a federally
+        funded benefit such as Medicaid
+    p-f554f7: See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a> for more information on a valid Social Security Number.
+  modal-foreign-income:
+    heading: Foreign Earned Income excluded from Gross Income
+    p-f45b03: This refers to income you earned outside the United States, District
+      of Columbia, or U.S. possessions or territories which you have elected to exclude
+      on a <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Form
+      2555, Foreign Earned Income</a>.
+  modal-claimed-dependent:
+    heading: You as a Dependent or Qualifying Child
+    p-faf8d8: In most cases you cannot be a dependent or qualifying child of another
+      taxpayer and claim the EITC.
+    p-98d6db: In most cases, if you're under age 19 or a student under age 24 and
+      live with your parents or other relatives in the United States for more than
+      half of the year, select Yes.
+    p-038f13: If you’re married and filing a joint return, you can’t be claimed as
+      a dependent unless you’re filing a joint return only to claim a refund of withheld
+      income taxes or estimated taxes paid.
+    p-ceda6c: For more information about whether someone can claim you as a dependent,
+      visit <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">Whom
+      May I Claim as a Dependent?</a>
+    p-d11380: For more information about whether someone can claim you as a qualifying
+      child for the EITC, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">Publication
+      596, Earned Income Credit, You Cannot Be a Qualifying Child of Another Taxpayer</a>.
+    p-16aba9: We'll ask about children or relatives you might claim later.
+  modal-primary-claimed-as-dependent:
+    heading: How do I know if I’m someone’s dependent?
+    p-d3187d: If you relied on someone else (other than your spouse) for support in
+      <fg-show path="/taxYear"/>, they might be able to claim you as a dependent on
+      their federal tax return.
+    p-762495: 'There are a few factors that determine whether someone can claim you
+      as a dependent, including:'
+    ul-0:
+      li-b17276: Your relationship to that person
+      li-c82d5e: How much they supported you, financially and in other ways
+      li-5a5073: If you lived with them and for how long
+    p-752de3: Review Table 5 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">IRS
+      Publication 501</a> to determine if someone else might be able to claim you.
+    p-5a0201: Keep in mind that you aren’t someone else’s dependent if you paid for
+      more than half of your own support (or if your spouse did).
+  modal-confirm-tax-year-change:
+    heading: Confirmation
+    p-31c7da: Changing <strong>year</strong> will clear your previously entered data.
+      Do you still wish to continue?
+    button-a0bfb8: Continue
+    button-ea4788: Cancel
+/filing-status:
+  title: Filing Status
+  h2-c01d87: Filing Status
+  p-9bda8f: On this step you will be asked about how you plan to file your <fg-show
+    path="/taxYear"/> taxes.
+  /knowsFilingStatus:
+    question: Do you know the filing status you will use when filing your <fg-show
+      path="/taxYear"/> taxes?
+  /initialFilingStatus:
+    question: Which filing status will you use to file federal taxes in <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-filing-status">Which filing status should I
+      use?</modal-link>
+    options:
+      single:
+        name: Single
+      marriedFilingJointly:
+        name: Married Filing Jointly
+      marriedFilingSeparately:
+        name: Married Filing Separately
+      headOfHousehold:
+        name: Head of Household
+      qualifiedSurvivingSpouse:
+        name: Qualified Surviving Spouse
+  /maritalStatus:
+    question: What is your marital status?
+    modalLink: <modal-link for="modal-legal-separation">What does married and legally
+      separated mean?</modal-link>
+    options:
+      married:
+        name: Married
+      divorced:
+        name: Divorced or Legally separated
+      widowed:
+        name: Widow
+      single:
+        name: Never Married
+  /yearOfSpouseDeathCurrentTaxYearIsChosen:
+    question: When did your spouse pass away?
+    options:
+      taxYear:
+        name: During 2025
+      taxYearMinusOneOrTwo:
+        name: During 2023 or 2024
+      beforeTaxYearMinusTwo:
+        name: Before 2023
+  /yearOfSpouseDeathLastTaxYearIsChosen:
+    question: When did your spouse pass away?
+    options:
+      taxYear:
+        name: During 2024
+      taxYearMinusOneOrTwo:
+        name: During 2022 or 2023
+      beforeTaxYearMinusTwo:
+        name: Before 2022
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+    question: When did your spouse pass away?
+    options:
+      taxYear:
+        name: During 2023
+      taxYearMinusOneOrTwo:
+        name: During 2021 or 2022
+      beforeTaxYearMinusTwo:
+        name: Before 2021
+  /isHOHMarried:
+    question: Are you married?
+  /intendsToFileJointlyWidow:
+    question: Do you intend to file joint returns with your deceased spouse <fg-show
+      path="/taxYear"/>?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased
+      Spouse</modal-link>
+  /intendsToFileJointlyMFJ:
+    question: Do you intend to file joint returns for <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-joint-return-mfj">What is a Joint Return?</modal-link>
+  /spouseLivedWithTaxpayerLastSixMonths:
+    question: Did your spouse live with you in your home at any time during the last
+      six months of <fg-show path="/taxYear"/> (including any temporary absences)?
+    modalLink: <modal-link for="modal-spouse-lived-together">Spouse - Lived Together</modal-link>
+  /samePrincipalResidenceLast6Months:
+    question: Did you and your spouse have the same principal residence for the last
+      6 months of <fg-show path="/taxYear"/>?
+  /writableSeparationAgreement:
+    question: Were you legally separated according to your state law under a written
+      separation agreement, or a decree of separate maintenance and you did not live
+      with your spouse on the last day of <fg-show path="/taxYear"/>?
+  /entitledToPreviouslyFileJointReturn:
+    question: Were you entitled to file a joint return with your spouse for the year
+      your spouse died?
+  /paidMoreThanHalfHomeCostsForChild:
+    question: In <fg-show path="/taxYear"/>, did you pay more than half the cost of
+      keeping up a home in which you lived that was also the main home of your dependent
+      child, stepchild, or foster child for all of <fg-show path="/taxYear"/> (including
+      any temporary absences)?
+    modalLink: <modal-link for="modal-keeping-up-home">How do I calculate &quot;Keeping
+      Up a Home&quot;?</modal-link>
+  /canClaimChildAsDependentInCurrentTaxYear:
+    question: Can you claim your child or stepchild who lived with you as a dependent
+      for <fg-show path="/taxYear"/>?
+  /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
+    question: 'Could you claim your child or stepchild as a dependent EXCEPT that,
+      for <fg-show path="/taxYear"/>: 1) The child had gross income that was above
+      the threshold of $4,400 for <fg-show path="/taxYear"/>; 2) The child filed a
+      joint return; or 3) You could be claimed as a dependent on someone else''s return?'
+  /homeUpkeepScenario:
+    question: Did you pay more than 50% of the cost of keeping up a home in <fg-show
+      path="/taxYear"/>?
+    modalLink: <modal-link for="modal-keeping-up-home">How do I calculate &quot;Keeping
+      Up a Home&quot;?</modal-link>
+    options:
+      livedWithDependent:
+        name: Where you lived more than half the year with a dependent (child, sibling,
+          parent, etc.)
+      custodialParentNonDependent:
+        name: Where you lived more than half the year with a child who isn't your
+          dependent (custodial parent rule)
+      dependentParentElsewhere:
+        name: For a parent you can claim as a dependent, but who didn't live with
+          you
+      none:
+        name: None of the above
+  /secondaryFilerHasValidSSN:
+    question: Does your spouse have a valid Social Security number that was issued
+      on or before the due date of your <fg-show path="/taxYear"/> tax return (including
+      extensions)?
+    modalLink: <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+  /deceasedSpouseValidSSNOnDateOfDeath:
+    question: Did your spouse have a valid Social Security number on the day they
+      passed away?
+    modalLink: <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+  /spouseAliveEndOfTaxYear:
+    question: Was your spouse alive on December 31, <fg-show path="/taxYear"/>?
+  /ageRangeSecondary:
+    question: Please select the range that describes the age of your spouse <span
+      condition="/spouseAliveEndOfTaxYear" operator="isFalse">when they died</span><span
+      condition="/spouseAliveEndOfTaxYear" operator="isTrue">at the end of <fg-show
+      path="/taxYear"/></span>
+    options:
+      under24:
+        name: 24 and under
+      age25to64:
+        name: Between 25 and 64
+      65andOlder:
+        name: 65 and older
+  /primaryFilerIsClaimingQualifyingChildren:
+    question: Do you plan to claim children or other relatives with valid Social Security
+      numbers for the EITC?
+    modalLink: <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
+  /hasLivedInUSMore6Months:
+    question: Was the main home of <span condition="/isFilingStatusMFJ" operator="isFalse">yours</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">yours and your spouse</span>
+      in the U.S. for more than half of <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-main-home-us">What counts as a main home in
+      the U.S.?</modal-link>
+  h2-fee560: Your Filing Status is <fg-show path="/flowReadableFilingStatus"/>
+  fg-alert-334e2e:
+    heading: You don't qualify for the Earned Income Tax Credit (EITC)
+    p-b6bd9e: You don't qualify for EITC without a qualifying child unless you, or
+      your spouse if filing a joint return, are between age 25 and 64.
+    p-ae739d: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596, Earned Income Credit</a>.
+    p-6b339b: 'You can claim the EIC if you are married, not filing a joint return,
+      had a qualifying child who lived with you for more than half of 2025, and either
+      of the following apply:'
+    ul-0:
+      li-abca25: You lived apart from your spouse for the last 6 months of 2025, or
+      li-203d84: You are legally separated according to your state law under a written
+        separation agreement, or a decree of separate maintenance and you didn't live
+        in the same household as your spouse at the end of 2025.
+    p-3630b4: For more information see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
+      class="usa-link">About Publication 501, Dependents, Standard Deduction, and
+      Filing Information.<span class="usa-sr-only"> (opens in a new tab)</span></a>
+    p-99f873: You can't claim the EITC because your spouse doesn't have a valid Social
+      Security number issued on or before the due date of your tax return.
+    p-91ee91: You can't claim the EITC if you choose to file a joint return with your
+      deceased spouse because your spouse did not have a valid social security number
+      on the day they passed away.
+    p-d4d927: You may qualify for the EITC if you don't file a joint return with your
+      deceased spouse.
+    p-065d1b: To claim the EITC, your home must have been in the United States for
+      more than half the year. The United States includes the 50 states and the District
+      of Columbia.
+  modal-filing-status:
+    heading: Which filing status should I use?
+    p-c0b92c: If there's no change in your marital status or family situation this
+      year, then you may want to use the same filing status from your <fg-show path="/lastTaxYear"/>
+      tax return.
+    p-391f95: If you had a change in your marital status or household in the past
+      year, you may need to use a different filing status for a more accurate estimate.
+    p-496916: Each filing status has different requirements.
+    p-49f30f: <strong>Single:</strong>
+    ul-0:
+      li-c717a5: You can't be married
+    p-5f63cd: <strong>Married Filing Jointly:</strong>
+    ul-1:
+      li-6aab7e: You're married or your spouse died during the year
+    p-80c02f: <strong>Married Filing Separately:</strong>
+    ul-2:
+      li-595e35: You're married
+      li-1e72dd: You don't plan to file together with your spouse (most couples save
+        money by filing jointly)
+    p-d69332: <strong>Head of Household:</strong>
+    ul-3:
+      li-dfe41a: You can't be married (or you're considered unmarried for tax purposes)
+      li-38ff2f: You paid more than half the cost of keeping up a home for a family
+        member or member of your household for a specific amount of time, and they
+        must meet certain requirements
+    p-be481b: <strong>Qualified Surviving Spouse:</strong>
+    ul-4:
+      li-2bf38a: Your spouse died in <fg-show path="/lastTaxYear"/> or <fg-show path="/taxYearMinusTwo"/>
+      li-4ef74f: You didn't remarry before <fg-show path="/taxYear"/>
+      li-939762: You have a dependent child who lives with you all year
+      li-bad5a3: You pay more than half the cost of keeping up your home
+    p-5b3ae2: <a target="_blank" href="https://www.irs.gov/filing/filing-status">Learn
+      more about filing statuses<span class="usa-sr-only"> (opens in a new tab)</span>.</a>
+  modal-qualifying-child-eitc:
+    heading: Qualifying Child
+    p-7356ad: To claim EITC with a qualifying child your child must have a valid SSN
+      issued on or before the due date of your <fg-show path="/taxYear"/> return (including
+      extensions).
+    p-ac8914: If the Social Security card reads &quot;Valid for work with DHS authorization&quot;
+      or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization
+      is still valid.
+    p-558a40: 'For the EITC, we don''t accept:'
+    ul-0:
+      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
+      li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-19d3d7: Social Security number issued solely to allow the recipient of the
+        SSN to apply for or receive a federally funded benefit such as Medicaid
+    p-0d323a: 'Your child is a qualifying child if your child meets four tests. The
+      four tests are:'
+    ul-1:
+      li-fbc977: Relationship
+      li-9d8d2d: Age
+      li-23863d: Residency
+      li-ca34c2: Joint Return
+    p-e00960: Review <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">IRS
+      Publication 596</a> for more information on a valid Social Security Number and
+      if you have a qualifying child.
+  modal-main-home-us:
+    heading: Main Home in the United States
+    p-9cbbc6: Your home must have been in the United States for more than half of
+      <fg-show path="/taxYear"/>.
+    p-775779: The United States includes the 50 states and the District of Columbia.
+      It does not include United States possessions such as Guam, the Virgin Islands,
+      or Puerto Rico.
+    h3-398dfd: Military Personnel Stationed Outside the United States
+    p-7dbfa0: If you're a member of the United States military and you were stationed
+      outside the United States on extended active duty, select <strong>Yes</strong>.
+  modal-keeping-up-home:
+    heading: Keeping Up a Home
+    p-c0958f: If the total amount you paid is more than half the total cost, you meet
+      the requirement of paying more than half the cost of keeping up the home.
+    h3-e8b30a: 'Costs include:'
+    ul-0:
+      li-b9b2e1: Rent, mortgage interest, real estate taxes, and home insurance
+      li-313963: Repairs and utilities
+      li-61e699: Food eaten in the home
+    p-fec463: <strong>Note:</strong> Costs paid with public assistance are considered
+      costs paid by the taxpayer.
+    h3-3e0b53: 'Costs don''t include:'
+    ul-1:
+      li-edaa99: Clothing, education, and vacations expenses
+      li-40b84f: Medical treatment, medical insurance payments, and prescription drugs
+      li-5eae2b: Life insurance
+      li-c64365: Transportation costs like insurance, lease payments, or public transportation
+      li-04dec0: Value of your services or those of a member of your household
+  modal-legal-separation:
+    heading: Legal Separation and Common Law
+    h3-ef7665: Legally Separated
+    p-198345: '&quot;Legally separated&quot; for this purpose means legally separated
+      under a decree of divorce or separate maintenance.'
+    h3-357344: Common Law Marriage
+    p-f560ea: Some states allow common law marriages. Check with your state to see
+      if you are considered married under common law.
+  modal-joint-return-mfj:
+    heading: Joint Return
+    p-4864ec: You can choose to file one return with your spouse by selecting Married
+      as your filing status. This allows you to combine your income and expenses when
+      figuring your credits, deductions, and tax liability.
+  modal-joint-deceased-spouse:
+    heading: Joint Return
+    p-73bcda: If your spouse died during <fg-show path="/taxYear"/>, you can choose
+      to file one return with your spouse by selecting Married Filing Jointly as your
+      filing status. This allows you to combine your income and expenses when figuring
+      your credits, deductions, and tax liability.
+  modal-spouse-lived-together:
+    heading: Spouse - Lived Together
+    p-906815: 'A person is considered to have lived with you during periods of time
+      when one or both of you are temporarily absent due to special circumstances
+      such as:'
+    ul-0:
+      li-8ec6de: Illness
+      li-de7a22: Education
+      li-d6e6cb: Business
+      li-2c48dd: Vacation
+      li-8fdca6: Military service
+    p-2392bb: It must be reasonable to assume that the absent person will return to
+      the home after the temporary absence.
+  modal-valid-ssn:
+    heading: Valid Social Security Number
+    p-527528: You must have a valid Social Security number (SSN) that is issued by
+      the Social Security Administration on or before the due date of your <fg-show
+      path="/taxYear"/> tax return (including extensions).
+    p-45ae0e: If your Social Security card reads “Valid for work with DHS authorization”
+      or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization
+      is still valid.
+    p-558a40: 'For the EITC, we don''t accept:'
+    ul-0:
+      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
+      li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-9f487b: Social Security number issued after the due date of the return, including
+        extensions
+      li-a69a30: Social Security number issued solely to apply for or receive a federally
+        funded benefit such as Medicaid
+    p-f554f7: See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a> for more information on a valid Social Security Number.
+  modal-confirm-mfj-to-nonmfj-qc-clear:
+    heading: Confirmation
+    p-30861e: Changing from <strong>Married Filing Jointly</strong> to a different
+      filing status will clear your previously entered qualifying child data. Do you
+      still wish to continue?
+    button-a0bfb8: Continue
+    button-ea4788: Cancel
+  modal-claiming-dependents:
+    heading: Who can I claim as a dependent?
+    p-fc792e: 'Dependents are typically:'
+    ul-0:
+      li-7673e2: Children under the age of 19
+      li-e9750c: Students under the age of 24 who live with their parents
+      li-683f65: Relatives or members of your household who get more than half of
+        their financial support from you and who have a gross income under $5,050
+    p-6b3acc: You can’t claim your spouse as a dependent if you file jointly.
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn
+      more about dependents.</a>
+/income:
+  title: Income
+  h2-c0af17: <strong>Estimate Your <fg-show path="/taxYear"/> Adjusted Gross Income
+    (AGI)</strong>
+  p-732553: In this step, we'll estimate your and your spouse's joint earned income,
+    adjusted gross income, and any adjustments to it.
+  p-9d3638: Please select and enter your <fg-show path="/taxYear"/> and your spouse's
+    income and adjustments. Only select one item per source. All fields marked with
+    an asterisk are required.
+  p-bb8818: <strong>Please note:</strong> Make sure to also include your spouse's
+    income and adjustments.
+  h2-40c7ae: Earned Income
+  fg-detail-c90011:
+    summary: Wages, salary, or tips
+    /jobsIncomeTotal:
+      question: Wages, salary, or tips where federal income taxes are withheld
+      modalLink: <modal-link for="modal-wages-salaries-tips">Wages Salaries and Tips
+        / Military &amp; Combat Pay</modal-link>
+  fg-detail-c0e18b:
+    summary: Self-employment income and expenses
+    /selfEmploymentGrossIncome:
+      question: Self-employment Gross income
+      modalLink: <modal-link for="modal-self-employment-gross-income">What is self-employment
+        income</modal-link>
+    /selfEmploymentGrossIncomeWorkRelatedExpenses:
+      question: Total self-employment work-related expenses you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> deducted in <fg-show path="/taxYear"/>
+      hint: It is okay to leave this blank.
+      modalLink: <modal-link for="modal-self-employment-deductions">What are self-employment
+        deductible expenses?</modal-link>
+  fg-detail-2fc9c0:
+    summary: Disability retirement benefits
+    /disabilityRetirementBenefits:
+      question: Disability retirement benefits before minimum retirement age
+      modalLink: <modal-link for="modal-disability-retirement">What are disability
+        retirement benefits?</modal-link>
+  fg-detail-cd8e26:
+    summary: Foreign earned income
+    /non2555ForeignIncome:
+      question: Foreign earned income not reported on Form 2555
+      modalLink: <modal-link for="modal-foreign-income-non2555">What is foreign earned
+        income?</modal-link>
+  h3-89425f: Investment income
+  p-4bb1c9: Even if you <span condition="/isFilingStatusMFJ" operator="isTrue">or
+    your spouse </span>earned a small amount of investment income, adding this amount
+    helps get the most accurate calculation.
+  fg-detail-b4c28b:
+    summary: Interest income
+    p-3b6f1c: <modal-link for="modal-estimate-interest-income-en">What is interest
+      income and how can I calculate it?</modal-link>
+    /taxableInterestIncome:
+      question: Interest income you<span condition="/isFilingStatusMFJ" operator="isTrue">
+        and your spouse</span> earned in <fg-show path="/taxYear"/>
+  fg-detail-39fb22:
+    summary: Ordinary or qualified dividends
+    p-953327: You should enter the total amounts you earned in <fg-show path="/taxYear"/>.
+    p-b9eb76: <modal-link for="modal-what-are-dividends-en">What are dividends and
+      how can I calculate them?</modal-link>
+    /ordinaryDividendsIncome:
+      question: Ordinary dividend income you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
+    /qualifiedDividendsIncome:
+      question: Qualified dividend income you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
+  fg-detail-89ef66:
+    summary: Short-term or long-term gains and losses
+    p-bf94ee: You should enter the total amounts you earned and lost in <fg-show path="/taxYear"/>.
+    p-f16772: <modal-link for="modal-what-are-short-long-term-gains-losses-en">What
+      are short- and long-term gains and losses, and how can I calculate them?</modal-link>
+    /shortTermCapitalGainsIncome:
+      question: Short-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> earned in <fg-show path="/taxYear"/>
+    /shortTermCapitalLoss:
+      question: Short-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> had in <fg-show path="/taxYear"/>
+    /longTermCapitalGainsIncome:
+      question: Long-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> earned in <fg-show path="/taxYear"/>
+    /longTermCapitalLoss:
+      question: Long-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> had in <fg-show path="/taxYear"/>
+  fg-detail-28fc9b:
+    summary: Rental income
+    p-74b742: <modal-link for="modal-rental-expenses-net-income-en">What are rental
+      expenses and how can I calculate net rental income?</modal-link>
+    /rentalIncome:
+      question: Net amount of rental income you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
+      hint: Net is the total minus any expenses.
+  fg-detail-3026f7:
+    summary: Royalties
+    p-006e98: <modal-link for="modal-estimate-royalty-income-en">How can I calculate
+      royalty income?</modal-link>
+    /royaltyIncome:
+      question: Royalty income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> earned in <fg-show path="/taxYear"/>
+  fg-detail-b186f4:
+    summary: Passive or non-passive income from S-corporations or partnerships
+    p-953327: You should enter the total amounts you earned in <fg-show path="/taxYear"/>.
+    p-d5119c: <modal-link for="modal-estimate-s-corp-partnership-income-en">How can
+      I calculate income from S-corporations or partnerships?</modal-link>
+    /sCorpPassiveIncome:
+      question: Passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
+    /sCorpNonPassiveIncome:
+      question: Non-passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
+  h3-20a2b1: Other Income
+  fg-detail-fbe1af:
+    summary: Pension income
+    /pensionsIncomeTotal:
+      question: Taxable portion of any pension
+      modalLink: <modal-link for="modal-taxable-pension">What is the taxable portion
+        of a pension?</modal-link>
+  fg-detail-2e467d:
+    summary: Pre-tax retirement accounts
+    /preTaxRetirementAccountIncome:
+      question: Total distributions you <span condition="/isFilingStatusMFJ" operator="isTrue">and
+        your spouse</span> received from pre-tax retirement accounts in <fg-show path="/taxYear"/>
+      hint: Don't include distributions from Roth (post-tax) accounts.
+      modalLink: <modal-link for="modal-what-counts-pre-tax-retirement">What counts
+        as pre-tax retirement?</modal-link>
+  fg-detail-3fa626:
+    summary: Unemployment insurance
+    /unemploymentIncome:
+      question: Unemployment insurance
+      modalLink: <modal-link for="modal-unemployment-compensation">What counts as
+        unemployment insurance?</modal-link>
+  fg-detail-0fb46a:
+    summary: Social Security and railroad retirement benefits
+    /socialSecurityIncome:
+      question: Taxable portion of Social Security and Railroad Retirement Benefits
+      modalLink: <modal-link for="modal-social-security">What counts as Social Security
+        and Railroad Retirement Benefits?</modal-link>
+  fg-detail-d994db:
+    summary: Scholarships or grants
+    /taxableScholarship:
+      question: A scholarship or grant that must be counted as income
+      modalLink: <modal-link for="modal-scholarship-grants">What counts as a scholarship
+        or grant?</modal-link>
+  fg-detail-50ec28:
+    summary: Pay earned as an inmate
+    /inmatePay:
+      question: Pay received for work while an inmate in a penal institution
+      modalLink: <modal-link for="modal-inmate-pay">What is inmate pay?</modal-link>
+  fg-detail-7a5ac3:
+    summary: Other miscellaneous income
+    /nonSpecificOtherIncome:
+      question: Total amount of any other income you <span condition="/isFilingStatusMFJ"
+        operator="isTrue">and your spouse</span> received in <fg-show path="/taxYear"/>
+      hint: You should enter one total amount for all other income.
+      modalLink: <modal-link for="modal-other-taxable-income">What are other taxable
+        incomes?</modal-link>
+  modal-wages-salaries-tips:
+    heading: Wages, Salaries, and Tips / Military &amp; Disability
+    h3-53ed11: Wages Salaries and Tips
+    p-40d79a: Your employer reported your wages, salaries, tips, and other compensation
+      in box 1 of your Form W-2.
+    p-ab967b: Include the full amount of tip and overtime income in the calculation
+      of earned income when determining eligibility for the earned income tax credit,
+      even if all or part is deductible.
+    p-cb2522: Include all amounts reported in box 1 of Form W-2 for both you and your
+      spouse if you're filing a joint tax return with your spouse.
+    p-1f7f24: Don't include your Form W-2 pre-tax contributions in the pre-tax contributions
+      section.
+    h3-af3590: Military &amp; Combat Pay
+    p-3fdb7d: You can also choose to include your nontaxable combat pay in earned
+      income for the EITC. Your employer reported your nontaxable combat pay in box
+      12 with code Q on your Form W-2.
+    p-d9b0e5: This choice may increase or decrease your EITC. Calculate your EITC
+      both ways to see which option provides the greater benefit. For more information,
+      see Nontaxable combat pay in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">Publication
+      596</a>, Earned Income Credit.
+    h3-84091c: Temporary &amp; Short-term Disability Insurance
+    p-bee3d8: If you took parental leave or were temporarily disabled during the year
+      and your employer paid you, they reported your income on your W-2. Enter that
+      income here.
+    p-2e7e6e: Include temporary or short-term disability in your wages.
+  modal-work-no-taxes-withheld:
+    heading: Income Where Federal Taxes Weren't Withheld
+    p-7ca214: Report income earned from gig work, even if it's a side job, part time
+      or temporary.
+    p-9048f5: Enter income here if you earn money from a job even if income taxes
+      were not withheld. You may or may not have received a Form 1099 for all income.
+    p-8f1d83: 'The income may have been earned through an app or website to:'
+    ul-0:
+      li-014f6e: Drive a car for booked rides or deliveries
+      li-816827: Run errands or complete tasks
+      li-ac1297: Provide creative or professional services
+      li-743818: Provide other temporary, on-demand or freelance work
+    p-ccdadf: Your gross income includes all the income you received. We will subtract
+      your expenses later.
+    p-5465af: For more information, visit <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">Manage
+      Taxes for Your Gig Work</a>
+  modal-self-employment-gross-income:
+    heading: Self-Employment Gross Income
+    p-3ef7b9: <strong>If you:</strong>
+    ul-0:
+      li-0d8073: Are self-employed (You may or may not receive a Form 1099 for all
+        income)
+      li-f5836c: Provide a good or service
+      li-d6da48: Selling goods online
+      li-604ec3: Run a business or farm
+      li-de3005: Are a minister or member of a religious order
+    p-ccdadf: Your gross income includes all the income you received. We will subtract
+      your expenses later.
+    p-a21d1b: For more information, visit <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">Self-employed
+      individuals tax center</a>
+  modal-disability-retirement:
+    heading: Retirement Disability as Earned Income
+    p-514b79: If you retired on disability, we consider the taxable benefits you received
+      under your employer's disability retirement plan earned income for the purposes
+      of the EITC until you reach minimum retirement age.
+    p-e7df54: The minimum retirement age is the earliest age at which you could have
+      received a pension or annuity if you weren't disabled.
+  modal-inmate-pay:
+    heading: Pay Earned as an Inmate
+    p-0ced8d: Pay you received for work you performed while an inmate in a penal institution
+      isn't earned income when figuring the earned income credit.
+    p-435d89: This includes paid work performed while in a work release program or
+      while in a halfway house.
+    p-1dc488: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297688">Publication
+      596</a>, Earned Income Credit, Earnings while an inmate.
+  modal-foreign-income-non2555:
+    heading: Pay Earned as an Inmate
+    p-6821fc: Foreign earned income is income earned while living and working outside
+      the United States, District of Columbia, or U.S. possessions or territories.
+    p-86d28e: If you’re a U.S. government employee working outside the United States,
+      that income is not considered foreign earned.
+    p-231cd1: If you're not a government employee and you work at an embassy, we consider
+      that income as foreign income for the EITC.
+    p-87f12e: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Form
+      2555</a>, Foreign Earned Income.
+    p-90826b: 'Note: If you elect to file Form 2555, you are not eligible to claim
+      the EITC.'
+  modal-taxable-pension:
+    heading: Pension
+    p-a523b6: If you receive retirement benefits in the form of pension or annuity
+      payments from a qualified employer retirement plan, all or some portion of the
+      amounts you receive may be taxable.
+    p-ce034e: <strong>It's all taxable if:</strong>
+    ul-0:
+      li-21fe33: You didn't contribute anything or aren't considered to have contributed
+        anything for your pension or annuity
+      li-c4c784: Your employer didn't withhold contributions from your salary, or
+      li-a75167: You received all your contributions tax-free in prior years
+    p-63555f: <strong>Part of it's taxable if:</strong>
+    ul-1:
+      li-6d40a9: You contributed after-tax dollars (use the General Rule and Simplified
+        Method to calculate)
+    p-24ecdd: Additional rules apply if you received payments before age 59 and a
+      half, are a survivor or beneficiary, or have other situations. For more information
+      visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc410">Tax
+      Topic 410</a>.
+  modal-unemployment-compensation:
+    heading: Unemployment Compensation (Insurance)
+    p-ec0a26: For the EITC, include your full unemployment compensation benefits.
+      You find this income on Form 1099-G.
+    p-97117c: If your employer's fund provided supplemental benefits, include any
+      amounts reported on Form W-2, box 1.
+  modal-social-security:
+    heading: Social Security and Railroad Retirement Benefits
+    p-f2d061: For the EITC, include only the taxable amount of your Social Security
+      and railroad retirement benefits.
+    p-e8b50a: IRS Notice 703 can help you determine if any of your Social Security
+      benefits are taxable. For more information visit <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/taxtopics/tc423">Tax Topic 423</a>.
+    p-2b31f6: To compute the taxable amount of your benefits, see &quot;Which worksheet
+      to use&quot; in <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">Publication
+      915</a>, Social Security and Equivalent Railroad Retirement Benefits.
+  modal-scholarship-grants:
+    heading: Scholarship or Fellowship Grants
+    p-0e0c43: Enter any amount of taxable scholarship not reported on your Form W-2.
+    p-ce8e34: 'This amount includes scholarship or grant money not found on your W-2
+      if the money was:'
+    ul-0:
+      li-13d8db: Used for incidental expenses, such as room and board, travel, and
+        optional equipment
+      li-b94d4b: Received as payment for teaching, research, or other services required
+        as a condition for receiving the scholarship or fellowship grant
+    p-adf913: Don't include amounts you received for services required by the National
+      Health Service Corps Scholarship Program, the Armed Forces Health Professions
+      Scholarship and Financial Assistance Program, or a comprehensive student work-learning-service
+      program operated by a work college.
+    p-0c59d8: For more information visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">Tax
+      Topic 421</a>.
+  fg-alert-8b7db9:
+    heading: You don’t qualify for the Earned Income Tax Credit (EITC)
+    p-3abe5f: To claim the EITC, you must have had earned income (for example, wages
+      or net earnings from self-employment). Based on the income you entered, your
+      earned income for <fg-show path="/taxYear"/> was zero or less, so you don’t
+      qualify for the EITC.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+    p-d04ce1: You don't qualify for the Earned Income Tax Credit (EITC) if your investment
+      income was more than <fg-show path="/eitcInvestmentIncomeLimit"/>.
+    p-241cb8: <strong>Investment income included:</strong>
+    ul-0:
+      li-12d3b7: Interest (both taxable and tax-exempt)
+      li-0a9a83: Dividends
+      li-e74f5d: Capital gains income
+      li-e42b99: Some rent and royalty income
+      li-7c0731: Net income from passive activities
+    p-9c482c: |-
+      For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">Publication 550</a>, Investment Income and Expenses.
+                To figure your total investment income, you should use Worksheet 1 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
+  modal-self-employment-deductions:
+    heading: What did it mean to deduct expenses?
+    p-4838ea: |-
+      When you were self employed, a gig worker, or owned and operated a business, you may have been able to
+                deduct certain business expenses from your income so you paid less tax.
+    p-f24032: 'Business expenses can include:'
+    ul-0:
+      li-6a4179: Home office expenses
+      li-e2f63f: Car and truck expenses
+      li-7f4118: Rent
+      li-9f53a8: Employee pay and pensions
+      li-eaff1b: Insurance
+      li-6c49ac: Interest on debts
+      li-761662: Legal and professional fees
+      li-719fec: Taxes
+      li-849c98: Travel and meals
+    p-9ff7b2: |-
+      These deductions are different from the personal deductions you made if you chose to
+                itemize your deductions. You can deduct your business expenses here and still choose the
+                standard deduction later.
+    p-0651e4: <strong>How to check last year's tax return?</strong>
+    p-a81df3: If you were self-employed in <fg-show path="/taxYear"/> you can find
+      your deductible expenses on line 28 of Schedule C.
+    p-4ca1ce: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">Learn
+      more about business expenses</a>
+  modal-what-counts-pre-tax-retirement:
+    heading: What counts as a distribution from pre-tax retirement accounts?
+    p-819116: Any withdrawal of pre-tax funds from a 401(k), 403(b), 457(b), or traditional
+      Individual Retirement Arrangement (IRA) counts as a distribution. This included
+      distributions at retirement, early withdrawals, required minimum distributions
+      (RMDs), and pretax-to-Roth conversions.
+    p-b344e9: At the end of the year, your financial institution sent a Form 1099-R
+      to report this income.
+    p-c08338: <strong>Don't include:</strong>
+    ul-0:
+      li-20ffee: Distributions from Roth (post-tax) accounts.
+      li-269cf7: Other forms of retirement income, like pensions, annuities, Social
+        Security, or other investment income. You should enter them in other sections.
+  modal-estimate-interest-income-en:
+    heading: What was interest income and how can I calculate it?
+    p-cda131: Common types of interest income include interest earned from bank accounts
+      or from lending money.
+    p-bc395c: <strong>How to check last year's tax return</strong>
+    p-ec3579: 'If you earned interest income in <fg-show path="/taxYear"/>, check
+      for an amount in:'
+    ul-0:
+      li-7b5662: Line 2b on Form 1040 of your <fg-show path="/taxYear"/> federal tax
+        return
+  modal-what-are-dividends-en:
+    heading: What are dividends and how can I calculate them?
+    p-c61938: Ordinary or qualified dividends are payments made by corporations to
+      shareholders based on a company's profits. The main difference between the two
+      was that qualified dividends are taxed at a lower rate.
+    p-bc395c: <strong>How to check last year's tax return</strong>
+    p-1088f1: 'If you earned these dividends the previous year and thought you would
+      earn a similar amount in <fg-show path="/taxYear"/>, check:'
+    ul-0:
+      li-04e426: Line 3b on Form 1040 of your <fg-show path="/taxYear"/> federal tax
+        return for ordinary dividends
+      li-cac2cc: Line 3a on Form 1040 of your <fg-show path="/taxYear"/> federal tax
+        return for qualified dividends
+  modal-what-are-short-long-term-gains-losses-en:
+    heading: What are short- and long-term gains and losses, and how can I calculate
+      them?
+    p-aa6774: 'The length of time you held an asset determined what type of gain or
+      loss it was:'
+    ul-0:
+      li-57b37b: <strong>Short-term gain or loss</strong>, if you held the asset for
+        less than a year.
+      li-02555a: <strong>Long-term gain or loss</strong>, if you held the asset for
+        more than one year.
+    p-750d95: <strong>How to check for gains and losses</strong>
+    p-2db72e: If you had an investment or brokerage account, you can log in or reviewed
+      your latest statement to check for any short- or long-term gains and losses
+      for <fg-show path="/taxYear"/>.
+    p-ddb648: <strong>How to calculate gains and losses</strong>
+    p-a155e6: If you sold any assets before the end of the year, you should include
+      the calculated gains or losses in your total.
+  modal-rental-expenses-net-income-en:
+    heading: What are rental expenses and how can I calculate net rental income?
+    p-21c0e9: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p527#en_US_2024_publink1000218977">Rental
+      expenses<span class="usa-sr-only"> (opens in a new tab)</span></a> included
+      maintenance costs, insurance, taxes, and interest.
+    p-bc395c: <strong>How to check last year's tax return</strong>
+    p-563c28: 'If you earned rental income during <fg-show path="/taxYear"/>, check
+      your <fg-show path="/taxYear"/> forms:'
+    ul-0:
+      li-3cc72a: Schedule E (Form 1040), Part I, line 21, Columns A - C
+  modal-estimate-royalty-income-en:
+    heading: How can I calculate royalty income?
+    p-8a56d3: You can check your licensing agreements or publisher statements for
+      expected payment schedules or percentages.
+    p-bc395c: <strong>How to check last year's tax return</strong>
+    p-cc8fcc: 'If you earned royalties in <fg-show path="/taxYear"/>, check your <fg-show
+      path="/taxYear"/> forms:'
+    ul-0:
+      li-90f9a8: Schedule E (Form 1040), Part I, line 23b
+  modal-estimate-s-corp-partnership-income-en:
+    heading: How can I calculate income from S-corporations or partnerships?
+    p-8b6f8b: <strong>How to check last year's return</strong>
+    p-2b7ed1: 'If you earned income from S-corporations or partnerships the previous
+      year and thought you would earn a similar amount in <fg-show path="/taxYear"/>,
+      check these <fg-show path="/taxYear"/> forms:'
+    ul-0:
+      li-b8bcfa: Schedule E (Form 1040), Part II, Line 29a, Column h, for passive
+        income
+      li-f37c1e: Schedule E (Form 1040), Part II, Line 29a, Column k, for non-passive
+        income
+  modal-other-taxable-income:
+    heading: Other Taxable Income
+    p-41c1a9: 'Add any other taxable income that you <span condition="/isFilingStatusMFJ"
+      operator="isTrue">and your spouse</span> received in <fg-show path="/taxYear"/>,
+      including:'
+    ul-0:
+      li-6c1f6e: Taxable scholarships
+      li-b9815d: Winnings from gambling
+      li-98533d: Alimony from pre-2019 divorce decrees
+      li-96f64d: Court awards and damages (unless they were for physical injury or
+        sickness)
+      li-e4e611: Fees for services you provided
+    p-48332b: <a target="_blank" href="https://www.irs.gov/filing/taxable-income"
+      class="usa-link usa-link--external">Learn more about other taxable income.<span
+      class="usa-sr-only"> (opens in a new tab)</span></a>
+/adjustments:
+  title: Adjustments
+  h2-9fa8b1: Adjustments
+  p-233dd3: Select and enter any of these types of adjustments to income you had in
+    <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
+  p-624555: <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
+  h3-cd8786: Student Loan Interest Deduction
+  p-3ac7ce: Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest
+    you paid on your qualified student loan. You can find this on your Form 1098-E
+    if you paid more than $600 in interest.
+  p-e4b825: 'The loan must have paid qualified higher education expenses to attend
+    an eligible educational institution. Also, the expenses must have been:'
+  ul-0:
+    li-bb1c73: For you, your spouse, or a person who was your dependent when you took
+      out the loan;
+    li-829f26: Paid or incurred within a reasonable period of time before or after
+      you took out the loan; and
+    li-562ff0: For education provided during an academic period for an eligible student.
+  p-75f422: You can't claim the deduction if you aren't legally obligated to make
+    payments on the loan.
+  p-1f2dd3: For more information, see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+    class="usa-link">Publication 970, Tax Benefits for Education<span class="usa-sr-only">
+    (opens in a new tab)</span></a>.
+  /studentLoanInterestAmount:
+    question: |-
+      Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
+                          <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/>
+    hint: (max <fg-show path="/maxStudentLoanDeduction"/>)
+  h3-5670b1: Qualified Expense Deduction
+  p-e117c8: 'If you''re a teacher, enter up to <fg-show path="/maxEducatorExpensesNonMFJ"/>
+    (<fg-show path="/maxEducatorExpensesMFJ"/> if married filing jointly and both
+    you and your spouse are teachers) of unreimbursed expenses such as:'
+  ul-1:
+    li-8829c6: Fees for participation in professional development courses
+    li-751127: Books and supplies
+    li-0c78ca: Computer equipment (including related software and services)
+    li-6ef6c8: Other equipment
+    li-6d4170: Supplementary materials that you use in the classroom
+  p-86c6e4: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
+    class="usa-link">IRS Topic 458<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  /educatorExpenses/:
+    question: Educator expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+    hint: (max <fg-show path="/maxEducatorExpensesLimit"/>)
+  h3-57c26a: Deduction for contributions to an IRA that is not included in payroll
+    deductions
+  p-5979d5: Enter any IRA contributions you made outside of your payroll contributions.
+  p-e6a251: <strong>Don't include amounts that you included above.</strong>
+  p-a49375: For more information see, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+    class="usa-link">IRA Deduction Limits<span class="usa-sr-only"> (opens in a new
+    tab)</span></a>.
+  /deductionForTraditionalIRAContribution:
+    question: Traditional (pre-tax) IRA contributions <span condition="/isFilingStatusMFJ"
+      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+      and your spouse</span> made in <fg-show path="/taxYear"/>
+  h3-f9e99b: Self-employed retirement plan deduction
+  p-9982ed: If <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> were
+    self employed and made contributions to qualified retirement plans in <fg-show
+    path="/taxYear"/>, you may have been eligible for the self-employed retirement
+    plan deduction.
+  p-68007d: 'To qualify, <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> must
+    have:'
+  ul-2:
+    li-6c246a: Been a sole proprietor
+    li-a2595a: Been a working partner in a partnership, or
+    li-f6cddf: Had a limited liability company
+  p-3622b4: 'Eligible plans may have included:'
+  ul-3:
+    li-ff93fe: Simplified Employee Pension (SEP) plan
+    li-200ab4: Savings Incentive Match Plan for Employees
+    li-e7dbe4: Solo-401(k)
+    li-765afa: Other qualified retirement plans
+  p-af5a4a: <strong>Don't include</strong> Individual Retirement Arrangement (IRA)
+    contributions.
+  p-add56c: You must have used a special rule to calculate retirement plan contributions
+    for yourself.
+  p-3248f2: <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
+    class="usa-link">Learn more about self-employed retirement contributions.<span
+    class="usa-sr-only"> (opens in a new tab)</span></a>
+  /selfEmploymentRetirementPlanContributions:
+    question: Self-employed retirement contributions <span condition="/isFilingStatusMFJ"
+      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+      and your spouse</span> made in <fg-show path="/taxYear"/>
+  h3-2c1033: Health Savings Account (HSA) deductions that are not included in payroll
+    deductions
+  p-2ab752: Enter any Health Savings Account (HSA) contributions that you didn't include
+    under HSA, FSA, or other “cafeteria plan” above.
+  p-a7d9fc: For more information visit <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-969"
+    class="usa-link">About Publication 969, Health Savings Accounts and Other Tax-Favored
+    Health Plans<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  /hsaContributionAmount:
+    question: HSA contributions <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> made
+      in <fg-show path="/taxYear"/>
+  h3-7abe12: Alimony Paid
+  p-fa1de9: If you made alimony or separate maintenance payments under a court order
+    that was executed before January 1, 2019 and the order didn't specifically state
+    that you can't deduct your payments, enter the amount you paid during year here.
+  p-7b97e1: 'Don''t include amounts you paid for:'
+  p-7948e4: <strong>Family or child support</strong>
+  p-358bc5: Also don't include amounts if the court order was modified and states
+    that you can't deduct your payments.
+  p-06a405: Alimony or separate maintenance made under a court order executed after
+    December 31, 2024
+  p-4b335c: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+    class="usa-link">Tax Topic 452<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  /alimonyPaid:
+    question: Alimony you paid in <fg-show path="/taxYear"/>
+  h3-c129db: Penalty for Early Withdrawal of Savings
+  p-7e8d5b: If you withdraw funds from a certificate of deposit or other deferred
+    interest account before maturity, you may be charged a penalty. You can find this
+    penalty on your Form 1099-INT in box 2. Enter that amount here.
+  /penaltyForEarlySavingsWithdrawal:
+    question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+  h3-2dfbe2: Moving Expenses
+  p-6f18fd: 'If you are a member of the armed forces on active duty, and the military
+    ordered you to permanently change your duty station, enter any moving expenses
+    the military didn''t reimburse you for here. Moving expenses include:'
+  ul-4:
+    li-60efa3: Direct travel from your old home to your new one
+    li-efbbb1: Cost of packing and moving your personal belongings
+  p-6536cb: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
+    class="usa-link">Tax Topic 455<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  /movingExpensesForArmedServicesMembers:
+    question: Moving expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+  h3-1f37a2: Certain Employee Business Expenses
+  p-c92011: 'If you are a/an:'
+  ul-5:
+    li-9bde67: Armed Forces reservist
+    li-053ac1: Qualified performing artist
+    li-e03b09: Fee-basis state or local government official
+    li-0d1488: Employee with impairment-related work expenses
+  p-cc9b68: You may include expenses that are common and accepted in your field of
+    trade, business, or profession, or expenses for things that are helpful and appropriate
+    for your business.
+  p-d46373: If you don't fit into one of the listed categories, you may not claim
+    adjustments for these expenses.
+  p-eb68a5: For more information and a list of qualified expenses, see <a target="_blank"
+    href="https://www.irs.gov/forms-pubs/about-form-2106" class="usa-link">Form 2106,
+    Employee Business Expenses<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  /businessCreditsForEligible:
+    question: Eligible business expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+  h3-5c4fd4: Self-employed health insurance deduction
+  p-95b504: If <span condition="/isFilingStatusMFJ" operator="isFalse">you were</span><span
+    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse were</span>
+    self employed and had a net profit for the year, you could have deducted your
+    <fg-show path="/taxYear"/> health insurance premiums.
+  p-d60394: Eligible premiums were medical, dental, vision, and long-term care insurance.
+    The policy could be for yourself, your spouse, and your dependents. The policy
+    could also cover your child who was under the age of 27 at the end of the year,
+    even if the child wasn't your dependent.
+  p-13dece: <a target="_blank" href="https://www.irs.gov/instructions/i7206" class="usa-link">Learn
+    more about self-employed health insurance.<span class="usa-sr-only"> (opens in
+    a new tab)</span></a>
+  /selfEmploymentHealthInsuranceContributions:
+    question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+  h3-1d2271: Other Adjustments
+  /otherAdjustments:
+    question: Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+      paid in <fg-show path="/taxYear"/>
+  h3-f93af6: 'Your AGI was: <fg-show path="/agi"/>'
+  fg-alert-334e2e:
+    heading: You don't qualify for the Earned Income Tax Credit (EITC)
+    p-f3c23d: Based on your adjusted gross income (including the adjustments you entered),
+      you don’t qualify for the EITC for <fg-show path="/taxYear"/>.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+  modal-what-are-adjustments:
+    heading: What are adjustments?
+    p-d8344a: Adjustments are expenses, payments, contributions, and fees that you
+      may have been able to subtract from your total income to reduce how much of
+      your income got taxed. They are a type of deduction.
+/qualifying-children:
+  title: Qualifying Children
+  h2-dbaf54: Qualifying Children
+  p-9672ca: Based on your previous inputs, you don't have any qualifying children.
+    If this isn't correct, please return to <a class="usa-link" href="/app/eitc/filing-status/">Filing
+    Status</a> and change your responses.
+  p-c1a0dd: Please go to the next step to see your results.
+  p-3178be: In this step, we'll see how many of your children or other relatives are
+    your qualifying children for the purposes of claiming and calculating the EITC.
+  p-e28c1e: You can claim up to three qualifying children for the EITC.
+  p-adf161: To be eligible for EITC, you must have at least one qualifying child.
+  collection/familyAndHousehold:
+    /familyAndHousehold/*/livedWithYouUS:
+      question: Has this child lived with you more than half of <fg-show path="/taxYear"/>
+        in the United States?
+      modalLink: <modal-link for="modal-residency">Residency</modal-link>
+    fg-alert-b7d816:
+      heading: This child does not qualify for EITC.
+      p-7666ea: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+        596, Earned Income Credit</a>
+    /familyAndHousehold/*/someoneElseCanClaim:
+      question: Can someone else claim this child for the EITC?
+      modalLink: <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+    /familyAndHousehold/*/isClaimingQCRegardless:
+      question: You might not be able to claim a child for the EITC if they are also
+        claimed by certain eligible people. Do you still want to claim this child?
+      modalLink: <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+    /familyAndHousehold/*/marriedFilingJointly:
+      question: Is this child married and will file a joint return with his or her
+        spouse for <fg-show path="/taxYear"/>?
+      modalLink: <modal-link for="modal-joint-return">Joint Return</modal-link>
+    /familyAndHousehold/*/mfjForRefundOnly:
+      question: Is this child filing a joint return for <fg-show path="/taxYear"/>
+        only to claim a refund of withheld taxes or estimated taxes paid, and won't
+        claim any tax credits such as the EITC?
+      modalLink: <modal-link for="-with-another-person-exception">Joint Return</modal-link>
+    /familyAndHousehold/*/isPermanentlyDisabled:
+      question: Is this child permanently and totally disabled?
+      modalLink: <modal-link for="modal-disabled">Permanently and totally disabled</modal-link>
+    /familyAndHousehold/*/relationship:
+      question: 'Select this child''s relationship to you:'
+      modalLink: <modal-link for="modal-relationship">Relationships</modal-link>
+      options:
+        childStepFoster:
+          name: Child, stepchild, adopted child, or foster child
+        sibling:
+          name: Sibling, half-sibling, or stepsibling
+        descendant:
+          name: Grandchild, niece or nephew
+        none:
+          name: None of the above
+    /familyAndHousehold/*/ageRange:
+      question: How old was this child at the end of <fg-show path="/taxYear"/>?
+      options:
+        under19:
+          name: 18 and under
+        between19And23:
+          name: Between 19 and 23
+        over24:
+          name: 24 or over
+    /familyAndHousehold/*/isFullTimeStudent:
+      question: Was the child a full-time student during some part of any 5 months
+        during the year?
+      modalLink: <modal-link for="modal-student">Full-time student defined</modal-link>
+    /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
+      question: Is the dependent younger than <span condition="/isFilingStatusMFJ"
+        operator="isFalse">you?</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+        or your spouse?</span>
+      modalLink: <modal-link for="modal-age-comparison">Age Comparison between Child
+        and Filer</modal-link>
+    /familyAndHousehold/*/validSSN:
+      question: Does this child have a valid Social Security number issued on or before
+        the due date of the return (including extensions)?
+      modalLink: <modal-link for="modal-valid-ssn-qc">Valid Social Security Number
+        for Qualifying Child</modal-link>
+    fg-alert-a004cd:
+      heading: Please note
+      p-8374d8: This child does not have a valid SSN. Because they don't have a valid
+        SSN, they cannot be claimed for the EITC with a Qualifying Child. However,
+        you may be eligible for the smaller EITC without a qualifying child.
+    h2-eaf308: Your child qualifies for the purposes of claiming and calculating EITC
+  p-7798e3: You have <fg-show path="/eitcQualifyingChildren"/> qualifying children
+    and have reached the maximum number of qualifying children that can be claimed
+    with the EITC.
+  fg-alert-9510e7:
+    heading: Qualifying child requirement
+    p-b6bd9e: You don't qualify for EITC without a qualifying child unless you, or
+      your spouse if filing a joint return, are between age 25 and 64.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+  fg-alert-64891c:
+    heading: You don’t qualify for the Earned Income Tax Credit
+    p-cdf53e: Based on the information you provided, you can’t claim the earned income
+      credit because your earned income is over the limit for your filing status and
+      number of qualifying children.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+  h2-587a8a: You have <fg-show path="/eitcQualifyingChildren"/> children who qualify
+    for the purposes of claiming and calculating EITC
+  modal-residency:
+    heading: Residency Test
+    p-2a5392: Your child must have lived with you in the United States for more than
+      half of <fg-show path="/taxYear"/>.
+    p-82d86e: This means the 50 states and the District of Columbia.  It doesn't include
+      Puerto Rico or U.S. territories such as Guam.
+    p-9fa1b1: Your home can be any location where you regularly live. You don't need
+      a traditional home.  For example, if your child lived with you for more than
+      half the year in one or more homeless shelters, your child meets the residency
+      test.
+    p-79980c: Count time that you or your child is away from home on a temporary absence
+      due to a special circumstance as time the child lived with you.  Examples of
+      a special circumstance include illness, school attendance, business, vacation,
+      military service, and detention in a juvenile facility.
+  modal-joint-return:
+    heading: Joint Return with Another Person
+    p-9b8921: You generally can't claim a married person as a qualifying child for
+      the EITC if he or she files a joint return.
+    p-bdfc89: For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298157">Publication
+      596</a>, Earned Income Credit, Joint Return Test.
+  modal-joint-return-with-another-person-exception:
+    heading: Joint Return with Another Person Exception
+    p-93a25e: You can claim a married person who files a joint return as a qualifying
+      child for the EITC if the child and their spouse file the joint return only
+      to claim a refund of withheld income taxes from their paychecks or estimated
+      taxes they paid. They may not claim any credits such as the EITC on their return.
+    p-bdfc89: For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298157">Publication
+      596</a>, Earned Income Credit, Joint Return Test.
+  modal-disabled:
+    heading: Permanently and Totally Disabled
+    p-a09e23: 'For the EITC, we consider a child permanently and totally disabled
+      if both of the following are true:'
+    ul-0:
+      li-35e112: The child can't perform significant duties over a reasonable period
+        of time while working for pay or profit in a competitive work situation for
+        at least the minimum wage because of a physical or mental condition, and
+      li-f9618f: A physician determines the condition has lasted or can be expected
+        to last continuously for at least a year or can lead to death
+    p-de127e: For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298147">Publication
+      596</a>, Earned Income Credit, Permanently and Totally Disabled.
+  modal-relationship:
+    heading: Child Relationship Definitions
+    h3-523a2e: Stepchild
+    p-3a1769: A step relationship is one formed by a marriage. For the EITC, a relationship
+      formed by a marriage, such as a stepdaughter, stepson, stepbrother, or stepsister,
+      doesn't end if the marriage ends.
+    h3-3cc097: Adopted Child
+    p-165b15: An adopted child is always treated as your own child. This term includes
+      a child who was lawfully placed with you for legal adoption.
+    h3-872822: Foster Child
+    p-d91342: You can claim a foster child only if the child is placed with you by
+      an authorized placement agency or by court order.
+    h3-2fd110: Authorized placement agency
+    p-b80621: This term includes a state or local government agency or an Indian tribal
+      government. It also includes a tax-exempt organization licensed by a state or
+      an Indian tribal government.
+  modal-student:
+    heading: Full-time Student and School Defined
+    h3-f803ae: Full-time Student
+    p-ef6d3a: To be considered full-time, the student must have enrolled for the number
+      of hours or courses the school considers to be full-time attendance.
+    p-69b838: Students who work on &quot;co-op&quot; jobs in private industry as a
+      part of a school's regular course of classroom and practical training are considered
+      full-time students.
+    h3-754ddf: School Defined
+    p-dfaecc: 'For the EITC, a school is:'
+    ul-0:
+      li-5f78b0: Elementary school
+      li-f8aab3: Junior or senior high school
+      li-39d2fa: College or university
+      li-96892f: Technical, trade, or mechanical school
+    p-986cc5: 'A school is <strong>not</strong>:'
+    ul-1:
+      li-775eb9: On-the-job training course
+      li-b2e8f2: Correspondence school
+      li-767c35: School offering courses only through the Internet
+    p-81198a: For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298144">Publication
+      596</a>, Earned Income Credit, Student Defined and School Defined.
+  modal-valid-ssn-qc:
+    heading: Valid Social Security Number for Qualifying Children
+    p-d68f7a: The amount of your EITC depends on the number of qualifying children
+      you have with valid SSNs. Each child or relative you claim for purposes of calculating
+      the amount of the EITC must have a valid Social Security number (SSN) that is
+      issued by the Social Security Administration on or before the due date of your
+      tax return (including extensions).
+    p-0464ad: For the EITC, an SSN is a valid SSN unless “Not Valid for Employment”
+      is printed on the Social Security card and the number was issued solely to allow
+      the recipient of the SSN to apply for or receive a federally funded benefit.
+      An example of a federally funded benefit is Medicaid.
+    p-a708ff: We accept a Social Security card with &quot;Valid for work with DHS
+      authorization&quot; on it only as long as the DHS authorization is still valid.
+    p-558a40: 'For the EITC, we don''t accept:'
+    ul-0:
+      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
+      li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-19d3d7: Social Security number issued solely to allow the recipient of the
+        SSN to apply for or receive a federally funded benefit such as Medicaid
+  modal-claimed-someone-else:
+    heading: Claimed on Someone Else's Tax Return
+    p-9b277e: Only one person can claim each child for the EITC. If more than one
+      person claims the child, then the IRS applies tiebreaker rules.
+    p-911aff: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit, Your Qualifying Child Cannot Be Used By More
+      Than One Person.
+  modal-age-comparison:
+    heading: Child Must be Younger Than You or Your Spouse
+    p-626c78: To be a qualifying child, the child must be younger than you or your
+      spouse unless the child is permanently and totally disabled at any time during
+      2025.
+    p-1a035f: For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Publication
+      596</a>, Earned Income Credit, Age Test.
+/results:
+  title: Results
+  h2-88e7ef: Your Results
+  fg-alert-64891c:
+    heading: You don’t qualify for the Earned Income Tax Credit
+    p-cdf53e: Based on the information you provided, you can’t claim the earned income
+      credit because your earned income is over the limit for your filing status and
+      number of qualifying children.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
+  p-578b13: |-
+    Based on the information you provided, you are eligible for the Earned Income Tax Credit estimated amount of:
+            <strong><fg-show path="/earnedIncomeCredit"/></strong>*
+  p-adf6bb: |-
+    This credit amount will reduce your <fg-show path="/taxYear"/> taxes when you file your tax return with the IRS.
+            If the credit reduces your tax to less than zero, you may get a refund.
+  h2-259962: 'Next Steps: How to file for the EITC'
+  p-508e29: |-
+    In order to receive the estimated amount of <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
+            you must file your <fg-show path="/taxYear"/> federal tax return.
+            If you claim the EITC, by law the IRS cannot issue your tax refund before mid-February <fg-show path="/nextTaxYear"/>,
+            even the portion that is not associated with the EITC.
+  h3-54f664: Online
+  p-a5939a: |-
+    If you'd like to file your taxes online, you qualify to use the IRS Free File Program.
+            Please note the program is only available from January through October.
+  p-3ef53a: |-
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+              File online now<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+  h3-792a4e: In Person
+  p-787398: |-
+    If you'd prefer to work with an in-person tax preparer, you have the option for doing this at an IRS Volunteer
+            Income Tax Assistance (VITA) clinic.
+  p-25a83e: |-
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+              Free in-person help<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+  h3-c7457b: Paper Forms
+  p-b8834f: |-
+    Since you have a qualifying child, you must fill out
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040">
+              Schedule EIC (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+            and attach it to your
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+              Form 1040 (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+            or
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+              Form 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+            for tax year <fg-show path="/taxYear"/>.
+  h2-a3da4a: Your Information Summary
+  p-5a6eac: |-
+    The table below is a summary of the information you entered in the tool. If any of this information is
+            incorrect please click edit to update it, otherwise, it could affect your results.
+  table-0:
+    tbody-0:
+      tr-0:
+        th-537c66: Year
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">Edit about you</a>
+      tr-1:
+        th-c01d87: Filing Status
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">Edit filing
+          status</a>
+      tr-2:
+        th-b1d475: Adjusted Gross Income
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">Edit income and adjustments</a>
+      tr-3:
+        th-40c7ae: Earned Income
+        td-d604bc: 'Total wages &amp; salary: <fg-show path="/jobsIncomeTotal"/>'
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">Edit income</a>
+      tr-4:
+        th-dbaf54: Qualifying Children
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Edit
+          qualifying children</a>
+  p-35b0d2: |-
+    You can use the
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/help/irs2goapp">
+              IRS2Go app<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
+            to check your refund status, make a payment, find free tax preparation assistance, sign up for helpful tax tips,
+            and more!
