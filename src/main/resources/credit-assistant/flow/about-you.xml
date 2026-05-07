@@ -35,7 +35,7 @@
 
       <fg-set path="/hasValidSSN" if-true="/isUSCitizenOrResidentAlien">
         <question>Do you have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?*</question>
-        <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+        <modal-link for="modal-valid-ssn-filer">Valid Social Security Number</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
           <option value="false">No</option>
@@ -121,7 +121,7 @@
       </modal-content>
     </modal-dialog>
 
-    <modal-dialog id="modal-valid-ssn">
+    <modal-dialog id="modal-valid-ssn-filer">
       <modal-heading>Valid Social Security Number</modal-heading>
       <modal-content>
         <p>You must have a valid Social Security number (SSN) that is issued by the Social Security Administration on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions).</p>

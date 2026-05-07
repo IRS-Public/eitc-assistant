@@ -1,5 +1,6 @@
 package gov.irs.creditassistant
 
+import gov.irs.creditassistant.build.Flags
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.generators.Website
 import gov.irs.creditassistant.parser.Flow
@@ -50,7 +51,7 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   val outDir = os.pwd / "out"
   site.save(outDir / "app/eitc")
 
-  if !flags.contains("serve") then return // Only start smol if 'serve' flag is set
+  if !flags.contains(Flags.serve) then return // Only start smol if 'serve' flag is set
 
   val host = "localhost"
   val port = sys.props

@@ -126,12 +126,12 @@
 
     <fg-set path="/secondaryFilerHasValidSSN" if-true="/flowShouldSeeAliveSecondaryValidSSN">
       <question>Does your spouse have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?</question>
-      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/deceasedSpouseValidSSNOnDateOfDeath" if-true="/intendsToFileJointlyWidow">
       <question>Did your spouse have a valid Social Security number on the day they passed away?</question>
-      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/spouseAliveEndOfTaxYear" if-true="/flowShouldSeeSpouseAliveEndOfTaxYear">

@@ -10,6 +10,7 @@
 
 /* Components */
 @import "components/accordions.css";
+@import "components/buttons.css";
 @import "components/alerts.css";
 @import "components/details.css";
 @import "components/fg-collections.css";
@@ -23,6 +24,7 @@
 
 /* Utilities */
 @import "utilities/utilities.css";
+@import "utilities/display-conditions.css";
 
 @view-transition {
   navigation: auto;
