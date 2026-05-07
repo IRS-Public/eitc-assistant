@@ -9,7 +9,7 @@
                 <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
             </p>
 
-            <h3 condition="/isEligibleForStudentLoanInterestDeduction" operator="isTrue">Student Loan Interest Deduction</h3>
+            <h3 condition="/isEligibleForStudentLoanInterestDeduction" operator="isTrue">Student loan interest deduction</h3>
             <p condition="/isEligibleForStudentLoanInterestDeduction" operator="isTrue">Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest you paid on your qualified student loan. You can find this on your Form 1098-E if you paid more than $600 in interest.</p>
             <p condition="/isEligibleForStudentLoanInterestDeduction" operator="isTrue">The loan must have paid qualified higher education expenses to attend an eligible educational institution. Also, the expenses must have been:</p>
             <ul condition="/isEligibleForStudentLoanInterestDeduction" operator="isTrue">
@@ -29,7 +29,7 @@
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Qualified Expense Deduction</h3>
+            <h3>Educator expense deduction</h3>
             <p>If you're a teacher, enter up to <fg-show path="/maxEducatorExpensesNonMFJ"/> (<fg-show path="/maxEducatorExpensesMFJ"/> if married filing jointly and both you and your spouse are teachers) of unreimbursed expenses such as:</p>
             <ul>
                 <li>Fees for participation in professional development courses</li>
@@ -49,8 +49,7 @@
 
             <h3>Deduction for contributions to an IRA that is not included in payroll deductions</h3>
             <p>Enter any IRA contributions you made outside of your payroll contributions.</p>
-            <p><strong>Don't include amounts that you included above.</strong></p>
-            <p>
+           <p>
                 For more information see, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits" class="usa-link">IRA Deduction Limits<span class="usa-sr-only"> (opens in a new tab)</span></a>.
             </p>
             <fg-set path="/deductionForTraditionalIRAContribution">
@@ -93,7 +92,7 @@
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Alimony Paid</h3>
+            <h3>Alimony paid</h3>
             <p>If you made alimony or separate maintenance payments under a court order that was executed before January 1, 2019 and the order didn't specifically state that you can't deduct your payments, enter the amount you paid during year here.</p>
             <p>Don't include amounts you paid for:</p>
             <p><strong>Family or child support</strong></p>
@@ -107,14 +106,14 @@
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Penalty for Early Withdrawal of Savings</h3>
+            <h3>Penalty for early withdrawal of savings</h3>
             <p>If you withdraw funds from a certificate of deposit or other deferred interest account before maturity, you may be charged a penalty. You can find this penalty on your Form 1099-INT in box 2. Enter that amount here.</p>
             <fg-set path="/penaltyForEarlySavingsWithdrawal">
                 <question>Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Moving Expenses</h3>
+            <h3>Moving expenses for members of the armed forces</h3>
             <p>If you are a member of the armed forces on active duty, and the military ordered you to permanently change your duty station, enter any moving expenses the military didn't reimburse you for here. Moving expenses include:</p>
             <ul>
                 <li>Direct travel from your old home to your new one</li>
@@ -124,11 +123,11 @@
                 For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc455" class="usa-link">Tax Topic 455<span class="usa-sr-only"> (opens in a new tab)</span></a>.
             </p>
             <fg-set path="/movingExpensesForArmedServicesMembers">
-                <question>Moving expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
+                <question>Moving expenses for members of the armed forces<span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Certain Employee Business Expenses</h3>
+            <h3>Certain employee business expenses</h3>
             <p>If you are a/an:</p>
             <ul>
                 <li>Armed Forces reservist</li>
@@ -157,7 +156,7 @@
                 <input type="dollar"/>
             </fg-set>
 
-            <h3>Other Adjustments</h3>
+            <h3>Other adjustments</h3>
             <fg-set path="/otherAdjustments">
                 <question>Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/></question>
                 <input type="dollar"/>
