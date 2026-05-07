@@ -1,15 +1,14 @@
 package gov.irs.creditassistant
 
-import gov.irs.creditassistant.parser.FgAlert
 import io.circe.*
-import io.circe.generic.auto.deriveEncoder
 import io.circe.syntax.*
 import io.circe.yaml.Printer
+import scala.collection.mutable
 import scala.io.Source
 
-// This is in /target for now, but I will figure out an idiomatic place for it to go where we can commit it.
-// It isn't in /resources because that triggers a rebuild loop.
-private val generatedFlowContentPath = os.pwd / "target" / s"flow_en.yaml"
+val generatedFlowContentPath = os.pwd / "src" / "main" / "resources" / "credit-assistant" / "locales" / s"flow_en.yaml"
+private def translatedFlowContentPath(languageCode: String) =
+  os.pwd / "src" / "main" / "resources" / "credit-assistant" / "locales" / s"flow_$languageCode.yaml"
 
 case class Locale(languageCode: String) {
   private val localeFilePath = s"credit-assistant/locales/${languageCode}.yaml"
@@ -18,10 +17,12 @@ case class Locale(languageCode: String) {
     .parse(localeFile.reader())
     .getOrElse(throw new Exception(s"Failed to parse the content at $localeFilePath"))
 
-  private val flowContentString = os.read(generatedFlowContentPath)
+  private val flowContentPath =
+    if (languageCode == "en") generatedFlowContentPath else translatedFlowContentPath(languageCode)
+  private val flowContentString = os.read(flowContentPath)
   private val flowContent = yaml.scalayaml.Parser
     .parse(flowContentString)
-    .getOrElse(throw new Exception(s"Failed to parse the content at $localeFilePath"))
+    .getOrElse(throw new Exception(s"Failed to parse the content at $flowContentPath"))
 
   def get(key: String): Json = {
     // Look at the main content file first, then the automatically-generated one
@@ -33,43 +34,20 @@ case class Locale(languageCode: String) {
   }
 }
 
-case class FlowContent(alerts: Map[String, FgAlertContent])
+implicit val anyEncoder: Encoder[Any] = Encoder.instance {
+  case m: mutable.LinkedHashMap[_, _] => Json.obj(m.map { case (k, v) => (k.toString, anyEncoder(v)) }.toSeq*)
+  case s: String                      => Json.fromString(s)
+}
 
 /** Generate the flow_en.yaml locale file.
   *
-  * @param flowConfig
-  *   A fully-resolved (no modules) Flow Config
+  * @param translationMap
+  *   A populated map of all of the key-value pairs for translations
   */
-def generateFlowLocalFile(flowConfig: xml.Node): Unit = {
-  // TODO: Move these to page groupings
-  val fgSets = (flowConfig \\ "fg-set").map { fgSet =>
-    val path = fgSet \@ "path"
-    // We use mkString to preserve other tags, we trim to remove whitespace and new line characters when tags and content are on differnt lines
-    val question = (fgSet \ "question").head.child.mkString.trim
-    val optionsList = (fgSet \\ "option").map { option =>
-      val value = option \@ "value"
-      val name = option.head.child.mkString.trim
-      val description = None
-      (value -> OptionContent(name, description))
-    }
-    val options = if (optionsList.nonEmpty) Some(optionsList.toMap) else None
-    val content = FgSetContent(question, options)
-    (path -> content)
-  }.toMap
-
-  val sectionGateContent = (flowConfig \\ "fg-section-gate").map { sectionGate =>
-    val heading = (sectionGate \ "heading").head.child.mkString.trim
-    val content = (sectionGate \ "content").head.child.mkString.trim
-    val id = sectionGate \@ "condition" + "-" + sectionGate \@ "operator"
-    (id -> Map("heading" -> heading, "content" -> content))
-  }.toMap
-
-  val contentJson =
-    Json.obj("fg-sets" -> fgSets.asJson, "section-gates" -> sectionGateContent.asJson)
-  val contentYaml = Printer(dropNullKeys = true, preserveOrder = true)
-    .pretty(contentJson)
-
-  os.write.over(generatedFlowContentPath, contentYaml, null, createFolders = false)
+def generateFlowLocaleFile(translationMap: mutable.LinkedHashMap[String, Any]): Unit = {
+  val json = translationMap.asJson
+  val yamlString = Printer(dropNullKeys = true, preserveOrder = true).pretty(json)
+  os.write.over(generatedFlowContentPath, s"# DO NOT EDIT, THIS IS A GENERATED FILE\n$yamlString")
   Log.info(s"Generated flow content at ${generatedFlowContentPath}")
 }
 

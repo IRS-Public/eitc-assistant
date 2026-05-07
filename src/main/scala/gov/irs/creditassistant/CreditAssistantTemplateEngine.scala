@@ -19,28 +19,32 @@ case class CreditAssistantMessageResolver(locale: Locale) extends AbstractMessag
     s"!!${key}!!"
   }
 
-  def resolveMessage(
+  override def resolveMessage(
       context: ITemplateContext,
       origin: Class[?],
       key: String,
       messageParameters: Array[Object],
   ): String =
-    locale
-      .get(key)
-      .as[String]
-      .map(pattern => MessageFormat.format(pattern, messageParameters*))
-      .getOrElse(null)
+    val rawMsg = locale.get(key).as[String].getOrElse(null)
+    if (messageParameters != null && messageParameters.nonEmpty) {
+      // MessageFormat.format makes it so ' are removed we would need to use '' if we want one to be displayed
+      MessageFormat.format(rawMsg, messageParameters*)
+    } else {
+      rawMsg
+    }
 
-class CreditAssistantTemplateEngine {
+  def resolveMessage(key: String): String = Option(resolveMessage(null, null, key, null)).getOrElse(s"??$key??")
+
+class CreditAssistantTemplateEngine(languageCode: String = "en") {
   private val resolver = new ClassLoaderTemplateResolver()
   resolver.setTemplateMode(TemplateMode.HTML)
   resolver.setCharacterEncoding("UTF-8")
   resolver.setPrefix("/credit-assistant/templates/")
   resolver.setSuffix(".html")
 
-  private val locale = Locale("en")
+  private val locale = Locale(languageCode)
   private val templateEngine = new TemplateEngine()
-  private val messageResolver = CreditAssistantMessageResolver(locale)
+  val messageResolver = CreditAssistantMessageResolver(locale)
   templateEngine.setTemplateResolver(resolver)
   templateEngine.addMessageResolver(messageResolver)
 

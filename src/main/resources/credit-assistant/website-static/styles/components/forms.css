@@ -8,10 +8,6 @@ fg-set {
   }
 }
 
-fg-withholding-adjustments {
-  display: block;
-}
-
 h2 + fg-set {
   margin-top: 0;
 }

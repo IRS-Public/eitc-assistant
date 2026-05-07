@@ -62,7 +62,7 @@ object Input {
       case "int"     => Input.int(isOptional)
       case "boolean" =>
         val options = (inputNode \ "option").map { node =>
-          val name = node.mkString.trim
+          val name = node.mkString.strip
           val value = node \@ "value"
 
           if (value != "true" && value != "false") {

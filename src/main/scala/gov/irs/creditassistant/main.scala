@@ -13,10 +13,6 @@ import scala.xml.NodeBuffer
 val FlowResourceRoot = "credit-assistant/flow"
 val flagRegex = new Regex("""--(\w*)""")
 
-case class OptionContent(name: String, description: Option[String])
-case class FgSetContent(question: String, options: Option[Map[String, OptionContent]])
-case class FgAlertContent(heading: String, body: Map[String, String])
-
 @main def main(args: String*): Unit = {
   val flags = Map.from(
     args.map {
@@ -41,11 +37,11 @@ case class FgAlertContent(heading: String, body: Map[String, String])
   )
 
   val resolvedConfig = <FlowConfig>{resolvedChildren}</FlowConfig>
-  generateFlowLocalFile(resolvedConfig)
 
-  val creditAssistantFactDictionary = loadCreditAssistantFactDictionary()
-  val flow = Flow.fromXmlConfig(resolvedConfig, creditAssistantFactDictionary.factDictionary)
-  val site = Website.generate(flow, creditAssistantFactDictionary.xml, flags)
+  val caFactDictionary = loadCreditAssistantFactDictionary()
+  val flow = Flow.fromXmlConfig(resolvedConfig, caFactDictionary.factDictionary)
+  generateFlowLocaleFile(flow.translationContext.translationMap)
+  val site = Website.generate(flow, caFactDictionary.xml, flags)
 
   // Delete out/ directory and add files to it
   val outDir = os.pwd / "out"
@@ -70,7 +66,7 @@ case class FgAlertContent(heading: String, body: Map[String, String])
     val cyan = "\u001b[36m"
     val bold = "\u001b[1m"
     val reset = "\u001b[0m"
-    println(s"\n${green}${bold}✓${reset} ${bold}Credit-Assistant Server${reset} ${cyan}ready${reset}")
+    println(s"\n${green}${bold}✓${reset} ${bold}Credit Assistant Server${reset} ${cyan}ready${reset}")
     println(s"  ${bold}Local:${reset}   ${cyan}${url}${reset}\n")
   catch
     case _: java.net.BindException =>
