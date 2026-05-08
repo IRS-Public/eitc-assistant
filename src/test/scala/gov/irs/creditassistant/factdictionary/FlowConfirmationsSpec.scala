@@ -1,4 +1,4 @@
-package gov.irs.creditassistant
+package gov.irs.creditassistant.factdictionary
 
 import gov.irs.factgraph.types.Enum as FgEnum
 import gov.irs.factgraph.Graph

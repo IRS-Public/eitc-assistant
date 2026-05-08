@@ -18,8 +18,22 @@
                     <img src="/app/eitc/resources/img/irs-logo.svg" alt="" />
                 </a>
                 <div th:if="${flags.languageSwitcher}" class="language-switcher">
-                    <a th:if="${languageCode == 'en'}" th:href="'/' + 'app/eitc/es' + ${currentPageRoute}" class="usa-button usa-button--inverse">Español</a>
-                    <a th:if="${languageCode == 'es'}" th:href="'/' + 'app/eitc' + ${currentPageRoute}" class="usa-button usa-button--inverse">English</a>
+                    <label class="usa-sr-only" for="language-selector">Select Language</label>
+
+                    <select class="usa-select"
+                            id="language-selector"
+                            name="language-selector"
+                            onchange="if(this.value) window.location.href=this.value"
+                            style="width: auto; margin-top: 0;">
+
+                        <option value="" disabled selected>Select Language</option>
+
+                        <option th:each="lang : ${supportedLocales}"
+                                th:value="${lang.key == 'en'} ? |/app/eitc${currentPageRoute}| : |/app/eitc/${lang.key}${currentPageRoute}|"
+                                th:text="${lang.value}">
+                        </option>
+
+                    </select>
                 </div>
             </div>
     </header>
