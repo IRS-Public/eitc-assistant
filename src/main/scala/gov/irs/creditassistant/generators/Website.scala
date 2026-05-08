@@ -7,6 +7,7 @@ import org.jsoup.parser.Tag
 import org.jsoup.Jsoup
 import org.thymeleaf.context.Context
 import os.Path
+import scala.collection.immutable.ListMap
 import scala.jdk.CollectionConverters.*
 
 case class WebsitePage(route: String, content: String, languageCode: String) {
@@ -68,7 +69,17 @@ object Website {
       dictionaryXml: xml.Elem,
       flags: Map[String, Boolean],
   ): Website = {
-    val locales = if (flags.contains(Flags.spanishTranslations)) List("en", "es") else List("en")
+    val supportedLocales = ListMap(
+      "en" -> "English",
+      "es" -> "Español",
+      "ht" -> "Kreyòl ayisyen",
+      "ko" -> "한국어",
+      "ru" -> "Русский",
+      "vi" -> "Tiếng Việt",
+      "zh-hans" -> "简体中文",
+      "zh-hant" -> "繁體中文",
+    )
+    val locales = if (flags.contains(Flags.translationsEnabled)) supportedLocales.keys.toList else List("en")
     var pages = locales.flatMap { languageCode =>
       val templateEngine = new CreditAssistantTemplateEngine(languageCode)
       val navPages = flow.pages.filter(p => !p.exclude)
@@ -91,6 +102,7 @@ object Website {
         context.setVariable("currentPageRoute", page.route)
         context.setVariable("flags", flags.asJava)
         context.setVariable("languageCode", languageCode)
+        context.setVariable("supportedLocales", supportedLocales.asJava)
 
         // Add a link for the next page if it's not the last one
         if (index < flow.pages.size - 1) {

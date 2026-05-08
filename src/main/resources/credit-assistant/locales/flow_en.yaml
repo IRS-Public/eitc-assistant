@@ -929,7 +929,7 @@
   p-233dd3: Select and enter any of these types of adjustments to income you had in
     <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
   p-624555: <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
-  h3-cd8786: Student Loan Interest Deduction
+  h3-2c7735: Student loan interest deduction
   p-3ac7ce: Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest
     you paid on your qualified student loan. You can find this on your Form 1098-E
     if you paid more than $600 in interest.
@@ -951,7 +951,7 @@
       Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
                           <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/>
     hint: (max <fg-show path="/maxStudentLoanDeduction"/>)
-  h3-5670b1: Qualified Expense Deduction
+  h3-9166fe: Educator expense deduction
   p-e117c8: 'If you''re a teacher, enter up to <fg-show path="/maxEducatorExpensesNonMFJ"/>
     (<fg-show path="/maxEducatorExpensesMFJ"/> if married filing jointly and both
     you and your spouse are teachers) of unreimbursed expenses such as:'
@@ -971,7 +971,6 @@
   h3-57c26a: Deduction for contributions to an IRA that is not included in payroll
     deductions
   p-5979d5: Enter any IRA contributions you made outside of your payroll contributions.
-  p-e6a251: <strong>Don't include amounts that you included above.</strong>
   p-a49375: For more information see, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
     class="usa-link">IRA Deduction Limits<span class="usa-sr-only"> (opens in a new
     tab)</span></a>.
@@ -1020,7 +1019,7 @@
     question: HSA contributions <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> made
       in <fg-show path="/taxYear"/>
-  h3-7abe12: Alimony Paid
+  h3-e97d7b: Alimony paid
   p-fa1de9: If you made alimony or separate maintenance payments under a court order
     that was executed before January 1, 2019 and the order didn't specifically state
     that you can't deduct your payments, enter the amount you paid during year here.
@@ -1034,7 +1033,7 @@
     class="usa-link">Tax Topic 452<span class="usa-sr-only"> (opens in a new tab)</span></a>.
   /alimonyPaid:
     question: Alimony you paid in <fg-show path="/taxYear"/>
-  h3-c129db: Penalty for Early Withdrawal of Savings
+  h3-913117: Penalty for early withdrawal of savings
   p-7e8d5b: If you withdraw funds from a certificate of deposit or other deferred
     interest account before maturity, you may be charged a penalty. You can find this
     penalty on your Form 1099-INT in box 2. Enter that amount here.
@@ -1042,7 +1041,7 @@
     question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
       paid in <fg-show path="/taxYear"/>
-  h3-2dfbe2: Moving Expenses
+  h3-6fad42: Moving expenses for members of the armed forces
   p-6f18fd: 'If you are a member of the armed forces on active duty, and the military
     ordered you to permanently change your duty station, enter any moving expenses
     the military didn''t reimburse you for here. Moving expenses include:'
@@ -1052,10 +1051,10 @@
   p-6536cb: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
     class="usa-link">Tax Topic 455<span class="usa-sr-only"> (opens in a new tab)</span></a>.
   /movingExpensesForArmedServicesMembers:
-    question: Moving expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-  h3-1f37a2: Certain Employee Business Expenses
+    question: Moving expenses for members of the armed forces<span condition="/isFilingStatusMFJ"
+      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+      and your spouse</span> paid in <fg-show path="/taxYear"/>
+  h3-c4f7d7: Certain employee business expenses
   p-c92011: 'If you are a/an:'
   ul-5:
     li-9bde67: Armed Forces reservist
@@ -1090,7 +1089,7 @@
     question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
       paid in <fg-show path="/taxYear"/>
-  h3-1d2271: Other Adjustments
+  h3-cf5b3c: Other adjustments
   /otherAdjustments:
     question: Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>

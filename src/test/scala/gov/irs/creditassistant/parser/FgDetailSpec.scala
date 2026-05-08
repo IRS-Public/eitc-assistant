@@ -1,0 +1,99 @@
+package gov.irs.creditassistant.parser
+
+import gov.irs.creditassistant.exceptions.InvalidFormConfig
+import gov.irs.creditassistant.loadCreditAssistantFactDictionary
+import org.scalatest.funspec.AnyFunSpec
+import scala.xml.Elem
+
+class FgDetailSpec extends AnyFunSpec {
+  private val factDictionary = loadCreditAssistantFactDictionary().factDictionary
+  private val flowParser = FlowParser(factDictionary)
+  private def testContext() = TranslationContext()
+
+  describe("FgDetail.fromXml") {
+    it("parses summary and children from XML") {
+      val xml = <fg-detail>
+        <summary>Estimated tips and overtime</summary>
+        <p>Content here.</p>
+      </fg-detail>
+      val fd = FgDetail.fromXml(xml, flowParser, testContext())
+      assert(fd.children.size == 1)
+      assert(fd.children.head.isInstanceOf[HtmlLeafNode])
+    }
+
+    it("preserves fg-show and other tags in summary as HTML") {
+      val xml = <fg-detail>
+        <summary>Income in <fg-show path="/taxYear"/></summary>
+        <p>Body.</p>
+      </fg-detail>
+      val fd = FgDetail.fromXml(xml, flowParser, testContext())
+      assert(fd.children.size == 1)
+      assert(fd.children.head.isInstanceOf[HtmlLeafNode])
+    }
+
+    it("parses icon=\"chevron\" as useChevron true, otherwise false") {
+      val withChevron = <fg-detail icon="chevron">
+        <summary>Chevron accordion</summary>
+        <p>Body.</p>
+      </fg-detail>
+      val fd1 = FgDetail.fromXml(withChevron, flowParser, testContext())
+      assert(fd1.useChevron)
+
+      val withoutIcon = <fg-detail>
+        <summary>Default accordion</summary>
+        <p>Body.</p>
+      </fg-detail>
+      val fd2 = FgDetail.fromXml(withoutIcon, flowParser, testContext())
+      assert(!fd2.useChevron)
+    }
+
+    it("parses open=\"true\" as open true, otherwise false") {
+      val openTrue = FgDetail.fromXml(
+        <fg-detail open="true"><summary>Open by default</summary><p>Content</p></fg-detail>,
+        flowParser,
+        testContext(),
+      )
+      assert(openTrue.open)
+      val openFalse = FgDetail.fromXml(
+        <fg-detail><summary>Closed by default</summary><p>Content</p></fg-detail>,
+        flowParser,
+        testContext(),
+      )
+      assert(!openFalse.open)
+      val openExplicitFalse = FgDetail.fromXml(
+        <fg-detail open="false"><summary>Closed</summary><p>Content</p></fg-detail>,
+        flowParser,
+        testContext(),
+      )
+      assert(!openExplicitFalse.open)
+    }
+
+    it("parses heading-tag h3 when present, defaults to h4 when missing") {
+      val withTag = FgDetail.fromXml(
+        <fg-detail heading-tag="h3"><summary>X</summary><p>Content</p></fg-detail>,
+        flowParser,
+        testContext(),
+      )
+      assert(withTag.headingTag == "h3")
+      val default =
+        FgDetail.fromXml(<fg-detail><summary>Y</summary><p>Content</p></fg-detail>, flowParser, testContext())
+      assert(default.headingTag == "h4")
+    }
+
+    it("parses if-true as Condition; throws if both if-true and if-false") {
+      val fd = FgDetail.fromXml(
+        <fg-detail if-true="/hasValidSSN"><summary>X</summary><p>Content</p></fg-detail>,
+        flowParser,
+        testContext(),
+      )
+      assert(fd.condition.contains(Condition("/hasValidSSN", ConditionOperator.isTrue)))
+      assertThrows[InvalidFormConfig](
+        FgDetail.fromXml(
+          <fg-detail if-true="/hasValidSSN" if-false="/secondaryFilerHasValidSSN"><summary>Both</summary><p>Content</p></fg-detail>,
+          flowParser,
+          testContext(),
+        ),
+      )
+    }
+  }
+}
