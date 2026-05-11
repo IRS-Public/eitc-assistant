@@ -498,15 +498,16 @@
     p-6b3acc: You can’t claim your spouse as a dependent if you file jointly.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn
       more about dependents.</a>
-/income:
-  title: Income
+/agi:
+  title: AGI
   h2-c0af17: <strong>Estimate Your <fg-show path="/taxYear"/> Adjusted Gross Income
     (AGI)</strong>
-  p-732553: In this step, we'll estimate your and your spouse's joint earned income,
-    adjusted gross income, and any adjustments to it.
-  p-9d3638: Please select and enter your <fg-show path="/taxYear"/> and your spouse's
-    income and adjustments. Only select one item per source. All fields marked with
-    an asterisk are required.
+  p-308236: In this step, we'll estimate your <span condition="/isFilingStatusMFJ"
+    operator="isTrue">and your spouse's joint</span> earned income, adjusted gross
+    income, and any adjustments to it.
+  p-100130: Please select and enter your <fg-show path="/taxYear"/> <span condition="/isFilingStatusMFJ"
+    operator="isTrue">and your spouse's</span> income and adjustments. Only select
+    one item per source. All fields marked with an asterisk are required.
   p-bb8818: <strong>Please note:</strong> Make sure to also include your spouse's
     income and adjustments.
   h2-40c7ae: Earned Income
@@ -540,72 +541,13 @@
       question: Foreign earned income not reported on Form 2555
       modalLink: <modal-link for="modal-foreign-income-non2555">What is foreign earned
         income?</modal-link>
-  h3-89425f: Investment income
-  p-4bb1c9: Even if you <span condition="/isFilingStatusMFJ" operator="isTrue">or
-    your spouse </span>earned a small amount of investment income, adding this amount
-    helps get the most accurate calculation.
-  fg-detail-b4c28b:
-    summary: Interest income
-    p-3b6f1c: <modal-link for="modal-estimate-interest-income-en">What is interest
-      income and how can I calculate it?</modal-link>
-    /taxableInterestIncome:
-      question: Interest income you<span condition="/isFilingStatusMFJ" operator="isTrue">
-        and your spouse</span> earned in <fg-show path="/taxYear"/>
-  fg-detail-39fb22:
-    summary: Ordinary or qualified dividends
-    p-953327: You should enter the total amounts you earned in <fg-show path="/taxYear"/>.
-    p-b9eb76: <modal-link for="modal-what-are-dividends-en">What are dividends and
-      how can I calculate them?</modal-link>
-    /ordinaryDividendsIncome:
-      question: Ordinary dividend income you <span condition="/isFilingStatusMFJ"
-        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
-    /qualifiedDividendsIncome:
-      question: Qualified dividend income you <span condition="/isFilingStatusMFJ"
-        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
-  fg-detail-89ef66:
-    summary: Short-term or long-term gains and losses
-    p-bf94ee: You should enter the total amounts you earned and lost in <fg-show path="/taxYear"/>.
-    p-f16772: <modal-link for="modal-what-are-short-long-term-gains-losses-en">What
-      are short- and long-term gains and losses, and how can I calculate them?</modal-link>
-    /shortTermCapitalGainsIncome:
-      question: Short-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-        your spouse</span> earned in <fg-show path="/taxYear"/>
-    /shortTermCapitalLoss:
-      question: Short-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-        your spouse</span> had in <fg-show path="/taxYear"/>
-    /longTermCapitalGainsIncome:
-      question: Long-term gains you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-        your spouse</span> earned in <fg-show path="/taxYear"/>
-    /longTermCapitalLoss:
-      question: Long-term losses you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-        your spouse</span> had in <fg-show path="/taxYear"/>
-  fg-detail-28fc9b:
-    summary: Rental income
-    p-74b742: <modal-link for="modal-rental-expenses-net-income-en">What are rental
-      expenses and how can I calculate net rental income?</modal-link>
-    /rentalIncome:
-      question: Net amount of rental income you <span condition="/isFilingStatusMFJ"
-        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
-      hint: Net is the total minus any expenses.
-  fg-detail-3026f7:
-    summary: Royalties
-    p-006e98: <modal-link for="modal-estimate-royalty-income-en">How can I calculate
-      royalty income?</modal-link>
-    /royaltyIncome:
-      question: Royalty income you <span condition="/isFilingStatusMFJ" operator="isTrue">and
-        your spouse</span> earned in <fg-show path="/taxYear"/>
-  fg-detail-b186f4:
-    summary: Passive or non-passive income from S-corporations or partnerships
-    p-953327: You should enter the total amounts you earned in <fg-show path="/taxYear"/>.
-    p-d5119c: <modal-link for="modal-estimate-s-corp-partnership-income-en">How can
-      I calculate income from S-corporations or partnerships?</modal-link>
-    /sCorpPassiveIncome:
-      question: Passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
-        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
-    /sCorpNonPassiveIncome:
-      question: Non-passive income from S-corporations or partnerships you <span condition="/isFilingStatusMFJ"
-        operator="isTrue">and your spouse</span> earned in <fg-show path="/taxYear"/>
   h3-20a2b1: Other Income
+  fg-detail-89425f:
+    summary: Investment income
+    /investmentIncomeTotal:
+      question: Investment income
+      modalLink: <modal-link for="modal-investment-income">What is your total investment
+        income?</modal-link>
   fg-detail-fbe1af:
     summary: Pension income
     /pensionsIncomeTotal:
@@ -651,6 +593,102 @@
       hint: You should enter one total amount for all other income.
       modalLink: <modal-link for="modal-other-taxable-income">What are other taxable
         incomes?</modal-link>
+  h2-9fa8b1: Adjustments
+  p-233dd3: Select and enter any of these types of adjustments to income you had in
+    <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
+  p-624555: <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
+  fg-detail-2c7735:
+    summary: Student loan interest deduction
+    /studentLoanInterestAmount:
+      question: |-
+        Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
+                            <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/>
+      hint: (max <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">What is the student
+        loan interest deduction?</modal-link>
+  fg-detail-9166fe:
+    summary: Educator expense deduction
+    /educatorExpenses/:
+      question: Educator expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+        paid in <fg-show path="/taxYear"/>
+      hint: (max <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">What are educator expenses?</modal-link>
+  fg-detail-57c26a:
+    summary: Deduction for contributions to an IRA that is not included in payroll
+      deductions
+    /deductionForTraditionalIRAContribution:
+      question: Traditional (pre-tax) IRA contributions <span condition="/isFilingStatusMFJ"
+        operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+        and your spouse</span> made in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-ira-contributions">What counts as traditional
+        IRA contributions?</modal-link>
+  fg-detail-f9e99b:
+    summary: Self-employed retirement plan deduction
+    /selfEmploymentRetirementPlanContributions:
+      question: Self-employed retirement contributions <span condition="/isFilingStatusMFJ"
+        operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+        and your spouse</span> made in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-retirement">What is the self-employed
+        retirement plan deduction?</modal-link>
+  fg-detail-5c4fd4:
+    summary: Self-employed health insurance deduction
+    /selfEmploymentHealthInsuranceContributions:
+      question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+        paid in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-health-insurance">What is the
+        self-employed health insurance deduction?</modal-link>
+  fg-detail-2c1033:
+    summary: Health Savings Account (HSA) deductions that are not included in payroll
+      deductions
+    /hsaContributionAmount:
+      question: HSA contributions <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span>
+        made in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-hsa-deductions">What are HSA deductions?</modal-link>
+  fg-detail-e97d7b:
+    summary: Alimony paid
+    /alimonyPaid:
+      question: Alimony you paid in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-alimony-paid">What counts as alimony paid?</modal-link>
+  fg-detail-913117:
+    summary: Penalty for early withdrawal of savings
+    /penaltyForEarlySavingsWithdrawal:
+      question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+        paid in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-early-withdrawal">What is the penalty for
+        early withdrawal of savings?</modal-link>
+  fg-detail-6fad42:
+    summary: Moving expenses for members of the armed forces
+    /movingExpensesForArmedServicesMembers:
+      question: Moving expenses for members of the armed forces <span condition="/isFilingStatusMFJ"
+        operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
+        and your spouse</span> paid in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-moving-expenses">What counts as moving expenses
+        for the armed forces?</modal-link>
+  fg-detail-c4f7d7:
+    summary: Certain employee business expenses
+    /businessCreditsForEligible:
+      question: Eligible business expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+        paid in <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-employee-business-expenses">What are eligible
+        employee business expenses?</modal-link>
+  fg-detail-cf5b3c:
+    summary: Other adjustments
+    /otherAdjustments:
+      question: Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
+        paid in <fg-show path="/taxYear"/>
+  h3-a7b819: 'Your Adjusted gross income (AGI) was: <fg-show path="/agi"/>'
+  fg-alert-334e2e:
+    heading: You don't qualify for the Earned Income Tax Credit (EITC)
+    p-f3c23d: Based on your adjusted gross income (including the adjustments you entered),
+      you don’t qualify for the EITC for <fg-show path="/taxYear"/>.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
   modal-wages-salaries-tips:
     heading: Wages, Salaries, and Tips / Military &amp; Disability
     h3-53ed11: Wages Salaries and Tips
@@ -852,66 +890,28 @@
     ul-0:
       li-7b5662: Line 2b on Form 1040 of your <fg-show path="/taxYear"/> federal tax
         return
-  modal-what-are-dividends-en:
-    heading: What are dividends and how can I calculate them?
-    p-c61938: Ordinary or qualified dividends are payments made by corporations to
-      shareholders based on a company's profits. The main difference between the two
-      was that qualified dividends are taxed at a lower rate.
-    p-bc395c: <strong>How to check last year's tax return</strong>
-    p-1088f1: 'If you earned these dividends the previous year and thought you would
-      earn a similar amount in <fg-show path="/taxYear"/>, check:'
+  modal-investment-income:
+    heading: Investment Income
+    p-b07c20: 'Investment income for the EITC includes:'
     ul-0:
-      li-04e426: Line 3b on Form 1040 of your <fg-show path="/taxYear"/> federal tax
-        return for ordinary dividends
-      li-cac2cc: Line 3a on Form 1040 of your <fg-show path="/taxYear"/> federal tax
-        return for qualified dividends
-  modal-what-are-short-long-term-gains-losses-en:
-    heading: What are short- and long-term gains and losses, and how can I calculate
-      them?
-    p-aa6774: 'The length of time you held an asset determined what type of gain or
-      loss it was:'
-    ul-0:
-      li-57b37b: <strong>Short-term gain or loss</strong>, if you held the asset for
-        less than a year.
-      li-02555a: <strong>Long-term gain or loss</strong>, if you held the asset for
-        more than one year.
-    p-750d95: <strong>How to check for gains and losses</strong>
-    p-2db72e: If you had an investment or brokerage account, you can log in or reviewed
-      your latest statement to check for any short- or long-term gains and losses
-      for <fg-show path="/taxYear"/>.
-    p-ddb648: <strong>How to calculate gains and losses</strong>
-    p-a155e6: If you sold any assets before the end of the year, you should include
-      the calculated gains or losses in your total.
-  modal-rental-expenses-net-income-en:
-    heading: What are rental expenses and how can I calculate net rental income?
-    p-21c0e9: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p527#en_US_2024_publink1000218977">Rental
-      expenses<span class="usa-sr-only"> (opens in a new tab)</span></a> included
-      maintenance costs, insurance, taxes, and interest.
-    p-bc395c: <strong>How to check last year's tax return</strong>
-    p-563c28: 'If you earned rental income during <fg-show path="/taxYear"/>, check
-      your <fg-show path="/taxYear"/> forms:'
-    ul-0:
-      li-3cc72a: Schedule E (Form 1040), Part I, line 21, Columns A - C
-  modal-estimate-royalty-income-en:
-    heading: How can I calculate royalty income?
-    p-8a56d3: You can check your licensing agreements or publisher statements for
-      expected payment schedules or percentages.
-    p-bc395c: <strong>How to check last year's tax return</strong>
-    p-cc8fcc: 'If you earned royalties in <fg-show path="/taxYear"/>, check your <fg-show
-      path="/taxYear"/> forms:'
-    ul-0:
-      li-90f9a8: Schedule E (Form 1040), Part I, line 23b
-  modal-estimate-s-corp-partnership-income-en:
-    heading: How can I calculate income from S-corporations or partnerships?
-    p-8b6f8b: <strong>How to check last year's return</strong>
-    p-2b7ed1: 'If you earned income from S-corporations or partnerships the previous
-      year and thought you would earn a similar amount in <fg-show path="/taxYear"/>,
-      check these <fg-show path="/taxYear"/> forms:'
-    ul-0:
-      li-b8bcfa: Schedule E (Form 1040), Part II, Line 29a, Column h, for passive
-        income
-      li-f37c1e: Schedule E (Form 1040), Part II, Line 29a, Column k, for non-passive
-        income
+      li-12d3b7: Interest (both taxable and tax-exempt)
+      li-0a9a83: Dividends
+      li-81f254: Capital gain income (not losses)
+      li-498151: Some rent and royalties or
+      li-7c0731: Net income from passive activities
+    p-4c8f5e: See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">Publication
+      550</a>, Investment Income and Expenses for more information.
+    p-df5956: 'Use Worksheet 1 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit, to figure your investment income if any of the
+      following statements are true for 2025:'
+    ul-1:
+      li-0f3c1b: You are filing Schedule E (Form 1040).
+      li-782dae: You are reporting income from the rental of personal property not
+        used in a trade or business.
+      li-e0ebc1: You are reporting from Form 8814 (relating to election to report
+        child's interest and dividends).
+      li-a00ee1: You have income or loss from a passive activity.
+      li-143cd9: You are filing Form 4797 (relating to sales of business property).
   modal-other-taxable-income:
     heading: Other Taxable Income
     p-41c1a9: 'Add any other taxable income that you <span condition="/isFilingStatusMFJ"
@@ -927,189 +927,135 @@
     p-48332b: <a target="_blank" href="https://www.irs.gov/filing/taxable-income"
       class="usa-link usa-link--external">Learn more about other taxable income.<span
       class="usa-sr-only"> (opens in a new tab)</span></a>
-/adjustments:
-  title: Adjustments
-  h2-9fa8b1: Adjustments
-  p-233dd3: Select and enter any of these types of adjustments to income you had in
-    <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
-  p-624555: <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
-  h3-2c7735: Student loan interest deduction
-  p-3ac7ce: Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest
-    you paid on your qualified student loan. You can find this on your Form 1098-E
-    if you paid more than $600 in interest.
-  p-e4b825: 'The loan must have paid qualified higher education expenses to attend
-    an eligible educational institution. Also, the expenses must have been:'
-  ul-0:
-    li-bb1c73: For you, your spouse, or a person who was your dependent when you took
-      out the loan;
-    li-829f26: Paid or incurred within a reasonable period of time before or after
-      you took out the loan; and
-    li-562ff0: For education provided during an academic period for an eligible student.
-  p-75f422: You can't claim the deduction if you aren't legally obligated to make
-    payments on the loan.
-  p-1f2dd3: For more information, see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
-    class="usa-link">Publication 970, Tax Benefits for Education<span class="usa-sr-only">
-    (opens in a new tab)</span></a>.
-  /studentLoanInterestAmount:
-    question: |-
-      Student loan interest <span condition="/isFilingStatusMFJ" operator="isFalse">you</span>
-                          <span condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span> paid in <fg-show path="/taxYear"/>
-    hint: (max <fg-show path="/maxStudentLoanDeduction"/>)
-  h3-9166fe: Educator expense deduction
-  p-e117c8: 'If you''re a teacher, enter up to <fg-show path="/maxEducatorExpensesNonMFJ"/>
-    (<fg-show path="/maxEducatorExpensesMFJ"/> if married filing jointly and both
-    you and your spouse are teachers) of unreimbursed expenses such as:'
-  ul-1:
-    li-8829c6: Fees for participation in professional development courses
-    li-751127: Books and supplies
-    li-0c78ca: Computer equipment (including related software and services)
-    li-6ef6c8: Other equipment
-    li-6d4170: Supplementary materials that you use in the classroom
-  p-86c6e4: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
-    class="usa-link">IRS Topic 458<span class="usa-sr-only"> (opens in a new tab)</span></a>.
-  /educatorExpenses/:
-    question: Educator expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-    hint: (max <fg-show path="/maxEducatorExpensesLimit"/>)
-  h3-57c26a: Deduction for contributions to an IRA that is not included in payroll
-    deductions
-  p-5979d5: Enter any IRA contributions you made outside of your payroll contributions.
-  p-a49375: For more information see, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
-    class="usa-link">IRA Deduction Limits<span class="usa-sr-only"> (opens in a new
-    tab)</span></a>.
-  /deductionForTraditionalIRAContribution:
-    question: Traditional (pre-tax) IRA contributions <span condition="/isFilingStatusMFJ"
-      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
-      and your spouse</span> made in <fg-show path="/taxYear"/>
-  h3-f9e99b: Self-employed retirement plan deduction
-  p-9982ed: If <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> were
-    self employed and made contributions to qualified retirement plans in <fg-show
-    path="/taxYear"/>, you may have been eligible for the self-employed retirement
-    plan deduction.
-  p-68007d: 'To qualify, <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> must
-    have:'
-  ul-2:
-    li-6c246a: Been a sole proprietor
-    li-a2595a: Been a working partner in a partnership, or
-    li-f6cddf: Had a limited liability company
-  p-3622b4: 'Eligible plans may have included:'
-  ul-3:
-    li-ff93fe: Simplified Employee Pension (SEP) plan
-    li-200ab4: Savings Incentive Match Plan for Employees
-    li-e7dbe4: Solo-401(k)
-    li-765afa: Other qualified retirement plans
-  p-af5a4a: <strong>Don't include</strong> Individual Retirement Arrangement (IRA)
-    contributions.
-  p-add56c: You must have used a special rule to calculate retirement plan contributions
-    for yourself.
-  p-3248f2: <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
-    class="usa-link">Learn more about self-employed retirement contributions.<span
-    class="usa-sr-only"> (opens in a new tab)</span></a>
-  /selfEmploymentRetirementPlanContributions:
-    question: Self-employed retirement contributions <span condition="/isFilingStatusMFJ"
-      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
-      and your spouse</span> made in <fg-show path="/taxYear"/>
-  h3-2c1033: Health Savings Account (HSA) deductions that are not included in payroll
-    deductions
-  p-2ab752: Enter any Health Savings Account (HSA) contributions that you didn't include
-    under HSA, FSA, or other “cafeteria plan” above.
-  p-a7d9fc: For more information visit <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-969"
-    class="usa-link">About Publication 969, Health Savings Accounts and Other Tax-Favored
-    Health Plans<span class="usa-sr-only"> (opens in a new tab)</span></a>.
-  /hsaContributionAmount:
-    question: HSA contributions <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse</span> made
-      in <fg-show path="/taxYear"/>
-  h3-e97d7b: Alimony paid
-  p-fa1de9: If you made alimony or separate maintenance payments under a court order
-    that was executed before January 1, 2019 and the order didn't specifically state
-    that you can't deduct your payments, enter the amount you paid during year here.
-  p-7b97e1: 'Don''t include amounts you paid for:'
-  p-7948e4: <strong>Family or child support</strong>
-  p-358bc5: Also don't include amounts if the court order was modified and states
-    that you can't deduct your payments.
-  p-06a405: Alimony or separate maintenance made under a court order executed after
-    December 31, 2024
-  p-4b335c: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
-    class="usa-link">Tax Topic 452<span class="usa-sr-only"> (opens in a new tab)</span></a>.
-  /alimonyPaid:
-    question: Alimony you paid in <fg-show path="/taxYear"/>
-  h3-913117: Penalty for early withdrawal of savings
-  p-7e8d5b: If you withdraw funds from a certificate of deposit or other deferred
-    interest account before maturity, you may be charged a penalty. You can find this
-    penalty on your Form 1099-INT in box 2. Enter that amount here.
-  /penaltyForEarlySavingsWithdrawal:
-    question: Penalty amount <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-  h3-6fad42: Moving expenses for members of the armed forces
-  p-6f18fd: 'If you are a member of the armed forces on active duty, and the military
-    ordered you to permanently change your duty station, enter any moving expenses
-    the military didn''t reimburse you for here. Moving expenses include:'
-  ul-4:
-    li-60efa3: Direct travel from your old home to your new one
-    li-efbbb1: Cost of packing and moving your personal belongings
-  p-6536cb: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
-    class="usa-link">Tax Topic 455<span class="usa-sr-only"> (opens in a new tab)</span></a>.
-  /movingExpensesForArmedServicesMembers:
-    question: Moving expenses for members of the armed forces<span condition="/isFilingStatusMFJ"
-      operator="isFalse">you</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
-      and your spouse</span> paid in <fg-show path="/taxYear"/>
-  h3-c4f7d7: Certain employee business expenses
-  p-c92011: 'If you are a/an:'
-  ul-5:
-    li-9bde67: Armed Forces reservist
-    li-053ac1: Qualified performing artist
-    li-e03b09: Fee-basis state or local government official
-    li-0d1488: Employee with impairment-related work expenses
-  p-cc9b68: You may include expenses that are common and accepted in your field of
-    trade, business, or profession, or expenses for things that are helpful and appropriate
-    for your business.
-  p-d46373: If you don't fit into one of the listed categories, you may not claim
-    adjustments for these expenses.
-  p-eb68a5: For more information and a list of qualified expenses, see <a target="_blank"
-    href="https://www.irs.gov/forms-pubs/about-form-2106" class="usa-link">Form 2106,
-    Employee Business Expenses<span class="usa-sr-only"> (opens in a new tab)</span></a>.
-  /businessCreditsForEligible:
-    question: Eligible business expenses <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-  h3-5c4fd4: Self-employed health insurance deduction
-  p-95b504: If <span condition="/isFilingStatusMFJ" operator="isFalse">you were</span><span
-    condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse were</span>
-    self employed and had a net profit for the year, you could have deducted your
-    <fg-show path="/taxYear"/> health insurance premiums.
-  p-d60394: Eligible premiums were medical, dental, vision, and long-term care insurance.
-    The policy could be for yourself, your spouse, and your dependents. The policy
-    could also cover your child who was under the age of 27 at the end of the year,
-    even if the child wasn't your dependent.
-  p-13dece: <a target="_blank" href="https://www.irs.gov/instructions/i7206" class="usa-link">Learn
-    more about self-employed health insurance.<span class="usa-sr-only"> (opens in
-    a new tab)</span></a>
-  /selfEmploymentHealthInsuranceContributions:
-    question: Health insurance premiums <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-  h3-cf5b3c: Other adjustments
-  /otherAdjustments:
-    question: Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
-      paid in <fg-show path="/taxYear"/>
-  h3-a7b819: 'Your Adjusted gross income (AGI) was: <fg-show path="/agi"/>'
-  fg-alert-334e2e:
-    heading: You don't qualify for the Earned Income Tax Credit (EITC)
-    p-f3c23d: Based on your adjusted gross income (including the adjustments you entered),
-      you don’t qualify for the EITC for <fg-show path="/taxYear"/>.
-    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.
   modal-what-are-adjustments:
     heading: What are adjustments?
     p-d8344a: Adjustments are expenses, payments, contributions, and fees that you
       may have been able to subtract from your total income to reduce how much of
       your income got taxed. They are a type of deduction.
+  modal-student-loan-interest:
+    heading: Student loan interest deduction
+    p-3ac7ce: Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest
+      you paid on your qualified student loan. You can find this on your Form 1098-E
+      if you paid more than $600 in interest.
+    p-e4b825: 'The loan must have paid qualified higher education expenses to attend
+      an eligible educational institution. Also, the expenses must have been:'
+    ul-0:
+      li-bb1c73: For you, your spouse, or a person who was your dependent when you
+        took out the loan;
+      li-829f26: Paid or incurred within a reasonable period of time before or after
+        you took out the loan; and
+      li-562ff0: For education provided during an academic period for an eligible
+        student.
+    p-75f422: You can't claim the deduction if you aren't legally obligated to make
+      payments on the loan.
+    p-1f2dd3: For more information, see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+      class="usa-link">Publication 970, Tax Benefits for Education<span class="usa-sr-only">
+      (opens in a new tab)</span></a>.
+  modal-educator-expenses:
+    heading: Educator expense deduction
+    p-e117c8: 'If you''re a teacher, enter up to <fg-show path="/maxEducatorExpensesNonMFJ"/>
+      (<fg-show path="/maxEducatorExpensesMFJ"/> if married filing jointly and both
+      you and your spouse are teachers) of unreimbursed expenses such as:'
+    ul-0:
+      li-8829c6: Fees for participation in professional development courses
+      li-751127: Books and supplies
+      li-0c78ca: Computer equipment (including related software and services)
+      li-6ef6c8: Other equipment
+      li-6d4170: Supplementary materials that you use in the classroom
+    p-86c6e4: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
+      class="usa-link">IRS Topic 458<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  modal-ira-contributions:
+    heading: Deduction for contributions to an IRA
+    p-5979d5: Enter any IRA contributions you made outside of your payroll contributions.
+    p-a49375: For more information see, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">IRA Deduction Limits<span class="usa-sr-only"> (opens in a
+      new tab)</span></a>.
+  modal-self-employed-retirement:
+    heading: Self-employed retirement plan deduction
+    p-ca0a8f: If you or your spouse were self employed and made contributions to qualified
+      retirement plans in <fg-show path="/taxYear"/>, you may have been eligible for
+      the self-employed retirement plan deduction.
+    p-0d133f: 'To qualify, you or your spouse must have:'
+    ul-0:
+      li-6c246a: Been a sole proprietor
+      li-a2595a: Been a working partner in a partnership, or
+      li-f6cddf: Had a limited liability company
+    p-3622b4: 'Eligible plans may have included:'
+    ul-1:
+      li-ff93fe: Simplified Employee Pension (SEP) plan
+      li-200ab4: Savings Incentive Match Plan for Employees
+      li-e7dbe4: Solo-401(k)
+      li-765afa: Other qualified retirement plans
+    p-af5a4a: <strong>Don't include</strong> Individual Retirement Arrangement (IRA)
+      contributions.
+    p-add56c: You must have used a special rule to calculate retirement plan contributions
+      for yourself.
+    p-3248f2: <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
+      class="usa-link">Learn more about self-employed retirement contributions.<span
+      class="usa-sr-only"> (opens in a new tab)</span></a>
+  modal-hsa-deductions:
+    heading: Health Savings Account (HSA) deductions
+    p-2ab752: Enter any Health Savings Account (HSA) contributions that you didn't
+      include under HSA, FSA, or other “cafeteria plan” above.
+    p-a7d9fc: For more information visit <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-969"
+      class="usa-link">About Publication 969, Health Savings Accounts and Other Tax-Favored
+      Health Plans<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  modal-alimony-paid:
+    heading: Alimony paid
+    p-fa1de9: If you made alimony or separate maintenance payments under a court order
+      that was executed before January 1, 2019 and the order didn't specifically state
+      that you can't deduct your payments, enter the amount you paid during year here.
+    p-7b97e1: 'Don''t include amounts you paid for:'
+    p-7948e4: <strong>Family or child support</strong>
+    p-358bc5: Also don't include amounts if the court order was modified and states
+      that you can't deduct your payments.
+    p-06a405: Alimony or separate maintenance made under a court order executed after
+      December 31, 2024
+    p-4b335c: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+      class="usa-link">Tax Topic 452<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  modal-early-withdrawal:
+    heading: Penalty for early withdrawal of savings
+    p-7e8d5b: If you withdraw funds from a certificate of deposit or other deferred
+      interest account before maturity, you may be charged a penalty. You can find
+      this penalty on your Form 1099-INT in box 2. Enter that amount here.
+  modal-moving-expenses:
+    heading: Moving expenses for members of the armed forces
+    p-6f18fd: 'If you are a member of the armed forces on active duty, and the military
+      ordered you to permanently change your duty station, enter any moving expenses
+      the military didn''t reimburse you for here. Moving expenses include:'
+    ul-0:
+      li-60efa3: Direct travel from your old home to your new one
+      li-efbbb1: Cost of packing and moving your personal belongings
+    p-6536cb: For more information, see <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
+      class="usa-link">Tax Topic 455<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  modal-employee-business-expenses:
+    heading: Certain employee business expenses
+    p-c92011: 'If you are a/an:'
+    ul-0:
+      li-9bde67: Armed Forces reservist
+      li-053ac1: Qualified performing artist
+      li-e03b09: Fee-basis state or local government official
+      li-0d1488: Employee with impairment-related work expenses
+    p-cc9b68: You may include expenses that are common and accepted in your field
+      of trade, business, or profession, or expenses for things that are helpful and
+      appropriate for your business.
+    p-d46373: If you don't fit into one of the listed categories, you may not claim
+      adjustments for these expenses.
+    p-eb68a5: For more information and a list of qualified expenses, see <a target="_blank"
+      href="https://www.irs.gov/forms-pubs/about-form-2106" class="usa-link">Form
+      2106, Employee Business Expenses<span class="usa-sr-only"> (opens in a new tab)</span></a>.
+  modal-self-employed-health-insurance:
+    heading: Self-employed health insurance deduction
+    p-598073: If you or your spouse were self employed and had a net profit for the
+      year, you could have deducted your <fg-show path="/taxYear"/> health insurance
+      premiums.
+    p-d60394: Eligible premiums were medical, dental, vision, and long-term care insurance.
+      The policy could be for yourself, your spouse, and your dependents. The policy
+      could also cover your child who was under the age of 27 at the end of the year,
+      even if the child wasn't your dependent.
+    p-13dece: <a target="_blank" href="https://www.irs.gov/instructions/i7206" class="usa-link">Learn
+      more about self-employed health insurance.<span class="usa-sr-only"> (opens
+      in a new tab)</span></a>
 /qualifying-children:
   title: Qualifying Children
   h2-dbaf54: Qualifying Children
