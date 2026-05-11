@@ -1094,7 +1094,7 @@
     question: Other adjustments <span condition="/isFilingStatusMFJ" operator="isFalse">you</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">you and your spouse</span>
       paid in <fg-show path="/taxYear"/>
-  h3-f93af6: 'Your AGI was: <fg-show path="/agi"/>'
+  h3-a7b819: 'Your Adjusted gross income (AGI) was: <fg-show path="/agi"/>'
   fg-alert-334e2e:
     heading: You don't qualify for the Earned Income Tax Credit (EITC)
     p-f3c23d: Based on your adjusted gross income (including the adjustments you entered),
