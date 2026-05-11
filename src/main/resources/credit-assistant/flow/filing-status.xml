@@ -94,8 +94,8 @@
         <input type="boolean"/>
       </fg-set>
 
-      <fg-set path="/paidMoreThanHalfHomeCostsForChild" if-true="/flowShouldSeeHalfOfHomeCosts">
-        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your child or stepchild for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
+      <fg-set path="/paidMoreThanHalfHomeCostsForChild" if-true="/flowShouldSeeHalfOfHomeCosts">/flowQSSQCQuestionText
+        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your <span condition="/flowQSSQCQuestionText" operator="isTrue">dependent child or stepchild</span><span condition="/flowQSSQCQuestionText" operator="isFalse">dependent child, stepchild, or foster child</span> for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
         <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
         <input type="boolean"/>
       </fg-set>

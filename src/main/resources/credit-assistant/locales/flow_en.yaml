@@ -250,9 +250,11 @@
       your spouse died?
   /paidMoreThanHalfHomeCostsForChild:
     question: In <fg-show path="/taxYear"/>, did you pay more than half the cost of
-      keeping up a home in which you lived that was also the main home of your child
-      or stepchild for all of <fg-show path="/taxYear"/> (including any temporary
-      absences)?
+      keeping up a home in which you lived that was also the main home of your <span
+      condition="/flowQSSQCQuestionText" operator="isTrue">dependent child or stepchild</span><span
+      condition="/flowQSSQCQuestionText" operator="isFalse">dependent child, stepchild,
+      or foster child</span> for all of <fg-show path="/taxYear"/> (including any
+      temporary absences)?
     modalLink: <modal-link for="modal-keeping-up-home">How do I calculate &quot;Keeping
       Up a Home&quot;?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
