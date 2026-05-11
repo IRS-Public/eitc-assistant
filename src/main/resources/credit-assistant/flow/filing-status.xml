@@ -22,7 +22,7 @@
       </fg-set>
       <!--      DERIVE FILING STATUS -->
       <fg-set path="/maritalStatus" if-false="/knowsFilingStatus">
-        <question>What is your marital status?</question>
+        <question>What was your marital status on December 31, <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-legal-separation">What does married and legally separated mean?</modal-link>
         <input type="enum" options-path="/maritalStatusOptions">
           <option value="married">Married</option>
@@ -95,7 +95,7 @@
       </fg-set>
 
       <fg-set path="/paidMoreThanHalfHomeCostsForChild" if-true="/flowShouldSeeHalfOfHomeCosts">
-        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your dependent child, stepchild, or foster child for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
+        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your child or stepchild for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
         <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
         <input type="boolean"/>
       </fg-set>
@@ -114,8 +114,8 @@
         <question>Did you pay more than 50% of the cost of keeping up a home in <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
         <input type="enum" options-path="/homeUpkeepScenarioOptions">
-          <option value="livedWithDependent">Where you lived more than half the year with a dependent (child, sibling, parent, etc.)</option>
-          <option value="custodialParentNonDependent">Where you lived more than half the year with a child who isn't your dependent (custodial parent rule)</option>
+          <option value="livedWithDependent">Where you lived more than half the year with a dependent (such as a child, grandchild, sibling, niece, nephew, parent or grandparent)</option>
+          <option value="custodialParentNonDependent">Where you lived for more than half the year with a child who isn't your dependent even though you're the custodial parent (because of the rule for children of divorced or separated parents)</option>
           <option value="dependentParentElsewhere">For a parent you can claim as a dependent, but who didn't live with you</option>
           <option value="none">None of the above</option>
         </input>

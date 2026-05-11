@@ -185,7 +185,7 @@
       qualifiedSurvivingSpouse:
         name: Qualified Surviving Spouse
   /maritalStatus:
-    question: What is your marital status?
+    question: What was your marital status on December 31, <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-legal-separation">What does married and legally
       separated mean?</modal-link>
     options:
@@ -250,9 +250,9 @@
       your spouse died?
   /paidMoreThanHalfHomeCostsForChild:
     question: In <fg-show path="/taxYear"/>, did you pay more than half the cost of
-      keeping up a home in which you lived that was also the main home of your dependent
-      child, stepchild, or foster child for all of <fg-show path="/taxYear"/> (including
-      any temporary absences)?
+      keeping up a home in which you lived that was also the main home of your child
+      or stepchild for all of <fg-show path="/taxYear"/> (including any temporary
+      absences)?
     modalLink: <modal-link for="modal-keeping-up-home">How do I calculate &quot;Keeping
       Up a Home&quot;?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
@@ -270,11 +270,12 @@
       Up a Home&quot;?</modal-link>
     options:
       livedWithDependent:
-        name: Where you lived more than half the year with a dependent (child, sibling,
-          parent, etc.)
+        name: Where you lived more than half the year with a dependent (such as a
+          child, grandchild, sibling, niece, nephew, parent or grandparent)
       custodialParentNonDependent:
-        name: Where you lived more than half the year with a child who isn't your
-          dependent (custodial parent rule)
+        name: Where you lived for more than half the year with a child who isn't your
+          dependent even though you're the custodial parent (because of the rule for
+          children of divorced or separated parents)
       dependentParentElsewhere:
         name: For a parent you can claim as a dependent, but who didn't live with
           you
