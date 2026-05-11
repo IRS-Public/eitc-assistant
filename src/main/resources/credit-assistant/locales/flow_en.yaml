@@ -227,12 +227,12 @@
   /isHOHMarried:
     question: Are you married?
   /intendsToFileJointlyWidow:
-    question: Do you intend to file joint returns with your deceased spouse <fg-show
+    question: Do you intend to file a joint return with your deceased spouse for <fg-show
       path="/taxYear"/>?
     modalLink: <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased
       Spouse</modal-link>
   /intendsToFileJointlyMFJ:
-    question: Do you intend to file joint returns for <fg-show path="/taxYear"/>?
+    question: Do you and your spouse intend to file a joint return for <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-joint-return-mfj">What is a Joint Return?</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
     question: Did your spouse live with you in your home at any time during the last
@@ -293,10 +293,9 @@
   /spouseAliveEndOfTaxYear:
     question: Was your spouse alive on December 31, <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
-    question: Please select the range that describes the age of your spouse <span
-      condition="/spouseAliveEndOfTaxYear" operator="isFalse">when they died</span><span
-      condition="/spouseAliveEndOfTaxYear" operator="isTrue">at the end of <fg-show
-      path="/taxYear"/></span>
+    question: Please select the range that describes your spouse's age <span condition="/spouseAliveEndOfTaxYear"
+      operator="isFalse">when they died</span><span condition="/spouseAliveEndOfTaxYear"
+      operator="isTrue">at the end of <fg-show path="/taxYear"/></span>
     options:
       under24:
         name: 24 and under
@@ -309,9 +308,9 @@
       numbers for the EITC?
     modalLink: <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
   /hasLivedInUSMore6Months:
-    question: Was the main home of <span condition="/isFilingStatusMFJ" operator="isFalse">yours</span><span
-      condition="/isFilingStatusMFJ" operator="isTrue">yours and your spouse</span>
-      in the U.S. for more than half of <fg-show path="/taxYear"/>?
+    question: Was <span condition="/isFilingStatusMFJ" operator="isFalse">your</span><span
+      condition="/isFilingStatusMFJ" operator="isTrue">your and your spouse's</span>
+      main home in the U.S. for more than half of <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-main-home-us">What counts as a main home in
       the U.S.?</modal-link>
   h2-fee560: Your Filing Status is <fg-show path="/flowReadableFilingStatus"/>

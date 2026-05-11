@@ -63,12 +63,12 @@
 
 
       <fg-set path="/intendsToFileJointlyWidow" if-true="/flowShouldSeeDeceasedSpouseJointReturnIntent">
-        <question>Do you intend to file joint returns with your deceased spouse <fg-show path="/taxYear"/>?</question>
+        <question>Do you intend to file a joint return with your deceased spouse for <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased Spouse</modal-link>
         <input type="boolean"/>
       </fg-set>
       <fg-set path="/intendsToFileJointlyMFJ" if-true="/flowShouldSeeMFJJointReturnIntent">
-        <question>Do you intend to file joint returns for <fg-show path="/taxYear"/>?</question>
+        <question>Do you and your spouse intend to file a joint return for <fg-show path="/taxYear"/>?</question>
         <modal-link for="modal-joint-return-mfj">What is a Joint Return?</modal-link>
         <input type="boolean"/>
       </fg-set>
@@ -140,7 +140,7 @@
     </fg-set>
 
     <fg-set path="/ageRangeSecondary" if-true="/flowShouldSeeSpouseAgeRange">
-      <question>Please select the range that describes the age of your spouse <span condition="/spouseAliveEndOfTaxYear" operator="isFalse">when they died</span><span condition="/spouseAliveEndOfTaxYear" operator="isTrue">at the end of <fg-show path="/taxYear"/></span></question>
+      <question>Please select the range that describes your spouse's age <span condition="/spouseAliveEndOfTaxYear" operator="isFalse">when they died</span><span condition="/spouseAliveEndOfTaxYear" operator="isTrue">at the end of <fg-show path="/taxYear"/></span></question>
       <input type="enum" options-path="/ageRangeOptions">
         <option value="under24">24 and under</option>
         <option value="age25to64">Between 25 and 64</option>
@@ -155,7 +155,7 @@
     </fg-set>
 <!--    TODO: update the gate to occur only after filing status is fully determined-->
     <fg-set path="/hasLivedInUSMore6Months" if-true="/flowShouldSeeResidencyKnockOut">
-      <question>Was the main home of <span condition="/isFilingStatusMFJ" operator="isFalse">yours</span><span condition="/isFilingStatusMFJ" operator="isTrue">yours and your spouse</span> in the U.S. for more than half of <fg-show path="/taxYear"/>?</question>
+      <question>Was <span condition="/isFilingStatusMFJ" operator="isFalse">your</span><span condition="/isFilingStatusMFJ" operator="isTrue">your and your spouse's</span> main home in the U.S. for more than half of <fg-show path="/taxYear"/>?</question>
       <modal-link for="modal-main-home-us">What counts as a main home in the U.S.?</modal-link>
       <input type="boolean"/>
     </fg-set>
