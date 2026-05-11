@@ -163,7 +163,7 @@
             </fg-set>
 
 
-            <h3>Your AGI was: <fg-show path="/agi"/></h3>
+            <h3>Your Adjusted gross income (AGI) was: <fg-show path="/agi"/></h3>
 
             <fg-alert alert-type="error" alert-key="agi-knockout" knockout="true" condition="/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage" operator="isTrue">
                 <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
