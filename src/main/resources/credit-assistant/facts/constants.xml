@@ -456,6 +456,76 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/eitcChildGrossIncomeLimit">
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/eitcChildGrossIncomeLimit2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/eitcChildGrossIncomeLimit2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/eitcChildGrossIncomeLimit2025"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
+    <Fact path="/maxIncomeForStudentLoanInterestDeduction">
+      <Name>Max income for an MFJ filer student loan interest deduction</Name>
+      <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
+      <Derived>
+        <Switch>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2023"/>
+            </When>
+            <Then>
+              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2023"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2024"/>
+            </When>
+            <Then>
+              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2024"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2025"/>
+            </When>
+            <Then>
+              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2025"/>
+            </Then>
+          </Case>
+          <Case>
+            <When>
+              <Dependency path="/isTaxYear2026"/>
+            </When>
+            <Then>
+              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2026"/>
+            </Then>
+          </Case>
+        </Switch>
+      </Derived>
+    </Fact>
     <Fact path="/studentLoanPhaseOutStart">
       <Name>Student Loan Phase Out Start for MFJ filers</Name>
       <Description>
