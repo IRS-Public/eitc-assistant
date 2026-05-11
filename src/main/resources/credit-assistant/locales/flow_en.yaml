@@ -261,9 +261,9 @@
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Could you claim your child or stepchild as a dependent EXCEPT that,
       for <fg-show path="/taxYear"/>: 1) The child had gross income that was above
-      the threshold of $<fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show
-      path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed
-      as a dependent on someone else''s return?'
+      the threshold of <fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show path="/taxYear"/>;
+      2) The child filed a joint return; or 3) You could be claimed as a dependent
+      on someone else''s return?'
   /homeUpkeepScenario:
     question: Did you pay more than 50% of the cost of keeping up a home in <fg-show
       path="/taxYear"/>?
@@ -490,8 +490,9 @@
     ul-0:
       li-7673e2: Children under the age of 19
       li-e9750c: Students under the age of 24 who live with their parents
-      li-683f65: Relatives or members of your household who get more than half of
-        their financial support from you and who have a gross income under $5,050
+      li-9a6fc3: Relatives or members of your household who get more than half of
+        their financial support from you and who have a gross income under <fg-show
+        path="/eitcChildGrossIncomeLimit"/>
     p-6b3acc: You can’t claim your spouse as a dependent if you file jointly.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn
       more about dependents.</a>
