@@ -106,7 +106,7 @@
       </fg-set>
 
       <fg-set path="/couldClaimChildAsDependentInCurrentTaxYearWithExceptions" if-false="/canClaimChildAsDependentInCurrentTaxYear">
-        <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of $4,400 for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
+        <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of $<fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
         <input type="boolean"/>
       </fg-set>
 
