@@ -518,6 +518,17 @@
         </Any>
       </Derived>
     </Fact>
+    <Fact path="/flowQSSQCQuestionText">
+      <Derived>
+        <All>
+          <Dependency path="/isWidowedInPastTwoTaxYears"/>
+          <IsComplete>
+            <Dependency path="/isWidowedInPastTwoTaxYears"/>
+          </IsComplete>
+          <Dependency path="/entitledToPreviouslyFileJointReturn"/>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/flowShouldSeeHalfOfHomeCostsCanClaimChildAsDependentInCurrentTaxYear">
       <Derived>
         <All>
