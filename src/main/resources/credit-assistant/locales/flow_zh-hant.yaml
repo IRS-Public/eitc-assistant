@@ -356,11 +356,11 @@
       li-9a6fc3:
     p-6b3acc:
     p-40e480:
-/income:
+/agi:
   title:
   h2-c0af17:
-  p-732553:
-  p-9d3638:
+  p-308236:
+  p-100130:
   p-bb8818:
   h2-40c7ae:
   fg-detail-c90011:
@@ -387,53 +387,12 @@
     /non2555ForeignIncome:
       question:
       modalLink:
-  h3-89425f:
-  p-4bb1c9:
-  fg-detail-b4c28b:
-    summary:
-    p-3b6f1c:
-    /taxableInterestIncome:
-      question:
-  fg-detail-39fb22:
-    summary:
-    p-953327:
-    p-b9eb76:
-    /ordinaryDividendsIncome:
-      question:
-    /qualifiedDividendsIncome:
-      question:
-  fg-detail-89ef66:
-    summary:
-    p-bf94ee:
-    p-f16772:
-    /shortTermCapitalGainsIncome:
-      question:
-    /shortTermCapitalLoss:
-      question:
-    /longTermCapitalGainsIncome:
-      question:
-    /longTermCapitalLoss:
-      question:
-  fg-detail-28fc9b:
-    summary:
-    p-74b742:
-    /rentalIncome:
-      question:
-      hint:
-  fg-detail-3026f7:
-    summary:
-    p-006e98:
-    /royaltyIncome:
-      question:
-  fg-detail-b186f4:
-    summary:
-    p-953327:
-    p-d5119c:
-    /sCorpPassiveIncome:
-      question:
-    /sCorpNonPassiveIncome:
-      question:
   h3-20a2b1:
+  fg-detail-89425f:
+    summary:
+    /investmentIncomeTotal:
+      question:
+      modalLink:
   fg-detail-fbe1af:
     summary:
     /pensionsIncomeTotal:
@@ -471,6 +430,70 @@
       question:
       hint:
       modalLink:
+  h2-9fa8b1:
+  p-233dd3:
+  p-624555:
+  fg-detail-2c7735:
+    summary:
+    /studentLoanInterestAmount:
+      question:
+      hint:
+      modalLink:
+  fg-detail-9166fe:
+    summary:
+    /educatorExpenses/:
+      question:
+      hint:
+      modalLink:
+  fg-detail-57c26a:
+    summary:
+    /deductionForTraditionalIRAContribution:
+      question:
+      modalLink:
+  fg-detail-f9e99b:
+    summary:
+    /selfEmploymentRetirementPlanContributions:
+      question:
+      modalLink:
+  fg-detail-5c4fd4:
+    summary:
+    /selfEmploymentHealthInsuranceContributions:
+      question:
+      modalLink:
+  fg-detail-2c1033:
+    summary:
+    /hsaContributionAmount:
+      question:
+      modalLink:
+  fg-detail-e97d7b:
+    summary:
+    /alimonyPaid:
+      question:
+      modalLink:
+  fg-detail-913117:
+    summary:
+    /penaltyForEarlySavingsWithdrawal:
+      question:
+      modalLink:
+  fg-detail-6fad42:
+    summary:
+    /movingExpensesForArmedServicesMembers:
+      question:
+      modalLink:
+  fg-detail-c4f7d7:
+    summary:
+    /businessCreditsForEligible:
+      question:
+      modalLink:
+  fg-detail-cf5b3c:
+    summary:
+    /otherAdjustments:
+      question:
+  h3-a7b819:
+  fg-alert-334e2e:
+    heading:
+    p-f3c23d:
+    p-93a6b5:
   modal-wages-salaries-tips:
     heading:
     h3-53ed11:
@@ -599,45 +622,23 @@
     p-ec3579:
     ul-0:
       li-7b5662:
-  modal-what-are-dividends-en:
+  modal-investment-income:
     heading:
-    p-c61938:
-    p-bc395c:
-    p-1088f1:
+    p-b07c20:
     ul-0:
-      li-04e426:
-      li-cac2cc:
-  modal-what-are-short-long-term-gains-losses-en:
-    heading:
-    p-aa6774:
-    ul-0:
-      li-57b37b:
-      li-02555a:
-    p-750d95:
-    p-2db72e:
-    p-ddb648:
-    p-a155e6:
-  modal-rental-expenses-net-income-en:
-    heading:
-    p-21c0e9:
-    p-bc395c:
-    p-563c28:
-    ul-0:
-      li-3cc72a:
-  modal-estimate-royalty-income-en:
-    heading:
-    p-8a56d3:
-    p-bc395c:
-    p-cc8fcc:
-    ul-0:
-      li-90f9a8:
-  modal-estimate-s-corp-partnership-income-en:
-    heading:
-    p-8b6f8b:
-    p-2b7ed1:
-    ul-0:
-      li-b8bcfa:
-      li-f37c1e:
+      li-12d3b7:
+      li-0a9a83:
+      li-81f254:
+      li-498151:
+      li-7c0731:
+    p-4c8f5e:
+    p-df5956:
+    ul-1:
+      li-0f3c1b:
+      li-782dae:
+      li-e0ebc1:
+      li-a00ee1:
+      li-143cd9:
   modal-other-taxable-income:
     heading:
     p-41c1a9:
@@ -648,113 +649,88 @@
       li-96f64d:
       li-e4e611:
     p-48332b:
-/adjustments:
-  title:
-  h2-9fa8b1:
-  p-233dd3:
-  p-624555:
-  h3-2c7735:
-  p-3ac7ce:
-  p-e4b825:
-  ul-0:
-    li-bb1c73:
-    li-829f26:
-    li-562ff0:
-  p-75f422:
-  p-1f2dd3:
-  /studentLoanInterestAmount:
-    question:
-    hint:
-  h3-9166fe:
-  p-e117c8:
-  ul-1:
-    li-8829c6:
-    li-751127:
-    li-0c78ca:
-    li-6ef6c8:
-    li-6d4170:
-  p-86c6e4:
-  /educatorExpenses/:
-    question:
-    hint:
-  h3-57c26a:
-  p-5979d5:
-  p-a49375:
-  /deductionForTraditionalIRAContribution:
-    question:
-  h3-f9e99b:
-  p-9982ed:
-  p-68007d:
-  ul-2:
-    li-6c246a:
-    li-a2595a:
-    li-f6cddf:
-  p-3622b4:
-  ul-3:
-    li-ff93fe:
-    li-200ab4:
-    li-e7dbe4:
-    li-765afa:
-  p-af5a4a:
-  p-add56c:
-  p-3248f2:
-  /selfEmploymentRetirementPlanContributions:
-    question:
-  h3-2c1033:
-  p-2ab752:
-  p-a7d9fc:
-  /hsaContributionAmount:
-    question:
-  h3-e97d7b:
-  p-fa1de9:
-  p-7b97e1:
-  p-7948e4:
-  p-358bc5:
-  p-06a405:
-  p-4b335c:
-  /alimonyPaid:
-    question:
-  h3-913117:
-  p-7e8d5b:
-  /penaltyForEarlySavingsWithdrawal:
-    question:
-  h3-6fad42:
-  p-6f18fd:
-  ul-4:
-    li-60efa3:
-    li-efbbb1:
-  p-6536cb:
-  /movingExpensesForArmedServicesMembers:
-    question:
-  h3-c4f7d7:
-  p-c92011:
-  ul-5:
-    li-9bde67:
-    li-053ac1:
-    li-e03b09:
-    li-0d1488:
-  p-cc9b68:
-  p-d46373:
-  p-eb68a5:
-  /businessCreditsForEligible:
-    question:
-  h3-5c4fd4:
-  p-95b504:
-  p-d60394:
-  p-13dece:
-  /selfEmploymentHealthInsuranceContributions:
-    question:
-  h3-cf5b3c:
-  /otherAdjustments:
-    question:
-  h3-a7b819:
-  fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
   modal-what-are-adjustments:
     heading:
     p-d8344a:
+  modal-student-loan-interest:
+    heading:
+    p-3ac7ce:
+    p-e4b825:
+    ul-0:
+      li-bb1c73:
+      li-829f26:
+      li-562ff0:
+    p-75f422:
+    p-1f2dd3:
+  modal-educator-expenses:
+    heading:
+    p-e117c8:
+    ul-0:
+      li-8829c6:
+      li-751127:
+      li-0c78ca:
+      li-6ef6c8:
+      li-6d4170:
+    p-86c6e4:
+  modal-ira-contributions:
+    heading:
+    p-5979d5:
+    p-a49375:
+  modal-self-employed-retirement:
+    heading:
+    p-ca0a8f:
+    p-0d133f:
+    ul-0:
+      li-6c246a:
+      li-a2595a:
+      li-f6cddf:
+    p-3622b4:
+    ul-1:
+      li-ff93fe:
+      li-200ab4:
+      li-e7dbe4:
+      li-765afa:
+    p-af5a4a:
+    p-add56c:
+    p-3248f2:
+  modal-hsa-deductions:
+    heading:
+    p-2ab752:
+    p-a7d9fc:
+  modal-alimony-paid:
+    heading:
+    p-fa1de9:
+    p-7b97e1:
+    p-7948e4:
+    p-358bc5:
+    p-06a405:
+    p-4b335c:
+  modal-early-withdrawal:
+    heading:
+    p-7e8d5b:
+  modal-moving-expenses:
+    heading:
+    p-6f18fd:
+    ul-0:
+      li-60efa3:
+      li-efbbb1:
+    p-6536cb:
+  modal-employee-business-expenses:
+    heading:
+    p-c92011:
+    ul-0:
+      li-9bde67:
+      li-053ac1:
+      li-e03b09:
+      li-0d1488:
+    p-cc9b68:
+    p-d46373:
+    p-eb68a5:
+  modal-self-employed-health-insurance:
+    heading:
+    p-598073:
+    p-d60394:
+    p-13dece:
 /qualifying-children:
   title:
   h2-dbaf54:

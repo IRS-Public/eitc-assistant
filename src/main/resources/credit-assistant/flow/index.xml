@@ -3,8 +3,7 @@
 <FlowConfig>
   <module src="./about-you.xml"/>
   <module src="./filing-status.xml"/>
-  <module src="./income.xml"/>
-  <module src="./adjustments.xml"/>
+  <module src="./agi.xml"/>
   <module src="./qualifying-children.xml"/>
   <module src="./results.xml"/>
 </FlowConfig>

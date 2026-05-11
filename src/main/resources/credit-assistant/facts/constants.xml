@@ -159,28 +159,6 @@
         </Equal>
       </Derived>
     </Fact>
-    <Fact path="/capitalLossLimit">
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isFilingStatusMFS"/>
-            </When>
-            <Then>
-              <Dollar>1500.00</Dollar>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <True/>
-            </When>
-            <Then>
-              <Dollar>3000.00</Dollar>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
     <Fact path="/deductionForTraditionalIRAContributionMax">
       <Description>Max contribution for traditional IRAs (excluding payroll deductions) is $8000 per year. $7000 is the limit for those under 50, but we only know if someone is under 65 or not
         We are agnostic to filing status so double to 16000 and do not take MAGI into account for simplified computation
