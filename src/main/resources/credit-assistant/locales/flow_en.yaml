@@ -183,7 +183,7 @@
       headOfHousehold:
         name: Head of Household
       qualifiedSurvivingSpouse:
-        name: Qualified Surviving Spouse
+        name: Qualifying Surviving Spouse
   /maritalStatus:
     question: What was your marital status on December 31, <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-legal-separation">What does married and legally
@@ -367,7 +367,7 @@
       li-38ff2f: You paid more than half the cost of keeping up a home for a family
         member or member of your household for a specific amount of time, and they
         must meet certain requirements
-    p-be481b: <strong>Qualified Surviving Spouse:</strong>
+    p-57317d: <strong>Qualifying Surviving Spouse:</strong>
     ul-4:
       li-2bf38a: Your spouse died in <fg-show path="/lastTaxYear"/> or <fg-show path="/taxYearMinusTwo"/>
       li-4ef74f: You didn't remarry before <fg-show path="/taxYear"/>
