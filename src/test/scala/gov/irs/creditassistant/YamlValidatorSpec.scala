@@ -27,15 +27,16 @@ class YamlValidatorSpec extends AnyFunSpec {
   def findKeyDifferences(
       sourceKeys: Either[ParsingFailure, Set[String]],
       secondaryKeys: Either[ParsingFailure, Set[String]],
+      localeString: String,
   ): Unit = {
     (sourceKeys, secondaryKeys) match {
       case (Right(k1), Right(k2)) =>
         var clue: List[String] = List.empty
         val missingInK2 = k1 -- k2
-        if (missingInK2.nonEmpty) clue = clue :+ s"Missing in Spanish file: ${missingInK2.mkString(", ")}"
+        if (missingInK2.nonEmpty) clue = clue :+ s"Missing in ${localeString} file: ${missingInK2.mkString(", ")}"
         val missingInK1 = k2 -- k1
         if (missingInK1.nonEmpty)
-          clue = clue :+ s"Additional key(s) found in Spanish File: ${missingInK1.mkString(", ")}"
+          clue = clue :+ s"Additional key(s) found in ${localeString} File: ${missingInK1.mkString(", ")}"
         if (missingInK1.nonEmpty || missingInK2.nonEmpty) {
           fail(s"Yaml Mismatch! ${clue.mkString(" ")}")
         }
@@ -52,7 +53,7 @@ class YamlValidatorSpec extends AnyFunSpec {
 
       val enKeys = parser.parse(enFile).map(getAllKeys(_))
       val esKeys = parser.parse(esFile).map(getAllKeys(_))
-      findKeyDifferences(enKeys, esKeys)
+      findKeyDifferences(enKeys, esKeys, "es")
     }
   }
   describe("flow yaml") {
@@ -65,8 +66,8 @@ class YamlValidatorSpec extends AnyFunSpec {
       val enKeys = parser.parse(enFile).map(getAllKeys(_))
       val esKeys = parser.parse(esFile).map(getAllKeys(_))
       val koKeys = parser.parse(koFile).map(getAllKeys(_))
-      findKeyDifferences(enKeys, esKeys)
-      findKeyDifferences(koKeys, esKeys)
+      findKeyDifferences(enKeys, esKeys, "es")
+      findKeyDifferences(enKeys, koKeys, "ko")
     }
   }
 }
