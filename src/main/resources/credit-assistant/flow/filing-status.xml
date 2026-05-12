@@ -366,7 +366,7 @@
       <modal-heading>Confirmation</modal-heading>
       <modal-content>
         <p>Changing from <strong>Married Filing Jointly</strong> to a different filing status will clear your previously entered qualifying child data. Do you still wish to continue?</p>
-        <button type="button" class="usa-button" id="modal-confirm-mfj-to-nonmfj-continue" onclick="void(0)">Continue</button>
+        <button type="button" class="usa-button" id="modal-confirm-mfj-to-nonmfj-continue" onclick="void(0)">Confirm</button>
         <button type="button" class="usa-button usa-button--outline" data-close-modal="" id="modal-confirm-mfj-to-nonmfj-cancel" onclick="void(0)">Cancel</button>
       </modal-content>
     </modal-dialog>

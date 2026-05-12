@@ -156,10 +156,10 @@
     p-5a0201: Keep in mind that you aren’t someone else’s dependent if you paid for
       more than half of your own support (or if your spouse did).
   modal-confirm-tax-year-change:
-    heading: Confirmation
+    heading: Attention
     p-31c7da: Changing <strong>year</strong> will clear your previously entered data.
       Do you still wish to continue?
-    button-a0bfb8: Continue
+    button-70d9be: Confirm
     button-ea4788: Cancel
 /filing-status:
   title: Filing Status
@@ -484,7 +484,7 @@
     p-30861e: Changing from <strong>Married Filing Jointly</strong> to a different
       filing status will clear your previously entered qualifying child data. Do you
       still wish to continue?
-    button-a0bfb8: Continue
+    button-70d9be: Confirm
     button-ea4788: Cancel
   modal-claiming-dependents:
     heading: Who can I claim as a dependent?
