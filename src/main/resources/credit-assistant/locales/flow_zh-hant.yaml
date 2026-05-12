@@ -195,8 +195,10 @@
     modalLink:
   /canClaimChildAsDependentInCurrentTaxYear:
     question:
+    modalLink:
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question:
+    modalLink:
   /homeUpkeepScenario:
     question:
     modalLink:
@@ -232,7 +234,7 @@
   /hasLivedInUSMore6Months:
     question:
     modalLink:
-  h2-fee560:
+  h2-0dc2a3:
   fg-alert-334e2e:
     heading:
     p-b6bd9e:
@@ -318,10 +320,10 @@
     p-f560ea:
   modal-joint-return-mfj:
     heading:
-    p-4864ec:
+    p-75997a:
   modal-joint-deceased-spouse:
     heading:
-    p-73bcda:
+    p-85e581:
   modal-spouse-lived-together:
     heading:
     p-906815:
@@ -348,15 +350,32 @@
     p-30861e:
     button-70d9be:
     button-ea4788:
-  modal-claiming-dependents:
-    heading:
-    p-fc792e:
+  modal-claiming-eitc-qc:
+    heading: 
+    p-e3c0f6: 
+    p-ac8914: 
+    p-558a40: 
     ul-0:
-      li-7673e2:
-      li-e9750c:
-      li-9a6fc3:
-    p-6b3acc:
-    p-40e480:
+      li-5e5f3e: 
+      li-5fc9b7: 
+      li-19d3d7: 
+      li-a69a30: 
+    p-0d323a: 
+    ul-1:
+      li-63ab93: 
+      li-da43a1: 
+      li-62fa6e: 
+      li-ca34c2: 
+    p-ee2a07: 
+  modal-claiming-dependents:
+    heading: 
+    p-fc792e: 
+    ul-0:
+      li-7673e2: 
+      li-e9750c: 
+      li-9a6fc3: 
+    p-6b3acc: 
+    p-40e480: 
 /agi:
   title:
   h2-c0af17:
