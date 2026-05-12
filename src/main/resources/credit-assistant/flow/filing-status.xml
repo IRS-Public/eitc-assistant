@@ -95,18 +95,20 @@
       </fg-set>
 
       <fg-set path="/paidMoreThanHalfHomeCostsForChild" if-true="/flowShouldSeeHalfOfHomeCosts">/flowQSSQCQuestionText
-        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your <span condition="/flowQSSQCQuestionText" operator="isTrue">dependent child or stepchild</span><span condition="/flowQSSQCQuestionText" operator="isFalse">dependent child, stepchild, or foster child</span> for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
+        <question>In <fg-show path="/taxYear"/>, did you pay more than half the cost of keeping up a home in which you lived that was also the main home of your <span condition="/flowQSSQCQuestionText" operator="isTrue">child or stepchild</span><span condition="/flowQSSQCQuestionText" operator="isFalse">dependent child, stepchild, or foster child</span> for all of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
         <modal-link for="modal-keeping-up-home">How do I calculate "Keeping Up a Home"?</modal-link>
         <input type="boolean"/>
       </fg-set>
 
       <fg-set path="/canClaimChildAsDependentInCurrentTaxYear" if-true="/flowShouldSeeHalfOfHomeCostsCanClaimChildAsDependentInCurrentTaxYear">
         <question>Can you claim your child or stepchild who lived with you as a dependent for <fg-show path="/taxYear"/>?</question>
+        <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
         <input type="boolean"/>
       </fg-set>
 
       <fg-set path="/couldClaimChildAsDependentInCurrentTaxYearWithExceptions" if-false="/canClaimChildAsDependentInCurrentTaxYear">
         <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of <fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
+        <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
         <input type="boolean"/>
       </fg-set>
 
@@ -126,12 +128,12 @@
 
     <fg-set path="/secondaryFilerHasValidSSN" if-true="/flowShouldSeeAliveSecondaryValidSSN">
       <question>Does your spouse have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?</question>
-      <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/deceasedSpouseValidSSNOnDateOfDeath" if-true="/intendsToFileJointlyWidow">
       <question>Did your spouse have a valid Social Security number on the day they passed away?</question>
-      <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/spouseAliveEndOfTaxYear" if-true="/flowShouldSeeSpouseAliveEndOfTaxYear">
@@ -150,7 +152,7 @@
 
     <fg-set path="/primaryFilerIsClaimingQualifyingChildren" if-true="/isFilingStatusComplete">
       <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
-      <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
+      <modal-link for="modal-claiming-eitc-qc">Who can I claim for the EITC?</modal-link>
       <input type="boolean"/>
     </fg-set>
 <!--    TODO: update the gate to occur only after filing status is fully determined-->
@@ -161,7 +163,7 @@
     </fg-set>
 
 
-    <h2 condition="/isFilingStatusComplete" operator="isTrue">Your Filing Status is <fg-show path="/flowReadableFilingStatus"/></h2>
+    <h2 condition="/isFilingStatusComplete" operator="isTrue">Based on your choices, your filing status is <fg-show path="/flowReadableFilingStatus"/></h2>
 
     </section>
 
@@ -322,13 +324,13 @@
     <modal-dialog id="modal-joint-return-mfj">
       <modal-heading>Joint Return</modal-heading>
       <modal-content>
-        <p>You can choose to file one return with your spouse by selecting Married as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+        <p>You can choose to file one return with your spouse by selecting <strong>Married</strong> as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
       </modal-content>
     </modal-dialog>
     <modal-dialog id="modal-joint-deceased-spouse">
-      <modal-heading>Joint Return</modal-heading>
+      <modal-heading>Joint Return with Deceased Spouse</modal-heading>
       <modal-content>
-        <p>If your spouse died during <fg-show path="/taxYear"/>, you can choose to file one return with your spouse by selecting Married Filing Jointly as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+        <p>If your spouse died during <fg-show path="/taxYear"/>, you can choose to file one return with your spouse by selecting <strong>Married Filing Jointly</strong> as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
       </modal-content>
     </modal-dialog>
 
@@ -370,6 +372,28 @@
         <button type="button" class="usa-button usa-button--outline" data-close-modal="" id="modal-confirm-mfj-to-nonmfj-cancel" onclick="void(0)">Cancel</button>
       </modal-content>
     </modal-dialog>
+      <modal-dialog id="modal-claiming-eitc-qc">
+          <modal-heading>Qualifying Child</modal-heading>
+          <modal-content>
+              <p>To claim EITC with a qualifying child your child must have a valid SSN issued on or before the due date of your 2025 return (including extensions).</p>
+              <p>If the Social Security card reads "Valid for work with DHS authorization" or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization is still valid.</p>
+              <p>For the EITC, we don't accept:</p>
+              <ul>
+                  <li>IRS Individual taxpayer identification number (ITIN)</li>
+                  <li>Adoption taxpayer identification number (ATIN)</li>
+                  <li>Social Security number issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit such as Medicaid</li>
+                  <li>Social Security number issued solely to apply for or receive a federally funded benefit such as Medicaid</li>
+              </ul>
+              <p>Your child is a qualifying child if your child meets four tests. The four tests are:</p>
+              <ul>
+                  <li>Relationship,</li>
+                  <li>Age,</li>
+                  <li>Residency, and</li>
+                  <li>Joint Return</li>
+              </ul>
+              <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a> for more information on a valid Social Security Number and if you have a qualifying child.</p>
+          </modal-content>
+      </modal-dialog>
       <modal-dialog id="modal-claiming-dependents">
           <modal-heading>Who can I claim as a dependent?</modal-heading>
           <modal-content>
@@ -383,5 +407,6 @@
               <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn more about dependents.</a></p>
           </modal-content>
       </modal-dialog>
+
   </page>
 </FlowConfig>
