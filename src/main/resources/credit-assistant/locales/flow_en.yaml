@@ -252,7 +252,7 @@
   /paidMoreThanHalfHomeCostsForChild:
     question: In <fg-show path="/taxYear"/>, did you pay more than half the cost of
       keeping up a home in which you lived that was also the main home of your <span
-      condition="/flowQSSQCQuestionText" operator="isTrue">dependent child or stepchild</span><span
+      condition="/flowQSSQCQuestionText" operator="isTrue">child or stepchild</span><span
       condition="/flowQSSQCQuestionText" operator="isFalse">dependent child, stepchild,
       or foster child</span> for all of <fg-show path="/taxYear"/> (including any
       temporary absences)?
@@ -261,12 +261,14 @@
   /canClaimChildAsDependentInCurrentTaxYear:
     question: Can you claim your child or stepchild who lived with you as a dependent
       for <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Could you claim your child or stepchild as a dependent EXCEPT that,
       for <fg-show path="/taxYear"/>: 1) The child had gross income that was above
       the threshold of <fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show path="/taxYear"/>;
       2) The child filed a joint return; or 3) You could be claimed as a dependent
       on someone else''s return?'
+    modalLink: <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
   /homeUpkeepScenario:
     question: Did you pay more than 50% of the cost of keeping up a home in <fg-show
       path="/taxYear"/>?
@@ -289,11 +291,11 @@
     question: Does your spouse have a valid Social Security number that was issued
       on or before the due date of your <fg-show path="/taxYear"/> tax return (including
       extensions)?
-    modalLink: <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+    modalLink: <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
     question: Did your spouse have a valid Social Security number on the day they
       passed away?
-    modalLink: <modal-link for="modal-valid-ssn-secondary">Valid Social Security Number</modal-link>
+    modalLink: <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
   /spouseAliveEndOfTaxYear:
     question: Was your spouse alive on December 31, <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
@@ -310,14 +312,14 @@
   /primaryFilerIsClaimingQualifyingChildren:
     question: Do you plan to claim children or other relatives with valid Social Security
       numbers for the EITC?
-    modalLink: <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
+    modalLink: <modal-link for="modal-claiming-eitc-qc">Who can I claim for the EITC?</modal-link>
   /hasLivedInUSMore6Months:
     question: Was <span condition="/isFilingStatusMFJ" operator="isFalse">your</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">your and your spouse's</span>
       main home in the U.S. for more than half of <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-main-home-us">What counts as a main home in
       the U.S.?</modal-link>
-  h2-fee560: Your Filing Status is <fg-show path="/flowReadableFilingStatus"/>
+  h2-0dc2a3: Based on your choices, your filing status is <fg-show path="/flowReadableFilingStatus"/>
   fg-alert-334e2e:
     heading: You don't qualify for the Earned Income Tax Credit (EITC)
     p-b6bd9e: You don't qualify for EITC without a qualifying child unless you, or
@@ -440,15 +442,15 @@
       if you are considered married under common law.
   modal-joint-return-mfj:
     heading: Joint Return
-    p-4864ec: You can choose to file one return with your spouse by selecting Married
+    p-75997a: You can choose to file one return with your spouse by selecting <strong>Married</strong>
       as your filing status. This allows you to combine your income and expenses when
       figuring your credits, deductions, and tax liability.
   modal-joint-deceased-spouse:
-    heading: Joint Return
-    p-73bcda: If your spouse died during <fg-show path="/taxYear"/>, you can choose
-      to file one return with your spouse by selecting Married Filing Jointly as your
-      filing status. This allows you to combine your income and expenses when figuring
-      your credits, deductions, and tax liability.
+    heading: Joint Return with Deceased Spouse
+    p-85e581: If your spouse died during <fg-show path="/taxYear"/>, you can choose
+      to file one return with your spouse by selecting <strong>Married Filing Jointly</strong>
+      as your filing status. This allows you to combine your income and expenses when
+      figuring your credits, deductions, and tax liability.
   modal-spouse-lived-together:
     heading: Spouse - Lived Together
     p-906815: 'A person is considered to have lived with you during periods of time
@@ -487,6 +489,31 @@
       still wish to continue?
     button-70d9be: Confirm
     button-ea4788: Cancel
+  modal-claiming-eitc-qc:
+    heading: Qualifying Child
+    p-e3c0f6: To claim EITC with a qualifying child your child must have a valid SSN
+      issued on or before the due date of your 2025 return (including extensions).
+    p-ac8914: If the Social Security card reads &quot;Valid for work with DHS authorization&quot;
+      or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization
+      is still valid.
+    p-558a40: 'For the EITC, we don''t accept:'
+    ul-0:
+      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
+      li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-19d3d7: Social Security number issued solely to allow the recipient of the
+        SSN to apply for or receive a federally funded benefit such as Medicaid
+      li-a69a30: Social Security number issued solely to apply for or receive a federally
+        funded benefit such as Medicaid
+    p-0d323a: 'Your child is a qualifying child if your child meets four tests. The
+      four tests are:'
+    ul-1:
+      li-63ab93: Relationship,
+      li-da43a1: Age,
+      li-62fa6e: Residency, and
+      li-ca34c2: Joint Return
+    p-ee2a07: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596, Earned Income Credit</a> for more information on a valid Social Security
+      Number and if you have a qualifying child.
   modal-claiming-dependents:
     heading: Who can I claim as a dependent?
     p-fc792e: 'Dependents are typically:'
