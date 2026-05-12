@@ -822,6 +822,13 @@
       program operated by a work college.
     p-0c59d8: For more information visit <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">Tax
       Topic 421</a>.
+  fg-alert-64891c:
+    heading: You don’t qualify for the Earned Income Tax Credit
+    p-cdf53e: Based on the information you provided, you can’t claim the earned income
+      credit because your earned income is over the limit for your filing status and
+      number of qualifying children.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
   fg-alert-8b7db9:
     heading: You don’t qualify for the Earned Income Tax Credit (EITC)
     p-3abe5f: To claim the EITC, you must have had earned income (for example, wages
