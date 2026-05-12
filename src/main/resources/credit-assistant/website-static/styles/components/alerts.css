@@ -22,7 +22,7 @@
  * USWDS positions the alert icon with ::before { top: ~0.67rem }, so it stays near the first line when
  * body text wraps. Vertically center the icon in the body for a balanced look on multi-line info banners.
  */
-.flow .usa-alert .usa-alert__body::before {
+/* .flow .usa-alert .usa-alert__body::before {
   top: 50%;
   transform: translateY(-50%);
-}
+} */
