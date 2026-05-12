@@ -56,14 +56,17 @@ class YamlValidatorSpec extends AnyFunSpec {
     }
   }
   describe("flow yaml") {
-    it("should have the same keys in en and sp") {
+    it("should have the same keys in en, sp and ko") {
       // Can't access fromResource because of sbt setting
       val enFile = os.read(generatedFlowContentPath)
       val esFile = Source.fromResource("credit-assistant/locales/flow_es.yaml").mkString
+      val koFile = Source.fromResource("credit-assistant/locales/flow_ko.yaml").mkString
 
       val enKeys = parser.parse(enFile).map(getAllKeys(_))
       val esKeys = parser.parse(esFile).map(getAllKeys(_))
+      val koKeys = parser.parse(koFile).map(getAllKeys(_))
       findKeyDifferences(enKeys, esKeys)
+      findKeyDifferences(koKeys, esKeys)
     }
   }
 }

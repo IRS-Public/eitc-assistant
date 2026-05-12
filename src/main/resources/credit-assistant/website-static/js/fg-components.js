@@ -890,7 +890,7 @@ function handleSectionContinue (event) {
  */
 function handleIncomeNonPositiveEarnedIncomeKnockoutRevealOnContinue (event) {
   const path = window.location.pathname
-  if (!path.includes('/eitc/income')) {
+  if (!path.includes('/eitc/agi')) {
     return false
   }
   let shouldReveal
