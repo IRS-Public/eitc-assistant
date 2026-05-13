@@ -230,15 +230,16 @@
   /intendsToFileJointlyWidow:
     question: Do you intend to file a joint return with your deceased spouse for <fg-show
       path="/taxYear"/>?
-    modalLink: <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased
-      Spouse</modal-link>
+    modalLink: <modal-link for="modal-joint-deceased-spouse">What does it mean to
+      file a joint return with a deceased spouse?</modal-link>
   /intendsToFileJointlyMFJ:
     question: Do you and your spouse intend to file a joint return for <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-joint-return-mfj">What is a Joint Return?</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
     question: Did your spouse live with you in your home at any time during the last
       six months of <fg-show path="/taxYear"/> (including any temporary absences)?
-    modalLink: <modal-link for="modal-spouse-lived-together">Spouse - Lived Together</modal-link>
+    modalLink: <modal-link for="modal-spouse-lived-together">What does it mean for
+      spouses to live together?</modal-link>
   /samePrincipalResidenceLast6Months:
     question: Did you and your spouse have the same principal residence for the last
       6 months of <fg-show path="/taxYear"/>?
@@ -291,11 +292,13 @@
     question: Does your spouse have a valid Social Security number that was issued
       on or before the due date of your <fg-show path="/taxYear"/> tax return (including
       extensions)?
-    modalLink: <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+    modalLink: <modal-link for="modal-valid-ssn">What counts as a valid Social Security
+      Number?</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
     question: Did your spouse have a valid Social Security number on the day they
       passed away?
-    modalLink: <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+    modalLink: <modal-link for="modal-valid-ssn">What counts as a valid Social Security
+      Number</modal-link>
   /spouseAliveEndOfTaxYear:
     question: Was your spouse alive on December 31, <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
@@ -312,7 +315,8 @@
   /primaryFilerIsClaimingQualifyingChildren:
     question: Do you plan to claim children or other relatives with valid Social Security
       numbers for the EITC?
-    modalLink: <modal-link for="modal-claiming-eitc-qc">Who can I claim for the EITC?</modal-link>
+    modalLink: <modal-link for="modal-qualifying-child-eitc">Who can I claim for the
+      EITC?</modal-link>
   /hasLivedInUSMore6Months:
     question: Was <span condition="/isFilingStatusMFJ" operator="isFalse">your</span><span
       condition="/isFilingStatusMFJ" operator="isTrue">your and your spouse's</span>
@@ -326,14 +330,15 @@
       your spouse if filing a joint return, are between age 25 and 64.
     p-ae739d: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596, Earned Income Credit</a>.
-    p-6b339b: 'You can claim the EIC if you are married, not filing a joint return,
-      had a qualifying child who lived with you for more than half of 2025, and either
-      of the following apply:'
+    p-47ef52: 'You can claim the EIC if you are married, not filing a joint return,
+      had a qualifying child who lived with you for more than half of <fg-show path="/taxYear"/>,
+      and either of the following apply:'
     ul-0:
-      li-abca25: You lived apart from your spouse for the last 6 months of 2025, or
-      li-203d84: You are legally separated according to your state law under a written
+      li-207749: You lived apart from your spouse for the last 6 months of <fg-show
+        path="/taxYear"/>, or
+      li-93a6ef: You are legally separated according to your state law under a written
         separation agreement, or a decree of separate maintenance and you didn't live
-        in the same household as your spouse at the end of 2025.
+        in the same household as your spouse at the end of <fg-show path="/taxYear"/>.
     p-3630b4: For more information see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
       class="usa-link">About Publication 501, Dependents, Standard Deduction, and
       Filing Information.<span class="usa-sr-only"> (opens in a new tab)</span></a>
@@ -392,6 +397,8 @@
     ul-0:
       li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
       li-5fc9b7: Adoption taxpayer identification number (ATIN)
+      li-9f487b: Social Security number issued after the due date of the return, including
+        extensions
       li-19d3d7: Social Security number issued solely to allow the recipient of the
         SSN to apply for or receive a federally funded benefit such as Medicaid
     p-0d323a: 'Your child is a qualifying child if your child meets four tests. The
@@ -489,31 +496,6 @@
       still wish to continue?
     button-70d9be: Confirm
     button-ea4788: Cancel
-  modal-claiming-eitc-qc:
-    heading: Qualifying Child
-    p-e3c0f6: To claim EITC with a qualifying child your child must have a valid SSN
-      issued on or before the due date of your 2025 return (including extensions).
-    p-ac8914: If the Social Security card reads &quot;Valid for work with DHS authorization&quot;
-      or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization
-      is still valid.
-    p-558a40: 'For the EITC, we don''t accept:'
-    ul-0:
-      li-5e5f3e: IRS Individual taxpayer identification number (ITIN)
-      li-5fc9b7: Adoption taxpayer identification number (ATIN)
-      li-19d3d7: Social Security number issued solely to allow the recipient of the
-        SSN to apply for or receive a federally funded benefit such as Medicaid
-      li-a69a30: Social Security number issued solely to apply for or receive a federally
-        funded benefit such as Medicaid
-    p-0d323a: 'Your child is a qualifying child if your child meets four tests. The
-      four tests are:'
-    ul-1:
-      li-63ab93: Relationship,
-      li-da43a1: Age,
-      li-62fa6e: Residency, and
-      li-ca34c2: Joint Return
-    p-ee2a07: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596, Earned Income Credit</a> for more information on a valid Social Security
-      Number and if you have a qualifying child.
   modal-claiming-dependents:
     heading: Who can I claim as a dependent?
     p-fc792e: 'Dependents are typically:'

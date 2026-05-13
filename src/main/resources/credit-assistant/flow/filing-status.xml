@@ -64,7 +64,7 @@
 
       <fg-set path="/intendsToFileJointlyWidow" if-true="/flowShouldSeeDeceasedSpouseJointReturnIntent">
         <question>Do you intend to file a joint return with your deceased spouse for <fg-show path="/taxYear"/>?</question>
-        <modal-link for="modal-joint-deceased-spouse">Joint Return with Deceased Spouse</modal-link>
+        <modal-link for="modal-joint-deceased-spouse">What does it mean to file a joint return with a deceased spouse?</modal-link>
         <input type="boolean"/>
       </fg-set>
       <fg-set path="/intendsToFileJointlyMFJ" if-true="/flowShouldSeeMFJJointReturnIntent">
@@ -75,7 +75,7 @@
 
       <fg-set path="/spouseLivedWithTaxpayerLastSixMonths" if-true="/flowShouldSeeSpouseSeparationTest">
         <question>Did your spouse live with you in your home at any time during the last six months of <fg-show path="/taxYear"/> (including any temporary absences)?</question>
-        <modal-link for="modal-spouse-lived-together">Spouse - Lived Together</modal-link>
+        <modal-link for="modal-spouse-lived-together">What does it mean for spouses to live together?</modal-link>
         <input type="boolean"/>
       </fg-set>
 
@@ -128,12 +128,12 @@
 
     <fg-set path="/secondaryFilerHasValidSSN" if-true="/flowShouldSeeAliveSecondaryValidSSN">
       <question>Does your spouse have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?</question>
-      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn">What counts as a valid Social Security Number?</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/deceasedSpouseValidSSNOnDateOfDeath" if-true="/intendsToFileJointlyWidow">
       <question>Did your spouse have a valid Social Security number on the day they passed away?</question>
-      <modal-link for="modal-valid-ssn">Valid Social Security Number</modal-link>
+      <modal-link for="modal-valid-ssn">What counts as a valid Social Security Number</modal-link>
       <input type="boolean"/>
     </fg-set>
     <fg-set path="/spouseAliveEndOfTaxYear" if-true="/flowShouldSeeSpouseAliveEndOfTaxYear">
@@ -152,7 +152,7 @@
 
     <fg-set path="/primaryFilerIsClaimingQualifyingChildren" if-true="/isFilingStatusComplete">
       <question>Do you plan to claim children or other relatives with valid Social Security numbers for the EITC?</question>
-      <modal-link for="modal-claiming-eitc-qc">Who can I claim for the EITC?</modal-link>
+      <modal-link for="modal-qualifying-child-eitc">Who can I claim for the EITC?</modal-link>
       <input type="boolean"/>
     </fg-set>
 <!--    TODO: update the gate to occur only after filing status is fully determined-->
@@ -180,11 +180,11 @@
     <fg-alert alert-type="error" alert-key="eitc-marriage-disqualified" knockout="true" condition="/isDisqualifiedMarriedNotFilingJointly" operator="isTrue">
       <heading>You don't qualify for the Earned Income Tax Credit (EITC)</heading>
       <p class="usa-alert__text">
-        You can claim the EIC if you are married, not filing a joint return, had a qualifying child who lived with you for more than half of 2025, and either of the following apply:
+        You can claim the EIC if you are married, not filing a joint return, had a qualifying child who lived with you for more than half of <fg-show path="/taxYear"/>, and either of the following apply:
       </p>
       <ul class="usa-alert__text">
-        <li>You lived apart from your spouse for the last 6 months of 2025, or</li>
-        <li>You are legally separated according to your state law under a written separation agreement, or a decree of separate maintenance and you didn't live in the same household as your spouse at the end of 2025.</li>
+        <li>You lived apart from your spouse for the last 6 months of <fg-show path="/taxYear"/>, or</li>
+        <li>You are legally separated according to your state law under a written separation agreement, or a decree of separate maintenance and you didn't live in the same household as your spouse at the end of <fg-show path="/taxYear"/>.</li>
       </ul>
       <p class="usa-alert__text">
         For more information see <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501" class="usa-link">About Publication 501, Dependents, Standard Deduction, and Filing Information.<span class="usa-sr-only"> (opens in a new tab)</span></a>
@@ -265,6 +265,7 @@
         <ul>
           <li>IRS Individual taxpayer identification number (ITIN)</li>
           <li>Adoption taxpayer identification number (ATIN)</li>
+          <li>Social Security number issued after the due date of the return, including extensions</li>
           <li>Social Security number issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit such as Medicaid</li>
         </ul>
         <p>Your child is a qualifying child if your child meets four tests. The four tests are:</p>
@@ -372,28 +373,6 @@
         <button type="button" class="usa-button usa-button--outline" data-close-modal="" id="modal-confirm-mfj-to-nonmfj-cancel" onclick="void(0)">Cancel</button>
       </modal-content>
     </modal-dialog>
-      <modal-dialog id="modal-claiming-eitc-qc">
-          <modal-heading>Qualifying Child</modal-heading>
-          <modal-content>
-              <p>To claim EITC with a qualifying child your child must have a valid SSN issued on or before the due date of your 2025 return (including extensions).</p>
-              <p>If the Social Security card reads "Valid for work with DHS authorization" or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization is still valid.</p>
-              <p>For the EITC, we don't accept:</p>
-              <ul>
-                  <li>IRS Individual taxpayer identification number (ITIN)</li>
-                  <li>Adoption taxpayer identification number (ATIN)</li>
-                  <li>Social Security number issued solely to allow the recipient of the SSN to apply for or receive a federally funded benefit such as Medicaid</li>
-                  <li>Social Security number issued solely to apply for or receive a federally funded benefit such as Medicaid</li>
-              </ul>
-              <p>Your child is a qualifying child if your child meets four tests. The four tests are:</p>
-              <ul>
-                  <li>Relationship,</li>
-                  <li>Age,</li>
-                  <li>Residency, and</li>
-                  <li>Joint Return</li>
-              </ul>
-              <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596, Earned Income Credit</a> for more information on a valid Social Security Number and if you have a qualifying child.</p>
-          </modal-content>
-      </modal-dialog>
       <modal-dialog id="modal-claiming-dependents">
           <modal-heading>Who can I claim as a dependent?</modal-heading>
           <modal-content>

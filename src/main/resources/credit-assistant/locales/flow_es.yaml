@@ -115,267 +115,255 @@
     button-70d9be: 
     button-ea4788: 
 /filing-status:
-  title: 
-  h2-c01d87: 
-  p-9bda8f: 
+  title: Estado civil para los efectos de la declaración
+  h2-c01d87: Estado civil para los efectos de la declaración
+  p-9bda8f: En este paso, se le harán preguntas sobre cómo planea presentar sus impuestos del año <fg-show path="/taxYear"/>.
   /knowsFilingStatus:
-    question: 
+    question: ¿Conoce el estado civil para los efectos de la declaración que utilizará cuando presente de declaración de impuestos del año <fg-show path="/taxYear"/>?
   /initialFilingStatus:
-    question: 
-    modalLink: 
+    question: 'Seleccione el estado civil para los efectos de la declaración que utilizará cuando presente sus impuestos del año <fg-show path="/taxYear"/>:'
+    modalLink: <modal-link for="modal-filing-status">¿Cuál estado civil debo usar?</modal-link>
     options:
       single:
-        name: 
+        name: Soltero/a
       marriedFilingJointly:
-        name: 
+        name: Casado/a que presenta una declaración conjunta
       marriedFilingSeparately:
-        name: 
+        name: Casado/a que presenta una declaración por separado
       headOfHousehold:
-        name: 
+        name: Cabeza de familia
       qualifiedSurvivingSpouse:
-        name: 
+        name: Cónyuge sobreviviente que califica
   /maritalStatus:
-    question: 
-    modalLink: 
+    question: ¿Cuál fue su estado civil el 31 de diciembre del año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-legal-separation">¿Qué significa estar en un matrimonio de hecho o estar legalmente separado?</modal-link>
     options:
       married:
-        name: 
+        name: Casado/a
       divorced:
-        name: 
+        name: Divorciado/a o legalmente separado/a
       widowed:
-        name: 
+        name: Cónyuge sobreviviente que califica
       single:
-        name: 
+        name: Nunca se casó
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question: 
+    question: ¿Cuándo falleció su cónyuge?
     options:
       taxYear:
-        name: 
+        name: Durante el año 2025
       taxYearMinusOneOrTwo:
-        name: 
+        name: Durante el año 2023 o 2024
       beforeTaxYearMinusTwo:
-        name: 
+        name: Antes del 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: 
+    question: ¿Cuándo falleció su cónyuge?
     options:
       taxYear:
-        name: 
+        name: Durante el año 2024
       taxYearMinusOneOrTwo:
-        name: 
+        name: Durante el año 2022 o 2023
       beforeTaxYearMinusTwo:
-        name: 
+        name: Antes del 2022
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: 
+    question: ¿Cuándo falleció su cónyuge?
     options:
       taxYear:
-        name: 
+        name: Durante el año 2023
       taxYearMinusOneOrTwo:
-        name: 
+        name: Durante el año 2021 o 2022
       beforeTaxYearMinusTwo:
-        name: 
+        name: Antes del 2021
   /isHOHMarried:
-    question: 
+    question: ¿Está casado/a?
   /intendsToFileJointlyWidow:
-    question: 
-    modalLink: 
+    question: ¿Tiene la intención de presentar una declaración conjunta con el cónyuge que falleción para el año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">¿Qué significa presentar una declaración conjunta con un cónyuge fallecido?</modal-link>
   /intendsToFileJointlyMFJ:
-    question: 
-    modalLink: 
+    question: ¿Usted y su cónyuge planean presentar declaraciones conjuntas?
+    modalLink: <modal-link for="modal-joint-return-mfj">¿Qué significa presentar una declaración conjunta?</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question: 
-    modalLink: 
+    question: ¿Usted y su cónyuge han tenido la misma residencia principal durante los últimos 6 meses del año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-spouse-lived-together">¿Qué significa para los cónyuges vivir juntos?</modal-link>
   /samePrincipalResidenceLast6Months:
-    question: 
+    question: ¿Usted y su cónyuge han tenido la misma residencia principal durante los últimos 6 meses del año <fg-show path="/taxYear"/>?
   /writableSeparationAgreement:
-    question: 
+    question: ¿Estaba usted legalmente separado según las leyes en su estado, con un acuerdo de separación escrito o un decreto de manutención por separado, y no vivía con su cónyuge en el último día del <fg-show path="/taxYear"/>?
   /entitledToPreviouslyFileJointReturn:
-    question: 
+    question: ¿Tenía derecho a presentar una declaración conjunta con su cónyuge el año en que falleció?
   /paidMoreThanHalfHomeCostsForChild:
-    question: 
-    modalLink: 
+    question: ¿En el año 2025, pagó más de la mitad del costo de mantener el hogar en el que vivió que también fue el hogar principal de su <span
+      condition="/flowQSSQCQuestionText" operator="isTrue">hijo o hijastro</span><span condition="/flowQSSQCQuestionText" operator="isFalse">hijo dependiente, hijastro o hijo de crianza</span> para todo el año <fg-show path="/taxYear"/> (incluida cualquier ausencia temporal)?
+    modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question: 
-    modalLink:
+    question: ¿Puede reclamar a su hijo o hijastro que vivió con usted como su persona dependiente para el año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link> 
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question: 
-    modalLink:
+    question: 'Podría reclamar a su hijo o hijastro como persona dependiente EXCEPTO que, en el año <fg-show path="/taxYear"/>: 1) El hjo tenía ingresos brutos que superaban el límite de <fg-show path="/eitcChildGrossIncomeLimit"/> para el año <fg-show path="/taxYear"/>; 2) El hijo presentó una declaración conjunta; o 3) ¿Usted podría ser reclamado como persona dependiente en la declaración de otra persona?'
+    modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /homeUpkeepScenario:
-    question: 
-    modalLink: 
+    question: ¿Pagó usted más del 50% del costo de la manutención del hogar para el año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
     options:
       livedWithDependent:
-        name: 
+        name: Donde haya vivido más de la mitad del año con una persona dependiente (un hijo, nieto, hermano, sobrina, sobrino, padre/madre o abuelo)
       custodialParentNonDependent:
-        name: 
+        name: Donde haya vivido más de la mitad del año con un hijo que no es su persona dependiente, a pesar de que sea el padre que tiene la custodia (por la regla para hijos de padres divorciados o separados)
       dependentParentElsewhere:
-        name: 
+        name: Para un padre/madre que puede reclamar como persona dependiente, pero que no vivió con usted
       none:
-        name: 
+        name: Ninguna de las opciones anteriores
   /secondaryFilerHasValidSSN:
-    question: 
-    modalLink: 
+    question: ¿Su cónyuge tiene un número de seguro social válido emitido en la fecha de vencimiento de la declaración del año <fg-show path="/taxYear"/> o antes de esta (incluidas las prórrogas)?
+    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un Número de Seguro Social válido?</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question: 
-    modalLink: 
+    question: ¿El cónyuge tenía un número de seguro social válido el día en que falleció?
+    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un Número de Seguro Social válido?</modal-link>
   /spouseAliveEndOfTaxYear:
-    question: 
+    question: ¿Su cónyuge estuvo con vida el 31 de diciembre de <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
-    question: 
+    question: Seleccione la franja de edad que mejor describa la edad <span condition="/spouseAliveEndOfTaxYear"
+      operator="isFalse">que tenía el cónyuge cuando falleció</span><span condition="/spouseAliveEndOfTaxYear"
+      operator="isTrue">de su cónyuge al final del año <fg-show path="/taxYear"/></span>.
     options:
-      under24:
-        name: 
+      under24: 
+        name: 24 años y menos
       age25to64:
-        name: 
+        name: Entre 25 y 64 años
       65andOlder:
-        name: 
+        name: 65 años y más
   /primaryFilerIsClaimingQualifyingChildren:
-    question: 
-    modalLink: 
+    question: ¿Tiene previsto solicitar el crédito tributario por ingreso del trabajo (EITC, en inglés) para sus hijos u otros familiares con números de Seguro Social válidos?
+    modalLink: <modal-link for="modal-qualifying-child-eitc">¿A quién puedo reclamar para el Crédito Tributario por Ingreso del Trabajo (EITC)?</modal-link>
   /hasLivedInUSMore6Months:
-    question: 
-    modalLink: 
-  h2-0dc2a3: 
+    question: ¿Su hogar principal estuvo en los Estados Unidos durante más de la mitad del año <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-main-home-us">¿Qué se considera una vivienda principal en los Estados Unidos?</modal-link>
+  h2-0dc2a3: Según sus elecciones, su estado civil para los efectos de la declaración es <fg-show path="/flowReadableFilingStatus"/>
   fg-alert-334e2e:
-    heading: 
-    p-b6bd9e: 
-    p-ae739d: 
-    p-6b339b: 
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-b6bd9e: Usted no califica para el EITC si no tiene un hijo calificado a menos que usted, o su cónyuge si presentan una declaración conjunta, tengan entre 25 y 64 años.
+    p-ae739d: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés)</a>.
+    p-47ef52: 'Usted puede reclamar el Crédito por Ingreso del Trabajo (EIC, por sus siglas en inglés) si para efectos de la declaración está casado, no presenta una declaración conjunta, tiene un hijo calificado que vivió con usted durante más de la mitad del <fg-show path="/taxYear"/> y le corresponde algunas de las siguientes situaciones:'
     ul-0:
-      li-abca25: 
-      li-203d84: 
-    p-3630b4: 
-    p-99f873: 
-    p-91ee91: 
-    p-d4d927: 
-    p-065d1b: 
+      li-207749: Vivió por separado de su cónyuge durante los últimos 6 meses del <fg-show
+        path="/taxYear"/>, ó
+      li-93a6ef: Está separado legalmente de su cónyuge según las leyes en su estado, con un acuerdo de separación escrito o un decreto de manutención por separado, y no vivía en el mismo hogar que su cónyuge al final del <fg-show path="/taxYear"/>.
+    p-3630b4: Para más información, consulte la página de información sobre la <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501" class="usa-link">About Publication 501, Dependents, Standard Deduction, and Filing Information.<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a> (Publicación 501, dependientes, deducción estándar e información para la presentación de la declaración) en inglés.
+    p-99f873: No puede reclamar el crédito tributario por ingreso del trabajo porque su cónyuge no tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de su declaración de impuestos o antes de esta.
+    p-91ee91: No puede reclamar el crédito tributario por ingreso del trabajo si elige presentar una declaración conjunta con su cónyuge fallecido porque su cónyuge no tenía un número de seguro social válido el día en que falleció.
+    p-d4d927: Es posible que califique para el crédito tribuario por ingreso del trabajo (EITC) si no presenta una declaración conjunta con el cónyuge que falleció.
+    p-065d1b: Para reclamar el crédito tributario por ingreso del trabajo, su hogar debe haber sido en los Estados Unidos durante más de la mitad del Año year. Los Estados Unidos incluyen los 50 estados y el Distrito de Columbia.
   modal-filing-status:
-    heading: 
-    p-c0b92c: 
-    p-391f95: 
-    p-496916: 
-    p-49f30f: 
+    heading: ¿Cuál estado civil debo usar?
+    p-c0b92c: Si no hubo un cambio en tu estado civil o situación familiar este año, podrías usar el estado civil de tu declaración del <fg-show path="/lastTaxYear"/>.
+    p-391f95: Si hubo un cambio en tu estado civil o situación familiar en el último año, podrías necesitar usar un estado civil diferente para una estimado más preciso.
+    p-496916: Cada estado civil tiene requisitos diferentes. 
+    p-49f30f: <strong>Soltero(a):</strong>
     ul-0:
-      li-c717a5: 
-    p-5f63cd: 
+      li-c717a5: No puedes estar casado(a)
+    p-5f63cd: <strong>Casado que presenta una declaración conjunta:</strong>
     ul-1:
-      li-6aab7e: 
-    p-80c02f: 
+      li-6aab7e: Estás casado(a) o tu esposo(a) falleció durante el año
+    p-80c02f: <strong>Casado que presenta una declaración por separado:</strong>
     ul-2:
-      li-595e35: 
-      li-1e72dd: 
-    p-d69332: 
+      li-595e35: Estás casado(a)
+      li-1e72dd: No presentarás una declaración con tu esposo(a) (la mayoría de las personas ahorra dinero presentando una declaración conjunta)
+    p-d69332: <strong>Cabeza de familia:</strong>
     ul-3:
-      li-dfe41a: 
-      li-38ff2f: 
-    p-57317d: 
+      li-dfe41a: No puedes estar casado (o no se te considera casado para propósitos de impuestos)
+      li-38ff2f: Pagaste más de la mitad del costo de mantener un hogar para un miembro de tu familia o miembro de tu hogar durante un período específico de tiempo y esta persona tiene que cumplir con ciertos requisitos
+    p-57317d: <strong>Esposo(a) sobreviviente calificado:</strong>
     ul-4:
-      li-2bf38a: 
-      li-4ef74f: 
-      li-939762: 
-      li-bad5a3: 
-    p-5b3ae2: 
+      li-2bf38a: Tu esposo(a) falleció en el <fg-show path="/lastTaxYear"/> ó <fg-show path="/taxYearMinusTwo"/>
+      li-4ef74f: No te volviste a casar antes del <fg-show path="/taxYear"/>
+      li-939762: Tienes un hijo(a) dependiente que vive contigo todo el año
+      li-bad5a3: agas más de la mitad del costo de mantener tu hogar
+    p-5b3ae2: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/filing/filing-status">Conoce más sobre cada estado civil<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a>
   modal-qualifying-child-eitc:
-    heading: 
-    p-7356ad: 
-    p-ac8914: 
-    p-558a40: 
+    heading: Hijo calificado
+    p-7356ad: Para poder reclamar el Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés) con un hijo calificado, dicho hijo tiene que tener un número de Seguro Social válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos para el <fg-show path="/taxYear"/> (inclusive de las prórrogas).
+    p-ac8914: Si la tarjeta del Seguro Social indica "Válida para trabajar con autorización del DHS" o "Válida para trabajar con autorización del INS", se trata de un número de Seguro Social válido si la autorización sigue vigente.
+    p-558a40: 'Para los propósitos del EITC, no aceptamos:'
     ul-0:
-      li-5e5f3e: 
-      li-5fc9b7: 
-      li-19d3d7: 
-    p-0d323a: 
+      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN por sus siglas en inglés)
+      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN por sus siglas en inglés)
+      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
+      li-19d3d7: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado por fondos federales, tal como el Medicaid.
+    p-0d323a: 'Su hijo es un hijo calificado si el hijo cumple los cuatro requisitos. Los requisitos son:'
     ul-1:
-      li-fbc977: 
-      li-9d8d2d: 
-      li-23863d: 
-      li-ca34c2: 
-    p-e00960: 
+      li-fbc977: Parentesco,
+      li-9d8d2d: Edad,
+      li-23863d: Residencia, y
+      li-ca34c2: Declaración conjunta
+    p-e00960: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a>, y obtener información sobre un número de Seguro Social válido y si tiene un hijo calificado.
   modal-main-home-us:
-    heading: 
-    p-9cbbc6: 
-    p-775779: 
-    h3-398dfd: 
-    p-7dbfa0: 
+    heading: Hogar principal en los Estados Unidos
+    p-9cbbc6: Su hogar debe haber sido en los Estados Unidos durante más de la mitad del año <fg-show path="/taxYear"/>.
+    p-775779: Los Estados Unidos incluyen los 50 estados y el Distrito de Columbia. No incluye las Posesiones de los Estados Unidos, como, por ejemplo, Guam, las Islas Vírgenes o Puerto Rico.
+    h3-398dfd: Personal militar destacado fuera de los Estados Unidos
+    p-7dbfa0: Si usted es un miembro del personal militar de los Estados Unidos y estuvo destacado fuera de los Estados Unidos en servicio activo prolongado, seleccione <strong>Sí</strong>.
   modal-keeping-up-home:
-    heading: 
-    p-c0958f: 
-    h3-e8b30a: 
+    heading: Mantener un hogar
+    p-c0958f: Si el total de lo que usted pagó es más de la mitad del costo total, usted cumple con el requisito de pagar más de la mitad del costo de la manutención del hogar.
+    h3-e8b30a: 'Los costos incluyen:'
     ul-0:
-      li-b9b2e1: 
-      li-313963: 
-      li-61e699: 
-    p-fec463: 
-    h3-3e0b53: 
+      li-b9b2e1: Alquiler, intereses hipotecarios, impuestos sobre bienes inmuebles, y seguro para el hogar
+      li-313963: Reparaciones y servicios públicos
+      li-61e699: Comida consumida en la casa
+    p-fec463: <strong>Nota:</strong> Los costos pagados con la asistencia pública se consideran costos pagados por el contribuyente.
+    h3-3e0b53: 'Los costos no incluyen:' 
     ul-1:
-      li-edaa99: 
-      li-40b84f: 
-      li-5eae2b: 
-      li-c64365: 
-      li-04dec0: 
+      li-edaa99: Ropa, educación, y gastos de vacaciones
+      li-40b84f: Tratamientos médicos, pagos del seguro médico, y medicamentos recetados
+      li-5eae2b: Seguro de vida
+      li-c64365: Costos de transporte, tal como seguro, pagos de arrendamiento, o transporte público
+      li-04dec0: El valor de sus servicios o los de un miembro de su hogar
   modal-legal-separation:
-    heading: 
-    h3-ef7665: 
-    p-198345: 
-    h3-357344: 
-    p-f560ea: 
+    heading: Separación legal y matrimonio de hecho
+    h3-ef7665: Legalmente separados
+    p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o manutención por separación judicia'
+    h3-357344: Matrimonio de hecho
+    p-f560ea: Algunos estados permiten los matrimonios de hecho. Corrobore con su estado para conocer si se considera que está casado/a de conformidad con el derecho consuetudinario.
   modal-joint-return-mfj:
-    heading: 
-    p-75997a: 
+    heading: Declaración conjunta
+    p-75997a: Puede elegir presentar una declaración con su cónyuge seleccionando <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
   modal-joint-deceased-spouse:
-    heading: 
-    p-85e581: 
+    heading: Declaración conjunta con un cónyuge fallecido
+    p-85e581: Si su cónyuge falleció durante el año <fg-show path="/taxYear"/>, puede elegir presentar una declaración con su cónyuge seleccionado <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
   modal-spouse-lived-together:
-    heading: 
-    p-906815: 
+    heading: Cónyuge - Vivieron juntos
+    p-906815: 'Se considera que una persona ha vivido con usted durante los períodos cuando uno o ambos estuvieron ausentes temporalmente debido a circunstancias especiales tales como:'
     ul-0:
-      li-8ec6de: 
-      li-de7a22: 
-      li-d6e6cb: 
-      li-2c48dd: 
-      li-8fdca6: 
-    p-2392bb: 
+      li-8ec6de: Enfermedad,
+      li-de7a22: Educación,
+      li-d6e6cb: Negocio,
+      li-2c48dd: Vacaciones, o
+      li-8fdca6: Servicio militar.
+    p-2392bb: Debe ser razonable suponer que la persona ausente regresará al hogar luego de la ausencia temporal.
   modal-valid-ssn:
-    heading: 
-    p-527528: 
-    p-45ae0e: 
-    p-558a40: 
+    heading: Número de Seguro Social válido
+    p-527528: Usted tiene que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos del <fg-show path="/taxYear"/> (inclusive de las prórrogas).
+    p-45ae0e: Si su tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
+    p-558a40: 'Para los propósitos del Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés), no aceptamos:'
     ul-0:
-      li-5e5f3e: 
-      li-5fc9b7: 
-      li-9f487b: 
-      li-a69a30: 
-    p-f554f7: 
+      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
+      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
+      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
+      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid.
+    p-f554f7: Consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los números de Seguro Social válidos.
   modal-confirm-mfj-to-nonmfj-qc-clear:
-    heading: 
-    p-30861e: 
-    button-70d9be: 
-    button-ea4788: 
-  modal-claiming-eitc-qc:
-    heading: 
-    p-e3c0f6: 
-    p-ac8914: 
-    p-558a40: 
-    ul-0:
-      li-5e5f3e: 
-      li-5fc9b7: 
-      li-19d3d7: 
-      li-a69a30: 
-    p-0d323a: 
-    ul-1:
-      li-63ab93: 
-      li-da43a1: 
-      li-62fa6e: 
-      li-ca34c2: 
-    p-ee2a07: 
+    heading: Confirmación
+    p-30861e: Cambiar de <strong>Casado que presenta declaración conjunta</strong> a otro estado civil para la declaración de impuestos borrará los datos del hijo que haya ingresado previamente. ¿Desea continuar?
+    button-70d9be: Confirmar
+    button-ea4788: Cancelar
   modal-claiming-dependents:
-    heading: 
-    p-fc792e: 
+    heading: ¿A quién puedo reclamar como dependiente?
+    p-fc792e: "Los dependientes típicamente son:"
     ul-0:
-      li-7673e2: 
-      li-e9750c: 
-      li-9a6fc3: 
-    p-6b3acc: 
-    p-40e480: 
+      li-7673e2: Hijos menores de 19 años
+      li-e9750c: Estudiantes menores de 24 años que viven con sus padres
+      li-9a6fc3: Parientes o miembros de tu hogar que reciben de ti más de la mitad de sus costos de vida y tienen un sueldo bruto menor de <fg-show path="/eitcChildGrossIncomeLimit"/>
+    p-6b3acc: No puedes reclamar a tu esposo(a) como tu dependiente si presentan una declaración conjunta.
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/dependents">Conoce más sobre los dependientes.</a>
 /agi:
   title: 
   h2-c0af17: 
