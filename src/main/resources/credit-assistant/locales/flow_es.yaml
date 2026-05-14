@@ -32,6 +32,16 @@
     p-5e637b: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es el hijo calificado de alguien más para el crédito tributario por ingreso del trabajo (EITC).
     p-ec145e: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
     p-363ef2: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es la persona dependiente de alguien más a menos que tenga un hijo calificado para el crédito tributario por ingreso del trabajo (EITC).
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-091688: Debe ser un ciudadano estadounidense o extranjero residente para reclamar el crédito tributario por ingreso del trabajo. Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>, para determinar si usted es un extranjero residente de los Estados Unidos durante todo el año.
+    p-f72c3e: <strong>Aviso:</strong> eleccione <strong>Sí</strong> si presenta una declaración conjunta con su cónyuge para el año <fg-show path="/taxYear"/> y usted o su cónyuge fueron ciudadanos estadounidenses o extranjeros residentes durante todo el año.
+    p-b85d77: 
+    p-93a6b5: 
+    p-4c0c0d: 
+    p-236b69: 
+    p-5e637b: 
+    p-ec145e: 
+    p-363ef2: 
   /hasValidSSN:
     question: ¿Usted tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de la declaración del año 2025 o antes de esta (incluidas las prórrogas)?
     modalLink: 
@@ -44,10 +54,10 @@
     question: ¿Presenta un Formulario 2555, Ingresos devengados en el extranjero?
     modalLink: 
     options:
-      'true': 
-        name: Si
-      'false': 
-        name: No
+      'true':  
+        name: SiSi
+      'false':  
+        name: NoNo
   /isClaimedAsDependent:
     question: ¿Alguien más lo reclamará como persona dependiente o hijo calificado para el crédito tributario por ingreso del trabajo en la declaración de impuestos?
     modalLink: 
@@ -62,9 +72,9 @@
       under24:
         name: 24 años y menos
       age25to64:
-        name: Entre 25 y 64 años
+        name: 
       65andOlder:
-        name: 65 años y más
+        name: 65 años y más65 años y más
   modal-tax-year:
     heading: Año tributario
     p-aa5a47: 'Para el sueldo y otros ingresos devengados en:'
@@ -202,9 +212,11 @@
   /canClaimChildAsDependentInCurrentTaxYear:
     question: ¿Puede reclamar a su hijo o hijastro que vivió con usted como su persona dependiente para el año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link> 
+    modalLink:
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Podría reclamar a su hijo o hijastro como persona dependiente EXCEPTO que, en el año <fg-show path="/taxYear"/>: 1) El hjo tenía ingresos brutos que superaban el límite de <fg-show path="/eitcChildGrossIncomeLimit"/> para el año <fg-show path="/taxYear"/>; 2) El hijo presentó una declaración conjunta; o 3) ¿Usted podría ser reclamado como persona dependiente en la declaración de otra persona?'
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
+    modalLink:
   /homeUpkeepScenario:
     question: ¿Pagó usted más del 50% del costo de la manutención del hogar para el año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
@@ -331,6 +343,8 @@
   modal-joint-return-mfj:
     heading: Declaración conjunta
     p-75997a: Puede elegir presentar una declaración con su cónyuge seleccionando <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
+    heading: 
+    p-75997a: 
   modal-joint-deceased-spouse:
     heading: Declaración conjunta con un cónyuge fallecido
     p-85e581: Si su cónyuge falleció durante el año <fg-show path="/taxYear"/>, puede elegir presentar una declaración con su cónyuge seleccionado <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
@@ -370,46 +384,47 @@
     p-6b3acc: No puedes reclamar a tu esposo(a) como tu dependiente si presentan una declaración conjunta.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/dependents">Conoce más sobre los dependientes.</a>
 /agi:
-  title: 
-  h2-c0af17: 
-  p-308236: 
-  p-100130: 
-  p-bb8818: 
-  h2-40c7ae: 
+  title: Ingreso bruto ajustado (AGI)
+  h2-c0af17: Estimado de su ingreso bruto ajustado (AGI, por las siglas en inglés)
+  p-308236: En este paso, estimaremos su ingreso del trabajo, el ingreso bruto ajustado y cualquier ajuste a este <span condition="/isFilingStatusMFJ"
+    operator="isTrue">de usted y su cónyuge</span>.
+  p-100130: Seleccione e ingrese sus ingresos y ajustes correspondientes al año <fg-show path="/taxYear"/>. Solo seleccione un concepto por fuente.
+  p-bb8818: <strong>Tenga en cuenta:</strong> Asegúrese de también incluir los ingresos y ajustes de su cónyuge.
+  h2-40c7ae: Ingreso del trabajo
   fg-detail-c90011:
-    summary: 
-    /jobsIncomeTotal:
-      question: 
+    summary: Sueldo, salario o propinas
+    /jobsIncomeTotal: 
+      question: Sueldo, salario o propinas en los que se retuvieron los impuestos federales sobre los ingresos
       modalLink: 
   fg-detail-c0e18b:
-    summary: 
-    /selfEmploymentGrossIncome:
-      question: 
+    summary: Ingresos y gastos del trabajo por cuenta propia
+    /selfEmploymentGrossIncome: 
+      question: Ingresos del trabajo por cuenta propia
       modalLink: 
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
-      question: 
+      question: Gastos del trabajo por cuenta propia que usted <span condition="/isFilingStatusMFJ" operator="isTrue"> y su cónyuge </span> en <fg-show path="/taxYear"/>.
       hint: 
       modalLink: 
   fg-detail-2fc9c0:
-    summary: 
+    summary: Beneficios de la jubilación 
     /disabilityRetirementBenefits:
-      question: 
+      question: Beneficios de la jubilación por incapacidad antes de la edad mínima para jubilarse
       modalLink: 
   fg-detail-cd8e26:
-    summary: 
+    summary: Ingreso devengado en el extranjero
     /non2555ForeignIncome:
-      question: 
+      question: Ingreso devengado en el extranjero no declarados en el Formulario 2555
       modalLink: 
-  h3-20a2b1: 
+  h3-20a2b1: Otros tipos de ingresos
   fg-detail-89425f:
-    summary: 
+    summary: Ingreso de inversiones
     /investmentIncomeTotal:
-      question: 
+      question: Ingreso de inversiones
       modalLink: 
   fg-detail-fbe1af:
-    summary: 
+    summary: Ingreso de pensiones
     /pensionsIncomeTotal:
-      question: 
+      question: Parte tributables de cualquier pensión
       modalLink: 
   fg-detail-2e467d:
     summary: 
@@ -418,29 +433,29 @@
       hint: 
       modalLink: 
   fg-detail-3fa626:
-    summary: 
+    summary: Seguro por desempleo
     /unemploymentIncome:
-      question: 
+      question: Seguro por desempleo
       modalLink: 
-  fg-detail-0fb46a:
-    summary: 
+  fg-detail-0fb46a: 
+    summary: Seguro Social o beneficios de la jubilación ferroviaria
     /socialSecurityIncome:
-      question: 
+      question: Parte imponible del Seguro Social o beneficios de la jubilación ferroviaria
       modalLink: 
   fg-detail-d994db:
-    summary: 
+    summary: Una beca o subvención que se debe contar como ingreso
     /taxableScholarship:
-      question: 
+      question: Una beca o subvención que se debe contar como ingreso
       modalLink: 
   fg-detail-50ec28:
-    summary: 
+    summary: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
     /inmatePay:
-      question: 
+      question: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
       modalLink: 
   fg-detail-7a5ac3:
-    summary: 
+    summary: Otros tipos de ingresos
     /nonSpecificOtherIncome:
-      question: 
+      question: Otros tipos de ingresos
       hint: 
       modalLink: 
   h2-9fa8b1: 
@@ -509,17 +524,17 @@
     p-93a6b5: 
   modal-wages-salaries-tips:
     heading: 
-    h3-53ed11: 
-    p-40d79a: 
-    p-ab967b: 
-    p-cb2522: 
-    p-1f7f24: 
-    h3-af3590: 
-    p-3fdb7d: 
-    p-d9b0e5: 
-    h3-84091c: 
-    p-bee3d8: 
-    p-2e7e6e: 
+    h3-53ed11: Salarios, sueldos y propinas
+    p-40d79a: Su empleador declaró sus sueldos, salarios, propinas y otras compensaciones en la casilla 1 de su Formulario W-2. 
+    p-ab967b: Incluya la cantidad total de las propinas y las horas extras en el cálculo de los ingresos por trabajo al determinar la elegibilidad para el crédito tributario por ingreso del trabajo, incluso si la totalidad o parte del crédito es deducible.
+    p-cb2522: Incluya todos los montos declarados en <strong>la casilla 1</strong> de su Formulario W-2 para usted y su cónyuge si presentan una declaración de impuestos conjunta con su cónyuge.
+    p-1f7f24: <strong>No incluya<\strong> las aportaciones antes de los impuestos de su Formulario W-2 en la sección de aportaciones antes de los impuestos. 
+    h3-af3590: Paga militar y por combate
+    p-3fdb7d: También puede elegir incluir su paga por combate no tributable en el ingreso del trabajo para el crédito tributario por ingreso del trabajo (EITC). Su empleador declaró su paga por combate no tributable en <strong>la casilla 12</strong> con <strong>código Q</strong> en su Formulario W-2.
+    p-d9b0e5: Esta elección puede aumentar o disminuir su crédito tributario por ingreso del trabajo (EITC por las siglas en inglés). Para obtener más información, visite la Paga por combate no tributable en <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000297672">la Publicación 596, Crédito por ingreso del trabajo (en inglés).<\a>
+    h3-84091c: Seguro por incapacidad temporal y de corto plazo 
+    p-bee3d8: Si tomó su licencia por maternidad o paternidad o estuvo incapacitado temporalmente durante el año y su empleador le pagó, declaró su ingreso en su Formulario W-2.Ingrese aquí ese monto.
   modal-work-no-taxes-withheld:
     heading: 
     p-7ca214: 
@@ -658,14 +673,32 @@
       li-143cd9: 
   modal-other-taxable-income:
     heading: 
-    p-41c1a9: 
+    p-ba0ae2: 
     ul-0:
-      li-6c1f6e: 
-      li-b9815d: 
-      li-98533d: 
-      li-96f64d: 
-      li-e4e611: 
-    p-48332b: 
+      li-83fa6a: 
+      li-7ae32a: 
+      li-248c6a: 
+      li-6dac33: 
+      li-13b588: 
+      li-ad5cc5: 
+      li-ece5cb: 
+      li-0f1015: 
+      li-7e9756: 
+      li-737e99: 
+      li-e833f1: 
+    p-fda53f: 
+    ul-1:
+      li-0eb181: 
+      li-e46f68: 
+      li-b144cb: 
+      li-63523b: 
+      li-a8d386: 
+      li-f2a3d6: 
+      li-080a95: 
+      li-57e5cb: 
+      li-764dd4: 
+      li-6f920a: 
+    p-745735: 
   modal-what-are-adjustments:
     heading: 
     p-d8344a: 

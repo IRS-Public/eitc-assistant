@@ -723,7 +723,6 @@
     p-bee3d8: If you took parental leave or were temporarily disabled during the year
       and your employer paid you, they reported your income on your W-2. Enter that
       income here.
-    p-2e7e6e: Include temporary or short-term disability in your wages.
   modal-work-no-taxes-withheld:
     heading: Income Where Federal Taxes Weren't Withheld
     p-7ca214: Report income earned from gig work, even if it's a side job, part time
@@ -930,20 +929,44 @@
       li-a00ee1: You have income or loss from a passive activity.
       li-143cd9: You are filing Form 4797 (relating to sales of business property).
   modal-other-taxable-income:
-    heading: Other Taxable Income
-    p-41c1a9: 'Add any other taxable income that you <span condition="/isFilingStatusMFJ"
-      operator="isTrue">and your spouse</span> received in <fg-show path="/taxYear"/>,
-      including:'
+    heading: Other types of income
+    p-ba0ae2: '''<strong>Other types of income include</strong>'
     ul-0:
-      li-6c1f6e: Taxable scholarships
-      li-b9815d: Winnings from gambling
-      li-98533d: Alimony from pre-2019 divorce decrees
-      li-96f64d: Court awards and damages (unless they were for physical injury or
-        sickness)
-      li-e4e611: Fees for services you provided
-    p-48332b: <a target="_blank" href="https://www.irs.gov/filing/taxable-income"
-      class="usa-link usa-link--external">Learn more about other taxable income.<span
-      class="usa-sr-only"> (opens in a new tab)</span></a>
+      li-83fa6a: Individual Retirement Account (IRA) distributions (except qualified
+        distributions from Roth IRAs) Trust and 401k distributions
+      li-7ae32a: Capital losses (not gains)
+      li-248c6a: Alimony payments you received under a divorce or separation agreement
+        executed before 2020
+      li-6dac33: Rental real estate, royalties, partnerships, S corporations, trusts,
+        etc.
+      li-13b588: Income from rental of personal property if you engaged in the rental
+        for profit but were not in the business of renting such property
+      li-ad5cc5: Taxable distributions from a Coverdell education savings account
+        (ESA) and qualified tuition program earnings.
+      li-ece5cb: Qualified tuition program earnings
+      li-0f1015: Prizes, awards, and gambling winnings
+      li-7e9756: Jury duty fees
+      li-737e99: Alaska Permanent Fund dividends
+      li-e833f1: Reimbursements or other amounts received for items deducted in an
+        earlier year, such as medical expenses, real estate taxes, or home mortgage
+        interest
+    p-fda53f: '''<strong>Do not include:,</strong>'''
+    ul-1:
+      li-0eb181: Alimony payments you received under a divorce or separation agreement
+        entered into after 2019
+      li-e46f68: Child support
+      li-b144cb: Welfare benefits such as Temporary Assistance for Needy Families
+        (TANF), food stamps, section 8 housing allowance
+      li-63523b: Nontaxable foster care payments
+      li-a8d386: Nontaxable employee benefits such as education assistance
+      li-f2a3d6: Veterans' benefits, including VA rehabilitation payments
+      li-080a95: Workman's compensation
+      li-57e5cb: Life insurance proceeds received because of a person's death
+      li-764dd4: Money or property that was inherited, willed to you, or received
+        as a gift
+      li-6f920a: Unemployment benefits
+    p-745735: See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-525">Publication
+      525, Taxable and Nontaxable Income</a>
   modal-what-are-adjustments:
     heading: What are adjustments?
     p-d8344a: Adjustments are expenses, payments, contributions, and fees that you

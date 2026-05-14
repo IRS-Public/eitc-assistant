@@ -499,18 +499,17 @@
     p-f3c23d:
     p-93a6b5:
   modal-wages-salaries-tips:
-    heading:
-    h3-53ed11:
-    p-40d79a:
+    heading: 
+    h3-53ed11: 
+    p-40d79a: 
     p-ab967b:
     p-cb2522:
-    p-1f7f24:
-    h3-af3590:
-    p-3fdb7d:
+    p-1f7f24: 
+    h3-af3590: 
+    p-3fdb7d: 
     p-d9b0e5:
-    h3-84091c:
-    p-bee3d8:
-    p-2e7e6e:
+    h3-84091c: 
+    p-bee3d8: 
   modal-work-no-taxes-withheld:
     heading:
     p-7ca214:
@@ -648,15 +647,33 @@
       li-a00ee1:
       li-143cd9:
   modal-other-taxable-income:
-    heading:
-    p-41c1a9:
+    heading: 
+    p-ba0ae2: 
     ul-0:
-      li-6c1f6e:
-      li-b9815d:
-      li-98533d:
-      li-96f64d:
-      li-e4e611:
-    p-48332b:
+      li-83fa6a: 
+      li-7ae32a: 
+      li-248c6a: 
+      li-6dac33: 
+      li-13b588: 
+      li-ad5cc5: 
+      li-ece5cb: 
+      li-0f1015: 
+      li-7e9756: 
+      li-737e99: 
+      li-e833f1: 
+    p-fda53f: 
+    ul-1:
+      li-0eb181: 
+      li-e46f68: 
+      li-b144cb: 
+      li-63523b: 
+      li-a8d386: 
+      li-f2a3d6: 
+      li-080a95: 
+      li-57e5cb: 
+      li-764dd4: 
+      li-6f920a: 
+    p-745735: 
   modal-what-are-adjustments:
     heading:
     p-d8344a:
