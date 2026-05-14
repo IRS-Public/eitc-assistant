@@ -400,14 +400,8 @@
   fg-detail-fbe1af:
     summary:
     /pensionsIncomeTotal:
-      question:
-      modalLink:
-  fg-detail-2e467d:
-    summary:
-    /preTaxRetirementAccountIncome:
-      question:
-      hint:
-      modalLink:
+      question: 
+      modalLink: 
   fg-detail-3fa626:
     summary:
     /unemploymentIncome:
@@ -610,18 +604,10 @@
       li-761662:
       li-719fec:
       li-849c98:
-    p-9ff7b2:
-    p-0651e4:
-    p-a81df3:
-    p-4ca1ce:
-  modal-what-counts-pre-tax-retirement:
-    heading:
-    p-819116:
-    p-b344e9:
-    p-c08338:
-    ul-0:
-      li-20ffee:
-      li-269cf7:
+    p-9ff7b2: |-
+    p-0651e4: 
+    p-a81df3: 
+    p-4ca1ce: 
   modal-estimate-interest-income-en:
     heading:
     p-cda131:

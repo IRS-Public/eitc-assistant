@@ -20,9 +20,13 @@ case class Locale(languageCode: String) {
   private val flowContentPath =
     if (languageCode == "en") generatedFlowContentPath else translatedFlowContentPath(languageCode)
   private val flowContentString = os.read(flowContentPath)
-  private val flowContent = yaml.scalayaml.Parser
-    .parse(flowContentString)
-    .getOrElse(throw new Exception(s"Failed to parse the content at $flowContentPath"))
+  private val flowContent = yaml.scalayaml.Parser.parse(flowContentString) match {
+    case Right(parsedData) =>
+      parsedData
+    case Left(error) =>
+      println(s"YAML Parsing Error in $flowContentPath: ${error.getMessage}")
+      throw new Exception(s"Failed to parse the content at $flowContentPath: ${error.getMessage}", error)
+  }
 
   def get(key: String): Json = {
     // Look at the main content file first, then the automatically-generated one

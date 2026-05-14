@@ -32,19 +32,9 @@
     p-5e637b: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es el hijo calificado de alguien más para el crédito tributario por ingreso del trabajo (EITC).
     p-ec145e: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
     p-363ef2: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es la persona dependiente de alguien más a menos que tenga un hijo calificado para el crédito tributario por ingreso del trabajo (EITC).
-    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
-    p-091688: Debe ser un ciudadano estadounidense o extranjero residente para reclamar el crédito tributario por ingreso del trabajo. Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>, para determinar si usted es un extranjero residente de los Estados Unidos durante todo el año.
-    p-f72c3e: <strong>Aviso:</strong> eleccione <strong>Sí</strong> si presenta una declaración conjunta con su cónyuge para el año <fg-show path="/taxYear"/> y usted o su cónyuge fueron ciudadanos estadounidenses o extranjeros residentes durante todo el año.
-    p-b85d77: 
-    p-93a6b5: 
-    p-4c0c0d: 
-    p-236b69: 
-    p-5e637b: 
-    p-ec145e: 
-    p-363ef2: 
   /hasValidSSN:
     question: ¿Usted tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de la declaración del año 2025 o antes de esta (incluidas las prórrogas)?
-    modalLink: 
+    modalLink:
     options:
       'true':
         name: Si
@@ -52,19 +42,19 @@
         name: No
   /hasForeignEarnedIncome:
     question: ¿Presenta un Formulario 2555, Ingresos devengados en el extranjero?
-    modalLink: 
+    modalLink:
     options:
-      'true':  
-        name: SiSi
-      'false':  
-        name: NoNo
+      'true':
+        name: Si
+      'false':
+        name: No
   /isClaimedAsDependent:
     question: ¿Alguien más lo reclamará como persona dependiente o hijo calificado para el crédito tributario por ingreso del trabajo en la declaración de impuestos?
-    modalLink: 
+    modalLink:
     options:
-      'true': 
+      'true':
         name: Si
-      'false': 
+      'false':
         name: No
   /ageRange:
     question: Seleccione la franja que mejor describa su edad al final del año 2025
@@ -72,7 +62,7 @@
       under24:
         name: 24 años y menos
       age25to64:
-        name: 
+        name:
       65andOlder:
         name: 65 años y más65 años y más
   modal-tax-year:
@@ -87,7 +77,7 @@
     p-18e680: Si usted no es un ciudadano de los Estados Unidos, se considera que es un extranjero.
     p-fe70ca: Se considera que usted es un extranjero residente para el crédito tributario por ingreso del trabajo si tiene una tarjeta verde o si vivió en los Estados Unidos durante más que un número determinado días.
     p-2c8f8f: Para obtener más información y excepciones importantes, consulte <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519>la Publicación 519, Guía tributaria estadounidense para extranjeros</a>.
+      class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>.
   modal-valid-ssn-filer:
     heading: Número de Seguro Social válido
     p-527528: Usted tiene que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos del <fg-show
@@ -110,25 +100,25 @@
     p-98d6db: En la mayoría de los casos, si usted tiene menos de 19 años o es un estudiante menor de 24 años y vive con sus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
     p-038f13: Si usted para efectos de la declaración de impuestos federales está casado y presenta una declaración conjunta, no puede ser reclamado como un dependiente, a menos que presente la declaración conjunta únicamente para reclamar un reembolso del impuesto sobre los ingresos retenido o de los impuestos estimados pagados.
     p-ceda6c: Para obtener más información sobre si alguien lo puede reclamar como persona dependiente, visite <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)<\a>?
+      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)</a>?
     p-d11380: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank"
       class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés).</a>
     p-16aba9: Le preguntaremos sobre los hijos o parientes que usted podría reclamar más adelante.
   modal-primary-claimed-as-dependent:
-    heading: 
-    p-d3187d: 
-    p-762495: 
+    heading:
+    p-d3187d:
+    p-762495:
     ul-0:
-      li-b17276: 
-      li-c82d5e: 
-      li-5a5073: 
-    p-752de3: 
-    p-5a0201: 
+      li-b17276:
+      li-c82d5e:
+      li-5a5073:
+    p-752de3:
+    p-5a0201:
   modal-confirm-tax-year-change:
     heading: Atención
     p-31c7da: El cambio de año borrará los datos ingresados anteriormente. ¿Desea continuar?
     button-70d9be: Confirmar
-    button-ea4788: Cancelar 
+    button-ea4788: Cancelar
 /filing-status:
   title: Estado civil para los efectos de la declaración
   h2-c01d87: Estado civil para los efectos de la declaración
@@ -140,38 +130,38 @@
     modalLink: <modal-link for="modal-filing-status">¿Cuál estado civil debo usar?</modal-link>
     options:
       single:
-        name: Soltero/a
+        name: Soltero/aSoltero/a
       marriedFilingJointly:
-        name: Casado/a que presenta una declaración conjunta
+        name: Casado/a que presenta una declaración conjuntaCasado/a que presenta una declaración conjunta
       marriedFilingSeparately:
-        name: Casado/a que presenta una declaración por separado
+        name: Casado/a que presenta una declaración por separadoCasado/a que presenta una declaración por separado
       headOfHousehold:
-        name: Cabeza de familia
+        name: Cabeza de familiaCabeza de familia
       qualifiedSurvivingSpouse:
-        name: Cónyuge sobreviviente que califica
+        name: Cónyuge sobreviviente que calificaCónyuge sobreviviente que califica
   /maritalStatus:
     question: ¿Cuál fue su estado civil el 31 de diciembre del año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-legal-separation">¿Qué significa estar en un matrimonio de hecho o estar legalmente separado?</modal-link>
     options:
       married:
-        name: Casado/a
+        name: Casado/aCasado/a
       divorced:
-        name: Divorciado/a o legalmente separado/a
+        name: Divorciado/a o legalmente separado/aDivorciado/a o legalmente separado/a
       widowed:
-        name: Cónyuge sobreviviente que califica
+        name: Cónyuge sobreviviente que calificaCónyuge sobreviviente que califica
       single:
-        name: Nunca se casó
+        name: Nunca se casóNunca se casó
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció su cónyuge?¿Cuándo falleció su cónyuge?
     options:
       taxYear:
-        name: Durante el año 2025
+        name: Durante el año 2025Durante el año 2025
       taxYearMinusOneOrTwo:
-        name: Durante el año 2023 o 2024
+        name: Durante el año 2023 o 2024Durante el año 2023 o 2024
       beforeTaxYearMinusTwo:
-        name: Antes del 2023
+        name: Antes del 2023Antes del 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció su cónyuge?¿Cuándo falleció su cónyuge?
     options:
       taxYear:
         name: Durante el año 2024
@@ -211,12 +201,10 @@
     modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
     question: ¿Puede reclamar a su hijo o hijastro que vivió con usted como su persona dependiente para el año <fg-show path="/taxYear"/>?
-    modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link> 
-    modalLink:
+    modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Podría reclamar a su hijo o hijastro como persona dependiente EXCEPTO que, en el año <fg-show path="/taxYear"/>: 1) El hjo tenía ingresos brutos que superaban el límite de <fg-show path="/eitcChildGrossIncomeLimit"/> para el año <fg-show path="/taxYear"/>; 2) El hijo presentó una declaración conjunta; o 3) ¿Usted podría ser reclamado como persona dependiente en la declaración de otra persona?'
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
-    modalLink:
   /homeUpkeepScenario:
     question: ¿Pagó usted más del 50% del costo de la manutención del hogar para el año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
@@ -242,7 +230,7 @@
       operator="isFalse">que tenía el cónyuge cuando falleció</span><span condition="/spouseAliveEndOfTaxYear"
       operator="isTrue">de su cónyuge al final del año <fg-show path="/taxYear"/></span>.
     options:
-      under24: 
+      under24:
         name: 24 años y menos
       age25to64:
         name: Entre 25 y 64 años
@@ -273,7 +261,7 @@
     heading: ¿Cuál estado civil debo usar?
     p-c0b92c: Si no hubo un cambio en tu estado civil o situación familiar este año, podrías usar el estado civil de tu declaración del <fg-show path="/lastTaxYear"/>.
     p-391f95: Si hubo un cambio en tu estado civil o situación familiar en el último año, podrías necesitar usar un estado civil diferente para una estimado más preciso.
-    p-496916: Cada estado civil tiene requisitos diferentes. 
+    p-496916: Cada estado civil tiene requisitos diferentes.
     p-49f30f: <strong>Soltero(a):</strong>
     ul-0:
       li-c717a5: No puedes estar casado(a)
@@ -327,7 +315,7 @@
       li-313963: Reparaciones y servicios públicos
       li-61e699: Comida consumida en la casa
     p-fec463: <strong>Nota:</strong> Los costos pagados con la asistencia pública se consideran costos pagados por el contribuyente.
-    h3-3e0b53: 'Los costos no incluyen:' 
+    h3-3e0b53: 'Los costos no incluyen:'
     ul-1:
       li-edaa99: Ropa, educación, y gastos de vacaciones
       li-40b84f: Tratamientos médicos, pagos del seguro médico, y medicamentos recetados
@@ -343,8 +331,6 @@
   modal-joint-return-mfj:
     heading: Declaración conjunta
     p-75997a: Puede elegir presentar una declaración con su cónyuge seleccionando <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
-    heading: 
-    p-75997a: 
   modal-joint-deceased-spouse:
     heading: Declaración conjunta con un cónyuge fallecido
     p-85e581: Si su cónyuge falleció durante el año <fg-show path="/taxYear"/>, puede elegir presentar una declaración con su cónyuge seleccionado <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
@@ -373,7 +359,7 @@
     heading: Confirmación
     p-30861e: Cambiar de <strong>Casado que presenta declaración conjunta</strong> a otro estado civil para la declaración de impuestos borrará los datos del hijo que haya ingresado previamente. ¿Desea continuar?
     button-70d9be: Confirmar
-    button-ea4788: Cancelar
+    button-ea4788: Cancel
   modal-claiming-dependents:
     heading: ¿A quién puedo reclamar como dependiente?
     p-fc792e: "Los dependientes típicamente son:"
@@ -393,470 +379,456 @@
   h2-40c7ae: Ingreso del trabajo
   fg-detail-c90011:
     summary: Sueldo, salario o propinas
-    /jobsIncomeTotal: 
+    /jobsIncomeTotal:
       question: Sueldo, salario o propinas en los que se retuvieron los impuestos federales sobre los ingresos
-      modalLink: 
+      modalLink:
   fg-detail-c0e18b:
     summary: Ingresos y gastos del trabajo por cuenta propia
-    /selfEmploymentGrossIncome: 
+    /selfEmploymentGrossIncome:
       question: Ingresos del trabajo por cuenta propia
-      modalLink: 
+      modalLink:
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
       question: Gastos del trabajo por cuenta propia que usted <span condition="/isFilingStatusMFJ" operator="isTrue"> y su cónyuge </span> en <fg-show path="/taxYear"/>.
-      hint: 
-      modalLink: 
+      hint:
+      modalLink:
   fg-detail-2fc9c0:
-    summary: Beneficios de la jubilación 
+    summary: Beneficios de la jubilación
     /disabilityRetirementBenefits:
       question: Beneficios de la jubilación por incapacidad antes de la edad mínima para jubilarse
-      modalLink: 
+      modalLink:
   fg-detail-cd8e26:
     summary: Ingreso devengado en el extranjero
     /non2555ForeignIncome:
       question: Ingreso devengado en el extranjero no declarados en el Formulario 2555
-      modalLink: 
+      modalLink:
   h3-20a2b1: Otros tipos de ingresos
   fg-detail-89425f:
     summary: Ingreso de inversiones
     /investmentIncomeTotal:
       question: Ingreso de inversiones
-      modalLink: 
+      modalLink:
   fg-detail-fbe1af:
     summary: Ingreso de pensiones
     /pensionsIncomeTotal:
-      question: Parte tributables de cualquier pensión
-      modalLink: 
-  fg-detail-2e467d:
-    summary: 
-    /preTaxRetirementAccountIncome:
-      question: 
-      hint: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-3fa626:
     summary: Seguro por desempleo
     /unemploymentIncome:
       question: Seguro por desempleo
-      modalLink: 
-  fg-detail-0fb46a: 
+      modalLink:
+  fg-detail-0fb46a:
     summary: Seguro Social o beneficios de la jubilación ferroviaria
     /socialSecurityIncome:
       question: Parte imponible del Seguro Social o beneficios de la jubilación ferroviaria
-      modalLink: 
+      modalLink:
   fg-detail-d994db:
     summary: Una beca o subvención que se debe contar como ingreso
     /taxableScholarship:
       question: Una beca o subvención que se debe contar como ingreso
-      modalLink: 
+      modalLink:
   fg-detail-50ec28:
     summary: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
     /inmatePay:
       question: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
-      modalLink: 
+      modalLink:
   fg-detail-7a5ac3:
     summary: Otros tipos de ingresos
     /nonSpecificOtherIncome:
       question: Otros tipos de ingresos
-      hint: 
-      modalLink: 
-  h2-9fa8b1: 
-  p-233dd3: 
-  p-624555: 
+      hint:
+      modalLink:
+  h2-9fa8b1:
+  p-233dd3:
+  p-624555:
   fg-detail-2c7735:
-    summary: 
+    summary:
     /studentLoanInterestAmount:
-      question: 
-      hint: 
-      modalLink: 
+      question:
+      hint:
+      modalLink:
   fg-detail-9166fe:
-    summary: 
+    summary:
     /educatorExpenses/:
-      question: 
-      hint: 
-      modalLink: 
+      question:
+      hint:
+      modalLink:
   fg-detail-57c26a:
-    summary: 
+    summary:
     /deductionForTraditionalIRAContribution:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-f9e99b:
-    summary: 
+    summary:
     /selfEmploymentRetirementPlanContributions:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-5c4fd4:
-    summary: 
+    summary:
     /selfEmploymentHealthInsuranceContributions:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-2c1033:
-    summary: 
+    summary:
     /hsaContributionAmount:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-e97d7b:
-    summary: 
+    summary:
     /alimonyPaid:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-913117:
-    summary: 
+    summary:
     /penaltyForEarlySavingsWithdrawal:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-6fad42:
-    summary: 
+    summary:
     /movingExpensesForArmedServicesMembers:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-c4f7d7:
-    summary: 
+    summary:
     /businessCreditsForEligible:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
   fg-detail-cf5b3c:
-    summary: 
+    summary:
     /otherAdjustments:
-      question: 
-  h3-a7b819: 
+      question:
+  h3-a7b819:
   fg-alert-334e2e:
-    heading: 
-    p-f3c23d: 
-    p-93a6b5: 
+    heading:
+    p-f3c23d:
+    p-93a6b5:
   modal-wages-salaries-tips:
-    heading: 
+    heading:
     h3-53ed11: Salarios, sueldos y propinas
-    p-40d79a: Su empleador declaró sus sueldos, salarios, propinas y otras compensaciones en la casilla 1 de su Formulario W-2. 
+    p-40d79a: Su empleador declaró sus sueldos, salarios, propinas y otras compensaciones en la casilla 1 de su Formulario W-2.
     p-ab967b: Incluya la cantidad total de las propinas y las horas extras en el cálculo de los ingresos por trabajo al determinar la elegibilidad para el crédito tributario por ingreso del trabajo, incluso si la totalidad o parte del crédito es deducible.
     p-cb2522: Incluya todos los montos declarados en <strong>la casilla 1</strong> de su Formulario W-2 para usted y su cónyuge si presentan una declaración de impuestos conjunta con su cónyuge.
-    p-1f7f24: <strong>No incluya<\strong> las aportaciones antes de los impuestos de su Formulario W-2 en la sección de aportaciones antes de los impuestos. 
+    p-1f7f24: <strong>No incluya</strong> las aportaciones antes de los impuestos de su Formulario W-2 en la sección de aportaciones antes de los impuestos.
     h3-af3590: Paga militar y por combate
     p-3fdb7d: También puede elegir incluir su paga por combate no tributable en el ingreso del trabajo para el crédito tributario por ingreso del trabajo (EITC). Su empleador declaró su paga por combate no tributable en <strong>la casilla 12</strong> con <strong>código Q</strong> en su Formulario W-2.
     p-d9b0e5: Esta elección puede aumentar o disminuir su crédito tributario por ingreso del trabajo (EITC por las siglas en inglés). Para obtener más información, visite la Paga por combate no tributable en <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000297672">la Publicación 596, Crédito por ingreso del trabajo (en inglés).<\a>
-    h3-84091c: Seguro por incapacidad temporal y de corto plazo 
+      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000297672">la Publicación 596, Crédito por ingreso del trabajo (en inglés).</a>
+    h3-84091c: Seguro por incapacidad temporal y de corto plazo
     p-bee3d8: Si tomó su licencia por maternidad o paternidad o estuvo incapacitado temporalmente durante el año y su empleador le pagó, declaró su ingreso en su Formulario W-2.Ingrese aquí ese monto.
   modal-work-no-taxes-withheld:
-    heading: 
-    p-7ca214: 
-    p-9048f5: 
-    p-8f1d83: 
+    heading:
+    p-7ca214:
+    p-9048f5:
+    p-8f1d83:
     ul-0:
-      li-014f6e: 
-      li-816827: 
-      li-ac1297: 
-      li-743818: 
-    p-ccdadf: 
-    p-5465af: 
+      li-014f6e:
+      li-816827:
+      li-ac1297:
+      li-743818:
+    p-ccdadf:
+    p-5465af:
   modal-self-employment-gross-income:
-    heading: 
-    p-3ef7b9: 
+    heading:
+    p-3ef7b9:
     ul-0:
-      li-0d8073: 
-      li-f5836c: 
-      li-d6da48: 
-      li-604ec3: 
-      li-de3005: 
-    p-ccdadf: 
-    p-a21d1b: 
+      li-0d8073:
+      li-f5836c:
+      li-d6da48:
+      li-604ec3:
+      li-de3005:
+    p-ccdadf:
+    p-a21d1b:
   modal-disability-retirement:
-    heading: 
-    p-514b79: 
-    p-e7df54: 
+    heading:
+    p-514b79:
+    p-e7df54:
   modal-inmate-pay:
-    heading: 
-    p-0ced8d: 
-    p-435d89: 
-    p-1dc488: 
+    heading:
+    p-0ced8d:
+    p-435d89:
+    p-1dc488:
   modal-foreign-income-non2555:
-    heading: 
-    p-6821fc: 
-    p-86d28e: 
-    p-231cd1: 
-    p-87f12e: 
-    p-90826b: 
+    heading:
+    p-6821fc:
+    p-86d28e:
+    p-231cd1:
+    p-87f12e:
+    p-90826b:
   modal-taxable-pension:
-    heading: 
-    p-a523b6: 
-    p-ce034e: 
+    heading:
+    p-a523b6:
+    p-ce034e:
     ul-0:
-      li-21fe33: 
-      li-c4c784: 
-      li-a75167: 
-    p-63555f: 
+      li-21fe33:
+      li-c4c784:
+      li-a75167:
+    p-63555f:
     ul-1:
-      li-6d40a9: 
-    p-24ecdd: 
+      li-6d40a9:
+    p-24ecdd:
   modal-unemployment-compensation:
-    heading: 
-    p-ec0a26: 
-    p-97117c: 
+    heading:
+    p-ec0a26:
+    p-97117c:
   modal-social-security:
-    heading: 
-    p-f2d061: 
-    p-e8b50a: 
-    p-2b31f6: 
+    heading:
+    p-f2d061:
+    p-e8b50a:
+    p-2b31f6:
   modal-scholarship-grants:
-    heading: 
-    p-0e0c43: 
-    p-ce8e34: 
+    heading:
+    p-0e0c43:
+    p-ce8e34:
     ul-0:
-      li-13d8db: 
-      li-b94d4b: 
-    p-adf913: 
+      li-13d8db:
+      li-b94d4b:
+    p-adf913:
     p-0c59d8:
   fg-alert-64891c:
     heading:
     p-cdf53e:
     p-93a6b5:
   fg-alert-8b7db9:
-    heading: 
-    p-3abe5f: 
-    p-93a6b5: 
-    p-d04ce1: 
-    p-241cb8: 
+    heading:
+    p-3abe5f:
+    p-93a6b5:
+    p-d04ce1:
+    p-241cb8:
     ul-0:
-      li-12d3b7: 
-      li-0a9a83: 
-      li-e74f5d: 
-      li-e42b99: 
-      li-7c0731: 
-    p-9c482c: 
+      li-12d3b7:
+      li-0a9a83:
+      li-e74f5d:
+      li-e42b99:
+      li-7c0731:
+    p-9c482c:
   modal-self-employment-deductions:
-    heading: 
-    p-4838ea: 
-    p-f24032: 
+    heading:
+    p-4838ea:
+    p-f24032:
     ul-0:
-      li-6a4179: 
-      li-e2f63f: 
-      li-7f4118: 
-      li-9f53a8: 
-      li-eaff1b: 
-      li-6c49ac: 
-      li-761662: 
-      li-719fec: 
-      li-849c98: 
-    p-9ff7b2: 
-    p-0651e4: 
-    p-a81df3: 
-    p-4ca1ce: 
-  modal-what-counts-pre-tax-retirement:
-    heading: 
-    p-819116: 
-    p-b344e9: 
-    p-c08338: 
-    ul-0:
-      li-20ffee: 
-      li-269cf7: 
+      li-6a4179:
+      li-e2f63f:
+      li-7f4118:
+      li-9f53a8:
+      li-eaff1b:
+      li-6c49ac:
+      li-761662:
+      li-719fec:
+      li-849c98:
+    p-9ff7b2:
+    p-0651e4:
+    p-a81df3:
+    p-4ca1ce:
   modal-estimate-interest-income-en:
-    heading: 
-    p-cda131: 
-    p-bc395c: 
-    p-ec3579: 
+    heading:
+    p-cda131:
+    p-bc395c:
+    p-ec3579:
     ul-0:
-      li-7b5662: 
+      li-7b5662:
   modal-investment-income:
-    heading: 
-    p-b07c20: 
+    heading:
+    p-b07c20:
     ul-0:
-      li-12d3b7: 
-      li-0a9a83: 
-      li-81f254: 
-      li-498151: 
-      li-7c0731: 
-    p-4c8f5e: 
-    p-df5956: 
+      li-12d3b7:
+      li-0a9a83:
+      li-81f254:
+      li-498151:
+      li-7c0731:
+    p-4c8f5e:
+    p-df5956:
     ul-1:
-      li-0f3c1b: 
-      li-782dae: 
-      li-e0ebc1: 
-      li-a00ee1: 
-      li-143cd9: 
+      li-0f3c1b:
+      li-782dae:
+      li-e0ebc1:
+      li-a00ee1:
+      li-143cd9:
   modal-other-taxable-income:
-    heading: 
-    p-ba0ae2: 
+    heading:
+    p-ba0ae2:
     ul-0:
-      li-83fa6a: 
-      li-7ae32a: 
-      li-248c6a: 
-      li-6dac33: 
-      li-13b588: 
-      li-ad5cc5: 
-      li-ece5cb: 
-      li-0f1015: 
-      li-7e9756: 
-      li-737e99: 
-      li-e833f1: 
-    p-fda53f: 
+      li-83fa6a:
+      li-7ae32a:
+      li-248c6a:
+      li-6dac33:
+      li-13b588:
+      li-ad5cc5:
+      li-ece5cb:
+      li-0f1015:
+      li-7e9756:
+      li-737e99:
+      li-e833f1:
+    p-fda53f:
     ul-1:
-      li-0eb181: 
-      li-e46f68: 
-      li-b144cb: 
-      li-63523b: 
-      li-a8d386: 
-      li-f2a3d6: 
-      li-080a95: 
-      li-57e5cb: 
-      li-764dd4: 
-      li-6f920a: 
-    p-745735: 
+      li-0eb181:
+      li-e46f68:
+      li-b144cb:
+      li-63523b:
+      li-a8d386:
+      li-f2a3d6:
+      li-080a95:
+      li-57e5cb:
+      li-764dd4:
+      li-6f920a:
+    p-745735:
   modal-what-are-adjustments:
-    heading: 
-    p-d8344a: 
+    heading:
+    p-d8344a:
   modal-student-loan-interest:
-    heading: 
-    p-3ac7ce: 
-    p-e4b825: 
+    heading:
+    p-3ac7ce:
+    p-e4b825:
     ul-0:
-      li-bb1c73: 
-      li-829f26: 
-      li-562ff0: 
-    p-75f422: 
-    p-1f2dd3: 
+      li-bb1c73:
+      li-829f26:
+      li-562ff0:
+    p-75f422:
+    p-1f2dd3:
   modal-educator-expenses:
-    heading: 
-    p-e117c8: 
+    heading:
+    p-e117c8:
     ul-0:
-      li-8829c6: 
-      li-751127: 
-      li-0c78ca: 
-      li-6ef6c8: 
-      li-6d4170: 
-    p-86c6e4: 
+      li-8829c6:
+      li-751127:
+      li-0c78ca:
+      li-6ef6c8:
+      li-6d4170:
+    p-86c6e4:
   modal-ira-contributions:
-    heading: 
-    p-5979d5: 
-    p-a49375: 
+    heading:
+    p-5979d5:
+    p-a49375:
   modal-self-employed-retirement:
-    heading: 
-    p-ca0a8f: 
-    p-0d133f: 
+    heading:
+    p-ca0a8f:
+    p-0d133f:
     ul-0:
-      li-6c246a: 
-      li-a2595a: 
-      li-f6cddf: 
-    p-3622b4: 
+      li-6c246a:
+      li-a2595a:
+      li-f6cddf:
+    p-3622b4:
     ul-1:
-      li-ff93fe: 
-      li-200ab4: 
-      li-e7dbe4: 
-      li-765afa: 
-    p-af5a4a: 
-    p-add56c: 
-    p-3248f2: 
+      li-ff93fe:
+      li-200ab4:
+      li-e7dbe4:
+      li-765afa:
+    p-af5a4a:
+    p-add56c:
+    p-3248f2:
   modal-hsa-deductions:
-    heading: 
-    p-2ab752: 
-    p-a7d9fc: 
+    heading:
+    p-2ab752:
+    p-a7d9fc:
   modal-alimony-paid:
-    heading: 
-    p-fa1de9: 
-    p-7b97e1: 
-    p-7948e4: 
-    p-358bc5: 
-    p-06a405: 
-    p-4b335c: 
+    heading:
+    p-fa1de9:
+    p-7b97e1:
+    p-7948e4:
+    p-358bc5:
+    p-06a405:
+    p-4b335c:
   modal-early-withdrawal:
-    heading: 
-    p-7e8d5b: 
+    heading:
+    p-7e8d5b:
   modal-moving-expenses:
-    heading: 
-    p-6f18fd: 
+    heading:
+    p-6f18fd:
     ul-0:
-      li-60efa3: 
-      li-efbbb1: 
-    p-6536cb: 
+      li-60efa3:
+      li-efbbb1:
+    p-6536cb:
   modal-employee-business-expenses:
-    heading: 
-    p-c92011: 
+    heading:
+    p-c92011:
     ul-0:
-      li-9bde67: 
-      li-053ac1: 
-      li-e03b09: 
-      li-0d1488: 
-    p-cc9b68: 
-    p-d46373: 
-    p-eb68a5: 
+      li-9bde67:
+      li-053ac1:
+      li-e03b09:
+      li-0d1488:
+    p-cc9b68:
+    p-d46373:
+    p-eb68a5:
   modal-self-employed-health-insurance:
-    heading: 
-    p-598073: 
-    p-d60394: 
-    p-13dece: 
+    heading:
+    p-598073:
+    p-d60394:
+    p-13dece:
 /qualifying-children:
-  title: 
-  h2-dbaf54: 
-  p-9b177d: 
-  p-c1a0dd: 
-  p-3178be: 
-  p-e28c1e: 
-  p-adf161: 
+  title:
+  h2-dbaf54:
+  p-9b177d:
+  p-c1a0dd:
+  p-3178be:
+  p-e28c1e:
+  p-adf161:
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     fg-alert-b7d816:
-      heading: 
-      p-7666ea: 
+      heading:
+      p-7666ea:
     /familyAndHousehold/*/someoneElseCanClaim:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/marriedFilingJointly:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/mfjForRefundOnly:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/relationship:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
       options:
         childStepFoster:
-          name: 
+          name:
         sibling:
-          name: 
+          name:
         descendant:
-          name: 
+          name:
         none:
-          name: 
+          name:
     /familyAndHousehold/*/ageRange:
-      question: 
+      question:
       options:
         under19:
-          name: 
+          name:
         between19And23:
-          name: 
+          name:
         over24:
-          name: 
+          name:
     /familyAndHousehold/*/isFullTimeStudent:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     /familyAndHousehold/*/validSSN:
-      question: 
-      modalLink: 
+      question:
+      modalLink:
     fg-alert-a004cd:
-      heading: 
-      p-8374d8: 
-    h2-eaf308: 
-  p-5aea65: 
+      heading:
+      p-8374d8:
+    h2-eaf308:
+  p-5aea65:
   fg-alert-9510e7:
-    heading: 
-    p-b6bd9e: 
-    p-93a6b5: 
+    heading:
+    p-b6bd9e:
+    p-93a6b5:
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  h2-34370a: 
+    heading:
+    p-cdf53e:
+    p-93a6b5:
+  h2-34370a:
   modal-residency:
-    heading: 
+    heading:
     h3-7c913b:
     p-ff8f12:
     h3-46d8f4:
@@ -872,107 +844,107 @@
       li-de99d6:
     p-8b99ed:
   modal-joint-return:
-    heading: 
-    p-9b8921: 
-    p-bdfc89: 
+    heading:
+    p-9b8921:
+    p-bdfc89:
   modal-joint-return-with-another-person-exception:
-    heading: 
-    p-93a25e: 
-    p-bdfc89: 
+    heading:
+    p-93a25e:
+    p-bdfc89:
   modal-disabled:
-    heading: 
-    p-a09e23: 
+    heading:
+    p-a09e23:
     ul-0:
-      li-35e112: 
-      li-f9618f: 
-    p-de127e: 
+      li-35e112:
+      li-f9618f:
+    p-de127e:
   modal-relationship:
-    heading: 
-    h3-523a2e: 
-    p-3a1769: 
-    h3-3cc097: 
-    p-165b15: 
-    h3-872822: 
-    p-d91342: 
-    h3-2fd110: 
-    p-b80621: 
+    heading:
+    h3-523a2e:
+    p-3a1769:
+    h3-3cc097:
+    p-165b15:
+    h3-872822:
+    p-d91342:
+    h3-2fd110:
+    p-b80621:
   modal-student:
-    heading: 
-    h3-f803ae: 
-    p-ef6d3a: 
-    p-69b838: 
-    h3-754ddf: 
-    p-dfaecc: 
+    heading:
+    h3-f803ae:
+    p-ef6d3a:
+    p-69b838:
+    h3-754ddf:
+    p-dfaecc:
     ul-0:
-      li-5f78b0: 
-      li-f8aab3: 
-      li-39d2fa: 
-      li-96892f: 
-    p-986cc5: 
+      li-5f78b0:
+      li-f8aab3:
+      li-39d2fa:
+      li-96892f:
+    p-986cc5:
     ul-1:
-      li-775eb9: 
-      li-b2e8f2: 
-      li-767c35: 
-    p-81198a: 
+      li-775eb9:
+      li-b2e8f2:
+      li-767c35:
+    p-81198a:
   modal-valid-ssn-qc:
-    heading: 
-    p-d68f7a: 
-    p-0464ad: 
-    p-a708ff: 
-    p-558a40: 
+    heading:
+    p-d68f7a:
+    p-0464ad:
+    p-a708ff:
+    p-558a40:
     ul-0:
-      li-5e5f3e: 
-      li-5fc9b7: 
-      li-19d3d7: 
+      li-5e5f3e:
+      li-5fc9b7:
+      li-19d3d7:
   modal-claimed-someone-else:
-    heading: 
-    p-9b277e: 
-    p-911aff: 
+    heading:
+    p-9b277e:
+    p-911aff:
   modal-age-comparison:
-    heading: 
-    p-626c78: 
-    p-1a035f: 
+    heading:
+    p-626c78:
+    p-1a035f:
 /results:
-  title: 
+  title:
   h2-88e7ef:
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  p-578b13: 
-  p-adf6bb: 
-  h2-259962: 
-  p-508e29: 
-  h3-54f664: 
-  p-a5939a: 
-  p-3ef53a: 
-  h3-792a4e: 
-  p-787398: 
-  p-25a83e: 
-  h3-c7457b: 
-  p-b8834f: 
-  h2-a3da4a: 
-  p-5a6eac: 
+    heading:
+    p-cdf53e:
+    p-93a6b5:
+  p-578b13:
+  p-adf6bb:
+  h2-259962:
+  p-508e29:
+  h3-54f664:
+  p-a5939a:
+  p-3ef53a:
+  h3-792a4e:
+  p-787398:
+  p-25a83e:
+  h3-c7457b:
+  p-b8834f:
+  h2-a3da4a:
+  p-5a6eac:
   table-0:
     tbody-0:
       tr-0:
-        th-537c66: 
-        td-0da7c7: 
-        td-fba314: 
+        th-537c66:
+        td-0da7c7:
+        td-fba314:
       tr-1:
-        th-c01d87: 
-        td-86d753: 
-        td-7a1efb: 
+        th-c01d87:
+        td-86d753:
+        td-7a1efb:
       tr-2:
-        th-b1d475: 
-        td-5637e9: 
-        td-1c1ab4: 
+        th-b1d475:
+        td-5637e9:
+        td-1c1ab4:
       tr-3:
-        th-40c7ae: 
-        td-d604bc: 
-        td-387fc0: 
+        th-40c7ae:
+        td-d604bc:
+        td-387fc0:
       tr-4:
-        th-dbaf54: 
-        td-4ea2d8: 
-        td-9efa8d: 
-  p-35b0d2: 
+        th-dbaf54:
+        td-4ea2d8:
+        td-9efa8d:
+  p-35b0d2: |-
