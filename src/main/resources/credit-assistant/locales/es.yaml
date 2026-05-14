@@ -3,16 +3,16 @@ components:
     required: (Requerido)
   fg-collection:
     buttons:
-      remove: "Placeholder {0}"
-      add: "Placeholder {0}"
-      add-with-determiner: "Placeholder {1} {0}"
+      remove: "Quitar {0}"
+      add: "Añadir {0}"
+      add-with-determiner: "Añadir {1} {0}"
     remove-item-modal:
       heading:
-        remove: "Placeholder {0}?"
-      body: "Placeholder {0}."
+        remove: "Quitar {0}?"
+      body: "¿Está seguro de que desea eliminar a este {0} del cálculo del EITC?"
       footer:
-        confirm: "Placeholder {0}"
-        cancel: "Placeholder {0}"
+        confirm: "Confirmar {0}"
+        cancel: "Cancelar {0}"
     determiners:
       another:
       more:
@@ -79,7 +79,7 @@ buttons:
 
 alerts:
   warning:
-    complete-required:
+    complete-required: Por favor, responda las preguntas obligatorias.
 
 step-indicator:
   completed:
@@ -115,7 +115,7 @@ errors:
   BlankEnum:
   InvalidEnum:
 
-  Required:
+  Required: 'Se necesita la respuesta a la pregunta para continuar'
   Default:
 
   # Limit errors
