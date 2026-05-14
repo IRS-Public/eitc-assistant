@@ -270,7 +270,6 @@
 
         <h3>Temporary &amp; Short-term Disability Insurance</h3>
         <p>If you took parental leave or were temporarily disabled during the year and your employer paid you, they reported your income on your W-2. Enter that income here.</p>
-        <p>Include temporary or short-term disability in your wages.</p>
       </modal-content>
     </modal-dialog>
 
@@ -509,19 +508,37 @@
           </modal-content>
       </modal-dialog>
     <modal-dialog id="modal-other-taxable-income">
-      <modal-heading>Other Taxable Income</modal-heading>
+      <modal-heading>Other types of income</modal-heading>
       <modal-content>
-        <p>Add any other taxable income that you <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse</span> received in <fg-show path="/taxYear"/>, including:</p>
+        <p>'<strong>Other types of income include</strong></p>:'
         <ul>
-          <li>Taxable scholarships</li>
-          <li>Winnings from gambling</li>
-          <li>Alimony from pre-2019 divorce decrees</li>
-          <li>Court awards and damages (unless they were for physical injury or sickness)</li>
-          <li>Fees for services you provided</li>
+          <li>Individual Retirement Account (IRA) distributions (except qualified distributions from Roth IRAs) Trust and 401k distributions</li>
+          <li>Capital losses (not gains)</li>
+          <li>Alimony payments you received under a divorce or separation agreement executed before 2020</li>
+          <li>Rental real estate, royalties, partnerships, S corporations, trusts, etc.</li>
+          <li>Income from rental of personal property if you engaged in the rental for profit but were not in the business of renting such property</li>
+          <li>Taxable distributions from a Coverdell education savings account (ESA) and qualified tuition program earnings.</li>
+          <li>Qualified tuition program earnings</li>
+          <li>Prizes, awards, and gambling winnings</li>
+          <li>Jury duty fees</li>
+          <li>Alaska Permanent Fund dividends</li>
+          <li>Reimbursements or other amounts received for items deducted in an earlier year, such as medical expenses, real estate taxes, or home mortgage interest</li>
         </ul>
-        <p>
-          <a target="_blank" href="https://www.irs.gov/filing/taxable-income" class="usa-link usa-link--external">Learn more about other taxable income.<span class="usa-sr-only"> (opens in a new tab)</span></a>
-        </p>
+        <p>'<strong>Do not include:,</strong>'</p>
+        <ul>
+          <li>Alimony payments you received under a divorce or separation agreement entered into after 2019</li>
+          <li>Child support</li>
+          <li>Welfare benefits such as Temporary Assistance for Needy Families (TANF), food stamps, section 8 housing allowance</li>
+          <li>Nontaxable foster care payments</li>
+          <li>Nontaxable employee benefits such as education assistance</li>
+          <li>Veterans' benefits, including VA rehabilitation payments</li>
+          <li>Workman's compensation</li>
+          <li>Life insurance proceeds received because of a person's death</li>
+          <li>Money or property that was inherited, willed to you, or received as a gift</li>
+          <li>Unemployment benefits</li>
+        </ul>
+      <p>See <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-525">Publication 525, Taxable and Nontaxable Income</a></p>
       </modal-content>
     </modal-dialog>
   <modal-dialog id="modal-what-are-adjustments">
