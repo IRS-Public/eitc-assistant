@@ -794,156 +794,159 @@
       información de elegibilidad (en inglés)<span class="usa-sr-only"> (opens in a
       new tab)</span></a>.
 /qualifying-children:
-  title:
-  h2-dbaf54:
-  p-9b177d:
-  p-c1a0dd:
-  p-3178be:
-  p-e28c1e:
-  p-adf161:
+  title: Hijos que reúnen los requisitos
+  h2-dbaf54: Hijos que reúnen los requisitos
+  p-9b177d: Según sus respuestas anteriores, no tiene ningún hijo calificado. Si esto no es así, vuelva a <a class="usa-link" href="/app/eitc/es/filing-status/">Estado civil para los efectos de la declaración</a> y cambie sus respuestas. 
+  p-c1a0dd: Vaya al siguiente paso para ver los resultados.
+  p-3178be: En este paso, veremos cuántos de sus hijos u otros familiares son sus hijos calificados a efectos de solicitar y calcular el EITC.
+  p-e28c1e: Puede solicitar el EITC para un máximo de tres hijos calificados.
+  p-adf161: Para solicitar el crédito tributario por ingresos del trabajo, debe tener un hijo calificado.
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question:
-      modalLink:
+      question: ¿Este menor ha vivido con usted más de la mitad de <fg-show path="/taxYear"/> en los Estados Unidos?
+      modalLink: <modal-link for="modal-residency">¿Qué significa "vivir contigo"?</modal-link>
     fg-alert-b7d816:
-      heading:
-      p-7666ea:
+      heading: El menor no califica para el crédito tributario por ingreso del trabajo (EITC)
+      p-7666ea: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo</a>.
     /familyAndHousehold/*/someoneElseCanClaim:
-      question:
-      modalLink:
+      question: ¿Alguien más puede reclamar a este hijo para recibir el crédito tributario por ingreso del trabajo (EITC)?
+      modalLink: <modal-link for="modal-claimed-someone-else">¿Qué ocurre si más de una persona puede reclamarlos?</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question:
-      modalLink:
+      question: Es posible que no pueda reclamar a un hijo para el crédito tributario por ingreso del trabajo (EITC) si ciertas personas elegibles también lo reclaman. ¿Aún desea reclamar a este hijo?
+      modalLink: <modal-link for="modal-claimed-someone-else">¿Qué ocurre si más de una persona puede reclamarlos?</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
-      question:
-      modalLink:
+      question: ¿Este hijo está casado y presentará una declaración conjunta con su cónyuge para el año <fg-show path="/taxYear"/>?
+      modalLink: <modal-link for="modal-joint-return">¿Puedo reclamar como dependiente a alguien que presenta una declaración conjunta?</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
-      question:
-      modalLink:
+      question: ¿Este hijo presenta una declaración conjunta para el año <fg-show path="/taxYear"/> solo para reclamar un reembolso de impuestos retenidos o impuestos estimados pagados y no reclamará ningún crédito tributario como el crédito tributario por ingreso del trabajo (EITC)?
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">¿Cuándo puede reclamar a alguien que presenta una declaración conjunta?</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question:
-      modalLink:
+      question: ¿Este hijo está incapacitado permanente y totalmente?
+      modalLink: <modal-link for="modal-disabled">¿Qué se considera incapacidad permanente y total?</modal-link>
     /familyAndHousehold/*/relationship:
-      question:
-      modalLink:
+      question: 'Seleccione el parentesco de este hijo con usted:'
+      modalLink: <modal-link for="modal-relationship">¿Quién se considera hijastro, hijo adoptivo o hijo de crianza?</modal-link>
       options:
         childStepFoster:
-          name:
+          name: Hijo, hija, hijastro, hijastra, hijo adoptivo, hija adoptiva o hijo o hija de crianza
         sibling:
-          name:
+          name: Hermano, hermana, medio hermano, media hermana o hermanastro o hermanastra
         descendant:
-          name:
+          name: Nieto, nieta, sobrina o sorbino
         none:
-          name:
+          name: Ninguna de las opciones anteriores
     /familyAndHousehold/*/ageRange:
-      question:
+      question: ¿Cuántos años tenía este hijo al final del año <fg-show path="/taxYear"/>?
       options:
         under19:
-          name:
+          name: 18 años o menos
         between19And23:
-          name:
+          name: Entre 19 y 23 años
         over24:
-          name:
+          name: 24 años o más
     /familyAndHousehold/*/isFullTimeStudent:
-      question:
-      modalLink:
+      question: ¿Este hijo fue un estudiante a tiempo completo durante alguna parte de cualquier período de 5 meses durante el año tributario?
+      modalLink: <modal-link for="modal-student">¿Cómo puedo saber si esta persona es estudiante a tiempo completo?</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question:
-      modalLink:
+      question: ¿Esta persona dependiente es más joven que <span condition="/isFilingStatusMFJ"
+        operator="isFalse">usted?</span><span condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge?</span>?
+      modalLink: <modal-link for="modal-age-comparison">¿Por qué preguntamos si son más jóvenes que <span condition="/isFilingStatusMFJ" operator="isFalse">usted?</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge?</span></modal-link>
     /familyAndHousehold/*/validSSN:
-      question:
-      modalLink:
+      question: ¿Este hijo tiene un seguro social válido emitido en la fecha de vencimiento de la declaración o antes de esta (incluidas las prórrogas)?
+      modalLink: <modal-link for="modal-valid-ssn-qc">¿Qué se considera un número de Seguro Social válido?</modal-link>
     fg-alert-a004cd:
-      heading:
-      p-8374d8:
-    h2-eaf308:
-  p-5aea65:
+      heading: Tenga en cuenta
+      p-8374d8: Este hijo es un hijo que califica. Pero, como no tiene un número de seguro social válido, este hijo no lo hace elegible para un aumento en el crédito por ingreso del trabajo.
+    h2-eaf308: Este menor califica para solicitar y calcular el EITC.
+  p-5aea65: Según sus datos, tiene <fg-show path="/eitcQualifyingChildren"/> hijos calificados con números de Seguro Social válidos. Puede solicitar el EITC para un máximo de tres hijos calificados.
   fg-alert-9510e7:
-    heading:
-    p-b6bd9e:
-    p-93a6b5:
+    heading: Debes tener un hijo calificado 
+    p-b6bd9e: Usted no califica para el EITC si no tiene un hijo calificado a menos que usted, o su cónyuge si presentan una declaración conjunta, tengan entre 25 y 64 años.
+    p-93a6b5: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo</a>.
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  h2-34370a:
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-cdf53e: Según los montos que ingresó, no puede reclamar el crédito por ingreso del trabajo porque sus ingresos del trabajo superan el límite para su estado civil para los efectos de la declaración y el número de hijos que reúnen los requisitos.
+    p-93a6b5: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo</a>.
+  h2-34370a: Según sus datos, tiene <fg-show path="/eitcQualifyingChildren"/> hijos calificados con números de Seguro Social válidos. 
   modal-residency:
-    heading:
-    h3-7c913b:
-    p-ff8f12:
-    h3-46d8f4:
-    p-e27b79:
-    h3-16617c:
-    p-c623b2:
-    h3-6839b6:
-    p-658cca:
+    heading: ¿Qué significa "Vivir contigo"?
+    h3-7c913b: Vivió con usted
+    p-ff8f12: Un hijo calificado debe tener el mismo hogar principal que usted durante más de la mitad de <fg-show path="/taxYear"/> y ese hogar debe ser en los Estados Unidos. Estados Unidos incluye los 50 estados y el Distrito de Columbia. No incluye Puerto Rico ni territorios de Estados Unidos como Guam. En cuanto al crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), el IRS considera que el personal militar estadounidense destinado fuera de los Estados Unidos en servicio activo prolongado tiene un hogar principal en los Estados Unidos durante ese período de servicio.
+    h3-46d8f4: Nacimiento o fallecimiento de un hijo
+    p-e27b79: Si el hijo nació o falleció en el año <fg-show path="/taxYear"/>, debe haber vivido con usted por más de la mitad del año en que estuvo vivo.
+    h3-16617c: Hijos adoptados o de crianza
+    p-c623b2: Si usted adoptó a un hijo en el <fg-show path="/taxYear"/>, el hijo fue puesto bajo su custodia legalmente para que usted luego lo adoptara en el <fg-show path="/taxYear"/>, o si el hijo fue hijo de crianza elegible puesto bajo su custodia durante el <fg-show path="/taxYear"/>, su vivienda principal tiene que haber sido la vivienda principal del hijo durante más de la mitad del tiempo a partir del momento en que fue adoptado o puesto bajo su custodia en el <fg-show path="/taxYear"/>.
+    h3-6839b6: Ausencia temporal
+    p-658cca: 'Para el Crédito tributario por ingreso del trabajo, una ausencia temporal cuenta como tiempo vivido con usted. Algunos ejemplos son:'
     ul-0:
-      li-76cf60:
-      li-1b3986:
-      li-dae417:
-      li-de99d6:
-    p-8b99ed:
+      li-76cf60: Enfermedad y hospitalización
+      li-1b3986: Asistencia a la escuela, vaciones, negocio o servicio militar
+      li-dae417: Detención en una institución penitenciaria para jóvenes
+      li-de99d6: Hijo secuestrado
+    p-8b99ed: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de la residencia</a>.
   modal-joint-return:
-    heading:
-    p-9b8921:
-    p-bdfc89:
+    heading: Declaración conjunta con otra persona
+    p-9b8921: Por lo general, no se puede reclamar a una persona casada como un hijo calificado para el Crédito tributario por ingreso del trabajo si él o ella presenta una declaración conjunta.
+    p-bdfc89: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de la declaración conjunta</a>.
   modal-joint-return-with-another-person-exception:
-    heading:
-    p-93a25e:
-    p-bdfc89:
+    heading: Excepción de la declaración conjunta con otra persona
+    p-93a25e: Puede reclamar a una persona casada que presenta una declaración conjunta como un hijo calificado para el Crédito tributario por ingreso del trabajo si el hijo y el cónyuge presentan la declaración conjunta solo para solicitar un reembolso del impuesto sobre el ingreso retenido de su paga o los impuestos estimados que pagaron. No pueden reclamar ningún crédito como el Crédito tributario por ingreso del trabajo en su declaración.
+    p-bdfc89: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de la declaración conjunta</a>.
   modal-disabled:
-    heading:
-    p-a09e23:
+    heading: Incapacitado permanente y totalmente
+    p-a09e23: 'Para el Crédito tributario por ingreso del trabajo, se considera que un hijo tiene una incapacidad permanente y total si las siguientes dos condiciones son verdaderas:'
     ul-0:
-      li-35e112:
-      li-f9618f:
-    p-de127e:
+      li-35e112: El hijo no puede realizar tareas significativas durante un período de tiempo razonable mientras trabaja por una paga o ganancia en una situación laboral competitiva por, al menos, el sueldo mínimo debido a una enfermedad física o mental, y
+      li-f9618f: Un médico determina que la enfermedad ha durado o puede durar de forma continuada durante al menos un año o que puede causar la muerte
+    p-de127e: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Permanente y totalmente incapacitado.</a>
   modal-relationship:
-    heading:
-    h3-523a2e:
-    p-3a1769:
-    h3-3cc097:
-    p-165b15:
-    h3-872822:
-    p-d91342:
-    h3-2fd110:
-    p-b80621:
+    heading: Hijastros, hijos adoptivos y hijos de crianza
+    h3-523a2e: Hijastro
+    p-3a1769: El parentesco de familias ensambladas se forma producto de un matrimonio. Para el Crédito tributario por ingreso del trabajo, un parentesco producto.
+    h3-3cc097: Hijo adoptivo
+    p-165b15: Un hijo adoptado siempre es considerado como hijo propio. Este término incluye a un hijo que ha sido colocado legalmente con usted para su adopción legal.
+    h3-872822: Hijo de crianza
+    p-d91342: Puede reclamar a un hijo de crianza solo si el niño fue colocado con usted por una agencia de colocación autorizada o por orden judicial.
+    h3-2fd110: Agencia de adoptciones autorizada
+    p-b80621: Este término incluye una agencia gubernamental estatal o local o un gobierno de tribus indígenas. También incluye a una organización libre de impuestos autorizada por un estado o un gobierno de tribus indígenas.
   modal-student:
-    heading:
-    h3-f803ae:
-    p-ef6d3a:
-    p-69b838:
-    h3-754ddf:
-    p-dfaecc:
+    heading: Definición de "estudiante a tiempo completo"
+    h3-f803ae: Estudiante a tiempo completo
+    p-ef6d3a: Para ser considerado a tiempo completo, el estudiante debe haberse inscripto en la cantidad de horas o cursos que la escuela considera como asistencia a tiempo completo.
+    p-69b838: Los estudiantes que tienen empleos de "co-op" en empresas privadas como parte de un curso regular de formación presencial y práctica se consideran estudiantes a tiempo completo.
+    h3-754ddf: Definición de escuela
+    p-dfaecc: 'Para el EITC, una escuela es:'
     ul-0:
-      li-5f78b0:
-      li-f8aab3:
-      li-39d2fa:
-      li-96892f:
-    p-986cc5:
+      li-5f78b0: Escuela primaria
+      li-f8aab3: Escuela media o secundaria
+      li-39d2fa: Instituto superior o universidad
+      li-96892f: Escuela técnica, de oficios o mecánica
+    p-986cc5: 'Una escuela no es:'
     ul-1:
-      li-775eb9:
-      li-b2e8f2:
-      li-767c35:
-    p-81198a:
+      li-775eb9: Curso de capacitación en el trabajo
+      li-b2e8f2: Educación a distancia
+      li-767c35: Escuela que ofrece cursos solo a través de Internet
+    p-81198a: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Definición de estudiante y definición de escuela.</a>.
   modal-valid-ssn-qc:
-    heading:
-    p-d68f7a:
-    p-0464ad:
-    p-a708ff:
-    p-558a40:
+    heading: Número de seguro social válido para el hijo que reúne los requisitos
+    p-d68f7a: El monto de su crédito tributario por ingreso del trabajo depende del número de hijos que reúnen los requisitos que usted tiene con un número de seguro social válido. Cada hijo o pariente que usted reclame a los efectos de calcular el monto del crédito tributario por ingreso del trabajo debe tener un número de seguro social (SNN) válido que la Administración de Seguro Social haya emitido en la fecha de vencimiento de la declaración de impuestos o antes (incluidas las prórrogas).
+    p-0464ad: Para el crédito tributario por ingreso del trabajo, un SSN es un SSN válido a menos que tenga impreso el texto "No válido para un empleo" en la tarjeta de seguro social y que se haya emitido el número únicamente para permitir al beneficiario del SSN solicitar o recibir un beneficio financiado con fondos federales. Un ejemplo de un beneficio financiado con fondos federales es Medicaid.
+    p-a708ff: Aceptamos una Tarjeta de Seguro Social que tenga impreso el texto "Válido para trabajar con la autorización del DHS" siempre y cuando la autorización del DHS sea válida.
+    p-558a40: 'Para los propósitos del EITC, no aceptamos:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-19d3d7:
+      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN por sus siglas en inglés)
+      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN por sus siglas en inglés)
+      li-19d3d7: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
   modal-claimed-someone-else:
-    heading:
-    p-9b277e:
-    p-911aff:
+    heading: Reclamado en la declaración de impuestos de alguien más
+    p-9b277e: Solo una persona puede reclamar a cada hijo para el Crédito tributario por ingreso del trabajo.
+    p-911aff: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Solo una persona puede utilizar a su hijo calificado</a>.
   modal-age-comparison:
-    heading:
-    p-626c78:
-    p-1a035f:
+    heading: El hijo tiene que ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>
+    p-626c78: Para ser un hijo calificado, el niño debe ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>, a menos que tenga una discapacidad permanente y total en cualquier momento del año <fg-show path="/taxYear"/>.
+    p-1a035f: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de edad</a>.
 /results:
   title:
   h2-88e7ef:
