@@ -13,10 +13,12 @@ private def translatedFlowContentPath(languageCode: String) =
 case class Locale(languageCode: String) {
   private val localeFilePath = s"credit-assistant/locales/${languageCode}.yaml"
   private val localeFile = Source.fromResource(localeFilePath)
-  private val mainContent = yaml.scalayaml.Parser
-    .parse(localeFile.reader())
-    .getOrElse(throw new Exception(s"Failed to parse the content at $localeFilePath"))
-
+  private val mainContent = yaml.scalayaml.Parser.parse(localeFile.reader()) match {
+    case Right(parsedData) =>
+      parsedData
+    case Left(error) =>
+      throw new Exception(s"Failed to parse the content at $localeFilePath: ${error.getMessage}", error)
+  }
   private val flowContentPath =
     if (languageCode == "en") generatedFlowContentPath else translatedFlowContentPath(languageCode)
   private val flowContentString = os.read(flowContentPath)
@@ -24,7 +26,6 @@ case class Locale(languageCode: String) {
     case Right(parsedData) =>
       parsedData
     case Left(error) =>
-      println(s"YAML Parsing Error in $flowContentPath: ${error.getMessage}")
       throw new Exception(s"Failed to parse the content at $flowContentPath: ${error.getMessage}", error)
   }
 

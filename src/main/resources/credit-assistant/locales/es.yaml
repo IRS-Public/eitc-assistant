@@ -43,11 +43,11 @@ components:
     select:
 
 title:
-  prefix:
+  prefix: Asistente del EITC
   suffix:
 
 layout:
-  title: Asistente del EITC
+  title: Asistente del crédito tributario por ingreso del trabajo (EITC)
   skip-to-main:
   identifier:
     agency-identifier:

@@ -5,6 +5,7 @@ import io.circe.yaml.parser
 import io.circe.Json
 import io.circe.ParsingFailure
 import org.scalatest.funspec.AnyFunSpec
+import scala.collection.immutable.ListMap
 import scala.io.Source
 
 class YamlValidatorSpec extends AnyFunSpec {
@@ -57,17 +58,17 @@ class YamlValidatorSpec extends AnyFunSpec {
     }
   }
   describe("flow yaml") {
-    it("should have the same keys in en, sp and ko") {
-      // Can't access fromResource because of sbt setting
-      val enFile = os.read(generatedFlowContentPath)
-      val esFile = Source.fromResource("credit-assistant/locales/flow_es.yaml").mkString
-      val koFile = Source.fromResource("credit-assistant/locales/flow_ko.yaml").mkString
+    it("should have the same keys in all locales") {
+      val supportedLocales = List("es", "ht", "ko", "ru", "vi", "zh-hans", "zh-hant")
 
+      val enFile = os.read(generatedFlowContentPath)
       val enKeys = parser.parse(enFile).map(getAllKeys(_))
-      val esKeys = parser.parse(esFile).map(getAllKeys(_))
-      val koKeys = parser.parse(koFile).map(getAllKeys(_))
-      findKeyDifferences(enKeys, esKeys, "es")
-      findKeyDifferences(enKeys, koKeys, "ko")
+
+      supportedLocales.foreach { locale =>
+        val localeFile = Source.fromResource(s"credit-assistant/locales/flow_$locale.yaml").mkString
+        val localeKeys = parser.parse(localeFile).map(getAllKeys(_))
+        findKeyDifferences(enKeys, localeKeys, locale)
+      }
     }
   }
 }
