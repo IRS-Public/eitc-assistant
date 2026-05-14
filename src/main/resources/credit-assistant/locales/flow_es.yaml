@@ -62,9 +62,9 @@
       under24:
         name: 24 años y menos
       age25to64:
-        name:
+        name: Entre 25 y 64 años
       65andOlder:
-        name: 65 años y más65 años y más
+        name: 65 años y más 65 años y más
   modal-tax-year:
     heading: Año tributario
     p-aa5a47: 'Para el sueldo y otros ingresos devengados en:'
@@ -130,15 +130,15 @@
     modalLink: <modal-link for="modal-filing-status">¿Cuál estado civil debo usar?</modal-link>
     options:
       single:
-        name: Soltero/aSoltero/a
+        name: Soltero/a
       marriedFilingJointly:
-        name: Casado/a que presenta una declaración conjuntaCasado/a que presenta una declaración conjunta
+        name: Casado/a que presenta una declaración conjunta
       marriedFilingSeparately:
-        name: Casado/a que presenta una declaración por separadoCasado/a que presenta una declaración por separado
+        name: Casado/a que presenta una declaración por separado
       headOfHousehold:
-        name: Cabeza de familiaCabeza de familia
+        name: Cabeza de familia
       qualifiedSurvivingSpouse:
-        name: Cónyuge sobreviviente que calificaCónyuge sobreviviente que califica
+        name: Cónyuge sobreviviente que califica
   /maritalStatus:
     question: ¿Cuál fue su estado civil el 31 de diciembre del año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-legal-separation">¿Qué significa estar en un matrimonio de hecho o estar legalmente separado?</modal-link>
@@ -146,22 +146,22 @@
       married:
         name: Casado/aCasado/a
       divorced:
-        name: Divorciado/a o legalmente separado/aDivorciado/a o legalmente separado/a
+        name: Divorciado/a o legalmente separado/a
       widowed:
-        name: Cónyuge sobreviviente que calificaCónyuge sobreviviente que califica
+        name: Cónyuge sobreviviente que califica
       single:
         name: Nunca se casóNunca se casó
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció su cónyuge?
     options:
       taxYear:
-        name: Durante el año 2025Durante el año 2025
+        name: Durante el año 2025
       taxYearMinusOneOrTwo:
-        name: Durante el año 2023 o 2024Durante el año 2023 o 2024
+        name: Durante el año 2023 o 2024
       beforeTaxYearMinusTwo:
-        name: Antes del 2023Antes del 2023
+        name: Antes del 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció su cónyuge?
     options:
       taxYear:
         name: Durante el año 2024
@@ -438,66 +438,66 @@
       question: Otros tipos de ingresos
       hint:
       modalLink:
-  h2-9fa8b1:
-  p-233dd3:
-  p-624555:
+  h2-9fa8b1: Ajustes
+  p-233dd3: Seleccione e ingrese alguno de estos tipos de ajustes a los ingresos que usted tuvo en el <fg-show path="/taxYear"/>. No ingrese el mismo ajuste en lugares distintos.
+  
   fg-detail-2c7735:
-    summary:
+    summary: Deducción de los intereses del préstamo para estudios
     /studentLoanInterestAmount:
-      question:
-      hint:
-      modalLink:
+      question: Intereses del préstamo para estudios que pagó tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      hint: (max <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">Qué es el deducción de los intereses del préstamo para estudios?</modal-link>
   fg-detail-9166fe:
-    summary:
+    summary: Gastos de educador calificados
     /educatorExpenses/:
-      question:
-      hint:
-      modalLink:
+      question: Gastos de educador calificados que pagó tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      hint: (max <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">¿Qué son los gastos de educador calificados?</modal-link>
   fg-detail-57c26a:
-    summary:
+    summary: Deducción para las aportaciones a una cuenta IRA que no está incluida en las deducciones de la nómina
     /deductionForTraditionalIRAContribution:
-      question:
-      modalLink:
+      question: Contribuciones a una IRA tradicional (antes de impuestos) realizadas por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-ira-contributions">¿Qué se considera una contribución a una cuenta IRA tradicional?</modal-link>
   fg-detail-f9e99b:
-    summary:
+    summary: Aportaciones a los planes SEP, SIMPLE y otros planes que califican
     /selfEmploymentRetirementPlanContributions:
-      question:
-      modalLink:
+      question: Contribuciones para la jubilación de trabajadores por cuenta propia realizadas por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-retirement">En qué consiste la deducción por planes de jubilación para trabajadores por cuenta propia?</modal-link>
   fg-detail-5c4fd4:
-    summary:
+    summary: Seguro de salud del trabajo por cuenta propia
     /selfEmploymentHealthInsuranceContributions:
-      question:
-      modalLink:
+      question: Primas de seguro médico pagadas por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-health-insurance">En qué consiste la deducción por seguro de salud del trabajadores por cuenta propia?</modal-link>
   fg-detail-2c1033:
-    summary:
+    summary: Deducción de la cuenta de ahorro para la salud (HSA, por las siglas en inglés) que no está incluida en las deducciones de la nómina
     /hsaContributionAmount:
-      question:
-      modalLink:
+      question: Contribuciones a una HSA realizadas por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-hsa-deductions">Qué son las deducciones por HSA?</modal-link>
   fg-detail-e97d7b:
-    summary:
+    summary: Pensión para el cónyuge divorciado pagada
     /alimonyPaid:
-      question:
-      modalLink:
+      question: Pensión alimenticia pagada por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-alimony-paid">¿Qué se considera pensión para el cónyuge divorciado pagada?</modal-link>
   fg-detail-913117:
-    summary:
+    summary: Multa por retiro prematuro de los ahorros
     /penaltyForEarlySavingsWithdrawal:
-      question:
-      modalLink:
+      question: Monto de penalización pagado por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-early-withdrawal">Cuál es la multa por retiro prematuro de los ahorros?</modal-link>
   fg-detail-6fad42:
-    summary:
+    summary: Gastos de mudanza para los miembros de las fuerzas armadas
     /movingExpensesForArmedServicesMembers:
-      question:
-      modalLink:
+      question: Gastos de mudanza para miembros de las fuerzas armadas pagados por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-moving-expenses">Qué se considera gastos de mudanza para miembros de las fuerzas armadas?</modal-link>
   fg-detail-c4f7d7:
-    summary:
+    summary: Ciertos gastos de negocio del empleado para reservistas, artistas escénicos y funcionarios del gobierno que reciben honorarios
     /businessCreditsForEligible:
-      question:
-      modalLink:
+      question: Gastos comerciales elegibles pagados por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-employee-business-expenses">Cuáles son los gastos de negocio del empleado?</modal-link>
   fg-detail-cf5b3c:
-    summary:
+    summary: Otros ajustes
     /otherAdjustments:
-      question:
-  h3-a7b819:
+      question: Otros ajustes pagados por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
+  h3-a7b819: 'Su ingreso bruto ajustado es: <fg-show path="/agi"/>'
   fg-alert-334e2e:
     heading:
     p-f3c23d:
@@ -671,40 +671,48 @@
       li-764dd4:
       li-6f920a:
     p-745735:
-  modal-what-are-adjustments:
-    heading:
-    p-d8344a:
   modal-student-loan-interest:
-    heading:
-    p-3ac7ce:
-    p-e4b825:
+    heading: Deducción de los intereses del préstamo para estudios
+    p-3ac7ce: Ingrese hasta <fg-show path="/maxStudentLoanDeduction"/> de los intereses que pagó sobre su préstamo estudiantil calificado. Puede encontrar esto en su Formulario 1098-E si pagó más de $600 en intereses.
+    p-e4b825: 'El préstamo debe haber pagado gastos de educación superior calificados para asistir a una institución educativa elegible. Además, los gastos deben haber sido:'
     ul-0:
-      li-bb1c73:
-      li-829f26:
-      li-562ff0:
-    p-75f422:
-    p-1f2dd3:
+      li-bb1c73: Para usted, su cónyuge o una persona que era su dependiente cuando obtuvo el préstamo;
+      li-829f26: Pagados o incurridos en un período de tiempo razonable antes o después de obtener el préstamo; y
+      li-562ff0: Para la educación impartida durante un período académico para un estudiante elegible.
+    p-75f422: No puede reclamar la deducción si no tiene la obligación legal de realizar pagos sobre el préstamo.
+    p-1f2dd3: Para obtener más información, consulte la <a target="_blank" href="https://www.irs.gov/es/forms-pubs/about-publication-970" class="usa-link">Publicación 970, Beneficios tributarios por educación (en inglés)<span class="usa-sr-only"> (opens in a new tab)</span></a>.
   modal-educator-expenses:
-    heading:
-    p-e117c8:
+    heading: Deducción de los gastos de educador
+    p-e117c8: 'Si trabaja es un/a maestro/a, ingrese hasta <fg-show path="/maxEducatorExpensesNonMFJ"/>
+          (<fg-show path="/maxEducatorExpensesMFJ"/> si está casado/a y presenta una declaración
+          conjunta y si usted y su cónyuge son maestros) de los gastos no reembolsados
+          tales como:'
     ul-0:
-      li-8829c6:
-      li-751127:
-      li-0c78ca:
-      li-6ef6c8:
-      li-6d4170:
-    p-86c6e4:
+      li-8829c6: Honorarios por la participación en cursos de desarrollo profesional
+      li-751127: Libros y materiales
+      li-0c78ca: Equipamiento de computación (incluidos los servicios y software relacionados)
+      li-6ef6c8: Otro equipamiento
+      li-6d4170: Materiales complementarios que se utilizan en el salón de clase
+    p-86c6e4: Para obtener más información, visite <a target="_blank" href="https://www.irs.gov/es/taxtopics/tc458"
+      class="usa-link">Tema del IRS 458<span class="usa-sr-only"> (opens in a new tab)</span></a>.
   modal-ira-contributions:
-    heading:
-    p-5979d5:
-    p-a49375:
+    heading: Deducción de la cuenta IRA
+    p-5979d5: Ingrese cualquier aportación a una cuenta IRA que realizó fuera de sus
+      aportaciones de la nómina.
+    p-a49375: Para obtener más información, consulte <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">Límites en la deducción de la cuenta IRA (en inglés)<span
+      class="usa-sr-only"> (opens in a new tab)</span></a>.
   modal-self-employed-retirement:
-    heading:
-    p-ca0a8f:
+    heading: Planes SEP, SIMPLE y otros planes que califican
+    p-ca0a8f: 'Si trabaja por cuenta propia, calcula la compensación de su plan calificado restando lo siguiente de su ingreso neto del trabaja por cuenta propia:'
     p-0d133f:
     ul-0:
-      li-6c246a:
-      li-a2595a:
+      li-6c246a: La parte deducible de su impuesto sobre el trabajo por cuenta propia
+        (SE, por las siglas en inglés) de su declaración del Formulario 1040, página
+        1 y
+      li-a2595a: El monto de la aportación a su plan de jubilación de su declaración
+        del Formulario 1040, página 1, en la línea correspondiente a los planes SEP,
+        SIMPLE y planes calificados para trabajadores por cuenta propia.
       li-f6cddf:
     p-3622b4:
     ul-1:
@@ -714,45 +722,77 @@
       li-765afa:
     p-af5a4a:
     p-add56c:
-    p-3248f2:
+    p-3248f2: Para obtener más información, consulte <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
+      class="usa-link">Trabajadores por cuenta propia - Cómo calcular sus aportaciones
+      y deducciones de su propio plan de jubilación (en inglés)<span class="usa-sr-only">
+      (opens in a new tab)</span></a>.
   modal-hsa-deductions:
-    heading:
-    p-2ab752:
-    p-a7d9fc:
+    heading: Deducción de una cuenta de ahorro para la salud
+    p-2ab752: Ingrese cualquier aportación a una cuenta de ahorro para la salud (HSA)
+      que no está incluida en la sección de las cuentas HSA, FSA y otros "planes
+      cafetería".
+    p-a7d9fc: Para obtener más información, visite <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-969"
+      class="usa-link">Información sobre la Publicación 969, Cuentas de ahorro para
+      la salud y otros planes de salud favorecidos por los impuestos (en inglés)<span
+      class="usa-sr-only"> (opens in a new tab)</span></a>.
   modal-alimony-paid:
-    heading:
-    p-fa1de9:
-    p-7b97e1:
-    p-7948e4:
-    p-358bc5:
+    heading: Pensión para el cónyuge divorciado pagada
+    p-fa1de9: Se pagó la pensión para el cónyuge divorciado o la manutención por separación
+      conforme a una orden judicial ejecutada antes del 1 de enero de 2019 y la orden
+      no indicaba específicamente que no puede deducir sus pagos, ingrese aquí el monto
+      que pagó durante el año.
+    p-7b97e1: 'No incluya los montos que usted pagó por:'
+    p-7948e4: <strong>Family or child support</strong>
+    p-358bc5: Tampoco incluya los montos si se modificó la orden judicial o si indica
+      que no puede deducir sus pagos.
     p-06a405:
-    p-4b335c:
+    p-4b335c: Para obtener más información, visite <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+      class="usa-link">Tema tributario 452<span class="usa-sr-only"> (opens in a
+      new tab)</span></a>.
   modal-early-withdrawal:
-    heading:
-    p-7e8d5b:
+    heading: Multa por retiro prematuro de los ahorros
+    p-7e8d5b: Si retiró fondos de un certificado de depósito u otra cuenta de intereses
+      diferidos antes del vencimiento, es posible que se le cobre una multa. Puede
+      encontrar esta multa en el Formulario 1099-IN, en la casilla 2. Ingrese aquí
+      el monto.
   modal-moving-expenses:
-    heading:
-    p-6f18fd:
+    heading: Gastos de mudanza
+    p-6f18fd: 'Si es un miembro de las fuerzas armadas en servicio activo, y se le
+          ordenó que cambiara su lugar de asignación de manera permanente, ingrese aquí
+          cualquier gasto de mudanza que las fuerzas armadas no le reembolsaron. Los gastos
+          de mudanza incluyen los siguientes:'
     ul-0:
-      li-60efa3:
-      li-efbbb1:
-    p-6536cb:
+      li-60efa3: Viaje directo de su hogar anterior al nuevo
+      li-efbbb1: Costo para empaquetar y trasladar sus efectos personales
+    p-6536cb: Para obtener más información, visite <a target="_blank" href="https://www.irs.gov/es/taxtopics/tc455"
+      class="usa-link">Tema tributario 455<span class="usa-sr-only"> (opens in a
+      new tab)</span></a>.
   modal-employee-business-expenses:
-    heading:
-    p-c92011:
+    heading: Ciertos gastos de negocio del empleado
+    p-c92011: 'Si usted es:'
     ul-0:
-      li-9bde67:
-      li-053ac1:
-      li-e03b09:
-      li-0d1488:
-    p-cc9b68:
-    p-d46373:
-    p-eb68a5:
+      li-9bde67: Reservista de las fuerzas armadas
+      li-053ac1: Artista escénico calificado
+      li-e03b09: Funcionario del gobierno estatal o local que recibe honorarios
+      li-0d1488: Empleado con gastos de trabajo relacionados con una discapacidad
+    p-cc9b68: Puede incluir los gastos que son comunes y aceptados en su ámbito
+      comercial, negocio o profesión, o los gastos por cosas que son de ayuda y adecuadas
+      para su negocio.
+    p-d46373: Si no entra en ninguna de las categorías enumeradas, no puede reclamar
+      los ajustes para estos gastos.
+    p-eb68a5: Para obtener más información y una lista de los gastos calificados,
+      consulte <a target="_blank" href="https://www.irs.gov/forms-pubs/about-form-2106"
+      class="usa-link">Formulario 2106, Gastos de negocio del empleado (en inglés)<span
+      class="usa-sr-only"> (opens in a new tab)</span></a>.
   modal-self-employed-health-insurance:
-    heading:
-    p-598073:
+    heading: Deducción del seguro de salud del trabajo por cuenta propia
+    p-598073: Ingrese el monto que pagó para el seguro de salud para usted, su cónyuge
+      y sus personas dependientes, si trabaja por cuenta propia.
     p-d60394:
-    p-13dece:
+    p-13dece: Para obtener más información, consulte el <a target="_blank" href="https://www.irs.gov/publications/p535"
+      class="usa-link">Capítulo 6 de la Publicación 535, Gastos de negocio para la
+      información de elegibilidad (en inglés)<span class="usa-sr-only"> (opens in a
+      new tab)</span></a>.
 /qualifying-children:
   title:
   h2-dbaf54:

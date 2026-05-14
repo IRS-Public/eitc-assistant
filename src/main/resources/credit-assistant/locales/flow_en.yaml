@@ -598,7 +598,6 @@
   h2-9fa8b1: Adjustments
   p-233dd3: Select and enter any of these types of adjustments to income you had in
     <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
-  p-624555: <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
   fg-detail-2c7735:
     summary: Student loan interest deduction
     /studentLoanInterestAmount:
@@ -946,11 +945,6 @@
       li-6f920a: Unemployment benefits
     p-745735: See <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-525">Publication
       525, Taxable and Nontaxable Income</a>
-  modal-what-are-adjustments:
-    heading: What are adjustments?
-    p-d8344a: Adjustments are expenses, payments, contributions, and fees that you
-      may have been able to subtract from your total income to reduce how much of
-      your income got taxed. They are a type of deduction.
   modal-student-loan-interest:
     heading: Student loan interest deduction
     p-3ac7ce: Enter up to <fg-show path="/maxStudentLoanDeduction"/> of the interest

@@ -126,9 +126,6 @@
 
         <h2>Adjustments</h2>
         <p>Select and enter any of these types of adjustments to income you had in <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.</p>
-        <p>
-            <modal-link for="modal-what-are-adjustments">What are adjustments?</modal-link>
-        </p>
 
         <fg-detail icon="chevron" if-true="/isEligibleForStudentLoanInterestDeduction">
             <summary>Student loan interest deduction</summary>
@@ -517,12 +514,6 @@
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-525">Publication 525, Taxable and Nontaxable Income</a></p>
       </modal-content>
     </modal-dialog>
-  <modal-dialog id="modal-what-are-adjustments">
-      <modal-heading>What are adjustments?</modal-heading>
-      <modal-content>
-          <p>Adjustments are expenses, payments, contributions, and fees that you may have been able to subtract from your total income to reduce how much of your income got taxed. They are a type of deduction.</p>
-      </modal-content>
-  </modal-dialog>
       <modal-dialog id="modal-student-loan-interest">
           <modal-heading>Student loan interest deduction</modal-heading>
           <modal-content>
