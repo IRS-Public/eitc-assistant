@@ -7,7 +7,7 @@
       <div class="usa-alert usa-alert--info" condition="/primaryFilerIsClaimingQualifyingChildren" operator="isFalse">
         <div class="usa-alert__body">
           <p class="usa-alert__text">
-            Based on your previous inputs, you don't have any qualifying children. If this isn't correct, please return to <a class="usa-link" href="/app/eitc/filing-status/">Filing Status</a> and change your responses.
+            Based on your previous answers, you don't have any qualifying children. If this isn't correct, please return to <a class="usa-link" href="/app/eitc/filing-status/">Filing Status</a> and change your responses.
           </p>
           <p class="usa-alert__text">
             Please go to the next step to see your results.
@@ -28,7 +28,7 @@
 
         <fg-set path="/familyAndHousehold/*/livedWithYouUS">
           <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>
-          <modal-link for="modal-residency">Residency</modal-link>
+          <modal-link for="modal-residency">What counts as time lived with you?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
@@ -41,13 +41,13 @@
 
         <fg-set path="/familyAndHousehold/*/someoneElseCanClaim" if-true="/familyAndHousehold/*/livedWithYouUS">
           <question>Can someone else claim this child for the EITC?</question>
-          <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+          <modal-link for="modal-claimed-someone-else">What if more than one person can claim them?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/isClaimingQCRegardless" if-true="/familyAndHousehold/*/someoneElseCanClaim">
           <question>You might not be able to claim a child for the EITC if they are also claimed by certain eligible people. Do you still want to claim this child?</question>
-          <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+          <modal-link for="modal-claimed-someone-else">What if more than one person can claim them?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
@@ -60,13 +60,13 @@
 
         <fg-set path="/familyAndHousehold/*/marriedFilingJointly" if-true="/familyAndHousehold/*/flowShouldShowMFJFiling">
           <question>Is this child married and will file a joint return with his or her spouse for <fg-show path="/taxYear"/>?</question>
-          <modal-link for="modal-joint-return">Joint Return</modal-link>
+          <modal-link for="modal-joint-return">Can I claim someone who files a joint return?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/mfjForRefundOnly" if-true="/familyAndHousehold/*/marriedFilingJointly">
           <question>Is this child filing a joint return for <fg-show path="/taxYear"/> only to claim a refund of withheld taxes or estimated taxes paid, and won't claim any tax credits such as the EITC?</question>
-          <modal-link for="-with-another-person-exception">Joint Return</modal-link>
+          <modal-link for="modal-joint-return-with-another-person-exception">When can you claim someone who files a joint return?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
@@ -79,13 +79,13 @@
 
         <fg-set path="/familyAndHousehold/*/isPermanentlyDisabled" if-true="/familyAndHousehold/*/flowShouldShowDisability">
           <question>Is this child permanently and totally disabled?</question>
-          <modal-link for="modal-disabled">Permanently and totally disabled</modal-link>
+          <modal-link for="modal-disabled">What counts as permanently and totally disabled?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/relationship" if-true="/familyAndHousehold/*/flowShouldShowRelationship">
           <question>Select this child's relationship to you:</question>
-          <modal-link for="modal-relationship">Relationships</modal-link>
+          <modal-link for="modal-relationship">Who counts as a stepchild, adopted child, or foster child?</modal-link>
           <input type="enum" options-path="/relationshipOptions">
             <option value="childStepFoster">Child, stepchild, adopted child, or foster child</option>
             <option value="sibling">Sibling, half-sibling, or stepsibling</option>
@@ -113,13 +113,13 @@
 
         <fg-set path="/familyAndHousehold/*/isFullTimeStudent" if-true="/familyAndHousehold/*/flowShouldSeeStudentQuestion">
           <question>Was the child a full-time student during some part of any 5 months during the year?</question>
-          <modal-link for="modal-student">Full-time student defined</modal-link>
+          <modal-link for="modal-student">How do I know if they're a full-time student?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
         <fg-set path="/familyAndHousehold/*/isQCYoungerThanSelfOrSpouse" if-true="/familyAndHousehold/*/flowShouldSeeAgeComparison">
           <question>Is the dependent younger than <span condition="/isFilingStatusMFJ" operator="isFalse">you?</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></question>
-          <modal-link for="modal-age-comparison">Age Comparison between Child and Filer</modal-link>
+          <modal-link for="modal-age-comparison">Why do we ask if they're younger than <span condition="/isFilingStatusMFJ" operator="isFalse">you?</span><span condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></modal-link>
           <input type="boolean"/>
         </fg-set>
 
@@ -133,7 +133,7 @@
 
         <fg-set path="/familyAndHousehold/*/validSSN" if-true="/familyAndHousehold/*/isTentativeEitcQualifyingChild">
           <question>Does this child have a valid Social Security number issued on or before the due date of the return (including extensions)?</question>
-          <modal-link for="modal-valid-ssn-qc">Valid Social Security Number for Qualifying Child</modal-link>
+          <modal-link for="modal-valid-ssn-qc">What counts as a valid Social Security Number?</modal-link>
           <input type="boolean"/>
         </fg-set>
 
@@ -151,7 +151,7 @@
       <div class="usa-alert usa-alert--info" condition="/hasReachedMaxEitcQualifyingChildren" operator="isTrue">
         <div class="usa-alert__body">
           <p class="usa-alert__text">
-            You have <fg-show path="/eitcQualifyingChildren"/> qualifying children and have reached the maximum number of qualifying children that can be claimed with the EITC.
+            Based on your answers, you have <fg-show path="/eitcQualifyingChildren"/> qualifying children and have reached the maximum number of qualifying children that can be claimed with the EITC.
           </p>
         </div>
       </div>
@@ -176,16 +176,27 @@
         </p>
       </fg-alert>
 
-      <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> You have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
+      <h2 condition="/hasEitcQualifyingChildren" operator="isTrue"> Based on your answers, you have <fg-show path="/eitcQualifyingChildren"/> children who qualify for the purposes of claiming and calculating EITC</h2>
     </section>
 
     <modal-dialog id="modal-residency">
       <modal-heading>Residency Test</modal-heading>
       <modal-content>
-        <p>Your child must have lived with you in the United States for more than half of <fg-show path="/taxYear"/>. </p>
-        <p>This means the 50 states and the District of Columbia.  It doesn't include Puerto Rico or U.S. territories such as Guam. </p>
-        <p>Your home can be any location where you regularly live. You don't need a traditional home.  For example, if your child lived with you for more than half the year in one or more homeless shelters, your child meets the residency test. </p>
-        <p>Count time that you or your child is away from home on a temporary absence due to a special circumstance as time the child lived with you.  Examples of a special circumstance include illness, school attendance, business, vacation, military service, and detention in a juvenile facility. </p>
+        <h3>Lived with You</h3>
+        <p>A qualifying child must have the same main home as you for more than half of <fg-show path="/taxYear"/> and that home must have been in the United States. The United States includes the 50 states and the District of Columbia. It does not include Puerto Rico or United States territories such as Guam. For the EITC, the IRS considers U.S. military personnel stationed outside the United States on extended active duty to have a main home in the United States during that period of duty. </p>
+        <h3>Birth or Death of a Child</h3>
+        <p>If the child was born or died in <fg-show path="/taxYear"/>, the child must have lived with you for more than half the part of the year he or she was alive.</p>
+        <h3>Adopted and Foster Children</h3>
+        <p>If you adopted the child in <fg-show path="/taxYear"/>, the child was lawfully placed with you for legal adoption by you in <fg-show path="/taxYear"/>, or the child was an eligible foster child placed with you during <fg-show path="/taxYear"/>, your main home must have been this child’s main home for more than half the time since he or she was adopted or placed with you in <fg-show path="/taxYear"/>. </p>
+        <h3>Temporary Absence</h3>
+        <p>For the EITC, a temporary absence counts as time lived with you. Examples include:</p>
+        <ul>
+          <li>Illness or hospitalization</li>
+          <li>School attendance, vacation, business or military service</li>
+          <li>Detention in a juvenile facility</li>
+          <li>Kidnapped child</li>
+        </ul>
+        <p>For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit, residency test.</p>
       </modal-content>
     </modal-dialog>
 

@@ -323,7 +323,7 @@
       main home in the U.S. for more than half of <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-main-home-us">What counts as a main home in
       the U.S.?</modal-link>
-  h2-0dc2a3: Based on your choices, your filing status is <fg-show path="/flowReadableFilingStatus"/>
+  h2-7864de: Based on your answers, your filing status is <fg-show path="/flowReadableFilingStatus"/>
   fg-alert-334e2e:
     heading: You don't qualify for the Earned Income Tax Credit (EITC)
     p-b6bd9e: You don't qualify for EITC without a qualifying child unless you, or
@@ -1076,7 +1076,7 @@
 /qualifying-children:
   title: Qualifying Children
   h2-dbaf54: Qualifying Children
-  p-9672ca: Based on your previous inputs, you don't have any qualifying children.
+  p-9b177d: Based on your previous answers, you don't have any qualifying children.
     If this isn't correct, please return to <a class="usa-link" href="/app/eitc/filing-status/">Filing
     Status</a> and change your responses.
   p-c1a0dd: Please go to the next step to see your results.
@@ -1088,33 +1088,40 @@
     /familyAndHousehold/*/livedWithYouUS:
       question: Has this child lived with you more than half of <fg-show path="/taxYear"/>
         in the United States?
-      modalLink: <modal-link for="modal-residency">Residency</modal-link>
+      modalLink: <modal-link for="modal-residency">What counts as time lived with
+        you?</modal-link>
     fg-alert-b7d816:
       heading: This child does not qualify for EITC.
       p-7666ea: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
         596, Earned Income Credit</a>
     /familyAndHousehold/*/someoneElseCanClaim:
       question: Can someone else claim this child for the EITC?
-      modalLink: <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+      modalLink: <modal-link for="modal-claimed-someone-else">What if more than one
+        person can claim them?</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
       question: You might not be able to claim a child for the EITC if they are also
         claimed by certain eligible people. Do you still want to claim this child?
-      modalLink: <modal-link for="modal-claimed-someone-else">Tiebreaker Rules</modal-link>
+      modalLink: <modal-link for="modal-claimed-someone-else">What if more than one
+        person can claim them?</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
       question: Is this child married and will file a joint return with his or her
         spouse for <fg-show path="/taxYear"/>?
-      modalLink: <modal-link for="modal-joint-return">Joint Return</modal-link>
+      modalLink: <modal-link for="modal-joint-return">Can I claim someone who files
+        a joint return?</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
       question: Is this child filing a joint return for <fg-show path="/taxYear"/>
         only to claim a refund of withheld taxes or estimated taxes paid, and won't
         claim any tax credits such as the EITC?
-      modalLink: <modal-link for="-with-another-person-exception">Joint Return</modal-link>
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">When
+        can you claim someone who files a joint return?</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
       question: Is this child permanently and totally disabled?
-      modalLink: <modal-link for="modal-disabled">Permanently and totally disabled</modal-link>
+      modalLink: <modal-link for="modal-disabled">What counts as permanently and totally
+        disabled?</modal-link>
     /familyAndHousehold/*/relationship:
       question: 'Select this child''s relationship to you:'
-      modalLink: <modal-link for="modal-relationship">Relationships</modal-link>
+      modalLink: <modal-link for="modal-relationship">Who counts as a stepchild, adopted
+        child, or foster child?</modal-link>
       options:
         childStepFoster:
           name: Child, stepchild, adopted child, or foster child
@@ -1136,27 +1143,29 @@
     /familyAndHousehold/*/isFullTimeStudent:
       question: Was the child a full-time student during some part of any 5 months
         during the year?
-      modalLink: <modal-link for="modal-student">Full-time student defined</modal-link>
+      modalLink: <modal-link for="modal-student">How do I know if they're a full-time
+        student?</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
       question: Is the dependent younger than <span condition="/isFilingStatusMFJ"
         operator="isFalse">you?</span><span condition="/isFilingStatusMFJ" operator="isTrue">you
         or your spouse?</span>
-      modalLink: <modal-link for="modal-age-comparison">Age Comparison between Child
-        and Filer</modal-link>
+      modalLink: <modal-link for="modal-age-comparison">Why do we ask if they're younger
+        than <span condition="/isFilingStatusMFJ" operator="isFalse">you?</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">you or your spouse?</span></modal-link>
     /familyAndHousehold/*/validSSN:
       question: Does this child have a valid Social Security number issued on or before
         the due date of the return (including extensions)?
-      modalLink: <modal-link for="modal-valid-ssn-qc">Valid Social Security Number
-        for Qualifying Child</modal-link>
+      modalLink: <modal-link for="modal-valid-ssn-qc">What counts as a valid Social
+        Security Number?</modal-link>
     fg-alert-a004cd:
       heading: Please note
       p-8374d8: This child does not have a valid SSN. Because they don't have a valid
         SSN, they cannot be claimed for the EITC with a Qualifying Child. However,
         you may be eligible for the smaller EITC without a qualifying child.
     h2-eaf308: Your child qualifies for the purposes of claiming and calculating EITC
-  p-7798e3: You have <fg-show path="/eitcQualifyingChildren"/> qualifying children
-    and have reached the maximum number of qualifying children that can be claimed
-    with the EITC.
+  p-5aea65: Based on your answers, you have <fg-show path="/eitcQualifyingChildren"/>
+    qualifying children and have reached the maximum number of qualifying children
+    that can be claimed with the EITC.
   fg-alert-9510e7:
     heading: Qualifying child requirement
     p-b6bd9e: You don't qualify for EITC without a qualifying child unless you, or
@@ -1170,22 +1179,38 @@
       number of qualifying children.
     p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596</a>, Earned Income Credit.
-  h2-587a8a: You have <fg-show path="/eitcQualifyingChildren"/> children who qualify
-    for the purposes of claiming and calculating EITC
+  h2-34370a: Based on your answers, you have <fg-show path="/eitcQualifyingChildren"/>
+    children who qualify for the purposes of claiming and calculating EITC
   modal-residency:
     heading: Residency Test
-    p-2a5392: Your child must have lived with you in the United States for more than
-      half of <fg-show path="/taxYear"/>.
-    p-82d86e: This means the 50 states and the District of Columbia.  It doesn't include
-      Puerto Rico or U.S. territories such as Guam.
-    p-9fa1b1: Your home can be any location where you regularly live. You don't need
-      a traditional home.  For example, if your child lived with you for more than
-      half the year in one or more homeless shelters, your child meets the residency
-      test.
-    p-79980c: Count time that you or your child is away from home on a temporary absence
-      due to a special circumstance as time the child lived with you.  Examples of
-      a special circumstance include illness, school attendance, business, vacation,
-      military service, and detention in a juvenile facility.
+    h3-7c913b: Lived with You
+    p-ff8f12: A qualifying child must have the same main home as you for more than
+      half of <fg-show path="/taxYear"/> and that home must have been in the United
+      States. The United States includes the 50 states and the District of Columbia.
+      It does not include Puerto Rico or United States territories such as Guam. For
+      the EITC, the IRS considers U.S. military personnel stationed outside the United
+      States on extended active duty to have a main home in the United States during
+      that period of duty.
+    h3-46d8f4: Birth or Death of a Child
+    p-e27b79: If the child was born or died in <fg-show path="/taxYear"/>, the child
+      must have lived with you for more than half the part of the year he or she was
+      alive.
+    h3-16617c: Adopted and Foster Children
+    p-c623b2: If you adopted the child in <fg-show path="/taxYear"/>, the child was
+      lawfully placed with you for legal adoption by you in <fg-show path="/taxYear"/>,
+      or the child was an eligible foster child placed with you during <fg-show path="/taxYear"/>,
+      your main home must have been this child’s main home for more than half the
+      time since he or she was adopted or placed with you in <fg-show path="/taxYear"/>.
+    h3-6839b6: Temporary Absence
+    p-658cca: 'For the EITC, a temporary absence counts as time lived with you. Examples
+      include:'
+    ul-0:
+      li-76cf60: Illness or hospitalization
+      li-1b3986: School attendance, vacation, business or military service
+      li-dae417: Detention in a juvenile facility
+      li-de99d6: Kidnapped child
+    p-8b99ed: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit, residency test.
   modal-joint-return:
     heading: Joint Return with Another Person
     p-9b8921: You generally can't claim a married person as a qualifying child for

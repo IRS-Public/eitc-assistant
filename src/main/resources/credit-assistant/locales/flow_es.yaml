@@ -242,7 +242,7 @@
   /hasLivedInUSMore6Months:
     question: ¿Su hogar principal estuvo en los Estados Unidos durante más de la mitad del año <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-main-home-us">¿Qué se considera una vivienda principal en los Estados Unidos?</modal-link>
-  h2-0dc2a3: Según sus elecciones, su estado civil para los efectos de la declaración es <fg-show path="/flowReadableFilingStatus"/>
+  h2-7864de: Según sus elecciones, su estado civil para los efectos de la declaración es <fg-show path="/flowReadableFilingStatus"/>
   fg-alert-334e2e:
     heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
     p-b6bd9e: Usted no califica para el EITC si no tiene un hijo calificado a menos que usted, o su cónyuge si presentan una declaración conjunta, tengan entre 25 y 64 años.
@@ -751,7 +751,7 @@
 /qualifying-children:
   title: 
   h2-dbaf54: 
-  p-9672ca: 
+  p-9b177d: 
   p-c1a0dd: 
   p-3178be: 
   p-e28c1e: 
@@ -812,7 +812,7 @@
       heading: 
       p-8374d8: 
     h2-eaf308: 
-  p-7798e3: 
+  p-5aea65: 
   fg-alert-9510e7:
     heading: 
     p-b6bd9e: 
@@ -821,13 +821,23 @@
     heading: 
     p-cdf53e: 
     p-93a6b5: 
-  h2-587a8a: 
+  h2-34370a: 
   modal-residency:
     heading: 
-    p-2a5392: 
-    p-82d86e: 
-    p-9fa1b1: 
-    p-79980c: 
+    h3-7c913b:
+    p-ff8f12:
+    h3-46d8f4:
+    p-e27b79:
+    h3-16617c:
+    p-c623b2:
+    h3-6839b6:
+    p-658cca:
+    ul-0:
+      li-76cf60:
+      li-1b3986:
+      li-dae417:
+      li-de99d6:
+    p-8b99ed:
   modal-joint-return:
     heading: 
     p-9b8921: 

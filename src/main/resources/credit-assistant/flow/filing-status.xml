@@ -163,7 +163,7 @@
     </fg-set>
 
 
-    <h2 condition="/isFilingStatusComplete" operator="isTrue">Based on your choices, your filing status is <fg-show path="/flowReadableFilingStatus"/></h2>
+    <h2 condition="/isFilingStatusComplete" operator="isTrue">Based on your answers, your filing status is <fg-show path="/flowReadableFilingStatus"/></h2>
 
     </section>
 
