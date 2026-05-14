@@ -1,10 +1,10 @@
 
 /:
-  title: 
-  h2-5e286b: 
-  p-c2c8a0: 
-  /chosenTaxYear:
-    question: 
+  title: Información general
+  h2-5e286b: Información general
+  p-c2c8a0: Responda algunas preguntas rápidas sobre usted para saber si califica.
+  /chosenTaxYear: 
+    question: 'Seleccione el año tributario para el que le gustaría corroborar la elegibilidad para el crédito tributario por ingreso del trabajo (EITC):'
     modalLink: 
     options:
       '2025':
@@ -13,92 +13,97 @@
         name: '2024'
       '2023':
         name: '2023'
-  /isUSCitizenOrResidentAlien:
-    question: 
+  /isUSCitizenOrResidentAlien: 
+    question: ¿Fue un ciudadano estadounidense o extranjero residente durante todo el año 2025?
     modalLink: 
     options:
       'true':
-        name: 
+        name: Sí
       'false':
-        name:
+        name: No
   fg-alert-8b7db9:
-    heading: 
-    p-091688: 
-    p-f72c3e: 
-    p-b85d77: 
-    p-93a6b5: 
-    p-4c0c0d: 
-    p-236b69: 
-    p-5e637b: 
-    p-ec145e: 
-    p-363ef2: 
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-091688: Debe ser un ciudadano estadounidense o extranjero residente para reclamar el crédito tributario por ingreso del trabajo. Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>, para determinar si usted es un extranjero residente de los Estados Unidos durante todo el año.
+    p-f72c3e: <strong>Aviso:</strong> eleccione <strong>Sí</strong> si presenta una declaración conjunta con su cónyuge para el año <fg-show path="/taxYear"/> y usted o su cónyuge fueron ciudadanos estadounidenses o extranjeros residentes durante todo el año.
+    p-b85d77: No puede reclamar el crédito tributario por ingreso del trabajo porque usted no tiene un número de seguro social válido emitido en la fecha de vencimiento de su declaración de impuestos o antes de esta.
+    p-93a6b5: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito tributario por ingreso del trabajo.</a>
+    p-4c0c0d: No puede reclamar el crédito por ingreso del trabajo si presentó <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">un Formulario 2555, Ingresos devengados en el extranjero (en inglés).</a>
+    p-236b69: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-54">la publicación Publicación 54, Guía tributaria para ciudadanos y residentes de los Estados Unidos que están en el extranjero (en inglés) </a> para obtener más información
+    p-5e637b: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es el hijo calificado de alguien más para el crédito tributario por ingreso del trabajo (EITC).
+    p-ec145e: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
+    p-363ef2: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es la persona dependiente de alguien más a menos que tenga un hijo calificado para el crédito tributario por ingreso del trabajo (EITC).
   /hasValidSSN:
-    question: 
+    question: ¿Usted tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de la declaración del año 2025 o antes de esta (incluidas las prórrogas)?
     modalLink: 
     options:
       'true':
-        name: 
+        name: Si
       'false':
-        name: 
+        name: No
   /hasForeignEarnedIncome:
-    question: 
+    question: ¿Presenta un Formulario 2555, Ingresos devengados en el extranjero?
     modalLink: 
     options:
-      'true':
-        name: 
-      'false':
-        name: 
+      'true': 
+        name: Si
+      'false': 
+        name: No
   /isClaimedAsDependent:
-    question: 
+    question: ¿Alguien más lo reclamará como persona dependiente o hijo calificado para el crédito tributario por ingreso del trabajo en la declaración de impuestos?
     modalLink: 
     options:
-      'true':
-        name: 
-      'false':
-        name: 
+      'true': 
+        name: Si
+      'false': 
+        name: No
   /ageRange:
-    question: 
+    question: Seleccione la franja que mejor describa su edad al final del año 2025
     options:
       under24:
-        name: 
+        name: 24 años y menos
       age25to64:
-        name: 
+        name: Entre 25 y 64 años
       65andOlder:
-        name: 
+        name: 65 años y más
   modal-tax-year:
-    heading: 
-    p-aa5a47: 
+    heading: Año tributario
+    p-aa5a47: 'Para el sueldo y otros ingresos devengados en:'
     ul-0:
-      li-28dd34: 
-      li-174a8b: 
-      li-0a25dc: 
+      li-28dd34: 2025, seleccione 2025
+      li-174a8b: 2024, seleccione 2024
+      li-0a25dc: 2023, seleccione 2023
   modal-citizen:
-    heading: 
-    p-18e680: 
-    p-fe70ca: 
-    p-2c8f8f: 
+    heading: Ciudadano estadounidense o extranjero residente
+    p-18e680: Si usted no es un ciudadano de los Estados Unidos, se considera que es un extranjero.
+    p-fe70ca: Se considera que usted es un extranjero residente para el crédito tributario por ingreso del trabajo si tiene una tarjeta verde o si vivió en los Estados Unidos durante más que un número determinado días.
+    p-2c8f8f: Para obtener más información y excepciones importantes, consulte <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519>la Publicación 519, Guía tributaria estadounidense para extranjeros</a>.
   modal-valid-ssn-filer:
-    heading: 
-    p-527528: 
-    p-45ae0e: 
-    p-558a40: 
+    heading: Número de Seguro Social válido
+    p-527528: Usted tiene que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos del <fg-show
+      path="/taxYear"/> (inclusive de las prórrogas).
+    p-45ae0e: Si su tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
+    p-558a40: 'Para los propósitos del Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés), no aceptamos:'
     ul-0:
-      li-5e5f3e: 
-      li-5fc9b7: 
-      li-9f487b: 
-      li-a69a30: 
-    p-f554f7: 
+      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
+      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
+      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
+      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid.
+    p-f554f7: Consulte la Publicación 596 para más información sobre los números de Seguro Social válidos.
   modal-foreign-income:
-    heading: 
-    p-f45b03: 
+    heading: Ingreso devengado en el extranjero excluido de los ingresos brutos
+    p-f45b03: Esto hace referencia al ingreso que devengó fuera de los Estados Unidos, el Distrito de Columbia o las posesiones o territorios de los Estados Unidos que usted eligió excluir en <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">una Formulario 2555, Ingresos devengados en el extranjero (en inglés)</a>.
   modal-claimed-dependent:
-    heading: 
-    p-faf8d8: 
-    p-98d6db: 
-    p-038f13: 
-    p-ceda6c: 
-    p-d11380: 
-    p-16aba9: 
+    heading: Usted como persona dependiente o hijo calificado
+    p-faf8d8: En la mayoría de los casos, no puede ser una persona dependiente o hijo calificado de otro contribuyente y reclamar el crédito tributario por ingreso del trabajo (EITC).
+    p-98d6db: En la mayoría de los casos, si usted tiene menos de 19 años o es un estudiante menor de 24 años y vive con sus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
+    p-038f13: Si usted para efectos de la declaración de impuestos federales está casado y presenta una declaración conjunta, no puede ser reclamado como un dependiente, a menos que presente la declaración conjunta únicamente para reclamar un reembolso del impuesto sobre los ingresos retenido o de los impuestos estimados pagados.
+    p-ceda6c: Para obtener más información sobre si alguien lo puede reclamar como persona dependiente, visite <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)<\a>?
+    p-d11380: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés).</a>
+    p-16aba9: Le preguntaremos sobre los hijos o parientes que usted podría reclamar más adelante.
   modal-primary-claimed-as-dependent:
     heading: 
     p-d3187d: 
@@ -110,10 +115,10 @@
     p-752de3: 
     p-5a0201: 
   modal-confirm-tax-year-change:
-    heading: 
-    p-31c7da: 
-    button-70d9be: 
-    button-ea4788: 
+    heading: Atención
+    p-31c7da: El cambio de año borrará los datos ingresados anteriormente. ¿Desea continuar?
+    button-70d9be: Confirmar
+    button-ea4788: Cancelar 
 /filing-status:
   title: Estado civil para los efectos de la declaración
   h2-c01d87: Estado civil para los efectos de la declaración
