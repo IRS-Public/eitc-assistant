@@ -5,7 +5,7 @@
   p-c2c8a0: Responda algunas preguntas rápidas sobre usted para saber si califica.
   /chosenTaxYear: 
     question: 'Seleccione el año tributario para el que le gustaría corroborar la elegibilidad para el crédito tributario por ingreso del trabajo (EITC):'
-    modalLink: 
+    modalLink: <modal-link for="modal-tax-year">¿Qué año debería usar?</modal-link>
     options:
       '2025':
         name: '2025'
@@ -15,7 +15,7 @@
         name: '2023'
   /isUSCitizenOrResidentAlien: 
     question: ¿Fue un ciudadano estadounidense o extranjero residente durante todo el año 2025?
-    modalLink: 
+    modalLink: <modal-link for="modal-citizen">¿Califico como ciudadano/a estadounidense o residente para EITC?</modal-link>
     options:
       'true':
         name: Sí
@@ -34,7 +34,7 @@
     p-363ef2: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es la persona dependiente de alguien más a menos que tenga un hijo calificado para el crédito tributario por ingreso del trabajo (EITC).
   /hasValidSSN:
     question: ¿Usted tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de la declaración del año 2025 o antes de esta (incluidas las prórrogas)?
-    modalLink:
+    modalLink: <modal-link for="modal-valid-ssn-filer">¿Qué se considera un Número de Seguro Social válido?</modal-link>
     options:
       'true':
         name: Si
@@ -42,7 +42,7 @@
         name: No
   /hasForeignEarnedIncome:
     question: ¿Presenta un Formulario 2555, Ingresos devengados en el extranjero?
-    modalLink:
+    modalLink: <modal-link for="modal-foreign-income">¿Qué son ingreso devengado en el extranjero excluido de los ingresos brutos?</modal-link>
     options:
       'true':
         name: Si
@@ -50,7 +50,7 @@
         name: No
   /isClaimedAsDependent:
     question: ¿Alguien más lo reclamará como persona dependiente o hijo calificado para el crédito tributario por ingreso del trabajo en la declaración de impuestos?
-    modalLink:
+    modalLink: <modal-link for="modal-claimed-dependent">¿Cómo sé si soy como persona dependiente o hijo calificado?</modal-link>
     options:
       'true':
         name: Si
@@ -89,7 +89,8 @@
       li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
       li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
       li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid.
-    p-f554f7: Consulte la Publicación 596 para más información sobre los números de Seguro Social válidos.
+    p-f554f7: Consulte <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596</a> para más información sobre los números de Seguro Social válidos.
   modal-foreign-income:
     heading: Ingreso devengado en el extranjero excluido de los ingresos brutos
     p-f45b03: Esto hace referencia al ingreso que devengó fuera de los Estados Unidos, el Distrito de Columbia o las posesiones o territorios de los Estados Unidos que usted eligió excluir en <a target="_blank"
@@ -102,7 +103,7 @@
     p-ceda6c: Para obtener más información sobre si alguien lo puede reclamar como persona dependiente, visite <a target="_blank"
       class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)</a>?
     p-d11380: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés).</a>
+      class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona.</a>
     p-16aba9: Le preguntaremos sobre los hijos o parientes que usted podría reclamar más adelante.
   modal-primary-claimed-as-dependent:
     heading:

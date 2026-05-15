@@ -16,7 +16,8 @@
         name: '2023'
   /isUSCitizenOrResidentAlien:
     question: Were you a U.S. Citizen or Resident Alien for all of <fg-show path="/taxYear"/>?*
-    modalLink: <modal-link for="modal-citizen">U.S. Citizen or Resident Alien</modal-link>
+    modalLink: <modal-link for="modal-citizen">Do I qualify as a U.S. citizen or resident
+      for EITC?</modal-link>
     options:
       'true':
         name: 'Yes'
@@ -50,7 +51,8 @@
   /hasValidSSN:
     question: Do you have a valid Social Security number that was issued on or before
       the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?*
-    modalLink: <modal-link for="modal-valid-ssn-filer">Valid Social Security Number</modal-link>
+    modalLink: <modal-link for="modal-valid-ssn-filer">What counts as a valid Social
+      Security Number?</modal-link>
     options:
       'true':
         name: 'Yes'
@@ -58,8 +60,9 @@
         name: 'No'
   /hasForeignEarnedIncome:
     question: Are you filing Form 2555, Foreign Earned Income?*
-    modalLink: <modal-link for="modal-foreign-income">Foreign Earned Income excluded
-      from Gross Income</modal-link>
+    modalLink: |-
+      <modal-link for="modal-foreign-income">What is Foreign Earned income excluded from gross income?
+      </modal-link>
     options:
       'true':
         name: 'Yes'
@@ -68,8 +71,8 @@
   /isClaimedAsDependent:
     question: Will someone else claim you as a dependent or qualifying child for the
       EITC on their tax return?*
-    modalLink: <modal-link for="modal-claimed-dependent">You as a Dependent or Qualifying
-      Child</modal-link>
+    modalLink: <modal-link for="modal-claimed-dependent">How do I know if I’m someone’s
+      dependent or qualifying child?</modal-link>
     options:
       'true':
         name: 'Yes'
