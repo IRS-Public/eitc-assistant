@@ -53,7 +53,7 @@ val flagRegex = new Regex("""--(\w*)""")
   val port = sys.props
     .get("smol.port")
     .flatMap(s => Try(s.toInt).toOption)
-    .getOrElse(3000)
+    .getOrElse(3002)
   val config = smol.Config(outDir.toString(), host, port, logEnabled = true)
 
   // Start server in-process, but do not block.

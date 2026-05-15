@@ -30,6 +30,22 @@
             </div>
         </div>
 
+        <details class="audit-panel__section ap-details" id="fs-dashboard">
+            <summary><h2>Filing Status Dashboard</h2></summary>
+            <div class="details-content">
+                <p class="ap-hint">Tracks inputs to <code>/derivedFilingStatus</code>. <span class="dq-ok-swatch"></span> = true, <span class="dq-dq-swatch"></span> = false, <span class="dq-inc-swatch"></span> = incomplete.</p>
+                <ul id="fs-dashboard-list" class="ap-dq-list"></ul>
+            </div>
+        </details>
+        <details class="audit-panel__section ap-details" id="dq-dashboard">
+            <summary><h2>Disqualification Dashboard</h2></summary>
+            <div class="details-content">
+                <p class="ap-hint">Tracks various filing status tests and disqualifications. <span class="dq-ok-swatch"></span> = not disqualified, <span class="dq-dq-swatch"></span> = disqualified, <span class="dq-inc-swatch"></span> = incomplete.</p>
+                <ul id="dq-dashboard-list" class="ap-dq-list"></ul>
+            </div>
+        </details>
+
+
         <div class="audit-panel__section">
             <h2>View options</h2>
             <fieldset class="usa-fieldset padding-bottom-4">
