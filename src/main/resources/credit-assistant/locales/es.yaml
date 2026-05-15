@@ -14,77 +14,77 @@ components:
         confirm: "Confirmar {0}"
         cancel: "Cancelar {0}"
     determiners:
-      another:
-      more:
+      another: "otro"
+      more: "más"
   modal:
-    close:
-    ok:
+    close: "Cerrar esta ventana"
+    ok: "Aceptar"
   boolean:
     yes: Sí
     no: No
   date:
-    month:
-    day:
-    year:
-    select:
-    january:
-    february:
-    march:
-    april:
-    may:
-    june:
-    july:
-    august:
-    september:
-    october:
-    november:
-    december:
+    month: "Mes"
+    day: "Día"
+    year: "Año"
+    select: "- Seleccione -"
+    january: "Enero"
+    february: "Febrero"
+    march: "Marzo"
+    april: "Abril"
+    may: "Mayo"
+    june: "Junio"
+    july: "Julio"
+    august: "Agosto"
+    september: "Septiembre"
+    october: "Octubre"
+    november: "Noviembre"
+    december: "Diciembre"
   select:
-    select:
+    select: "--Seleccione uno --"
 
 title:
   prefix: Asistente del EITC
-  suffix:
+  suffix: "Servicio de Impuestos Internos"
 
 layout:
   title: Asistente del crédito tributario por ingreso del trabajo (EITC)
-  skip-to-main:
+  skip-to-main: "Saltar al contenido principal"
   identifier:
-    agency-identifier:
-    disclaimer:
-    about:
-    accessibility:
-    privacy-policy:
-    important-links:
+    agency-identifier: "Identificador de la agencia"
+    disclaimer: "Un sitio web oficial del <a class=\"usa-link\" target=\"_blank\" href=\"https://irs.gov\">IRS<span class=\"usa-sr-only\"> (se abre en una pestaña nueva)</span></a>"
+    about: "Acerca de"
+    accessibility: "Accesibilidad"
+    privacy-policy: "Política de privacidad"
+    important-links: "Enlaces importantes"
   usgov:
-    name:
+    name: "Gobierno de los Estados Unidos"
   irs:
-    name:
-    domain:
+    name: "IRS"
+    domain: "IRS.gov"
 
   banner:
-    how-you-know:
-    official-domain:
-    official-organization:
-    secure-https:
-    disclaimer:
-    lock-1:
-    lock-2:
+    how-you-know: "Así es como puede saberlo"
+    official-domain: "Los sitios web oficiales usan .gov"
+    official-organization: "Un sitio web <strong>.gov</strong> pertenece a una organización oficial del gobierno de los Estados Unidos."
+    secure-https: "Los sitios web seguros .gov usan HTTPS"
+    disclaimer: "Un sitio web oficial del gobierno de los Estados Unidos"
+    lock-1: "Un <strong>candado</strong>"
+    lock-2: "o <strong>https://</strong> significa que se ha conectado de forma segura al sitio web .gov. Comparta información confidencial solo en sitios web oficiales y seguros."
 
 buttons:
   next: Siguiente
-  continue:
+  continue: "Continuar"
   back: Volver
-  submit:
+  submit: "Enviar"
 
 alerts:
   warning:
     complete-required: Por favor, responda las preguntas obligatorias.
 
 step-indicator:
-  completed:
-  not-completed:
-  step:
+  completed: "completado"
+  not-completed: "no completado"
+  step: "Paso"
   of: de
 
 # Note that these errors use CamelCase because they come from the Fact Graph. Some of these errors
@@ -93,30 +93,30 @@ step-indicator:
 # there's a bug that needs to be fixed.
 errors:
   # Dollar errors
-  CombinedHyphensAndParentheses:
+  CombinedHyphensAndParentheses: "Ingrese solo números y un decimal."
   # Not obvious to me why the fact graph breaks down invalid characters
   # this way but I don't think it needs to be exposed to the user
-  InvalidCharacters:
-  InvalidDollar:
-  InvalidHyphens:
-  InvalidParentheses:
-  TooManyDecimals:
-  TooManyFractionalDigits:
+  InvalidCharacters: "Ingrese solo números y un decimal."
+  InvalidDollar: "Ingrese solo números y un decimal."
+  InvalidHyphens: "Ingrese solo números y un decimal."
+  InvalidParentheses: "Ingrese solo números y un decimal."
+  TooManyDecimals: "Ingrese un número con solo un decimal."
+  TooManyFractionalDigits: "Ingrese solo dos dígitos después del decimal."
 
   # Day errors
-  InvalidDay:
-  InvalidDayDueToLeapYear:
-  InvalidMonth:
-  InvalidDate:
-  InvalidLimit:
-  IncompleteWritableDate:
+  InvalidDay: "Ingrese un día válido."
+  InvalidDayDueToLeapYear: "Día inválido debido a año bisiesto."
+  InvalidMonth: "Ingrese un mes válido."
+  InvalidDate: "Ingrese una fecha válida."
+  InvalidLimit: "Límite inválido establecido."
+  IncompleteWritableDate: "Ingrese una fecha completa o deje en blanco."
 
   # Enum errors
-  BlankEnum:
-  InvalidEnum:
+  BlankEnum: "El valor estaba en blanco."
+  InvalidEnum: "Valor no encontrado."
 
   Required: 'Se necesita la respuesta a la pregunta para continuar'
-  Default:
+  Default: "Lo sentimos, algo salió mal."
 
   # Limit errors
   #
@@ -126,16 +126,16 @@ errors:
   #
   # Yes, it would be nice to do proper parameterization rather than just appending the limit value
   # to the end of the string
-  Max:
-  Min:
+  Max: "Ingrese una cantidad menor a"
+  Min: "Ingrese una cantidad mayor a"
 
 audit:
   fact-select:
-    question:
-    blank:
-  collection-id-label:
+    question: "Ruta del hecho"
+    blank: "-- Seleccione una ruta --"
+  collection-id-label: "ID de la colección"
   fact:
-    type:
-    value:
-    remove:
-    definition:
+    type: "Tipo de hecho:"
+    value: "Valor:"
+    remove: "Eliminar hecho"
+    definition: "Definición XML"

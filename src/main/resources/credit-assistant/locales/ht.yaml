@@ -1,91 +1,91 @@
 components:
   fg-set:
-    required: (Requerido)
+    required: "(Obligatwa)"
   fg-collection:
     buttons:
-      remove: "Placeholder {0}"
-      add: "Placeholder {0}"
-      add-with-determiner: "Placeholder {1} {0}"
+      remove: "Retire {0}"
+      add: "Ajoute {0}"
+      add-with-determiner: "Ajoute {1} {0}"
     remove-item-modal:
       heading:
-        remove: "Placeholder {0}?"
-      body: "Placeholder {0}."
+        remove: "Èske w sèten ou vle retire {0} sa a?"
+      body: "Sa ap efase tout enfòmasyon ou te deja mete sou {0} sa a."
       footer:
-        confirm: "Placeholder {0}"
-        cancel: "Placeholder {0}"
+        confirm: "Wi, retire {0} sa a"
+        cancel: "Non, kenbe {0} sa a"
     determiners:
-      another:
-      more:
+      another: "yon lòt"
+      more: "plis"
   modal:
-    close:
-    ok:
+    close: "Fèmen fenèt sa a"
+    ok: "Ok"
   boolean:
-    yes: Sí
-    no: No
+    yes: "Wi"
+    no: "Non"
   date:
-    month:
-    day:
-    year:
-    select:
-    january:
-    february:
-    march:
-    april:
-    may:
-    june:
-    july:
-    august:
-    september:
-    october:
-    november:
-    december:
+    month: "Mwa"
+    day: "Jou"
+    year: "Ane"
+    select: "- Chwazi -"
+    january: "Janvye"
+    february: "Fevriye"
+    march: "Mas"
+    april: "Avril"
+    may: "Me"
+    june: "Jen"
+    july: "Jiyè"
+    august: "Out"
+    september: "Septanm"
+    october: "Oktòb"
+    november: "Novanm"
+    december: "Desanm"
   select:
-    select:
+    select: "-- Chwazi youn --"
 
 title:
-  prefix:
-  suffix:
+  prefix: "Asistan EITC"
+  suffix: "Sèvis Revni Entèn"
 
 layout:
-  title: Asistente del EITC
-  skip-to-main:
+  title: "Asistan EITC"
+  skip-to-main: "Ale nan kontni prensipal la"
   identifier:
-    agency-identifier:
-    disclaimer:
-    about:
-    accessibility:
-    privacy-policy:
-    important-links:
+    agency-identifier: "Idantifyan ajans"
+    disclaimer: "Yon sit entènèt ofisyèl <a class=\"usa-link\" target=\"_blank\" href=\"https://irs.gov\">IRS<span class=\"usa-sr-only\"> (ouvri nan yon nouvo onglet)</span></a>"
+    about: "Enfòmasyon"
+    accessibility: "Aksè"
+    privacy-policy: "Règleman sou vi prive"
+    important-links: "Lyen enpòtan"
   usgov:
-    name:
+    name: "Gouvènman Etazini"
   irs:
-    name:
-    domain:
+    name: "IRS"
+    domain: "IRS.gov"
 
   banner:
-    how-you-know:
-    official-domain:
-    official-organization:
-    secure-https:
-    disclaimer:
-    lock-1:
-    lock-2:
+    how-you-know: "Men ki jan ou ka konnen"
+    official-domain: "Sit entènèt ofisyèl yo itilize .gov"
+    official-organization: "Yon sit entènèt <strong>.gov</strong> fè pati yon òganizasyon ofisyèl gouvènman Etazini."
+    secure-https: "Sit entènèt .gov ki an sekirite yo itilize HTTPS"
+    disclaimer: "Yon sit entènèt ofisyèl gouvènman Etazini"
+    lock-1: "Yon <strong>kadna</strong>"
+    lock-2: "oswa <strong>https://</strong> vle di ou konekte an sekirite ak sit entènèt .gov la. Pataje enfòmasyon sansib sèlman sou sit entènèt ofisyèl ak an sekirite."
 
 buttons:
-  next: Siguiente
-  continue:
-  back: Volver
-  submit:
+  next: "Suivan"
+  continue: "Kontinye"
+  back: "Tounen"
+  submit: "Soumèt"
 
 alerts:
   warning:
-    complete-required:
+    complete-required: "Tanpri ranpli tout jaden obligatwa yo."
 
 step-indicator:
-  completed:
-  not-completed:
-  step:
-  of: de
+  completed: "fini"
+  not-completed: "pa fini"
+  step: "Etap"
+  of: "sou"
 
 # Note that these errors use CamelCase because they come from the Fact Graph. Some of these errors
 # are user errors (i.e. they entered an amount larger than the limit) but not all of them are (i.e.
@@ -93,30 +93,30 @@ step-indicator:
 # there's a bug that needs to be fixed.
 errors:
   # Dollar errors
-  CombinedHyphensAndParentheses:
+  CombinedHyphensAndParentheses: "Antre sèlman nimewo ak yon pwen desimal."
   # Not obvious to me why the fact graph breaks down invalid characters
   # this way but I don't think it needs to be exposed to the user
-  InvalidCharacters:
-  InvalidDollar:
-  InvalidHyphens:
-  InvalidParentheses:
-  TooManyDecimals:
-  TooManyFractionalDigits:
+  InvalidCharacters: "Antre sèlman nimewo ak yon pwen desimal."
+  InvalidDollar: "Antre sèlman nimewo ak yon pwen desimal."
+  InvalidHyphens: "Antre sèlman nimewo ak yon pwen desimal."
+  InvalidParentheses: "Antre sèlman nimewo ak yon pwen desimal."
+  TooManyDecimals: "Antre yon nimewo ak yon sèl desimal."
+  TooManyFractionalDigits: "Antre sèlman de chif apre desimal la."
 
   # Day errors
-  InvalidDay:
-  InvalidDayDueToLeapYear:
-  InvalidMonth:
-  InvalidDate:
-  InvalidLimit:
-  IncompleteWritableDate:
+  InvalidDay: "Antre yon jou valab."
+  InvalidDayDueToLeapYear: "Jou a pa valab akoz ane bisektil."
+  InvalidMonth: "Antre yon mwa valab."
+  InvalidDate: "Antre yon dat valab."
+  InvalidLimit: "Limit ki fikse a pa valab."
+  IncompleteWritableDate: "Antre yon dat konplè oswa kite li vid."
 
   # Enum errors
-  BlankEnum:
-  InvalidEnum:
+  BlankEnum: "Valè a te vid."
+  InvalidEnum: "Nou pa jwenn valè a."
 
-  Required:
-  Default:
+  Required: "Kesyon sa a obligatwa"
+  Default: "Eskize nou, gen yon pwoblèm ki pase."
 
   # Limit errors
   #
@@ -126,16 +126,16 @@ errors:
   #
   # Yes, it would be nice to do proper parameterization rather than just appending the limit value
   # to the end of the string
-  Max:
-  Min:
+  Max: "Antre yon montan ki mwens pase"
+  Min: "Antre yon montan ki plis pase"
 
 audit:
   fact-select:
-    question:
-    blank:
-  collection-id-label:
+    question: "Chemen Fè a"
+    blank: "-- Chwazi yon chemen --"
+  collection-id-label: "ID Koleksyon"
   fact:
-    type:
-    value:
-    remove:
-    definition:
+    type: "Kalite Fè:"
+    value: "Valè:"
+    remove: "Retire fè a"
+    definition: "Definisyon XML"

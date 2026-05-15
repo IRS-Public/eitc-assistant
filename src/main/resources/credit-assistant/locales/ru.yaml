@@ -1,91 +1,91 @@
 components:
   fg-set:
-    required: (Requerido)
+    required: "(Обязательно)"
   fg-collection:
     buttons:
-      remove: "Placeholder {0}"
-      add: "Placeholder {0}"
-      add-with-determiner: "Placeholder {1} {0}"
+      remove: "Удалить {0}"
+      add: "Добавить {0}"
+      add-with-determiner: "Добавить {1} {0}"
     remove-item-modal:
       heading:
-        remove: "Placeholder {0}?"
-      body: "Placeholder {0}."
+        remove: "Удалить {0}?"
+      body: "Вы уверены, что хотите удалить {0} из расчета EITC?"
       footer:
-        confirm: "Placeholder {0}"
-        cancel: "Placeholder {0}"
+        confirm: "Подтвердить {0}"
+        cancel: "Отменить {0}"
     determiners:
-      another:
-      more:
+      another: "другой"
+      more: "еще"
   modal:
-    close:
-    ok:
+    close: "Закрыть это окно"
+    ok: "ОК"
   boolean:
-    yes: Sí
-    no: No
+    yes: "Да"
+    no: "Нет"
   date:
-    month:
-    day:
-    year:
-    select:
-    january:
-    february:
-    march:
-    april:
-    may:
-    june:
-    july:
-    august:
-    september:
-    october:
-    november:
-    december:
+    month: "Месяц"
+    day: "День"
+    year: "Год"
+    select: "- Выбрать -"
+    january: "Январь"
+    february: "Февраль"
+    march: "Март"
+    april: "Апрель"
+    may: "Май"
+    june: "Июнь"
+    july: "Июль"
+    august: "Август"
+    september: "Сентябрь"
+    october: "Октябрь"
+    november: "Ноябрь"
+    december: "Декабрь"
   select:
-    select:
+    select: "-- Выберите один --"
 
 title:
-  prefix:
-  suffix:
+  prefix: "Помощник по EITC"
+  suffix: "Налоговое управление США"
 
 layout:
-  title: Asistente del EITC
-  skip-to-main:
+  title: "Помощник по EITC"
+  skip-to-main: "Перейти к основному контенту"
   identifier:
-    agency-identifier:
-    disclaimer:
-    about:
-    accessibility:
-    privacy-policy:
-    important-links:
+    agency-identifier: "Идентификатор агентства"
+    disclaimer: "Официальный веб-сайт <a class=\"usa-link\" target=\"_blank\" href=\"https://irs.gov\">IRS<span class=\"usa-sr-only\"> (открывается в новой вкладке)</span></a>"
+    about: "О нас"
+    accessibility: "Доступность"
+    privacy-policy: "Политика конфиденциальности"
+    important-links: "Важные ссылки"
   usgov:
-    name:
+    name: "Правительство США"
   irs:
-    name:
-    domain:
+    name: "IRS"
+    domain: "IRS.gov"
 
   banner:
-    how-you-know:
-    official-domain:
-    official-organization:
-    secure-https:
-    disclaimer:
-    lock-1:
-    lock-2:
+    how-you-know: "Как это узнать"
+    official-domain: "Официальные веб-сайты используют .gov"
+    official-organization: "Веб-сайт <strong>.gov</strong> принадлежит официальной правительственной организации США."
+    secure-https: "Безопасные веб-сайты .gov используют HTTPS"
+    disclaimer: "Официальный веб-сайт правительства США"
+    lock-1: "<strong>Замок</strong>"
+    lock-2: "или <strong>https://</strong> означает, что вы безопасно подключились к веб-сайту .gov. Делитесь конфиденциальной информацией только на официальных, безопасных веб-сайтах."
 
 buttons:
-  next: Siguiente
-  continue:
-  back: Volver
-  submit:
+  next: "Далее"
+  continue: "Продолжить"
+  back: "Назад"
+  submit: "Отправить"
 
 alerts:
   warning:
-    complete-required:
+    complete-required: "Пожалуйста, заполните обязательные поля"
 
 step-indicator:
-  completed:
-  not-completed:
-  step:
-  of: de
+  completed: "завершено"
+  not-completed: "не завершено"
+  step: "Шаг"
+  of: "из"
 
 # Note that these errors use CamelCase because they come from the Fact Graph. Some of these errors
 # are user errors (i.e. they entered an amount larger than the limit) but not all of them are (i.e.
@@ -93,30 +93,30 @@ step-indicator:
 # there's a bug that needs to be fixed.
 errors:
   # Dollar errors
-  CombinedHyphensAndParentheses:
+  CombinedHyphensAndParentheses: "Введите только цифры и десятичную точку."
   # Not obvious to me why the fact graph breaks down invalid characters
   # this way but I don't think it needs to be exposed to the user
-  InvalidCharacters:
-  InvalidDollar:
-  InvalidHyphens:
-  InvalidParentheses:
-  TooManyDecimals:
-  TooManyFractionalDigits:
+  InvalidCharacters: "Введите только цифры и десятичную точку."
+  InvalidDollar: "Введите только цифры и десятичную точку."
+  InvalidHyphens: "Введите только цифры и десятичную точку."
+  InvalidParentheses: "Введите только цифры и десятичную точку."
+  TooManyDecimals: "Введите число только с одной десятичной точкой."
+  TooManyFractionalDigits: "Введите только два знака после запятой."
 
   # Day errors
-  InvalidDay:
-  InvalidDayDueToLeapYear:
-  InvalidMonth:
-  InvalidDate:
-  InvalidLimit:
-  IncompleteWritableDate:
+  InvalidDay: "Введите действительный день."
+  InvalidDayDueToLeapYear: "Недействительный день из-за високосного года."
+  InvalidMonth: "Введите действительный месяц."
+  InvalidDate: "Введите действительную дату."
+  InvalidLimit: "Установлен недействительный лимит."
+  IncompleteWritableDate: "Введите полную дату или оставьте поле пустым."
 
   # Enum errors
-  BlankEnum:
-  InvalidEnum:
+  BlankEnum: "Значение было пустым."
+  InvalidEnum: "Значение не найдено."
 
-  Required:
-  Default:
+  Required: "Этот вопрос обязателен для заполнения"
+  Default: "Извините, что-то пошло не так"
 
   # Limit errors
   #
@@ -126,16 +126,16 @@ errors:
   #
   # Yes, it would be nice to do proper parameterization rather than just appending the limit value
   # to the end of the string
-  Max:
-  Min:
+  Max: "Введите сумму меньше"
+  Min: "Введите сумму больше"
 
 audit:
   fact-select:
-    question:
-    blank:
-  collection-id-label:
+    question: "Путь факта"
+    blank: "-- Выберите путь --"
+  collection-id-label: "ID коллекции"
   fact:
-    type:
-    value:
-    remove:
-    definition:
+    type: "Тип факта:"
+    value: "Значение:"
+    remove: "Удалить факт"
+    definition: "XML-определение"
