@@ -499,9 +499,9 @@
       question: Otros ajustes pagados por tu o tu esposa(o) en el <fg-show path="/taxYear"/>
   h3-a7b819: 'Su ingreso bruto ajustado es: <fg-show path="/agi"/>'
   fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-f3c23d: Según los montos que ingresó, no puede reclamar el crédito por ingreso del trabajo porque su ingreso bruto ajustado (AGI) supera el límite para su estado civil para los efectos de la declaración y el número de hijos que reúnen los requisitos.
+    p-93a6b5: Para obtener más información sobre los límites de los ingresos para el crédito por ingreso del trabajo, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">Tablas del ingreso del trabajo y del crédito tributario.</a>
   modal-wages-salaries-tips:
     heading: ¿Qué ingresos debo incluir?
     h3-53ed11: Salarios, sueldos y propinas
@@ -588,22 +588,22 @@
     p-adf913: No incluya los montos que recibió por los servicios exigidos por el Programa de Becas del Cuerpo de Sanidad Nacional, el Programa de Asistencia Económica y Becas para Profesiones de la Salud para las Fuerzas Armadas, o un programa integral de empleo, aprendizaje y servicio para estudiantes operado por un instituto profesional.
     p-0c59d8: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/es/taxtopics/tc421">Tema tributario 421.</a>
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-cdf53e: Según los montos que ingresó, no puede reclamar el crédito por ingreso del trabajo porque sus ingresos del trabajo superan el límite para su estado civil para los efectos de la declaración y el número de hijos que reúnen los requisitos.
+    p-93a6b5: Para obtener más información sobre los límites de los ingresos para el crédito por ingreso del trabajo, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/earned-income-tax-credit/earned-income-and-earned-income-tax-credit-eitc-tables">Tablas del ingreso del trabajo y del crédito tributario.</a>
   fg-alert-8b7db9:
-    heading:
-    p-3abe5f:
-    p-93a6b5:
-    p-d04ce1:
-    p-241cb8:
+    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
+    p-3abe5f: Para reclamar el EITC, debe haber tenido ingresos del trabajo (por ejemplo, salarios o ganancias netas del trabajo por cuenta propia). Según los ingresos que ingresó, sus ingresos del trabajo para <fg-show path="/taxYear"/> fueron cero o menos; por lo tanto, no califica para el EITC.
+    p-93a6b5: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">Publicación 596</a>, Crédito por Ingreso del Trabajo.
+    p-d04ce1: No puede reclamar el crédito por ingreso del trabajo si su ingreso de inversiones supera el monto de <fg-show path="/eitcInvestmentIncomeLimit"/>. 
+    p-241cb8: <strong>Los ingreso de inversiones incluyen:</strong>
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-e74f5d:
-      li-e42b99:
-      li-7c0731:
-    p-9c482c:
+      li-12d3b7: Intereses (tributables y exentos de impuestos)
+      li-0a9a83: Dividendos
+      li-e74f5d: Ingreso por ganancia de capital (no las pérdidas)
+      li-e42b99: Algunas rentas y regalías
+      li-7c0731: Ingreso neto de actividades pasivas
+    p-9c482c: Para más información, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">la Publicación 550, Ingreso y gastos de inversiones (en inglés) (Publicación 550, Ingresos y gastos de inversiones), en inglés.</a> Utilice la hora de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito por ingreso del trabajo, para calcular sus ingresos de inversiones.</a>
   modal-self-employment-deductions:
     heading: ¿Cuáles son los gastos deducibles del trabajo por cuenta propia?
     p-4838ea: Si trabajó por cuenta propia, realizó trabajos ocasionales o fue propietario y operador de un negocio, es posible que haya podido deducir ciertos gastos comerciales de sus ingresos, lo que le permitió pagar menos impuestos.
