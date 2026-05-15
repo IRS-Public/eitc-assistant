@@ -949,46 +949,84 @@
     p-626c78: Para ser un hijo calificado, el niño debe ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>, a menos que tenga una discapacidad permanente y total en cualquier momento del año <fg-show path="/taxYear"/>.
     p-1a035f: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de edad</a>.
 /results:
-  title:
-  h2-88e7ef:
+  title: Resultados
+  h2-88e7ef: Sus resultados
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  p-578b13:
-  p-adf6bb:
-  h2-259962:
-  p-508e29:
-  h3-54f664:
-  p-a5939a:
-  p-3ef53a:
-  h3-792a4e:
-  p-787398:
-  p-25a83e:
-  h3-c7457b:
-  p-b8834f:
-  h2-a3da4a:
-  p-5a6eac:
+    heading: Usted no califica para el Crédito tributario por ingreso del trabajo
+    p-cdf53e: Según la información que proporcionó, no puede reclamar el crédito por ingreso del trabajo porque su ingreso del trabajo supera el límite para su estado civil y número de hijos calificados.
+    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/es/publications/p596">Publication 596</a>, Earned Income Credit.
+  p-578b13: |-
+    Según la información que usted proporcionó, usted es elegible para el monto estimado del crédito tributario por ingreso del trabajo de:
+            <strong><fg-show path="/earnedIncomeCredit"/></strong>*
+  p-adf6bb: |-
+    Este monto del crédito reducirá sus impuestos del año <fg-show path="/taxYear"/> cuando presente su declaración de impuestos ante el IRS.
+            Sl el crédito reduce su impuesto a un monto menor que cero, es posible que pueda obtener un reembolso.
+  h2-259962: 'Próximos pasos: Cómo presentar el crédito tributario por ingreso del trabajo (EITC)'
+  p-508e29: |-
+    Para recibir el monto estimado de <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
+            debe presentar su declaración de impuestos del año <fg-show path="/taxYear"/>.
+            Si reclama el crédito tributario por ingreso del trabajo (EITC), por ley, el IRS no puede emitir el reembolso de impuestos antes de la mitad de Febrero de <fg-show path="/nextTaxYear"/>,
+            incluso la parte que no está asociada con el Crédito tributario por ingreso del trabajo.
+  h3-54f664: En línea
+  p-a5939a: |-
+    Si le gustaría presentar su declaración de impuestos en línea, puede calificar para utilizar el Programa Free File del IRS.
+            Tenga en cuenta que el programa solo está disponible de Enero a Octubre.
+  p-3ef53a: |-
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/es/filing/free-file-do-your-federal-taxes-for-free">
+              PRESENTAR AHORA UNA DECLARACIÓN EN LÍNEA<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
+            </a>
+  h3-792a4e: Presencial
+  p-787398: |-
+    Si preferiría trabajar con un preparador de declaraciones de impuestos, tiene la opción de hacerlo en un taller del IRS del programa de Ayuda Voluntaria al Contribuyente con los impuestos sobre los Ingresos (VITA).
+  p-25a83e: |-
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/es/individuals/free-tax-return-preparation-for-you-by-volunteers">
+              ASISTENCIA PRESENCIAL GRATUITA<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
+            </a>
+  h3-c7457b: Formularios en papel
+  p-b8834f: |-
+    Porque usted tiene un hijo calificado, tiene que Ilenar el
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-schedule-eic-form-1040">
+              Anexo EIC (Formulario 1040), Crédito por Ingreso del Trabajo (EITC) de <fg-show path="/taxYear"/> (PDF)
+            </a>
+            y adjuntarlo a su
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-form-1040">
+              Formulario 1040 (PDF)
+            </a>
+            o
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-form-1040-sr">
+              Formulario 1040-SR (PDF)
+            </a>
+            de <fg-show path="/taxYear"/>.
+  h2-a3da4a: Resumen de su información
+  p-5a6eac: |-
+    El cuadro que aparece a continuación es un resumen de la información que ingresó en la herramienta.
+            Si alguna parte de la información es incorrecta, haga clic en "editar" para actualizarla.
+            De lo contrario, podría afectar sus resultados.
   table-0:
     tbody-0:
       tr-0:
-        th-537c66:
-        td-0da7c7:
-        td-fba314:
+        th-537c66: Año
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">Editar sobre usted</a>
       tr-1:
-        th-c01d87:
-        td-86d753:
-        td-7a1efb:
+        th-c01d87: Estado civil para los efectos de la declaración
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">Editar estado civil</a>
       tr-2:
-        th-b1d475:
-        td-5637e9:
-        td-1c1ab4:
+        th-b1d475: Ingreso bruto ajustado
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">Editar ingresos y ajustes</a>
       tr-3:
-        th-40c7ae:
-        td-d604bc:
-        td-387fc0:
+        th-40c7ae: Ingreso del trabajo
+        td-d604bc: 'Total del sueldo y salario: <fg-show path="/jobsIncomeTotal"/>'
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">Editar ingresos</a>
       tr-4:
-        th-dbaf54:
-        td-4ea2d8:
-        td-9efa8d:
+        th-dbaf54: Hijos que reúnen los requisitos
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Editar hijos calificados</a>
   p-35b0d2: |-
+    Puede usar la aplicación móvil
+            <a target="_blank" class="usa-link" href="https://www.irs.gov/es/help/irs2goapp">
+              IRS2Go app<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
+            </a>
+            para verificar el estado de su reembolso, realizar un pago, encontrar ayuda gratuita para la preparación de impuestos, regístrese para recibir consejos tributarios útiles y más!
