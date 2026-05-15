@@ -528,14 +528,14 @@
     summary: Wages, salary, or tips
     /jobsIncomeTotal:
       question: Wages, salary, or tips where federal income taxes are withheld
-      modalLink: <modal-link for="modal-wages-salaries-tips">Wages Salaries and Tips
-        / Military &amp; Combat Pay</modal-link>
+      modalLink: <modal-link for="modal-wages-salaries-tips">What income should I
+        include?</modal-link>
   fg-detail-c0e18b:
     summary: Self-employment income and expenses
     /selfEmploymentGrossIncome:
       question: Self-employment Gross income
       modalLink: <modal-link for="modal-self-employment-gross-income">What is self-employment
-        income</modal-link>
+        income?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
       question: Total self-employment work-related expenses you <span condition="/isFilingStatusMFJ"
         operator="isTrue">and your spouse</span> deducted in <fg-show path="/taxYear"/>
@@ -694,7 +694,7 @@
     p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596</a>, Earned Income Credit.
   modal-wages-salaries-tips:
-    heading: Wages, Salaries, and Tips / Military &amp; Disability
+    heading: What income should I include?
     h3-53ed11: Wages Salaries and Tips
     p-40d79a: Your employer reported your wages, salaries, tips, and other compensation
       in box 1 of your Form W-2.
@@ -754,6 +754,7 @@
       of the EITC until you reach minimum retirement age.
     p-e7df54: The minimum retirement age is the earliest age at which you could have
       received a pension or annuity if you weren't disabled.
+    p-2e7e6e: Include temporary or short-term disability in your wages.
   modal-inmate-pay:
     heading: Pay Earned as an Inmate
     p-0ced8d: Pay you received for work you performed while an inmate in a penal institution
@@ -763,7 +764,7 @@
     p-1dc488: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297688">Publication
       596</a>, Earned Income Credit, Earnings while an inmate.
   modal-foreign-income-non2555:
-    heading: Pay Earned as an Inmate
+    heading: Foreign earned income
     p-6821fc: Foreign earned income is income earned while living and working outside
       the United States, District of Columbia, or U.S. possessions or territories.
     p-86d28e: If you’re a U.S. government employee working outside the United States,
@@ -853,7 +854,7 @@
       For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">Publication 550</a>, Investment Income and Expenses.
                 To figure your total investment income, you should use Worksheet 1 in <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income Credit.
   modal-self-employment-deductions:
-    heading: What did it mean to deduct expenses?
+    heading: What are self-employment deductible expenses?
     p-4838ea: |-
       When you were self employed, a gig worker, or owned and operated a business, you may have been able to
                 deduct certain business expenses from your income so you paid less tax.
