@@ -1,91 +1,91 @@
 components:
   fg-set:
-    required: (Requerido)
+    required: "(필수)"
   fg-collection:
     buttons:
-      remove: "Placeholder {0}"
-      add: "Placeholder {0}"
-      add-with-determiner: "Placeholder {1} {0}"
+      remove: "{0} 삭제"
+      add: "{0} 추가"
+      add-with-determiner: "{1} {0} 추가"
     remove-item-modal:
       heading:
-        remove: "Placeholder {0}?"
-      body: "Placeholder {0}."
+        remove: "{0} 삭제?"
+      body: "이 {0}을(를) EITC 계산에서 삭제하시겠습니까?"
       footer:
-        confirm: "Placeholder {0}"
-        cancel: "Placeholder {0}"
+        confirm: "{0} 확인"
+        cancel: "{0} 취소"
     determiners:
-      another:
-      more:
+      another: "또 다른"
+      more: "더"
   modal:
-    close:
-    ok:
+    close: "이 창 닫기"
+    ok: "확인"
   boolean:
-    yes: Sí
-    no: No
+    yes: "예"
+    no: "아니요"
   date:
-    month:
-    day:
-    year:
-    select:
-    january:
-    february:
-    march:
-    april:
-    may:
-    june:
-    july:
-    august:
-    september:
-    october:
-    november:
-    december:
+    month: "월"
+    day: "일"
+    year: "연도"
+    select: "- 선택 -"
+    january: "1월"
+    february: "2월"
+    march: "3월"
+    april: "4월"
+    may: "5월"
+    june: "6월"
+    july: "7월"
+    august: "8월"
+    september: "9월"
+    october: "10월"
+    november: "11월"
+    december: "12월"
   select:
-    select:
+    select: "-- 선택 --"
 
 title:
-  prefix:
-  suffix:
+  prefix: "EITC 도우미"
+  suffix: "국세청"
 
 layout:
-  title: Asistente del EITC
-  skip-to-main:
+  title: "근로소득세액공제(EITC) 도우미"
+  skip-to-main: "본문으로 건너뛰기"
   identifier:
-    agency-identifier:
-    disclaimer:
-    about:
-    accessibility:
-    privacy-policy:
-    important-links:
+    agency-identifier: "기관 식별자"
+    disclaimer: "공식 웹사이트 <a class=\"usa-link\" target=\"_blank\" href=\"https://irs.gov\">IRS<span class=\"usa-sr-only\"> (새 탭에서 열림)</span></a>"
+    about: "소개"
+    accessibility: "접근성"
+    privacy-policy: "개인정보처리방침"
+    important-links: "주요 링크"
   usgov:
-    name:
+    name: "미국 정부"
   irs:
-    name:
-    domain:
+    name: "IRS"
+    domain: "IRS.gov"
 
   banner:
-    how-you-know:
-    official-domain:
-    official-organization:
-    secure-https:
-    disclaimer:
-    lock-1:
-    lock-2:
+    how-you-know: "확인하는 방법"
+    official-domain: "공식 웹사이트는 .gov를 사용합니다"
+    official-organization: "<strong>.gov</strong> 웹사이트는 미국 공식 정부 기관에 속해 있습니다."
+    secure-https: "안전한 .gov 웹사이트는 HTTPS를 사용합니다"
+    disclaimer: "미국 정부 공식 웹사이트"
+    lock-1: "<strong>자물쇠 아이콘</strong>"
+    lock-2: "또는 <strong>https://</strong>는 .gov 웹사이트에 안전하게 연결되었음을 의미합니다. 민감한 정보는 안전한 공식 웹사이트에서만 공유하세요."
 
 buttons:
-  next: Siguiente
-  continue:
-  back: Volver
-  submit:
+  next: "다음"
+  continue: "계속"
+  back: "뒤로"
+  submit: "제출"
 
 alerts:
   warning:
-    complete-required:
+    complete-required: "필수 항목을 입력해 주세요."
 
 step-indicator:
-  completed:
-  not-completed:
-  step:
-  of: de
+  completed: "완료됨"
+  not-completed: "완료되지 않음"
+  step: "단계"
+  of: "중"
 
 # Note that these errors use CamelCase because they come from the Fact Graph. Some of these errors
 # are user errors (i.e. they entered an amount larger than the limit) but not all of them are (i.e.
@@ -93,30 +93,30 @@ step-indicator:
 # there's a bug that needs to be fixed.
 errors:
   # Dollar errors
-  CombinedHyphensAndParentheses:
+  CombinedHyphensAndParentheses: "숫자와 소수점만 입력하십시오."
   # Not obvious to me why the fact graph breaks down invalid characters
   # this way but I don't think it needs to be exposed to the user
-  InvalidCharacters:
-  InvalidDollar:
-  InvalidHyphens:
-  InvalidParentheses:
-  TooManyDecimals:
-  TooManyFractionalDigits:
+  InvalidCharacters: "숫자와 소수점만 입력하십시오."
+  InvalidDollar: "숫자와 소수점만 입력하십시오."
+  InvalidHyphens: "숫자와 소수점만 입력하십시오."
+  InvalidParentheses: "숫자와 소수점만 입력하십시오."
+  TooManyDecimals: "소수점이 하나만 포함된 숫자를 입력하십시오."
+  TooManyFractionalDigits: "소수점 뒤에 두 자리 숫자만 입력하십시오."
 
   # Day errors
-  InvalidDay:
-  InvalidDayDueToLeapYear:
-  InvalidMonth:
-  InvalidDate:
-  InvalidLimit:
-  IncompleteWritableDate:
+  InvalidDay: "유효한 일을 입력하십시오."
+  InvalidDayDueToLeapYear: "윤년으로 인해 유효하지 않은 일입니다."
+  InvalidMonth: "유효한 월을 입력하십시오."
+  InvalidDate: "유효한 날짜를 입력하십시오."
+  InvalidLimit: "유효하지 않은 한도가 설정되었습니다."
+  IncompleteWritableDate: "전체 날짜를 입력하거나 비워 두십시오."
 
   # Enum errors
-  BlankEnum:
-  InvalidEnum:
+  BlankEnum: "값이 비어 있습니다."
+  InvalidEnum: "값을 찾을 수 없습니다."
 
-  Required:
-  Default:
+  Required: "계속하려면 이 질문에 답해야 합니다."
+  Default: "죄송합니다. 문제가 발생했습니다."
 
   # Limit errors
   #
@@ -126,16 +126,16 @@ errors:
   #
   # Yes, it would be nice to do proper parameterization rather than just appending the limit value
   # to the end of the string
-  Max:
-  Min:
+  Max: "다음보다 작은 금액을 입력하십시오:"
+  Min: "다음보다 큰 금액을 입력하십시오:"
 
 audit:
   fact-select:
-    question:
-    blank:
-  collection-id-label:
+    question: "팩트 경로"
+    blank: "-- 경로 선택 --"
+  collection-id-label: "컬렉션 ID"
   fact:
-    type:
-    value:
-    remove:
-    definition:
+    type: "팩트 유형:"
+    value: "값:"
+    remove: "팩트 삭제"
+    definition: "XML 정의"

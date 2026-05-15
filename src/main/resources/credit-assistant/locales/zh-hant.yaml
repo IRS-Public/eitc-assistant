@@ -1,91 +1,91 @@
 components:
   fg-set:
-    required: (Requerido)
+    required: "(必填)"
   fg-collection:
     buttons:
-      remove: "Placeholder {0}"
-      add: "Placeholder {0}"
-      add-with-determiner: "Placeholder {1} {0}"
+      remove: "刪除 {0}"
+      add: "新增 {0}"
+      add-with-determiner: "新增 {1} {0}"
     remove-item-modal:
       heading:
-        remove: "Placeholder {0}?"
-      body: "Placeholder {0}."
+        remove: "刪除 {0}？"
+      body: "您確定要將此 {0} 從 EITC 計算中刪除嗎？"
       footer:
-        confirm: "Placeholder {0}"
-        cancel: "Placeholder {0}"
+        confirm: "確認 {0}"
+        cancel: "取消 {0}"
     determiners:
-      another:
-      more:
+      another: "另一個"
+      more: "更多"
   modal:
-    close:
-    ok:
+    close: "關閉此視窗"
+    ok: "確定"
   boolean:
-    yes: Sí
-    no: No
+    yes: "是"
+    no: "否"
   date:
-    month:
-    day:
-    year:
-    select:
-    january:
-    february:
-    march:
-    april:
-    may:
-    june:
-    july:
-    august:
-    september:
-    october:
-    november:
-    december:
+    month: "月"
+    day: "日"
+    year: "年"
+    select: "- 選擇 -"
+    january: "一月"
+    february: "二月"
+    march: "三月"
+    april: "四月"
+    may: "五月"
+    june: "六月"
+    july: "七月"
+    august: "八月"
+    september: "九月"
+    october: "十月"
+    november: "十一月"
+    december: "十二月"
   select:
-    select:
+    select: "-- 請選擇 --"
 
 title:
-  prefix:
-  suffix:
+  prefix: "EITC 助手"
+  suffix: "美國國家稅務局"
 
 layout:
-  title: Asistente del EITC
-  skip-to-main:
+  title: "勞動所得稅抵免 (EITC) 助手"
+  skip-to-main: "跳至主要內容"
   identifier:
-    agency-identifier:
-    disclaimer:
-    about:
-    accessibility:
-    privacy-policy:
-    important-links:
+    agency-identifier: "機構標識符"
+    disclaimer: "<a class=\"usa-link\" target=\"_blank\" href=\"https://irs.gov\">IRS<span class=\"usa-sr-only\">（在新分頁中開啟）</span></a>的官方網站"
+    about: "關於"
+    accessibility: "無障礙存取"
+    privacy-policy: "隱私權政策"
+    important-links: "重要連結"
   usgov:
-    name:
+    name: "美國政府"
   irs:
-    name:
-    domain:
+    name: "IRS"
+    domain: "IRS.gov"
 
   banner:
-    how-you-know:
-    official-domain:
-    official-organization:
-    secure-https:
-    disclaimer:
-    lock-1:
-    lock-2:
+    how-you-know: "如何確認"
+    official-domain: "官方網站使用 .gov"
+    official-organization: "<strong>.gov</strong> 網站屬於美國官方政府組織。"
+    secure-https: "安全的 .gov 網站使用 HTTPS"
+    disclaimer: "美國政府官方網站"
+    lock-1: "<strong>鎖型圖示</strong>"
+    lock-2: "或 <strong>https://</strong> 表示您已安全連線至 .gov 網站。請僅在官方且安全的網站上分享敏感資訊。"
 
 buttons:
-  next: Siguiente
-  continue:
-  back: Volver
-  submit:
+  next: "下一步"
+  continue: "繼續"
+  back: "返回"
+  submit: "提交"
 
 alerts:
   warning:
-    complete-required:
+    complete-required: "請填寫必填欄位。"
 
 step-indicator:
-  completed:
-  not-completed:
-  step:
-  of: de
+  completed: "已完成"
+  not-completed: "未完成"
+  step: "步驟"
+  of: "/"
 
 # Note that these errors use CamelCase because they come from the Fact Graph. Some of these errors
 # are user errors (i.e. they entered an amount larger than the limit) but not all of them are (i.e.
@@ -93,30 +93,30 @@ step-indicator:
 # there's a bug that needs to be fixed.
 errors:
   # Dollar errors
-  CombinedHyphensAndParentheses:
+  CombinedHyphensAndParentheses: "只能輸入數字和小數點。"
   # Not obvious to me why the fact graph breaks down invalid characters
   # this way but I don't think it needs to be exposed to the user
-  InvalidCharacters:
-  InvalidDollar:
-  InvalidHyphens:
-  InvalidParentheses:
-  TooManyDecimals:
-  TooManyFractionalDigits:
+  InvalidCharacters: "只能輸入數字和小數點。"
+  InvalidDollar: "只能輸入數字和小數點。"
+  InvalidHyphens: "只能輸入數字和小數點。"
+  InvalidParentheses: "只能輸入數字和小數點。"
+  TooManyDecimals: "請輸入僅包含一個小數點的數字。"
+  TooManyFractionalDigits: "小數點後只能輸入兩位數字。"
 
   # Day errors
-  InvalidDay:
-  InvalidDayDueToLeapYear:
-  InvalidMonth:
-  InvalidDate:
-  InvalidLimit:
-  IncompleteWritableDate:
+  InvalidDay: "請輸入有效的日期。"
+  InvalidDayDueToLeapYear: "由於閏年，該日期無效。"
+  InvalidMonth: "請輸入有效的月份。"
+  InvalidDate: "請輸入有效的日期。"
+  InvalidLimit: "設定的限制無效。"
+  IncompleteWritableDate: "請輸入完整的日期或留空。"
 
   # Enum errors
-  BlankEnum:
-  InvalidEnum:
+  BlankEnum: "值為空。"
+  InvalidEnum: "找不到該值。"
 
-  Required:
-  Default:
+  Required: '繼續前需要回答此問題'
+  Default: "抱歉，發生了一些問題。"
 
   # Limit errors
   #
@@ -126,16 +126,16 @@ errors:
   #
   # Yes, it would be nice to do proper parameterization rather than just appending the limit value
   # to the end of the string
-  Max:
-  Min:
+  Max: "請輸入小於以下數值的金額："
+  Min: "請輸入大於以下數值的金額："
 
 audit:
   fact-select:
-    question:
-    blank:
-  collection-id-label:
+    question: "事實路徑"
+    blank: "-- 選擇路徑 --"
+  collection-id-label: "集合 ID"
   fact:
-    type:
-    value:
-    remove:
-    definition:
+    type: "事實類型："
+    value: "值："
+    remove: "刪除事實"
+    definition: "XML 定義"
