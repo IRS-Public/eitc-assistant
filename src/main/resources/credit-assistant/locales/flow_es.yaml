@@ -382,66 +382,65 @@
     summary: Sueldo, salario o propinas
     /jobsIncomeTotal:
       question: Sueldo, salario o propinas en los que se retuvieron los impuestos federales sobre los ingresos
-      modalLink:
+      modalLink: <modal-link for="modal-wages-salaries-tips">¿Qué ingresos debo incluir?</modal-link>
   fg-detail-c0e18b:
     summary: Ingresos y gastos del trabajo por cuenta propia
     /selfEmploymentGrossIncome:
       question: Ingresos del trabajo por cuenta propia
-      modalLink:
+      modalLink: <modal-link for="modal-self-employment-gross-income">¿Qué son los ingresos por trabajo por cuenta propia?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
       question: Gastos del trabajo por cuenta propia que usted <span condition="/isFilingStatusMFJ" operator="isTrue"> y su cónyuge </span> en <fg-show path="/taxYear"/>.
       hint:
-      modalLink:
+      modalLink: <modal-link for="modal-self-employment-deductions">¿Cuáles son los gastos deducibles del trabajo por cuenta propia?</modal-link>
   fg-detail-2fc9c0:
     summary: Beneficios de la jubilación
     /disabilityRetirementBenefits:
       question: Beneficios de la jubilación por incapacidad antes de la edad mínima para jubilarse
-      modalLink:
+      modalLink: <modal-link for="modal-disability-retirement">¿Qué son los beneficios de jubilación por incapacidad?</modal-link>
   fg-detail-cd8e26:
     summary: Ingreso devengado en el extranjero
     /non2555ForeignIncome:
       question: Ingreso devengado en el extranjero no declarados en el Formulario 2555
-      modalLink:
+      modalLink: <modal-link for="modal-foreign-income-non2555">¿Qué son los ingresos devengados en el extranjero?</modal-link>
   h3-20a2b1: Otros tipos de ingresos
   fg-detail-89425f:
     summary: Ingreso de inversiones
     /investmentIncomeTotal:
       question: Ingreso de inversiones
-      modalLink:
+      modalLink: <modal-link for="modal-investment-income">¿Cuál es su total por ingreso de inversiones?</modal-link>
   fg-detail-fbe1af:
     summary: Ingreso de pensiones
     /pensionsIncomeTotal:
-      question:
-      modalLink:
+      question: Ingreso de pensiones
+      modalLink: <modal-link for="modal-taxable-pension">¿Cuál es la parte imponible de ingreso por pensiónes? </modal-link>
   fg-detail-3fa626:
     summary: Seguro por desempleo
     /unemploymentIncome:
       question: Seguro por desempleo
-      modalLink:
+      modalLink: <modal-link for="modal-unemployment-compensation">¿Qué se considera seguro por desempleo? </modal-link>
   fg-detail-0fb46a:
     summary: Seguro Social o beneficios de la jubilación ferroviaria
     /socialSecurityIncome:
       question: Parte imponible del Seguro Social o beneficios de la jubilación ferroviaria
-      modalLink:
+      modalLink:  <modal-link for="modal-social-security">¿Qué se considera beneficios del Seguro Social o beneficios de la jubilación ferroviaria?</modal-link>
   fg-detail-d994db:
     summary: Una beca o subvención que se debe contar como ingreso
     /taxableScholarship:
       question: Una beca o subvención que se debe contar como ingreso
-      modalLink:
+      modalLink: <modal-link for="modal-scholarship-grants">¿Qué se considera una beca o subvención? </modal-link>
   fg-detail-50ec28:
     summary: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
     /inmatePay:
       question: Paga recibido por trabajo mientras se es un recluso en una institución penitenciaria
-      modalLink:
+      modalLink: <modal-link for="modal-inmate-pay">¿Qué es paga recibido por trabajo mientras se es un recluso en una institución penitenciaria?</modal-link>
   fg-detail-7a5ac3:
     summary: Otros tipos de ingresos
     /nonSpecificOtherIncome:
       question: Otros tipos de ingresos
       hint:
-      modalLink:
+      modalLink: <modal-link for="modal-other-taxable-income">¿Cuáles son otros tipos de ingresos?</modal-link>
   h2-9fa8b1: Ajustes
   p-233dd3: Seleccione e ingrese alguno de estos tipos de ajustes a los ingresos que usted tuvo en el <fg-show path="/taxYear"/>. No ingrese el mismo ajuste en lugares distintos.
-  
   fg-detail-2c7735:
     summary: Deducción de los intereses del préstamo para estudios
     /studentLoanInterestAmount:
@@ -504,7 +503,7 @@
     p-f3c23d:
     p-93a6b5:
   modal-wages-salaries-tips:
-    heading:
+    heading: ¿Qué ingresos debo incluir?
     h3-53ed11: Salarios, sueldos y propinas
     p-40d79a: Su empleador declaró sus sueldos, salarios, propinas y otras compensaciones en la casilla 1 de su Formulario W-2.
     p-ab967b: Incluya la cantidad total de las propinas y las horas extras en el cálculo de los ingresos por trabajo al determinar la elegibilidad para el crédito tributario por ingreso del trabajo, incluso si la totalidad o parte del crédito es deducible.
@@ -513,7 +512,7 @@
     h3-af3590: Paga militar y por combate
     p-3fdb7d: También puede elegir incluir su paga por combate no tributable en el ingreso del trabajo para el crédito tributario por ingreso del trabajo (EITC). Su empleador declaró su paga por combate no tributable en <strong>la casilla 12</strong> con <strong>código Q</strong> en su Formulario W-2.
     p-d9b0e5: Esta elección puede aumentar o disminuir su crédito tributario por ingreso del trabajo (EITC por las siglas en inglés). Para obtener más información, visite la Paga por combate no tributable en <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000297672">la Publicación 596, Crédito por ingreso del trabajo (en inglés).</a>
+      class="usa-link" href="https://www.irs.gov/publications/p596sp">la Publicación 596, Crédito por ingreso del trabajo.</a>
     h3-84091c: Seguro por incapacidad temporal y de corto plazo
     p-bee3d8: Si tomó su licencia por maternidad o paternidad o estuvo incapacitado temporalmente durante el año y su empleador le pagó, declaró su ingreso en su Formulario W-2.Ingrese aquí ese monto.
   modal-work-no-taxes-withheld:
@@ -529,62 +528,65 @@
     p-ccdadf:
     p-5465af:
   modal-self-employment-gross-income:
-    heading:
-    p-3ef7b9:
+    heading: Ingreso del trabajo por cuenta propia
+    p-3ef7b9: <strong>Si usted:</strong>
     ul-0:
-      li-0d8073:
-      li-f5836c:
-      li-d6da48:
-      li-604ec3:
-      li-de3005:
-    p-ccdadf:
-    p-a21d1b:
+      li-0d8073: Trabaja por cuenta propia (puede que reciba o no el Formulario 1099 para todos los ingresos)
+      li-f5836c: Proporciona bienes o servicios
+      li-d6da48: Vende artículos en línea
+      li-604ec3: Opera un negocio o granja
+      li-de3005: Es pastor o miembro de una orden religiosa
+    p-ccdadf: Sus ingresos brutos incluyen todos los ingresos que recibió. Restaremos sus gastos más adelante.
+    p-a21d1b: Para más información, consulte la página Centro de ayuda tributaria para individuos que trabajan por cuenta propia <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">Publicaciones y formularios para los trabajadores por cuenta propia (en inglés)</a>.
   modal-disability-retirement:
-    heading:
-    p-514b79:
-    p-e7df54:
+    heading: Incapacidad por jubilación como ingreso del trabajo
+    p-514b79: Si usted se jubiló por discapacidad, consideramos que los beneficios tributables que usted recibió conforme el plan de jubilación por discapacidad de su empleador, son ingresos del trabajo para los propósitos del Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), hasta que usted cumpla con la edad mínima para la jubilación.
+    p-e7df54: La edad mínima para la jubilación es la edad más temprana en la que usted hubiera podido recibir una pensión o anualidad, si no estuviera discapacitado.
+    p-2e7e6e: Incluya la incapacidad temporal o de corto plazo en su salario.
   modal-inmate-pay:
-    heading:
-    p-0ced8d:
-    p-435d89:
-    p-1dc488:
+    heading: Paga del trabajo como recluso
+    p-0ced8d: La paga que recibió por el trabajo que desempeñó mientras era un recluso en una institución penitenciaria no es un ingreso de trabajo cuando calcula el crédito por ingreso del trabajo.
+    p-435d89: Esto incluye el trabajo remunerado que se desempeña cuando se está en un programa de reinserción laboral o un centro de reinseción social.
+    p-1dc488: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297688">Publicación 596, Crédito por ingreso del trabajo, ingresos recibidos como recluso (en inglés)</a>.
   modal-foreign-income-non2555:
-    heading:
-    p-6821fc:
-    p-86d28e:
-    p-231cd1:
-    p-87f12e:
-    p-90826b:
+    heading: Ingreso devengado en el extranjero
+    p-6821fc: Ingresos devengados en el extranjero son ingresos que generó mientras vivía y trabajaba fuera de los Estados Unidos, el Distrito de Columbia, o de las posesiones o territorios estadounidenses.
+    p-86d28e: Si usted es empleado del gobierno de los Estados Unidos trabajando fuera de los Estados Unidos, ese ingreso no se considera ingreso devengado en el extranjero.
+    p-231cd1: Si usted no es un empleado del gobierno y trabaja en una embajada, consideramos que ese ingreso es devengado en el extranjero.
+    p-87f12e: Para más información, consulte la página <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Formulario 2555, Ingresos devengados en el en el extranjero (en inglés)</a> (información sobre el Formulario 2555, Ingreso devengado en el extranjero) en inglés.
+    p-90826b: 'Nota: si decide presentar el Formulario 2555, usted no es elegible para reclamar el crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés).'
   modal-taxable-pension:
-    heading:
-    p-a523b6:
-    p-ce034e:
+    heading: Pensión
+    p-a523b6: Si usted recibe beneficios por jubilación en la forma de una pensión o pagos de anualidad, de un plan de jubilación calificado del empleador, todo o parte de la cantidad recibida puede ser tributable.
+    p-ce034e: <strong>Toda la cantidad es tributable si:</strong>
     ul-0:
-      li-21fe33:
-      li-c4c784:
-      li-a75167:
-    p-63555f:
+      li-21fe33: Usted no aportó nada, o no se le considera haber aportado nada a la pensión o anualidad
+      li-c4c784: Su empleador no retuvo aportaciones de su salario, o
+      li-a75167: Usted recibió todas las aportaciones libres de impuestos en años anteriores
+    p-63555f: <strong>Parte de la cantidad es tributable si:</strong>
     ul-1:
-      li-6d40a9:
-    p-24ecdd:
+      li-6d40a9: Usted aportó dinero luego de haber aplicado los impuestos (use la Regla General y el Método Simplificado para calcularlo)
+    p-24ecdd: Reglas adicionales pueden aplicarse si usted recibió los pagos antes de cumplir los 59 anos y medio de edad, si usted es sobreviviente o beneficiario, o si le aplican otras situaciones. Para más información consulte la página <a target="_blank" class="usa-link" href="https://www.irs.gov/es/taxtopics/tc410">Tema tributario 410</a>
   modal-unemployment-compensation:
-    heading:
-    p-ec0a26:
-    p-97117c:
+    heading: Compensación por desempleo (seguro)
+    p-ec0a26: Para el crédito tributario por ingreso del trabajo, incluya todos sus beneficios de la compensación por desempleo. Puede encontrar este ingreso en el Formulario 1099-G.
+    p-97117c: Si los fondos de su empleador proporcionaron beneficios complementarios, incluya cualquier monto declarado en el Formulario W-2, en <strong>la casilla 1</strong>.
   modal-social-security:
-    heading:
-    p-f2d061:
-    p-e8b50a:
-    p-2b31f6:
+    heading: Ingreso del Seguro Social y Beneficios de la jubilación ferroviaria
+    p-f2d061: Beneficios de la jubilación ferroviaria y Seguro Social. Para el crédito tributario por ingreso del trabajo, incluya solo la cantidad imponible de sus beneficios de la jubilación ferroviaria y el Seguro Social.
+    p-e8b50a: <a target="_blank" class="usa-link" href="https://www.irs.gov/pub/irs-prior/n703--2021.pdf">El Aviso 703</a> del IRS puede ayudarle a determinar si alguno de sus beneficios del Seguro Social está sujeto a impuestos. Para obtener más información, visite <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/es/taxtopics/tc423">Tema tributario 423</a>.
+    p-2b31f6: Para calcular la cantidad imponible de sus beneficios, consulte Qué hoja utilizar en <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">la Publicación 915, Seguro Social y beneficios equivalentes de jubilación ferroviaria (en inglés)</a>.
   modal-scholarship-grants:
-    heading:
-    p-0e0c43:
-    p-ce8e34:
+    heading: Beca y pensión para investigaciones
+    p-0e0c43: Ingrese cualquier monto de la beca tributable no declarado en el Formulario W-2.
+    p-ce8e34: 'Esto monto incluye el dinero de la beca o subvención que no aparece en su Formulario W-2 si el dinero fue:'
     ul-0:
-      li-13d8db:
-      li-b94d4b:
-    p-adf913:
-    p-0c59d8:
+      li-13d8db: Utilizado para gastos varios, tales como alojamiento y comida, viajes y equipamiento opcional
+      li-b94d4b: Recibido como pago por enseñanza, investigación u otros servicios exigidos como condición para recibir la beca y pensión para investigaciones
+    p-adf913: No incluya los montos que recibió por los servicios exigidos por el Programa de Becas del Cuerpo de Sanidad Nacional, el Programa de Asistencia Económica y Becas para Profesiones de la Salud para las Fuerzas Armadas, o un programa integral de empleo, aprendizaje y servicio para estudiantes operado por un instituto profesional.
+    p-0c59d8: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/es/taxtopics/tc421">Tema tributario 421.</a>
   fg-alert-64891c:
     heading:
     p-cdf53e:
@@ -603,23 +605,23 @@
       li-7c0731:
     p-9c482c:
   modal-self-employment-deductions:
-    heading:
-    p-4838ea:
-    p-f24032:
+    heading: ¿Cuáles son los gastos deducibles del trabajo por cuenta propia?
+    p-4838ea: Si trabajó por cuenta propia, realizó trabajos ocasionales o fue propietario y operador de un negocio, es posible que haya podido deducir ciertos gastos comerciales de sus ingresos, lo que le permitió pagar menos impuestos.
+    p-f24032: 'Los gastos comerciales pueden incluir:'
     ul-0:
-      li-6a4179:
-      li-e2f63f:
-      li-7f4118:
-      li-9f53a8:
-      li-eaff1b:
-      li-6c49ac:
-      li-761662:
-      li-719fec:
-      li-849c98:
-    p-9ff7b2:
-    p-0651e4:
-    p-a81df3:
-    p-4ca1ce:
+      li-6a4179: Gastos de oficina en el hogar
+      li-e2f63f: Gastos de automóviles y camiones
+      li-7f4118: Alquiler
+      li-9f53a8: Salarios y pensiones de empleados
+      li-eaff1b: Seguros
+      li-6c49ac: Intereses sobre deudas
+      li-761662: Honorarios legales y profesionales
+      li-719fec: Impuestos
+      li-849c98: Viajes y comidas
+    p-9ff7b2: Estas deducciones son diferentes de las deducciones personales que realizó si optó por detallar sus deducciones. Puede deducir sus gastos comerciales aquí y aun así elegir la deducción estándar más adelante.
+    p-0651e4: ¿Cómo consultar la declaración de impuestos del año pasado?
+    p-a81df3: Si trabajó por cuenta propia en 2025, puede encontrar sus gastos deducibles en la línea 28 del Anexo C.
+    p-4ca1ce: Obtenga más información sobre los gastos comerciales
   modal-estimate-interest-income-en:
     heading:
     p-cda131:
@@ -628,50 +630,50 @@
     ul-0:
       li-7b5662:
   modal-investment-income:
-    heading:
-    p-b07c20:
+    heading: Ingreso de inversión
+    p-b07c20: 'Para los propósitos del crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), el ingreso de inversión incluye:'
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-81f254:
-      li-498151:
-      li-7c0731:
-    p-4c8f5e:
-    p-df5956:
+      li-12d3b7: Intereses (tributables y exentos de impuestos)
+      li-0a9a83: Dividendos
+      li-81f254: Ingreso por ganancia de capital (no las pérdidas)
+      li-498151: Algunas rentas y regalías o
+      li-7c0731: Ingreso neto de actividades pasivas
+    p-4c8f5e: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">la publicación Publicación 550, Ingreso y gastos de inversiones (en inglés)</a> para obtener más información.
+    p-df5956: 'Use la hoja de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">la Publicación 596, Crédito por ingreso del trabajo (en inglés) </a> para calcular su ingreso de inversión si es que alguna de las siguientes le aplican a usted en el 2025:'
     ul-1:
-      li-0f3c1b:
-      li-782dae:
-      li-e0ebc1:
-      li-a00ee1:
-      li-143cd9:
+      li-0f3c1b: Presenta el Anexo E (Formulario 1040)
+      li-782dae: Declara ingresos del alquiler de su propiedad personal no usada en un oficio o negocio
+      li-e0ebc1: Declara artículos del Formulario 8814 (relacionados con la elección de los padres de declarar los intereses y dividendos del hijo)
+      li-a00ee1: Tiene ingresos o pérdidas de una actividad pasiva
+      li-143cd9: Presenta el Formulario 4797 (relacionado con ventas de propiedad comercial)
   modal-other-taxable-income:
-    heading:
-    p-ba0ae2:
+    heading: Otros tipos de ingresos 
+    p-ba0ae2: <strong>Otros tipos de ingresos incluyen los siguientes:</strong>
     ul-0:
-      li-83fa6a:
-      li-7ae32a:
-      li-248c6a:
-      li-6dac33:
-      li-13b588:
-      li-ad5cc5:
-      li-ece5cb:
-      li-0f1015:
-      li-7e9756:
-      li-737e99:
-      li-e833f1:
-    p-fda53f:
+      li-83fa6a: Distribuciones de la Cuenta Individual de Jubilación (IRA, por las siglas en inglés) (excepto las cuentas IRA Roth) Fideicomiso y distribuciones de un plan 401(k)
+      li-7ae32a: Pérdidas de capital (no ganancias) 
+      li-248c6a: Pagos de la pensión para el cónyuge divorciado recibidas conforme a un acuerdo de divorcio o separación ejecutados antes de 2020
+      li-6dac33: Bienes inmuebles en alquiler, regalías, sociedades, sociedades anónimas de tipo S, fideicomisos, etc.
+      li-13b588: Ingresos del alquiler de una propiedad personal si la alquiló para recibir ganancias, pero no estaba en el negocio de alquilar dicha propiedad
+      li-ad5cc5: Distribuciones tributables de una cuenta Coverdell de ahorros para la educación (ESA) y ganancias calificadas de un programa de ayuda para la educación
+      li-ece5cb: Ganancias calificadas de un programa de ayuda para la educación
+      li-0f1015: Ganancias de premios, concesiones y juegos y apuestas
+      li-7e9756: Honorarios de juraduría
+      li-737e99: Dividendos de los fondos permanentes de Alaska
+      li-e833f1: Reembolsos y otros montos recibidos por los conceptos deducidos en un año anterior, tales como gastos médicos, gastos de bienes inmuebles o intereses de la hipoteca del hogar
+    p-fda53f: <strong>No incluya:</strong>
     ul-1:
-      li-0eb181:
-      li-e46f68:
-      li-b144cb:
-      li-63523b:
-      li-a8d386:
-      li-f2a3d6:
-      li-080a95:
-      li-57e5cb:
-      li-764dd4:
-      li-6f920a:
-    p-745735:
+      li-0eb181: Pagos de la pensión para el cónyuge divorciado recibidas conforme a un acuerdo de divorcio o separación ingresados luego de 2019
+      li-e46f68: Pensión para hijos menores
+      li-b144cb: Beneficios de beneficencia social tales como la Asistencia Temporal para Familias Necesitadas (TANF), cupones para alimentos, asignación para la vivienda de la sección 8
+      li-63523b: Pagos no tributables del cuidado de acogida
+      li-a8d386: Beneficios no tributables del empleado tales como la asistencia para educación
+      li-f2a3d6: Beneficio de los veteranos, incluidos los pagos de rehabilitación del Departamento de Asuntos de los Veteranos
+      li-080a95: Compensación del trabajador
+      li-57e5cb: Dinero de un seguro de vida recibido por el fallecimiento de una persona
+      li-764dd4: Dinero o propiedad que usted heredó, a los que tiene derecho según un testamento o que recibió como donación
+      li-6f920a: Beneficios por desempleo
+    p-745735: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-525">la Publicación 525, Ingreso tributable y no tributable (en inglés)</a>
   modal-student-loan-interest:
     heading: Deducción de los intereses del préstamo para estudios
     p-3ac7ce: Ingrese hasta <fg-show path="/maxStudentLoanDeduction"/> de los intereses que pagó sobre su préstamo estudiantil calificado. Puede encontrar esto en su Formulario 1098-E si pagó más de $600 en intereses.
