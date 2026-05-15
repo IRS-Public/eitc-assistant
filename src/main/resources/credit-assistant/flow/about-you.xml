@@ -19,7 +19,7 @@
       
       <fg-set path="/isUSCitizenOrResidentAlien" if-true="/hasSelectedChosenTaxYear">
         <question>Were you a U.S. Citizen or Resident Alien for all of <fg-show path="/taxYear"/>?*</question>
-        <modal-link for="modal-citizen">U.S. Citizen or Resident Alien</modal-link>
+        <modal-link for="modal-citizen">Do I qualify as a U.S. citizen or resident for EITC?</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
           <option value="false">No</option>
@@ -37,7 +37,7 @@
 
       <fg-set path="/hasValidSSN" if-true="/isUSCitizenOrResidentAlien">
         <question>Do you have a valid Social Security number that was issued on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions)?*</question>
-        <modal-link for="modal-valid-ssn-filer">Valid Social Security Number</modal-link>
+        <modal-link for="modal-valid-ssn-filer">What counts as a valid Social Security Number?</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
           <option value="false">No</option>
@@ -55,7 +55,8 @@
 
       <fg-set path="/hasForeignEarnedIncome" if-true="/hasValidSSN">
         <question>Are you filing Form 2555, Foreign Earned Income?*</question>
-        <modal-link for="modal-foreign-income">Foreign Earned Income excluded from Gross Income</modal-link>
+        <modal-link for="modal-foreign-income">What is Foreign Earned income excluded from gross income?
+</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
           <option value="false">No</option>
@@ -73,7 +74,7 @@
 
       <fg-set path="/isClaimedAsDependent" if-false="/hasForeignEarnedIncome">
         <question>Will someone else claim you as a dependent or qualifying child for the EITC on their tax return?*</question>
-        <modal-link for="modal-claimed-dependent">You as a Dependent or Qualifying Child</modal-link>
+        <modal-link for="modal-claimed-dependent">How do I know if I’m someone’s dependent or qualifying child?</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
           <option value="false">No</option>
