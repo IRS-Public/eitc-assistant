@@ -139,3 +139,22 @@ audit:
     value: "Valor:"
     remove: "Eliminar hecho"
     definition: "Definición XML"
+
+all-screens:
+  toolbar:
+    label: "Barra de auditoría"
+    show-conditions: "Mostrar condiciones"
+    section-label: "Sección"
+    section-all: "Todas las secciones"
+    horizontal-layout: "Diseño horizontal"
+  section:
+    about-you: "Sobre usted"
+    filing-status: "Estado civil"
+    agi: "Ingreso bruto ajustado"
+    qualifying-children: "Hijos que califican"
+    results: "Resultados"
+    other: "Otro"
+    page-count: "{0} páginas"
+    condition-count: "{0} condiciones"
+  screen:
+    condition-count: "{0} condiciones"

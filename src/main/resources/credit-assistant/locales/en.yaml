@@ -139,3 +139,22 @@ audit:
     value: "Value:"
     remove: "Remove fact"
     definition: "XML Definition"
+
+all-screens:
+  toolbar:
+    label: "Audit toolbar"
+    show-conditions: "Show conditions"
+    section-label: "Section"
+    section-all: "All sections"
+    horizontal-layout: "Horizontal layout"
+  section:
+    about-you: "About you"
+    filing-status: "Filing status"
+    agi: "Adjusted gross income"
+    qualifying-children: "Qualifying children"
+    results: "Results"
+    other: "Other"
+    page-count: "{0} pages"
+    condition-count: "{0} conditions"
+  screen:
+    condition-count: "{0} conditions"

@@ -139,3 +139,22 @@ audit:
     value: "Giá trị:"
     remove: "Xóa dữ kiện"
     definition: "Định nghĩa XML"
+
+all-screens:
+  toolbar:
+    label: "Thanh công cụ kiểm toán"
+    show-conditions: "Hiển thị điều kiện"
+    section-label: "Phần"
+    section-all: "Tất cả các phần"
+    horizontal-layout: "Bố cục ngang"
+  section:
+    about-you: "Về bạn"
+    filing-status: "Tình trạng khai thuế"
+    agi: "Tổng thu nhập điều chỉnh"
+    qualifying-children: "Trẻ đủ điều kiện"
+    results: "Kết quả"
+    other: "Khác"
+    page-count: "{0} trang"
+    condition-count: "{0} điều kiện"
+  screen:
+    condition-count: "{0} điều kiện"

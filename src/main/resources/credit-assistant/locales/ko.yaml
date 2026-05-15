@@ -139,3 +139,22 @@ audit:
     value: "값:"
     remove: "팩트 삭제"
     definition: "XML 정의"
+
+all-screens:
+  toolbar:
+    label: "감사 도구 모음"
+    show-conditions: "조건 표시"
+    section-label: "섹션"
+    section-all: "모든 섹션"
+    horizontal-layout: "수평 레이아웃"
+  section:
+    about-you: "본인 정보"
+    filing-status: "신고 상태"
+    agi: "조정총소득"
+    qualifying-children: "적격 자녀"
+    results: "결과"
+    other: "기타"
+    page-count: "페이지 {0}개"
+    condition-count: "조건 {0}개"
+  screen:
+    condition-count: "조건 {0}개"

@@ -139,3 +139,22 @@ audit:
     value: "Значение:"
     remove: "Удалить факт"
     definition: "XML-определение"
+
+all-screens:
+  toolbar:
+    label: "Панель аудита"
+    show-conditions: "Показать условия"
+    section-label: "Раздел"
+    section-all: "Все разделы"
+    horizontal-layout: "Горизонтальный вид"
+  section:
+    about-you: "О вас"
+    filing-status: "Статус подачи"
+    agi: "Скорректированный валовой доход"
+    qualifying-children: "Дети, дающие право"
+    results: "Результаты"
+    other: "Прочее"
+    page-count: "Страниц: {0}"
+    condition-count: "Условий: {0}"
+  screen:
+    condition-count: "Условий: {0}"
