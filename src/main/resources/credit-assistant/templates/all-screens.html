@@ -26,14 +26,39 @@
 <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 <header>
     <div th:replace="fragments/usa-banner"></div>
-    <div class="logo-banner"><img src="/app/eitc/resources/img/irs-logo.svg" alt="IRS Logo"></div>
+    <div class="logo-banner">
+        <div class="grid-container">
+            <a href="https://www.irs.gov" th:aria-label="#{layout.irs.domain}">
+                <img src="/app/eitc/resources/img/irs-logo.svg" alt="" />
+            </a>
+
+            <div th:if="${supportedLocales != null}" class="language-switcher">
+                <label class="usa-sr-only" for="language-selector">Select Language</label>
+
+                <select class="usa-select"
+                        id="language-selector"
+                        name="language-selector"
+                        onchange="if(this.value) window.location.href=this.value"
+                        style="width: auto; margin-top: 0;">
+
+                    <option value="" disabled selected>Select Language</option>
+
+                    <option th:each="lang : ${supportedLocales}"
+                            th:value="${lang.key == 'en'} ? |/app/eitc${currentPageRoute}| : |/app/eitc/${lang.key}${currentPageRoute}|"
+                            th:text="${lang.value}">
+                    </option>
+
+                </select>
+            </div>
+        </div>
+    </div>
 </header>
 
 <div class="usa-in-page-nav-container">
     <aside class="usa-in-page-nav" data-heading-elements="h2 h3"></aside>
     <main id="main-content" class="main-content usa-prose">
         <article th:each="page: ${pages}" class="screen" data-route="${page.route}">
-            <h1 class="screen__title" th:text="${page.titleKey}">Page Title</h1>
+            <h1 class="screen__title" th:text="${page.title}">Page Title</h1>
             <div class="screen__content" th:utext="${page.content}">Lorem Ipsum</div>
         </article>
     </main>
