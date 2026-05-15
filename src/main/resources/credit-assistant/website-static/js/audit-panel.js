@@ -16,28 +16,158 @@ const AUDIT_PANEL_MIN_WIDTH = 320
 const AUDIT_PANEL_MAX_WIDTH_RATIO = 0.7
 const AUDIT_PANEL_KEYBOARD_STEP = 24
 
+const DQ_MARRIED_NOT_JOINT_FACTS = [
+  '/isDisqualifiedFlowSeparationTestNotMarriedLivedNotSeparated',
+  '/isDisqualifiedHohMarriedLivedTogetherNotSeparatedNoQcs',
+  '/isDisqualifiedMfsLivedNotSeparatedNoQcs',
+  '/isDisqualifiedMfsSameResidenceNotSeparated',
+  '/isDisqualifiedInitialMfsLivedNotSeparated',
+  '/isDisqualifiedHohMarriedLivedTogetherNotSeparated',
+  '/isDisqualifiedMarriedNotMfjSameResidenceSeparatedNoQcs',
+  '/isDisqualifiedWidowedNotJointlySameResidenceSeparatedNoQcs',
+  '/isDisqualifiedWidowedNotJointlyDifferentResidenceNoQcs',
+  '/isDisqualifiedMfsDifferentResidenceNoQcs',
+  '/isDisqualifiedMfsOrHohSpouseDidNotLiveNoQcs',
+  '/isDisqualifiedHohMarriedSeparatedNoQcs',
+  '/isDisqualifiedInitialAndFilingMfsSeparatedNoQcs',
+  '/isDisqualifiedMarriedNotFilingJointly',
+]
+
+const DQ_AGE_WITHOUT_QC_FACTS = [
+  '/userDeclinesEitcQualifyingChildrenForDisqualifier',
+  '/filingAllowsEitcWithoutQualifyingChildrenForDisqualifier',
+  '/notBlockedAsDependentForEitcForDisqualifier',
+  '/failsEitcAgeBandWithoutQualifyingChildren',
+  '/primaryFilerIsClaimingQualifyingChildren',
+  '/isDisqualifiedForEitcAgeWithoutQualifyingChildren',
+]
+
+const DQ_AGE_WITH_QC_FACTS = [
+  '/hasQcAndShouldSeeAgeComparisonTest',
+  '/eitcQualifyingChildren',
+  '/isDisqualifiedForEitcAgeWithQualifyingChildren',
+]
+
+const FS_MARITAL_STATUS_FACTS = [
+  '/isSingle',
+  '/isDivorcedOrLegallySeparated',
+  '/maritalStatusAllowsFilingMarried',
+  '/isWidowedInTaxYear',
+  '/isWidowedInPastTwoTaxYears',
+  '/isWidowedAtLeastTwoTaxYearsAgo',
+]
+
+const FS_HOUSEHOLD_FACTS = [
+  '/intendsToFileJointly',
+  '/spouseLivedWithTaxpayerLastSixMonths',
+  '/paidMoreThanHalfHomeCostsForChild',
+  '/tentativelyHOHFromHomeUpkeep',
+  '/entitledToPreviouslyFileJointReturn',
+  '/canClaimChildAsDependentInCurrentTaxYear',
+  '/couldClaimChildAsDependentInCurrentTaxYearWithExceptions',
+  '/derivedFilingStatus',
+]
+
+function renderDashboardSection (facts, rollupPath, heading, getStatus) {
+  const items = facts.map(p => {
+    let status = 'incomplete'
+    let badge = 'incomplete'
+    try {
+      const fact = window.factGraph.get(p)
+      if (fact.complete) {
+        const val = fact.get.toString()
+        if (getStatus) {
+          const result = getStatus(p, val)
+          status = result.status
+          badge = result.badge ?? result.status
+        } else {
+          status = p.startsWith('/isDisqualified')
+            ? (val === 'true' ? 'disqualified' : 'passed')
+            : (val === 'true' ? 'passed' : 'failed')
+          badge = status
+        }
+      }
+    } catch {}
+    const isRollup = p === rollupPath
+    return `<li class="ap-dq-item ap-dq-${status}${isRollup ? ' ap-dq-rollup' : ''}" title="${p}">
+        <span class="ap-dq-label">${p}</span>
+        <span class="ap-dq-badge ap-dq-badge--${status}">${badge}</span>
+      </li>`
+  }).join('')
+  return `<li class="ap-dq-section-heading">${heading}</li>${items}`
+}
+
+function renderDQDashboard () {
+  const list = document.querySelector('#dq-dashboard-list')
+  if (!list || !window.factGraph) return
+
+  list.innerHTML = [
+    renderDashboardSection(DQ_MARRIED_NOT_JOINT_FACTS, '/isDisqualifiedMarriedNotFilingJointly', 'Married Not Joint'),
+    renderDashboardSection(DQ_AGE_WITHOUT_QC_FACTS, '/isDisqualifiedForEitcAgeWithoutQualifyingChildren', 'Age (No QC)'),
+    renderDashboardSection(DQ_AGE_WITH_QC_FACTS, '/isDisqualifiedForEitcAgeWithQualifyingChildren', 'Age (With QC)'),
+  ].join('')
+}
+
+function fsFilingStatusLabel (val) {
+  switch (val) {
+    case 'marriedFilingJointly': return 'MFJ'
+    case 'marriedFilingSeparately': return 'MFS'
+    case 'single': return 'Single'
+    case 'headOfHousehold': return 'HOH'
+    case 'qualifiedSurvivingSpouse': return 'QSS'
+    default: return val
+  }
+}
+
+function fsDashboardStatus (path, val) {
+  if (path === '/derivedFilingStatus') return { status: 'resolved', badge: fsFilingStatusLabel(val) }
+  return { status: val === 'true' ? 'passed' : 'failed' }
+}
+
+function renderFSDashboard () {
+  const list = document.querySelector('#fs-dashboard-list')
+  if (!list || !window.factGraph) return
+
+  list.innerHTML = [
+    renderDashboardSection(FS_MARITAL_STATUS_FACTS, null, 'Marital Status', fsDashboardStatus),
+    renderDashboardSection(FS_HOUSEHOLD_FACTS, '/derivedFilingStatus', 'Household & Filing Intent', fsDashboardStatus),
+  ].join('')
+}
+
+document.addEventListener('fg-update', () => {
+  renderDQDashboard()
+  renderFSDashboard()
+})
+document.addEventListener('fg-load', () => {
+  renderDQDashboard()
+  renderFSDashboard()
+})
+
 export function displayConditions () {
   document.body.classList.add('display-conditions')
   document.querySelectorAll('[condition]').forEach(el => {
     const operator = el.getAttribute('operator')
-    const condition = el.getAttribute('condition')
-    if (operator && condition) {
-      const factSpan = document.createElement('span')
-      factSpan.className = 'fact-name'
-      factSpan.textContent = `condition: ${operator} ${condition}`
+    const conditionPath = el.getAttribute('condition')
+    if (!operator || !conditionPath) return
 
-      if (el.tagName.toLowerCase() === 'span') {
-        el.appendChild(factSpan)
-      } else {
-        el.prepend(factSpan)
-      }
+    const abstractPath = conditionPath.replace(/#[^/]+/, '*')
+
+    const detail = document.createElement('condition-detail')
+    detail.setAttribute('condition-path', conditionPath)
+    detail.setAttribute('condition-operator', operator)
+    detail.setAttribute('abstract-path', abstractPath)
+
+    if (el.tagName.toLowerCase() === 'span') {
+      el.appendChild(detail)
+    } else {
+      el.prepend(detail)
     }
   })
 }
 
 export function hideConditions () {
   document.body.classList.remove('display-conditions')
-  document.querySelectorAll('.fact-name').forEach(el => el.remove())
+  document.querySelectorAll('condition-detail').forEach(el => el.remove())
 }
 window.displayConditions = displayConditions
 window.hideConditions = hideConditions
@@ -196,6 +326,302 @@ class AuditedFact extends HTMLElement {
   }
 }
 customElements.define('audited-fact', AuditedFact)
+
+class ConditionDetail extends HTMLElement {
+  constructor () {
+    super()
+    this.renderListener = () => this.render()
+    this._hideTimeout = null
+  }
+
+  connectedCallback () {
+    this.conditionPath = this.getAttribute('condition-path')
+    this.operator = this.getAttribute('condition-operator')
+    this.abstractPath = this.getAttribute('abstract-path')
+
+    this._popover = document.createElement('div')
+    this._popover.className = 'condition-detail-popover'
+    document.body.appendChild(this._popover)
+    this._popover.addEventListener('mouseenter', () => clearTimeout(this._hideTimeout))
+    this._popover.addEventListener('mouseleave', () => this._startHide())
+
+    document.addEventListener('fg-update', this.renderListener)
+    this.render()
+  }
+
+  disconnectedCallback () {
+    document.removeEventListener('fg-update', this.renderListener)
+    this._popover?.remove()
+  }
+
+  _startHide () {
+    this._hideTimeout = setTimeout(() => this._popover.classList.remove('visible'), 150)
+  }
+
+  render () {
+    const isHidden = this.parentElement?.classList.contains('hidden') ?? false
+    const statusText = isHidden ? 'UNSET_CONDITION' : 'SET_CONDITION'
+    const statusClass = isHidden ? 'condition-detail__status--hidden' : 'condition-detail__status--shown'
+
+    let valueText = '(unavailable)'
+    let completeText = ''
+    if (window.factGraph) {
+      try {
+        const fact = window.factGraph.get(this.conditionPath)
+        valueText = fact.hasValue ? fact.get.toString() : '(no value)'
+        completeText = fact.complete ? 'complete' : 'incomplete'
+      } catch (e) {
+        valueText = '(error)'
+      }
+    }
+
+    const pathHtml = this.abstractPath.includes('*')
+      ? `<span class="condition-detail__path">${this.conditionPath}</span>`
+      : `<fact-link path="${this.conditionPath}"><span class="condition-detail__path">${this.conditionPath}</span></fact-link>`
+
+    this.innerHTML = `
+      <span class="condition-detail__status ${statusClass}">${statusText}</span>
+      ${pathHtml}
+      <span class="condition-detail__value">${valueText}</span>
+      <span class="condition-detail__complete">${completeText}</span>
+      <button class="condition-detail__debug-btn" type="button">show definition</button>
+    `
+
+    this._popover.innerHTML = this._buildHumanReadable()
+    this._popover.querySelectorAll('.hr-toggle-xml').forEach(btn => {
+      btn.addEventListener('click', () => {
+        this._popover.querySelector('.hr-fact').hidden = !this._popover.querySelector('.hr-fact').hidden
+        this._popover.querySelector('.hr-xml-view').hidden = !this._popover.querySelector('.hr-xml-view').hidden
+      })
+    })
+
+    const btn = this.querySelector('.condition-detail__debug-btn')
+    btn.addEventListener('mouseenter', () => {
+      clearTimeout(this._hideTimeout)
+      const rect = btn.getBoundingClientRect()
+      this._popover.style.top = `${rect.bottom + 4}px`
+      this._popover.style.left = `${rect.left}px`
+      this._popover.classList.add('visible')
+    })
+    btn.addEventListener('mouseleave', () => this._startHide())
+  }
+
+  _getFactLabel (rawAbstractPath) {
+    const factNode = factDictionaryXml.querySelector(`Fact[path="${rawAbstractPath}"]`)
+    const nameText = factNode?.querySelector('Name')?.textContent?.trim()
+    if (nameText) return nameText
+    const segment = rawAbstractPath.split('/').filter(Boolean).pop() ?? rawAbstractPath
+    return segment.replace(/([A-Z])/g, ' $1').toLowerCase().trim()
+  }
+
+  _resolveAbstractPath (rawPath) {
+    if (!rawPath.startsWith('..')) return rawPath
+    const prefix = this.abstractPath.replace(/\*\/.*/, '*')
+    return rawPath.replace('..', prefix)
+  }
+
+  _resolveConcretePath (rawPath, collectionId) {
+    let p = this._resolveAbstractPath(rawPath)
+    if (collectionId) p = p.replace('*', `#${collectionId}`)
+    return p
+  }
+
+  _getDepValue (concretePath) {
+    if (!concretePath || concretePath.includes('*')) return null
+    try {
+      const fact = window.factGraph.get(concretePath)
+      return fact.hasValue ? { value: fact.get.toString(), complete: fact.complete } : null
+    } catch { return null }
+  }
+
+  _renderDep (node, collectionId, { negated = false, isComplete = false } = {}) {
+    const rawPath = node?.getAttribute('path')
+    if (!rawPath) return ''
+    const abstractPath = this._resolveAbstractPath(rawPath)
+    const label = this._getFactLabel(abstractPath)
+    const concrete = this._resolveConcretePath(rawPath, collectionId)
+    const result = this._getDepValue(concrete)
+
+    const pathSpan = `<span class="hr-dep-path" title="${rawPath}">${label}</span>`
+
+    if (isComplete) {
+      const answered = result !== null
+      const chip = answered ? `<span class="hr-val hr-val--answered">${result.value}</span>` : ''
+      return `<span class="hr-dep">${pathSpan} <span class="hr-qualifier">${answered ? 'has been answered' : 'has not been answered'}</span>${chip}</span>`
+    }
+    if (negated) {
+      const chip = result ? `<span class="hr-val hr-val--secondary">${result.value}</span>` : ''
+      return `<span class="hr-dep">${pathSpan} <span class="hr-qualifier">is false</span>${chip}</span>`
+    }
+
+    let chip = ''
+    if (result) {
+      const cls = result.value === 'true'
+        ? 'hr-val--true'
+        : result.value === 'false'
+          ? 'hr-val--false'
+          : 'hr-val--other'
+      const incomplete = !result.complete ? ' <span class="hr-incomplete">(incomplete)</span>' : ''
+      chip = ` <span class="hr-val ${cls}">${result.value}</span>${incomplete}`
+    }
+    return `<span class="hr-dep">${pathSpan}${chip}</span>`
+  }
+
+  _renderNode (node, collectionId) {
+    if (!node || node.nodeType !== 1) return ''
+    const tag = node.tagName
+    const kids = Array.from(node.children)
+
+    switch (tag) {
+      case 'Derived':
+        return this._renderNode(kids[0], collectionId)
+
+      case 'Writable': {
+        const type = kids[0]?.tagName ?? 'value'
+        return `<span class="hr-writable">User-entered ${type}</span>`
+      }
+
+      case 'Any':
+      case 'All': {
+        const label = tag === 'Any' ? 'ANY of:' : 'ALL of:'
+        const cls = tag === 'Any' ? 'hr-any' : 'hr-all'
+        const rows = kids.map(c => `<li>${this._renderNode(c, collectionId)}</li>`).join('')
+        return `<div class="hr-group ${cls}"><span class="hr-op">${label}</span><ul>${rows}</ul></div>`
+      }
+
+      case 'Not': {
+        const child = kids[0]
+        if (!child) return ''
+        if (child.tagName === 'Dependency') return this._renderDep(child, collectionId, { negated: true })
+        if (child.tagName === 'IsComplete') {
+          return this._renderDep(child.children[0], collectionId, { isComplete: true, negated: true })
+        }
+        return `<div class="hr-not"><span class="hr-op hr-op--not">NOT:</span> ${this._renderNode(child, collectionId)}</div>`
+      }
+
+      case 'IsComplete':
+        return this._renderDep(kids[0], collectionId, { isComplete: true })
+
+      case 'Dependency':
+        return this._renderDep(node, collectionId)
+
+      case 'Switch': {
+        const rows = kids.map(c => this._renderNode(c, collectionId)).join('')
+        return `<div class="hr-switch">${rows}</div>`
+      }
+
+      case 'Case': {
+        const when = node.querySelector('When')?.children[0]
+        const then = node.querySelector('Then')?.children[0]
+        return `<div class="hr-case"><span class="hr-kw">if</span> ${this._renderNode(when, collectionId)} <span class="hr-kw">→</span> ${this._renderNode(then, collectionId)}</div>`
+      }
+
+      case 'Equal': {
+        const left = node.querySelector('Left')?.children[0]
+        const right = node.querySelector('Right')?.children[0]
+        return `${this._renderNode(left, collectionId)} <span class="hr-eq">=</span> ${this._renderNode(right, collectionId)}`
+      }
+
+      case 'True':
+        return '<span class="hr-literal">always</span>'
+
+      case 'String':
+        return `<span class="hr-literal">"${node.textContent}"</span>`
+
+      case 'Enum':
+        return `<span class="hr-literal">${node.textContent}</span>`
+
+      default:
+        return `<span class="hr-unknown" title="unhandled: ${tag}">${tag}</span>`
+    }
+  }
+
+  _buildHumanReadable () {
+    const factDef = factDictionaryXml.querySelector(`Fact[path="${this.abstractPath}"]`)
+    if (!factDef) return '<p class="hr-error">(fact not found in dictionary)</p>'
+
+    const collectionId = this._extractCollectionId()
+
+    let headerChip = ''
+    try {
+      const fact = window.factGraph.get(this.conditionPath)
+      if (fact.hasValue) {
+        const v = fact.get.toString()
+        const cls = v === 'true' ? 'hr-val--true' : v === 'false' ? 'hr-val--false' : 'hr-val--other'
+        headerChip = `<span class="hr-val ${cls}">${v}</span>`
+      }
+    } catch { /* fact may not be accessible */ }
+
+    const body = this._renderNode(factDef.firstElementChild, collectionId)
+
+    return `<div class="hr-fact">
+      <div class="hr-fact-header">
+        <span class="hr-fact-path">${this.conditionPath}</span>
+        ${headerChip}
+      </div>
+      <div class="hr-body">${body}</div>
+      <button class="hr-toggle-xml" type="button">Show XML</button>
+    </div>
+    <div class="hr-xml-view" hidden>
+      <pre><code>${this._buildAnnotatedXml()}</code></pre>
+      <button class="hr-toggle-xml" type="button">Show summary</button>
+    </div>`
+  }
+
+  _buildAnnotatedXml () {
+    const factDef = factDictionaryXml.querySelector(`Fact[path="${this.abstractPath}"]`)
+    if (!factDef) return '(fact not found in dictionary)'
+
+    const collectionId = this._extractCollectionId()
+
+    // Serialize and escape the XML, mirroring AuditedFact.render() and Graph.debugFact()
+    let xmlStr = XML_SERIALIZER.serializeToString(factDef)
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .split('\n')
+      .map((line, i) => i === 0 ? line : line.replace(/^ {4}/, ''))
+      .join('\n')
+
+    // Annotate each <Dependency> with its current value, matching debugFact's ⮕ annotation
+    Array.from(factDef.querySelectorAll('Dependency')).forEach(dep => {
+      const rawPath = dep.getAttribute('path')
+      if (!rawPath) return
+
+      const resolvedAbstract = rawPath.startsWith('..')
+        ? rawPath.replace('..', this.abstractPath.replace(/\*\/.*/, '*'))
+        : rawPath
+
+      if (resolvedAbstract.includes('*')) return
+
+      const concreteDep = collectionId
+        ? resolvedAbstract.replace('*', `#${collectionId}`)
+        : resolvedAbstract
+
+      try {
+        const fact = window.factGraph.get(concreteDep)
+        const annotation = fact.hasValue
+          ? ` ⮕ ${fact.get} (${fact.complete ? 'complete' : 'incomplete'})`
+          : ' ⮕ (no value)'
+        xmlStr = xmlStr.replace(`path="${rawPath}"`, `path="${rawPath}"${annotation}`)
+      } catch (e) { /* path may not exist yet */ }
+    })
+
+    return xmlStr
+  }
+
+  _extractCollectionId () {
+    const abstractSegs = this.abstractPath.split('/')
+    const concreteSegs = this.conditionPath.split('/')
+    for (const [i, abstractSeg] of abstractSegs.entries()) {
+      if (abstractSeg === '*') {
+        const [seg = ''] = concreteSegs.slice(i, i + 1)
+        return seg.startsWith('#') ? seg.slice(1) : null
+      }
+    }
+    return null
+  }
+}
+customElements.define('condition-detail', ConditionDetail)
 
 function trackSelectedFact () {
   const factPath = factSelect.value

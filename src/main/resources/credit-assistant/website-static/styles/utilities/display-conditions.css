@@ -54,4 +54,184 @@
   fg-set span[condition]:not(.hidden) {
     display: inline;
   }
+
+  condition-detail {
+    display: block;
+    background-color: var(--accent-cool-lighter);
+    color: var(--base-darkest);
+    font-size: 0.875rem;
+    left: 0;
+    margin: 0 -1rem var(--units-1);
+    padding: var(--units-05) var(--units-1);
+  }
+
+  condition-detail .condition-detail__status {
+    font-weight: bold;
+    margin-right: 0.25ch;
+  }
+
+  condition-detail .condition-detail__status--shown {
+    color: var(--success-dark);
+  }
+
+  condition-detail .condition-detail__status--hidden {
+    color: var(--error-dark);
+  }
+
+  condition-detail .condition-detail__operator {
+    font-style: italic;
+    margin-right: 0.25ch;
+  }
+
+  condition-detail .condition-detail__path {
+    font-family: monospace;
+    word-break: break-all;
+  }
+
+  condition-detail .condition-detail__value {
+    margin-left: 0.5ch;
+    font-weight: bold;
+  }
+
+  condition-detail .condition-detail__complete {
+    margin-left: 0.5ch;
+    font-style: italic;
+    color: var(--base-dark);
+  }
+
+  condition-detail .condition-detail__debug-btn {
+    display: inline-block;
+    margin: var(--units-05) 0 0;
+    padding: 0.125rem 0.5ch;
+    font-size: 0.75rem;
+    background: white;
+    border: 1px solid var(--accent-cool-dark);
+    border-radius: 3px;
+    cursor: pointer;
+    color: var(--accent-cool-darkest);
+    line-height: 1.4;
+    transition: background 0.1s, color 0.1s;
+  }
+
+  condition-detail .condition-detail__debug-btn:hover,
+  condition-detail .condition-detail__debug-btn:focus-visible {
+    background: var(--accent-cool-dark);
+    color: white;
+    outline: none;
+  }
+
+  span[condition] condition-detail {
+    display: inline;
+    background-color: transparent;
+    color: var(--base-dark);
+    margin: 0;
+    margin-left: 0.5ch;
+    padding: 0;
+    font-size: inherit;
+
+    &::before { content: "("; }
+    &::after  { content: ")"; }
+  }
 }
+
+/* Body-level popover — outside .display-conditions so it isn't clipped by any ancestor */
+.condition-detail-popover {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  background: white;
+  border: 1px solid var(--accent-cool);
+  border-radius: 3px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  max-width: 40rem;
+  max-height: 20rem;
+  overflow: auto;
+
+  pre {
+    margin: 0;
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+}
+
+.condition-detail-popover.visible {
+  display: block;
+}
+
+/* Human-readable fact definition view */
+.hr-fact {
+  padding: 0.75rem;
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+}
+.hr-fact-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5ch;
+  margin-bottom: 0.5rem;
+}
+.hr-fact-path {
+  font-family: monospace;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  word-break: break-all;
+}
+.hr-body { margin-top: 0.25rem; }
+.hr-op {
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.hr-any > .hr-op { color: #7c3aed; }
+.hr-all > .hr-op { color: #1d4ed8; }
+.hr-op--not { color: #b91c1c; }
+.hr-group > ul {
+  margin: 0.125rem 0 0.25rem;
+  padding-left: 1rem;
+  border-left: 2px solid #e5e7eb;
+  list-style: none;
+}
+.hr-group > ul > li { padding: 0.1rem 0; }
+.hr-dep { display: inline-flex; gap: 0.4ch; align-items: baseline; flex-wrap: wrap; }
+.hr-dep-path { font-family: monospace; font-size: 0.8rem; }
+.hr-qualifier { color: #6b7280; font-style: italic; font-size: 0.75rem; }
+.hr-val {
+  display: inline-block;
+  padding: 0 0.35rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: monospace;
+  line-height: 1.5;
+}
+.hr-val--true     { background: #d1fae5; color: #065f46; }
+.hr-val--false    { background: #fee2e2; color: #991b1b; }
+.hr-val--other    { background: #e0e7ff; color: #3730a3; }
+.hr-val--answered { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+.hr-val--secondary { background: #f5f3ff; color: #5b21b6; }
+.hr-incomplete { font-style: italic; color: #9ca3af; font-size: 0.7rem; }
+.hr-kw { font-weight: 600; color: #7c3aed; font-size: 0.75rem; }
+.hr-eq { color: #6b7280; }
+.hr-literal { font-family: monospace; background: #f3f4f6; padding: 0 0.25rem; border-radius: 2px; }
+.hr-writable { color: #059669; font-style: italic; }
+.hr-switch { display: flex; flex-direction: column; gap: 0.25rem; }
+.hr-case { display: flex; gap: 0.5ch; flex-wrap: wrap; align-items: baseline; }
+.hr-not { display: flex; gap: 0.4ch; align-items: baseline; }
+.hr-error { color: #b91c1c; font-style: italic; padding: 0.5rem; }
+.hr-unknown { background: #fef3c7; color: #92400e; border-radius: 2px; padding: 0 0.25rem; font-size: 0.7rem; }
+.hr-toggle-xml {
+  display: block;
+  margin: 0.5rem 0.75rem;
+  font-size: 0.7rem;
+  color: var(--accent-cool-darkest);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+.hr-xml-view pre { margin: 0; padding: 0.75rem; font-size: 0.75rem; white-space: pre-wrap; word-break: break-all; }

@@ -220,3 +220,121 @@ audited-fact::part(remove-button):focus{
   outline: .25rem solid #2491ff;
   outline-offset: .25rem;
 }
+
+/* ── Disqualification Dashboard ────────────────────────────────────────────── */
+
+.ap-dq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.ap-dq-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  font-size: 0.8rem;
+}
+
+.ap-dq-rollup {
+  border-top: 2px solid var(--base-lighter);
+  margin-top: 0.25rem;
+  padding-top: 0.375rem;
+  font-weight: 600;
+}
+
+.ap-dq-section-heading {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--base-dark);
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0.5rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.ap-dq-label {
+  font-family: monospace;
+  word-break: break-all;
+  flex: 1;
+}
+
+.ap-dq-badge {
+  flex-shrink: 0;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ap-dq-ok       { background: #f0fdf4; }
+.ap-dq-disqualified { background: #fef2f2; }
+.ap-dq-incomplete   { background: #f9fafb; color: #9ca3af; }
+
+.ap-dq-badge--passed          { background: #d1fae5; color: #065f46; }
+.ap-dq-badge--disqualified { background: #fee2e2; color: #991b1b; }
+.ap-dq-badge--failed { background: #fee2e2; color: #991b1b; }
+.ap-dq-badge--incomplete   { background: #e5e7eb; color: #6b7280; }
+
+/* Inline swatches used in the dashboard hint text */
+.dq-ok-swatch, .dq-dq-swatch, .dq-inc-swatch {
+  display: inline-block;
+  width: 0.75rem; height: 0.75rem;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+.dq-ok-swatch  { background: #d1fae5; }
+.dq-dq-swatch  { background: #fee2e2; }
+.dq-inc-swatch { background: #e5e7eb; }
+
+/* ── Filing Status Dashboard ─────────────────────────────────────────────── */
+
+.ap-dq-badge--resolved { background: #dbeafe; color: #1e40af; }
+
+/* ── Shared helpers ────────────────────────────────────────────────────────── */
+
+.ap-details > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.ap-details > summary h2 {
+  display: inline;
+}
+
+.ap-details > summary::marker,
+.ap-details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.ap-details > summary::before {
+  content: '▶ ';
+  font-size: 0.75rem;
+  color: var(--base-dark);
+  margin-right: 0.25ch;
+}
+
+.ap-details[open] > summary::before {
+  content: '▼ ';
+}
+
+.ap-hint {
+  font-size: 0.8125rem;
+  color: var(--base-dark);
+  margin: 0.25rem 0 0.5rem;
+}
+
+.ap-btn-sm {
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  margin: 0.25rem 0 0.5rem;
+}
