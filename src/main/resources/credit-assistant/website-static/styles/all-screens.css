@@ -91,23 +91,219 @@ span.hidden{
   }
 }
 
+/* ── Toolbar ──────────────────────────────────────────────────────────── */
+
+.all-screens__toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: var(--base-lightest, #f0f0f0);
+  border-bottom: 2px solid var(--accent-warm);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.all-screens__toolbar-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--units-2) var(--units-3);
+  padding: var(--units-1) var(--units-3);
+  max-width: 100%;
+}
+
+.all-screens__toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: var(--units-1);
+  flex-wrap: nowrap;
+}
+
+.all-screens__toolbar .usa-checkbox {
+  background: transparent;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+.all-screens__toolbar .usa-checkbox__label {
+  margin: 0 0 0 var(--units-1);
+  padding-left: 0;
+  cursor: pointer;
+}
+.all-screens__toolbar .usa-checkbox__input {
+  position: static;
+  opacity: 1;
+  height: 1rem;
+  width: 1rem;
+  margin: 0;
+}
+.all-screens__toolbar .usa-checkbox__input + .usa-checkbox__label::before {
+  display: none;
+}
+
+/* ── Section tabs ─────────────────────────────────────────────────────── */
+
+.all-screens__section-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  border-top: 1px solid var(--base-lighter);
+  padding: 0 var(--units-3);
+  gap: 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.all-screens__section-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.all-screens__section-tab {
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-size: 0.875rem;
+  padding: var(--units-1) var(--units-2);
+  color: var(--base-dark);
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: color 0.1s, border-color 0.1s;
+}
+.all-screens__section-tab:hover {
+  color: var(--base-darkest);
+  border-bottom-color: var(--base-light);
+}
+.all-screens__section-tab--active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  font-weight: 600;
+}
+
 @media not screen {
-  .usa-in-page-nav {
-    flex: 0;
+  .all-screens__section-tabs {
     display: none;
   }
 }
 
-.screen__title {
-  border-bottom: var(--units-05) solid var(--base);
+/* ── Horizontal layout mode ───────────────────────────────────────────── */
+/* The page template wraps a screen's flow nodes in <section class="flow"> —
+   that is the actual parent of fg-set/fg-alert/fg-collection/fg-detail, not
+   .screen__content directly. In horizontal mode we turn that inner section
+   into a flex-wrap row so the fg-* siblings tile across the card. Headings
+   and prose still take a full row so the reading flow is preserved. */
+
+body.layout--horizontal .screen__content section.flow {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
+  gap: var(--units-3);
+  align-items: start;
+}
+
+/* fg-detail renders as <details class="fg-detail">, not a custom element.
+   fg-collection renders as <fg-collection>. Both tile as grid items.
+   Everything else (headings, prose) spans the full row. */
+body.layout--horizontal .screen__content section.flow > :not(fg-collection):not(details.fg-detail):not(fg-set):not(fg-alert) {
+  grid-column: 1 / -1;
+}
+
+body.layout--horizontal .screen__content section.flow > fg-collection,
+body.layout--horizontal .screen__content section.flow > details.fg-detail,
+body.layout--horizontal .screen__content section.flow > fg-set,
+body.layout--horizontal .screen__content section.flow > fg-alert {
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* ── Full-width layout ────────────────────────────────────────────────── */
+/* Override the USWDS in-page-nav grid so main spans the page; the in-page nav
+   itself is omitted from the template. */
+
+.all-screens .usa-in-page-nav-container {
+  display: block;
+}
+
+.all-screens .main-content {
+  max-width: 80vw;
+  width: 80vw;
+}
+
+/* ── Section headers ──────────────────────────────────────────────────── */
+
+.all-screens__section {
+  margin-bottom: var(--units-6);
+}
+
+.all-screens__section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--units-2);
+  margin-top: var(--units-6);
+  padding-bottom: var(--units-1);
+  border-bottom: 3px solid var(--base-dark);
+}
+.all-screens__section-header h2 {
+  margin: 0;
+}
+.all-screens__section-meta {
+  color: var(--base-dark);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.all-screens__section-meta-sep,
+.screen__meta-sep {
+  margin: 0 var(--units-05);
+  color: var(--base-light);
+}
+
+/* ── Per-screen card metadata ────────────────────────────────────────── */
+
+.screen__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--units-2);
   margin-top: var(--units-5);
+  padding-bottom: var(--units-1);
+  border-bottom: var(--units-05) solid var(--base);
+}
+.screen__title {
+  border-bottom: none;
+  margin: 0;
+}
+.screen__meta {
+  color: var(--base-dark);
+  font-size: 0.875rem;
+  white-space: nowrap;
+}
+.screen__route {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  background-color: var(--base-lightest);
+  padding: 0 var(--units-05);
+  border-radius: 3px;
 }
 
-.screen:nth-child(n-1) > .screen__content {
-  border-bottom: 1px solid black;
+/* Sections/screens with [hidden] are filtered out by the section tabs. */
+.all-screens__section[hidden],
+article.screen[hidden] {
+  display: none;
 }
 
-.usa-in-page-nav__list {
-  overflow: auto;
-  max-height: 85vh;
+/* ── Print sheet ──────────────────────────────────────────────────────── */
+
+@media not screen {
+  .all-screens__toolbar {
+    display: none !important;
+  }
+  .all-screens__section {
+    page-break-before: always;
+  }
+  .all-screens__section:first-of-type {
+    page-break-before: auto;
+  }
+  body {
+    background: white !important;
+  }
 }

@@ -139,3 +139,22 @@ audit:
     value: "Valè:"
     remove: "Retire fè a"
     definition: "Definisyon XML"
+
+all-screens:
+  toolbar:
+    label: "Bouton zouti odit"
+    show-conditions: "Montre kondisyon yo"
+    section-label: "Seksyon"
+    section-all: "Tout seksyon yo"
+    horizontal-layout: "Horizontal layout"
+  section:
+    about-you: "Sou ou"
+    filing-status: "Estati deklarasyon"
+    agi: "Revni brit ajiste"
+    qualifying-children: "Timoun ki kalifye"
+    results: "Rezilta"
+    other: "Lòt"
+    page-count: "{0} paj"
+    condition-count: "{0} kondisyon"
+  screen:
+    condition-count: "{0} kondisyon"

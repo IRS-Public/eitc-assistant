@@ -139,3 +139,22 @@ audit:
     value: "值："
     remove: "刪除事實"
     definition: "XML 定義"
+
+all-screens:
+  toolbar:
+    label: "稽核工具列"
+    show-conditions: "顯示條件"
+    section-label: "部分"
+    section-all: "所有部分"
+    horizontal-layout: "橫向版面"
+  section:
+    about-you: "關於您"
+    filing-status: "申報狀態"
+    agi: "調整後總收入"
+    qualifying-children: "符合條件的子女"
+    results: "結果"
+    other: "其他"
+    page-count: "{0} 頁"
+    condition-count: "{0} 個條件"
+  screen:
+    condition-count: "{0} 個條件"

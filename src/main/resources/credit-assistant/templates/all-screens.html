@@ -1,28 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<script>
-    // This script will set all collections to disallow empty, and open all details. This is because we're rendering all content at once, so we want to make sure all the content is visible and generated.
-    document.addEventListener("DOMContentLoaded", function() {
-      document.querySelectorAll("fg-collection").forEach(collection => {
-        collection.setAttribute("disallowempty", "true");
-      });
+<html th:lang="${languageCode}">
+<head>
+    <meta th:replace="fragments/head">
+    <link rel="stylesheet" href="/app/eitc/resources/styles/all-screens.css">
+</head>
 
-      // helps wait for the other collection items to generate
-      setTimeout(() => {
-        document.querySelectorAll(".fg-detail").forEach(details => {
-          details.setAttribute("open", "true");
-        });
-
-        // Display conditions as DOM nodes. We might want to add this to our main JS to use in the audit panel. But for now, we'll keep it here.
-        displayConditions();
-      }, 100);
-
-    })
-</script>
-<meta th:replace="fragments/head">
-<link rel="stylesheet" href="/app/eitc/resources/styles/all-screens.css">
-
-<body class="view--column">
+<body class="view--column all-screens">
 <a class="usa-skipnav" href="#main-content">Skip to main content</a>
 <header>
     <div th:replace="fragments/usa-banner"></div>
@@ -54,16 +37,73 @@
     </div>
 </header>
 
+<div class="all-screens__toolbar" role="toolbar" th:aria-label="#{all-screens.toolbar.label}">
+    <div class="all-screens__toolbar-inner">
+
+        <div class="all-screens__toolbar-group">
+            <div class="usa-checkbox">
+                <input class="usa-checkbox__input" id="all-screens-toggle-conditions" type="checkbox" checked />
+                <label class="usa-checkbox__label" for="all-screens-toggle-conditions"
+                       th:text="#{all-screens.toolbar.show-conditions}">Show conditions</label>
+            </div>
+            <div class="usa-checkbox">
+                <input class="usa-checkbox__input" id="all-screens-toggle-layout" type="checkbox" />
+                <label class="usa-checkbox__label" for="all-screens-toggle-layout"
+                       th:text="#{all-screens.toolbar.horizontal-layout}">Horizontal layout</label>
+            </div>
+        </div>
+
+    </div>
+    <nav class="all-screens__section-tabs" th:aria-label="#{all-screens.toolbar.section-label}">
+        <button type="button" class="all-screens__section-tab all-screens__section-tab--active"
+                data-section=""
+                th:text="#{all-screens.toolbar.section-all}">All sections</button>
+        <button th:each="section : ${sections}"
+                type="button"
+                class="all-screens__section-tab"
+                th:data-section="${section.slug}"
+                th:text="${section.title}">Section</button>
+    </nav>
+</div>
+
 <div class="usa-in-page-nav-container">
-    <aside class="usa-in-page-nav" data-heading-elements="h2 h3"></aside>
     <main id="main-content" class="main-content usa-prose">
-        <article th:each="page: ${pages}" class="screen" data-route="${page.route}">
-            <h1 class="screen__title" th:text="${page.title}">Page Title</h1>
-            <div class="screen__content" th:utext="${page.content}">Lorem Ipsum</div>
-        </article>
+        <section th:each="section : ${sections}"
+                 class="all-screens__section"
+                 th:data-section="${section.slug}">
+            <header class="all-screens__section-header">
+                <h2 th:id="${section.slug}" th:text="${section.title}">Section</h2>
+                <span class="all-screens__section-meta">
+                    <span th:text="#{all-screens.section.page-count(${section.pageCount})}">N pages</span>
+                    <span class="all-screens__section-meta-sep" aria-hidden="true">·</span>
+                    <span th:text="#{all-screens.section.condition-count(${section.conditionCount})}">N conditions</span>
+                </span>
+            </header>
+
+            <article th:each="page : ${section.pages}"
+                     class="screen"
+                     th:data-route="${page.route}"
+                     th:data-condition-count="${page.conditionCount}">
+                <header class="screen__header">
+                    <h3 class="screen__title" th:text="${page.title}">Page Title</h3>
+                    <span class="screen__meta">
+                        <code class="screen__route" th:text="${page.route}">/route</code>
+                        <span class="screen__meta-sep" aria-hidden="true">·</span>
+                        <span class="screen__condition-count"
+                              th:text="#{all-screens.screen.condition-count(${page.conditionCount})}">N conditions</span>
+                    </span>
+                </header>
+                <div class="screen__content" th:utext="${page.content}">Lorem Ipsum</div>
+            </article>
+        </section>
     </main>
 </div>
 
 <template th:replace="fragments/js-templates"></template>
+
+<script type="module">
+    import { initAllScreens } from '/app/eitc/resources/js/all-screens.js'
+    initAllScreens()
+</script>
 </body>
 </html>
