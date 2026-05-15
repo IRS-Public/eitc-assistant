@@ -1,16 +1,8 @@
 package gov.irs.creditassistant.generators
 
-import gov.irs.creditassistant.generators.WebsitePage
 import gov.irs.creditassistant.parser.Flow
-import gov.irs.creditassistant.parser.Page
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
-import gov.irs.factgraph.FactDictionary
-import org.jsoup.parser.Tag
-import org.jsoup.Jsoup
 import org.thymeleaf.context.Context
-import org.thymeleaf.templatemode.TemplateMode
-import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
-import org.thymeleaf.TemplateEngine
 import os.Path
 import scala.jdk.CollectionConverters.*
 
@@ -18,7 +10,6 @@ case class AllScreens(pages: List[WebsitePage], factDictionary: xml.Elem) {
   def save(directoryPath: Path): Unit = {
     os.remove.all(directoryPath)
 
-    // Write the pages
     for (page <- this.pages) {
       val target = directoryPath / page.route
       os.write(target, page.html(), null, createFolders = true)
@@ -31,10 +22,18 @@ case class AllScreens(pages: List[WebsitePage], factDictionary: xml.Elem) {
 }
 
 object AllScreens {
-  def generate(flow: Flow): WebsitePage = {
-    val templateEngine = new CreditAssistantTemplateEngine()
+  def generate(
+      flow: Flow,
+      languageCode: String,
+      supportedLocales: Map[String, String],
+  ): WebsitePage = {
+    val templateEngine = new CreditAssistantTemplateEngine(languageCode)
     val context = new Context()
     context.setVariable("title", "All Screens")
+
+    context.setVariable("languageCode", languageCode)
+    context.setVariable("supportedLocales", supportedLocales.asJava)
+    context.setVariable("currentPageRoute", "/all-screens")
 
     val pages = flow.pages.map(page =>
       Map(
@@ -47,6 +46,6 @@ object AllScreens {
 
     val content = templateEngine.process("all-screens", context)
 
-    WebsitePage("/all-screens", content, "en")
+    WebsitePage("/all-screens", content, languageCode)
   }
 }

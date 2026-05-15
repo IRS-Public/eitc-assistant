@@ -128,8 +128,10 @@ object Website {
     }
 
     if (flags.contains(Flags.allScreens)) {
-      val allScreens = AllScreens.generate(flow)
-      pages = pages :+ allScreens
+      val allScreensPages = locales.map { languageCode =>
+        AllScreens.generate(flow, languageCode, supportedLocales)
+      }
+      pages = pages ++ allScreensPages
     }
 
     Website(pages, dictionaryXml)
