@@ -523,7 +523,7 @@
     one item per source. All fields marked with an asterisk are required.
   p-bb8818: <strong>Please note:</strong> Make sure to also include your spouse's
     income and adjustments.
-  h2-40c7ae: Earned Income
+  h3-40c7ae: Earned Income
   fg-detail-c90011:
     summary: Wages, salary, or tips
     /jobsIncomeTotal:
@@ -598,7 +598,7 @@
       hint: You should enter one total amount for all other income.
       modalLink: <modal-link for="modal-other-taxable-income">What are other taxable
         incomes?</modal-link>
-  h2-9fa8b1: Adjustments
+  h3-9fa8b1: Adjustments
   p-233dd3: Select and enter any of these types of adjustments to income you had in
     <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.
   fg-detail-2c7735:

@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <h2>Earned Income</h2>
+      <h3>Earned Income</h3>
 
       <fg-detail icon="chevron">
         <summary>Wages, salary, or tips</summary>
@@ -124,7 +124,7 @@
         </fg-set>
       </fg-detail>
 
-        <h2>Adjustments</h2>
+        <h3>Adjustments</h3>
         <p>Select and enter any of these types of adjustments to income you had in <fg-show path="/taxYear"/>. Do not enter the same adjustment in multiple places.</p>
 
         <fg-detail icon="chevron" if-true="/isEligibleForStudentLoanInterestDeduction">

@@ -377,7 +377,7 @@
     operator="isTrue">de usted y su cónyuge</span>.
   p-100130: Seleccione e ingrese sus ingresos y ajustes correspondientes al año <fg-show path="/taxYear"/>. Solo seleccione un concepto por fuente.
   p-bb8818: <strong>Tenga en cuenta:</strong> Asegúrese de también incluir los ingresos y ajustes de su cónyuge.
-  h2-40c7ae: Ingreso del trabajo
+  h3-40c7ae: Ingreso del trabajo
   fg-detail-c90011:
     summary: Sueldo, salario o propinas
     /jobsIncomeTotal:
@@ -439,7 +439,7 @@
       question: Otros tipos de ingresos
       hint:
       modalLink: <modal-link for="modal-other-taxable-income">¿Cuáles son otros tipos de ingresos?</modal-link>
-  h2-9fa8b1: Ajustes
+  h3-9fa8b1: Ajustes
   p-233dd3: Seleccione e ingrese alguno de estos tipos de ajustes a los ingresos que usted tuvo en el <fg-show path="/taxYear"/>. No ingrese el mismo ajuste en lugares distintos.
   fg-detail-2c7735:
     summary: Deducción de los intereses del préstamo para estudios
