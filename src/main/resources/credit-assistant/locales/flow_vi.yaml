@@ -1,11 +1,12 @@
-
 /:
-  title:
-  h2-5e286b:
-  p-c2c8a0:
+  title: Thông Tin Chung
+  h2-5e286b: Thông Tin Chung
+  p-c2c8a0: Trả lời một số câu hỏi nhanh về bản thân để xem liệu quý vị có đủ điều
+    kiện hay không.
   /chosenTaxYear:
-    question:
-    modalLink:
+    question: 'Chọn niên thuế quý vị muốn kiểm tra tính đủ điều kiện để nhận EITC
+      của mình đối với:'
+    modalLink: <modal-link for="modal-tax-year">Tôi nên sử dụng năm nào?</modal-link>
     options:
       '2025':
         name: '2025'
@@ -14,925 +15,1398 @@
       '2023':
         name: '2023'
   /isUSCitizenOrResidentAlien:
-    question:
-    modalLink:
+    question: Quý vị là Công Dân Hoa Kỳ hay Ngoại Nhân Thường Trú cho cả năm <fg-show
+      path="/taxYear"/>?
+    modalLink: <modal-link for="modal-citizen">Tôi có đủ điều kiện là công dân hoặc
+      cư dân Hoa Kỳ cho EITC không?</modal-link>
     options:
       'true':
-        name:
+        name: Có
       'false':
-        name:
+        name: Không
   fg-alert-8b7db9:
-    heading:
-    p-091688:
-    p-f72c3e:
-    p-b85d77:
-    p-93a6b5:
-    p-4c0c0d:
-    p-236b69:
-    p-5e637b:
-    p-ec145e:
-    p-363ef2:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-091688: Quý vị phải là công dân Hoa Kỳ hoặc ngoại nhân thường trú để yêu cầu
+      Tín Thuế Thu Nhập Kiếm Được. Xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit. để xác định xem liệu quý vị có phải là ngoại
+      nhân thường trú Hoa Kỳ trong cả năm đó hay không.
+    p-f72c3e: ' Chọn yes nếu quý vị đang khai thuế chung với người phối ngẫu của mình
+      cho <fg-show path="/taxYear"/> và quý vị hoặc người phối ngẫu là Công Dân Hoa
+      Kỳ hoặc Ngoại Nhân Thường Trú trong cả năm.'
+    p-b85d77: Quý vị không thể yêu cầu EITC vì quý vị không có số an sinh xã hội hợp
+      lệ được cấp vào hoặc trước ngày đến hạn của tờ khai thuế của quý vị.
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
+    p-4c0c0d: Bạn không thể yêu cầu tín dụng thu nhập kiếm được nếu bạn nộp <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Mẫu 2555</a>,
+      Thu nhập kiếm được ở nước ngoài.
+    p-236b69: Ấn Phẩm 54, Hướng Dẫn Về Thuế Cho Công Dân Hoa Kỳ Và Thường Trú Nhân
+      Người Nước Ngoài Ở Hải Ngoại (tiếng Anh),
+    p-5e637b: Quý vị không đủ điều kiện nhận EITC nếu là trẻ đủ điều kiện để nhận
+      EITC của một người khác.
+    p-ec145e: Để biết thêm thông tin về việc liệu có ai đó có thể yêu cầu bạn là trẻ
+      em đủ điều kiện cho EITC hay không, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Ấn phẩm 596</a>, Tín dụng Thu nhập
+      Kiếm được, Bạn Không Thể Là Trẻ Em Đủ Điều Kiện Của Một Người Nộp Thuế Khác.
+    p-363ef2: Quý vị không đủ điều kiện nhận EITC nếu là người phụ thuộc của người
+      khác trừ khi quý vị có một đứa trẻ đủ điều kiện để yêu cầu EITC.
   /hasValidSSN:
-    question:
-    modalLink:
+    question: Quý vị có số an sinh xã hội hợp lệ đã được cấp vào hoặc trước ngày đến
+      hạn của tờ khai thuế năm <fg-show path="/taxYear"/> của quý vị (đã bao gồm khoảng
+      gia hạn) không?
+    modalLink: <modal-link for="modal-valid-ssn-filer">Số An Sinh Xã Hội Hợp Lệ là
+      bắt buộc</modal-link>
     options:
       'true':
-        name:
+        name: Có
       'false':
-        name:
+        name: Không
   /hasForeignEarnedIncome:
-    question:
-    modalLink:
+    question: Quý vị có đang nộp Mẫu 2555, Thu Nhập Kiếm Được Ở Nước Ngoài không?
+    modalLink: <modal-link for="modal-foreign-income">Thu Nhập Kiếm Được Ở Nước Ngoài
+      không bao gồm trong Tổng Thu Nhập</modal-link>
     options:
       'true':
-        name:
+        name: Có
       'false':
-        name:
+        name: Không
   /isClaimedAsDependent:
-    question:
-    modalLink:
+    question: Có người nào sẽ kê khai quý vị là người phụ thuộc hoặc trẻ đủ điều kiện
+      để nhận EITC trên tờ khai thuế của họ không?
+    modalLink: <modal-link for="modal-claimed-dependent">Quý vị là Người Phụ Thuộc
+      hoặc Trẻ Đủ Điều Kiện</modal-link>
     options:
       'true':
-        name:
+        name: Có
       'false':
-        name:
+        name: Không
   /ageRange:
-    question:
+    question: Vui lòng chọn nhóm tuổi của quý vị ở thời điểm cuối năm <fg-show path="/taxYear"/>.
     options:
       under24:
-        name:
+        name: 24 tuổi trở xuống
       age25to64:
-        name:
+        name: Từ 25 đến 64
       65andOlder:
-        name:
+        name: 65 tuổi trở lên
   modal-tax-year:
-    heading:
-    p-aa5a47:
+    heading: Niên Thuế
+    p-aa5a47: 'Đối với lương bổng và thu nhập kiếm được khác trong:'
     ul-0:
-      li-28dd34:
-      li-174a8b:
-      li-0a25dc:
+      li-28dd34: 2025, chọn 2025
+      li-174a8b: 2024, chọn 2024
+      li-0a25dc: 2023, chọn 2023
   modal-citizen:
-    heading:
-    p-18e680:
-    p-fe70ca:
-    p-2c8f8f:
+    heading: Công Dân Hoa Kỳ hay Ngoại Nhân Thường Trú
+    p-18e680: Nếu không phải là công dân Hoa Kỳ, quý vị được coi là ngoại nhân.
+    p-fe70ca: Quý vị được coi là ngoại nhân thường trú cho xét duyệt EITC nếu có thẻ
+      xanh hoặc đã sống ở Hoa Kỳ trong hơn một số ngày nhất định.
+    p-2c8f8f: Để biết thêm thông tin và các trường hợp ngoại lệ quan trọng, xem <a
+      target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
   modal-valid-ssn-filer:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: Số An Sinh Xã Hội Hợp Lệ
+    p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
+      do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
+      ngày đến hạn khai thuế năm 2025 (bao gồm cả thời gian gia hạn).
+    p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
+      phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
+      lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
+      Naturalization Service, INS) trên đó thì đó là SSN hợp lệ nếu ủy quyền vẫn còn
+      hiệu lực.
+    p-558a40: 'Đối với Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Tax Credit,
+      EITC), chúng tôi không chấp nhận:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
+      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
+      li-9f487b: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
+        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
+      li-a69a30: Số An Sinh Xã Hội được cấp chỉ để đăng ký hoặc nhận phúc lợi do liên
+        bang tài trợ như Medicaid
+    p-f554f7: Xem Ấn Bản 596 để biết thêm thông tin về Số An Sinh Xã Hội hợp lệ.
   modal-foreign-income:
-    heading:
-    p-f45b03:
+    heading: Thu Nhập Kiếm Được Ở Nước Ngoài không bao gồm trong Tổng Thu Nhập
+    p-f45b03: 'Điều này đề cập đến thu nhập quý vị kiếm được bên ngoài Hoa Kỳ, Đặc
+      Khu Columbia hoặc các khu vực thuộc sở hữu hay lãnh thổ của Hoa Kỳ mà quý vị
+      đã lựa chọn loại trừ <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">trên</a> '
   modal-claimed-dependent:
-    heading:
-    p-faf8d8:
-    p-98d6db:
-    p-038f13:
-    p-ceda6c:
-    p-d11380:
-    p-16aba9:
+    heading: Quý vị là Người Phụ Thuộc hoặc Trẻ Đủ Điều Kiện
+    p-faf8d8: Trong hầu hết các trường hợp, quý vị không thể là người phụ thuộc hoặc
+      trẻ đủ điều kiện của người đóng thuế khác đồng thời yêu cầu EITC.
+    p-98d6db: Trong hầu hết các trường hợp, nếu quý vị chưa đủ 19 tuổi hoặc là học
+      sinh/sinh viên dưới 24 tuổi và sống với cha mẹ hoặc thân nhân khác của quý vị
+      ở Hoa Kỳ trong hơn nửa năm, hãy chọn <strong>Yes</strong>.
+    p-038f13: Nếu quý vị đã kết hôn và khai thuế chung, quý vị không thể khai là người
+      phụ thuộc trừ khi quý vị khai thuế chung chỉ để yêu cầu hoàn thuế thu nhập đã
+      khấu lưu hoặc thuế ước tính đã trả.
+    p-ceda6c: 'Để biết thêm thông tin về việc liệu ai đó có thể kê khai quý vị là
+      người phụ thuộc hay không, truy <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">cập</a> '
+    p-d11380: Để biết thêm thông tin về việc liệu ai đó có thể kê khai quý vị là trẻ
+      đủ điều kiện để nhận EITC, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">xem</a>
+      .
+    p-16aba9: Chúng tôi sẽ hỏi về trẻ em hoặc thân nhân mà quý vị có thể kê khai sau.
   modal-primary-claimed-as-dependent:
-    heading:
-    p-d3187d:
-    p-762495:
+    heading: Làm cách nào để biết tôi có phải là người phụ thuộc của ai đó hay không?
+    p-d3187d: Nếu bạn phụ thuộc vào một người khác (không phải là vợ/chồng của bạn) để được hỗ trợ trong năm <fg-show path="/taxYear"/>, họ có thể yêu cầu bạn là người phụ thuộc trên tờ khai thuế liên bang của họ.
+    p-762495: 'Có một vài yếu tố xác định xem liệu ai đó có thể yêu cầu bạn là người phụ thuộc hay không, bao gồm:'
     ul-0:
-      li-b17276:
-      li-c82d5e:
-      li-5a5073:
-    p-752de3:
-    p-5a0201:
+      li-b17276: Mối quan hệ của bạn với người đó
+      li-c82d5e: Họ đã hỗ trợ bạn bao nhiêu, về mặt tài chính và các khía cạnh khác
+      li-5a5073: Bạn có sống cùng họ không và trong bao lâu
+    p-752de3: Xem lại Bảng 5 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">Ấn phẩm 501 của IRS</a> để xác định xem liệu có người khác có thể yêu cầu bạn là người phụ thuộc hay không.
+    p-5a0201: Hãy nhớ rằng bạn không phải là người phụ thuộc của người khác nếu bạn (hoặc vợ/chồng bạn) đã tự chi trả cho hơn một nửa mức sống của chính mình.
   modal-confirm-tax-year-change:
-    heading:
-    p-31c7da:
-    button-70d9be:
-    button-ea4788:
+    heading: 'Chú ý:'
+    p-31c7da: Việc thay đổi <strong>năm</strong> sẽ xóa dữ liệu bạn đã nhập trước
+      đó. Bạn có vẫn muốn tiếp tục không?
+    button-70d9be: Xác nhận
+    button-ea4788: Hủy
 /filing-status:
-  title:
-  h2-c01d87:
-  p-9bda8f:
+  title: Tư Cách Khai Thuế
+  h2-c01d87: Tư Cách Khai Thuế
+  p-9bda8f: Ở bước này, quý vị sẽ được hỏi về cách bản thân dự định nộp thuế của <fg-show
+    path="/taxYear"/>.
   /knowsFilingStatus:
-    question:
+    question: Quý vị có biết tư cách khai thuế mà quý vị sẽ sử dụng khi khai thuế
+      năm <fg-show path="/taxYear"/> của mình không?
   /initialFilingStatus:
-    question:
-    modalLink:
+    question: 'Vui lòng chọn tư cách khai thuế mà quý vị sẽ sử dụng khi khai thuế
+      của năm <fg-show path="/taxYear"/>:'
+    modalLink: <modal-link for="modal-filing-status">Tôi nên sử dụng tình trạng khai
+      thuế nào?</modal-link>
     options:
       single:
-        name:
+        name: Độc thân
       marriedFilingJointly:
-        name:
+        name: Vợ Chồng Khai Chung Hồ Sơ Thuế
       marriedFilingSeparately:
-        name:
+        name: Vợ Chồng Khai Riêng Hồ Sơ Thuế
       headOfHousehold:
-        name:
+        name: Chủ Gia Đình
       qualifiedSurvivingSpouse:
-        name:
+        name: Vợ/Chồng Của Người Đã Mất Đủ Điều Kiện
   /maritalStatus:
-    question:
-    modalLink:
+    question: Tình trạng hôn nhân của quý vị vào ngày 31 tháng 12 năm <fg-show path="/taxYear"/>
+      là gì?
+    modalLink: <modal-link for="modal-legal-separation">Đã kết hôn và ly thân hợp
+      pháp có nghĩa là gì?</modal-link>
     options:
       married:
-        name:
+        name: Đã kết hôn
       divorced:
-        name:
+        name: Ly Hôn hoặc Ly Thân Về Mặt Pháp Lý
       widowed:
-        name:
+        name: Vợ/Chồng Của Người Đã Mất Đủ Điều Kiện
       single:
-        name:
+        name: Chưa bao giờ kết hôn
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question:
+    question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
-        name:
+        name: Trong <fg-show path="/taxYear"/>
       taxYearMinusOneOrTwo:
-        name:
+        name: Trong 2023 hoặc 2024
       beforeTaxYearMinusTwo:
-        name:
+        name: Trước 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question:
+    question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
-        name:
+        name: Trong 2024
       taxYearMinusOneOrTwo:
-        name:
+        name: Trong 2022 hoặc 2023
       beforeTaxYearMinusTwo:
-        name:
+        name: Trước 2022
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question:
+    question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
-        name:
+        name: Trong 2023
       taxYearMinusOneOrTwo:
-        name:
+        name: Trong 2021 hoặc 2022
       beforeTaxYearMinusTwo:
-        name:
+        name: Trước 2021
   /isHOHMarried:
-    question:
+    question: Quý vị đã kết hôn chưa?
   /intendsToFileJointlyWidow:
-    question:
-    modalLink:
+    question: Quý vị có ý định khai thuế chung với người phối ngẫu đã qua đời của
+      mình cho <fg-show path="/taxYear"/> không?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">Quý vị có quyền nộp hồ
+      sơ khai thuế chung với người phối ngẫu của mình trong năm mà họ qua đời không?</modal-link>
   /intendsToFileJointlyMFJ:
-    question:
-    modalLink:
+    question: Quý vị và người phối ngẫu của mình có dự định khai thuế chung không?
+    modalLink: <modal-link for="modal-joint-return-mfj">Vợ Chồng Khai Chung Hồ Sơ
+      Thuế</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question:
-    modalLink:
+    question: Quý vị và người phối ngẫu của quý vị có sinh sống trong cùng nơi cư
+      chú chính với quý vị trong 6 tháng cuối của năm <fg-show path="/taxYear"/> không?
+    modalLink: <modal-link for="modal-spouse-lived-together">Vợ chồng sống chung có
+      nghĩa là gì?</modal-link>
   /samePrincipalResidenceLast6Months:
-    question:
+    question: Quý vị và người phối ngẫu của quý vị có sinh sống trong cùng nơi cư
+      chú chính với quý vị trong 6 tháng cuối của năm <fg-show path="/taxYear"/> không?
   /writableSeparationAgreement:
-    question:
+    question: Quý vị đã ly thân hợp pháp theo luật tiểu bang của mình theo thỏa thuận
+      ly thân bằng văn bản hoặc theo quyết định cấp dưỡng ly thân và quý vị không
+      sống cùng vợ/chồng vào ngày cuối cùng của năm <fg-show path="/taxYear"/> không?
   /entitledToPreviouslyFileJointReturn:
-    question:
+    question: Quý vị có quyền nộp hồ sơ khai thuế chung với người phối ngẫu của mình
+      trong năm mà họ qua đời không?
   /paidMoreThanHalfHomeCostsForChild:
-    question:
-    modalLink:
+    question: Trong <fg-show path="/taxYear"/>, quý vị có phải trả hơn một nửa chi
+      phí để duy trì ngôi nhà mà bản thân đang sống mà cũng là nhà chính của người
+      con phụ thuộc, con riêng của vợ/chồng hoặc con nuôi tạm của quý vị trong suốt
+      <fg-show path="/taxYear"/> (bao gồm bất kỳ sự vắng mặt tạm thời nào) không?
+    modalLink: <modal-link for="modal-keeping-up-home">Làm cách nào để tính toán &quot;Duy
+      trì một ngôi nhà&quot;?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question:
-    modalLink:
+    question: Quý vị có thể kê khai con của mình hoặc con riêng của vợ/chồng mình,
+      người mà đã sống cùng quý vị như một người phụ thuộc trong <fg-show path="/taxYear"/>
+      không?
+    modalLink: <modal-link for="modal-claiming-dependents">Tôi Có Thể Yêu Cầu Ai Là
+      Người Phụ Thuộc? (tiếng Anh)</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question:
-    modalLink:
+    question: 'Bạn có thể yêu cầu con ruột hoặc con riêng của mình là người phụ thuộc
+      NGOẠI TRỪ việc, trong năm <fg-show path="/taxYear"/>: 1) Đứa trẻ có tổng thu
+      nhập cao hơn mức ngưỡng là <fg-show path="/eitcChildGrossIncomeLimit"/> cho
+      năm <fg-show path="/taxYear"/>; 2) Đứa trẻ đã nộp một tờ khai chung; hoặc 3)
+      Bạn có thể được yêu cầu là người phụ thuộc trên tờ khai của người khác?'
+    modalLink: <modal-link for="modal-claiming-dependents">Tôi Có Thể Yêu Cầu Ai Là
+      Người Phụ Thuộc? (tiếng Anh)</modal-link>
   /homeUpkeepScenario:
-    question:
-    modalLink:
+    question: Quý vị có phải trả hơn 50% chi phí duy trì ngôi nhà không?
+    modalLink: <modal-link for="modal-keeping-up-home">Làm sao tôi tính được &quot;Duy
+      trì một ngôi nhà&quot;?</modal-link>
     options:
       livedWithDependent:
-        name:
+        name: Nơi quý vị đã sống hơn nửa năm với người phụ thuộc (chẳng hạn như con,
+          các cháu nội/ngoại, anh chị em, các cháu là con của anh/chị/em, cha/mẹ hoặc
+          ông bà)
       custodialParentNonDependent:
-        name:
+        name: Nơi quý vị đã sống hơn nửa năm với một đứa trẻ không phải là người phụ
+          thuộc của mình mặc dù quý vị là cha mẹ giám hộ (theo phán quyết dành cho
+          đứa con của cha mẹ ly hôn hoặc ly thân)
       dependentParentElsewhere:
-        name:
+        name: Đối với cha mẹ, quý vị có thể kê khai là người phụ thuộc trừ khi họ
+          không sống với quý vị
       none:
-        name:
+        name: Không điều nào kể trên
   /secondaryFilerHasValidSSN:
-    question:
-    modalLink:
+    question: Người phối ngẫu của quý vị có số An Sinh Xã Hội hợp lệ đã được cấp vào
+      hoặc trước ngày đến hạn của tờ khai thuế năm <fg-show path="/taxYear"/> của
+      quý vị (đã bao gồm khoảng gia hạn) không?
+    modalLink: <modal-link for="modal-valid-ssn">Số An Sinh Xã Hội Hợp Lệ là bắt buộc</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question:
-    modalLink:
+    question: Người phối ngẫu của quý vị có số An Sinh Xã Hội hợp lệ vào ngày họ qua
+      đời không?
+    modalLink: <modal-link for="modal-valid-ssn">Số An Sinh Xã Hội Hợp Lệ là bắt buộc</modal-link>
   /spouseAliveEndOfTaxYear:
-    question:
+    question: Người phối ngẫu của quý vị có còn sống vào ngày 31 tháng 12 năm <fg-show
+      path="/taxYear"/> không?
   /ageRangeSecondary:
-    question:
+    question: Vui lòng chọn nhóm tuổi mô tả chính xác nhất tuổi của người phối ngẫu
+      của quý vị vào cuối <fg-show path="/taxYear"/>.
     options:
       under24:
-        name:
+        name: 24 tuổi trở xuống
       age25to64:
-        name:
+        name: Từ 25 đến 64
       65andOlder:
-        name:
+        name: 65 tuổi trở lên
   /primaryFilerIsClaimingQualifyingChildren:
-    question:
-    modalLink:
+    question: Quý vị có dự định khai con hoặc người thân khác có số An Sinh Xã Hội
+      hợp lệ để nhận EITC không?
+    modalLink: <modal-link for="modal-qualifying-child-eitc">Người khác có thể khai
+      trẻ này để nhận EITC không?</modal-link>
   /hasLivedInUSMore6Months:
-    question:
-    modalLink:
-  h2-7864de:
+    question: Nhà chính của quý vị có ở Hoa Kỳ trong hơn nửa <fg-show path="/taxYear"/>
+      không?
+    modalLink: <modal-link for="modal-main-home-us">Điều gì được coi là ngôi nhà chính
+      ở Hoa Kỳ?</modal-link>
+  h2-7864de: Dựa trên những lựa chọn của quý vị, tư cách khai thuế của quý vị là <fg-show
+    path="/flowReadableFilingStatus"/>.
   fg-alert-334e2e:
-    heading:
-    p-b6bd9e:
-    p-ae739d:
-    p-47ef52:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-b6bd9e: Quý vị không đủ điều kiện nhận EITC nếu không có trẻ đủ điều kiện trừ
+      khi quý vị hoặc vợ/chồng của quý vị  từ 25 đến 64 tuổi nếu khai thuế chung.
+    p-ae739d: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Ấn phẩm 596, Tín dụng Thu nhập
+      Kiếm được</a>.
+    p-47ef52: Quý vị có thể yêu cầu EIC nếu quý vị đã kết hôn, không khai thuế chung,
+      có con đủ điều kiện sống với quý vị trên nửa năm <fg-show path="/taxYear"/>
+      và một trong hai trường hợp sau đây được áp dụng.
     ul-0:
-      li-207749:
-      li-93a6ef:
-    p-3630b4:
-    p-99f873:
-    p-91ee91:
-    p-d4d927:
-    p-065d1b:
+      li-207749: 'Quý vị sống ly thân với vợ/chồng trong 6 tháng cuối năm <fg-show
+        path="/taxYear"/>, hoặc '
+      li-93a6ef: Quý vị được ly thân hợp pháp theo luật tiểu bang của quý vị theo
+        thỏa thuận ly thân bằng văn bản hoặc nghị định cấp dưỡng ly thân và quý vị
+        không sống trong cùng một hộ gia đình với vợ/chồng của mình vào cuối năm <fg-show
+        path="/taxYear"/>.
+    p-3630b4: 'Để biết thêm thông tin, hãy <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
+      class="usa-link">xem</a> '
+    p-99f873: Quý vị không thể yêu cầu EITC vì người phối ngẫu của quý vị không có
+      số an sinh xã hội hợp lệ được cấp vào hoặc trước ngày đến hạn của tờ khai thuế
+      của quý vị.
+    p-91ee91: Quý vị không thể yêu cầu EITC nếu chọn khai thuế chung với người phối
+      ngẫu đã qua đời của mình vì người phối ngẫu của quý vị không có số an sinh xã
+      hội hợp lệ vào ngày họ qua đời.
+    p-d4d927: Quý vị có thể đủ điều kiện nhận EITC nếu không khai thuế chung với người
+      phối ngẫu đã qua đời của mình.
+    p-065d1b: Để yêu cầu EITC, nhà của quý vị phải ở Hoa Kỳ trong hơn nửa năm đó.
+      Hoa Kỳ bao gồm 50 tiểu bang và Đặc Khu Columbia.
   modal-filing-status:
-    heading:
-    p-c0b92c:
-    p-391f95:
-    p-496916:
-    p-49f30f:
+    heading: Tôi nên sử dụng tình trạng khai thuế nào?
+    p-c0b92c: Nếu không có sự thay đổi nào về tình trạng hôn nhân hoặc hoàn cảnh gia
+      đình của bạn trong năm nay, thì bạn có thể muốn sử dụng cùng một tình trạng
+      khai thuế từ tờ khai thuế <fg-show path="/lastTaxYear"/> của mình.
+    p-391f95: Nếu tình trạng hôn nhân hoặc gia đình của bạn có thay đổi trong năm
+      qua, bạn có thể cần sử dụng tình trạng khai thuế khác để có ước tính chính xác
+      hơn.
+    p-496916: Mỗi tình trạng khai thuế có các yêu cầu khác nhau.
+    p-49f30f: Độc thân
     ul-0:
-      li-c717a5:
-    p-5f63cd:
+      li-c717a5: Bạn không thể đã kết hôn
+    p-5f63cd: Vợ Chồng Khai Chung Hồ Sơ Thuế
     ul-1:
-      li-6aab7e:
-    p-80c02f:
+      li-6aab7e: Bạn đã kết hôn hoặc vợ/chồng của bạn đã qua đời trong năm
+    p-80c02f: Vợ Chồng Khai Riêng Hồ Sơ Thuế
     ul-2:
-      li-595e35:
-      li-1e72dd:
-    p-d69332:
+      li-595e35: Quý vị đã kết hôn chưa?
+      li-1e72dd: Bạn không có kế hoạch nộp chung với vợ/chồng của mình (hầu hết các
+        cặp vợ chồng tiết kiệm tiền bằng cách nộp chung)
+    p-d69332: Chủ Gia Đình
     ul-3:
-      li-dfe41a:
-      li-38ff2f:
-    p-57317d:
+      li-dfe41a: Bạn không thể đã kết hôn (hoặc bạn được coi là chưa kết hôn vì mục
+        đích thuế)
+      li-38ff2f: Bạn đã trả hơn một nửa chi phí duy trì một ngôi nhà cho một thành
+        viên trong gia đình hoặc thành viên trong hộ gia đình của bạn trong một khoảng
+        thời gian cụ thể, và họ phải đáp ứng các yêu cầu nhất định
+    p-57317d: <strong>Vợ/chồng sống sót đủ điều kiện:</strong>
     ul-4:
-      li-2bf38a:
-      li-4ef74f:
-      li-939762:
-      li-bad5a3:
-    p-5b3ae2:
+      li-2bf38a: Vợ/chồng của bạn đã qua đời vào năm <fg-show path="/lastTaxYear"/>
+        hoặc <fg-show path="/taxYearMinusTwo"/>
+      li-4ef74f: Bạn đã không tái hôn trước năm <fg-show path="/taxYear"/>
+      li-939762: Bạn có một người con phụ thuộc sống cùng bạn cả năm
+      li-bad5a3: Quý vị đã trả hơn một nửa chi phí duy trì ngôi nhà cho năm đó.
+    p-5b3ae2: <a target="_blank" href="https://www.irs.gov/filing/filing-status">Tìm
+      hiểu thêm về tình trạng khai thuế<span class="usa-sr-only"> (opens in a new
+      tab)</span>.</a>
   modal-qualifying-child-eitc:
-    heading:
-    p-7356ad:
-    p-ac8914:
-    p-558a40:
+    heading: Trẻ đủ điều kiện
+    p-7356ad: Để yêu cầu EITC với một đứa trẻ đủ điều kiện, đứa trẻ phải có SSN hợp
+      lệ do Cơ Quan An Sinh Xã Hội cấp vào hoặc trước ngày đến hạn khai thuế năm <fg-show
+      path="/taxYear"/> của quý vị (bao gồm cả gia hạn).
+    p-ac8914: Nếu thẻ An sinh Xã hội có ghi &quot;Hợp lệ để làm việc khi có sự ủy
+      quyền của DHS&quot; hoặc &quot;Hợp lệ để làm việc khi có sự ủy quyền của INS&quot;
+      trên đó, thì đó là SSN hợp lệ nếu sự ủy quyền đó vẫn còn hiệu lực.
+    p-558a40: 'Đối với EITC, chúng tôi không chấp nhận:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-19d3d7:
-    p-0d323a:
+      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
+      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
+      li-9f487b: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
+        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
+      li-19d3d7: Số An Sinh Xã Hội được cấp chỉ để đăng ký hoặc nhận phúc lợi do liên
+        bang tài trợ như Medicaid
+    p-0d323a: 'Con quý vị là trẻ đủ điều kiện nếu con quý vị đáp ứng bốn bài kiểm
+      tra. Bốn bài kiểm tra là:'
     ul-1:
-      li-fbc977:
-      li-9d8d2d:
-      li-23863d:
-      li-ca34c2:
-    p-e00960:
+      li-fbc977: Mối quan hệ,
+      li-9d8d2d: Độ tuổi,
+      li-23863d: Cư trú và
+      li-ca34c2: Khai Thuế Chung
+    p-e00960: 'Để biết thêm thông tin, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">xem</a> '
   modal-main-home-us:
-    heading:
-    p-9cbbc6:
-    p-775779:
-    h3-398dfd:
-    p-7dbfa0:
+    heading: Nhà Chính ở Hoa Kỳ
+    p-9cbbc6: Nhà của quý vị có ở Hoa Kỳ trong hơn nửa năm đó không?
+    p-775779: 'Nhà của quý vị phải ở Hoa Kỳ trong hơn nửa <fg-show path="/taxYear"/>
+      . Hoa Kỳ bao gồm 50 tiểu bang và Đặc Khu Columbia. Hoa Kỳ không bao gồm các
+      vùng lãnh thổ thuộc sở hữu của Hoa Kỳ như Guam, Quần Đảo Virgin hoặc Puerto
+      Rico. '
+    h3-398dfd: Quân Nhân Đóng Quân Bên Ngoài Hoa Kỳ
+    p-7dbfa0: Nếu quý vị là một thành viên của quân đội Hoa Kỳ và đang đóng quân bên
+      ngoài Hoa Kỳ trong thời gian tại ngũ được gia hạn, hãy chọn yes.
   modal-keeping-up-home:
-    heading:
-    p-c0958f:
-    h3-e8b30a:
+    heading: Duy Trì Ngôi Nhà
+    p-c0958f: Nếu tổng số tiền quý vị đã trả nhiều hơn một nửa tổng chi phí, quý vị
+      đáp ứng yêu cầu trả hơn một nửa chi phí duy trì ngôi nhà.
+    h3-e8b30a: Chi phí bao gồm
     ul-0:
-      li-b9b2e1:
-      li-313963:
-      li-61e699:
-    p-fec463:
-    h3-3e0b53:
+      li-b9b2e1: Tiền thuê nhà, lãi suất thế chấp, thuế bất động sản và bảo hiểm nhà
+      li-313963: Sửa chữa và tiện ích
+      li-61e699: Thức ăn ăn trong nhà
+    p-fec463: 'Ghi: Chi phí được trả bằng trợ cấp công cộng được coi là chi phí do
+      người đóng thuế trả.'
+    h3-3e0b53: 'Chi phí không bao gồm:'
     ul-1:
-      li-edaa99:
-      li-40b84f:
-      li-5eae2b:
-      li-c64365:
-      li-04dec0:
+      li-edaa99: Chi phí quần áo, giáo dục và kỳ nghỉ
+      li-40b84f: Điều trị y tế, thanh toán bảo hiểm y tế và thuốc theo đơn
+      li-5eae2b: Bảo hiểm nhân thọ
+      li-c64365: Chi phí vận chuyển như bảo hiểm, thanh toán tiền thuê nhà hoặc phương
+        tiện giao thông công cộng
+      li-04dec0: Giá trị dịch vụ của quý vị hoặc của một thành viên trong gia đình
+        quý vị
   modal-legal-separation:
-    heading:
-    h3-ef7665:
-    p-198345:
-    h3-357344:
-    p-f560ea:
+    heading: Ly thân hợp pháp và Thông luật
+    h3-ef7665: Ly Thân Về Mặt Pháp Lý
+    p-198345: “Ly thân về mặt pháp lý" cho mục đích này có nghĩa là tình trạng ly
+      thân theo như phán quyết chính thức về ly hôn hoặc việc cấp dưỡng sau ly thân.
+    h3-357344: Hôn Nhân Theo Tập Tục Không Cần Phải Làm Giấy Hôn Thú
+    p-f560ea: Một số tiểu bang cho phép hôn nhân theo thông luật. Kiểm tra đối với
+      tiểu bang của quý vị để xem liệu quý vị có được coi là đã kết hôn theo thông
+      luật không.
   modal-joint-return-mfj:
-    heading:
-    p-75997a:
+    heading: Khai Thuế Chung
+    p-75997a: Quý vị có thể chọn khai chung hồ sơ thuế với người phối ngẫu của mình
+      bằng cách chọn <strong> trong tư cách khai thuế của quý vị. Điều này cho phép
+      quý vị kết hợp thu nhập và chi phí của hai người khi tính toán các khoản tín
+      thuế, khoản khấu trừ và trách nhiệm trả thuế.
   modal-joint-deceased-spouse:
-    heading:
-    p-85e581:
+    heading: Khai Thuế Chung với Người Phối Ngẫu Đã Qua Đời
+    p-85e581: Nếu người phối ngẫu của quý vị đã qua đời trong <fg-show path="/taxYear"/>,
+      quý vị có thể chọn khai chung hồ sơ thuế với người phối ngẫu của mình bằng cách
+      chọn <fg-show path="/taxYear"/> trong tư cách khai thuế. Điều này cho phép quý
+      vị kết hợp thu nhập và chi phí của hai người khi tính toán các khoản tín thuế,
+      khoản khấu trừ và trách nhiệm trả thuế.
   modal-spouse-lived-together:
-    heading:
-    p-906815:
+    heading: Người Phối Ngẫu - Sống Chung
+    p-906815: 'Một người được coi là đã sống với quý vị trong các khoảng thời gian
+      khi một hoặc cả hai người quý vị tạm thời vắng mặt vì những hoàn cảnh đặc biệt
+      như:'
     ul-0:
-      li-8ec6de:
-      li-de7a22:
-      li-d6e6cb:
-      li-2c48dd:
-      li-8fdca6:
-    p-2392bb:
+      li-8ec6de: Bệnh tật,
+      li-de7a22: Giáo dục,
+      li-d6e6cb: Kinh doanh,
+      li-2c48dd: Kỳ nghỉ, hoặc
+      li-8fdca6: Nghĩa vụ quân sự.
+    p-2392bb: Bắt buộc phải có tính chất hợp lý khi giả định rằng người vắng mặt sẽ
+      trở về nhà sau thời gian tạm vắng.
   modal-valid-ssn:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: Số An Sinh Xã Hội Hợp Lệ
+    p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
+      do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
+      ngày đến hạn khai thuế năm 2025 (bao gồm cả thời gian gia hạn).
+    p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
+      phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
+      lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
+      Naturalization Service, INS) trên đó thì đó là SSN hợp lệ nếu ủy quyền vẫn còn
+      hiệu lực.
+    p-558a40: 'Đối với Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Tax Credit,
+      EITC), chúng tôi không chấp nhận:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
+      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
+      li-9f487b: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
+        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
+      li-a69a30: Số An Sinh Xã Hội được cấp chỉ để đăng ký hoặc nhận phúc lợi do liên
+        bang tài trợ như Medicaid
+    p-f554f7: Xem Ấn Bản 596 để biết thêm thông tin về Số An Sinh Xã Hội hợp lệ.
   modal-confirm-mfj-to-nonmfj-qc-clear:
-    heading:
-    p-30861e:
-    button-70d9be:
-    button-ea4788:
+    heading: Xác nhận
+    p-30861e: Thay đổi từ <strong>Kết hôn nộp chung</strong> sang một tình trạng khai
+      thuế khác sẽ xóa dữ liệu trẻ em đủ điều kiện mà bạn đã nhập trước đó. Bạn có
+      vẫn muốn tiếp tục không?
+    button-70d9be: Xác nhận
+    button-ea4788: Hủy
   modal-claiming-dependents:
-    heading: 
-    p-fc792e: 
+    heading: Tôi Có Thể Yêu Cầu Ai Là Người Phụ Thuộc? (tiếng Anh)
+    p-fc792e: 'Người phụ thuộc thường là:'
     ul-0:
-      li-7673e2: 
-      li-e9750c: 
-      li-9a6fc3: 
-    p-6b3acc: 
-    p-40e480: 
+      li-7673e2: Trẻ em dưới 19 tuổi;
+      li-e9750c: Học sinh/Sinh viên dưới 24 tuổi sống cùng cha mẹ
+      li-9a6fc3: Người thân hoặc thành viên trong gia đình bạn, những người nhận được
+        hơn một nửa sự hỗ trợ tài chính từ bạn và có tổng thu nhập dưới <fg-show path="/eitcChildGrossIncomeLimit"/>
+    p-6b3acc: Bạn không thể yêu cầu vợ/chồng mình là người phụ thuộc nếu bạn nộp hồ
+      sơ chung.
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Tìm
+      hiểu thêm về người phụ thuộc.</a>
 /agi:
-  title:
-  h2-c0af17:
-  p-308236:
-  p-100130:
-  p-bb8818:
-  h3-40c7ae:
+  title: Tổng Thu Nhập Điều Chỉnh (AGI)
+  h2-c0af17: Ước Tính Tổng Thu Nhập Điều Chỉnh Của Quý Vị (AGI)
+  p-308236: Trong bước này, chúng tôi sẽ ước tính thu nhập kiếm được chung của quý
+    vị và người phối ngẫu của quý vị, tổng thu nhập điều chỉnh và bất kỳ mục điều
+    chỉnh nào đối với thu nhập đó.
+  p-100130: Vui lòng chọn và nhập thu nhập và các mục điều chỉnh của năm <fg-show
+    path="/taxYear"/> của quý vị. Chỉ chọn một mục cho mỗi nguồn.
+  p-bb8818: Bảo đảm bao gồm cả thu nhập và các mục điều chỉnh của người phối ngẫu
+    của quý vị.
+  h3-40c7ae: Thu Nhập Kiếm Được
   fg-detail-c90011:
-    summary:
+    summary: tiền lương, tiền công hoặc tiền boa
     /jobsIncomeTotal:
-      question:
-      modalLink:
+      question: Tiền lương, tiền công hoặc tiền boa tại nơi mà thuế thu nhập liên
+        bang bị khấu lưu
+      modalLink: <modal-link for="modal-wages-salaries-tips">Tôi nên bao gồm khoản
+        thu nhập nào?</modal-link>
   fg-detail-c0e18b:
-    summary:
+    summary: Tổng Thu Nhập Tự Kinh Doanh
     /selfEmploymentGrossIncome:
-      question:
-      modalLink:
+      question: Tổng Thu Nhập Tự Kinh Doanh
+      modalLink: <modal-link for="modal-self-employment-gross-income">Thu nhập tự
+        kinh doanh là gì?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
-      question:
-      hint:
-      modalLink:
+      question: Tổng chi phí liên quan đến công việc tự do mà bạn <span condition="/isFilingStatusMFJ"
+        operator="isTrue">và vợ/chồng bạn</span> đã khấu trừ trong năm <fg-show path="/taxYear"/>
+      hint: Bạn có thể để trống phần này
+      modalLink: <modal-link for="modal-self-employment-deductions">Các chi phí được
+        khấu trừ khi tự kinh doanh là gì?</modal-link>
   fg-detail-2fc9c0:
-    summary:
+    summary: Quyền Lợi Từ Chương Trình Hưu Trí Đường Sắt
     /disabilityRetirementBenefits:
-      question:
-      modalLink:
+      question: Phúc lợi hưu trí cho người khuyết tật trước độ tuổi nghỉ hưu tối thiểu
+      modalLink: '<modal-link for="modal-disability-retirement">Tổng quyền lợi hưu
+        trí cho người bị khuyết tật: </modal-link>'
   fg-detail-cd8e26:
-    summary:
+    summary: Thu nhập kiếm được ở nước ngoài
     /non2555ForeignIncome:
-      question:
-      modalLink:
-  h3-20a2b1:
+      question: Giới Thiệu Về Mẫu 2555, Thu Nhập Kiếm Được Ở Nước Ngoài.
+      modalLink: <modal-link for="modal-foreign-income-non2555">Thu nhập kiếm được
+        ở nước ngoài là bắt buộc</modal-link>
+  h3-20a2b1: các loại thu nhập khác
   fg-detail-89425f:
-    summary:
+    summary: Thu nhập đầu tư
     /investmentIncomeTotal:
-      question:
-      modalLink:
+      question: Thu nhập đầu tư
+      modalLink: '<modal-link for="modal-investment-income">Tổng thu nhập đầu tư:
+        </modal-link>'
   fg-detail-fbe1af:
-    summary:
+    summary: Thu nhập đầu tư
     /pensionsIncomeTotal:
-      question: 
-      modalLink: 
+      question: Thu nhập đầu tư
+      modalLink: <modal-link for="modal-taxable-pension">Phần chịu thuế của lương
+        hưu là gì?</modal-link>
   fg-detail-3fa626:
-    summary:
+    summary: Bảo hiểm thất nghiệp
     /unemploymentIncome:
-      question:
-      modalLink:
+      question: Bảo hiểm thất nghiệp
+      modalLink: <modal-link for="modal-unemployment-compensation">Điều gì được coi
+        là bảo hiểm thất nghiệp?</modal-link>
   fg-detail-0fb46a:
-    summary:
+    summary: Quyền Lợi An Sinh Xã Hhội Và Hưu Trí Đường Sắt
     /socialSecurityIncome:
-      question:
-      modalLink:
+      question: Phần chịu thuế của quyền lợi An Sinh Xã Hội và hưu trí đường sắt
+      modalLink: <modal-link for="modal-social-security">Điều gì được coi là Trợ cấp
+        An sinh Xã hội và Hưu trí Đường sắt?</modal-link>
   fg-detail-d994db:
-    summary:
+    summary: Học bổng hoặc trợ cấp mà phải được tính là thu nhập
     /taxableScholarship:
-      question:
-      modalLink:
+      question: Học bổng hoặc trợ cấp mà phải được tính là thu nhập
+      modalLink: <modal-link for="modal-scholarship-grants">Điều gì được coi là học
+        bổng hoặc trợ cấp?</modal-link>
   fg-detail-50ec28:
-    summary:
+    summary: Tiền lương nhận được cho công việc trong thời gian là tù nhân trong cơ
+      sở hình sự
     /inmatePay:
-      question:
-      modalLink:
+      question: Tiền lương nhận được cho công việc trong thời gian là tù nhân trong
+        cơ sở hình sự
+      modalLink: <modal-link for="modal-inmate-pay">Tiền lương nhận được cho công
+        việc trong thời gian là tù nhân trong cơ sở hình sự</modal-link>
   fg-detail-7a5ac3:
-    summary:
+    summary: các loại thu nhập khác
     /nonSpecificOtherIncome:
-      question:
-      hint:
-      modalLink:
-  h3-9fa8b1:
-  p-233dd3:
-  
+      question: các loại thu nhập khác
+      hint: Bạn nên nhập một tổng số tiền cho tất cả các khoản thu nhập khác.
+      modalLink: <modal-link for="modal-other-taxable-income">các loại thu nhập khác</modal-link>
+  h3-9fa8b1: Các Mục Điều Chỉnh
+  p-233dd3: Chọn và nhập bất kỳ loại mục điều chỉnh thu nhập nào sau đây mà quý vị
+    đã có trong năm <fg-show path="/taxYear"/>. Không nhập cùng một mục điều chỉnh
+    vào nhiều vị trí.
   fg-detail-2c7735:
-    summary:
+    summary: Khấu Trừ Lãi Khoản Vay Sinh Viên
     /studentLoanInterestAmount:
-      question:
-      hint:
-      modalLink:
+      question: Lãi suất vay sinh viên mà <span condition="/isFilingStatusMFJ" operator="isFalse">bạn</span>  <span
+        condition="/isFilingStatusMFJ" operator="isTrue">bạn và vợ/chồng bạn</span>
+        đã trả trong năm <fg-show path="/taxYear"/>
+      hint: (tối đa <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">Khấu Trừ Lãi Khoản
+        Vay Sinh Viên</modal-link>
   fg-detail-9166fe:
-    summary:
+    summary: Chi phí của giáo viên đủ điều kiện
     /educatorExpenses/:
-      question:
-      hint:
-      modalLink:
+      question: Chi phí giáo dục mà <span condition="/isFilingStatusMFJ" operator="isFalse">bạn</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">bạn và vợ/chồng bạn</span>
+        đã trả trong năm <fg-show path="/taxYear"/>
+      hint: (tối đa <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">Chi phí của giáo viên đủ
+        điều kiện</modal-link>
   fg-detail-57c26a:
-    summary:
+    summary: Khoản khấu trừ cho những đóng góp cho IRA không được bao gồm trong các
+      khoản khấu trừ tiền lương
     /deductionForTraditionalIRAContribution:
-      question:
-      modalLink:
+      question: Đóng góp IRA truyền thống (trước thuế) mà <span condition="/isFilingStatusMFJ"
+        operator="isFalse">bạn</span><span condition="/isFilingStatusMFJ" operator="isTrue">bạn
+        và vợ/chồng bạn</span> đã thực hiện trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-ira-contributions">Điều gì được coi là đóng
+        góp IRA truyền thống?</modal-link>
   fg-detail-f9e99b:
-    summary:
+    summary: Các khoản đóng góp cho SEP, Simple hoặc các chương trình đủ điều kiện
+      khác
     /selfEmploymentRetirementPlanContributions:
-      question:
-      modalLink:
+      question: Đóng góp hưu trí tự kinh doanh mà <span condition="/isFilingStatusMFJ"
+        operator="isFalse">bạn</span><span condition="/isFilingStatusMFJ" operator="isTrue">bạn
+        và vợ/chồng bạn</span> đã thực hiện trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-retirement">Khấu trừ kế hoạch
+        hưu trí tự kinh doanh là gì?</modal-link>
   fg-detail-5c4fd4:
-    summary:
+    summary: Bảo hiểm y tế tự doanh
     /selfEmploymentHealthInsuranceContributions:
-      question:
-      modalLink:
+      question: Phí bảo hiểm y tế mà <span condition="/isFilingStatusMFJ" operator="isFalse">bạn</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">bạn và vợ/chồng bạn</span>
+        đã trả trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-health-insurance">Khấu Trừ Bảo
+        Hiểm Y Tế Tự Doanh:</modal-link>
   fg-detail-2c1033:
-    summary:
+    summary: Những khoản khấu trừ Tài Khoản Tiết Kiệm Y Tế (HSA) không được bao gồm
+      trong các khoản khấu trừ tiền lương
     /hsaContributionAmount:
-      question:
-      modalLink:
+      question: Đóng góp HSA mà <span condition="/isFilingStatusMFJ" operator="isFalse">bạn</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">bạn hoặc vợ/chồng bạn</span>
+        đã thực hiện trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-hsa-deductions">Các khoản khấu trừ HSA là
+        gì?</modal-link>
   fg-detail-e97d7b:
-    summary:
+    summary: Trợ Cấp Ly Hôn Đã Được Chi Trả
     /alimonyPaid:
-      question:
-      modalLink:
+      question: Tiền cấp dưỡng bạn đã trả trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-alimony-paid">Trợ Cấp Ly Hôn Đã Được Chi Trả</modal-link>
   fg-detail-913117:
-    summary:
+    summary: Tiền phạt do rút tiền tiết kiệm trước hạn
     /penaltyForEarlySavingsWithdrawal:
-      question:
-      modalLink:
+      question: Số tiền phạt mà <span condition="/isFilingStatusMFJ" operator="isFalse">bạn</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">bạn và vợ/chồng bạn</span>
+        đã trả trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-early-withdrawal">Tiền phạt do rút tiền tiết
+        kiệm trước hạn</modal-link>
   fg-detail-6fad42:
-    summary:
+    summary: Chi phí thuyên chuyển đối với thành viên trong quân đội
     /movingExpensesForArmedServicesMembers:
-      question:
-      modalLink:
+      question: Chi phí chuyển nhà cho các thành viên của lực lượng vũ trang mà <span
+        condition="/isFilingStatusMFJ" operator="isFalse">bạn</span><span condition="/isFilingStatusMFJ"
+        operator="isTrue">bạn và vợ/chồng bạn</span> đã trả trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-moving-expenses">Chi phí thuyên chuyển đối
+        với thành viên trong quân đội</modal-link>
   fg-detail-c4f7d7:
-    summary:
+    summary: Một số chi phí công việc của nhân viên cho quân nhân dự bị, nghệ sĩ biểu
+      diễn và các quan chức chính phủ nhận lương từ phí
     /businessCreditsForEligible:
-      question:
-      modalLink:
+      question: Chi phí kinh doanh đủ điều kiện mà <span condition="/isFilingStatusMFJ"
+        operator="isFalse">bạn</span><span condition="/isFilingStatusMFJ" operator="isTrue">bạn
+        và vợ/chồng bạn</span> đã trả trong năm <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-employee-business-expenses">Một Số Chi Phí
+        Công Việc Của Nhân Viên</modal-link>
   fg-detail-cf5b3c:
-    summary:
+    summary: các mục điều chỉnh khác
     /otherAdjustments:
-      question:
-  h3-a7b819:
+      question: Các khoản điều chỉnh khác mà <span condition="/isFilingStatusMFJ"
+        operator="isFalse">bạn</span><span condition="/isFilingStatusMFJ" operator="isTrue">bạn
+        và vợ/chồng bạn</span> đã trả trong năm <fg-show path="/taxYear"/>
+  h3-a7b819: 'AGI của quý vị là:'
   fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-f3c23d: Dựa trên những số tiền bản thân đã nhập, quý vị không thể yêu cầu tín
+      thuế thu nhập kiếm được vì có AGI vượt quá hạn mức đối với tư cách khai thuế
+      và số lượng trẻ em đủ điều kiện của quý vị.
+    p-93a6b5: ' Để biết thêm thông tin về các hạn mức thu nhập cho Tín Thuế Thu Nhập
+      Kiếm Được, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">xem</a>
+      .'
   modal-wages-salaries-tips:
-    heading: 
-    h3-53ed11: 
-    p-40d79a: 
-    p-ab967b:
-    p-cb2522:
-    p-1f7f24: 
-    h3-af3590: 
-    p-3fdb7d: 
-    p-d9b0e5:
-    h3-84091c: 
-    p-bee3d8: 
+    heading: Tôi nên bao gồm khoản thu nhập nào?
+    h3-53ed11: Tiền lương và tiền boa
+    p-40d79a: Nhà tuyển dụng của bạn đã báo cáo tiền công, tiền lương, tiền boa và
+      khoản thù lao khác của bạn trong ô 1 của Mẫu W-2 của bạn.
+    p-ab967b: Chủ lao động của quý vị đã báo cáo thu nhập, tiền lương, tiền boa và
+      các khoản bồi thường khác của quý vị ở ô 1 trong Mẫu W-2 của quý vị. Bao gồm
+      toàn bộ số tiền boa và thu nhập làm thêm giờ trong tính toán thu nhập kiếm được
+      khi xác định tính đủ điều kiện nhận tín thuế thu nhập do lao động, ngay cả khi
+      tất cả hoặc một phần được khấu trừ.
+    p-cb2522: Bao gồm mọi số tiền được khai báo trong Box 1 của Mẫu W-2 cho cả quý
+      vị và người phối ngẫu của quý vị nếu quý vị đang khai thuế chung với người phối
+      ngẫu của mình.
+    p-1f7f24: Don't Include các khoản đóng góp trước thuế trong Mẫu W-2 của quý vị
+      trong mục đóng góp trước thuế.
+    h3-af3590: Lương Quân Nhân & Lương Chiến Đấu
+    p-3fdb7d: Quý vị cũng có thể chọn gộp khoản lương chiến đấu không chịu thuế của
+      mình vào thu nhập kiếm được để nhận EITC. Chủ lao động của quý vị đã khai báo
+      khoản lương chiến đấu không chịu thuế của quý vị trong Box 12 với Code Q trên
+      Mẫu W-2 của quý vị.
+    p-d9b0e5: 'Lựa chọn này có thể làm tăng hoặc giảm EITC của quý vị. Để biết thêm
+      thông tin, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">xem</a> '
+    h3-84091c: Bảo Hiểm Khuyết Tật Tạm Thời & Ngắn Hạn
+    p-bee3d8: Nếu quý vị nghỉ nuôi con hoặc bị thương tật tạm thời trong năm và được
+      chủ lao động trả tiền, họ sẽ khai báo thu nhập của quý vị trên W-2 của quý vị.
+      Nhập khoản thu nhập đó vào đây.
   modal-work-no-taxes-withheld:
-    heading:
-    p-7ca214:
-    p-9048f5:
-    p-8f1d83:
+    heading: Thu nhập không bị khấu trừ thuế liên bang
+    p-7ca214: Báo cáo thu nhập kiếm được từ công việc tự do, ngay cả khi đó là công việc phụ, bán thời gian hoặc tạm thời.
+    p-9048f5: Nhập thu nhập vào đây nếu bạn kiếm tiền từ một công việc ngay cả khi thuế thu nhập không bị khấu trừ. Bạn có thể đã nhận hoặc chưa nhận được Mẫu 1099 cho tất cả thu nhập.
+    p-8f1d83: 'Thu nhập có thể kiếm được thông qua một ứng dụng hoặc trang web để:'
     ul-0:
-      li-014f6e:
-      li-816827:
-      li-ac1297:
-      li-743818:
-    p-ccdadf:
-    p-5465af:
+      li-014f6e: Lái xe cho các chuyến đi hoặc giao hàng đã đặt
+      li-816827: Chạy việc vặt hoặc hoàn thành nhiệm vụ
+      li-ac1297: Cung cấp các dịch vụ sáng tạo hoặc chuyên nghiệp
+      li-743818: Cung cấp công việc tạm thời, theo yêu cầu hoặc tự do khác
+    p-ccdadf: Tổng thu nhập của bạn bao gồm tất cả thu nhập bạn nhận được. Chúng tôi sẽ trừ chi phí của bạn sau.
+    p-5465af: Để biết thêm thông tin, hãy truy cập <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">Quản lý thuế cho công việc tự do của bạn</a>
   modal-self-employment-gross-income:
-    heading:
-    p-3ef7b9:
+    heading: Tổng Thu Nhập Tự Kinh Doanh
+    p-3ef7b9: 'Nếu quý vị:'
     ul-0:
-      li-0d8073:
-      li-f5836c:
-      li-d6da48:
-      li-604ec3:
-      li-de3005:
-    p-ccdadf:
-    p-a21d1b:
+      li-0d8073: Tự doanh
+      li-f5836c: Kiếm tiền từ việc cung cấp công việc, dịch vụ hoặc hàng hóa theo
+        yêu cầu
+      li-d6da48: Điều hành một doanh nghiệp hoặc nông trại
+      li-604ec3: Là mục sư hoặc thành viên của một dòng tu
+      li-de3005: Là một mục sư hoặc thành viên của một dòng tu
+    p-ccdadf: 'Để biết thêm thông tin, truy <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">cập</a> '
+    p-a21d1b: Để biết thêm thông tin, hãy truy cập <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">Trung
+      tâm thuế cho cá nhân tự kinh doanh</a>
   modal-disability-retirement:
-    heading: 
-    p-514b79: 
-    p-e7df54:  
-    p-2e7e6e: 
+    heading: Thu Nhập Kiếm Được Từ Trợ Cấp Hưu Trí Khuyết Tật
+    p-514b79: Nếu quý vị nghỉ hưu vì khuyết tật, chúng tôi xem xét các khoản trợ cấp
+      chịu thuế mà quý vị nhận được theo chương trình hưu trí khuyết tật của chủ lao
+      động là thu nhập kiếm được cho các mục đích của EITC cho đến khi quý vị đạt
+      đến tuổi nghỉ hưu tối thiểu. Tuổi nghỉ hưu tối thiểu là độ tuổi sớm nhất mà
+      quý vị có thể nhận được lương hưu hoặc niên kim nếu quý vị không bị khuyết tật.
+    p-e7df54: Tuổi nghỉ hưu tối thiểu là độ tuổi sớm nhất mà bạn có thể nhận được
+      lương hưu hoặc niên kim nếu bạn không bị khuyết tật.
+    p-2e7e6e: Bao gồm khuyết tật tạm thời hoặc ngắn hạn trong tiền lương của quý vị.
   modal-inmate-pay:
-    heading:
-    p-0ced8d:
-    p-435d89:
-    p-1dc488:
+    heading: Tiền Lương Kiếm Được trong thời gian là Tù Nhân
+    p-0ced8d: Tiền bạn nhận được cho công việc bạn thực hiện trong khi là tù nhân
+      trong cơ sở cải huấn không phải là thu nhập kiếm được khi tính toán tín dụng
+      thu nhập kiếm được.
+    p-435d89: Điều này bao gồm công việc được trả lương được thực hiện trong một chương
+      trình vừa học vừa làm hoặc khi ở trong nhà nửa đường.
+    p-1dc488: Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC), Thu Nhập Của Tù Nhân
+      (tiếng Anh)
   modal-foreign-income-non2555:
-    heading:
-    p-6821fc:
-    p-86d28e:
-    p-231cd1:
-    p-87f12e:
-    p-90826b:
+    heading: Thu nhập kiếm được ở nước ngoài
+    p-6821fc: Thu nhập kiếm được ở nước ngoài là thu nhập kiếm được khi sống và làm
+      việc bên ngoài Hoa Kỳ, Đặc khu Columbia hoặc các thuộc địa hoặc vùng lãnh thổ
+      của Hoa Kỳ.
+    p-86d28e: xNếu quý vị là nhân viên chính phủ Hoa Kỳ làm việc bên ngoài Hoa Kỳ,
+      thu nhập đó không được coi là kiếm được ở nước ngoài.
+    p-231cd1: Nếu quý vị không phải là nhân viên chính phủ và quý vị làm việc tại
+      đại sứ quán, chúng tôi coi thu nhập đó là kiếm được từ nước ngoài.
+    p-87f12e: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/forms-pubs/about-form-2555">Mẫu 2555</a>, Thu nhập
+      kiếm được ở nước ngoài.
+    p-90826b: 'Lưu ý: Nếu quý vị chọn nộp Mẫu 2555, quý vị không đủ điều kiện để yêu
+      cầu EITC.'
   modal-taxable-pension:
-    heading:
-    p-a523b6:
-    p-ce034e:
+    heading: Lương hưu
+    p-a523b6: Nếu quý vị nhận trợ cấp hưu trí dưới hình thức thanh toán lương hưu
+      hoặc niên kim từ một chương trình hưu trí của chủ lao động đủ điều kiện, tất
+      cả hoặc một phần số tiền quý vị nhận được có thể phải chịu thuế.
+    p-ce034e: 'Tất cả đều phải chịu thuế nếu:'
     ul-0:
-      li-21fe33:
-      li-c4c784:
-      li-a75167:
-    p-63555f:
+      li-21fe33: Quý vị đã không đóng góp hoặc không được coi là đã đóng góp vào lương
+        hưu hoặc niên kim của quý vị
+      li-c4c784: Chủ lao động của quý vị đã không khấu lưu các khoản đóng góp từ tiền
+        lương của quý vị, hoặc
+      li-a75167: Quý vị đã nhận được mọi khoản đóng góp của mình mà không phải đóng
+        thuế trong những năm trước
+    p-63555f: 'Một phần của khoản đó phải chịu thuế nếu:'
     ul-1:
-      li-6d40a9:
-    p-24ecdd:
+      li-6d40a9: Quý vị đã đóng góp các khoản tiền sau thuế (sử dụng Quy Tắc Chung
+        và Phương Pháp Đơn Giản Hóa để tính toán)
+    p-24ecdd: Các quy tắc bổ sung được áp dụng nếu quý vị nhận được các khoản thanh
+      toán trước 59 tuổi rưỡi, là người sống sót hoặc người thụ hưởng, hoặc có các
+      tình huống khác.
   modal-unemployment-compensation:
-    heading:
-    p-ec0a26:
-    p-97117c:
+    heading: Bồi Thường Thất Nghiệp (Bảo hiểm)
+    p-ec0a26: Đối với EITC, hãy liệt kê toàn bộ các khoản bồi thường thất nghiệp của
+      quý vị. Quý vị sẽ tìm thấy thu nhập này trên Mẫu 1099-G.
+    p-97117c: Nếu quỹ của chủ lao động của quý vị cung cấp các quyền lợi bổ sung,
+      hãy liệt kê bất kỳ số tiền nào được khai báo trong Mẫu W-2, Box 1.
   modal-social-security:
-    heading:
-    p-f2d061:
-    p-e8b50a:
-    p-2b31f6:
+    heading: Quyền Lợi An Sinh Xã Hhội Và Hưu Trí Đường Sắt
+    p-f2d061: Đối với EITC, chỉ bao gồm số tiền chịu thuế của Trợ cấp An sinh Xã hội
+      và hưu trí đường sắt của bạn.
+    p-e8b50a: 'Để biết thêm thông tin, truy <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc423">cập</a> '
+    p-2b31f6: Để tính số tiền chịu thuế từ các khoản trợ cấp của bạn, hãy xem &quot;Nên
+      sử dụng bảng tính nào&quot; trong <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">Ấn
+      phẩm 915</a>, An sinh Xã hội và Trợ cấp Hưu trí Đường sắt Tương đương.
   modal-scholarship-grants:
-    heading:
-    p-0e0c43:
-    p-ce8e34:
+    heading: Học Bổng hoặc Trợ Cấp Nghiên Cứu
+    p-0e0c43: Nhập bất kỳ số tiền học bổng chịu thuế nào không được báo cáo trên Mẫu
+      W-2 của bạn.
+    p-ce8e34: 'Số tiền này bao gồm tiền học bổng hoặc tiền trợ cấp không có trên Mẫu
+      W-2 của bạn nếu tiền đó là:'
     ul-0:
-      li-13d8db:
-      li-b94d4b:
-    p-adf913:
-    p-0c59d8:
+      li-13d8db: Được sử dụng cho các phụ phí, chẳng hạn như tiền ăn ở, đi lại và
+        thiết bị tùy chọn
+      li-b94d4b: Nhận được như một khoản thanh toán cho việc giảng dạy, nghiên cứu
+        hoặc các dịch vụ khác được yêu cầu như một điều kiện để nhận học bổng hoặc
+        trợ cấp nghiên cứu
+    p-adf913: Vui lòng không bao gồm số tiền quý vị nhận được cho các dịch vụ được
+      yêu cầu bởi Chương Trình Học Bổng Quân Đoàn Dịch Vụ Y Tế Quốc Gia, Học Bổng
+      Chuyên Gia Y Tế Lực Lượng Vũ Trang và Chương Trình Hỗ Trợ Tài Chính, hoặc một
+      chương trình dịch vụ vừa học vừa làm toàn diện cho sinh viên do một trường đại
+      học vừa học vừa làm điều hành.
+    p-0c59d8: 'Để biết thêm thông tin, truy <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">cập</a> '
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-cdf53e: Dựa trên những số tiền bản thân đã nhập, quý vị không thể yêu cầu tín
+      thuế thu nhập kiếm được vì có thu nhập kiếm được vượt quá hạn mức đối với tư
+      cách khai thuế và số trẻ đủ điều kiện của quý vị.
+    p-93a6b5: ' Để biết thêm thông tin về các hạn mức thu nhập cho Tín Thuế Thu Nhập
+      Kiếm Được, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">xem</a>
+      .'
   fg-alert-8b7db9:
-    heading:
-    p-3abe5f:
-    p-93a6b5:
-    p-d04ce1:
-    p-241cb8:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-3abe5f: 'Để yêu cầu EITC, bạn phải có thu nhập kiếm được (ví dụ: tiền lương
+      hoặc thu nhập ròng từ việc tự kinh doanh). Dựa trên thu nhập bạn đã nhập, thu
+      nhập kiếm được của bạn trong năm <fg-show path="/taxYear"/> bằng không hoặc
+      ít hơn, vì vậy bạn không đủ điều kiện nhận EITC.'
+    p-93a6b5: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Ấn phẩm 596</a>, Tín dụng Thu nhập
+      Kiếm được.
+    p-d04ce1: Quý vị không thể yêu cầu tín thuế thu nhập kiếm được nếu thu nhập đầu
+      tư của quý vị nhiều hơn <fg-show path="/eitcInvestmentIncomeLimit"/>.
+    p-241cb8: 'Thu nhập đầu tư bao gồm:'
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-e74f5d:
-      li-e42b99:
-      li-7c0731:
-    p-9c482c:
+      li-12d3b7: Tiền lãi (cả chịu thuế và miễn thuế)
+      li-0a9a83: Cổ tức
+      li-e74f5d: Thu nhập lãi vốn
+      li-e42b99: Một số tiền thuê và tiền bản quyền hoặc
+      li-7c0731: Thu nhập ròng từ các hoạt động đầu tư thụ động
+    p-9c482c: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p550">Ấn phẩm 550</a>, Thu nhập và Chi
+      phí Đầu tư. Để tính tổng thu nhập đầu tư của bạn, bạn nên sử dụng Bảng tính
+      1 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn
+      phẩm 596</a>, Tín dụng Thu nhập Kiếm được.
   modal-self-employment-deductions:
-    heading:
-    p-4838ea:
-    p-f24032:
+    heading: Các chi phí được khấu trừ khi tự kinh doanh là gì?
+    p-4838ea: Khi bạn tự kinh doanh, làm nghề tự do hoặc sở hữu và điều hành một doanh
+      nghiệp, bạn có thể đã có thể khấu trừ một số chi phí kinh doanh nhất định khỏi
+      thu nhập của mình để nộp ít thuế hơn.
+    p-f24032: 'Chi phí kinh doanh có thể bao gồm:'
     ul-0:
-      li-6a4179:
-      li-e2f63f:
-      li-7f4118:
-      li-9f53a8:
-      li-eaff1b:
-      li-6c49ac:
-      li-761662:
-      li-719fec:
-      li-849c98:
-    p-9ff7b2: |-
-    p-0651e4: 
-    p-a81df3: 
-    p-4ca1ce: 
+      li-6a4179: Chi phí văn phòng tại nhà
+      li-e2f63f: Chi phí xe hơi và xe tải
+      li-7f4118: Tiền thuê
+      li-9f53a8: Lương nhân viên và lương hưu
+      li-eaff1b: Bảo hiểm
+      li-6c49ac: Lãi suất trên các khoản nợ
+      li-761662: Phí pháp lý và chuyên môn
+      li-719fec: Thuế
+      li-849c98: Du lịch và ăn uống
+    p-9ff7b2: Những khoản khấu trừ này khác với các khoản khấu trừ cá nhân bạn đã
+      thực hiện nếu bạn chọn ghi thành từng khoản các khoản khấu trừ của mình. Bạn
+      có thể khấu trừ chi phí kinh doanh của mình ở đây và sau đó vẫn chọn khoản khấu
+      trừ tiêu chuẩn.
+    p-0651e4: <strong>Làm thế nào để kiểm tra tờ khai thuế năm ngoái?</strong>
+    p-a81df3: Nếu bạn làm nghề tự do vào năm <fg-show path="/taxYear"/>, bạn có thể
+      tìm thấy các chi phí được khấu trừ của mình ở dòng 28 của Bản kê C.
+    p-4ca1ce: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">Tìm
+      hiểu thêm về chi phí kinh doanh</a>
   modal-estimate-interest-income-en:
-    heading:
-    p-cda131:
-    p-bc395c:
-    p-ec3579:
+    heading: Thu nhập tiền lãi là gì và làm thế nào tôi có thể tính toán nó?
+    p-cda131: Các loại thu nhập tiền lãi phổ biến bao gồm tiền lãi kiếm được từ tài khoản ngân hàng hoặc từ việc cho vay tiền.
+    p-bc395c: <strong>Cách kiểm tra tờ khai thuế năm ngoái</strong>
+    p-ec3579: 'Nếu bạn có thu nhập tiền lãi trong năm <fg-show path="/taxYear"/>, hãy kiểm tra số tiền trong:'
     ul-0:
-      li-7b5662:
+      li-7b5662: Dòng 2b trên Mẫu 1040 của tờ khai thuế liên bang năm <fg-show path="/taxYear"/> của bạn
   modal-investment-income:
-    heading:
-    p-b07c20:
+    heading: Thu nhập đầu tư
+    p-b07c20: 'Thu nhập đầu tư cho EITC bao gồm:'
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-81f254:
-      li-498151:
-      li-7c0731:
-    p-4c8f5e:
-    p-df5956:
+      li-12d3b7: Tiền lãi (cả chịu thuế và miễn thuế)
+      li-0a9a83: Cổ tức
+      li-81f254: Thu nhập lãi vốn
+      li-498151: Một số tiền thuê và tiền bản quyền hoặc
+      li-7c0731: Thu nhập ròng từ các hoạt động đầu tư thụ động
+    p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">Xem</a>  để
+      biết thêm thông tin.
+    p-df5956: 'Sử dụng Bảng tính 1 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn
+      phẩm 596</a>, Tín dụng Thu nhập Kiếm được, để tính thu nhập đầu tư của bạn nếu
+      bất kỳ điều nào sau đây là đúng cho năm 2025:'
     ul-1:
-      li-0f3c1b:
-      li-782dae:
-      li-e0ebc1:
-      li-a00ee1:
-      li-143cd9:
+      li-0f3c1b: Quý vị đang nộp Bảng E (Mẫu 1040).
+      li-782dae: Quý vị đang khai báo thu nhập từ việc cho thuê tài sản cá nhân không
+        được sử dụng trong thương mại hoặc kinh doanh.
+      li-e0ebc1: Quý vị đang khai báo từ Mẫu 8814 (liên quan đến lựa chọn khai báo
+        tiền lãi và cổ tức của trẻ em).
+      li-a00ee1: Quý vị có thu nhập hoặc tổn thất từ một hoạt động đầu tư thụ động.
+      li-143cd9: Quý vị đang nộp Mẫu 4797 (liên quan đến việc mua bán tài sản kinh
+        doanh).
   modal-other-taxable-income:
-    heading: 
-    p-ba0ae2: 
+    heading: các loại thu nhập khác
+    p-ba0ae2: 'Các loại thu nhập khác bao gồm:'
     ul-0:
-      li-83fa6a: 
-      li-7ae32a: 
-      li-248c6a: 
-      li-6dac33: 
-      li-13b588: 
-      li-ad5cc5: 
-      li-ece5cb: 
-      li-0f1015: 
-      li-7e9756: 
-      li-737e99: 
-      li-e833f1: 
-    p-fda53f: 
+      li-83fa6a: Khoản phân phối Sắp Xếp Hưu Trí Cá Nhân (IRA) (ngoại trừ Roth IRA)
+      li-7ae32a: Lỗ vốn (không phải lãi)
+      li-248c6a: Các khoản trợ cấp ly hôn mà quý vị nhận được theo thỏa thuận ly hôn
+        hoặc ly thân được ký kết trước năm 2020
+      li-6dac33: Bất động sản cho thuê, tiền bản quyền, công ty hợp doanh, công ty
+        S, quỹ ủy thác, v.v.
+      li-13b588: Thu nhập từ việc cho thuê tài sản cá nhân nếu quý vị cho thuê tài
+        sản để thu lợi nhuận nhưng không kinh doanh cho thuê tài sản đó
+      li-ad5cc5: Khoản phân phối chịu thuế từ tài khoản tiết kiệm giáo dục Coverdell
+        (ESA) và lợi tức từ chương trình học phí đủ điều kiện
+      li-ece5cb: Lợi tức từ chương trình học phí đủ điều kiện
+      li-0f1015: Phần thưởng, giải thưởng và tiền thắng bài bạc
+      li-7e9756: Phí bồi thẩm đoàn
+      li-737e99: Cổ tức Quỹ Thường Trực Tiểu Bang Alaska
+      li-e833f1: Các khoản hoàn trả hoặc các khoản khác nhận được cho những khoản
+        được khấu trừ trong năm trước đó, chẳng hạn như chi phí y tế, thuế bất động
+        sản hoặc tiền lãi vay thế chấp nhà
+    p-fda53f: 'Vui lòng không bao gồm:'
     ul-1:
-      li-0eb181: 
-      li-e46f68: 
-      li-b144cb: 
-      li-63523b: 
-      li-a8d386: 
-      li-f2a3d6: 
-      li-080a95: 
-      li-57e5cb: 
-      li-764dd4: 
-      li-6f920a: 
-    p-745735: 
-  
+      li-0eb181: Các khoản trợ cấp ly hôn quý vị nhận được theo thỏa thuận ly hôn
+        hoặc ly thân được chấp nhận sau năm 2019
+      li-e46f68: Trợ cấp con cái
+      li-b144cb: Những quyền lợi trợ cấp xã hội như Chương Trình Trợ Giúp Tạm Thời
+        Cho Các Gia Đình Gặp Khó Khăn (TANF), phiếu trợ cấp thực phẩm, tiền trợ cấp
+        thuê nhà để ở theo mục 8
+      li-63523b: Các khoản thanh toán chăm sóc nuôi dưỡng không chịu thuế
+      li-a8d386: Những quyền lợi không chịu thuế của nhân viên như hỗ trợ giáo dục
+      li-f2a3d6: Phúc lợi cho cựu chiến binh, bao gồm cả các khoản thanh toán phục
+        hồi chức năng của Bộ Cựu Chiến Binh
+      li-080a95: Thù lao cho người lao động
+      li-57e5cb: Số tiền bảo hiểm nhân thọ nhận được do một người qua đời
+      li-764dd4: Tiền hoặc tài sản mà quý vị được thừa kế, được hưởng theo di chúc
+        hoặc nhận được như một món quà
+      li-6f920a: Bồi thường thất nghiệp
+    p-745735: Ấn Phẩm 525, Thu Nhập Chịu Thuế Và Không Chịu Thuế (tiếng Anh)
   modal-student-loan-interest:
-    heading:
-    p-3ac7ce:
-    p-e4b825:
+    heading: Khấu Trừ Lãi Khoản Vay Sinh Viên
+    p-3ac7ce: Nhập tối đa $2.500 tiền lãi mà quý vị đã trả cho khoản vay sinh viên
+      đủ điều kiện của mình. Quý vị có thể tìm thấy mục này trên Mẫu 1089-E nếu đã
+      trả nhiều hơn $600 tiền lãi.
+    p-e4b825: 'Khoản vay phải được dùng để trả chi phí giáo dục đại học đủ điều kiện
+      để theo học tại một cơ sở giáo dục đủ điều kiện. Ngoài ra, các chi phí phải:'
     ul-0:
-      li-bb1c73:
-      li-829f26:
-      li-562ff0:
-    p-75f422:
-    p-1f2dd3:
+      li-bb1c73: Đối với quý vị, vợ/chồng của quý vị, hoặc một người là người phụ
+        thuộc của quý vị tại thời điểm quý vị nhận được khoản vay;
+      li-829f26: Được trả hoặc phát sinh trong một khoảng thời gian hợp lý trước hoặc
+        sau khi bạn nhận khoản vay; và
+      li-562ff0: Đối với dịch vụ giáo dục được cung cấp trong suốt thời gian học tập
+        cho một học sinh/sinh viên đủ điều kiện.
+    p-75f422: Quý vị không thể yêu cầu khoản khấu trừ nếu không có nghĩa vụ pháp lý
+      phải thanh toán khoản vay.
+    p-1f2dd3: Để biết thêm thông tin, <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+      class="usa-link">xem</a> .
   modal-educator-expenses:
-    heading:
-    p-e117c8:
+    heading: Khấu Trừ Chi Phí Của Giáo Viên
+    p-e117c8: 'Nếu quý vị là giáo viên, hãy nhập tối đa <fg-show path="/maxEducatorExpensesNonMFJ"/>
+      (<fg-show path="/maxEducatorExpensesLimit"/> nếu vợ chồng quý vị khai chung
+      hồ sơ thuế và cả quý vị và người phối ngẫu của quý vị đều là giáo viên) cho
+      những chi phí chưa được hoàn lại như:'
     ul-0:
-      li-8829c6:
-      li-751127:
-      li-0c78ca:
-      li-6ef6c8:
-      li-6d4170:
-    p-86c6e4:
+      li-8829c6: Phí tham gia các khóa học nâng cao nghiệp vụ
+      li-751127: Sách và vật tư
+      li-0c78ca: Thiết bị máy tính (bao gồm phần mềm và dịch vụ liên quan)
+      li-6ef6c8: Thiết bị khác
+      li-6d4170: Tài liệu bổ sung mà quý vị sử dụng trong lớp học
+    p-86c6e4: 'Để biết thêm thông tin, <a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
+      class="usa-link">xem</a> '
   modal-ira-contributions:
-    heading:
-    p-5979d5:
-    p-a49375:
+    heading: Khấu Trừ IRA
+    p-5979d5: Nhập bất kỳ khoản đóng góp cho IRA nào mà quý vị đã thực hiện ngoài
+      khoản đóng góp trong sổ lương của mình.
+    p-a49375: 'Để biết thêm thông tin, <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">xem</a> '
   modal-self-employed-retirement:
-    heading:
-    p-ca0a8f:
-    p-0d133f:
+    heading: 'SEP, SIMPLE và các chương trình đủ điều kiện khác:'
+    p-ca0a8f: 'Nếu tự kinh doanh, quý vị sẽ tính toán khoản bồi thường từ chương trình
+      đủ điều kiện của mình bằng cách trừ đi những khoản sau vào thu nhập ròng từ
+      công việc tự doanh:'
+    p-0d133f: 'Để đủ điều kiện, bạn hoặc vợ/chồng của bạn phải có:'
     ul-0:
-      li-6c246a:
-      li-a2595a:
-      li-f6cddf:
-    p-3622b4:
+      li-6c246a: Phần được khấu trừ của thuế tự doanh của quý vị từ tờ khai thuế theo
+        Mẫu 1040, trang 1, và
+      li-a2595a: Số tiền đóng góp cho chương trình hưu trí của quý vị từ tờ khai thuế
+        theo Mẫu 1040, trang 1, ở dòng dành cho SEP, SIMPLE và các chương trình đủ
+        điều kiện của người tự doanh
+      li-f6cddf: Đã có một công ty trách nhiệm hữu hạn
+    p-3622b4: 'Các kế hoạch đủ điều kiện có thể bao gồm:'
     ul-1:
-      li-ff93fe:
-      li-200ab4:
-      li-e7dbe4:
-      li-765afa:
-    p-af5a4a:
-    p-add56c:
-    p-3248f2:
+      li-ff93fe: Kế hoạch Lương hưu Nhân viên Đơn giản hóa (SEP)
+      li-200ab4: Kế hoạch Khớp Khuyến khích Tiết kiệm cho Nhân viên
+      li-e7dbe4: Solo-401(k)
+      li-765afa: Các kế hoạch hưu trí đủ điều kiện khác
+    p-af5a4a: <strong>Không bao gồm</strong> các khoản đóng góp cho Thỏa thuận Hưu trí Cá nhân (IRA).
+    p-add56c: Bạn phải sử dụng một quy tắc đặc biệt để tính các khoản đóng góp cho kế hoạch hưu trí cho chính mình.
+    p-3248f2: Các Cá Nhân Tự Kinh Doanh – Tính Toán Khoản Đóng Góp và Khấu Trừ Cho
+      Chương Trình Hưu Trí của Bản Thân Quý Vị
   modal-hsa-deductions:
-    heading:
-    p-2ab752:
-    p-a7d9fc:
+    heading: 'Khấu Trừ Tài Khoản Tiết Kiệm Y Tế:'
+    p-2ab752: Nhập bất kỳ khoản đóng góp nào cho Tài Khoản Tiết Kiệm Y Tế (HSA) mà
+      quý vị đã không bao gồm trong HSA, FSA hoặc "chương trình phúc lợi tự chọn"
+      ở trên.
+    p-a7d9fc: Ấn Phẩm 969, Tài Khoản Tiết Kiệm Y Tế Và Các Gói Bảo Hiểm Y Tế Được
+      Ưu Đãi Về Thuế Khác (tiếng Anh)
   modal-alimony-paid:
-    heading:
-    p-fa1de9:
-    p-7b97e1:
-    p-7948e4:
-    p-358bc5:
-    p-06a405:
-    p-4b335c:
+    heading: Trợ Cấp Ly Hôn Đã Được Chi Trả
+    p-fa1de9: Nếu quý vị đã thực hiện khoản tiền trợ cấp ly hôn hay khoản tiền cấp
+      dưỡng sau ly thân theo án lệnh được thực hiện trước ngày 1 tháng 1 năm 2019
+      và lệnh đó không nêu cụ thể rằng quý vị không thể khấu trừ các khoản thanh toán
+      của mình, hãy nhập số tiền quý vị đã trả trong  tại đây.
+    p-7b97e1: 'Vui lòng không bao gồm những khoản mà quý vị đã trả cho:'
+    p-7948e4: <strong>Hỗ trợ gia đình hoặc trẻ em</strong>
+    p-358bc5: Ngoài ra cũng không bao gồm các khoản tiền nếu án lệnh đã được sửa đổi
+      và tuyên bố rằng quý vị không thể khấu trừ các khoản thanh toán của mình.
+    p-06a405: Tiền cấp dưỡng hoặc tiền cấp dưỡng ly thân được thực hiện theo lệnh của tòa án được thi hành sau ngày 31 tháng 12 năm 2024
+    p-4b335c: 'Để biết thêm thông tin, truy <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+      class="usa-link">cập</a> '
   modal-early-withdrawal:
-    heading:
-    p-7e8d5b:
+    heading: Tiền phạt do rút tiền tiết kiệm trước hạn
+    p-7e8d5b: Nếu rút tiền từ chứng thư gửi tiền định kỳ hoặc tài khoản tiền lãi được
+      hoãn khác trước hạn, quý vị có thể phải chịu một khoản tiền phạt. Quý vị có
+      thể tìm thấy thông tin về khoản tiền phạt này trên Mẫu 1099-INT trong Box 2.
+      Nhập khoản đó tại đây.
   modal-moving-expenses:
-    heading:
-    p-6f18fd:
+    heading: chi phí chuyển nhà
+    p-6f18fd: 'Nếu quý vị là thành viên của quân độ đang tại ngũ và quân đội đã ra
+      lệnh cho quý vị thay đổi vĩnh viễn nơi làm nhiệm vụ của mình, hãy nhập bất kỳ
+      chi phí thuyên chuyển nào mà quân đội không hoàn trả cho quý vị vào đây. Các
+      chi phí thuyên chuyển bao gồm:'
     ul-0:
-      li-60efa3:
-      li-efbbb1:
-    p-6536cb:
+      li-60efa3: Di chuyển thẳng từ nhà cũ đến nhà mới của quý vị
+      li-efbbb1: Chi phí đóng gói và di chuyển đồ đạc cá nhân của quý vị
+    p-6536cb: 'Để biết thêm thông tin, truy <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
+      class="usa-link">cập</a> '
   modal-employee-business-expenses:
-    heading:
-    p-c92011:
+    heading: Một Số Chi Phí Công Việc Của Nhân Viên
+    p-c92011: 'Nếu quý vị là:'
     ul-0:
-      li-9bde67:
-      li-053ac1:
-      li-e03b09:
-      li-0d1488:
-    p-cc9b68:
-    p-d46373:
-    p-eb68a5:
+      li-9bde67: Quân nhân dự bị của Quân Đội
+      li-053ac1: Nghệ sĩ biểu diễn đủ điều kiện
+      li-e03b09: Quan chức chính phủ địa phương hoặc tiểu bang nhận lương từ phí
+      li-0d1488: Nhân viên có chi phí công việc liên quan đến tình trạng khuyết tật
+    p-cc9b68: Quý vị có thể bao gồm những chi phí phổ biến và được chấp nhận trong
+      lĩnh vực thương mại, kinh doanh hoặc nghề nghiệp của mình hoặc chi phí cho những
+      thứ hữu ích và thích hợp cho doanh nghiệp của quý vị.
+    p-d46373: Nếu không phù hợp với một trong những loại được liệt kê, quý vị có thể
+      không kê khai các mục điều chỉnh cho những chi phí này.
+    p-eb68a5: Để biết thêm thông tin và danh sách các chi phí đủ điều kiện, <a target="_blank"
+      href="https://www.irs.gov/forms-pubs/about-form-2106" class="usa-link">xem</a>
+      .
   modal-self-employed-health-insurance:
-    heading:
-    p-598073:
-    p-d60394:
-    p-13dece:
+    heading: 'Khấu Trừ Bảo Hiểm Y Tế Tự Doanh:'
+    p-598073: Nhập số tiền quý vị đã trả cho bảo hiểm y tế cho bản thân, người phối
+      ngẫu và những người phụ thuộc của mình, nếu quý vị tự kinh doanh.
+    p-d60394: Các khoản phí bảo hiểm đủ điều kiện là bảo hiểm y tế, nha khoa, thị lực và chăm sóc dài hạn. Hợp đồng bảo hiểm có thể dành cho chính bạn, vợ/chồng bạn và những người phụ thuộc của bạn. Hợp đồng bảo hiểm cũng có thể bao trả cho con bạn dưới 27 tuổi vào cuối năm, ngay cả khi đứa trẻ đó không phải là người phụ thuộc của bạn.
+    p-13dece: Để biết thêm thông tin, xem Chương 6 <a target="_blank" href="https://www.irs.gov/instructions/i7206"
+      class="usa-link">của</a> .
 /qualifying-children:
-  title:
-  h2-dbaf54:
-  p-9b177d:
-  p-c1a0dd:
-  p-3178be:
-  p-e28c1e:
-  p-adf161:
+  title: Trẻ Đủ Điều Kiện
+  h2-dbaf54: Trẻ Đủ Điều Kiện
+  p-9b177d: Dựa trên thông tin đầu vào mà quý vị cung cấp trước đây, quý vị không
+    có bất kỳ trẻ đủ điều kiện nào. Nếu điều này không chính xác, vui lòng quay lại
+    <a class="usa-link" href="/app/eitc/filing-status/">Filing Status</a> và thay
+    đổi câu trả lời của quý vị.
+  p-c1a0dd: Vui lòng chuyển sang bước tiếp theo để xem kết quả của quý vị.
+  p-3178be: Trong bước này, chúng tôi sẽ xem có bao nhiêu người con hoặc người thân
+    khác của quý vị là trẻ đủ điều kiện để yêu cầu và tính toán EITC. Quý vị có thể
+    khai tối đa ba trẻ đủ điều kiện để nhận EITC.
+  p-e28c1e: Quý vị có thể khai tối đa ba trẻ đủ điều kiện để nhận EITC
+  p-adf161: Để đủ điều kiện nhận EITC, bạn phải có ít nhất một trẻ em đủ điều kiện.
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question:
-      modalLink:
+      question: Trẻ này đã sống với quý vị hơn nửa năm <fg-show path="/taxYear"/>
+        tại Hoa Kỳ phải không?
+      modalLink: <modal-link for="modal-residency">Điều gì được coi là thời gian sống
+        cùng bạn?</modal-link>
     fg-alert-b7d816:
-      heading:
-      p-7666ea:
+      heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được
+      p-7666ea: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+        596</a>, Earned Income Credit..
     /familyAndHousehold/*/someoneElseCanClaim:
-      question:
-      modalLink:
+      question: Người khác có thể khai trẻ này để nhận EITC không?
+      modalLink: <modal-link for="modal-claimed-someone-else">Nếu có nhiều hơn một
+        người có thể yêu cầu họ thì sao?</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question:
-      modalLink:
+      question: Quý vị không thể kê khai một đứa trẻ để nhận EITC nếu chúng cũng được
+        kê khai bởi một số người đủ điều kiện khác. Quý vị vẫn muốn kê khai đứa trẻ
+        này chứ?
+      modalLink: <modal-link for="modal-claimed-someone-else">Điều gì xảy ra nếu nhiều
+        hơn một người có thể yêu cầu họ?</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
-      question:
-      modalLink:
+      question: Có phải đứa trẻ này đã kết hôn và sẽ khai thuế chung với người phối
+        ngẫu của trẻ cho <fg-show path="/taxYear"/> không?
+      modalLink: <modal-link for="modal-joint-return">Tôi có thể yêu cầu một người
+        nộp tờ khai chung không?</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
-      question:
-      modalLink:
+      question: Có phải đứa trẻ này khai thuế chung cho <fg-show path="/taxYear"/>
+        chỉ để yêu cầu hoàn lại tiền thuế bị khấu lưu hoặc khoản thuế ước tính đã
+        nộp và sẽ không yêu cầu bất kỳ khoản tín thuế nào như EITC không?
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">Khi
+        nào bạn có thể yêu cầu một người nộp tờ khai chung?</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question:
-      modalLink:
+      question: Đứa trẻ này có bị tàn tật toàn phần và vĩnh viễn không?
+      modalLink: <modal-link for="modal-disabled">Điều gì được coi là khuyết tật vĩnh
+        viễn và hoàn toàn?</modal-link>
     /familyAndHousehold/*/relationship:
-      question:
-      modalLink:
+      question: 'Chọn mối quan hệ của đứa trẻ này với quý vị:'
+      modalLink: <modal-link for="modal-relationship">Ai được coi là con riêng, con
+        nuôi hoặc con nuôi tạm thời?</modal-link>
       options:
         childStepFoster:
-          name:
+          name: Con, con riêng của vợ/chồng, con nuôi chính thức, hoặc con nuôi tạm
         sibling:
-          name:
+          name: Anh chị em ruột, anh chị em cùng cha khác mẹ hay cùng mẹ khác cha
+            hoặc anh chị em kế
         descendant:
-          name:
+          name: 'Các cháu nội/ngoại, các cháu là con của anh/chị/em '
         none:
-          name:
+          name: Không điều nào kể trên
     /familyAndHousehold/*/ageRange:
-      question:
+      question: Đứa trẻ này bao nhiêu tuổi tại thời điểm cuối năm <fg-show path="/taxYear"/>?
       options:
         under19:
-          name:
+          name: 18 tuổi trở xuống
         between19And23:
-          name:
+          name: Từ 19 đến 23 tuổi
         over24:
-          name:
+          name: 24 tuổi trở lên
     /familyAndHousehold/*/isFullTimeStudent:
-      question:
-      modalLink:
+      question: Đứa trẻ có phải là học sinh/sinh viên toàn thời gian trong một khoảng
+        thời gian của 5 tháng bất kỳ trong năm đó không?
+      modalLink: <modal-link for="modal-student">Làm sao tôi biết nếu họ là sinh viên
+        toàn thời gian?</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question:
-      modalLink:
+      question: Người phụ thuộc có ít tuổi hơn quý vị không?
+      modalLink: <modal-link for="modal-age-comparison">Tại sao chúng tôi lại hỏi
+        liệu họ có nhỏ tuổi hơn <span condition="/isFilingStatusMFJ" operator="isFalse">bạn
+        không?</span><span condition="/isFilingStatusMFJ" operator="isTrue">bạn hoặc
+        vợ/chồng bạn không?</span></modal-link>
     /familyAndHousehold/*/validSSN:
-      question:
-      modalLink:
+      question: Đứa trẻ này có số an sinh xã hội hợp lệ được cấp vào hoặc trước ngày
+        đến hạn của tờ khai thuế (đã bao gồm khoảng gia hạn) không?
+      modalLink: <modal-link for="modal-valid-ssn-qc">Số An Sinh Xã Hội Hợp Lệ là
+        bắt buộc</modal-link>
     fg-alert-a004cd:
-      heading:
-      p-8374d8:
-    h2-eaf308:
-  p-5aea65:
+      heading: Xin lưu ý
+      p-8374d8: Đứa trẻ này là trẻ đủ điều kiện của quý vị. Tuy nhiên, bởi vì chúng
+        không có SSN hợp lệ, đứa trẻ này không giúp quý vị đủ điều kiện nhận tín thuế
+        thu nhập kiếm được đã được tăng.
+    h2-eaf308: Trẻ này đủ điều kiện để yêu cầu và tính toán EITC.
+  p-5aea65: Dựa trên thông tin đầu vào của quý vị, quý vị có 3 trẻ đủ điều kiện có
+    số An Sinh Xã Hội hợp lệ và đã đạt đến số lượng tối đa được kê khai để nhận EITC.
   fg-alert-9510e7:
-    heading:
-    p-b6bd9e:
-    p-93a6b5:
+    heading: Yêu cầu về trẻ em đủ điều kiện
+    p-b6bd9e: Quý vị không đủ điều kiện nhận EITC nếu không có trẻ đủ điều kiện trừ
+      khi quý vị hoặc vợ/chồng của quý vị  từ 25 đến 64 tuổi nếu khai thuế chung.
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  h2-34370a: 
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
+    p-cdf53e: Dựa trên những số tiền bản thân đã nhập, quý vị không thể yêu cầu tín
+      thuế thu nhập kiếm được vì có thu nhập kiếm được vượt quá hạn mức đối với tư
+      cách khai thuế và số trẻ đủ điều kiện của quý vị.
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
+  h2-34370a: Dựa trên thông tin đầu vào của quý vị, quý vị có <fg-show path="/eitcQualifyingChildren"/>
+    trẻ đủ điều kiện với số An Sinh Xã Hội hợp lệ.
   modal-residency:
-    heading: 
-    h3-7c913b:
-    p-ff8f12:
-    h3-46d8f4:
-    p-e27b79:
-    h3-16617c:
-    p-c623b2:
-    h3-6839b6:
-    p-658cca:
+    heading: Bài kiểm tra cư trú
+    h3-7c913b: Sống cùng Quý Vị
+    p-ff8f12: “Trẻ đủ điều kiện phải sống cùng nhà chính với quý vị trong hơn nửa
+      năm <fg-show path="/taxYear"/> và nhà đó phải ở Hoa Kỳ. Hoa Kỳ bao gồm 50 tiểu
+      bang và Quận Columbia. Nó không bao gồm Puerto Rico hoặc các lãnh thổ của Hoa
+      Kỳ như Guam. Đối với Tín Thuế Thu Nhập Kiếm Được (Earned Income Tax Credit (EITC),
+      Sở Thuế Vụ (Internal Revenue Service (IRS) coi các quân nhân Hoa Kỳ đóng quân
+      bên ngoài Hoa Kỳ trong thời gian làm nhiệm vụ kéo dài có nhà chính ở Hoa Kỳ
+      trong thời gian làm nhiệm vụ đó.
+    h3-46d8f4: Sự Ra Đời hoặc Qua Đời Của Một Đứa Trẻ
+    p-e27b79: Nếu đứa trẻ được sinh ra hoặc qua đời vào <fg-show path="/taxYear"/>,
+      đứa trẻ đó bắt buộc phải sống với quý vị hơn một nửa thời gian của năm đó khi
+      mà trẻ còn sống.
+    h3-16617c: Con Nuôi Chính thức và Con Nuôi Tạm
+    p-c623b2: 'Nếu quý vị nhận nuôi trẻ vào năm <fg-show path="/taxYear"/>, trẻ được
+      giao cho quý vị làm con nuôi hợp pháp vào năm <fg-show path="/taxYear"/>, hoặc
+      trẻ đó là con nuôi tạm đủ điều kiện được giao cho quý vị trong năm <fg-show
+      path="/taxYear"/>3, thì nhà chính của quý vị phải là nhà chính của trẻ này hơn
+      một nửa thời gian kể từ khi trẻ được nhận làm con nuôi hoặc được giao cho quý
+      vị vào năm <fg-show path="/taxYear"/>4. '
+    h3-6839b6: Vắng Mặt Tạm Thời
+    p-658cca: 'Đối với EITC, thời gian vắng mặt tạm thời được tính là thời gian sống
+      cùng quý vị. Các ví dụ bao gồm:'
     ul-0:
-      li-76cf60:
-      li-1b3986:
-      li-dae417:
-      li-de99d6:
-    p-8b99ed:
+      li-76cf60: Bệnh tật hoặc nhập viện
+      li-1b3986: Đến trường, kỳ nghỉ, kinh doanh hoặc nghĩa vụ quân sự
+      li-dae417: Giam giữ tại cơ sở dành cho vị thành niên
+      li-de99d6: Trẻ bị bắt cóc
+    p-8b99ed: 'Lựa chọn này có thể làm tăng hoặc giảm EITC của quý vị. Để biết thêm
+      thông tin, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">xem</a> '
   modal-joint-return:
-    heading:
-    p-9b8921:
-    p-bdfc89:
+    heading: Khai Thuế Chung với Một Người Khác
+    p-9b8921: Nói chung, quý vị không thể kê khai một người đã kết hôn là trẻ đủ điều
+      kiện để nhận EITC nếu người đó khai thuế chung.
+    p-bdfc89: Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC), Yêu Cầu Tờ Khai Chung
+      (tiếng Anh)
   modal-joint-return-with-another-person-exception:
-    heading:
-    p-93a25e:
-    p-bdfc89:
+    heading: Trường Hợp Ngoại Lệ Khai Thuế Chung với Một Người Khác
+    p-93a25e: Quý vị có thể kê khai một người đã kết hôn mà nộp hồ sơ khai thuế chung
+      với tư cách là một trẻ đủ điều kiện để nhận EITC nếu người đó và người phối
+      ngẫu của họ nộp hồ sơ khai thuế chung chỉ để yêu cầu hoàn lại tiền thuế thu
+      nhập bị khấu lưu từ tiền lương hoặc thuế ước tính mà họ đã trả. Họ có thể không
+      được yêu cầu bất kỳ khoản tín thuế nào trên tờ khai thuế, chẳng hạn như EITC.
+    p-bdfc89: Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC), Yêu Cầu Tờ Khai Chung
+      (tiếng Anh)
   modal-disabled:
-    heading:
-    p-a09e23:
+    heading: Bị Tàn Tật Toàn Phần Và Vĩnh Viễn
+    p-a09e23: 'Đối với EITC, chúng tôi coi trẻ bị tàn tật toàn phần và vĩnh viễn nếu
+      cả hai điều sau đều đúng:'
     ul-0:
-      li-35e112:
-      li-f9618f:
-    p-de127e:
+      li-35e112: Trẻ không thể thực hiện các nhiệm vụ quan trọng trong một khoảng
+        thời gian hợp lý trong khi làm việc để được trả công hoặc lợi nhuận trong
+        một môi trường công việc cạnh tranh cho ít nhất là mức lương tối thiểu do
+        tình trạng thể chất hoặc tinh thần, đồng thời
+      li-f9618f: Bác sĩ xác định tình trạng này đã kéo dài hoặc có thể kéo dài liên
+        tục trong ít nhất một năm hoặc có thể dẫn đến tử vong
+    p-de127e: Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC), Khuyết Tật Vĩnh Viễn
+      Và Toàn Bộ (tiếng Anh)
   modal-relationship:
-    heading:
-    h3-523a2e:
-    p-3a1769:
-    h3-3cc097:
-    p-165b15:
-    h3-872822:
-    p-d91342:
-    h3-2fd110:
-    p-b80621:
+    heading: Định nghĩa Mối quan hệ với Trẻ em
+    h3-523a2e: Con Riêng Của Vợ/Chồng
+    p-3a1769: Mối quan hệ giữa cha dượng/mẹ kế và con riêng của vợ/chồng là mối quan
+      hệ được hình thành bởi một cuộc hôn nhân. Đối với EITC, một mối quan hệ được
+      hình thành bởi một cuộc hôn nhân, chẳng hạn như con gái riêng của vợ/chồng,
+      con trai riêng của vợ/chồng, anh/chị/em kế, sẽ không kết thúc nếu cuộc hôn nhân
+      kết thúc.
+    h3-3cc097: Con Nuôi Chính Thức
+    p-165b15: Con nuôi chính thức luôn được coi như con ruột của quý vị. Thuật ngữ
+      này bao gồm một đứa trẻ được cho làm con nuôi hợp pháp của quý vị.
+    h3-872822: Con Nuôi Tạm
+    p-d91342: Quý vị chỉ có thể kê khai con nuôi tạm nếu đứa trẻ đó được bố trí ở
+      với quý vị bởi một cơ quan sắp xếp được ủy quyền hoặc theo án lệnh.
+    h3-2fd110: Cơ quan sắp xếp được ủy quyền
+    p-b80621: Thuật ngữ này bao gồm cơ quan chính phủ địa phương hoặc tiểu bang hay
+      chính phủ bộ lạc da đỏ. Nó cũng bao gồm một tổ chức được miễn thuế được cấp
+      phép bởi một tiểu bang hoặc chính phủ bộ lạc da đỏ.
   modal-student:
-    heading:
-    h3-f803ae:
-    p-ef6d3a:
-    p-69b838:
-    h3-754ddf:
-    p-dfaecc:
+    heading: Học Sinh/Sinh Viên Toàn Thời Gian
+    h3-f803ae: Học Sinh/Sinh Viên Toàn Thời Gian
+    p-ef6d3a: Để được coi là toàn thời gian, học sinh/sinh viên phải đăng ký số giờ
+      hoặc những khóa học mà trường học coi đó là đi học toàn thời gian.
+    p-69b838: Học sinh/sinh viên làm việc theo các giai đoạn xen kẽ với các kỳ học
+      (công việc "co-op") trong ngành kinh doanh tư nhân như là một phần của khóa
+      học chính quy của trường và đào tạo thực hành được coi là sinh viên toàn thời
+      gian.
+    h3-754ddf: Định Nghĩa Trường Học
+    p-dfaecc: 'Đối với EITC, trường học:'
     ul-0:
-      li-5f78b0:
-      li-f8aab3:
-      li-39d2fa:
-      li-96892f:
-    p-986cc5:
+      li-5f78b0: Trường tiểu học
+      li-f8aab3: Trường trung học đệ nhất cấp hoặc trung học đệ nhị cấp
+      li-39d2fa: Trường đại học hoặc cao đẳng
+      li-96892f: Trường kỹ thuật, thương mại hoặc cơ khí
+    p-986cc5: 'Trường học không:'
     ul-1:
-      li-775eb9:
-      li-b2e8f2:
-      li-767c35:
-    p-81198a:
+      li-775eb9: Lớp huấn luyện thực hành ngay trên công việc đương nhiệm
+      li-b2e8f2: Trường học hàm thụ
+      li-767c35: Trường chỉ cung cấp các khóa học qua Internet
+    p-81198a: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
   modal-valid-ssn-qc:
-    heading:
-    p-d68f7a:
-    p-0464ad:
-    p-a708ff:
-    p-558a40:
+    heading: Số An Sinh Xã Hội Hợp Lệ cho Trẻ Đủ Điều Kiện
+    p-d68f7a: Số tiền EITC của quý vị phụ thuộc vào số lượng trẻ đủ điều kiện mà quý
+      vị có với số SSN hợp lệ. Mỗi đứa trẻ hoặc thân nhân mà quý vị kê khai cho mục
+      đích tính số tiền EITC phải có số An Sinh Xã Hội (SSN) hợp lệ do Cơ Quan Quản
+      Lý An Sinh Xã Hội cấp vào hoặc trước ngày đến hạn của tờ khai thuế (đã bao gồm
+      khoảng gia hạn).
+    p-0464ad: Đối với EITC, SSN là một số SSN hợp lệ trừ khi dòng chữ "Không Hợp Lệ
+      Để Làm Việc" được in trên thẻ an sinh xã hội và mã số này được cấp chỉ để cho
+      phép người nhận SSN đăng ký hoặc nhận phúc lợi do liên bang tài trợ.  Một ví
+      dụ về phúc lợi do liên bang tài trợ là Medicaid.
+    p-a708ff: Chúng tôi chỉ chấp nhận thẻ an sinh xã hội có ghi "Hợp lệ để làm việc
+      với sự cho phép của Bộ An Ninh Nội Địa Hoa Kỳ (DHS)" miễn là sự ủy quyền của
+      DHS vẫn còn hiệu lực.
+    p-558a40: 'Đối với EITC, chúng tôi không chấp nhận:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-19d3d7:
+      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
+      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
+      li-19d3d7: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
+        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
   modal-claimed-someone-else:
-    heading:
-    p-9b277e:
-    p-911aff:
+    heading: Được Kê Khai trên Tờ Khai Thuế Của Người Khác
+    p-9b277e: Chỉ có một người có thể kê khai từng trẻ để nhận EITC. Nếu có nhiều
+      người kê khai đứa trẻ đó, thì IRS sẽ áp dụng quy tắc tie-breaker.
+    p-911aff: Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC), Chỉ Một Người Được Khai
+      Trẻ Đủ Điều Kiện Của Quý Vị Để Yêu Cầu EIC (tiếng Anh)
   modal-age-comparison:
-    heading:
-    p-626c78:
-    p-1a035f:
+    heading: Trẻ Phải Nhỏ Tuổi Hơn Quý Vị hoặc Người Phối Ngẫu Của Quý Vị
+    p-626c78: Để trở thành trẻ đủ điều kiện, đứa trẻ phải ít tuổi hơn quý vị trừ khi
+      đứa trẻ đó bị tàn tật toàn phần và vĩnh viễn tại bất kỳ thời điểm nào trong
+      <fg-show path="/taxYear">.
+    p-1a035f: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Ấn
+      phẩm 596</a>, Tín dụng Thu nhập Kiếm được, Bài kiểm tra tuổi.
 /results:
-  title:
-  h2-88e7ef:
+  title: Kết Quả
+  h2-88e7ef: Kết Quả Của Quý Vị
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  p-578b13:
-  p-adf6bb:
-  h2-259962:
-  p-508e29:
-  h3-54f664:
-  p-a5939a:
-  p-3ef53a:
-  h3-792a4e:
-  p-787398:
-  p-25a83e:
-  h3-c7457b:
-  p-b8834f:
-  h2-a3da4a:
-  p-5a6eac:
+    heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được
+    p-cdf53e: Dựa trên thông tin quý vị đã cung cấp, quý vị không thể yêu cầu tín
+      thuế thu nhập kiếm được vì thu nhập kiếm được của quý vị vượt quá hạn mức đối
+      với tư cách khai thuế và số lượng trẻ đủ điều kiện của quý vị.
+    p-93a6b5: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Ấn phẩm 596</a>, Tín dụng Thu nhập
+      Kiếm được.
+  p-578b13: 'Dựa trên thông tin mà bản thân đã cung cấp, quý vị đủ điều kiện nhận
+    khoản ước tính Tín Thuế Thu Nhập Kiếm Được là:'
+  p-adf6bb: Khoản tín thuế này sẽ giảm thuế <fg-show path="/taxYear"/> của quý vị
+    khi quý vị nộp tờ khai thuế cho IRS. Nếu tín thuế này giảm tiền thuế của quý vị
+    xuống dưới 0, quý vị có thể nhận được tiền hoàn thuế.
+  h2-259962: 'Các Bước Tiếp Theo: Cách nộp tờ khai để nhận EITC'
+  p-508e29: Để nhận được số tiền ước tính là <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
+    quý vị phải nộp tờ khai thuế liên bang của <fg-show path="/taxYear"/> của mình.
+    Nếu quý vị yêu cầu EITC, theo luật, IRS không thể cấp tiền hoàn thuế của quý vị
+    trước thời điểm giữa tháng 2 <fg-show path="/nextTaxYear"/>, ngay cả phần không
+    liên quan tới EITC.
+  h3-54f664: Trực Tuyến
+  p-a5939a: Nếu muốn khai thuế trực tuyến, quý vị đủ điều kiện để sử dụng Chương Trình
+    Khai Thuế Miễn Phí Của IRS. Xin lưu ý rằng chương trình chỉ áp dụng từ tháng 1
+    đến tháng 10.
+  p-3ef53a: <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+    Nộp trực tuyến ngay bây giờ<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-792a4e: Gặp Mặt Trực Tiếp
+  p-787398: Nếu muốn làm việc với người giúp khai thuế trực tiếp, quý vị có thể chọn
+    thực hiện theo phương án này tại một văn phòng Chương trình Trợ Giúp Khai Thuế
+    Thu Nhập Tự Nguyện (VITA) của IRS.
+  p-25a83e: <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+    Trợ giúp trực tiếp miễn phí<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-c7457b: Mẫu Đơn Giấy
+  p-b8834f: Vì bạn có trẻ em đủ điều kiện, bạn phải điền vào        <a target="_blank"
+    class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040">
+    Bản kê EIC (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        và
+    đính kèm vào        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    Mẫu 1040 (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        hoặc        <a
+    target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    Mẫu 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        cho
+    năm tính thuế <fg-show path="/taxYear"/>.
+  h2-a3da4a: Tóm Tắt Thông Tin Của Quý Vị
+  p-5a6eac: Bảng dưới đây tóm tắt lại thông tin mà quý vị đã nhập vào công cụ. Nếu
+    bất kỳ thông tin nào trong số này không chính xác, vui lòng nhấp vào chỉnh sửa
+    để cập nhật, nếu không điều này có thể ảnh hưởng đến kết quả của quý vị.
   table-0:
     tbody-0:
       tr-0:
-        th-537c66:
-        td-0da7c7:
-        td-fba314:
+        th-537c66: Năm
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">Chỉnh sửa thông tin cá nhân</a>
       tr-1:
-        th-c01d87:
-        td-86d753:
-        td-7a1efb:
+        th-c01d87: Tư Cách Khai Thuế
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">Chỉnh sửa tình
+          trạng khai thuế</a>
       tr-2:
-        th-b1d475:
-        td-5637e9:
-        td-1c1ab4:
+        th-b1d475: Tổng Thu Nhập Điều Chỉnh
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">Chỉnh sửa thu nhập
+          và điều chỉnh</a>
       tr-3:
-        th-40c7ae:
-        td-d604bc:
-        td-387fc0:
+        th-40c7ae: Thu Nhập Kiếm Được
+        td-d604bc: 'Tổng lương bổng & tiền lương: <fg-show path="/jobsIncomeTotal"/>'
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">Chỉnh sửa thu nhập</a>
       tr-4:
-        th-dbaf54:
-        td-4ea2d8:
-        td-9efa8d:
-  p-35b0d2:
+        th-dbaf54: Trẻ Đủ Điều Kiện
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Chỉnh
+          sửa trẻ em đủ điều kiện</a>
+  p-35b0d2: ' để kiểm tra tình trạng hoàn thuế, thực hiện thanh toán, tìm kiếm sự
+    hỗ trợ chuẩn bị thuế miễn phí, đăng ký nhận các mẹo hữu ích về thuế và nhiều hơn
+    thế nữa!'

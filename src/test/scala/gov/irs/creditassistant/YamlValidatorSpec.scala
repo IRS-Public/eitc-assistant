@@ -9,6 +9,7 @@ import scala.collection.immutable.ListMap
 import scala.io.Source
 
 class YamlValidatorSpec extends AnyFunSpec {
+  val SUPPORTED_LOCALES: Seq[String] = List("es", "ht", "ko", "ru", "vi", "zh-hans", "zh-hant")
   def getAllKeys(json: Json, prefix: String = ""): Set[String] = {
     json.fold(
       jsonNull = Set.empty,
@@ -47,6 +48,32 @@ class YamlValidatorSpec extends AnyFunSpec {
     }
   }
 
+  def getEmptyLeafNodes(json: Json, prefix: String = ""): Set[String] = {
+    json.fold(
+      jsonNull = Set(if (prefix.isEmpty) "root" else prefix),
+      jsonBoolean = _ => Set.empty,
+      jsonNumber = _ => Set.empty,
+      jsonString = str => if (str.trim.isEmpty) Set(if (prefix.isEmpty) "root" else prefix) else Set.empty,
+      jsonArray = arr => Set.empty,
+      jsonObject = obj =>
+        obj.toList.flatMap { case (k, v) =>
+          val path = if (prefix.isEmpty) k else s"$prefix.$k"
+          getEmptyLeafNodes(v, path)
+        }.toSet,
+    )
+  }
+
+  def assertNoEmptyLeaves(jsonEither: Either[ParsingFailure, Json], fileDesc: String): Unit = {
+    jsonEither match {
+      case Right(json) =>
+        val emptyNodes = getEmptyLeafNodes(json)
+        if (emptyNodes.nonEmpty) {
+          fail(s"Found empty or null leaf nodes in $fileDesc at paths:\n  - ${emptyNodes.mkString("\n  - ")}")
+        }
+      case Left(e) => fail(s"Failed to parse $fileDesc: ${e.getMessage}")
+    }
+  }
+
   describe("main yaml") {
     it("should have the same keys in en and sp") {
       val enFile = Source.fromResource("credit-assistant/locales/en.yaml").mkString
@@ -56,19 +83,37 @@ class YamlValidatorSpec extends AnyFunSpec {
       val esKeys = parser.parse(esFile).map(getAllKeys(_))
       findKeyDifferences(enKeys, esKeys, "es")
     }
+
+    it("should not contain empty or null values in en and es files") {
+      val enFile = Source.fromResource("credit-assistant/locales/en.yaml").mkString
+      val esFile = Source.fromResource("credit-assistant/locales/es.yaml").mkString
+
+      assertNoEmptyLeaves(parser.parse(enFile), "en.yaml")
+      assertNoEmptyLeaves(parser.parse(esFile), "es.yaml")
+    }
   }
   describe("flow yaml") {
     it("should have the same keys in all locales") {
-      val supportedLocales = List("es", "ht", "ko", "ru", "vi", "zh-hans", "zh-hant")
 
       val enFile = os.read(generatedFlowContentPath)
       val enKeys = parser.parse(enFile).map(getAllKeys(_))
 
-      supportedLocales.foreach { locale =>
+      SUPPORTED_LOCALES.foreach { locale =>
         val localeFile = Source.fromResource(s"credit-assistant/locales/flow_$locale.yaml").mkString
         val localeKeys = parser.parse(localeFile).map(getAllKeys(_))
         findKeyDifferences(enKeys, localeKeys, locale)
       }
     }
+
+    it("should not contain empty or null values in any flow locale") {
+      val enFile = os.read(generatedFlowContentPath)
+      assertNoEmptyLeaves(parser.parse(enFile), "flow_en.yaml")
+
+      SUPPORTED_LOCALES.foreach { locale =>
+        val localeFile = Source.fromResource(s"credit-assistant/locales/flow_$locale.yaml").mkString
+        assertNoEmptyLeaves(parser.parse(localeFile), s"flow_$locale.yaml")
+      }
+    }
+
   }
 }

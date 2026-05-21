@@ -1,11 +1,10 @@
-
 /:
-  title:
-  h2-5e286b:
-  p-c2c8a0:
+  title: 一般資訊
+  h2-5e286b: 一般資訊
+  p-c2c8a0: 回答幾個關於您自己的簡單問題，看看您是否符合資格。
   /chosenTaxYear:
-    question:
-    modalLink:
+    question: 選擇您要檢查您的 EITC 資格的納稅年度：
+    modalLink: <modal-link for="modal-tax-year">我應該使用哪一年？</modal-link>
     options:
       '2025':
         name: '2025'
@@ -14,925 +13,1003 @@
       '2023':
         name: '2023'
   /isUSCitizenOrResidentAlien:
-    question:
-    modalLink:
+    question: 您在 <fg-show path="/taxYear"/> 年全年度中是美國公民還是外籍居民？
+    modalLink: <modal-link for="modal-citizen">我是否符合作為美國公民或居民申請 EITC 的條件？</modal-link>
     options:
       'true':
-        name:
+        name: 是
       'false':
-        name:
+        name: 不
   fg-alert-8b7db9:
-    heading:
-    p-091688:
-    p-f72c3e:
-    p-b85d77:
-    p-93a6b5:
-    p-4c0c0d:
-    p-236b69:
-    p-5e637b:
-    p-ec145e:
-    p-363ef2:
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-091688: 您必須是美國公民或外籍居民才能申領勞動所得稅務優惠。請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit. 以判斷您是否全年都是美國外籍居民。
+    p-f72c3e: ' 如果您要在 <fg-show path="/taxYear"/> 年與您的配偶共同申報報稅表，並且您或您的配偶在整個一年中都是美國公民或外籍居民，請選擇
+      yes。'
+    p-b85d77: 您不能申領 EITC，因為您的報稅表到期日或之前未被簽發的有效社會安全號碼。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.。
+    p-4c0c0d: 如果您提交了外國賺取收入的<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">表
+      2555</a>，則不能申請所得稅抵免。
+    p-236b69: 54 號出版物 —— 美國公民和海外居民稅務指南（英文）
+    p-5e637b: 如果您是其他人的符合 EITC 資格的子女，則您沒有資格獲得 EITC。
+    p-ec145e: 有關某人是否可以將您申請為符合 EITC 條件的兒童的更多資訊，請參閱<a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">第 596 號出版物</a>，所得稅抵免，您不能成為其他納稅人符合條件的兒童。
+    p-363ef2: 如果您是其他人的被撫養人，則您沒有資格獲得 EITC，除非您有一個符合 EITC 資格的子女。
   /hasValidSSN:
-    question:
-    modalLink:
+    question: 您在您 <fg-show path="/taxYear"/> 年的報稅表截止日當日或以前是否被簽發了有效的社會安全號碼（包括延期的申報截止日）？
+    modalLink: <modal-link for="modal-valid-ssn-filer">有效的社會安全號碼是必填項</modal-link>
     options:
       'true':
-        name:
+        name: 是
       'false':
-        name:
+        name: 不
   /hasForeignEarnedIncome:
-    question:
-    modalLink:
+    question: 您是否會申報《表格 2555 —— 外國勞動所得》？
+    modalLink: <modal-link for="modal-foreign-income">不計入總收入的外國收入</modal-link>
     options:
       'true':
-        name:
+        name: 是
       'false':
-        name:
+        name: 不
   /isClaimedAsDependent:
-    question:
-    modalLink:
+    question: 其他人會在他們的報稅表上針對 EITC 將您申領為被撫養人或符合資格的子女嗎？
+    modalLink: <modal-link for="modal-claimed-dependent">您作為被撫養或符合資格的子女</modal-link>
     options:
       'true':
-        name:
+        name: 是
       'false':
-        name:
+        name: 不
   /ageRange:
-    question:
+    question: 請選擇最能描述您在 <fg-show path="/taxYear"/> 年年底的範圍。
     options:
       under24:
-        name:
+        name: 24 歲及以下
       age25to64:
-        name:
+        name: 25 至 64 歲之間
       65andOlder:
-        name:
+        name: 65 歲及以上
   modal-tax-year:
-    heading:
-    p-aa5a47:
+    heading: 稅收年度
+    p-aa5a47: 對於工資和其他收入：
     ul-0:
-      li-28dd34:
-      li-174a8b:
-      li-0a25dc:
+      li-28dd34: 2025，選擇 2025
+      li-174a8b: 2024，選擇 2024
+      li-0a25dc: 2023，選擇 2023
   modal-citizen:
-    heading:
-    p-18e680:
-    p-fe70ca:
-    p-2c8f8f:
+    heading: 美國公民或外籍居民
+    p-18e680: 如果您不是美國公民，您將被視為外國人。
+    p-fe70ca: 如果您有綠卡，或者您在美國居住超過一定天數，您在 EITC 方面將被視為的外籍居民。
+    p-2c8f8f: 有關更多資訊和重要例外情況，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.
   modal-valid-ssn-filer:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: 有效的社會安全號碼
+    p-527528: 您必須在 <fg-show path="/taxYear"/> 年納稅申報表（包括延期）到期日或之前擁有由社保局頒發的有效社會安全號碼
+      （SSN）。
+    p-45ae0e: 如果您的社會保卡上寫著「經國土安全部授權可用於工作」或「經 INS 授權可用於工作」，只要該授權仍然有效，則這張卡上的 SSN 仍然有效。
+    p-558a40: 對於 EITC，我們不接受：
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: 美國國稅局個人納稅人識別號（ITIN）
+      li-5fc9b7: 領養納稅識別號碼（ATIN）
+      li-9f487b: 僅為允許社會安全號碼的接收者申請或獲得聯邦資助的福利（如聯邦醫療補助）而簽發的社會安全號碼
+      li-a69a30: 僅出於申請或領取聯邦資助的福利（例如 Medicaid）之目的頒發的社會安全號碼
+    p-f554f7: 有關有效社會安全號碼的更多資訊，請參閱《出版物 596》。
   modal-foreign-income:
-    heading:
-    p-f45b03:
+    heading: 不計入總收入的外國收入
+    p-f45b03: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">這指的是您在</a>  上選擇排除並是在美國、哥倫比亞特區，或美國屬地或領土以外賺取的收入
   modal-claimed-dependent:
-    heading:
-    p-faf8d8:
-    p-98d6db:
-    p-038f13:
-    p-ceda6c:
-    p-d11380:
-    p-16aba9:
+    heading: 您作為被撫養或符合資格的子女
+    p-faf8d8: 在大多數情況下，您不能同時成為其他納稅人的被撫養人或符合資格的子女並申領 EITC。
+    p-98d6db: 在大多數情況下，如果您未滿 19 歲或未滿 24 歲的學生，並且與您的父母或其他親戚在美國生活了半年以上，請選擇 <strong>Yes</strong>。
+    p-038f13: 如果您已婚並提交聯合申報表，則不能將您作為受撫養人進行申報，除非您提交聯合申報表只是為了申請預扣所得稅或已繳納的預估稅款的退稅款。
+    p-ceda6c: '有關某人是否可以將您作為被撫養人的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">請前往</a> '
+    p-d11380: 有關某人是否可以針對 EITC 將您申領為合格子女的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">請參閱</a>
+      。
+    p-16aba9: 我們會在後續詢問您可能申領的子女或親屬。
   modal-primary-claimed-as-dependent:
-    heading:
-    p-d3187d:
-    p-762495:
+    heading: 我如何知道自己是否是別人的受撫養人？
+    p-d3187d: 如果在 <fg-show path="/taxYear"/> 年您依靠他人（配偶除外）提供撫養支持，他們也許能在其聯邦納稅申報表上將您申報為受撫養人。
+    p-762495: '決定是否有人能將您申報為受撫養人有幾個因素，包括：'
     ul-0:
-      li-b17276:
-      li-c82d5e:
-      li-5a5073:
-    p-752de3:
-    p-5a0201:
+      li-b17276: 您與該人的關係
+      li-c82d5e: 他們在經濟上及其他方面為您提供了多少支持
+      li-5a5073: 您是否與他們同住以及同住的時間長短
+    p-752de3: 請查閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">IRS 第 501 號出版物</a>中的表 5，以確定是否可能有其他人將您申報為受撫養人。
+    p-5a0201: 請記住，如果您（或您的配偶）支付了自己生活費的一半以上，您就不屬於他人的受撫養人。
   modal-confirm-tax-year-change:
-    heading:
-    p-31c7da:
-    button-70d9be:
-    button-ea4788:
+    heading: 注意：
+    p-31c7da: 更改<strong>年份</strong>將清除您之前輸入的資料。您仍想繼續嗎？
+    button-70d9be: 確認
+    button-ea4788: 取消
 /filing-status:
-  title:
-  h2-c01d87:
-  p-9bda8f:
+  title: 報稅身份
+  h2-c01d87: 報稅身份
+  p-9bda8f: 在此步驟中，您將被問及您計劃如何申報 <fg-show path="/taxYear"/> 年的稅款。
   /knowsFilingStatus:
-    question:
+    question: 您是否知道在申報 <fg-show path="/taxYear"/> 年的稅務時會使用的報稅身份？
   /initialFilingStatus:
-    question:
-    modalLink:
+    question: 請選擇您在申報 <fg-show path="/taxYear"/> 年的稅務將使用的報稅身份：
+    modalLink: <modal-link for="modal-filing-status">我應該使用哪種報稅身分？</modal-link>
     options:
       single:
-        name:
+        name: 單身
       marriedFilingJointly:
-        name:
+        name: 夫妻共同申報
       marriedFilingSeparately:
-        name:
+        name: 夫妻各自申報
       headOfHousehold:
-        name:
+        name: 戶主
       qualifiedSurvivingSpouse:
-        name:
+        name: 符合資格的喪偶者
   /maritalStatus:
-    question:
-    modalLink:
+    question: 您的婚姻狀態在 <fg-show path="/taxYear"/> 年 12 月 31 日是？
+    modalLink: <modal-link for="modal-legal-separation">已婚合法分居是什麼意思？</modal-link>
     options:
       married:
-        name:
+        name: 已婚
       divorced:
-        name:
+        name: 離婚或合法分居
       widowed:
-        name:
+        name: 符合資格的喪偶者
       single:
-        name:
+        name: 未婚
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question:
+    question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
-        name:
+        name: <fg-show path="/taxYear"/> 年間
       taxYearMinusOneOrTwo:
-        name:
+        name: 2023 或 2024 年間
       beforeTaxYearMinusTwo:
-        name:
+        name: 2023 年前
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question:
+    question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
-        name:
+        name: 2024 年間
       taxYearMinusOneOrTwo:
-        name:
+        name: 2022 或 2023 年間
       beforeTaxYearMinusTwo:
-        name:
+        name: 2022 年前
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question:
+    question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
-        name:
+        name: 2023 年間
       taxYearMinusOneOrTwo:
-        name:
+        name: 2021 或 2022 年間
       beforeTaxYearMinusTwo:
-        name:
+        name: 2021 年前
   /isHOHMarried:
-    question:
+    question: 您結婚了嗎？
   /intendsToFileJointlyWidow:
-    question:
-    modalLink:
+    question: 您是否打算針對 <fg-show path="/taxYear"/> 與已故配偶申報共同報稅表？
+    modalLink: <modal-link for="modal-joint-deceased-spouse">您是否有權在您的配偶去世的那一年與您的配偶共同申報報稅表？</modal-link>
   /intendsToFileJointlyMFJ:
-    question:
-    modalLink:
+    question: 您和您的配偶是否打算共同申報報稅表？
+    modalLink: <modal-link for="modal-joint-return-mfj">夫妻共同申報</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question:
-    modalLink:
+    question: 和您的配偶在 <fg-show path="/taxYear"/> 年的最後 6 個月是否擁有相同的主要住所？
+    modalLink: <modal-link for="modal-spouse-lived-together">配偶住在一起是什麼意思？</modal-link>
   /samePrincipalResidenceLast6Months:
-    question:
+    question: 和您的配偶在 <fg-show path="/taxYear"/> 年的最後 6 個月是否擁有相同的主要住所？
   /writableSeparationAgreement:
-    question:
+    question: 您是否依據您所在的州法律根據書面分居協定或根據分居贍養令合法分居，並且，您在 2025 年的最後一天沒有與配偶居住在一起？
   /entitledToPreviouslyFileJointReturn:
-    question:
+    question: 您是否有權在您的配偶去世的那一年與您的配偶共同申報報稅表？
   /paidMoreThanHalfHomeCostsForChild:
-    question:
-    modalLink:
+    question: 在 <fg-show path="/taxYear"/> 年中，您是否在房屋修繕費用中支付了半數以上，並且該房屋在 <fg-show path="/taxYear"/>
+      年中也是您的被撫養子女、繼子女或寄養子女的主要住所（包括任何暫時缺席）?
+    modalLink: <modal-link for="modal-keeping-up-home">我該如何計算“維持家庭”？</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question:
-    modalLink:
+    question: 您可以申領在 <fg-show path="/taxYear"/> 年做為您的被撫養人與您共同生活的子女或繼子女嗎？
+    modalLink: <modal-link for="modal-claiming-dependents">我可以申領誰作為被撫養人？（英文）</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question:
-    modalLink:
+    question: 您是否可以將您的孩子或繼子女申請為被撫養人，除非在 <fg-show path="/taxYear"/> 年：1) 孩子的總收入高於 <fg-show
+      path="/taxYear"/> 年的 <fg-show path="/eitcChildGrossIncomeLimit"/> 門檻；2) 孩子進行了聯合申報；或者
+      3) 您可以在別人的報稅表中被申請為被撫養人？
+    modalLink: <modal-link for="modal-claiming-dependents">我可以申領誰作為被撫養人？（英文）</modal-link>
   /homeUpkeepScenario:
-    question:
-    modalLink:
+    question: 您是否支付了超過 50% 的房屋維護費用？
+    modalLink: <modal-link for="modal-keeping-up-home">我如何計算&quot;維持家庭&quot;？</modal-link>
     options:
       livedWithDependent:
-        name:
+        name: 您與被撫養人（例如子女、孫子、兄弟姐妹、侄女、侄子、父母或祖父母）住在一起超過半年的地方
       custodialParentNonDependent:
-        name:
+        name: 即使您是監護人，但您與一個不是您的被撫養人的子女一起生活了半年以上（因為離婚或分居父母的子女的規則）
       dependentParentElsewhere:
-        name:
+        name: 您可以申請為被撫養人的父母，但未與您同住
       none:
-        name:
+        name: 以上皆非
   /secondaryFilerHasValidSSN:
-    question:
-    modalLink:
+    question: 您的配偶在您 <fg-show path="/taxYear"/> 年的報稅表截止日當日或以前是否被簽發了有效的社會安全號碼（包括延期的申報截止日）？
+    modalLink: <modal-link for="modal-valid-ssn">有效的社會安全號碼是必填項</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question:
-    modalLink:
+    question: 您的配偶在去世當天是否有有效的社會安全號碼？
+    modalLink: <modal-link for="modal-valid-ssn">有效的社會安全號碼是必填項</modal-link>
   /spouseAliveEndOfTaxYear:
-    question:
+    question: 您的配偶在 <fg-show path="/taxYear"/> 年 12 月 31 日是否仍在世？
   /ageRangeSecondary:
-    question:
+    question: 請選擇最能描述您配偶在 <fg-show path="/taxYear"/> 年年底的年齡層。
     options:
       under24:
-        name:
+        name: 24 歲及以下
       age25to64:
-        name:
+        name: 25 至 64 歲之間
       65andOlder:
-        name:
+        name: 65 歲及以上
   /primaryFilerIsClaimingQualifyingChildren:
-    question:
-    modalLink:
+    question: 您是否計劃為擁有有效社會安全號碼的子女或其他親屬申請 EITC？
+    modalLink: <modal-link for="modal-qualifying-child-eitc">是否有其他人能為該名子女申領 EITC？</modal-link>
   /hasLivedInUSMore6Months:
-    question:
-    modalLink:
-  h2-7864de:
+    question: 您的主要住所在 <fg-show path="/taxYear"/> 年期間是否有超過半年的時間是在美國？
+    modalLink: <modal-link for="modal-main-home-us">什麼算是美國的主要居所？</modal-link>
+  h2-7864de: 根據您的選擇，您的報稅身份為 <fg-show path="/flowReadableFilingStatus"/>。
   fg-alert-334e2e:
-    heading:
-    p-b6bd9e:
-    p-ae739d:
-    p-47ef52:
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-b6bd9e: 除非您或您的配偶（如果共同申報納稅申報單）是 25 歲到 64 歲之間，否則您無法在沒有不符合資格子女的情況下申領 EITC。
+    p-ae739d: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+      596 號出版物，所得稅抵免</a>。
+    p-47ef52: 如果您已婚，且未提交聯合申報表，並且在 <fg-show path="/taxYear"/> 年超過一半的時間有一個符合資格的子女與您同住，並且符合以下任意條件，您可以申請
+      EIC。
     ul-0:
-      li-207749:
-      li-93a6ef:
-    p-3630b4:
-    p-99f873:
-    p-91ee91:
-    p-d4d927:
-    p-065d1b:
+      li-207749: 您在 <fg-show path="/taxYear"/> 年的最後 6 個月內與配偶分居，或
+      li-93a6ef: 根據您所在州的法律，您已根據書面分居協定或分居贍養令合法分居，並且截至 <fg-show path="/taxYear"/> 年底，您與您的配偶已不再居住在同一家庭中。
+    p-3630b4: '如需瞭解相關更多資訊，<a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
+      class="usa-link">請參閱</a> '
+    p-99f873: 您不能申領 EITC，因為您的配偶在您的報稅表到期日或之前未被簽發的有效社會安全號碼。
+    p-91ee91: 如果您選擇與已故配偶共同申報報稅表，則您不能申領 EITC，因為您的配偶在他們去世當天沒有有效的社會安全號碼。
+    p-d4d927: 如果您不與已故配偶共同申報報稅表，您可能有資格獲得 EITC。
+    p-065d1b: 如要申領 ETIC，您的家在該年中必須有超過一半的時間是在美國。美國包括 50 個州和哥倫比亞特區。
   modal-filing-status:
-    heading:
-    p-c0b92c:
-    p-391f95:
-    p-496916:
-    p-49f30f:
+    heading: 我應該使用哪種報稅身分？
+    p-c0b92c: 如果今年您的婚姻狀況或家庭情況沒有發生變化，那麼您可能希望使用 <fg-show path="/lastTaxYear"/> 納稅申報表中相同的報稅身分。
+    p-391f95: 如果在過去一年中您的婚姻狀況或家庭發生變化，您可能需要使用不同的報稅身分以獲得更準確的估算。
+    p-496916: 每種報稅身分都有不同的要求。
+    p-49f30f: 單身
     ul-0:
-      li-c717a5:
-    p-5f63cd:
+      li-c717a5: 您不能已婚
+    p-5f63cd: 夫妻共同申報
     ul-1:
-      li-6aab7e:
-    p-80c02f:
+      li-6aab7e: 您已婚或您的配偶在年內去世
+    p-80c02f: 夫妻各自申報
     ul-2:
-      li-595e35:
-      li-1e72dd:
-    p-d69332:
+      li-595e35: 您結婚了嗎？
+      li-1e72dd: 您不打算與您的配偶共同申報（大多數夫婦通過聯合申報來省錢）
+    p-d69332: 戶主
     ul-3:
-      li-dfe41a:
-      li-38ff2f:
-    p-57317d:
+      li-dfe41a: 您不能已婚（或者出於稅收目的您被視為未婚）
+      li-38ff2f: 在特定時間內，您為家庭成員或與您同住的人支付了一半以上的維持家庭費用，並且他們必須滿足特定要求
+    p-57317d: <strong>符合條件的未亡配偶：</strong>
     ul-4:
-      li-2bf38a:
-      li-4ef74f:
-      li-939762:
-      li-bad5a3:
-    p-5b3ae2:
+      li-2bf38a: 您的配偶在 <fg-show path="/lastTaxYear"/> 或 <fg-show path="/taxYearMinusTwo"/>
+        年去世
+      li-4ef74f: 您在 <fg-show path="/taxYear"/> 之前沒有再婚
+      li-939762: 您有一個全年與您同住的受撫養子女
+      li-bad5a3: 您支付了一年中房屋修繕一半以上的費用。
+    p-5b3ae2: <a target="_blank" href="https://www.irs.gov/filing/filing-status">了解有關報稅身分的更多資訊<span
+      class="usa-sr-only"> (opens in a new tab)</span>。</a>
   modal-qualifying-child-eitc:
-    heading:
-    p-7356ad:
-    p-ac8914:
-    p-558a40:
+    heading: 符合資格的子女
+    p-7356ad: 如希望與符合資格的子女一起申請 EITC，該子女必須在 2025 年申報表到期日或之前擁有社保局頒發的有效 SSN（包括延期）。
+    p-ac8914: 如果社會保障卡上寫著“憑 DHS 授權工作有效”或“憑 INS 授權工作有效”，那麼只要授權仍然有效，這就是有效的 SSN。
+    p-558a40: 對於 EITC，我們不接受：
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-19d3d7:
-    p-0d323a:
+      li-5e5f3e: 美國國稅局個人納稅人識別號（ITIN）
+      li-5fc9b7: 領養納稅識別號碼（ATIN）
+      li-9f487b: 僅為允許社會安全號碼的接收者申請或獲得聯邦資助的福利（如聯邦醫療補助）而簽發的社會安全號碼
+      li-19d3d7: 僅出於申請或領取聯邦資助的福利（例如 Medicaid）之目的頒發的社會安全號碼
+    p-0d323a: 如果您的子女透過四項測試，您的子女就是符合資格的子女。這四項測試是：
     ul-1:
-      li-fbc977:
-      li-9d8d2d:
-      li-23863d:
-      li-ca34c2:
-    p-e00960:
+      li-fbc977: 關係，
+      li-9d8d2d: 年齡，
+      li-23863d: 居住權，以及
+      li-ca34c2: 共同報稅表
+    p-e00960: '如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">請參閱</a> '
   modal-main-home-us:
-    heading:
-    p-9cbbc6:
-    p-775779:
-    h3-398dfd:
-    p-7dbfa0:
+    heading: 美國的主要住宅
+    p-9cbbc6: 您在美國居住有超過半年的時間嗎？
+    p-775779: 您的家在 <fg-show path="/taxYear"/> 年中必須有超過一半的時間是在美國。美國包括 50 個州和哥倫比亞特區。它不包括關島、維爾京群島或波多黎各等美國屬地。
+    h3-398dfd: 駐紮在美國境外的從軍人士
+    p-7dbfa0: 如果您是美軍的成員，並且您在美國境外長期服役，請選擇 yes。
   modal-keeping-up-home:
-    heading:
-    p-c0958f:
-    h3-e8b30a:
+    heading: 維持家庭開支
+    p-c0958f: 如果您支付的總金額超過總費用的一半，則您滿足支付一半以上的家庭維護費用的要求。
+    h3-e8b30a: 具體費用包括：
     ul-0:
-      li-b9b2e1:
-      li-313963:
-      li-61e699:
-    p-fec463:
-    h3-3e0b53:
+      li-b9b2e1: 租金、抵押貸款利息、房地產稅和房屋保險
+      li-313963: 維修和公用事業
+      li-61e699: 家庭消耗的食物
+    p-fec463: 注意：透過公共援助支付的費用將被視為納稅人支付的費用。
+    h3-3e0b53: 費用不包括：
     ul-1:
-      li-edaa99:
-      li-40b84f:
-      li-5eae2b:
-      li-c64365:
-      li-04dec0:
+      li-edaa99: 服裝、教育和假期費用
+      li-40b84f: 醫療、醫療保險付款和處方藥
+      li-5eae2b: 人壽保險
+      li-c64365: 保險、租賃付款或公共交通等交通費用
+      li-04dec0: 您或您家庭成員的服務價值
   modal-legal-separation:
-    heading:
-    h3-ef7665:
-    p-198345:
-    h3-357344:
-    p-f560ea:
+    heading: 合法分居和普通法
+    h3-ef7665: 合法分居
+    p-198345: 在此處，「合法分居」指的是根據離婚或單獨撫養的法令合法分居。
+    h3-357344: 普通法婚姻
+    p-f560ea: 部分州允許普通法婚姻。請與您所在的州確認您是否根據普通法被視為已婚。
   modal-joint-return-mfj:
-    heading:
-    p-75997a:
+    heading: 共同報稅表
+    p-75997a: 您可以透過選擇 <strong> 作為您的報稅身份來選擇與您的配偶一起報稅。這使您可以在計算稅務優惠、扣除額和納稅義務時結合您的收入和支出。
   modal-joint-deceased-spouse:
-    heading:
-    p-85e581:
+    heading: 與已故配偶申報共同報稅表
+    p-85e581: 如果您的配偶在 <fg-show path="/taxYear"/>, 年間去世，您可以透過選擇 <fg-show path="/taxYear"/>
+      作為您的報稅身份來選擇與您的配偶一起報稅。這使您可以在計算稅務優惠、扣除額和納稅義務時結合您的收入和支出。
   modal-spouse-lived-together:
-    heading:
-    p-906815:
+    heading: 配偶 —— 同居
+    p-906815: 由於下列特殊情況，當您們中的一個或兩個暫時缺席時，一個人能被視為與您同住：
     ul-0:
-      li-8ec6de:
-      li-de7a22:
-      li-d6e6cb:
-      li-2c48dd:
-      li-8fdca6:
-    p-2392bb:
+      li-8ec6de: 疾病、
+      li-de7a22: 教育、
+      li-d6e6cb: 業務、
+      li-2c48dd: 假期，或
+      li-8fdca6: 兵役。
+    p-2392bb: 必須合理地假設缺席者將在暫時缺席後返回家中。
   modal-valid-ssn:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: 有效的社會安全號碼
+    p-527528: 您必須在 <fg-show path="/taxYear"/> 年納稅申報表（包括延期）到期日或之前擁有由社保局頒發的有效社會安全號碼
+      （SSN）。
+    p-45ae0e: 如果您的社會保卡上寫著「經國土安全部授權可用於工作」或「經 INS 授權可用於工作」，只要該授權仍然有效，則這張卡上的 SSN 仍然有效。
+    p-558a40: 對於 EITC，我們不接受：
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: 美國國稅局個人納稅人識別號（ITIN）
+      li-5fc9b7: 領養納稅識別號碼（ATIN）
+      li-9f487b: 僅為允許社會安全號碼的接收者申請或獲得聯邦資助的福利（如聯邦醫療補助）而簽發的社會安全號碼
+      li-a69a30: 僅出於申請或領取聯邦資助的福利（例如 Medicaid）之目的頒發的社會安全號碼
+    p-f554f7: 有關有效社會安全號碼的更多資訊，請參閱《出版物 596》。
   modal-confirm-mfj-to-nonmfj-qc-clear:
-    heading:
-    p-30861e:
-    button-70d9be:
-    button-ea4788:
+    heading: 確認
+    p-30861e: 從<strong>已婚聯合申報</strong>更改為其他報稅身分將清除您之前輸入的符合條件的兒童資料。您仍想繼續嗎？
+    button-70d9be: 確認
+    button-ea4788: 取消
   modal-claiming-dependents:
-    heading: 
-    p-fc792e: 
+    heading: 我可以申領誰作為被撫養人？（英文）
+    p-fc792e: 受撫養人通常是：
     ul-0:
-      li-7673e2: 
-      li-e9750c: 
-      li-9a6fc3: 
-    p-6b3acc: 
-    p-40e480: 
+      li-7673e2: 19歲以下的子女；
+      li-e9750c: 與父母同住的 24 歲以下學生
+      li-9a6fc3: 從您那裡獲得一半以上財務支持，且總收入低於 <fg-show path="/eitcChildGrossIncomeLimit"/>
+        的親屬或家庭成員
+    p-6b3acc: 如果您聯合申報，則不能將配偶申請為受撫養人。
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">了解有關被撫養人的更多資訊。</a>
 /agi:
-  title:
-  h2-c0af17:
-  p-308236:
-  p-100130:
-  p-bb8818:
-  h3-40c7ae:
+  title: AGI
+  h2-c0af17: 估算您的調整後總收入 (AGI)
+  p-308236: 在此步驟中，我們將估算您和您配偶的共同收入、調整後的總收入以及對其進行的任何調整。
+  p-100130: 請選擇並填入您在 <fg-show path="/taxYear"/> 年的收入和調整項。每項來源只選擇一項。
+  p-bb8818: 確保還包括您配偶的收入和調整。
+  h3-40c7ae: 勞動所得
   fg-detail-c90011:
-    summary:
+    summary: 工資、薪資或小費
     /jobsIncomeTotal:
-      question:
-      modalLink:
+      question: 預扣聯邦所得稅的工資、薪資或小費
+      modalLink: <modal-link for="modal-wages-salaries-tips">我應該包括什麼收入？</modal-link>
   fg-detail-c0e18b:
-    summary:
+    summary: 自雇總收入
     /selfEmploymentGrossIncome:
-      question:
-      modalLink:
+      question: 自雇總收入
+      modalLink: <modal-link for="modal-self-employment-gross-income">什麼是自僱收入？</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
-      question:
-      hint:
-      modalLink:
+      question: 您<span condition="/isFilingStatusMFJ" operator="isTrue">和您的配偶</span>在
+        <fg-show path="/taxYear"/> 年扣除的與自僱工作相關的總費用
+      hint: 此項可以留空
+      modalLink: <modal-link for="modal-self-employment-deductions">什麼是自僱可扣除費用？</modal-link>
   fg-detail-2fc9c0:
-    summary:
+    summary: 鐵路退休福利
     /disabilityRetirementBenefits:
-      question:
-      modalLink:
+      question: 最低退休年齡之前的殘疾退休福利金
+      modalLink: <modal-link for="modal-disability-retirement">完全殘疾退休福利： </modal-link>
   fg-detail-cd8e26:
-    summary:
+    summary: 境外所得收入
     /non2555ForeignIncome:
-      question:
-      modalLink:
-  h3-20a2b1:
+      question: 《表格 2555 - 境外所得收入》。
+      modalLink: <modal-link for="modal-foreign-income-non2555">外國勞動所得是必填的</modal-link>
+  h3-20a2b1: 其他收入類型
   fg-detail-89425f:
-    summary:
+    summary: 投資收入
     /investmentIncomeTotal:
-      question:
-      modalLink:
+      question: 投資收入
+      modalLink: <modal-link for="modal-investment-income">投資收入總額： </modal-link>
   fg-detail-fbe1af:
-    summary:
+    summary: 投資收入
     /pensionsIncomeTotal:
-      question: 
-      modalLink: 
+      question: 投資收入
+      modalLink: <modal-link for="modal-taxable-pension">退休金的應納稅部分是多少？</modal-link>
   fg-detail-3fa626:
-    summary:
+    summary: 失業保險
     /unemploymentIncome:
-      question:
-      modalLink:
+      question: 失業保險
+      modalLink: <modal-link for="modal-unemployment-compensation">什麼算是失業保險？</modal-link>
   fg-detail-0fb46a:
-    summary:
+    summary: 社會安全金收入
     /socialSecurityIncome:
-      question:
-      modalLink:
+      question: 社會安全金或鐵路退休福利金
+      modalLink: <modal-link for="modal-social-security">什麼算是社會保障和鐵路退休福利？</modal-link>
   fg-detail-d994db:
-    summary:
+    summary: 必須計入收入的獎學金或助學金
     /taxableScholarship:
-      question:
-      modalLink:
+      question: 必須計入收入的獎學金或助學金
+      modalLink: <modal-link for="modal-scholarship-grants">什麼算是獎學金或助學金？</modal-link>
   fg-detail-50ec28:
-    summary:
+    summary: 作為囚犯在刑罰執行機關中收到的工作報酬
     /inmatePay:
-      question:
-      modalLink:
+      question: 作為囚犯在刑罰執行機關中收到的工作報酬
+      modalLink: <modal-link for="modal-inmate-pay">作為囚犯在刑罰執行機關中收到的工作報酬</modal-link>
   fg-detail-7a5ac3:
-    summary:
+    summary: 其他收入類型
     /nonSpecificOtherIncome:
-      question:
-      hint:
-      modalLink:
-  h3-9fa8b1:
-  p-233dd3:
-  
+      question: 其他收入類型
+      hint: 您應輸入所有其他收入的一個總金額。
+      modalLink: <modal-link for="modal-other-taxable-income">其他收入類型</modal-link>
+  h3-9fa8b1: 調整項
+  p-233dd3: 選擇並填入您在 <fg-show path="/taxYear"/> 中的任何這些類型的收入調整。請勿將相同的調整在多個地方填入。
   fg-detail-2c7735:
-    summary:
+    summary: 學生貸款利息扣除額
     /studentLoanInterestAmount:
-      question:
-      hint:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span>  <span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的學生貸款利息
+      hint: (最多 <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">學生貸款利息扣除額</modal-link>
   fg-detail-9166fe:
-    summary:
+    summary: 符合資格的教育者費用
     /educatorExpenses/:
-      question:
-      hint:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的教育工作者費用
+      hint: (最多 <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">符合資格的教育者費用</modal-link>
   fg-detail-57c26a:
-    summary:
+    summary: 不包括在工資扣除額中的個人退休帳戶投入金額扣除額
     /deductionForTraditionalIRAContribution:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年繳納的傳統（稅前）IRA 供款
+      modalLink: <modal-link for="modal-ira-contributions">什麼算是傳統的 IRA 供款？</modal-link>
   fg-detail-f9e99b:
-    summary:
+    summary: 對無附加簡易僱員退休金和其他符合資格的計劃的投入金額
     /selfEmploymentRetirementPlanContributions:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年繳納的自僱退休供款
+      modalLink: <modal-link for="modal-self-employed-retirement">什麼是自僱退休計劃扣除額？</modal-link>
   fg-detail-5c4fd4:
-    summary:
+    summary: 自僱健康保險
     /selfEmploymentHealthInsuranceContributions:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的健康保險費
+      modalLink: <modal-link for="modal-self-employed-health-insurance">自僱健康保險扣除額：</modal-link>
   fg-detail-2c1033:
-    summary:
+    summary: 不包括在工資扣除額中的健康儲蓄帳戶 (HAS) 扣除額
     /hsaContributionAmount:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您或您的配偶</span>在 <fg-show path="/taxYear"/>
+        年繳納的 HSA 供款
+      modalLink: <modal-link for="modal-hsa-deductions">什麼是 HSA 扣除額？</modal-link>
   fg-detail-e97d7b:
-    summary:
+    summary: 支付的贍養費
     /alimonyPaid:
-      question:
-      modalLink:
+      question: 您在 <fg-show path="/taxYear"/> 支付的贍養費
+      modalLink: <modal-link for="modal-alimony-paid">支付的贍養費</modal-link>
   fg-detail-913117:
-    summary:
+    summary: 提前領出儲蓄的處罰
     /penaltyForEarlySavingsWithdrawal:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的罰款金額
+      modalLink: <modal-link for="modal-early-withdrawal">提前領出儲蓄的處罰</modal-link>
   fg-detail-6fad42:
-    summary:
+    summary: 從軍人士搬家費用
     /movingExpensesForArmedServicesMembers:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的武裝部隊成員搬家費
+      modalLink: <modal-link for="modal-moving-expenses">從軍人士搬家費用</modal-link>
   fg-detail-c4f7d7:
-    summary:
+    summary: 預備役人員、表演藝術家和收費政府官員的特定員工業務費用
     /businessCreditsForEligible:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的合格業務費用
+      modalLink: <modal-link for="modal-employee-business-expenses">特定員工業務費用</modal-link>
   fg-detail-cf5b3c:
-    summary:
+    summary: 其他調整項目
     /otherAdjustments:
-      question:
-  h3-a7b819:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">您</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">您和您的配偶</span>在 <fg-show path="/taxYear"/>
+        年支付的其他調整
+  h3-a7b819: 您的調整後總收入為：
   fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-f3c23d: 根據您填入的金額，您無法申領勞動所得稅務優惠，因為您的 AGI 超出了您的報稅身份和合格子女人數的限制。
+    p-93a6b5: ' 有關勞動所得稅務優惠的收入限制的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">請參閱</a>
+      。'
   modal-wages-salaries-tips:
-    heading: 
-    h3-53ed11: 
-    p-40d79a: 
-    p-ab967b:
-    p-cb2522:
-    p-1f7f24: 
-    h3-af3590: 
-    p-3fdb7d: 
-    p-d9b0e5:
-    h3-84091c: 
-    p-bee3d8: 
+    heading: 我應該包括什麼收入？
+    h3-53ed11: 工資、薪水和小費
+    p-40d79a: 您的雇主在您的 W-2 表的方框 1 中報告了您的工資、薪金、小費和其他報酬。
+    p-ab967b: 您的雇主在《W-2 表格》的方框 1 中報告了您的工資、薪水、小費和其他報酬。在確定勞動所得稅抵免資格時，請將小費和加班收入等全部金額計入收入計算中，即使全部或部分可扣除。
+    p-cb2522: 如果您與您的配偶共同申報聯合報稅表，將《表格 W-2》的 Box 1 中所有申報的收入納入。
+    p-1f7f24: Don't Include 在稅前投入金額部分填入您的《表格 W-2》稅前投入金額。
+    h3-af3590: 軍隊和戰鬥津貼
+    p-3fdb7d: 您還可以選擇將您的非應稅戰鬥工資計入 EITC 的收入中。您的僱主會在《表格 W-2》的 Box 12 中申報您的非應稅戰鬥工資，並帶有
+      Code Q。
+    p-d9b0e5: '此選擇可能會增加或減少您的 EITC。如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">請參閱</a> '
+    h3-84091c: 臨時及短期傷殘保險
+    p-bee3d8: 如果您在這一年休育兒假或暫時殘疾並且您的僱主支付了您的工資，他們會在您的《表格 W-2》上申報您的收入。在此處填入該收入。
   modal-work-no-taxes-withheld:
-    heading:
-    p-7ca214:
-    p-9048f5:
-    p-8f1d83:
+    heading: 未扣繳聯邦稅的收入
+    p-7ca214: 申報從零工中賺取的收入，即使這是副業、兼職或臨時工作。
+    p-9048f5: 如果您從工作中賺錢，即使沒有扣繳所得稅，也請在此處輸入收入。您可能收到也可能沒有收到所有收入的 1099 表格。
+    p-8f1d83: '這些收入可能是透過應用程式或網站賺取的，用於：'
     ul-0:
-      li-014f6e:
-      li-816827:
-      li-ac1297:
-      li-743818:
-    p-ccdadf:
-    p-5465af:
+      li-014f6e: 駕駛汽車提供預約乘車或送貨服務
+      li-816827: 跑腿或完成任務
+      li-ac1297: 提供創意或專業服務
+      li-743818: 提供其他臨時、按需或自由職業工作
+    p-ccdadf: 您的總收入包括您收到的所有收入。我們稍後會減去您的費用。
+    p-5465af: 欲了解更多資訊，請造訪<a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">管理零工稅務</a>
   modal-self-employment-gross-income:
-    heading:
-    p-3ef7b9:
+    heading: 自雇總收入
+    p-3ef7b9: 如果您：：
     ul-0:
-      li-0d8073:
-      li-f5836c:
-      li-d6da48:
-      li-604ec3:
-      li-de3005:
-    p-ccdadf:
-    p-a21d1b:
+      li-0d8073: 是自僱人士
+      li-f5836c: 透過提供按需工作、服務或商品來賺錢
+      li-d6da48: 經營企業或農場
+      li-604ec3: 是牧師或宗教團體的成員
+      li-de3005: 是牧師或宗教組織的成員
+    p-ccdadf: '如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">請前往</a> '
+    p-a21d1b: 如需了解更多資訊，請造訪 <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">自僱人士稅務中心</a>
   modal-disability-retirement:
-    heading: 
-    p-514b79: 
-    p-e7df54:  
-    p-2e7e6e: 
+    heading: 殘疾退休福利作為勞動收入
+    p-514b79: 如果您因殘疾而退休，我們會出於 EITC 之目的考慮您在雇主的殘疾退休計畫下獲得的應稅福利，直到您達到最低退休年齡。最低退休年齡是您在沒有殘疾的情況下本應可以領取養老金或年金的最早年齡。
+    p-e7df54: 最低退休年齡是如果您沒有殘疾，您可以領取養老金或年金的最早年齡。
+    p-2e7e6e: 將暫時或短期殘疾福利計入您的工資。
   modal-inmate-pay:
-    heading:
-    p-0ced8d:
-    p-435d89:
-    p-1dc488:
+    heading: 作為囚犯獲得的收入
+    p-0ced8d: 在計算所得稅抵免時，您在作為囚犯在刑事機構服刑期間從事工作所獲得的報酬不屬於賺取收入。
+    p-435d89: 這包括在工作釋放計劃或在過渡性住房期間從事的有償工作。
+    p-1dc488: 596 號出版物 —— 入獄期間的勞動所得稅務優惠（英文）
   modal-foreign-income-non2555:
-    heading:
-    p-6821fc:
-    p-86d28e:
-    p-231cd1:
-    p-87f12e:
-    p-90826b:
+    heading: 境外所得收入
+    p-6821fc: 境外所得收入是指在美國、哥倫比亞特區或美國屬地或領土以外生活和工作時賺取的收入。
+    p-86d28e: 如果您是在美國境外工作的美國政府雇員，則該收入不應視為境外所得收入。
+    p-231cd1: 如果您不是政府雇員並且在大使館工作，我們將該收入視為境外所得收入。
+    p-87f12e: 如需了解更多資訊，請參閱外國賺取收入的<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">表
+      2555</a>。
+    p-90826b: 注意：如果您選擇提交《表格 2555》，則您不符合資格申請 EITC。
   modal-taxable-pension:
-    heading:
-    p-a523b6:
-    p-ce034e:
+    heading: 養老金
+    p-a523b6: 如果您從合格的雇主退休計畫中以養老金或年金付款的形式領取退休福利，您收到的全部或部分金額可能需要納稅。
+    p-ce034e: 如果出現以下情況，則全部都需要納稅：
     ul-0:
-      li-21fe33:
-      li-c4c784:
-      li-a75167:
-    p-63555f:
+      li-21fe33: 您並未您的退休金或年金投入資金或不被視為投入資金
+      li-c4c784: 您的僱主沒有從您的薪資中扣留投入資金，或
+      li-a75167: 您在前幾年收到的所有投入資金都是免稅的
+    p-63555f: 如果出現以下情況，部分需要納稅：
     ul-1:
-      li-6d40a9:
-    p-24ecdd:
+      li-6d40a9: 您投入了稅後金額（以一般規則和簡化方法計算）
+    p-24ecdd: 如果您在 59 歲半之前收到付款、您是倖存者或受益人，或者有其他情況，則適用附加規則。
   modal-unemployment-compensation:
-    heading:
-    p-ec0a26:
-    p-97117c:
+    heading: 失業補助金（保險）
+    p-ec0a26: 對於 EITC，將您全部的失業補助金福利納入。您可以在《表格 1099-G》上找到該收入。
+    p-97117c: 如果您的僱主的基金提供了補充性福利，請將在《表格 W-2》 Box 1 中申報的任何金額納入。
   modal-social-security:
-    heading:
-    p-f2d061:
-    p-e8b50a:
-    p-2b31f6:
+    heading: 社會安全金收入
+    p-f2d061: 對於 EITC，只包括您社會保障和鐵路退休福利的應納稅金額。
+    p-e8b50a: '如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc423">請前往</a> '
+    p-2b31f6: 要計算您福利的應納稅金額，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">第
+      915 號出版物</a>，社會保障和同等的鐵路退休福利中的&quot;使用哪個工作表&quot;。
   modal-scholarship-grants:
-    heading:
-    p-0e0c43:
-    p-ce8e34:
+    heading: 獎學金或助學金
+    p-0e0c43: 輸入未在 W-2 表上報告的任何應納稅獎學金金額。
+    p-ce8e34: 此金額包括未在您的 W-2 上找到的獎學金或助學金，如果該資金是：
     ul-0:
-      li-13d8db:
-      li-b94d4b:
-    p-adf913:
-    p-0c59d8:
+      li-13d8db: 用於雜費，例如食宿、旅行和非必要性設備
+      li-b94d4b: 作為獲得獎學金或研究金的資格所必須進行的教學、研究或其他服務獲得的款項
+    p-adf913: 不包括您因國家衛生健康團獎學金計劃、武裝部隊健康專業獎學金和經濟援助計劃或由工作學院營運的綜合學生工作學習服務計劃所要求的服務而獲得的金額。
+    p-0c59d8: '如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">請前往</a> '
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-cdf53e: 根據您填入的金額，您無法申領勞動所得稅務優惠，因為您的勞動所得超出了您的報稅身份和合格子女人數的限制。
+    p-93a6b5: ' 有關勞動所得稅務優惠的收入限制的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">請參閱</a>
+      。'
   fg-alert-8b7db9:
-    heading:
-    p-3abe5f:
-    p-93a6b5:
-    p-d04ce1:
-    p-241cb8:
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-3abe5f: 要申請 EITC，您必須有賺取的收入（例如，工資或自僱的淨收入）。根據您輸入的收入，您在 <fg-show path="/taxYear"/>
+      年的賺取收入為零或更少，因此您不符合 EITC 的條件。
+    p-93a6b5: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+      596 號出版物</a>，所得稅抵免。
+    p-d04ce1: 如果您的投資收入超過 <fg-show path="/eitcInvestmentIncomeLimit"/>，則不能申領勞動所得稅務優惠。
+    p-241cb8: 投資收入包括：
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-e74f5d:
-      li-e42b99:
-      li-7c0731:
-    p-9c482c:
+      li-12d3b7: 利息（應稅和免稅）
+      li-0a9a83: 股息
+      li-e74f5d: 資本利得收入
+      li-e42b99: 部分租金和特許權使用費或
+      li-7c0731: 非本業性活動的淨收入
+    p-9c482c: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">第
+      550 號出版物</a>，投資收入和費用。要計算您的總投資收入，您應該使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+      596 號出版物</a>中的工作表 1，所得稅抵免。
   modal-self-employment-deductions:
-    heading:
-    p-4838ea:
-    p-f24032:
+    heading: 什麼是自僱可扣除費用？
+    p-4838ea: 當您是自僱人士、零工，或者擁有並經營一家企業時，您可能能夠從您的收入中扣除某些業務費用，從而少繳稅。
+    p-f24032: 業務費用可能包括：
     ul-0:
-      li-6a4179:
-      li-e2f63f:
-      li-7f4118:
-      li-9f53a8:
-      li-eaff1b:
-      li-6c49ac:
-      li-761662:
-      li-719fec:
-      li-849c98:
-    p-9ff7b2: |-
-    p-0651e4: 
-    p-a81df3: 
-    p-4ca1ce: 
+      li-6a4179: 家庭辦公費用
+      li-e2f63f: 汽車和卡車費用
+      li-7f4118: 租金
+      li-9f53a8: 員工工資和養老金
+      li-eaff1b: 保險
+      li-6c49ac: 債務利息
+      li-761662: 法律和專業費用
+      li-719fec: 稅費
+      li-849c98: 差旅和餐飲
+    p-9ff7b2: 如果您選擇逐項扣除，這些扣除與您個人的扣除不同。您可以在此扣除您的業務費用，並且稍後仍可選擇標準扣除額。
+    p-0651e4: <strong>如何查看去年的納稅申報表？</strong>
+    p-a81df3: 如果您在 <fg-show path="/taxYear"/> 年是自僱人士，您可以在附表 C 的第 28 行找到您的可扣除費用。
+    p-4ca1ce: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">了解有關業務費用的更多資訊</a>
   modal-estimate-interest-income-en:
-    heading:
-    p-cda131:
-    p-bc395c:
-    p-ec3579:
+    heading: 什麼是利息收入？我該如何計算？
+    p-cda131: 常見的利息收入類型包括從銀行帳戶或借出款項中賺取的利息。
+    p-bc395c: <strong>如何查看去年的納稅申報表</strong>
+    p-ec3579: '如果您在 <fg-show path="/taxYear"/> 年賺取了利息收入，請檢查以下項中的金額：'
     ul-0:
-      li-7b5662:
+      li-7b5662: 您的 <fg-show path="/taxYear"/> 年聯邦納稅申報表 1040 表格第 2b 行
   modal-investment-income:
-    heading:
-    p-b07c20:
+    heading: 投資收益
+    p-b07c20: EITC 的投資收入包括：
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-81f254:
-      li-498151:
-      li-7c0731:
-    p-4c8f5e:
-    p-df5956:
+      li-12d3b7: 利息（應稅和免稅）
+      li-0a9a83: 股息
+      li-81f254: 資本利得收入
+      li-498151: 部分租金和特許權使用費或
+      li-7c0731: 非本業性活動的淨收入
+    p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">請參閱</a>  以瞭解更多資訊。
+    p-df5956: 如果您在 2025 年符合以下任一情況，請使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+      596 號出版物</a>，所得稅抵免中的工作表 1 來計算您的投資收入：
     ul-1:
-      li-0f3c1b:
-      li-782dae:
-      li-e0ebc1:
-      li-a00ee1:
-      li-143cd9:
+      li-0f3c1b: 您正在提交《附表 E》（《表格 1040》）。
+      li-782dae: 您正在設備未用於貿易或業務的個人財產租金收入。
+      li-e0ebc1: 您正在根據《表格 8814》進行申報（與選擇申報子女的利息和股息有關）。
+      li-a00ee1: 您從被動活動中獲得收入或損失。
+      li-143cd9: 您正在提交《表格 4797》（與商業財產的銷售有關）。
   modal-other-taxable-income:
-    heading: 
-    p-ba0ae2: 
+    heading: 其他收入類型
+    p-ba0ae2: 其他收入類型包括：
     ul-0:
-      li-83fa6a: 
-      li-7ae32a: 
-      li-248c6a: 
-      li-6dac33: 
-      li-13b588: 
-      li-ad5cc5: 
-      li-ece5cb: 
-      li-0f1015: 
-      li-7e9756: 
-      li-737e99: 
-      li-e833f1: 
-    p-fda53f: 
+      li-83fa6a: 個人退休帳戶 (IRA) 分配（羅斯個人退休帳戶除外）
+      li-7ae32a: 資本利損（非利得）
+      li-248c6a: 您根據在 2020 年之前執行的離婚或分居協議收到的贍養費
+      li-6dac33: 出租房地產、特許權使用費、合夥企業、S 企業、信託等。
+      li-13b588: 如果您以盈利為目的從事出租，但不從事出租此類財產的業務，則計為出租個人財產中獲得的收入
+      li-ad5cc5: Coverdell 教育儲蓄帳戶（ESA）以及合格的學費課程收入的應稅分配
+      li-ece5cb: 合格的學費課程收入
+      li-0f1015: 獎品、獎勵和賭博獎金
+      li-7e9756: 陪審團費用
+      li-737e99: 阿拉斯加永久基金股息
+      li-e833f1: 前一年扣除的項目的核銷或收到的其他款項，例如醫療費用、房地產稅或房屋抵押貸款利息
+    p-fda53f: 請勿包含：
     ul-1:
-      li-0eb181: 
-      li-e46f68: 
-      li-b144cb: 
-      li-63523b: 
-      li-a8d386: 
-      li-f2a3d6: 
-      li-080a95: 
-      li-57e5cb: 
-      li-764dd4: 
-      li-6f920a: 
-    p-745735: 
-  
+      li-0eb181: 您根據在 2019 年之後簽訂的離婚或分居協議收到的贍養費
+      li-e46f68: 子女撫養費
+      li-b144cb: 貧困家庭臨時援助 (TANF)、食物券、第 8 節住房津貼等福利
+      li-63523b: 非應稅寄養費
+      li-a8d386: 教育援助等非應稅員工福利
+      li-f2a3d6: 退伍軍人康復費等退伍軍人福利
+      li-080a95: 工傷賠償
+      li-57e5cb: 因某人死亡而收到的人壽保險收益
+      li-764dd4: 繼承、遺囑給您或作為禮物收到的金錢或財產
+      li-6f920a: 失業補助
+    p-745735: 525 號發行物 —— 應稅收入和非應稅收入（英文）
   modal-student-loan-interest:
-    heading:
-    p-3ac7ce:
-    p-e4b825:
+    heading: 學生貸款利息扣除額
+    p-3ac7ce: 填入您為合格學生貸款支付的利息，最高 2,500 美元。如果您支付的利息超過 600 美元，您可以在《表格 1098-E》上找到此資訊。
+    p-e4b825: 貸款必須支付合格的高等教育費用才能進入合格的教育機構。此外，費用必須是：
     ul-0:
-      li-bb1c73:
-      li-829f26:
-      li-562ff0:
-    p-75f422:
-    p-1f2dd3:
+      li-bb1c73: 針對您、您的配偶或您申請貸款時的被撫養人；
+      li-829f26: 在您獲得貸款之前或之後的合理時間內支付或產生的；以及
+      li-562ff0: 針對在學術期間為符合資格的學生提供的教育。
+    p-75f422: 如果您在法律上沒有義務支付貸款，則不能申領扣除額。
+    p-1f2dd3: '如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+      class="usa-link">請參閱</a> '
   modal-educator-expenses:
-    heading:
-    p-e117c8:
+    heading: 教育者費用扣除
+    p-e117c8: 如果您是教師，請填入最多 250 美元（如果已婚共同申報且您和您的配偶都是教師，則為 500 美元）的未核銷費用，例如：
     ul-0:
-      li-8829c6:
-      li-751127:
-      li-0c78ca:
-      li-6ef6c8:
-      li-6d4170:
-    p-86c6e4:
+      li-8829c6: 參加專業發展課程的費用
+      li-751127: 書籍和用品
+      li-0c78ca: 電腦設備（包括相關軟體和服務）
+      li-6ef6c8: 其他設備
+      li-6d4170: 您在課堂上使用的補充教材
+    p-86c6e4: '如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
+      class="usa-link">請參閱</a> '
   modal-ira-contributions:
-    heading:
-    p-5979d5:
-    p-a49375:
+    heading: 個人退休帳戶扣除額
+    p-5979d5: 填入您在工資投入金額之外所做的任何個人退休賬戶投入金額。
+    p-a49375: '如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">請參閱</a> '
   modal-self-employed-retirement:
-    heading:
-    p-ca0a8f:
-    p-0d133f:
+    heading: 無附加簡易僱員退休金和其他符合資格的計劃：
+    p-ca0a8f: 如果您是自僱人士，您可以透過從自僱人士的淨收入中減去以下各項來計算您的合格計劃薪酬：
+    p-0d133f: '為了符合資格，您或您的配偶必須具備：'
     ul-0:
-      li-6c246a:
-      li-a2595a:
-      li-f6cddf:
-    p-3622b4:
+      li-6c246a: 《表格 1040》報稅表第 1 頁中的自僱稅的扣除額部分，以及
+      li-a2595a: 從您的《表格 1040》報稅表第 1 頁中自僱無附加簡易僱員退休金和合格計劃上的退休計劃投入金額
+      li-f6cddf: 擁有有限責任公司
+    p-3622b4: '符合條件的計畫可能包括：'
     ul-1:
-      li-ff93fe:
-      li-200ab4:
-      li-e7dbe4:
-      li-765afa:
-    p-af5a4a:
-    p-add56c:
-    p-3248f2:
+      li-ff93fe: 簡化員工養老金 (SEP) 計畫
+      li-200ab4: 員工儲蓄激勵匹配計畫
+      li-e7dbe4: 單人 401(k)
+      li-765afa: 其他符合條件的退休計畫
+    p-af5a4a: <strong>不要包括</strong>個人退休安排 (IRA) 繳款。
+    p-add56c: 您必須使用特殊規則來計算自己的退休計畫繳款。
+    p-3248f2: 自僱人士 —— 計算您自己的退休計劃投入金額和扣除額（英文）
   modal-hsa-deductions:
-    heading:
-    p-2ab752:
-    p-a7d9fc:
+    heading: 健康儲蓄帳戶扣除額：
+    p-2ab752: 填入您未包含在上述健康儲蓄帳戶、靈活支出帳戶或其他「自助選配計劃」下的任何健康儲蓄帳戶 (HSA) 投入金額。
+    p-a7d9fc: 關於 969 號出版物 —— 健康儲蓄帳戶和其他稅收優惠的健康計劃（英文）
   modal-alimony-paid:
-    heading:
-    p-fa1de9:
-    p-7b97e1:
-    p-7948e4:
-    p-358bc5:
-    p-06a405:
-    p-4b335c:
+    heading: 支付的贍養費
+    p-fa1de9: 如果您在 2019 年 1 月 1 日前執行了法院命令支付的贍養費或分居贍養費，並且該命令沒有明確說明您不能扣除您支付的款項，請在此處填入您在  年期間支付的金額。
+    p-7b97e1: 請勿包含您基於以下原因支付的金額：
+    p-7948e4: <strong>家庭或子女撫養費</strong>
+    p-358bc5: 如果法院命令被修改並聲明您不能扣除您支付的款項，也請不要包括金額。
+    p-06a405: 在 2024 年 12 月 31 日之後執行的法院命令下提供的贍養費或分居撫養費
+    p-4b335c: '如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+      class="usa-link">請前往</a> '
   modal-early-withdrawal:
-    heading:
-    p-7e8d5b:
+    heading: 提前領出儲蓄的處罰
+    p-7e8d5b: 如果您在到期前從定存或其他遞延利息帳戶中提取資金，您可能會被罰款。您可以在您的《表格 1099-INT》的 Box 2 中找到此處罰。在此處填入該金額。
   modal-moving-expenses:
-    heading:
-    p-6f18fd:
+    heading: 搬家費用
+    p-6f18fd: 如果您是現役武裝部隊成員，並且軍方命令您永久更改工作地點，請在此處填入您未經軍方核銷的任何搬家費用。搬家費用包括：
     ul-0:
-      li-60efa3:
-      li-efbbb1:
-    p-6536cb:
+      li-60efa3: 從您的舊家直接行駛到您的新家
+      li-efbbb1: 打包和搬運您的個人物品的費用
+    p-6536cb: '如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
+      class="usa-link">請前往</a> '
   modal-employee-business-expenses:
-    heading:
-    p-c92011:
+    heading: 特定員工業務費用
+    p-c92011: 如果您是：
     ul-0:
-      li-9bde67:
-      li-053ac1:
-      li-e03b09:
-      li-0d1488:
-    p-cc9b68:
-    p-d46373:
-    p-eb68a5:
+      li-9bde67: 從軍人士預備役人員
+      li-053ac1: 合格的表演藝術家
+      li-e03b09: 收費的州或地方政府官員
+      li-0d1488: 具備功能障礙相關工作經驗的員工
+    p-cc9b68: 您可以包括在您的貿易、業務或專業領域中常見和可接受的費用，或對您的業務有幫助並適合的費用。
+    p-d46373: 如果您不屬於所列的其中一項類別，您則不得要求對這些費用進行調整。
+    p-eb68a5: 有關更多資訊和合格費用清單，<a target="_blank" href="https://www.irs.gov/forms-pubs/about-form-2106"
+      class="usa-link">請參閱</a> 。
   modal-self-employed-health-insurance:
-    heading:
-    p-598073:
-    p-d60394:
-    p-13dece:
+    heading: 自僱健康保險扣除額：
+    p-598073: 如果您是自僱人士，請填入您為自己、您的配偶和您的家屬支付的醫療保險金額。
+    p-d60394: 符合條件的保費是醫療、牙科、視力和長期護理保險。該保單可以是為您自己、您的配偶和您的受撫養人購買的。該保單也可以涵蓋年底未滿 27 歲的子女，即使該子女不是您的受撫養人。
+    p-13dece: 如需瞭解更多資訊，<a target="_blank" href="https://www.irs.gov/instructions/i7206"
+      class="usa-link">請參閱</a>  的第 6 章。
 /qualifying-children:
-  title:
-  h2-dbaf54:
-  p-9b177d:
-  p-c1a0dd:
-  p-3178be:
-  p-e28c1e:
-  p-adf161:
+  title: 符合資格的子女
+  h2-dbaf54: 符合資格的子女
+  p-9b177d: 根據您之前填入的資訊，您沒有任何符合資格的子女。如果這是不正確的，請返回 <a class="usa-link" href="/app/eitc/filing-status/">Filing
+    Status</a> 並更改您的回應。
+  p-c1a0dd: 請轉到下一步查看您的結果。
+  p-3178be: 在此步驟中，我們將了解您的子女或其他親屬中有多少人符合申請和計算 EITC 的資格。您最多可以為三位符合資格的子女申請 EITC。
+  p-e28c1e: 您最多可以為三位符合資格的子女申請 EITC
+  p-adf161: 要獲得 EITC 的資格，您必須至少有一個符合條件的兒童。
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question:
-      modalLink:
+      question: 子女必須在 <fg-show path="/taxYear"/> 年有一半以上的時間在美國與您住在一起？
+      modalLink: <modal-link for="modal-residency">什麼算是與您一起生活的時間？</modal-link>
     fg-alert-b7d816:
-      heading:
-      p-7666ea:
+      heading: 查看您是否有資格獲得勞動所得稅務優惠。
+      p-7666ea: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+        596</a>, Earned Income Credit.。
     /familyAndHousehold/*/someoneElseCanClaim:
-      question:
-      modalLink:
+      question: 是否有其他人能為該名子女申領 EITC？
+      modalLink: <modal-link for="modal-claimed-someone-else">如果不止一個人可以申請他們怎麼辦？</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question:
-      modalLink:
+      question: 如果特定符合資格的人也申領了該名子女，您可能無法申領 EITC。你還想申領該名子女嗎？
+      modalLink: <modal-link for="modal-claimed-someone-else">如果不止一個人可以申請他們怎麼辦？</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
-      question:
-      modalLink:
+      question: 該名子女是否已婚並且在 <fg-show path="/taxYear"/> 年將與他或她的配偶共同申報？
+      modalLink: <modal-link for="modal-joint-return">我可以申請提交聯合申報表的人嗎？</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
-      question:
-      modalLink:
+      question: 該名子女是否是僅為了申領預扣稅或已繳納的估算稅款的退稅，並且不會申領 EITC 等任何稅務優惠而共同申報 <fg-show path="/taxYear"/>
+        年的報稅表？
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">您什麼時候可以申請提交聯合申報表的人？</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question:
-      modalLink:
+      question: 該名子女是永久完全殘疾嗎？
+      modalLink: <modal-link for="modal-disabled">什麼算是永久性和完全殘疾？</modal-link>
     /familyAndHousehold/*/relationship:
-      question:
-      modalLink:
+      question: 選擇該名子女與您的關係：
+      modalLink: <modal-link for="modal-relationship">誰算是繼子女、養子女或寄養子女？</modal-link>
       options:
         childStepFoster:
-          name:
+          name: 子女、繼子女、領養子女或寄養子女
         sibling:
-          name:
+          name: 兄弟姐妹、同父異母（或同母異父）的兄弟姐妹或繼兄弟姐妹
         descendant:
-          name:
+          name: 孫子女、侄女或侄子
         none:
-          name:
+          name: 以上皆非
     /familyAndHousehold/*/ageRange:
-      question:
+      question: 該名子女在 <fg-show path="/taxYear"/> 年年底時幾歲？
       options:
         under19:
-          name:
+          name: 18 歲及以下
         between19And23:
-          name:
+          name: 19 – 23 歲之間
         over24:
-          name:
+          name: 24 歲或以上
     /familyAndHousehold/*/isFullTimeStudent:
-      question:
-      modalLink:
+      question: 該名子女在一年中的任何某 5 個月中是全日制學生嗎？
+      modalLink: <modal-link for="modal-student">我怎麼知道他們是否是全日制學生？</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question:
-      modalLink:
+      question: 您的被撫養人比您年輕嗎？
+      modalLink: <modal-link for="modal-age-comparison">我們為什麼要問他們是否比<span condition="/isFilingStatusMFJ"
+        operator="isFalse">您</span><span condition="/isFilingStatusMFJ" operator="isTrue">您或您的配偶</span>年輕？</modal-link>
     /familyAndHousehold/*/validSSN:
-      question:
-      modalLink:
+      question: 該名子女是否有在報稅表截止日當日或以前簽發的有效社會安全號碼（包括延期的申報截止日）？
+      modalLink: <modal-link for="modal-valid-ssn-qc">有效的社會安全號碼是必填項</modal-link>
     fg-alert-a004cd:
-      heading:
-      p-8374d8:
-    h2-eaf308:
-  p-5aea65:
+      heading: 請注意
+      p-8374d8: 該名子女是您的合格子女。然而，因為他們沒有有效的社會安全號碼，所以這個子女不會讓您有資格獲得增加的勞動所得稅務優惠。
+    h2-eaf308: 該子女符合申請和計算 EITC 的資格。
+  p-5aea65: 根據您的輸入，您有 3 名符合資格的子女，他們擁有有效的社會安全號碼，並且已達到 EITC 申報的最大數量。
   fg-alert-9510e7:
-    heading:
-    p-b6bd9e:
-    p-93a6b5:
+    heading: 符合條件的兒童要求
+    p-b6bd9e: 除非您或您的配偶（如果共同申報納稅申報單）是 25 歲到 64 歲之間，否則您無法在沒有不符合資格子女的情況下申領 EITC。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.。
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  h2-34370a: 
+    heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
+    p-cdf53e: 根據您填入的金額，您無法申領勞動所得稅務優惠，因為您的勞動所得超出了您的報稅身份和合格子女人數的限制。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.。
+  h2-34370a: 根據您的輸入，您有 <fg-show path="/eitcQualifyingChildren"/> 名具有有效社會安全號碼的合格子女。
   modal-residency:
-    heading: 
-    h3-7c913b:
-    p-ff8f12:
-    h3-46d8f4:
-    p-e27b79:
-    h3-16617c:
-    p-c623b2:
-    h3-6839b6:
-    p-658cca:
+    heading: 居住地測試
+    h3-7c913b: 曾與您同住
+    p-ff8f12: 符合資格的子女必須在 <fg-show path="/taxYear"/> 年一半以上的時間內與您擁有相同的主要住所，並且該住宅必須位於美國。美國包括
+      50 個州和哥倫比亞特區。它不包括波多黎各或關島等美國屬地。對於 EITC，IRS 認為駐紮在美國境外長期服役的美國軍事人員在服役期間在美國擁有主要住所。
+    h3-46d8f4: 子女的出生或死亡
+    p-e27b79: 如果子女在 <fg-show path="/taxYear"/> 年出生或死亡，則子女在該年中活著的時間必須有超過一半的時間是與您一起生活。
+    h3-16617c: 領養和寄養子女
+    p-c623b2: 如果您在 <fg-show path="/taxYear"/> 年收養了該名子女、該名子女在 <fg-show path="/taxYear"/>
+      年被合法安置在您身邊供您合法收養，或者該名子女是在 <fg-show path="/taxYear"/>3 年期間安置給您的合資格寄養子女，自從他或她在
+      <fg-show path="/taxYear"/>4 年被收養或安置在您身邊以來，必須有超過一半的時間您的主要住所是該名子女的主要住所。
+    h3-6839b6: 暫時缺席
+    p-658cca: 就 EITC 而言，暫時缺席算作與您一起生活的時間。範例包括：
     ul-0:
-      li-76cf60:
-      li-1b3986:
-      li-dae417:
-      li-de99d6:
-    p-8b99ed:
+      li-76cf60: 生病或住院
+      li-1b3986: 上學、假期、商務或服兵役
+      li-dae417: 少年拘留所
+      li-de99d6: 被綁架的子女
+    p-8b99ed: '此選擇可能會增加或減少您的 EITC。如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">請參閱</a> '
   modal-joint-return:
-    heading:
-    p-9b8921:
-    p-bdfc89:
+    heading: 與他人共同報稅表
+    p-9b8921: 如果已婚人士申報聯合納稅報稅單，您一般不能將他們作為符合資格的子女申領 EITC。
+    p-bdfc89: 596 號發行物 —— 勞動所得稅務優惠，聯合報稅表測試（英文）
   modal-joint-return-with-another-person-exception:
-    heading:
-    p-93a25e:
-    p-bdfc89:
+    heading: 與他人共同報稅表的例外情形
+    p-93a25e: 如果子女和他們的配偶僅是為了在聯合報稅表中申領他們的薪水的預扣稅款或他們支付的估算稅款的退稅，您則可以將已婚並申報聯合報稅表的人士作為合格子女申領
+      EITC。他們不得在他們的報稅表上申領任何稅務優惠，例如 EITC。
+    p-bdfc89: 596 號發行物 —— 勞動所得稅務優惠，聯合報稅表測試（英文）
   modal-disabled:
-    heading:
-    p-a09e23:
+    heading: 永久和完全殘疾
+    p-a09e23: 就 EITC 而言，如果滿足以下兩項聲明，我們將認為子女永久完全殘疾：
     ul-0:
-      li-35e112:
-      li-f9618f:
-    p-de127e:
+      li-35e112: 由於身體或精神狀況，子女不能在合理的時間內履行重要職責，同時在競爭激烈的工作環境中以至少最低工資為報酬或利潤工作，並且
+      li-f9618f: 醫生確定病情已經持續或預計會持續至少一年或可能導致死亡
+    p-de127e: 596 號發行物 —— 勞動所得稅務優惠，永久和完全殘疾（英文）
   modal-relationship:
-    heading:
-    h3-523a2e:
-    p-3a1769:
-    h3-3cc097:
-    p-165b15:
-    h3-872822:
-    p-d91342:
-    h3-2fd110:
-    p-b80621:
+    heading: 孩子關係定義
+    h3-523a2e: 繼子女
+    p-3a1769: 繼親關係是由婚姻形成的關係。就 EITC 而言，由婚姻形成的關係，例如繼女、繼子、繼兄弟或繼姐妹，不會在婚姻結束時結束。
+    h3-3cc097: 領養子女
+    p-165b15: 領養的子女總是被視為您自己的子女。該子女包括合法安置在您身邊以供合法領養的子女。
+    h3-872822: 寄養子女
+    p-d91342: 只有當子女被授權的安置機構或法院命令安置在您身邊時，您才能申領寄養子女。
+    h3-2fd110: 授權的安置機構
+    p-b80621: 該術語包括州或地方政府機構或印度部落政府。它還包括由州或印度部落政府許可的免稅組織。
   modal-student:
-    heading:
-    h3-f803ae:
-    p-ef6d3a:
-    p-69b838:
-    h3-754ddf:
-    p-dfaecc:
+    heading: 全日制學生
+    h3-f803ae: 全日制學生
+    p-ef6d3a: 如要被視為全日制，學生必須在學校註冊了被學校認為是全日制出勤的小時數或課程。
+    p-69b838: 作為學校常規課堂和實踐培訓課程的一部分，在民營企業從事「建教合作」工作的學生被視為全日制學生。
+    h3-754ddf: 學校定義
+    p-dfaecc: 就 EITC 而言，學校是：
     ul-0:
-      li-5f78b0:
-      li-f8aab3:
-      li-39d2fa:
-      li-96892f:
-    p-986cc5:
+      li-5f78b0: 小學
+      li-f8aab3: 國中或高中
+      li-39d2fa: 學院或大學
+      li-96892f: 技術、貿易或機械學校
+    p-986cc5: 學校不是：
     ul-1:
-      li-775eb9:
-      li-b2e8f2:
-      li-767c35:
-    p-81198a:
+      li-775eb9: 在職培訓課程
+      li-b2e8f2: 函授學校
+      li-767c35: 僅透過網路提供課程的學校
+    p-81198a: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.。
   modal-valid-ssn-qc:
-    heading:
-    p-d68f7a:
-    p-0464ad:
-    p-a708ff:
-    p-558a40:
+    heading: 合格子女的有效社會安全號碼
+    p-d68f7a: 您的 EITC 金額取決於您擁有有效社會安全號碼的合格子女的數量。您為計算 EITC 金額而申領的每名子女或親屬必須擁有由社會安全局在您的報稅表到期日或之前（包括延期的申報截止）簽發的有效社會安全號碼（SSN）。
+    p-0464ad: 就 EITC 而言，除非社會安全卡上印有「不適用於就業」，並且該號碼僅用於允許社會安全號碼的接收者申請或獲得聯邦資助的福利，否則，社會安全號碼是有效的社會安全號碼。  聯邦資助的福利的一個例子是聯邦醫療補助。
+    p-a708ff: 只要 DHS 授權仍然有效，我們就接受上面印有「在 DHS 授權下工作有效」的社會安全卡。
+    p-558a40: 對於 EITC，我們不接受：
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-19d3d7:
+      li-5e5f3e: 美國國稅局個人納稅人識別號（ITIN）
+      li-5fc9b7: 領養納稅識別號碼（ATIN）
+      li-19d3d7: 僅為允許社會安全號碼的接收者申請或獲得聯邦資助的福利（如聯邦醫療補助）而簽發的社會安全號碼
   modal-claimed-someone-else:
-    heading:
-    p-9b277e:
-    p-911aff:
+    heading: 已在他人的報稅表上申領
+    p-9b277e: 只有一個人可以為每名子女申領 EITC。如果不止一個人申領子女，那麼美國國稅局將應用決勝局規則。
+    p-911aff: 596 號出版物 —— 勞動所得稅務優惠，您的合格子女不能被一人以上的人數申領（英文）
   modal-age-comparison:
-    heading:
-    p-626c78:
-    p-1a035f:
+    heading: 子女必須比您或您的配偶小
+    p-626c78: 如要成為合格的子女，子女必須比您小，除非子女在 <fg-show path="/taxYear"/> 年中的任何時候都是永久且完全殘疾。
+    p-1a035f: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">第
+      596 號出版物</a>，所得稅抵免，年齡測試。
 /results:
-  title:
-  h2-88e7ef:
+  title: 結果
+  h2-88e7ef: 您的結果
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  p-578b13:
-  p-adf6bb:
-  h2-259962:
-  p-508e29:
-  h3-54f664:
-  p-a5939a:
-  p-3ef53a:
-  h3-792a4e:
-  p-787398:
-  p-25a83e:
-  h3-c7457b:
-  p-b8834f:
-  h2-a3da4a:
-  p-5a6eac:
+    heading: 查看您是否有資格獲得勞動所得稅務優惠。
+    p-cdf53e: 根據您提供的信息，您無法申請勞動所得稅務優惠，因為您的勞動收入超出了您的報稅身份和合格子女數量的限制。
+    p-93a6b5: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+      596 號出版物</a>，所得稅抵免。
+  p-578b13: 根據您提供的資訊，您有資格獲得的勞動所得稅務優惠估算額為：
+  p-adf6bb: 當您向美國國稅局申報報稅表時，此稅務優惠將減少您在 <fg-show path="/taxYear"/> 年度的稅款。如果稅務優惠將您的稅款降至零以下，您可能會獲得退稅款。
+  h2-259962: 接下來的步驟：如何申報 EITC
+  p-508e29: 如要領取 <strong><fg-show path="/earnedIncomeCredit"/></strong>* 的估算金額，您必須申報
+    <fg-show path="/taxYear"/> 年的聯邦報稅表。如果您申領 EITC，根據法律，美國國稅局不能在 <fg-show path="/nextTaxYear"/>
+    年 2 月中旬之前簽發您的退稅款，即使是與 EITC 無關的部分也不能。
+  h3-54f664: 線上
+  p-a5939a: 如果您想線上報稅，您有資格使用美國國稅局免費申報計劃。請注意，該計劃僅在 1 月至 10 月期間提供。
+  p-3ef53a: <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+    立即線上申報<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-792a4e: 當面
+  p-787398: 如果您希望親自與報稅員一同完成，您可以選擇在美國國稅局義工所得稅援助（VITA）服務處這樣做。
+  p-25a83e: <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+    免費面對面幫助<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-c7457b: 紙本表格
+  p-b8834f: 因為您有符合條件的兒童，您必須填寫        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040">
+    附表 EIC (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        並將其附加到您的        <a
+    target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    表 1040 (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        或        <a
+    target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    表 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        針對納稅年度
+    <fg-show path="/taxYear"/>。
+  h2-a3da4a: 您的資訊摘要
+  p-5a6eac: 下表是您在工具中填入的資訊的摘要。如果此資訊有任何不正確，請點選編輯進行更新，否則可能會影響您的結果。
   table-0:
     tbody-0:
       tr-0:
-        th-537c66:
-        td-0da7c7:
-        td-fba314:
+        th-537c66: 年
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">編輯關於您的資訊</a>
       tr-1:
-        th-c01d87:
-        td-86d753:
-        td-7a1efb:
+        th-c01d87: 報稅身份
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">編輯報稅身分</a>
       tr-2:
-        th-b1d475:
-        td-5637e9:
-        td-1c1ab4:
+        th-b1d475: 調整後總收入
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">編輯收入和調整</a>
       tr-3:
-        th-40c7ae:
-        td-d604bc:
-        td-387fc0:
+        th-40c7ae: 勞動所得
+        td-d604bc: 工資和薪水總額： <fg-show path="/jobsIncomeTotal"/>
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">編輯收入</a>
       tr-4:
-        th-dbaf54:
-        td-4ea2d8:
-        td-9efa8d:
-  p-35b0d2:
+        th-dbaf54: 符合資格的子女
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">編輯符合條件的兒童</a>
+  p-35b0d2: 來查看您的退稅狀態，付款，找到免費的稅收準備幫助，註冊獲取有幫助的稅務提示，以及等等！
