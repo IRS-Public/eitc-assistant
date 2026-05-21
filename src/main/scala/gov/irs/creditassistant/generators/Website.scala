@@ -79,7 +79,7 @@ object Website {
       "zh-hans" -> "简体中文",
       "zh-hant" -> "繁體中文",
     )
-    val locales = if (flags.contains(Flags.translationsEnabled)) supportedLocales.keys.toList else List("en")
+    val locales = supportedLocales.keys.toList
     var pages = locales.flatMap { languageCode =>
       val templateEngine = new CreditAssistantTemplateEngine(languageCode)
       val navPages = flow.pages.filter(p => !p.exclude)
