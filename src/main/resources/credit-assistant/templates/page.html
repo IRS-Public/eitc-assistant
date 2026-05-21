@@ -17,14 +17,13 @@
                 <a href="https://www.irs.gov" th:aria-label="#{layout.irs.domain}">
                     <img src="/app/eitc/resources/img/irs-logo.svg" alt="" />
                 </a>
-                <div th:if="${flags.languageSwitcher}" class="language-switcher">
+                <div class="language-switcher">
                     <label class="usa-sr-only" for="language-selector">Select Language</label>
 
                     <select class="usa-select"
                             id="language-selector"
                             name="language-selector"
-                            onchange="if(this.value) window.location.href=this.value"
-                            style="width: auto; margin-top: 0;">
+                            onchange="if(this.value) window.location.href=this.value">
 
                         <option value="" disabled selected>Select Language</option>
 

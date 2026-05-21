@@ -4,6 +4,4 @@ object Flags {
   val serve = "serve"
   val allScreens = "allScreens"
   val auditMode = "auditMode"
-  val translationsEnabled = "translationsEnabled"
-  val languageSwitcher = "languageSwitcher"
 }
