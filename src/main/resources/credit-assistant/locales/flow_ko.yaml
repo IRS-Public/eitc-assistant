@@ -1,11 +1,10 @@
-
 /:
-  title:
-  h2-5e286b:
-  p-c2c8a0:
+  title: 일반 정보
+  h2-5e286b: 일반 정보
+  p-c2c8a0: 적격인지 확인하기 위해 자신에 대한 간단한 몇 가지 질문에 답하세요.
   /chosenTaxYear:
-    question:
-    modalLink:
+    question: 귀하의 EITC 적격성을 확인하기 원하는 과세연도를 선택하세요.
+    modalLink: <modal-link for="modal-tax-year">어느 연도를 사용해야 합니까?</modal-link>
     options:
       '2025':
         name: '2025'
@@ -14,925 +13,1102 @@
       '2023':
         name: '2023'
   /isUSCitizenOrResidentAlien:
-    question:
-    modalLink:
+    question: <fg-show path="/taxYear"/>년 내내 미국 국민 혹은 영주 체류자였습니까?
+    modalLink: <modal-link for="modal-citizen">미국 시민권자 또는 거주자로서 EITC 자격이 있습니까?</modal-link>
     options:
       'true':
-        name:
+        name: 네
       'false':
-        name:
+        name: 아니요
   fg-alert-8b7db9:
-    heading:
-    p-091688:
-    p-f72c3e:
-    p-b85d77:
-    p-93a6b5:
-    p-4c0c0d:
-    p-236b69:
-    p-5e637b:
-    p-ec145e:
-    p-363ef2:
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-091688: 귀하는 반드시 미국 시민이거나 영주 체류자이어야 근로 소득 세액공제를 신청할 수 잇습니다. 해당 연도 전체에 미국 영주 체류자였는지
+      확인하기 위해 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
+    p-f72c3e: ' 만약 귀하가 <fg-show path="/taxYear"/>년에 배우자와 공동신고서를 제출했거나 귀하와 귀하의 배우자
+      각각이 전체 연도에 미국 시민 혹은 영주 체류자였다면 yes 선택하세요.'
+    p-b85d77: 귀하는 세금 신고서의 기한 이전에 사회보장국에서 발급한 유효한 사회 보장 번호(SSN)가 없기 때문에 EITC를 신청할 수
+      없습니다.
+    p-93a6b5: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
+    p-4c0c0d: 해외 근로 소득에 대한 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">양식
+      2555</a>를 제출하는 경우 근로 소득 세액 공제를 청구할 수 없습니다.
+    p-236b69: 간행물 54, 해외의 미국 시민 그리고 영주 체류자를 위한 세금 안내(영어)
+    p-5e637b: 귀하가 누군가 다른 사람의 EITC를 위한 적격 자녀라면 귀하는 EITC에 적격이 아닙니다.
+    p-ec145e: 다른 사람이 귀하를 EITC의 적격 자녀로 청구할 수 있는지에 대한 자세한 내용은 <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">간행물 596</a>, 근로 소득 세액 공제, 귀하는 다른
+      납세자의 적격 자녀가 될 수 없습니다를 참조하십시오.
+    p-363ef2: 귀하가 누군가 다른 사람의 EITC를 위한 부양가족이라면 귀하가 EITC를 위한 적격 자녀를 갖지 않는 한 EITC에 적격이
+      아닙니다.
   /hasValidSSN:
-    question:
-    modalLink:
+    question: 귀하는 <fg-show path="/taxYear"/>년 세금 신고서의 기한 이전에(연장 포함) 사회보장국에서 발급한 유효한
+      사회 보장 번호(SSN)가 있습니까?
+    modalLink: <modal-link for="modal-valid-ssn-filer">유효한 사회 보장 번호가 요구됩니다.</modal-link>
     options:
       'true':
-        name:
+        name: 네
       'false':
-        name:
+        name: 아니요
   /hasForeignEarnedIncome:
-    question:
-    modalLink:
+    question: 귀하는 양식 2555, 해외 근로 소득을 신고했습니까?
+    modalLink: <modal-link for="modal-foreign-income">총 소득에서 제외된 해외 근로 소득</modal-link>
     options:
       'true':
-        name:
+        name: 네
       'false':
-        name:
+        name: 아니요
   /isClaimedAsDependent:
-    question:
-    modalLink:
+    question: 누군가가 세금 신고서에 EITC를 위한 부양가족 혹은 적격 자녀로서 귀하를 신청할까요?
+    modalLink: <modal-link for="modal-claimed-dependent">부양가족 혹은 적격 자녀로서의 자신</modal-link>
     options:
       'true':
-        name:
+        name: 네
       'false':
-        name:
+        name: 아니요
   /ageRange:
-    question:
+    question: <fg-show path="/taxYear"/>년 말에 귀하의 나이가 해당하는 범위를 선택하세요.
     options:
       under24:
-        name:
+        name: 24세 이하
       age25to64:
-        name:
+        name: 25세~64세
       65andOlder:
-        name:
+        name: 65세 이상
   modal-tax-year:
-    heading:
-    p-aa5a47:
+    heading: 과세 연도
+    p-aa5a47: '임금 혹은 기타 근로 소득:'
     ul-0:
-      li-28dd34:
-      li-174a8b:
-      li-0a25dc:
+      li-28dd34: 2025년, 2025년 선택
+      li-174a8b: 2024년, 2024년 선택
+      li-0a25dc: 2023년, 2023년 선택
   modal-citizen:
-    heading:
-    p-18e680:
-    p-fe70ca:
-    p-2c8f8f:
+    heading: 미국 국민 혹은 영주 체류자
+    p-18e680: 귀하가 미국 국민이 아니라면, 외국인으로 고려됩니다.
+    p-fe70ca: 귀하가 그린 카드를 갖고 있거나 특정 일수 이상을 미국에 살고 있다면 EITC를 위한 영주 체류자로 고려됩니다.
+    p-2c8f8f: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
   modal-valid-ssn-filer:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: 유효한 사회 보장 번호
+    p-527528: <fg-show path="/taxYear"/> 년 세금 신고서(연장 포함) 마감일 또는 그 이전에 사회보장국에서 발급한
+      유효한 사회보장번호(SSN)가 있어야 합니다.
+    p-45ae0e: 사회 보장 카드에 "DHS 승인 시 취업 가능(Valid for work with DHS authorization)” 또는
+      “INS 승인 시 취업 가능(Valid for work with INS authorization)”이라고 표시되어 있다면, 해당 승인 상태가
+      여전히 유효할 경우 이 사회보장번호(SSN)는 유효한 것으로 간주됩니다.
+    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
+      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
+      li-9f487b: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
+      li-a69a30: 메디케이드와 같은 연방 자금 지원 혜택을 신청하거나 받기 위한 용도로만 발급된 사회보장번호
+    p-f554f7: 유효한 사회 보장 번호에 대한 자세한 내용은 간행물 596을 참조하십시오.
   modal-foreign-income:
-    heading:
-    p-f45b03:
+    heading: 총 소득에서 제외된 해외 근로 소득
+    p-f45b03: 이는 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">귀하가</a>  에서
+      예외로 선택한 외국, 컬럼비아 특별구 혹은 미국령(possessions, territory)외에서 얻은 소득을 의미합니다.
   modal-claimed-dependent:
-    heading:
-    p-faf8d8:
-    p-98d6db:
-    p-038f13:
-    p-ceda6c:
-    p-d11380:
-    p-16aba9:
+    heading: 부양가족 혹은 적격 자녀로서의 자신
+    p-faf8d8: 대부분의 경우에 귀하는 다른 납세자의 부양가족 혹은 적격 자녀가 될 수 없습니다. EITC를 신청하세요.
+    p-98d6db: 대부분의 경우, 귀하가 만 19세 미만이거나 만 24세 미만의 학생이며 부모님이나 친척과 함께 미국에서 반년 이상 살고 있다면  <strong>Yes</strong>를
+      선택하세요.
+    p-038f13: 결혼하여 공동 세금 신고서를 제출하는 경우, 원천징수된 소득세나 납부한 추정세의 환급만을 청구하기 위한 목적이 아닌 이상
+      부양가족으로 청구될 수 없습니다.
+    p-ceda6c: 누군가를 부양가족으로 신청 가능한지에 대한 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">정보는</a>  를
+      방문하세요.
+    p-d11380: 누군가 귀하를 EITC를 위한 적격 자녀로 신청할 수 있는지에 대한 자세한 <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">정보는</a>
+      를 확인하세요.
+    p-16aba9: 우리는 귀하가 이후에 신청할 자녀 혹은 친척에 대해 질문합니다.
   modal-primary-claimed-as-dependent:
-    heading:
-    p-d3187d:
-    p-762495:
+    heading: 내가 누군가의 부양가족인지 어떻게 알 수 있나요?
+    p-d3187d: <fg-show path="/taxYear"/>년에 귀하가 (배우자 외의) 다른 사람에게 부양을 의존했다면, 그 사람은 연방 연방 소득세 신고서에서 귀하를 부양가족으로 청구할 수 있습니다.
+    p-762495: '누군가 귀하를 부양가족으로 청구할 수 있는지 여부를 결정하는 몇 가지 요소가 있습니다. 여기에는 다음이 포함됩니다:'
     ul-0:
-      li-b17276:
-      li-c82d5e:
-      li-5a5073:
-    p-752de3:
-    p-5a0201:
+      li-b17276: 해당 사람과의 관계
+      li-c82d5e: 재정적 및 기타 방식으로 그들이 귀하를 얼마나 지원했는지
+      li-5a5073: 그들과 함께 살았는지 여부와 그 기간
+    p-752de3: 다른 사람이 귀하를 부양가족으로 청구할 수 있는지 확인하려면 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">IRS 간행물 501</a>의 표 5를 검토하십시오.
+    p-5a0201: 귀하가 자신의 부양비 절반 이상을 부담한 경우(또는 배우자가 부담한 경우)에는 다른 사람의 부양가족이 아니라는 점을 명심하십시오.
   modal-confirm-tax-year-change:
-    heading:
-    p-31c7da:
-    button-70d9be:
-    button-ea4788:
+    heading: '주의:'
+    p-31c7da: <strong>연도</strong>를 변경하면 이전에 입력한 데이터가 지워집니다. 계속 진행하시겠습니까?
+    button-70d9be: 확인
+    button-ea4788: 취소
 /filing-status:
-  title:
-  h2-c01d87:
-  p-9bda8f:
+  title: 신고 지위
+  h2-c01d87: 신고 지위
+  p-9bda8f: 이 단계에서는 어떻게 귀하의 <fg-show path="/taxYear"/>년 세금을 신고하려고 하는지에 대해 질문할 것입니다.
   /knowsFilingStatus:
-    question:
+    question: 귀하가 <fg-show path="/taxYear"/>년 세금을 신고할 때, 사용할 신고 지위를 알고 있습니까?
   /initialFilingStatus:
-    question:
-    modalLink:
+    question: 귀하가 <fg-show path="/taxYear"/>년 세금을 신고할 때, 사용할 신고 지위를 선택하세요.
+    modalLink: <modal-link for="modal-filing-status">어떤 보고 상태를 사용해야 합니까?</modal-link>
     options:
       single:
-        name:
+        name: 미혼
       marriedFilingJointly:
-        name:
+        name: 부부 공동 제출
       marriedFilingSeparately:
-        name:
+        name: 부부 개별 제출
       headOfHousehold:
-        name:
+        name: 세대주
       qualifiedSurvivingSpouse:
-        name:
+        name: 적격 생존 배우자
   /maritalStatus:
-    question:
-    modalLink:
+    question: <fg-show path="/taxYear"/>년 귀하의 결혼 상태는 무엇입니까?
+    modalLink: <modal-link for="modal-legal-separation">결혼하고 법적으로 별거 중이라는 것은 무슨 뜻입니까?</modal-link>
     options:
       married:
-        name:
+        name: 기혼
       divorced:
-        name:
+        name: 이혼 혹은 법적 별거
       widowed:
-        name:
+        name: 적격 생존 배우자
       single:
-        name:
+        name: 미혼
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question:
+    question: 귀하의 배우자는 언제 사망했습니까?
     options:
       taxYear:
-        name:
+        name: <fg-show path="/taxYear"/> 년도에
       taxYearMinusOneOrTwo:
-        name:
+        name: 2023 년 혹은 2024 년도에
       beforeTaxYearMinusTwo:
-        name:
+        name: 2023 년 이전에
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question:
+    question: 귀하의 배우자는 언제 사망했습니까?
     options:
       taxYear:
-        name:
+        name: 2024 년도에
       taxYearMinusOneOrTwo:
-        name:
+        name: 2022 년 혹은 2023 년도에
       beforeTaxYearMinusTwo:
-        name:
+        name: 2022 년 이전에
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question:
+    question: 귀하의 배우자는 언제 사망했습니까?
     options:
       taxYear:
-        name:
+        name: 2023 년도에
       taxYearMinusOneOrTwo:
-        name:
+        name: 2021 년 혹은 2022 년도에
       beforeTaxYearMinusTwo:
-        name:
+        name: 2021 년 이전에
   /isHOHMarried:
-    question:
+    question: 기혼입니까?
   /intendsToFileJointlyWidow:
-    question:
-    modalLink:
+    question: <fg-show path="/taxYear"/>년에 사망한 배우자와 함께 공동신고를 제출할 의향이 있습니까?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">귀하는 배우자가 사망한 해에 귀하의 배우자와
+      공동 신고를 제출할 자격이 됩니다.</modal-link>
   /intendsToFileJointlyMFJ:
-    question:
-    modalLink:
+    question: 귀하와 귀하의 배우자가 공동 신고서를 제출할 의향이 있습니까?
+    modalLink: <modal-link for="modal-joint-return-mfj">부부 공동 제출</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question:
-    modalLink:
+    question: 귀하와 귀하의 배우자는 <fg-show path="/taxYear"/>년의 마지막 6개월 동안 같은 본적지를 갖고 있었습니까?
+    modalLink: <modal-link for="modal-spouse-lived-together">배우자가 함께 산다는 것은 무슨 뜻입니까?</modal-link>
   /samePrincipalResidenceLast6Months:
-    question:
+    question: 귀하와 귀하의 배우자는 <fg-show path="/taxYear"/>년의 마지막 6개월 동안 같은 본적지를 갖고 있었습니까?
   /writableSeparationAgreement:
-    question:
+    question: '귀하가 주 법에 따라 서면 별거 합의서나 별거 유지 판결문에 의해 법적으로 별거 상태였으며, <fg-show path="/taxYear"/>년
+      마지막 날에 배우자와 함께 거주하지 않았습니까? '
   /entitledToPreviouslyFileJointReturn:
-    question:
+    question: 귀하는 배우자가 사망한 해에 귀하의 배우자와 공동 신고를 제출할 자격이 됩니다.
   /paidMoreThanHalfHomeCostsForChild:
-    question:
-    modalLink:
+    question: <fg-show path="/taxYear"/>,년에 귀하는 부양자녀, 의붓자녀 혹은 위탁 자녀의  <fg-show path="/taxYear"/>년
+      내내(일시적 부재를 포함하여) 주거지였던 가정을 부양하기 위한 비용의 반 이상을 부담하였습니다.
+    modalLink: <modal-link for="modal-keeping-up-home">&quot;가정 유지&quot;를 어떻게 계산합니까?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question:
-    modalLink:
+    question: <fg-show path="/taxYear"/>년에 부양가족으로 귀하와 동거했던 귀하의 자녀 혹은 의붓 자녀를 신청할 수
+      있습니까?
+    modalLink: <modal-link for="modal-claiming-dependents">제가 피부양자로 신청할 수 있는 사람은 누구입니까?(영어)</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question:
-    modalLink:
+    question: '<fg-show path="/taxYear"/>년에 대해 다음을 제외하고 자녀 또는 의붓자녀를 부양가족으로 청구할 수 있습니까:
+      1) 자녀의 총소득이 <fg-show path="/taxYear"/>년도 임계값인 <fg-show path="/eitcChildGrossIncomeLimit"/>를
+      초과했습니다; 2) 자녀가 공동 보고서를 제출했습니다; 또는 3) 귀하가 다른 사람의 보고서에 부양가족으로 청구될 수 있습니다?'
+    modalLink: <modal-link for="modal-claiming-dependents">제가 피부양자로 신청할 수 있는 사람은 누구입니까?(영어)</modal-link>
   /homeUpkeepScenario:
-    question:
-    modalLink:
+    question: 집을 유지하는 데 드는 비용의 50% 이상을 지불했습니까?
+    modalLink: <modal-link for="modal-keeping-up-home">제가 &quot;가정 유지&quot;를 어떻게 계산합니까?</modal-link>
     options:
       livedWithDependent:
-        name:
+        name: 부양가족(예를 들어 자녀, 손자녀, 형제, 질녀, 조카 부모 조부모)과 함께 반년 이상 살았던 곳
       custodialParentNonDependent:
-        name:
+        name: 양육권이 있는 부모일지라도 귀하의 부양가족이 아닌 자녀와 함께 반년 이상 살았던 곳(이혼 혹은 별거 중인 부모의 자녀의 규칙에
+          따라)
       dependentParentElsewhere:
-        name:
+        name: 귀하가 부양가족으로 신청한 하지만 귀하와 함께 살고 있지 않은 부모
       none:
-        name:
+        name: 위에 해당 사항 없음
   /secondaryFilerHasValidSSN:
-    question:
-    modalLink:
+    question: 귀하의 배우자는 <fg-show path="/taxYear"/>년 세금 신고서의 기한 이전에 발급된 유효한 사회보장 번호를
+      갖고 있나요?
+    modalLink: <modal-link for="modal-valid-ssn">유효한 사회 보장 번호가 요구됩니다.</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question:
-    modalLink:
+    question: 귀하의 배우자는 사망하던 날에 유효한 사회 보장 번호를 보유하고 있었나요?
+    modalLink: <modal-link for="modal-valid-ssn">유효한 사회 보장 번호가 요구됩니다.</modal-link>
   /spouseAliveEndOfTaxYear:
-    question:
+    question: <fg-show path="/taxYear"/> 년도에
   /ageRangeSecondary:
-    question:
+    question: <fg-show path="/taxYear"/>년 말에 귀하의 배우자의 나이를 가장 잘 설명한 나이대를 선택하세요.
     options:
       under24:
-        name:
+        name: 24세 이하
       age25to64:
-        name:
+        name: 25세~64세
       65andOlder:
-        name:
+        name: 65세 이상
   /primaryFilerIsClaimingQualifyingChildren:
-    question:
-    modalLink:
+    question: 유효한 사회보장번호를 가진 자녀 또는 기타 친척에 대한 EITC를 신청할 계획입니까?
+    modalLink: <modal-link for="modal-qualifying-child-eitc">다른 사람이 이 아이를 EITC에 청구할
+      수 있습니까?</modal-link>
   /hasLivedInUSMore6Months:
-    question:
-    modalLink:
-  h2-7864de:
+    question: <fg-show path="/taxYear"/> 년도에 반 이상 미국에 귀하의 주거지가 있었습니까?
+    modalLink: <modal-link for="modal-main-home-us">미국 내 주 거주지로 간주되는 것은 무엇입니까?</modal-link>
+  h2-7864de: 귀하의 선택에 따라 귀하의 신고지위는 <fg-show path="/flowReadableFilingStatus"/>입니다.
   fg-alert-334e2e:
-    heading:
-    p-b6bd9e:
-    p-ae739d:
-    p-47ef52:
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-b6bd9e: 귀하 또는 귀하의 배우자가 공동 신고서를 제출하고 나이가 25세에서 64세 사이가 아니라면, 귀하는 적격 자녀가 없는 EITC에
+      적격하지 않습니다.
+    p-ae739d: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+      596, 근로 소득 세액 공제</a>를 참조하십시오.
+    p-47ef52: 귀하가 결혼한 상태이고 배우자와 부부 공동 제출을 하지 않을 경우, 적격 자녀와 반년 이상 거주했거나 <fg-show path="/taxYear"/>년의
+      지난 6개월 동안 귀하의 배우자와 떨어져 거주한 경우가 아니라면, EITC를 청구할 수 없습니다. 또는 <fg-show path="/taxYear"/>년의
+      지난 6개월 동안 귀하의 배우자와 떨어져 거주하지 않았지만 <fg-show path="/taxYear"/>3년 말에는 떨어져 거주한 경우,
+      주법에 의거한 서면 별거 합의 또는 별거 수당 법령에 따라 법적으로 별거 상태입니다.
     ul-0:
-      li-207749:
-      li-93a6ef:
-    p-3630b4:
-    p-99f873:
-    p-91ee91:
-    p-d4d927:
-    p-065d1b:
+      li-207749: <fg-show path="/taxYear"/>년 마지막 6개월 동안 배우자와 별거했거나
+      li-93a6ef: 귀하는 주법에 따라 서면 별거 합의서 또는 별거 유지 판결문에 의해 법적으로 별거 중이었으며, <fg-show path="/taxYear"/>년
+        말 현재 배우자와 같은 가구에 거주하지 않았습니다.
+    p-3630b4: 자세한 내용은 <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
+      class="usa-link">간행물</a> .
+    p-99f873: 귀하의 배우자가 귀하의 세금 신고기한 이전에 발급된 유효한 사회보장 번호가 없기 때문에 귀하는 EITC를 신청할 수 없습니다.
+    p-91ee91: 귀하의 배우자가 사망 일에 유효한 사회보장 번호를 갖고 있지 않았기 때문에 귀하의 사망한 배우자와 함께 공동신고서를 제출하도록
+      선택한다면 EITC를 신청할 수 없습니다.
+    p-d4d927: 귀하가 귀하의 사망한 배우자와 함께 공동신고서를 제출하지 않으면 EITC에 적격일 수 있습니다.
+    p-065d1b: EITC를 신청하기 위해서 귀하의 거주지가 반드시 미국에서 반년 이상 있었어야 합니다. 미국은 50개 주와 컬럼비아 특별구를
+      의미합니다.
   modal-filing-status:
-    heading:
-    p-c0b92c:
-    p-391f95:
-    p-496916:
-    p-49f30f:
+    heading: 어떤 보고 상태를 사용해야 합니까?
+    p-c0b92c: 올해 혼인 상태나 가족 상황에 변화가 없는 경우, <fg-show path="/lastTaxYear"/> 세금 보고서와 동일한
+      보고 상태를 사용하는 것이 좋을 수 있습니다.
+    p-391f95: 지난 한 해 동안 혼인 상태나 가구에 변화가 있었다면 더 정확한 추정을 위해 다른 보고 상태를 사용해야 할 수도 있습니다.
+    p-496916: 각 보고 상태에는 다른 요구 사항이 있습니다.
+    p-49f30f: 미혼
     ul-0:
-      li-c717a5:
-    p-5f63cd:
+      li-c717a5: 결혼할 수 없습니다
+    p-5f63cd: 부부 공동 제출
     ul-1:
-      li-6aab7e:
-    p-80c02f:
+      li-6aab7e: 기혼이거나 연중 배우자가 사망했습니다
+    p-80c02f: 부부 개별 신고
     ul-2:
-      li-595e35:
-      li-1e72dd:
-    p-d69332:
+      li-595e35: 기혼입니까?
+      li-1e72dd: 배우자와 함께 신고할 계획이 없습니다(대부분의 부부는 공동 신고로 돈을 절약합니다)
+    p-d69332: 세대주
     ul-3:
-      li-dfe41a:
-      li-38ff2f:
-    p-57317d:
+      li-dfe41a: 결혼할 수 없습니다(또는 세금 목적으로 미혼으로 간주됩니다)
+      li-38ff2f: 특정 기간 동안 가족 구성원이나 가구원을 위해 집을 유지하는 비용의 절반 이상을 지불했으며, 그들은 특정 요구 사항을
+        충족해야 합니다
+    p-57317d: <strong>적격 생존 배우자:</strong>
     ul-4:
-      li-2bf38a:
-      li-4ef74f:
-      li-939762:
-      li-bad5a3:
-    p-5b3ae2:
+      li-2bf38a: 배우자가 <fg-show path="/lastTaxYear"/> 또는 <fg-show path="/taxYearMinusTwo"/>년에
+        사망했습니다
+      li-4ef74f: <fg-show path="/taxYear"/>년 전에 재혼하지 않았습니다
+      li-939762: 일년 내내 함께 사는 부양 자녀가 있습니다
+      li-bad5a3: 귀하가 해당 연도에 가정을 부양하기 위한 비용의 반 이상을 납부했습니다.
+    p-5b3ae2: <a target="_blank" href="https://www.irs.gov/filing/filing-status">보고
+      상태에 대해 자세히 알아보기<span class="usa-sr-only"> (opens in a new tab)</span>.</a>
   modal-qualifying-child-eitc:
-    heading:
-    p-7356ad:
-    p-ac8914:
-    p-558a40:
+    heading: 적격 아동
+    p-7356ad: 적격 자녀와 함께 EITC를 청구하려면 해당 자녀는 2025년 신고서(연장 포함) 마감일 또는 그 이전에 사회보장국에서 발급한
+      유효한 SSN을 가지고 있어야 합니다.
+    p-ac8914: 사회 보장 카드에 &quot;DHS 승인이 있는 경우에만 근로 유효&quot; 또는 &quot;INS 승인이 있는 경우에만
+      근로 유효&quot;라고 적혀 있다면 해당 승인이 여전히 유효한 경우 유효한 SSN입니다.
+    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-19d3d7:
-    p-0d323a:
+      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
+      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
+      li-9f487b: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
+      li-19d3d7: 메디케이드와 같은 연방 자금 지원 혜택을 신청하거나 받기 위한 용도로만 발급된 사회보장번호
+    p-0d323a: 귀하의 자녀가 다음 네 가지 요건을 모두 충족하면 ‘적격 자녀’로 간주됩니다. 네 가지 요건은 다음과 같습니다.
     ul-1:
-      li-fbc977:
-      li-9d8d2d:
-      li-23863d:
-      li-ca34c2:
-    p-e00960:
+      li-fbc977: 관계,
+      li-9d8d2d: 연령,
+      li-23863d: 거주, 및
+      li-ca34c2: 공동 신고
+    p-e00960: 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">정보는</a>
+      을 확인하세요.
   modal-main-home-us:
-    heading:
-    p-9cbbc6:
-    p-775779:
-    h3-398dfd:
-    p-7dbfa0:
+    heading: 미국에 주거지
+    p-9cbbc6: 미국에 귀하의 거주지가 반년 이상 있었나요?
+    p-775779: 귀하의 거주지가 미국 내에 <fg-show path="/taxYear"/> 년의 반 동안 있어야 합니다. 미국은 50개 주와
+      컬럼비아 특별구를 포함합니다. 괌, 버진아일랜드, 푸에르토리코등 미국령은 포함하지 않습니다.
+    h3-398dfd: 미국 외로 배치된 군인력
+    p-7dbfa0: 귀하가 미군 소속이며 현역 복무의 연장으로 미국 외 지역으로 배치되었다면 yes를 선택하세요.
   modal-keeping-up-home:
-    heading:
-    p-c0958f:
-    h3-e8b30a:
+    heading: 주택 유지 요건
+    p-c0958f: 주택 유지에 지출한 금액이 전체 비용의 절반을 초과하면, 주택 유지 비용을 절반 이상 부담해야 하는 요건을 충족합니다.
+    h3-e8b30a: 비용에는 다음이 포함됩니다.
     ul-0:
-      li-b9b2e1:
-      li-313963:
-      li-61e699:
-    p-fec463:
-    h3-3e0b53:
+      li-b9b2e1: 임대료, 모기지 이자, 부동산세 및 주택 보험
+      li-313963: 수리 및 공공요금
+      li-61e699: 가정 내 식사비
+    p-fec463: '메모: 공공 보조금으로 지불한 비용은 납세자가 지불한 비용으로 간주됩니다.'
+    h3-3e0b53: '비용에 포함되지 않는 항목:'
     ul-1:
-      li-edaa99:
-      li-40b84f:
-      li-5eae2b:
-      li-c64365:
-      li-04dec0:
+      li-edaa99: 의복, 교육비, 여행비
+      li-40b84f: 치료, 의료보험료, 처방약
+      li-5eae2b: 생명보험
+      li-c64365: 자동차 보험료, 리스료, 대중교통비 등 교통 관련 비용
+      li-04dec0: 귀하 또는 가족 구성원이 제공한 무급 노동의 가치
   modal-legal-separation:
-    heading:
-    h3-ef7665:
-    p-198345:
-    h3-357344:
-    p-f560ea:
+    heading: 법적 별거 및 관습법
+    h3-ef7665: 법적 별거
+    p-198345: 이 목적으로 "법적으로 별거"는 이혼 혹은 별거 명령에 따라 법적으로 별거했다는 의미입니다.
+    h3-357344: 관습법 혼인
+    p-f560ea: 일부 주는 사실혼을 허용합니다. 귀하의 주를 확인하고 귀하가 관습법에 따라 결혼한 상태로 고려되는지 확인하세요.
   modal-joint-return-mfj:
-    heading:
-    p-75997a:
+    heading: 공동 신고
+    p-75997a: 귀하는  <strong> 를 귀하의 신고 지위로 선택하여  배우자와 함께 하나의 신고서를 제출하도록 선택할 수 있습니다.
+      이는 귀하가 세액공제, 소득공제 그리고 세금 채무를 계산할 때 소득과 지출을 합하도록 허용합니다.
   modal-joint-deceased-spouse:
-    heading:
-    p-85e581:
+    heading: 사망한 배우자와 공동신고
+    p-85e581: 만약 귀하의 배우자가 <fg-show path="/taxYear"/>년에 사망했다면, 귀하의 신고 지위로서 <fg-show
+      path="/taxYear"/>를 선택하여 귀하의 배우자와 하나의 신고서 제출을 선택할 수 있습니다. 이는 자신의 세액공제, 소득공제,
+      세금 채무를 계산할 때 자신의 소득과 지출을 합산할 수 있도록 합니다.
   modal-spouse-lived-together:
-    heading:
-    p-906815:
+    heading: 배우자 - 함께 사는
+    p-906815: 동거인과 귀하 둘 중 하나 혹은 모두가 특별한 상황에서 일시적 부재였던 기간동안 귀하와 함께 산 것으로 간주합니다.
     ul-0:
-      li-8ec6de:
-      li-de7a22:
-      li-d6e6cb:
-      li-2c48dd:
-      li-8fdca6:
-    p-2392bb:
+      li-8ec6de: 질병
+      li-de7a22: 교육
+      li-d6e6cb: 사업
+      li-2c48dd: 휴가 혹은
+      li-8fdca6: 군복무
+    p-2392bb: 일시적 부재 후에 집으로 돌아올 것이라는 가정을 하는 것은 타당합니다.
   modal-valid-ssn:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: 유효한 사회 보장 번호
+    p-527528: <fg-show path="/taxYear"/> 년 세금 신고서(연장 포함) 마감일 또는 그 이전에 사회보장국에서 발급한
+      유효한 사회보장번호(SSN)가 있어야 합니다.
+    p-45ae0e: 사회 보장 카드에 "DHS 승인 시 취업 가능(Valid for work with DHS authorization)” 또는
+      “INS 승인 시 취업 가능(Valid for work with INS authorization)”이라고 표시되어 있다면, 해당 승인 상태가
+      여전히 유효할 경우 이 사회보장번호(SSN)는 유효한 것으로 간주됩니다.
+    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
+      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
+      li-9f487b: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
+      li-a69a30: 메디케이드와 같은 연방 자금 지원 혜택을 신청하거나 받기 위한 용도로만 발급된 사회보장번호
+    p-f554f7: 유효한 사회 보장 번호에 대한 자세한 내용은 간행물 596을 참조하십시오.
   modal-confirm-mfj-to-nonmfj-qc-clear:
-    heading:
-    p-30861e:
-    button-70d9be:
-    button-ea4788:
+    heading: 확인
+    p-30861e: <strong>부부 공동 보고</strong>에서 다른 보고 상태로 변경하면 이전에 입력한 적격 자녀 데이터가 지워집니다.
+      계속 진행하시겠습니까?
+    button-70d9be: 확인
+    button-ea4788: 취소
   modal-claiming-dependents:
-    heading: 
-    p-fc792e: 
+    heading: 제가 피부양자로 신청할 수 있는 사람은 누구입니까?(영어)
+    p-fc792e: '부양가족은 일반적으로 다음과 같습니다:'
     ul-0:
-      li-7673e2: 
-      li-e9750c: 
-      li-9a6fc3: 
-    p-6b3acc: 
-    p-40e480: 
+      li-7673e2: 만 19세 미만 자녀
+      li-e9750c: 부모와 함께 거주하는 24세 미만의 학생
+      li-9a6fc3: 귀하로부터 재정 지원의 절반 이상을 받고 총소득이 <fg-show path="/eitcChildGrossIncomeLimit"/>
+        미만인 친척 또는 가구원
+    p-6b3acc: 공동으로 신고하는 경우 배우자를 부양가족으로 청구할 수 없습니다.
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">부양가족에
+      대해 자세히 알아보기.</a>
 /agi:
-  title:
-  h2-c0af17:
-  p-308236:
-  p-100130:
-  p-bb8818:
-  h3-40c7ae:
+  title: 총조정소득(AGI)
+  h2-c0af17: 귀하의 조정 총소득(AGI)을 추정합니다.
+  p-308236: 이번 단계에서 우리는 귀하와 귀하의 배우자의 공동 근로 소득, 조정 총 소득 그리고 그에 대한 조정액을 추정할 것입니다.
+  p-100130: <fg-show path="/taxYear"/>년 소득과 조정액을 선택하고 입력하세요.출처당 하나의 항목만을 선택해야 합니다.
+  p-bb8818: 귀하의 배우자의 소득과 조정액
+  h3-40c7ae: 근로 소득
   fg-detail-c90011:
-    summary:
+    summary: 임금, 급여, 팁
     /jobsIncomeTotal:
-      question:
-      modalLink:
+      question: 연방 소득세 원천징수된 임금, 급여, 팁
+      modalLink: <modal-link for="modal-wages-salaries-tips">어떤 소득을 포함해야 합니까?</modal-link>
   fg-detail-c0e18b:
-    summary:
+    summary: 자영업 총 소득
     /selfEmploymentGrossIncome:
-      question:
-      modalLink:
+      question: 자영업 총 소득
+      modalLink: <modal-link for="modal-self-employment-gross-income">자영업 소득이란 무엇입니까?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
-      question:
-      hint:
-      modalLink:
+      question: <fg-show path="/taxYear"/>년에 귀하<span condition="/isFilingStatusMFJ"
+        operator="isTrue">와 귀하의 배우자가</span> 공제한 자영업 관련 총 경비
+      hint: 이 항목은 비워 두어도 됩니다
+      modalLink: <modal-link for="modal-self-employment-deductions">자영업자 공제 가능한 경비는
+        무엇입니까?</modal-link>
   fg-detail-2fc9c0:
-    summary:
+    summary: 철도 퇴직 수당
     /disabilityRetirementBenefits:
-      question:
-      modalLink:
+      question: 최소 은퇴 나이전 장애 은퇴 수당
+      modalLink: <modal-link for="modal-disability-retirement">총 장애 퇴직 수당 </modal-link>
   fg-detail-cd8e26:
-    summary:
+    summary: 해외 근로 소득
     /non2555ForeignIncome:
-      question:
-      modalLink:
-  h3-20a2b1:
+      question: 양식 2555, 해외 근로 소득에 관하여(영어)
+      modalLink: <modal-link for="modal-foreign-income-non2555">해외 근로 소득이 요구됩니다.</modal-link>
+  h3-20a2b1: 기타 유형 소득
   fg-detail-89425f:
-    summary:
+    summary: 투자 소득
     /investmentIncomeTotal:
-      question:
-      modalLink:
+      question: 투자 소득
+      modalLink: <modal-link for="modal-investment-income">총 투자 소득 </modal-link>
   fg-detail-fbe1af:
-    summary:
+    summary: 투자 소득
     /pensionsIncomeTotal:
-      question: 
-      modalLink: 
+      question: 투자 소득
+      modalLink: <modal-link for="modal-taxable-pension">연금의 과세 대상 부분은 무엇입니까?</modal-link>
   fg-detail-3fa626:
-    summary:
+    summary: 실업 보험
     /unemploymentIncome:
-      question:
-      modalLink:
+      question: 실업 보험
+      modalLink: <modal-link for="modal-unemployment-compensation">실업 보험으로 간주되는 것은
+        무엇입니까?</modal-link>
   fg-detail-0fb46a:
-    summary:
+    summary: 사회 보장 소득
     /socialSecurityIncome:
-      question:
-      modalLink:
+      question: 사회보장 소득 혹은 철도 퇴직 수당의 과세 부분
+      modalLink: <modal-link for="modal-social-security">사회 보장 및 철도 퇴직 혜택으로 간주되는 것은
+        무엇입니까?</modal-link>
   fg-detail-d994db:
-    summary:
+    summary: 소득으로 계산되어야 하는 장학금 혹은 연구 지원금
     /taxableScholarship:
-      question:
-      modalLink:
+      question: 소득으로 계산되어야 하는 장학금 혹은 연구 지원금
+      modalLink: <modal-link for="modal-scholarship-grants">장학금이나 보조금으로 간주되는 것은 무엇입니까?</modal-link>
   fg-detail-50ec28:
-    summary:
+    summary: 교도 기관 수감기간 근로로 받은 급여
     /inmatePay:
-      question:
-      modalLink:
+      question: 교도 기관 수감기간 근로로 받은 급여
+      modalLink: <modal-link for="modal-inmate-pay">교도 기관 수감기간 근로로 받은 급여</modal-link>
   fg-detail-7a5ac3:
-    summary:
+    summary: 기타 유형 소득
     /nonSpecificOtherIncome:
-      question:
-      hint:
-      modalLink:
-  h3-9fa8b1:
-  p-233dd3:
-  
+      question: 기타 유형 소득
+      hint: 기타 모든 소득에 대해 하나의 총액을 입력해야 합니다.
+      modalLink: <modal-link for="modal-other-taxable-income">기타 유형 소득</modal-link>
+  h3-9fa8b1: 조정
+  p-233dd3: <fg-show path="/taxYear"/>년 소득에 해당하는 조정 유형을 선택하여 입력하세요. 두 군데에 같은 조정을 입력하면
+    안 됩니다.
   fg-detail-2c7735:
-    summary:
+    summary: 학자금 대출 이자 소득 공제
     /studentLoanInterestAmount:
-      question:
-      hint:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span>  <span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 학자금 대출 이자
+      hint: (최대 <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">학자금 대출 이자 소득 공제</modal-link>
   fg-detail-9166fe:
-    summary:
+    summary: 적격 교육자 비용
     /educatorExpenses/:
-      question:
-      hint:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 교육자 경비
+      hint: (최대 <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">적격 교육자 비용</modal-link>
   fg-detail-57c26a:
-    summary:
+    summary: 급여 소득 공제에 포함되지 않은 IRA기여에 대한 소득공제
     /deductionForTraditionalIRAContribution:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 납부한 전통적인(세전) IRA 기여금
+      modalLink: <modal-link for="modal-ira-contributions">전통적인 IRA 기여금으로 간주되는 것은
+        무엇입니까?</modal-link>
   fg-detail-f9e99b:
-    summary:
+    summary: SEP, Simple, 및 기타 플랜에 기여
     /selfEmploymentRetirementPlanContributions:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 납부한 자영업 은퇴 기여금
+      modalLink: <modal-link for="modal-self-employed-retirement">자영업자 은퇴 플랜 공제란 무엇입니까?</modal-link>
   fg-detail-5c4fd4:
-    summary:
+    summary: 자영업 건강보험
     /selfEmploymentHealthInsuranceContributions:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 건강 보험료
+      modalLink: <modal-link for="modal-self-employed-health-insurance">자영업 건강보험 소득공제</modal-link>
   fg-detail-2c1033:
-    summary:
+    summary: 급여 공제에 포함되지 않은 건강 저축 계정(HAS) 소득공제
     /hsaContributionAmount:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하 또는 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 납부한 HSA 기여금
+      modalLink: <modal-link for="modal-hsa-deductions">HSA 공제란 무엇입니까?</modal-link>
   fg-detail-e97d7b:
-    summary:
+    summary: 지급된 이혼 수당
     /alimonyPaid:
-      question:
-      modalLink:
+      question: <fg-show path="/taxYear"/>년에 지불한 위자료
+      modalLink: <modal-link for="modal-alimony-paid">지급된 이혼 수당</modal-link>
   fg-detail-913117:
-    summary:
+    summary: 저축 조기 인출에 대한 과징금
     /penaltyForEarlySavingsWithdrawal:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 벌금액
+      modalLink: <modal-link for="modal-early-withdrawal">저축 조기 인출에 대한 과징금</modal-link>
   fg-detail-6fad42:
-    summary:
+    summary: 군인의 이사비용
     /movingExpensesForArmedServicesMembers:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 국군 장병의 이사 비용
+      modalLink: <modal-link for="modal-moving-expenses">군인의 이사비용</modal-link>
   fg-detail-c4f7d7:
-    summary:
+    summary: 예비군, 공연 예술가, 고정 급여 공무원을 위한 특정 직원 사업 비용
     /businessCreditsForEligible:
-      question:
-      modalLink:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 적격 사업 경비
+      modalLink: <modal-link for="modal-employee-business-expenses">특정 직원 사업 비용</modal-link>
   fg-detail-cf5b3c:
-    summary:
+    summary: 기타 조정
     /otherAdjustments:
-      question:
-  h3-a7b819:
+      question: <span condition="/isFilingStatusMFJ" operator="isFalse">귀하가</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">귀하와 귀하의 배우자가</span> <fg-show
+        path="/taxYear"/>년에 지불한 기타 조정액
+  h3-a7b819: '귀하의 AGI는:'
   fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-f3c23d: 입력한 금액에 따르면 귀하의 AGI가 귀하의 신고 지위의 한도액과 적격 자녀 수를 초과하여 근로소득공제를 신청할 수 없습니다.
+    p-93a6b5: ' 근로 소득공제를 위한 소득 한도에 대한 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">정보는</a>
+      를 참조하세요.'
   modal-wages-salaries-tips:
-    heading: 
-    h3-53ed11: 
-    p-40d79a: 
-    p-ab967b:
-    p-cb2522:
-    p-1f7f24: 
-    h3-af3590: 
-    p-3fdb7d: 
-    p-d9b0e5:
-    h3-84091c: 
-    p-bee3d8: 
+    heading: 어떤 소득을 포함해야 합니까?
+    h3-53ed11: 임금 급여 및 팁
+    p-40d79a: 고용주가 W-2 양식의 상자 1에 귀하의 임금, 급여, 팁 및 기타 보상을 보고했습니다.
+    p-ab967b: '고용주는 W-2 양식의 항목 Box 1에 임금, 급여, 팁 및 기타 보상을 보고했습니다. 근로소득세액공제 자격을 결정할
+      때, 전액 또는 일부가 공제 가능하더라도 팁과 초과근무 수당을 포함한 전체 소득을 근로소득 계산에 포함해야 합니다. '
+    p-cb2522: 배우자와 공동 신고를 하고 있다면, 양식 W-2의 Box 1에 보고된 모든 액수를 포함하세요.
+    p-1f7f24: 세전 기여 섹션에 귀하의 양식 W-2 세전 기여를 Don't Include
+    h3-af3590: 군인 및 전투 급여
+    p-3fdb7d: 귀하는 EITC의 경우에 근로 소득에 비과세 전투 수당을 포함할지 선택할 수 있습니다. 귀하의 고용주가 귀하의 양식 W-2의
+      Box 12에 Code Q 와 함께 귀하의 비과세 전투 수당을 보고했습니다.
+    p-d9b0e5: 이 선택은 귀하의 EITC를 증가 혹은 감소시킬 수 있습니다. 더 자세한 <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">정보는</a>
+      를 확인하세요.
+    h3-84091c: 임시 및 단기 장애 보험
+    p-bee3d8: 육아 유직 혹은 해당 연도에 임시 장애가 있었고 귀하의 고용주가 귀하에게 급여를 지급했다면, 그들은 귀하의 소득의 귀하의
+      W-2에 보고했습니다. 그 소득을 여기에 입력하세요.
   modal-work-no-taxes-withheld:
-    heading:
-    p-7ca214:
-    p-9048f5:
-    p-8f1d83:
+    heading: 연방 세금이 원천징수되지 않은 소득
+    p-7ca214: 부업, 시간제 또는 임시직이더라도 임시직(gig work)으로 얻은 소득을 신고하십시오.
+    p-9048f5: 소득세가 원천징수되지 않았더라도 직장에서 돈을 벌었다면 여기에 소득을 입력하십시오. 모든 소득에 대해 양식 1099를 받았을 수도 있고 받지 못했을 수도 있습니다.
+    p-8f1d83: '이 소득은 다음과 같은 목적의 앱이나 웹사이트를 통해 얻었을 수 있습니다:'
     ul-0:
-      li-014f6e:
-      li-816827:
-      li-ac1297:
-      li-743818:
-    p-ccdadf:
-    p-5465af:
+      li-014f6e: 예약된 차량 서비스 또는 배달을 위한 운전
+      li-816827: 심부름 또는 작업 완료
+      li-ac1297: 창의적 또는 전문적 서비스 제공
+      li-743818: 기타 임시, 주문형 또는 프리랜서 작업 제공
+    p-ccdadf: 총소득에는 귀하가 받은 모든 소득이 포함됩니다. 비용은 나중에 차감합니다.
+    p-5465af: 자세한 정보는 <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">임시직 소득세 관리</a>를 방문하십시오
   modal-self-employment-gross-income:
-    heading:
-    p-3ef7b9:
+    heading: 자영업 총 소득
+    p-3ef7b9: 귀하가 다음과 같은 경우
     ul-0:
-      li-0d8073:
-      li-f5836c:
-      li-d6da48:
-      li-604ec3:
-      li-de3005:
-    p-ccdadf:
-    p-a21d1b:
+      li-0d8073: 자영업자입니다.
+      li-f5836c: 주문형 작업, 서비스, 상품을 제공하여 수입을 창출합니다.
+      li-d6da48: 사업 혹은 농장을 운영합니다.
+      li-604ec3: 종교 수도회의 목회자 혹은 회원입니다.
+      li-de3005: 목회자이거나 종교 단체의 회원인 경우
+    p-ccdadf: 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">정보는</a>  방문하세요.
+    p-a21d1b: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">자영업자
+      세무 센터</a>를 방문하십시오.
   modal-disability-retirement:
-    heading: 
-    p-514b79: 
-    p-e7df54:  
-    p-2e7e6e: 
+    heading: 퇴직 또는 장애소득의 근로소득 해당 여부
+    p-514b79: 장애로 은퇴한 경우, 고용주의 장애 퇴직 계획에 따라 받은 과세 혜택은 근로소득으로 간주됩니다. 이는 최소 퇴직 연령에 도달할
+      때까지 EITC 산정 목적에 적용됩니다. 최소 퇴직 연령은 장애가 없었다면 연금 또는 연금 수당을 받을 수 있는 가장 이른 연령을 의미합니다.
+    p-e7df54: 최소 은퇴 연령은 장애가 없었을 경우 연금이나 연금을 받을 수 있었던 가장 이른 연령입니다.
+    p-2e7e6e: 임금에 일시적 또는 단기 장애 급여를 포함하십시오.
   modal-inmate-pay:
-    heading:
-    p-0ced8d:
-    p-435d89:
-    p-1dc488:
+    heading: 수감자로서 근로 급여
+    p-0ced8d: 교도소 수감 중에 수행한 일로 받은 급여는 근로 소득 세액 공제를 계산할 때 근로 소득이 아닙니다.
+    p-435d89: 여기에는 근로 출소 프로그램이나 중간 보호 시설에 있는 동안 수행한 유급 근로가 포함됩니다.
+    p-1dc488: 간행물 596, 근로 소득 공제,  수감 기간의 소득(영어)
   modal-foreign-income-non2555:
-    heading:
-    p-6821fc:
-    p-86d28e:
-    p-231cd1:
-    p-87f12e:
-    p-90826b:
+    heading: 해외 근로 소득
+    p-6821fc: 해외 근로소득은 미국, 컬럼비아 특별구 또는 미국 영토·속령 이외의 지역에서 거주하며 일하면서 벌어들인 소득을 말합니다.
+    p-86d28e: 미국 외 지역에서 근무하는 미국 공무원의 경우, 해당 소득은 해외 근로소득으로 간주되지 않습니다.
+    p-231cd1: 공무원이 아니고 대사관에서 근무하는 경우 해당 소득은 해외에서 벌어들인 것으로 간주합니다.
+    p-87f12e: 자세한 내용은 해외 근로 소득에 대한 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">양식
+      2555</a>를 참조하십시오.
+    p-90826b: '메모: 양식 2555를 제출하기로 선택한 경우 EITC를 청구할 수 없습니다.'
   modal-taxable-pension:
-    heading:
-    p-a523b6:
-    p-ce034e:
+    heading: 퇴직 연금
+    p-a523b6: 적격 고용주의 퇴직 계획을 통해 연금 또는 연금 형태의 퇴직급여를 받는 경우, 해당 금액의 전부 또는 일부가 과세 대상이
+      될 수 있습니다.
+    p-ce034e: 다음과 같은 경우 모두 과세 대상입니다.
     ul-0:
-      li-21fe33:
-      li-c4c784:
-      li-a75167:
-    p-63555f:
+      li-21fe33: 귀하는 귀하의 은퇴 연금 혹은 개인 연금(annuity)를 위해 어떤 것도 기여하지 않았거나 기여하지 않은 것으로 간주됨
+      li-c4c784: 귀하의 고용주는 귀하의 임금에서 기여금을 원천징수하지 않았습니다.
+      li-a75167: 귀하는 이전 연도에 귀하의 기여금 면세를 받았습니다.
+    p-63555f: 다음과 같은 경우 과세 대상이 됩니다.
     ul-1:
-      li-6d40a9:
-    p-24ecdd:
+      li-6d40a9: 귀하는 세후 금액을 기여하였습니다.(계산을 위해 일반 규칙 및 간소화 법을 사용하였습니다.)
+    p-24ecdd: 만 59세 6개월 이전에 지급금을 받았거나, 생존자 또는 수혜자이거나, 기타 특별한 상황이 있는 경우 추가 규칙이 적용됩니다.
   modal-unemployment-compensation:
-    heading:
-    p-ec0a26:
-    p-97117c:
+    heading: 실업 급여(보험)
+    p-ec0a26: 근로 소득 세액공제의 경우 귀하의 총 실업 급여혜택을 포함합니다. 귀하는 양식 1099-G에서 이 소득을 찾을 수 있습니다.
+    p-97117c: 만약 고용주의 자금이 보충 혜택을 제공했다면, 양식 W-2, Box 1에 보고된 액수를 포함하세요.
   modal-social-security:
-    heading:
-    p-f2d061:
-    p-e8b50a:
-    p-2b31f6:
+    heading: 사회 보장 소득
+    p-f2d061: EITC의 경우 사회 보장 및 철도 퇴직 혜택의 과세 대상 금액만 포함하십시오.
+    p-e8b50a: 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc423">정보는</a>
+      을 참조합니다.급여의 과세 금액을 계산하려면 간행물 915, 사회 보장 및 동등한 철도 퇴직 급여에서 사용할 워크시트를 참조합니다. irsPub915
+    p-2b31f6: 혜택의 과세 대상 금액을 계산하려면 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">간행물
+      915</a>, 사회 보장 및 이와 동등한 철도 퇴직 혜택의 &quot;어떤 워크시트를 사용할 것인가&quot;를 참조하십시오.
   modal-scholarship-grants:
-    heading:
-    p-0e0c43:
-    p-ce8e34:
+    heading: 장학금 혹은 연구 지원금
+    p-0e0c43: W-2 양식에 보고되지 않은 과세 대상 장학금 금액을 입력하십시오.
+    p-ce8e34: '이 금액에는 해당 금액이 다음과 같은 경우 W-2에 없는 장학금이나 보조금이 포함됩니다:'
     ul-0:
-      li-13d8db:
-      li-b94d4b:
-    p-adf913:
-    p-0c59d8:
+      li-13d8db: 방, 기숙사, 여행, 선택 장비 등 부대비용을 위해 사용됨
+      li-b94d4b: 장학금 혹은 연구 지원금을 받는 조건으로 교육, 연구 혹은 기타 서비스에 대한 납부로서 받음
+    p-adf913: 장학금이나 연구비를 받기 위한 조건으로 요구되는 수업, 연구 또는 기타 서비스의 대가로 받는 금액. 그러나 미국 의료 서비스
+      단체 장학금 프로그램(NHSC), 미군 의료 종사자 장학금 및 재정 지원 프로그램(AFHPS/FAP) 또는 워크 칼리지에서 운영하는 종합
+      학생 직무-학습-서비스 프로그램이 요구하는 서비스의 대가로 받은 금액은 포함하면 안됩니다.
+    p-0c59d8: 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">정보는</a>
+      을 방문하세요.
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-cdf53e: 귀하가 입력한 금액에 따라 귀하의 근로 소득은 귀하의 신고 지위의 한도와 적격 자녀의 수를 초과하였으므로 귀하는 근로 소득
+      공제를 신청하지 못합니다.
+    p-93a6b5: ' 근로 소득공제를 위한 소득 한도에 대한 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">정보는</a>
+      를 참조하세요.'
   fg-alert-8b7db9:
-    heading:
-    p-3abe5f:
-    p-93a6b5:
-    p-d04ce1:
-    p-241cb8:
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-3abe5f: 'EITC를 청구하려면 근로 소득(예: 임금 또는 자영업 순이익)이 있어야 합니다. 입력한 소득을 기준으로 <fg-show
+      path="/taxYear"/>년의 근로 소득이 0 이하이므로 EITC 자격이 없습니다.'
+    p-93a6b5: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+      596</a>, 근로 소득 세액 공제를 참조하십시오.
+    p-d04ce1: 귀하의 투자 소득이 <fg-show path="/eitcInvestmentIncomeLimit"/>이상이면 근로 소득 공제를
+      신청할 수 없습니다.
+    p-241cb8: 다음은 투자 소득에 포함됩니다.
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-e74f5d:
-      li-e42b99:
-      li-7c0731:
-    p-9c482c:
+      li-12d3b7: 이자(과세 대상, 면세 모두)
+      li-0a9a83: 배당금
+      li-e74f5d: 자본 이익 소득
+      li-e42b99: 일부 임대료 및 로열티 또는
+      li-7c0731: 피동 활동으로부터 순 소득
+    p-9c482c: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">간행물
+      550</a>, 투자 소득 및 경비를 참조하십시오. 총 투자 소득을 계산하려면 <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">간행물 596</a>, 근로 소득 세액 공제의 워크시트
+      1을 사용해야 합니다.
   modal-self-employment-deductions:
-    heading:
-    p-4838ea:
-    p-f24032:
+    heading: 자영업자 공제 가능한 경비는 무엇입니까?
+    p-4838ea: 자영업자, 긱 워커 또는 사업체를 소유하고 운영하는 경우 소득에서 특정 사업 경비를 공제하여 세금을 덜 낼 수 있습니다.
+    p-f24032: '사업 경비에는 다음이 포함될 수 있습니다:'
     ul-0:
-      li-6a4179:
-      li-e2f63f:
-      li-7f4118:
-      li-9f53a8:
-      li-eaff1b:
-      li-6c49ac:
-      li-761662:
-      li-719fec:
-      li-849c98:
-    p-9ff7b2: |-
-    p-0651e4: 
-    p-a81df3: 
-    p-4ca1ce: 
+      li-6a4179: 홈 오피스 경비
+      li-e2f63f: 자동차 및 트럭 경비
+      li-7f4118: 임대료
+      li-9f53a8: 직원 급여 및 연금
+      li-eaff1b: 보험
+      li-6c49ac: 부채에 대한 이자
+      li-761662: 법률 및 전문 서비스 비용
+      li-719fec: 세금
+      li-849c98: 출장 및 식대
+    p-9ff7b2: 이러한 공제는 항목별 공제를 선택한 경우 귀하가 한 개인 공제와 다릅니다. 여기에서 사업 경비를 공제하고 나중에 표준 공제를
+      계속 선택할 수 있습니다.
+    p-0651e4: <strong>작년 세금 보고서를 확인하는 방법은?</strong>
+    p-a81df3: <fg-show path="/taxYear"/>년에 자영업자였다면 스케줄 C의 28번 줄에서 공제 가능한 경비를 찾을 수
+      있습니다.
+    p-4ca1ce: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">사업
+      경비에 대해 자세히 알아보기</a>
   modal-estimate-interest-income-en:
-    heading:
-    p-cda131:
-    p-bc395c:
-    p-ec3579:
+    heading: 이자 소득이란 무엇이며 어떻게 계산할 수 있나요?
+    p-cda131: 일반적인 이자 소득 유형에는 은행 계좌 또는 돈을 빌려주어 얻은 이자가 포함됩니다.
+    p-bc395c: <strong>작년 세금 신고서 확인 방법</strong>
+    p-ec3579: '<fg-show path="/taxYear"/>년에 이자 소득이 있는 경우 다음 금액을 확인하세요:'
     ul-0:
-      li-7b5662:
+      li-7b5662: <fg-show path="/taxYear"/> 연방 세금 신고서 양식 1040의 2b번째 줄
   modal-investment-income:
-    heading:
-    p-b07c20:
+    heading: 투자 소득
+    p-b07c20: 근로 소득 세액공제에 대한 투자 소득은 다음이 포함됩니다.
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-81f254:
-      li-498151:
-      li-7c0731:
-    p-4c8f5e:
-    p-df5956:
+      li-12d3b7: 이자(과세 대상, 면세 모두)
+      li-0a9a83: 배당금
+      li-81f254: 자본 이익 소득
+      li-498151: 일부 임대료 및 로열티 또는
+      li-7c0731: 피동 활동으로부터 순 소득
+    p-4c8f5e: 구체적인 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">내용은</a>
+      를 확인하세요.
+    p-df5956: '2025년에 다음 중 하나라도 해당되는 경우 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+      596</a>, 근로 소득 세액 공제의 워크시트 1을 사용하여 투자 소득을 계산하십시오:'
     ul-1:
-      li-0f3c1b:
-      li-782dae:
-      li-e0ebc1:
-      li-a00ee1:
-      li-143cd9:
+      li-0f3c1b: 스케줄 E(양식 1040)를 제출하는 경우
+      li-782dae: 사업에 사용되지 않은 개인 재산 임대 소득을 보고하는 경우
+      li-e0ebc1: 양식 8814(자녀의 이자 및 배당 보고 선택 관련)를 보고하는 경우
+      li-a00ee1: 수동적 활동으로 인한 소득 또는 손실이 있습니다.
+      li-143cd9: 양식 4797(사업 자산 매각 관련)를 제출하는 경우
   modal-other-taxable-income:
-    heading: 
-    p-ba0ae2: 
+    heading: 기타 유형 소득
+    p-ba0ae2: 다른 유형의 소득은 다음과 같습니다.
     ul-0:
-      li-83fa6a: 
-      li-7ae32a: 
-      li-248c6a: 
-      li-6dac33: 
-      li-13b588: 
-      li-ad5cc5: 
-      li-ece5cb: 
-      li-0f1015: 
-      li-7e9756: 
-      li-737e99: 
-      li-e833f1: 
-    p-fda53f: 
+      li-83fa6a: 개인 연금 계정(IRA) 기여(Roth IRA예외)
+      li-7ae32a: 자산 손실(수익 아님)
+      li-248c6a: 2020년 이전에 시행된 이혼 혹은 별거 동의서에 따른 귀하가 수령한 이혼수당 지급금
+      li-6dac33: 임대 부동산, 로열티, 파트너쉽, S법인, 신탁 등
+      li-13b588: 수익성 임대를 하고 잇지만 그러한 자산을 임대하는 비지니스를 하고 있지 않았다면 개인 자산 임대 수익
+      li-ad5cc5: Coverdell 교육 저축 계정으로부터 과세 대상 및 적격 교육비 프로그램 수익
+      li-ece5cb: 적격 교육비 프로그램 수익
+      li-0f1015: 상(Prize, award), 도박상금
+      li-7e9756: 배심원 보수
+      li-737e99: 알래스카 영구 펀드 배당금
+      li-e833f1: 이전에 공제 받은 항목에 대해 수령한 배상 혹은 기타 액수 병원비, 부동산 세, 주택 담보 대출 이자
+    p-fda53f: 다음을 포함하지 않습니다.
     ul-1:
-      li-0eb181: 
-      li-e46f68: 
-      li-b144cb: 
-      li-63523b: 
-      li-a8d386: 
-      li-f2a3d6: 
-      li-080a95: 
-      li-57e5cb: 
-      li-764dd4: 
-      li-6f920a: 
-    p-745735: 
-  
+      li-0eb181: 2019년에 시작된 이혼 및 별거 동의에 따라 받게 된 이혼 수당
+      li-e46f68: 자녀 지원
+      li-b144cb: 빈곤 가정 임시 지원(TANF), 식량 지원프로그램, Section8 임대료 지원프로그램 같은 복지 혜택
+      li-63523b: 비과세 위탁 부양 지원
+      li-a8d386: 교육 지원 같은 비과세 고용인 혜택
+      li-f2a3d6: VA 재향 군인 혜택
+      li-080a95: 근로자의 수당
+      li-57e5cb: 개인의 사망으로 인하여 수령한 생명 보험 지급금
+      li-764dd4: 유언 상속한 혹은 증여로 수령한 돈 혹은 자산
+      li-6f920a: 실업 수당
+    p-745735: 간행물 525, 과세 및 비과세 소득(영어)
   modal-student-loan-interest:
-    heading:
-    p-3ac7ce:
-    p-e4b825:
+    heading: 학자금 대출 이자 소득 공제
+    p-3ac7ce: 적격 자녀의 학자금 대출에 지불한 이자의 최대 <fg-show path="/maxStudentLoanDeduction"/>까지
+      입력합니다. $600이상 이자를 납부하였다면 귀하는 양식1098-E에서 이를 찾을 수 있습니다.
+    p-e4b825: 대출은 반드시 적격 교육 기관에 다니는 적격 고등 교육 비용을 납부해야 합니다. 또한 비용은 반드시 다음과 같아야 합니다.
     ul-0:
-      li-bb1c73:
-      li-829f26:
-      li-562ff0:
-    p-75f422:
-    p-1f2dd3:
+      li-bb1c73: 대출을 받을 때 귀하, 귀하의 배우자 혹은 귀하의 부양가족인 사람에 대해
+      li-829f26: 대출을 받기 전이나 후 합리적인 기간 내에 지불되었거나 발생한 것; 그리고
+      li-562ff0: 적격 학생에 대한 학업 기간에 대한
+    p-75f422: 귀하가 법적으로 이 대출에 상환을 해야 할 책임이 없다면, 공제를 주장할 수 없습니다.
+    p-1f2dd3: 자세한 <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+      class="usa-link">사항은</a>  를 확인하세요.
   modal-educator-expenses:
-    heading:
-    p-e117c8:
+    heading: 교사 지출 소득공제
+    p-e117c8: '귀하가 교사라면, 최대 <fg-show path="/maxEducatorExpensesNonMFJ"/> (부부 공동 신고이며
+      귀하와 귀하의 배우자 모두 교사이면 <fg-show path="/maxEducatorExpensesLimit"/>)의 보상 금액을 입력합니다.
+      예를 들어:'
     ul-0:
-      li-8829c6:
-      li-751127:
-      li-0c78ca:
-      li-6ef6c8:
-      li-6d4170:
-    p-86c6e4:
+      li-8829c6: 전문성 개발 과정 참여 비용
+      li-751127: 책과 비품
+      li-0c78ca: 컴퓨터 장비(관련 소프트웨어와 서비스 포함)
+      li-6ef6c8: 기타 장비
+      li-6d4170: 수업에서 사용하는 보충 재료
+    p-86c6e4: 자세한 <a target="_blank" href="https://www.irs.gov/taxtopics/tc458" class="usa-link">정보는</a>
+      를 방문하세요.
   modal-ira-contributions:
-    heading:
-    p-5979d5:
-    p-a49375:
+    heading: IRA(개인 퇴직 계정) 소득공제
+    p-5979d5: 귀하의 급여 기여분을 제외하고 귀하의 IRA 기여 금액을 입력하세요.
+    p-a49375: 자세한 <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">정보는</a> 를 확인하세요.
   modal-self-employed-retirement:
-    heading:
-    p-ca0a8f:
-    p-0d133f:
+    heading: SEP, SIMPLE, 기타 적격 플랜
+    p-ca0a8f: 자영업자인 경우 귀하는 귀하의 적격 플랜 수당을 귀하의 자영업 순수익으로부터 다음을 차감하여 계산합니다.
+    p-0d133f: '자격을 갖추려면 귀하 또는 귀하의 배우자가 다음을 갖추어야 합니다:'
     ul-0:
-      li-6c246a:
-      li-a2595a:
-      li-f6cddf:
-    p-3622b4:
+      li-6c246a: 귀하의 양식 1040 신고서 1페이지의 SE 세금의 공제 가능한 부분 그리고
+      li-a2595a: 자영업자 SEP, SIMPLE 그리고 적격 플랜들에 대한 항목에서 귀하의 양식 1040 신고서, 페이지 1,  귀하의
+        은퇴 플랜 기여의 총액
+      li-f6cddf: 유한 책임 회사(LLC) 소유
+    p-3622b4: '적격 플랜에는 다음이 포함될 수 있습니다:'
     ul-1:
-      li-ff93fe:
-      li-200ab4:
-      li-e7dbe4:
-      li-765afa:
-    p-af5a4a:
-    p-add56c:
-    p-3248f2:
+      li-ff93fe: 단순 종업원 연금(SEP) 플랜
+      li-200ab4: 종업원을 위한 저축 장려 매칭 플랜
+      li-e7dbe4: 1인-401(k)
+      li-765afa: 기타 적격 은퇴 플랜
+    p-af5a4a: <strong>포함하지 마십시오:</strong> 개인 은퇴 연금(IRA) 기여금.
+    p-add56c: 자신을 위한 은퇴 플랜 기여금을 계산할 때 특별 규정을 사용했어야 합니다.
+    p-3248f2: 자영업 개인-자신의 은퇴 플랜 기여와 소득 공제
   modal-hsa-deductions:
-    heading:
-    p-2ab752:
-    p-a7d9fc:
+    heading: 건강 저축 계정 소득공제
+    p-2ab752: HAS, FSA, 혹은 기타 "카페테리아 플랜"에 따라 귀하가 포함하지 않은 건강 저축 계정(HAS) 기여 금액을 입력하세요.
+    p-a7d9fc: 간행물 969, '건강 저축 계정 그리고 기타 세금 우대 건강 플랜'에 관하여(영어)
   modal-alimony-paid:
-    heading:
-    p-fa1de9:
-    p-7b97e1:
-    p-7948e4:
-    p-358bc5:
-    p-06a405:
-    p-4b335c:
+    heading: 지급된 이혼 수당
+    p-fa1de9: 년 1월 1일 전에 시행된 법원 명령에 따라 이혼 혹은 별거 수당을 지불했고 해당 명령이 귀하의 지원금을 공제할 수 없다는
+      구체적 언급이 없다면 2019 동안 납부한 금액을 여기에 입력하세요.
+    p-7b97e1: 다음 사항에 지불한 금액은 포함하지 마세요.
+    p-7948e4: <strong>가족 또는 자녀 양육비</strong>
+    p-358bc5: 법원 명령이 변경되었고 귀하가 납부금을 공제할 수 없다는 언급이 있다면 금액을 포함하지 마세요.
+    p-06a405: 2024년 12월 31일 이후에 집행된 법원 명령에 따라 지급된 위자료 또는 별거 수당
+    p-4b335c: 자세한 <a target="_blank" href="https://www.irs.gov/taxtopics/tc452" class="usa-link">정보는</a>
+      를 방문하세요.
   modal-early-withdrawal:
-    heading:
-    p-7e8d5b:
+    heading: 저축 조기 인출에 대한 과징금
+    p-7e8d5b: 만기 전 양도성 예금 증서나 기타 이연 이자 계정에서 자금을 인출한다면, 과징금이 부과될 수 있습니다. 귀하는 이 과징금에
+      대해 Box 2에 양식 1099- INT에서 확인할 수 있습니다. 해당 금액을 여기에 입력하세요.
   modal-moving-expenses:
-    heading:
-    p-6f18fd:
+    heading: 이사 비용
+    p-6f18fd: 귀하가 현역 군인이라면 그리고 군대에서 귀하에게 영구적으로 근무 기지를 변경하도록 명령했다면, 군에서 보상하지 않은 이사
+      비용을 여기에 입력하세요. 이사 비용에는 다음이 포함됩니다.
     ul-0:
-      li-60efa3:
-      li-efbbb1:
-    p-6536cb:
+      li-60efa3: 귀하의 이전 주택에서 새로운 곳으로 직접 이동
+      li-efbbb1: 개인 물품을 포장하고 이동하는 비용
+    p-6536cb: 자세한 <a target="_blank" href="https://www.irs.gov/taxtopics/tc455" class="usa-link">정보는</a>
+      를 방문하세요.
   modal-employee-business-expenses:
-    heading:
-    p-c92011:
+    heading: 특정 직원 사업 비용
+    p-c92011: 귀하가 다음과 같은 경우
     ul-0:
-      li-9bde67:
-      li-053ac1:
-      li-e03b09:
-      li-0d1488:
-    p-cc9b68:
-    p-d46373:
-    p-eb68a5:
+      li-9bde67: 예비군
+      li-053ac1: 적격 공연 예술가
+      li-e03b09: 고정 급여 주 혹은 지역 정부 공무원
+      li-0d1488: 장애 관련 작업 비용이 있는 직원
+    p-cc9b68: 귀하의 거래, 사업, 전문직업 영역에서 일반적으로 허용되는 비용 혹은 귀하의 사업에 도움이 되고 적절한 비용을 포함할 수
+      있습니다.
+    p-d46373: 목록의 카테고리 중 하나에 속하지 않는다면 이 비용에 대해 조정을 신청할 수 없습니다.
+    p-eb68a5: 자세한 정보와 전격 비용의 목록을 알고 <a target="_blank" href="https://www.irs.gov/forms-pubs/about-form-2106"
+      class="usa-link">싶다면</a>  를 확인하세요.
   modal-self-employed-health-insurance:
-    heading:
-    p-598073:
-    p-d60394:
-    p-13dece:
+    heading: 자영업 건강보험 소득공제
+    p-598073: 자영업자의 경우 자신, 배우자 자신의 부양가족을 위해 지불한 건강 보험 액수를 입력하세요.
+    p-d60394: 적격 보험료는 의료, 치과, 시력 및 장기 요양 보험이었습니다. 이 정책은 귀하 자신, 귀하의 배우자 및 귀하의 부양가족을 위한 것일 수 있습니다. 이 보험은 자녀가 부양가족이 아니더라도 연말에 27세 미만인 자녀에게도 적용될 수 있습니다.
+    p-13dece: 자세한 <a target="_blank" href="https://www.irs.gov/instructions/i7206"
+      class="usa-link">정보는</a> 의 6장을 참조하세요.
 /qualifying-children:
-  title:
-  h2-dbaf54:
-  p-9b177d:
-  p-c1a0dd:
-  p-3178be:
-  p-e28c1e:
-  p-adf161:
+  title: 적격 자녀
+  h2-dbaf54: 적격 자녀
+  p-9b177d: 귀하의 이전 입력에 따르면 귀하는 적격 자녀가 없습니다. 이것이 올바르지 않다면 <a class="usa-link" href="/app/eitc/filing-status/">Filing
+    Status</a>로 돌아가서 귀하의 답을 변경하세요.
+  p-c1a0dd: 결과를 확인하려면 다음 단계로 이동하세요.
+  p-3178be: 이 단계에서는 EITC 청구 및 계산을 위해 귀하의 자녀 또는 기타 친척 중 적격 자녀가 몇 명인지 확인합니다. 최대 3명의
+    적격 자녀까지 EITC를 청구할 수 있습니다.
+  p-e28c1e: 최대 3명의 적격 자녀까지 EITC를 신청할 수 있습니다
+  p-adf161: EITC 자격을 얻으려면 최소 한 명의 적격 자녀가 있어야 합니다.
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question:
-      modalLink:
+      question: 아이는 <fg-show path="/taxYear"/>년 중 절반 이상을 미국에서 부모와 함께 살았습니까?
+      modalLink: <modal-link for="modal-residency">귀하와 함께 산 시간으로 간주되는 것은 무엇입니까?</modal-link>
     fg-alert-b7d816:
-      heading:
-      p-7666ea:
+      heading: 근로 소득 세액공제를 받을 자격이 있는지 확인하세요
+      p-7666ea: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+        596</a>, Earned Income Credit.를 확인하세요.
     /familyAndHousehold/*/someoneElseCanClaim:
-      question:
-      modalLink:
+      question: 다른 사람이 이 아이를 EITC에 청구할 수 있습니까?
+      modalLink: <modal-link for="modal-claimed-someone-else">두 사람 이상이 청구할 수 있다면 어떻게
+        합니까?</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question:
-      modalLink:
+      question: 귀하의 자녀들이 특정 적격자에 의해 신청되었다면 EITC(근로 소득 세액공제)를 신청할 수 없습니다. 자녀 신청을 계속하기
+        원합니까?
+      modalLink: <modal-link for="modal-claimed-someone-else">두 사람 이상이 청구할 수 있다면 어떻게
+        합니까?</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
-      question:
-      modalLink:
+      question: 이 자녀가 결혼을 했습니까? 그리고 <fg-show path="/taxYear"/>년에 자녀가 자신의 배우자와 공동 신고를
+        하고 있나요?
+      modalLink: <modal-link for="modal-joint-return">공동 보고서를 제출하는 사람을 청구할 수 있습니까?</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
-      question:
-      modalLink:
+      question: 이 자녀가 오직 원천 징수된 세금 및 추정 예납 세금의 환급만을 위해 <fg-show path="/taxYear"/>년에
+        공동신고를 하였고 EITC등 세액 공제 신청을 하지 않았나요?
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">공동
+        보고서를 제출하는 사람을 언제 청구할 수 있습니까?</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question:
-      modalLink:
+      question: 이 자녀에게 영구적이면 완전한 장애가 있나요?
+      modalLink: <modal-link for="modal-disabled">영구적이고 완전한 장애로 간주되는 것은 무엇입니까?</modal-link>
     /familyAndHousehold/*/relationship:
-      question:
-      modalLink:
+      question: 귀하에게 자녀의 관계를 선택하세요.
+      modalLink: <modal-link for="modal-relationship">의붓자녀, 입양 자녀 또는 위탁 자녀로 간주되는 사람은
+        누구입니까?</modal-link>
       options:
         childStepFoster:
-          name:
+          name: 자녀, 의붓자녀, 입양자녀 혹은 위탁 자녀
         sibling:
-          name:
+          name: '형재자매, 이복 형제자매, 혹은 의붓 형제 자매 '
         descendant:
-          name:
+          name: 손자손녀, 조카
         none:
-          name:
+          name: 위에 해당 사항 없음
     /familyAndHousehold/*/ageRange:
-      question:
+      question: <fg-show path="/taxYear"/>년에 이 자녀가 몇 살인가요?
       options:
         under19:
-          name:
+          name: 만 18세 이하
         between19And23:
-          name:
+          name: 만 19세 이상 만 23세 미만
         over24:
-          name:
+          name: 만 24세 이상
     /familyAndHousehold/*/isFullTimeStudent:
-      question:
-      modalLink:
+      question: 이 자녀가 연간 5개월의 부분동안 전일제 학생입니까?
+      modalLink: <modal-link for="modal-student">그들이 풀타임 학생인지 어떻게 알 수 있습니까?</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question:
-      modalLink:
+      question: 해당 부양가족은 귀하보다 나이가 어립니까?
+      modalLink: <modal-link for="modal-age-comparison">왜 그들이 <span condition="/isFilingStatusMFJ"
+        operator="isFalse">귀하</span><span condition="/isFilingStatusMFJ" operator="isTrue">귀하
+        또는 귀하의 배우자</span>보다 어린지 묻는 이유는 무엇입니까?</modal-link>
     /familyAndHousehold/*/validSSN:
-      question:
-      modalLink:
+      question: 신고서 제출 기한(연장 포함) 이전에 발급받은 사회 보장 번호를 이 자녀가 갖고 있습니까?
+      modalLink: <modal-link for="modal-valid-ssn-qc">유효한 사회 보장 번호가 요구됩니다.</modal-link>
     fg-alert-a004cd:
-      heading:
-      p-8374d8:
-    h2-eaf308:
-  p-5aea65:
+      heading: 알아두세요.
+      p-8374d8: 이 자녀는 귀하의 적격 자녀입니다. 하지만 유효한 SSN을 갖고 있지 않다면, 해당 자녀로 인해 귀하는 증가된 근로 소득
+        공제에 적격이 되지 않습니다.
+    h2-eaf308: 이 자녀는 EITC를 청구하고 계산할 수 있는 자격이 있습니다.
+  p-5aea65: 입력한 내용에 따르면 유효한 사회 보장 번호를 가진 적격 자녀가 3명이며 EITC를 청구할 수 있는 최대 인원에 도달했습니다.
   fg-alert-9510e7:
-    heading:
-    p-b6bd9e:
-    p-93a6b5:
+    heading: 적격 자녀 요구 사항
+    p-b6bd9e: 귀하 또는 귀하의 배우자가 공동 신고서를 제출하고 나이가 25세에서 64세 사이가 아니라면, 귀하는 적격 자녀가 없는 EITC에
+      적격하지 않습니다.
+    p-93a6b5: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  h2-34370a: 
+    heading: 근로 소득 세액 공제(EITC)를 받을 자격이 없습니다.
+    p-cdf53e: 귀하가 입력한 금액에 따라 귀하의 근로 소득은 귀하의 신고 지위의 한도와 적격 자녀의 수를 초과하였으므로 귀하는 근로 소득
+      공제를 신청하지 못합니다.
+    p-93a6b5: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
+  h2-34370a: 입력한 내용에 따르면, 유효한 사회 보장 번호를 가진 적격 자녀 수는 <fg-show path="/eitcQualifyingChildren"/>명입니다.
   modal-residency:
-    heading: 
-    h3-7c913b:
-    p-ff8f12:
-    h3-46d8f4:
-    p-e27b79:
-    h3-16617c:
-    p-c623b2:
-    h3-6839b6:
-    p-658cca:
+    heading: 거주 요건 테스트
+    h3-7c913b: 귀하와 함께 사는
+    p-ff8f12: 자격을 갖춘 자녀는 <fg-show path="/taxYear"/>년 중 절반 이상을 귀하와 동일한 주 거주지에 거주해야
+      하며, 해당 거주지가 미국에 있어야 합니다. 미국에는 50개 주와 컬럼비아 특별구가 포함됩니다. 푸에르토리코 또는 괌과 같은 미국령은 포함되지
+      않습니다. EITC의 경우, IRS는 연장된 현역 복무로 미국 외 지역에 주둔하는 미국 군인을 해당 복무 기간 동안 미국에 주 거주지가
+      있는 것으로 간주합니다.
+    h3-46d8f4: 자녀의 탄생 혹은 죽음
+    p-e27b79: <fg-show path="/taxYear"/>년에 출생하거나 죽은 자녀가 있다면, 자녀는 반드시 살아 있던 그 해의 기간의
+      반 이상 동거해야 합니다.
+    h3-16617c: 입양 자녀 및 위탁 자녀
+    p-c623b2: '귀하가 <fg-show path="/taxYear"/>년에 자녀를 입양한 경우, 해당 아동이 <fg-show path="/taxYear"/>년에
+      합법적으로 입양될 수 있도록 귀하와 합법적으로 함께 있었거나. 또는 해당 아동이 <fg-show path="/taxYear"/>3년에 귀하에게
+      입양된 적격 위탁 아동인 경우, 귀하의 주 거주지는 <fg-show path="/taxYear"/>4년에 귀하에게 입양되거나 배정된 이후
+      절반 이상 동안 이 자녀의 주 거주지여야 합니다. '
+    h3-6839b6: 일시적 부재
+    p-658cca: EITC의 경우 임시 부재는 귀하와 동거한 시간으로 간주합니다. 예는 다음과 같습니다.
     ul-0:
-      li-76cf60:
-      li-1b3986:
-      li-dae417:
-      li-de99d6:
-    p-8b99ed:
+      li-76cf60: 질병 혹은 입원
+      li-1b3986: 학교 출석, 방학, 사업 혹은 군서비스
+      li-dae417: 소년 교도시설에 구류
+      li-de99d6: 유괴당한 아이
+    p-8b99ed: 이 선택은 귀하의 EITC를 증가 혹은 감소시킬 수 있습니다. 더 자세한 <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">정보는</a> 를 확인하세요.
   modal-joint-return:
-    heading:
-    p-9b8921:
-    p-bdfc89:
+    heading: 다른 사람과 함께 공동 신고
+    p-9b8921: 귀하는 기혼 자녀가 공동신고를 한다면 일반적으로 EITC를 위한 적격 자녀로 해당 자녀를 신청할 수 없습니다.
+    p-bdfc89: 간행물 596,근로 소득 공제, 공동 신고서 요건(영어)
   modal-joint-return-with-another-person-exception:
-    heading:
-    p-93a25e:
-    p-bdfc89:
+    heading: 다른 사람과 함께 공동 신고 예외
+    p-93a25e: 자녀가 자신의 급여에서의 원천 징수된 소득세와 추정 예납액을 환급받기 위한 목적으로만 배우자와 공동 신고를 하고 있다면,
+      공동 신고를 하는 기혼자를  EITC를 위 적격 자녀로 신청할 수도 있습니다.
+    p-bdfc89: 간행물 596,근로 소득 공제, 공동 신고서 요건(영어)
   modal-disabled:
-    heading:
-    p-a09e23:
+    heading: 영구적이며 완전한 장애
+    p-a09e23: EITC의 경우 다음의 두경우가 모두 참이면 영구적이고 완전한 장애로 여깁니다.
     ul-0:
-      li-35e112:
-      li-f9618f:
-    p-de127e:
+      li-35e112: 자녀는 육체적 정신적 질병으로 최소 급여 이상을 경쟁적 작업 환경에서 급여 혹은 이윤을 위해 일하는 타당한 기간 이상
+        유의미한 의무를 이행할 수 없습니다.
+      li-f9618f: 이 질병이 지속되면 적어도 1년 이상 지속될 수 있다고 기대할 수 있으며 죽음에 이를 수도 있다고 의사가 결정합니다.
+    p-de127e: 간행물 596, 근로 소득 공제, 영구 및 완전한 장애(영어)
   modal-relationship:
-    heading:
-    h3-523a2e:
-    p-3a1769:
-    h3-3cc097:
-    p-165b15:
-    h3-872822:
-    p-d91342:
-    h3-2fd110:
-    p-b80621:
+    heading: 자녀 관계 정의
+    h3-523a2e: 의붓 자녀
+    p-3a1769: 의붓 관계는 결혼에 의해 형성된 관계입니다. EITC의 경우, 결혼에 의해 형성된 관계 예를 들어 의붓딸, 의붓아들, 의붓형제
+      혹은 자매의 관계는 결혼의 지속과 관계없이 계속됩니다.
+    h3-3cc097: 입양 자녀
+    p-165b15: 입양 자녀는 항상 귀하 자신의 자녀로 여깁니다. 이 조건에는 귀하가 법적으로 법적 입양을 위해 귀하와 함께 하도록 위탁된
+      아이를 포함합니다.
+    h3-872822: 위탁 자녀
+    p-d91342: 해당 자녀가 승인된 위탁 기관 혹은 법원 명령에 의해 귀하에게 위탁되었다면 귀하는 위탁 자녀로 신청할 수 있습니다.
+    h3-2fd110: 승인 위탁 기관
+    p-b80621: 이 조건에는 주 혹은 지역 정부 기관 혹은 인디안 부족 정부가 포함됩니다. 주 혹은 인디안 부족 정부에 의해 허가된 면세
+      기관을 포함합니다.
   modal-student:
-    heading:
-    h3-f803ae:
-    p-ef6d3a:
-    p-69b838:
-    h3-754ddf:
-    p-dfaecc:
+    heading: 전일제 학생
+    h3-f803ae: 전일제 학생
+    p-ef6d3a: 전일제 학생으로 여겨지기 위해 학생들은 반드시 전일제 출석으로 간주되는 학교의 시간과 과정의 수만큼 등록해야 합니다.
+    p-69b838: 민간 산업에서 학교의 정규 과정의 수업과 실습 훈련의 일부로 "산업 연계 교육(co-up)" 작업에 투입된 학생은 전일제
+      학생으로 간주됩니다.
+    h3-754ddf: 학교 정의
+    p-dfaecc: EITC의 경우, 학교는 다음과 같습니다.
     ul-0:
-      li-5f78b0:
-      li-f8aab3:
-      li-39d2fa:
-      li-96892f:
-    p-986cc5:
+      li-5f78b0: 초등학교
+      li-f8aab3: 중학교 혹은 고등학교
+      li-39d2fa: 전문 대학 및 대학
+      li-96892f: 기술, 무역, 기계 학교
+    p-986cc5: 다음의 경우는 학교가 아닙니다.
     ul-1:
-      li-775eb9:
-      li-b2e8f2:
-      li-767c35:
-    p-81198a:
+      li-775eb9: 실습 훈련 과정
+      li-b2e8f2: 방송 통신 대학
+      li-767c35: 인터넷을 통해서만 과정을 제공하는 학교
+    p-81198a: 자세한 정보는  <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit.를 확인하세요.
   modal-valid-ssn-qc:
-    heading:
-    p-d68f7a:
-    p-0464ad:
-    p-a708ff:
-    p-558a40:
+    heading: 적격 자녀에 대한 유효한 사회 보장 번호
+    p-d68f7a: 귀하의 EITC의 금액은 SSN을 가진 적격 자녀의 수에 의존합니다. EITC의 액수를 계산하기 위해 각 자녀 혹은 친척은
+      반드시 사회보장국에서 귀하의 세금 신고 기한 이전(연장기간 포함)에 발급한 유효한 사회보장 번호(SSN)을 가져야합니다.
+    p-0464ad: EITC의 경우, SSN은 "고용 불가"라고 사회보장 카드에 프린트되어 있지 않고 SSN 수령자를 연방 자금 지원 혜택에
+      지원하거나 받도록 허용하기 위해서만 발급된 숫자가 아니라면 유효한 SSN입니다. 연방 자금 지원 혜택의 예는 메디케이드입니다.
+    p-a708ff: '우리는 "Valid for work with DHS authorization (국토 안보부의 승인에 의한 취업이 유효)"
+      라고 사회 보장 카드에 쓰여 있는 카드는 DHS 허가가 유효한 한 받아줍니다. '
+    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-19d3d7:
+      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
+      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
+      li-19d3d7: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
   modal-claimed-someone-else:
-    heading:
-    p-9b277e:
-    p-911aff:
+    heading: 누군가 다른 사람의 세금 신고서에 신청된
+    p-9b277e: 오직 한 명만 EITC를 위해 각각의 자녀를 신청할 수 있습니다. 한 명 이상이 해당 자녀를 신청하게 되면 국세청은 우선순위
+      규칙을 적용합니다.
+    p-911aff: 간행물 596, ‘근로 소득 공제, 귀하의 적격 자녀는 한 명 이상의 사람에 의해 신청될 수 없습니다’(영어)
   modal-age-comparison:
-    heading:
-    p-626c78:
-    p-1a035f:
+    heading: 자녀는 반드시 귀하와 귀하의 배우자보다 어려야 합니다.
+    p-626c78: 적격 자녀가 되기 위해 자녀가 <fg-show path="/taxYear">년에 영구적으로 완전하게 장애가 있는 것이 아니라면
+      반드시 귀하 혹은 귀하의 배우자보다 어려야 합니다.
+    p-1a035f: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">간행물
+      596</a>, 근로 소득 세액 공제, 연령 테스트를 참조하십시오.
 /results:
-  title:
-  h2-88e7ef:
+  title: 결과
+  h2-88e7ef: 귀하의 결과
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  p-578b13:
-  p-adf6bb:
-  h2-259962:
-  p-508e29:
-  h3-54f664:
-  p-a5939a:
-  p-3ef53a:
-  h3-792a4e:
-  p-787398:
-  p-25a83e:
-  h3-c7457b:
-  p-b8834f:
-  h2-a3da4a:
-  p-5a6eac:
+    heading: 근로 소득 세액공제를 받을 자격이 있는지 확인하세요
+    p-cdf53e: 귀하가 제공한 정보에 따르면 귀하의 근로 소득이 귀하의 납세자 신분 및 적격 자녀 수에 대한 한도를 초과하므로 근로 소득
+      공제를 신청할 수 없습니다.
+    p-93a6b5: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+      596</a>, 근로 소득 세액 공제를 참조하십시오.
+  p-578b13: 귀하가 제공한 정보에 기초하여 귀하는 다음의 추정 근로 소득 세액공제액에 대해 적격입니다.
+  p-adf6bb: 이 공제액은 귀하가 귀하의 세금 신고서를 국세청에 제출할 때 귀하의 <fg-show path="/taxYear"/>년 세금을
+    감소시킬 것입니다. 이 공제가 귀하의 세금을 0보다 적은 수까지 감소시키면 귀하는 환급을 받게 됩니다.
+  h2-259962: '다음 단계: EITC 신청 방법'
+  p-508e29: 추정액 <strong><fg-show path="/earnedIncomeCredit"/></strong>*를 받기 위해 귀하는
+    반드시 귀하의 <fg-show path="/taxYear"/>년 연방 세금 신고서를 제출해야 합니다. EITC를 신청하면 법적으로 IRS 는
+    EITC와 관계 없는 부분까지도 <fg-show path="/nextTaxYear"/>년 2월 중순 전에는 귀하의 세금 환급을 할 수 없습니다.
+  h3-54f664: 온라인
+  p-a5939a: 귀하가 귀하의 세금을 온라인으로 신고하고 싶다면 귀하는 국세청 무료 신고 프로그램(Free File Program)을 사용하는데
+    적격입니다. 이 프로그램은 1월에서 10월 사이에만 가능하다는 것을 알아두세요.
+  p-3ef53a: <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+    지금 온라인으로 신고하기<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-792a4e: 대면
+  p-787398: 귀하가 직접 세무 대리인을 만나서 작업하는 것을 선호한다면, 귀하는 IRS 자원봉사자 소득세 지원(VITA)) 클리닉에 대면
+    지원을 받을 옵션이 있습니다.
+  p-25a83e: <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+    무료 대면 지원<span class="usa-sr-only"> (opens in a new tab)</span>        </a>
+  h3-c7457b: 종이 양식
+  p-b8834f: 적격 자녀가 있으므로        <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040">
+    스케줄 EIC (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        를
+    작성하여 <fg-show path="/taxYear"/> 과세 연도의        <a target="_blank" class="usa-link"
+    href="https://www.irs.gov/forms-pubs/about-form-1040"> 양식 1040 (PDF)<span class="usa-sr-only">
+    (opens in a new tab)</span>        </a>        또는        <a target="_blank" class="usa-link"
+    href="https://www.irs.gov/forms-pubs/about-form-1040"> 양식 1040-SR (PDF)<span class="usa-sr-only">
+    (opens in a new tab)</span>        </a>        에 첨부해야 합니다.
+  h2-a3da4a: 귀하의 정보 요약
+  p-5a6eac: 아래 표는 이 도구에서 귀하가 입력한 정보의 요약입니다. 이 정보가 올바르지 않다면 에디트를 눌러 업데이트하세요. 그렇지 않으면
+    귀하의 결과에 영향을 줄 수 있습니다.
   table-0:
     tbody-0:
       tr-0:
-        th-537c66:
-        td-0da7c7:
-        td-fba314:
+        th-537c66: 연도
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">본인 정보 수정</a>
       tr-1:
-        th-c01d87:
-        td-86d753:
-        td-7a1efb:
+        th-c01d87: 신고 지위
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">보고 상태 수정</a>
       tr-2:
-        th-b1d475:
-        td-5637e9:
-        td-1c1ab4:
+        th-b1d475: 조정 총 소득
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">소득 및 조정 수정</a>
       tr-3:
-        th-40c7ae:
-        td-d604bc:
-        td-387fc0:
+        th-40c7ae: 근로 소득
+        td-d604bc: 총 임금 및 급여<fg-show path="/jobsIncomeTotal"/>
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">소득 수정</a>
       tr-4:
-        th-dbaf54:
-        td-4ea2d8:
-        td-9efa8d:
-  p-35b0d2:
+        th-dbaf54: 적격 자녀
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">적격 자녀
+          수정</a>
+  p-35b0d2: 을 사용해 귀하의 환급 현황, 세금 납부, 무료 세금 신고 준비 지원, 도우되는 세무팁 구독 등을 할 수 있습니다.

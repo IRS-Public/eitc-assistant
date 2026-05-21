@@ -1,11 +1,11 @@
-
 /:
-  title:
-  h2-5e286b:
-  p-c2c8a0:
+  title: Enfòmasyon Jeneral
+  h2-5e286b: Enfòmasyon Jeneral
+  p-c2c8a0: Reponn kèk ti kesyon byen rapid konsènan oumenm pou ou konnen si ou kalifye
   /chosenTaxYear:
-    question:
-    modalLink:
+    question: Seleksyone ane fiskal ou ta renmen verifye kalifikasyon EITC ou pou
+      li a :*
+    modalLink: <modal-link for="modal-tax-year">Ki ane m ta dwe itilize?</modal-link>
     options:
       '2025':
         name: '2025'
@@ -14,925 +14,1316 @@
       '2023':
         name: '2023'
   /isUSCitizenOrResidentAlien:
-    question:
-    modalLink:
+    question: Èske ou te yon sitwayen ameriken oubyen rezidan etranje pou tout ou
+      <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-citizen">Èske m kalifye kòm sitwayen ameriken
+      oswa kòm yon moun ki abite nan peyi a pou jwenn EITC?</modal-link>
     options:
       'true':
-        name:
+        name: Wi
       'false':
-        name:
+        name: Non
   fg-alert-8b7db9:
-    heading:
-    p-091688:
-    p-f72c3e:
-    p-b85d77:
-    p-93a6b5:
-    p-4c0c0d:
-    p-236b69:
-    p-5e637b:
-    p-ec145e:
-    p-363ef2:
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-091688: Ou dwe yon sitwayen ameriken oubyen rezidan etranje pou reklame kredi
+      taks sou revni ou fè. Gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit., pou detèmine si w se yon etranje k ap viv Ozetazini
+      pandan tout ane a.
+    p-f72c3e: 'Seleksyone: yes si w ap ranpli yon deklarasyon kolektif ak konjwen
+      ou pou <fg-show path="/taxYear"/> epi ou menm oubyen konjwen ou te yon sitwayen
+      ameriken oubyen rezidan etranje pandan tout ane a.'
+    p-b85d77: Ou pa kapab aplike pou EITC paske ou pa gen yon nimewo Sekirite Sosyal
+      ki valab ki te bay nan dat delè deklarasyon taks ou a.
+    p-93a6b5: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
+    p-4c0c0d: Ou pa ka reklame kredi revni ou touche a si w ranpli <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Fòm 2555</a>,
+      Revni Touche nan Peyi Etranje.
+    p-236b69: Piblikasyon 54, Tax Guide for U.S. Citizens and Foreign Resident Aliens,
+    p-5e637b: Ou pa kalifye pou EITC si ou se pitit yon lòt moun ki kalifye pou EITC.
+    p-ec145e: Pou plis enfòmasyon sou si yon moun ka reklame w kòm yon timoun ki kalifye
+      pou EITC a, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
+      596</a>, Kredi Revni Ou Touche, Ou Pa Ka Yon Timoun Ki Kalifye Pou Yon Lòt Moun
+      Kap Peye Taks.
+    p-363ef2: Ou pa elijib pou EITC si ou depann de yon lòt moun, sof si ou gen yon
+      timoun ki kalifye pou EITC.
   /hasValidSSN:
-    question:
-    modalLink:
+    question: Èske w gen yon nimewo sekirite sosyal ki valab ki te bay nan dat limit
+      oubyen anvan deklarasyon taks <fg-show path="/taxYear"/> (ki gen ladan ekstansyon)?
+    modalLink: <modal-link for="modal-valid-ssn-filer">Yon nimewo sekirite sosyal
+      valab obligatwa</modal-link>
     options:
       'true':
-        name:
+        name: Wi
       'false':
-        name:
+        name: Non
   /hasForeignEarnedIncome:
-    question:
-    modalLink:
+    question: Ou depoze Fòmilè 2555, Revni Ou Fè Aletranje?
+    modalLink: <modal-link for="modal-foreign-income">Revni ki Touche Aletranje ki
+      eskli nan Revni Brit</modal-link>
     options:
       'true':
-        name:
+        name: Wi
       'false':
-        name:
+        name: Non
   /isClaimedAsDependent:
-    question:
-    modalLink:
+    question: Èske yon lòt moun pral rapòte w kòm yon timoun depandan oubyen ki kalifye
+      pou EITC sou deklarasyon taks yo?
+    modalLink: <modal-link for="modal-claimed-dependent">Ou kòm yon timoun depandan
+      oubyen ki kalifye</modal-link>
     options:
       'true':
-        name:
+        name: Wi
       'false':
-        name:
+        name: Non
   /ageRange:
-    question:
+    question: Tanpri Seleksyone seri ki dekri laj ou nan fen <fg-show path="/taxYear"/>.
     options:
       under24:
-        name:
+        name: 24 lane ak pi piti
       age25to64:
-        name:
+        name: Ant 25 ak 64 lane
       65andOlder:
-        name:
+        name: 65 an epi pi gran
   modal-tax-year:
-    heading:
-    p-aa5a47:
+    heading: Ane taksasyon
+    p-aa5a47: 'Pou salè ak lòt revni ou touche nan:'
     ul-0:
-      li-28dd34:
-      li-174a8b:
-      li-0a25dc:
+      li-28dd34: 2025, seleksyone 2025
+      li-174a8b: 2024, seleksyone 2024
+      li-0a25dc: 2023, seleksyone 2023
   modal-citizen:
-    heading:
-    p-18e680:
-    p-fe70ca:
-    p-2c8f8f:
+    heading: Sitwayen ameriken oubyen etranje rezidan
+    p-18e680: Si w pa yon sitwayen ameriken, yo konsidere w kòm yon etranje.
+    p-fe70ca: Yo konsidere w kòm yon etranje rezidan pou EITC si w gen yon kat vèt
+      oubyen si w ap viv Ozetazini pou plis pase yon sèten kantite jou.
+    p-2c8f8f: Pou plis enfòmasyon ak eksepsyon enpòtan, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Publication 596</a>, Earned Income
+      Credit.
   modal-valid-ssn-filer:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: Nimewo sekirite sosyal valab
+    p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
+      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2025 ou a oswa anvan (ki
+      gen ladan ekstansyon yo).
+    p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
+      DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
+      si otorizasyon an toujou valid.
+    p-558a40: 'Pou EITC a, nou pa aksepte:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
+      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
+      li-9f487b: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
+        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
+      li-a69a30: Nimewo Sekirite Sosyal ki te pibliye apre dat limit delarasyon an,
+        ki gen ladan ekstansyon yo
+    p-f554f7: Gade Piblikasyon 596 pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal
+      ki valid.
   modal-foreign-income:
-    heading:
-    p-f45b03:
+    heading: Revni ki Touche Aletranje ki eskli nan Revni Brit
+    p-f45b03: Sa a se revni ou te touche andeyò peyi Etazini, Distri Columbia, oubyen
+      byen oubyen teritwa Etazini ke ou Seleksyone pou eskli <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/forms-pubs/about-form-2555">sou</a>
   modal-claimed-dependent:
-    heading:
-    p-faf8d8:
-    p-98d6db:
-    p-038f13:
-    p-ceda6c:
-    p-d11380:
-    p-16aba9:
+    heading: Ou kòm yon timoun depandan oubyen ki kalifye
+    p-faf8d8: Nan pifò ka yo, ou pa kapab yon timoun depandan oubyen elijib yon lòt
+      kontribyab epi reklame EITC.
+    p-98d6db: Nan pifò ka yo, si w gen mwens pase 19 oubyen se yonetidyan anba 24
+      lane epi w ap viv ak paran w oubyen lòt fanmi Ozetazini pou plis pase mwatye
+      ane a, Seleksyone <strong>Yes</strong>.
+    p-038f13: Si ou marye epi w ap ranpli yon deklarasyon konjwen, yo pa ka deklare
+      w kòm yon depandan, sof si w ap ranpli yon deklarasyon konjwen sèlman pou reklame
+      yon ranbousman taks sou revni yo te pran oswa estimasyon taks ki peye.
+    p-ceda6c: Pou chèche konnen si yon moun ka reklame ou kòm yon depandan, <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">vizite</a>
+    p-d11380: Pou plis enfòmasyon sou si yon moun ka deklare w yon timoun ki kalifye
+      pou EITC, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">gade</a>
+      .
+    p-16aba9: N ap poze w kesyon sou timoun oubyen paran ou ka reklame pita.
   modal-primary-claimed-as-dependent:
-    heading:
-    p-d3187d:
-    p-762495:
+    heading: Kijan mwen fè konnen si mwen se depandan yon moun?
+    p-d3187d: Si ou te depann de yon lòt moun (apa de mari oswa madanm ou) pou sipò nan <fg-show path="/taxYear"/>, yo ta ka kapab deklare ou kòm yon depandan sou deklarasyon taks federal yo.
+    p-762495: 'Gen kèk faktè ki detèmine si yon moun ka deklare w kòm yon depandan, tankou:'
     ul-0:
-      li-b17276:
-      li-c82d5e:
-      li-5a5073:
-    p-752de3:
-    p-5a0201:
+      li-b17276: Relasyon ou genyen ak moun sa a
+      li-c82d5e: Konbyen yo te sipòte w, nan domèn finansye ak lòt fason
+      li-5a5073: Si ou te viv avèk yo ak pou konbyen tan
+    p-752de3: Revize Tablo 5 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">Piblikasyon 501 IRS</a> pou detèmine si yon lòt moun ta ka kapab deklare w kòm depandan.
+    p-5a0201: Kenbe nan tèt ou ke ou pa depandan yon lòt moun si ou te peye pou plis pase mwatye nan pwòp sipò pa ou (oswa si mari oswa madanm ou te fè sa).
   modal-confirm-tax-year-change:
-    heading:
-    p-31c7da:
-    button-70d9be:
-    button-ea4788:
+    heading: 'Atansyon:'
+    p-31c7da: Si ou chanje <strong>ane</strong> a sa ap efase done ou te antre deja
+      yo. Èske ou toujou vle kontinye?
+    button-70d9be: Pou konfime
+    button-ea4788: Anile
 /filing-status:
-  title:
-  h2-c01d87:
-  p-9bda8f:
+  title: Kondisyon Fiskal
+  h2-c01d87: Kondisyon Fiskal
+  p-9bda8f: Nan etap sa a, yo pral mande w ki jan ou fè plan pou depoze <fg-show path="/taxYear"/>
+    ou.
   /knowsFilingStatus:
-    question:
+    question: Èske w konnen estati ranplisaj w ap itilize lè w ap ranpli w la <fg-show
+      path="/taxYear"/> taxes?
   /initialFilingStatus:
-    question:
-    modalLink:
+    question: 'Tanpri Seleksyone estati ranplisaj w ap itilize lè w ap ranpli taks
+      pou <fg-show path="/taxYear"/>:'
+    modalLink: <modal-link for="modal-filing-status">Ki estati deklarasyon m ta dwe
+      itilize?</modal-link>
     options:
       single:
-        name:
+        name: Sèlman
       marriedFilingJointly:
-        name:
+        name: Marye Depoze ansanm
       marriedFilingSeparately:
-        name:
+        name: Veterinè cheval ranpli separeman
       headOfHousehold:
-        name:
+        name: chèf fanmi
       qualifiedSurvivingSpouse:
-        name:
+        name: Konjwen Vivan ki Kalifye
   /maritalStatus:
-    question:
-    modalLink:
+    question: Kisasitiyasyon sivil ou te ye 31 desanm, <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-legal-separation">Kisa sa vle di pou ou marye
+      epi separe legalman?</modal-link>
     options:
       married:
-        name:
+        name: Marye
       divorced:
-        name:
+        name: Divòse oubyen separe legalman
       widowed:
-        name:
+        name: Konjwen Vivan ki Kalifye
       single:
-        name:
+        name: Pa t Janm Marye
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question:
+    question: Ki lè konjwen ou te mouri?
     options:
       taxYear:
-        name:
+        name: Pandan <fg-show path="/taxYear"/>
       taxYearMinusOneOrTwo:
-        name:
+        name: Pandan 2023 oubyen 2024
       beforeTaxYearMinusTwo:
-        name:
+        name: Anvan 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question:
+    question: Ki lè konjwen ou te mouri?
     options:
       taxYear:
-        name:
+        name: Pandan 2024
       taxYearMinusOneOrTwo:
-        name:
+        name: Pandan 2022 oubyen 2023
       beforeTaxYearMinusTwo:
-        name:
+        name: Anvan 2022
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question:
+    question: Ki lè konjwen ou te mouri?
     options:
       taxYear:
-        name:
+        name: Pandan 2023
       taxYearMinusOneOrTwo:
-        name:
+        name: Pandan 2021 oubyen 2022
       beforeTaxYearMinusTwo:
-        name:
+        name: Anvan 2021
   /isHOHMarried:
-    question:
+    question: Ou marye?
   /intendsToFileJointlyWidow:
-    question:
-    modalLink:
+    question: Èske ou gen entansyon ranpli yon deklarasyon kolektif ak konjwen ou
+      ki mouri pou <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">Èske ou te gen dwa fè
+      yon deklarasyon kolektif ak konjwen ou pou ane lanmò li a?</modal-link>
   /intendsToFileJointlyMFJ:
-    question:
-    modalLink:
+    question: Èske ou menm ak konjwen ou planifye pou fè yon deklarasyon kolektif?
+    modalLink: <modal-link for="modal-joint-return-mfj">Marye Depoze ansanm</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question:
-    modalLink:
+    question: Eske ou menm ak mari oubyen madanm ou te gen menm rezidans prensipal
+      la pandan 6 dènye mwa yo <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-spouse-lived-together">Kisa sa vle di pou mari
+      ak madanm ap viv ansanm?</modal-link>
   /samePrincipalResidenceLast6Months:
-    question:
+    question: Eske ou menm ak mari oubyen madanm ou te gen menm rezidans prensipal
+      la pandan 6 dènye mwa yo <fg-show path="/taxYear"/>?
   /writableSeparationAgreement:
-    question:
+    question: Èske ou te separe legalman dapre lwa eta w la dapre yon akò separasyon
+      ekri, oswa yon dekrè pou antretyen separe epi ou pa t abite avèk mari oswa madanm
+      ou nan dènye jou <fg-show path="/taxYear"/> lan? ?
   /entitledToPreviouslyFileJointReturn:
-    question:
+    question: Èske ou te gen dwa fè yon deklarasyon kolektif ak konjwen ou pou ane
+      lanmò li a?
   /paidMoreThanHalfHomeCostsForChild:
-    question:
-    modalLink:
+    question: An <fg-show path="/taxYear"/>, èske ou te peye plis pase mwatye nan
+      depans antretyen yon kay kote ou te rete a ki te tou rezidans prensipal pitit
+      ou a, bofis ou oubyen pitit adoptif ou pou tout <fg-show path="/taxYear"/> (ki
+      gen ladan absans tanporè)?
+    modalLink: <modal-link for="modal-keeping-up-home">Ki jan m ka kalkile "Koute
+      pou Kenbe Yon Kay"?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question:
-    modalLink:
+    question: Èske ou ka reklame pitit ou a oubyen bofi ou ki te rete avèk ou kòm
+      yon depandan pandan <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-claiming-dependents">Ki moun mwen ka reklame
+      kòm yon depandan?</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question:
-    modalLink:
+    question: 'Èske ou ta ka reklame pitit ou a oswa bofis/bèlfi ou kòm yon moun ki
+      depann EKSÈPTE ke, pou <fg-show path="/taxYear"/>: 1) Timoun nan te gen revni
+      brit ki te pi wo pase limit <fg-show path="/eitcChildGrossIncomeLimit"/> pou
+      <fg-show path="/taxYear"/>; 2) Timoun nan te fè yon deklarasyon ansanm; oswa
+      3) Ou ta ka reklame kòm yon moun ki depann sou deklarasyon yon lòt moun?'
+    modalLink: <modal-link for="modal-claiming-dependents">Ki moun mwen ka reklame
+      kòm yon depandan?</modal-link>
   /homeUpkeepScenario:
-    question:
-    modalLink:
+    question: Èske ou te peye plis pase 50% nan depans pou antretyen yon kay??
+    modalLink: <modal-link for="modal-keeping-up-home">Kijan mwen ka kalkile &quot;Kenbe
+      Yon Kay&quot;?</modal-link>
     options:
       livedWithDependent:
-        name:
+        name: Kote ou te rete plis pase mwatye ane a ak yon depandan (tankou yon timoun,
+          pitit pitit, frè ak sè, nyès, neve, paran oubyen granparan)
       custodialParentNonDependent:
-        name:
+        name: Kote ou te viv plis pase mwatye ane a ak yon timoun ki pa nan swen ou
+          menm si ou se paran gadyen an (akòz règ pou timoun ki gen paran divòse oubyen
+          separe)
       dependentParentElsewhere:
-        name:
+        name: Pou yon fanmi ou ka reklame kòm yon depandan, men ki pa t ap viv avèk
+          ou
       none:
-        name:
+        name: Okenn nan repons sa yo
   /secondaryFilerHasValidSSN:
-    question:
-    modalLink:
+    question: Èske konjwen ou gen yon nimewo Sekirite Sosyal ki valab ki te bay nan
+      dat limit la oubyen anvan deklarasyon taks <fg-show path="/taxYear"/> a (ki
+      gen ladan ekstansyon)?
+    modalLink: <modal-link for="modal-valid-ssn">Yon nimewo sekirite sosyal valab
+      obligatwa</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question:
-    modalLink:
+    question: Èske konjwen ou te gen yon nimewo sekirite sosyal valab nan jou lanmò
+      li a?
+    modalLink: <modal-link for="modal-valid-ssn">Yon nimewo sekirite sosyal valab
+      obligatwa</modal-link>
   /spouseAliveEndOfTaxYear:
-    question:
+    question: Eske konjwen ou te vivan le 31 desanm, <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
-    question:
+    question: Tanpri Seleksyone seri laj ki pi byen dekri laj konjwen ou nan fen <fg-show
+      path="/taxYear"/>.
     options:
       under24:
-        name:
+        name: 24 lane ak pi piti
       age25to64:
-        name:
+        name: Ant 25 ak 64 lane
       65andOlder:
-        name:
+        name: 65 lane ak plis
   /primaryFilerIsClaimingQualifyingChildren:
-    question:
-    modalLink:
+    question: Èske w gen plan pou reklame timoun oswa lòt fanmi ki gen nimewo Sekirite
+      Sosyal valid pou EITC?
+    modalLink: <modal-link for="modal-qualifying-child-eitc">Èske yon lòt moun kapab
+      deklare timoun sa a pou EITC a?</modal-link>
   /hasLivedInUSMore6Months:
-    question:
-    modalLink:
-  h2-7864de:
+    question: Èske rezidans prensipal ou te Ozetazini pou plis pase mwatye <fg-show
+      path="/taxYear"/>?
+    modalLink: <modal-link for="modal-main-home-us">Kisa k konte kòm yon kay prensipal
+      nan peyi Etazini?</modal-link>
+  h2-7864de: Tou depan de chwa w yo, estati ranplisaj la se <fg-show path="/flowReadableFilingStatus"/>.
   fg-alert-334e2e:
-    heading:
-    p-b6bd9e:
-    p-ae739d:
-    p-47ef52:
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-b6bd9e: Ou pa kalifye pou EITC a san yon timoun kalifye sof si ou, oswa konjwen
+      w lan si n ap fè yon deklarasyon konjwen, genyen ant 25 ak 64 lane.
+    p-ae739d: Pou jwenn plis enfòmasyon, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Piblikasyon 596, Kredi Revni Ou
+      Touche</a>.
+    p-47ef52: Ou kapab reklame EIC a si ou marye, si ou pa ranpli yon deklarasyon
+      konjwen, si ou te gen yon timoun ki kalifye ki te abite avèk ou pou plis pase
+      mwatye ane <fg-show path="/taxYear"/> lan, epi youn nan sa ki annapre yo aplike.
     ul-0:
-      li-207749:
-      li-93a6ef:
-    p-3630b4:
-    p-99f873:
-    p-91ee91:
-    p-d4d927:
-    p-065d1b:
+      li-207749: Ou te viv apa de mari oswa madanm ou pandan 6 dènye mwa <fg-show
+        path="/taxYear"/> yo, oswa
+      li-93a6ef: Ou separe legalman selon lwa eta w lan dapre yon akò separasyon ekri,
+        oswa yon dekrè pou antretyen separe epi ou pat abite nan menm kay ak mari
+        oswa madanm ou nan fen ane <fg-show path="/taxYear"/> lan.
+    p-3630b4: Pou plis enfòmasyon, <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501"
+      class="usa-link">gade</a>
+    p-99f873: Ou pa kapab aplike pou EITC paske konjwen ou pa gen yon nimewo Sekirite
+      Sosyal ki valab ki te bay nan dat delè pou deklarasyon taks ou a.
+    p-91ee91: Ou pa kapab fè reklamasyon EITC a si w chwazi fè yon deklarasyon kolektif
+      ak konjwen ou mouri paske konjwen ou pa t gen yon nimewo Sekirite Sosyal valab
+      nan jou lanmò li.
+    p-d4d927: Ou ka elijib pou EITC si ou pa fè yon deklarasyon konjwen ak konjwen
+      ou ki mouri.
+    p-065d1b: Pou aplike pou EITC, kay ou dwe te Ozetazini pou plis pase mwatye nan
+      ane a. Etazini gen ladan tout 50 eta ak Distri Columbia.
   modal-filing-status:
-    heading:
-    p-c0b92c:
-    p-391f95:
-    p-496916:
-    p-49f30f:
+    heading: Ki estati deklarasyon m ta dwe itilize?
+    p-c0b92c: Si pa gen okenn chanjman nan estati matrimonyal ou oswa nan sitiyasyon
+      fanmi ou ane sa a, Lè sa a, ou ka vle sèvi ak menm estati deklarasyon nan deklarasyon
+      taks ou nan <fg-show path="/lastTaxYear"/>.
+    p-391f95: Si te gen yon chanjman nan estati matrimonyal ou oswa nan kay ou ane
+      ki sot pase a, ou ka bezwen itilize yon lòt estati deklarasyon pou yon estimasyon
+      ki pi egzak.
+    p-496916: Chak estati deklarasyon gen kondisyon ki diferan.
+    p-49f30f: Sèlman
     ul-0:
-      li-c717a5:
-    p-5f63cd:
+      li-c717a5: Ou pa kapab marye
+    p-5f63cd: Marye Depoze ansanm
     ul-1:
-      li-6aab7e:
-    p-80c02f:
+      li-6aab7e: Ou marye oswa mari/madanm ou te mouri pandan ane a
+    p-80c02f: Marye Ranpli Separeman
     ul-2:
-      li-595e35:
-      li-1e72dd:
-    p-d69332:
+      li-595e35: Ou marye?
+      li-1e72dd: Ou pa planifye pou ranpli ansanm ak mari oswa madanm ou (pi fò koup
+        ekonomize lajan lè yo ranpli ansanm)
+    p-d69332: chèf fanmi
     ul-3:
-      li-dfe41a:
-      li-38ff2f:
-    p-57317d:
+      li-dfe41a: Ou pa ka marye (oswa yo konsidere w kòm yon moun ki pa marye pou
+        rezon taks)
+      li-38ff2f: Ou te peye plis pase mwatye nan depans pou kenbe yon kay pou yon
+        manm nan fanmi an oswa yon manm nan kay ou pou yon kantite tan espesifik,
+        epi yo dwe ranpli sèten kondisyon.
+    p-57317d: <strong>Mari oswa Madanm ki Kalifye k ap Siviv:</strong>
     ul-4:
-      li-2bf38a:
-      li-4ef74f:
-      li-939762:
-      li-bad5a3:
-    p-5b3ae2:
+      li-2bf38a: Mari oswa madanm ou te mouri nan <fg-show path="/lastTaxYear"/> oswa
+        <fg-show path="/taxYearMinusTwo"/>
+      li-4ef74f: Ou pa t remarye anvan <fg-show path="/taxYear"/>
+      li-939762: Ou gen yon timoun ki depann de ou ki ap viv avèk ou tout ane a
+      li-bad5a3: Ou te peye plis pase mwatye pri pou kenbe yon kay pou ane a.
+    p-5b3ae2: <a target="_blank" href="https://www.irs.gov/filing/filing-status">Aprann
+      plis sou estati deklarasyon yo<span class="usa-sr-only"> (opens in a new tab)</span>.</a>
   modal-qualifying-child-eitc:
-    heading:
-    p-7356ad:
-    p-ac8914:
-    p-558a40:
+    heading: Timoun ki kalifye
+    p-7356ad: Pou reklame EITC ak yon timoun ki kalifye, timoun lan dwe gen yon SSN
+      ki valid Administrasyon Sekirite Sosyal la bay nan dat limit deklarasyon <fg-show
+      path="/taxYear"/> ou a oswa anvan (ki gen ladan ekstansyon yo).
+    p-ac8914: Si kat Sekirite Sosyal la di "Valab pou travay ak otorizasyon DHS" oswa
+      "Valab pou travay ak otorizasyon INS" sou li, li se yon SSN ki valab si otorizasyon
+      an toujou valab.
+    p-558a40: 'Pou EITC a, nou pa aksepte:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-19d3d7:
-    p-0d323a:
+      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
+      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
+      li-9f487b: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
+        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
+      li-19d3d7: Nimewo Sekirite Sosyal ki te pibliye apre dat limit delarasyon an,
+        ki gen ladan ekstansyon yo
+    p-0d323a: 'Pitit ou a se yon timoun ki kalifye si pitit ou a satisfè kat tès.
+      Kat tès yo se:'
     ul-1:
-      li-fbc977:
-      li-9d8d2d:
-      li-23863d:
-      li-ca34c2:
-    p-e00960:
+      li-fbc977: Relasyon,
+      li-9d8d2d: Laj,
+      li-23863d: Rezidans epi
+      li-ca34c2: deklarasyon kolektif
+    p-e00960: Pou plis enfòmasyon, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">gade</a>
+      , Earned Income Credit pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal ki
+      valid epi si ou gen yon timoun ki kalifye.
   modal-main-home-us:
-    heading:
-    p-9cbbc6:
-    p-775779:
-    h3-398dfd:
-    p-7dbfa0:
+    heading: Rezidans prensipal Ozetazini
+    p-9cbbc6: Èske ou t abite Ozetazini pandan plis pase mwatye ane a?
+    p-775779: Kay ou dwe te Ozetazini pou plis pase mwatye nan <fg-show path="/taxYear"/>
+      . Etazini gen ladan tout 50 eta ak Distri Columbia. Li pa gen ladann byen Etazini
+      tankou Guam, Zile Vyèj yo, oubyen Pòtoriko.
+    h3-398dfd: Pèsonèl Militè Estasyone Andeyò Lèzetazini
+    p-7dbfa0: Si ou se yon manm lame Etazini epi ou te estasyone andeyò Lèzetazini
+      nan sèvis aktif pwolonje, Seleksyone yes.
   modal-keeping-up-home:
-    heading:
-    p-c0958f:
-    h3-e8b30a:
+    heading: Antretyen yon Kay
+    p-c0958f: Si kantite lajan total ou te peye a plis pase mwatye pri total la, ou
+      ranpli kondisyon pou peye plis pase mwatye pri pou antretyen kay la.
+    h3-e8b30a: 'Depans yo enkli:'
     ul-0:
-      li-b9b2e1:
-      li-313963:
-      li-61e699:
-    p-fec463:
-    h3-3e0b53:
+      li-b9b2e1: Lwaye, enterè ipotèk, taks byen imobilye ak asirans kay
+      li-313963: Reparasyon ak sèvis piblik
+      li-61e699: Manje yo manje nan kay la
+    p-fec463: 'Nòt: Depans yo peye ak asistans piblik yo konsidere kòm depans kontribyab
+      la peye.'
+    h3-3e0b53: 'Depans yo pa enkli:'
     ul-1:
-      li-edaa99:
-      li-40b84f:
-      li-5eae2b:
-      li-c64365:
-      li-04dec0:
+      li-edaa99: Rad, edikasyon ak depans pou vakans
+      li-40b84f: Tretman medikal, peman asirans medikal, ak medikaman sou preskripsyon
+      li-5eae2b: Asirans lavi
+      li-c64365: Depans transpò tankou asirans, peman lwaye, oswa transpò piblik
+      li-04dec0: Valè sèvis ou yo oswa yon manm nan fwaye lakay ou
   modal-legal-separation:
-    heading:
-    h3-ef7665:
-    p-198345:
-    h3-357344:
-    p-f560ea:
+    heading: Separasyon Legal ak Lwa Komen
+    h3-ef7665: Legalman separe
+    p-198345: '"Separe legalman" pou objektif sa a vle di separe legalman grasa yon
+      dekrè divòs oubyen sipò pou timoun separe.'
+    h3-357344: Maryaj sivil
+    p-f560ea: Kèk eta pèmèt maryaj lwa komen. Tcheke ak eta w la pou w wè si yo konsidere
+      w marye anba yon relasyon komen.
   modal-joint-return-mfj:
-    heading:
-    p-75997a:
+    heading: deklarasyon kolektif
+    p-75997a: Ou ka Seleksyone pou fè yon sèl deklarasyon ak konjwen ou lè w Seleksyone
+      <strong> estati ranpli w. Sa a pèmèt ou konbine revni ou ak depans lè w ap kalkile
+      kredi ou, dediksyon ak taks ou peye.
   modal-joint-deceased-spouse:
-    heading:
-    p-85e581:
+    heading: deklarasyon kolektif ak konjwen ki mouri a
+    p-85e581: Si konjwen ou te mouri pandan <fg-show path="/taxYear"/>, ou ka Seleksyone
+      pou ranpli yon sèl deklarasyon ak konjwen ou lè w Seleksyone <fg-show path="/taxYear"/>
+      kòm estati ranplisaj ou. Sa a pèmèt ou konbine revni ou ak depans lè w ap kalkile
+      kredi ou, dediksyon ak taks ou pe. This allows you to combine your income and
+      expenses when figuring your credits, deductions, and tax liability.
   modal-spouse-lived-together:
-    heading:
-    p-906815:
+    heading: Konjwen - K ap viv ansanm
+    p-906815: 'Yo konsidere yon moun k ap viv avèk ou pandan peryòd kote youn oubyen
+      toulede nan nou absan tanporèman akòz sikonstans espesyal tankou:'
     ul-0:
-      li-8ec6de:
-      li-de7a22:
-      li-d6e6cb:
-      li-2c48dd:
-      li-8fdca6:
-    p-2392bb:
+      li-8ec6de: Maladi,
+      li-de7a22: Edikasyon,
+      li-d6e6cb: Biznis,
+      li-2c48dd: vakans, oubyen
+      li-8fdca6: Sèvis militè.
+    p-2392bb: Li dwe rezonab pou sipoze moun ki absan an ap retounen lakay li apre
+      absans tanporè a.
   modal-valid-ssn:
-    heading:
-    p-527528:
-    p-45ae0e:
-    p-558a40:
+    heading: Nimewo sekirite sosyal valab
+    p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
+      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2025 ou a oswa anvan (ki
+      gen ladan ekstansyon yo).
+    p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
+      DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
+      si otorizasyon an toujou valid.
+    p-558a40: 'Pou EITC a, nou pa aksepte:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-9f487b:
-      li-a69a30:
-    p-f554f7:
+      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
+      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
+      li-9f487b: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
+        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
+      li-a69a30: Nimewo Sekirite Sosyal ki te pibliye apre dat limit delarasyon an,
+        ki gen ladan ekstansyon yo
+    p-f554f7: Gade Piblikasyon 596 pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal
+      ki valid.
   modal-confirm-mfj-to-nonmfj-qc-clear:
-    heading:
-    p-30861e:
-    button-70d9be:
-    button-ea4788:
+    heading: Konfimasyon
+    p-30861e: Si w chanje soti nan <strong>Marye k ap Fè yon Deklarasyon Ansanm</strong>
+      pou yon lòt estati deklarasyon y ap efase done timoun ou te deja mete yo ki
+      kalifye yo. Èske ou toujou vle kontinye?
+    button-70d9be: Pou konfime
+    button-ea4788: Anile
   modal-claiming-dependents:
-    heading: 
-    p-fc792e: 
+    heading: Ki moun mwen ka reklame kòm yon depandan?
+    p-fc792e: 'Moun ki depann yo jeneralman se:'
     ul-0:
-      li-7673e2: 
-      li-e9750c: 
-      li-9a6fc3: 
-    p-6b3acc: 
-    p-40e480: 
+      li-7673e2: Timoun anba 19;
+      li-e9750c: Elèv ki poko gen 24 an k ap viv avèk paran yo
+      li-9a6fc3: Fanmi oswa manm nan kay ou ki jwenn plis pase mwatye sipò finansye
+        yo nan men ou epi ki gen yon revni brit ki mwens pase <fg-show path="/eitcChildGrossIncomeLimit"/>
+    p-6b3acc: Ou pa kapab reklame mari/madanm ou kòm yon moun ki depann si ou deklare
+      ansanm.
+    p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Aprann
+      plis sou depandan yo.</a>
 /agi:
-  title:
-  h2-c0af17:
-  p-308236:
-  p-100130:
-  p-bb8818:
-  h3-40c7ae:
+  title: AGI
+  h2-c0af17: Kalkile Revni An Gwo Ajiste Ou (AGI)
+  p-308236: Pandan etap sa a, n ap estime revni ou menm ak konjwen w touche ansanm,
+    revni brit ajiste ou ak nenpòt ajisteman ki gen rapò ak li.
+  p-100130: Tanpri seleksyone epi antre <fg-show path="/taxYear"/> revni ak ajisteman
+    ou. Seleksyone yon sèl atik pou chak sous.
+  p-bb8818: Asire w ou enkli revni konjwen w ak ajisteman yo tou.
+  h3-40c7ae: touche revni
   fg-detail-c90011:
-    summary:
+    summary: Pèman, salè, oubyen poubwa
     /jobsIncomeTotal:
-      question:
-      modalLink:
+      question: Pèman, salè, oubyen poubwa kote yo touche taks federal sou revni
+      modalLink: <modal-link for="modal-wages-salaries-tips">Ki revni mwen ta dwe
+        mete?</modal-link>
   fg-detail-c0e18b:
-    summary:
+    summary: Revni Brit Travay Endepandan
     /selfEmploymentGrossIncome:
-      question:
-      modalLink:
+      question: Revni Brit Travay Endepandan
+      modalLink: <modal-link for="modal-self-employment-gross-income">Kisa revni nan
+        travay pou pwòp kont ou ye a?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
-      question:
-      hint:
-      modalLink:
+      question: Total depans ki gen rapò ak travay pou travay endepandan ou <span
+        condition="/isFilingStatusMFJ" operator="isTrue">menm ansanm ak mari/madanm
+        ou</span> te dedwi nan <fg-show path="/taxYear"/>
+      hint: Ou gen dwa kite sa a blanch
+      modalLink: <modal-link for="modal-self-employment-deductions">Kisa ki depans
+        dediktib pou travay ou endepandan?</modal-link>
   fg-detail-2fc9c0:
-    summary:
+    summary: Prestasyon Retrèt Anplwaye Chemen Fè
     /disabilityRetirementBenefits:
-      question:
-      modalLink:
+      question: Avantaj retrèt pou envalidite anvan laj minimòm retrèt
+      modalLink: <modal-link for="modal-disability-retirement">Total alokasyon retrèt
+        pou andikap</modal-link>
   fg-detail-cd8e26:
-    summary:
+    summary: Revni ou Touche Altranje
     /non2555ForeignIncome:
-      question:
-      modalLink:
-  h3-20a2b1:
+      question: Konsènan Fòm 2555, Revni yo Touche Aletranje.
+      modalLink: <modal-link for="modal-foreign-income-non2555">Revni touche aletranje
+        nesesè</modal-link>
+  h3-20a2b1: Lòt tip revni
   fg-detail-89425f:
-    summary:
+    summary: Revni envesti
     /investmentIncomeTotal:
-      question:
-      modalLink:
+      question: Revni envesti
+      modalLink: '<modal-link for="modal-investment-income">Total revni envestisman:
+        </modal-link>'
   fg-detail-fbe1af:
-    summary:
+    summary: Revni envesti
     /pensionsIncomeTotal:
-      question: 
-      modalLink: 
+      question: Revni envesti
+      modalLink: <modal-link for="modal-taxable-pension">Kisa pòsyon taksab nan yon
+        pansyon ye a?</modal-link>
   fg-detail-3fa626:
-    summary:
+    summary: Asirans kont chomaj
     /unemploymentIncome:
-      question:
-      modalLink:
+      question: Asirans kont chomaj
+      modalLink: <modal-link for="modal-unemployment-compensation">Kisa ki konte kòm
+        asirans chomaj?</modal-link>
   fg-detail-0fb46a:
-    summary:
+    summary: Revni Sosyal Sekirite
     /socialSecurityIncome:
-      question:
-      modalLink:
+      question: Revni sosyal sekirite oubyen benefis retrèt travayè ray tren
+      modalLink: <modal-link for="modal-social-security">Kisa k konte kòm Sekirite
+        Sosyal ak Benefis Retrèt nan Chemennfè Ekivalan?</modal-link>
   fg-detail-d994db:
-    summary:
+    summary: Yon bous detid oubyen sibvansyon ki dwe konte kòm yon revni
     /taxableScholarship:
-      question:
-      modalLink:
+      question: Yon bous detid oubyen sibvansyon ki dwe konte kòm yon revni
+      modalLink: <modal-link for="modal-scholarship-grants">Kisa k konte kòm yon bous
+        detid oswa yon sibvansyon?</modal-link>
   fg-detail-50ec28:
-    summary:
+    summary: Pèman ki resevwa pou travay pandan w prizonye yon etablisman koreksyonèl
     /inmatePay:
-      question:
-      modalLink:
+      question: Pèman ki resevwa pou travay pandan w prizonye yon etablisman koreksyonèl
+      modalLink: <modal-link for="modal-inmate-pay">Pèman ki resevwa pou travay pandan
+        w prizonye yon etablisman koreksyonèl</modal-link>
   fg-detail-7a5ac3:
-    summary:
+    summary: Lòt tip revni
     /nonSpecificOtherIncome:
-      question:
-      hint:
-      modalLink:
-  h3-9fa8b1:
-  p-233dd3:
-  
+      question: Lòt tip revni
+      hint: Ou ta dwe antre yon sèl montan total pou tout lòt revni yo.
+      modalLink: <modal-link for="modal-other-taxable-income">Lòt tip revni</modal-link>
+  h3-9fa8b1: Ajisteman
+  p-233dd3: Seleksyone epi antre nenpòt ki tip ajisteman revni ou te genyen an <fg-show
+    path="/taxYear"/>. Pa antre menm ajisteman an nan plizyè espas.
   fg-detail-2c7735:
-    summary:
+    summary: Prelèvman Enterè Sou Prè Etidyan
     /studentLoanInterestAmount:
-      question:
-      hint:
-      modalLink:
+      question: Enterè sou prè etidyan <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span> <span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      hint: (maksimòm <fg-show path="/maxStudentLoanDeduction"/>)
+      modalLink: <modal-link for="modal-student-loan-interest">Prelèvman Enterè Sou
+        Prè Etidyan</modal-link>
   fg-detail-9166fe:
-    summary:
+    summary: Depans Edikatè elijib
     /educatorExpenses/:
-      question:
-      hint:
-      modalLink:
+      question: Depans edikatè yo <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      hint: (maksimòm <fg-show path="/maxEducatorExpensesLimit"/>)
+      modalLink: <modal-link for="modal-educator-expenses">Depans Edikatè elijib</modal-link>
   fg-detail-57c26a:
-    summary:
+    summary: Dediksyon pou kontribisyon a IRA ki pa enkli nan dediksyon pewòl
     /deductionForTraditionalIRAContribution:
-      question:
-      modalLink:
+      question: Kontribisyon IRA Tradisyonèl (anvan taks) <span condition="/isFilingStatusMFJ"
+        operator="isFalse">ou menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou
+        menm ak mari/madanm ou</span> te fè nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-ira-contributions">Kisa k konte kòm kontribisyon
+        IRA tradisyonèl?</modal-link>
   fg-detail-f9e99b:
-    summary:
+    summary: Kontribisyon SEP, Senp oubyen lòt plan elijib
     /selfEmploymentRetirementPlanContributions:
-      question:
-      modalLink:
+      question: Kontribisyon nan retrèt pou moun ki travay pou kont yo <span condition="/isFilingStatusMFJ"
+        operator="isFalse">ou menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou
+        menm ak mari/madanm ou</span> te fè nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-retirement">Kisa plan dediksyon
+        retrèt pou moun k ap travay pou kont yo ye a?</modal-link>
   fg-detail-5c4fd4:
-    summary:
+    summary: Asirans maladi travayè endepandan
     /selfEmploymentHealthInsuranceContributions:
-      question:
-      modalLink:
+      question: Kout asirans sante <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-self-employed-health-insurance">Prelèvman
+        Asirans Sante Travay endepandan:</modal-link>
   fg-detail-2c1033:
-    summary:
+    summary: Dediksyon Kont Epay Sante (HSA) ki pa enkli nan dediksyon pewòl
     /hsaContributionAmount:
-      question:
-      modalLink:
+      question: Kontribisyon HSA <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        oswa mari/madanm ou</span> te fè nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-hsa-deductions">Ki dediksyon HSA yo ye?</modal-link>
   fg-detail-e97d7b:
-    summary:
+    summary: Pansyon Alimantè Peye
     /alimonyPaid:
-      question:
-      modalLink:
+      question: Pansyon alimantè ou te peye nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-alimony-paid">Pansyon Alimantè Peye</modal-link>
   fg-detail-913117:
-    summary:
+    summary: Sanksyon pou retrè antisipe sou epay
     /penaltyForEarlySavingsWithdrawal:
-      question:
-      modalLink:
+      question: Kantite lajan penalite <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-early-withdrawal">Sanksyon pou retrè antisipe
+        sou epay</modal-link>
   fg-detail-6fad42:
-    summary:
+    summary: Frè deplasman pou manb fòs lame a
     /movingExpensesForArmedServicesMembers:
-      question:
-      modalLink:
+      question: Depans pou deplasman manm fòs ame yo <span condition="/isFilingStatusMFJ"
+        operator="isFalse">ou menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou
+        menm ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-moving-expenses">Frè deplasman pou manb fòs
+        lame a</modal-link>
   fg-detail-c4f7d7:
-    summary:
+    summary: Kèk depans pwofesyonèl anplwaye pou pezèvis, atis entèprèt, ak salarye
+      fonksyonè gouvènmantal
     /businessCreditsForEligible:
-      question:
-      modalLink:
+      question: Depans biznis ki elijib <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+      modalLink: <modal-link for="modal-employee-business-expenses">Kèk Tarif Anplwaye
+        Pwofesyonèl</modal-link>
   fg-detail-cf5b3c:
-    summary:
+    summary: lòt ajisteman
     /otherAdjustments:
-      question:
-  h3-a7b819:
+      question: Lòt ajisteman <span condition="/isFilingStatusMFJ" operator="isFalse">ou
+        menm</span><span condition="/isFilingStatusMFJ" operator="isTrue">ou menm
+        ak mari/madanm ou</span> te peye nan <fg-show path="/taxYear"/>
+  h3-a7b819: 'AGI Ou se:'
   fg-alert-334e2e:
-    heading:
-    p-f3c23d:
-    p-93a6b5:
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-f3c23d: Baze sou montan ou antre a, ou pa kapab reklame kredi sou revni genyen
+      yo paske AGI ou depase limit estati depo w ak kantite timoun elijib
+    p-93a6b5: Pou plis enf‼masyon apwopo limit revni pou kredi genyen an, <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596">gade</a> .
   modal-wages-salaries-tips:
-    heading: 
-    h3-53ed11: 
-    p-40d79a: 
-    p-ab967b:
-    p-cb2522:
-    p-1f7f24: 
-    h3-af3590: 
-    p-3fdb7d: 
-    p-d9b0e5:
-    h3-84091c: 
-    p-bee3d8: 
+    heading: Ki revni mwen ta dwe mete?
+    h3-53ed11: Salè ak Poubwa
+    p-40d79a: Anplwayè w la te rapòte salè w yo, frè w yo, ti kòb ou yo, ak lòt konpansasyon
+      nan bwat 1 Fòm W-2 ou a.
+    p-ab967b: Anplwayè w la te rapòte salè ou, poubwa ak lòt konpansasyon ou nan Box
+      1 Fòm W-2 ou a. Mete tout kantite poubwa ak revni siplemantè nan kalkil revni
+      touche a lè w ap detèmine kalifikasyon pou kredi taks sou revni yo, menm si
+      tout oswa yon pati se franchiz.
+    p-cb2522: Enkli tout montan deklare nan Box 1 Fòmilè W-2 pou ou menm ak konjwen
+      w si w ap ranpli yon deklarasyon taks ansanm konjwent.
+    p-1f7f24: Don't Include Fòmilè W-2 kontribisyon anvan taks ou nan seksyon kontribisyon
+      anvan taks yo.
+    h3-af3590: Pèman Militè & Konba
+    p-3fdb7d: Ou ka Seleksyone tou pou w enkli pèman konba ki pa enpozab ou nan revni
+      ou touche pou EITC a. Anplwayè ou deklare pèman konba w ki pa enpozab nan Box
+      12 ak Code Q sou Fòmilè W-2 ou.
+    p-d9b0e5: Chwa sa a ka ogmante oubyen diminye EITC ou. Pou plis enfòmasyon <a
+      target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">gade</a>
+    h3-84091c: Asirans Tanporè & Akoutèm Pou Envalidite
+    p-bee3d8: Si ou te pran konje paran oubyen ou te andikape tanporèman pandan ane
+      a epi patwon ou te peye ou, yo te deklare salè ou sou W-2 ou. Antre revni sa
+      a la a.
   modal-work-no-taxes-withheld:
-    heading:
-    p-7ca214:
-    p-9048f5:
-    p-8f1d83:
+    heading: Revni kote yo pa te kenbe taks federal yo
+    p-7ca214: Rapòte revni ou fè nan travay siplemantè, menm si se yon ti djob, a tan pasyèl oswa tanporè.
+    p-9048f5: Antre revni yo la a si w fè lajan nan yon travay menm si yo pa te kenbe taks sou revni yo. Ou ka te resevwa oswa ou pa te resevwa yon Fòm 1099 pou tout revni yo.
+    p-8f1d83: 'Revni an ta ka te fèt atravè yon aplikasyon oswa yon sit entènèt pou:'
     ul-0:
-      li-014f6e:
-      li-816827:
-      li-ac1297:
-      li-743818:
-    p-ccdadf:
-    p-5465af:
+      li-014f6e: Kondwi yon machin pou woulib oswa livrezon yo te kòmande
+      li-816827: Fè komisyon oswa ranpli travay
+      li-ac1297: Bay sèvis kreyatif oswa pwofesyonèl
+      li-743818: Bay lòt travay tanporè, sou demann oswa travay endepandan
+    p-ccdadf: Revni brit ou a gen ladan l tout revni ou te resevwa. N ap soustrè depans ou yo pita.
+    p-5465af: Pou jwenn plis enfòmasyon, ale sou <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">Jere taks pou travay siplemantè w yo (an anglè)</a>
   modal-self-employment-gross-income:
-    heading:
-    p-3ef7b9:
+    heading: Revni Brit Travay Endepandan
+    p-3ef7b9: 'Si ou:'
     ul-0:
-      li-0d8073:
-      li-f5836c:
-      li-d6da48:
-      li-604ec3:
-      li-de3005:
-    p-ccdadf:
-    p-a21d1b:
+      li-0d8073: Ki se travayè endepandan
+      li-f5836c: Fè lajan nan founi travay sou demann, sès oubyen produi
+      li-d6da48: Jere yon biznis oubyen fèm
+      li-604ec3: Se yon minis oubyen manb yon lòd relijye
+      li-de3005: Se yon minis oswa yon manm yon lòd relijye
+    p-ccdadf: Pou plis enfòmasyon, <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">visit</a>
+    p-a21d1b: Pou jwenn plis enfòmasyon, vizite <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/businesses/small-businesses-self-employed/self-employed-individuals-tax-center">Sant
+      taks pou moun k ap travay pou pwòp kont yo</a>
   modal-disability-retirement:
-    heading: 
-    p-514b79: 
-    p-e7df54:  
-    p-2e7e6e: 
+    heading: Retrèt Andikap kòm Revni ou Touche
+    p-514b79: Si ou pran retrèt ou sou andikap, nou konsidere benefis taksab ou te
+      resevwa nan revni ou touche sou plan retrèt andikap anplwayè w la pou rezon
+      EITC a jiskaske ou rive laj minimòm pou pran retrèt. Laj pou pran retrèt minimòm
+      se laj pi bonè kote ou te kapab resevwa yon pansyon oswa pansyon anyèl si ou
+      pa te andikape.
+    p-e7df54: Laj pou pran retrèt minimòm se laj ki pi bonè kote w te kapab resevwa
+      yon pansyon oswa anwite si w pa te andikape.
+    p-2e7e6e: Mete andikap tanporè oswa pou yon andikap akoutèm nan salè ou.
   modal-inmate-pay:
-    heading:
-    p-0ced8d:
-    p-435d89:
-    p-1dc488:
+    heading: Pay Earned as an Inmate
+    p-0ced8d: Lajan ou te resevwa pou travay ou te fè pandan ou te nan prizon nan
+      yon enstitisyon penal se pa revni yo konsidere lè y ap kalkile kredi revni touche
+      a.
+    p-435d89: Sa enkli travay ou peye pou li ou te fè pandan ou nan yon pwogram liberasyon
+      pou travay oswa pandan ou nan yon mezon tranzisyon.
+    p-1dc488: Piblikasyon 596, Kredi Sou Revni Ou Fè, Salè Antanke Rezidan
   modal-foreign-income-non2555:
-    heading:
-    p-6821fc:
-    p-86d28e:
-    p-231cd1:
-    p-87f12e:
-    p-90826b:
+    heading: Revni ou Touche Altranje
+    p-6821fc: Revni yo touche aletranje se revni yo touche pandan y ap viv ak travay
+      andeyò Etazini, Distri Columbia, oswa posesyon oswa teritwa Etazini.
+    p-86d28e: Si ou se yon anplwaye gouvènman ameriken k ap travay andeyò Etazini,
+      revni sa a pa konsidere kòm revni ki touche aletranje.
+    p-231cd1: Si ou pa yon anplwaye gouvènman an epi wap travay nan yon anbasad, nou
+      konsidere revni sa kòm revni ki touche aletranje.
+    p-87f12e: Pou jwenn plis enfòmasyon, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/forms-pubs/about-form-2555">Fòm 2555</a>, Revni Touche
+      nan Peyi Etranje.
+    p-90826b: 'Nòt: Si ou chwazi ranpli Fòm 2555, ou pa kalifye pou reklame EITC a.'
   modal-taxable-pension:
-    heading:
-    p-a523b6:
-    p-ce034e:
+    heading: Pansyon
+    p-a523b6: Si ou resevwa avantaj retrèt sou fòm peman pansyon oswa pansyon anyèl
+      nan yon plan retrèt anplwayè ki kalifye, tout oswa yon pati nan montan ou resevwa
+      yo ka taksab.
+    p-ce034e: 'Tout taksab si:'
     ul-0:
-      li-21fe33:
-      li-c4c784:
-      li-a75167:
-    p-63555f:
+      li-21fe33: Ou pa kontribye nan anyen oubyen yo pa konsidere ou kontribye nan
+        anyen pou pansyon w osinon rant ou
+      li-c4c784: anplwayè ou a pa pran kotizasyon sou salè ou oubyen
+      li-a75167: Ou resevwa tout kontribisyon ou yo an egzonerasyon pandan ane anvan
+        yo
+    p-63555f: 'Yon pati ladan taksab si:'
     ul-1:
-      li-6d40a9:
-    p-24ecdd:
+      li-6d40a9: Ou kontribiye an dola aprè enpo (itilize règ jeneral ak metòd senplifye
+        a pou kalkile)
+    p-24ecdd: Règ anplis aplike si ou te resevwa peman anvan laj 59 an e demi, si
+      ou se yon sivivan oswa benefisyè, oswa si ou gen lòt sitiyasyon.
   modal-unemployment-compensation:
-    heading:
-    p-ec0a26:
-    p-97117c:
+    heading: Konpansasyon Kont Chomaj (Asirans)
+    p-ec0a26: Pou EITC, enkli tout benefis alokasyon kont chomaj ou. Ou jwenn revni
+      sa a sou Fòmile 1099-G.
+    p-97117c: Si fon anplwayè w la bay benefis adisyonèl, enkli tout montandeklare
+      sou Fòmilè W-2, Box 1.
   modal-social-security:
-    heading:
-    p-f2d061:
-    p-e8b50a:
-    p-2b31f6:
+    heading: Revni Sosyal Sekirite
+    p-f2d061: Pou EITC a, mete sèlman pati taksab nan Sekirite Sosyal ak benefis retrèt
+      tren ou yo.
+    p-e8b50a: Pou plis enfòmasyon <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc423">vizite</a>
+    p-2b31f6: Pou kalkile kantite lajan taksab nan benefis ou yo, gade &quot;Ki fèy
+      travay pou itilize&quot; nan <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-915">Piblikasyon
+      915</a>, Sekirite Sosyal ak Benefis Retrèt Chemennfè Ekivalan.
   modal-scholarship-grants:
-    heading:
-    p-0e0c43:
-    p-ce8e34:
+    heading: Scholarship or Fellowship Grants
+    p-0e0c43: Antre kèlkeswa kantite lajan bous ki taksab ki pa te rapòte nan Fòm
+      W-2 ou a.
+    p-ce8e34: 'Kantite lajan sa a gen ladan lajan bousdetid oswa sibvansyon yo pa
+      jwenn nan W-2 ou si lajan an te:'
     ul-0:
-      li-13d8db:
-      li-b94d4b:
-    p-adf913:
-    p-0c59d8:
+      li-13d8db: Itilize pou frè divès, tankou ebèjeman ak anbakman, vwayaj, ekipman
+        opsyonèl
+      li-b94d4b: Resevwa kòm pèman pou ansèyman, rechèch, oubyen lòt sèvis nesesè
+        kèm kondisyon pou resevwa bous detid oubyen bous rechèch
+    p-adf913: Pa enkli montan ou resevwa pou sèvis yo mande nan Pwogram Bous Detid
+      Kò Sèvis Sante Nasyonal la, Bous Detid ak Pwogram Asistans Finansye pou Pwofesyonèl
+      Sante Fòs Lame a, oubyen yon pwogram etid konplè sèvis aprantisaj-travay yon
+      kolèj dirije.
+    p-0c59d8: Pou plis <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc421">enfòmasyon</a>
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-cdf53e: Sou baz montan ou antre a, ou pa ka reklame kredi paske revni ou genyen
+      depase limit deklarasyon estati w ak kantite timoun elijib.
+    p-93a6b5: Pou plis enf‼masyon apwopo limit revni pou kredi genyen an, <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596">gade</a> .
   fg-alert-8b7db9:
-    heading:
-    p-3abe5f:
-    p-93a6b5:
-    p-d04ce1:
-    p-241cb8:
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-3abe5f: Pou reklame EITC a, ou dwe gen revni ou touche (pa egzanp, salè oswa
+      salè nèt nan travay poukont ou). Dapre revni ou te antre a, revni ou touche
+      pou <fg-show path="/taxYear"/> te zewo oswa mwens, kidonk ou pa kalifye pou
+      EITC a.
+    p-93a6b5: Pou jwenn plis enfòmasyon, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Piblikasyon 596</a>, Kredi Revni
+      Ou Touche.
+    p-d04ce1: Ou pa kapab reklame Kredi Sou Revni Ou Fè si revni envèstisman ou plis
+      pase <fg-show path="/eitcInvestmentIncomeLimit"/>.
+    p-241cb8: 'Revni envesti enkli:'
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-e74f5d:
-      li-e42b99:
-      li-7c0731:
-    p-9c482c:
+      li-12d3b7: Enterè (alafwa enpozab e egzonere)
+      li-0a9a83: dividann
+      li-e74f5d: Revni sou kapital
+      li-e42b99: Kèk lwaye ak redevans oswa
+      li-7c0731: Revni nèt sou aktivite pasif
+    p-9c482c: Pou jwenn plis enfòmasyon, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p550">Piblikasyon 550</a>, Revni ak Depans
+      Envestisman. Pou kalkile total revni envestisman w lan, ou ta dwe itilize Fèy
+      Travay 1 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
+      596</a>, Kredi Revni Ou Touche.
   modal-self-employment-deductions:
-    heading:
-    p-4838ea:
-    p-f24032:
+    heading: Ki depans ki ka dedwi nan travay endepandan?
+    p-4838ea: Lè w te travay pou kont ou, yon travayè endepandan, oswa ou te posede
+      epi jere yon biznis, ou te ka gen posiblite pou dedwi sèten depans biznis nan
+      revni ou pou w peye mwens taks.
+    p-f24032: 'Depans biznis yo ka gen ladan:'
     ul-0:
-      li-6a4179:
-      li-e2f63f:
-      li-7f4118:
-      li-9f53a8:
-      li-eaff1b:
-      li-6c49ac:
-      li-761662:
-      li-719fec:
-      li-849c98:
-    p-9ff7b2: |-
-    p-0651e4: 
-    p-a81df3: 
-    p-4ca1ce: 
+      li-6a4179: Depans pou biwo nan kay
+      li-e2f63f: Depans machin ak kamyon
+      li-7f4118: Lwaye
+      li-9f53a8: Peman pou anplwaye ak pansyon
+      li-eaff1b: Asirans
+      li-6c49ac: Enterè sou dèt
+      li-761662: Frè legal ak pwofesyonèl
+      li-719fec: Taks
+      li-849c98: Vwayaj ak repa
+    p-9ff7b2: Dediksyon sa yo diferan de dediksyon pèsonèl ou fè yo si ou te chwazi
+      fè yon lis dediksyon w yo. Ou ka dedwi depans biznis ou yo isit la epi ou ka
+      toujou chwazi dediksyon estanda a pita.
+    p-0651e4: <strong>Kouman pou tcheke deklarasyon taks ane pase a?</strong>
+    p-a81df3: Si ou t ap travay pou kont ou nan <fg-show path="/taxYear"/>, ou ka
+      jwenn depans franchiz ou yo nan liy 28 nan Orè C a.
+    p-4ca1ce: <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p334#en_US_2024_publink1000313491">Aprann
+      plis sou depans biznis yo</a>
   modal-estimate-interest-income-en:
-    heading:
-    p-cda131:
-    p-bc395c:
-    p-ec3579:
+    heading: Kisa ki te revni enterè epi kijan mwen ka kalkile l?
+    p-cda131: Kalite komen revni enterè yo gen ladan l enterè ou fè nan kont labank oswa lè w prete lajan.
+    p-bc395c: <strong>Kijan pou w tcheke deklarasyon taks ane pase a</strong>
+    p-ec3579: 'Si w te fè revni enterè nan <fg-show path="/taxYear"/>, tcheke pou yon montan nan:'
     ul-0:
-      li-7b5662:
+      li-7b5662: Liy 2b sou Fòm 1040 deklarasyon taks federal <fg-show path="/taxYear"/> ou a
   modal-investment-income:
-    heading:
-    p-b07c20:
+    heading: Revni Envestisman
+    p-b07c20: 'Revni envestisman pou EITC a gen ladan:'
     ul-0:
-      li-12d3b7:
-      li-0a9a83:
-      li-81f254:
-      li-498151:
-      li-7c0731:
-    p-4c8f5e:
-    p-df5956:
+      li-12d3b7: Enterè (alafwa enpozab e egzonere)
+      li-0a9a83: dividann
+      li-81f254: Revni sou kapital
+      li-498151: Kèk lwaye ak redevans oswa
+      li-7c0731: Revni nèt sou aktivite pasif
+    p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">Gade</a>
+      pou plis enfòmasyon.
+    p-df5956: 'Sèvi ak Fèy Travay 1 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
+      596</a>, Kredi Revni Ou Touche, pou w kalkile revni envestisman w si youn nan
+      deklarasyon sa yo vre pou 2025:'
     ul-1:
-      li-0f3c1b:
-      li-782dae:
-      li-e0ebc1:
-      li-a00ee1:
-      li-143cd9:
+      li-0f3c1b: Ou ap ranpli Barèm E (Fòm 1040)
+      li-782dae: Ou ap rapòte revni nan lokasyon pwopriyete pèsonèl ki pa itilize
+        nan yon komès oswa biznis.
+      li-e0ebc1: Ou ap rapòte nan Fòm 8814 (ki gen rapò ak eleksyon pou rapòte enterè
+        timoun ak dividann)
+      li-a00ee1: Ou gen revni oswa pèt nan yon aktivite pasif.
+      li-143cd9: Ou ap depoze Fòm 4797 (ki gen rapò ak lavant pwopriyete biznis)
   modal-other-taxable-income:
-    heading: 
-    p-ba0ae2: 
+    heading: Lòt tip revni
+    p-ba0ae2: 'Lòt tip revni yo enkli:'
     ul-0:
-      li-83fa6a: 
-      li-7ae32a: 
-      li-248c6a: 
-      li-6dac33: 
-      li-13b588: 
-      li-ad5cc5: 
-      li-ece5cb: 
-      li-0f1015: 
-      li-7e9756: 
-      li-737e99: 
-      li-e833f1: 
-    p-fda53f: 
+      li-83fa6a: Distribisyon kont retrè endividyèl (IRA) (eksepte Roth IRAs)
+      li-7ae32a: kapitak pèdi (se pa gen)
+      li-248c6a: Pèman pansyon alimantè ou resevwa nan yon divòs oubyen akò separasyon
+        konkli 2020
+      li-6dac33: Lokasyon imobilye, dwa dotè, patenarya,sosyete S, kowalisyon, elatriye.
+      li-13b588: Revni ki soti nan lokasyon byen pèsonèl si ou angaje nan lokasyon
+        a bi likratif men ou pa yon antrepriz k ap lwe byen sa yo
+      li-ad5cc5: Dispozisyon enpozab apati yon kont epay edikasyon Coverdell (ESA)
+        ak gen program edikasyon elijib
+      li-ece5cb: Revni program eskolarite elijib Yo
+      li-0f1015: Pri, rekonpans, ak gen aza
+      li-7e9756: Frè sèvis jire
+      li-737e99: Fon dividann pèmanan Alaska
+      li-e833f1: Ranbousman ak lòt montan resevwa pou atik ki dedui nan ane anvan,
+        tankou frè medikal, enpo fonsye, oubyen enterè sou ipotèk.
+    p-fda53f: 'Ki Pa Enkli:'
     ul-1:
-      li-0eb181: 
-      li-e46f68: 
-      li-b144cb: 
-      li-63523b: 
-      li-a8d386: 
-      li-f2a3d6: 
-      li-080a95: 
-      li-57e5cb: 
-      li-764dd4: 
-      li-6f920a: 
-    p-745735: 
-  
+      li-0eb181: Pèman pansyon alimantè ou resevwa nan yon divòs oubyen separasyon
+        alamyab konkli aprè 2019
+      li-e46f68: Asistans pou minè
+      li-b144cb: Avantaj sosyal tankou Asistans Tanporè pou Fanmi nan Bezwen (TANF),
+        bon alimantè, alokasyon pou lojman atik 8
+      li-63523b: Pèman Fanmi dakèy non enpozab
+      li-a8d386: Nontaxable employee benefits such as education assistance
+      li-f2a3d6: Avantaj pou veteran, enkli pèman reyabtasyon VA
+      li-080a95: Endemnizasyon ouvriye
+      li-57e5cb: Pwosedi asirans vi resevwa poutèt lanmò yon moun
+      li-764dd4: Lajan oubyen byen ki erite, lege oubyen resevwa kòm kado
+      li-6f920a: Alokasyon kont chomaj
+    p-745735: Piblikasyon 525, Revni Enpozab Ak Revni Non Enpozab
   modal-student-loan-interest:
-    heading:
-    p-3ac7ce:
-    p-e4b825:
+    heading: Prelèvman Enterè Sou Prè Etidyan
+    p-3ac7ce: Antre jiska <fg-show path="/maxStudentLoanDeduction"/> enterè ou peye
+      sou prè elèv elijib ou a. Ou ka jwenn li sou Fòmilè 1098-E ou si ou peye plis
+      pase $600 enterè.
+    p-e4b825: 'Prè a dwe peye depans etidn siperyè elijib pou ale nan yon enstitisyon
+      edikasyonèl elijib. Anplis de sa, depans yo dwe:'
     ul-0:
-      li-bb1c73:
-      li-829f26:
-      li-562ff0:
-    p-75f422:
-    p-1f2dd3:
+      li-bb1c73: Pou ou, konjwen w oubyen moun ki te sou kont ou nan moman ou pran
+        pè a;
+      li-829f26: Ki peye oswa ki fèt nan yon peryòd tan rezonab anvan oswa apre ou
+        te pran prè a; ak
+      li-562ff0: Pou edikasyon ki dispanse pandan yon peryòd akademik pou yon etidyan
+        elijib
+    p-75f422: Ou pa kapab reklame dediksyon an si ou pa legalman oblije fè pèman sou
+      prè a.
+    p-1f2dd3: Pou plis enfòmasyon, <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-970"
+      class="usa-link">gade</a> .
   modal-educator-expenses:
-    heading:
-    p-e117c8:
+    heading: Prelèvman Sou Tarif Edikatè
+    p-e117c8: 'Si ou se yon pwofesè, antre jiska <fg-show path="/maxEducatorExpensesNonMFJ"/>
+      (<fg-show path="/maxEducatorExpensesLimit"/> si konjwen ap deklare ansanm epi
+      toulède ou menm ak madanm ou se pwofesè) nan depans ki pa ranbouse tankou:'
     ul-0:
-      li-8829c6:
-      li-751127:
-      li-0c78ca:
-      li-6ef6c8:
-      li-6d4170:
-    p-86c6e4:
+      li-8829c6: Frè pou patisipasyon nan kou devlopman pwofesyonèl
+      li-751127: Liv ak founiti
+      li-0c78ca: Materyèl enfòmatik (enkli lojisyèl ak sèvis asosye)
+      li-6ef6c8: Lòt ekipman
+      li-6d4170: Materyèl siplemantè ou itilize nan sal klas
+    p-86c6e4: Pou plis enfòmasyon <a target="_blank" href="https://www.irs.gov/taxtopics/tc458"
+      class="usa-link">gade</a>
   modal-ira-contributions:
-    heading:
-    p-5979d5:
-    p-a49375:
+    heading: Prelèvman IRA
+    p-5979d5: Antre nenpòt kontribisyon IRA ou te fè andeyò kontribisyon sou pewòl
+      ou.
+    p-a49375: Pou plis enfòmasyon <a target="_blank" href="https://www.irs.gov/retirement-plans/ira-deduction-limits"
+      class="usa-link">gade</a>
   modal-self-employed-retirement:
-    heading:
-    p-ca0a8f:
-    p-0d133f:
+    heading: 'SEP, SENP, ak lòt plan elijib:'
+    p-ca0a8f: 'Si w se travayè endepandan, ou kalkile plan konpansasyon elijib ou
+      nan retire sa ki annapre a nan salè nèt travay endepandan ou:'
+    p-0d133f: 'Pou kalifye, ou menm oswa mari oswa madanm ou dwe genyen:'
     ul-0:
-      li-6c246a:
-      li-a2595a:
-      li-f6cddf:
-    p-3622b4:
+      li-6c246a: Pòsyon dediktib sou taks SE ou apati deklarasyon Fòmilè 1040 ou,
+        paj 1, e
+      li-a2595a: Montan kontribisyon plan retrèt ou apati deklarasyon Fòmilè 1040
+        ou, paj 1,nan liy sou travay endepandan SEP, SENP, ak plan elijib
+      li-f6cddf: Te gen yon konpayi responsablite limite
+    p-3622b4: 'Plan ki elijib yo ta ka gen ladan yo:'
     ul-1:
-      li-ff93fe:
-      li-200ab4:
-      li-e7dbe4:
-      li-765afa:
-    p-af5a4a:
-    p-add56c:
-    p-3248f2:
+      li-ff93fe: Plan Pansyon Senplifye pou Anplwaye (SEP)
+      li-200ab4: Plan Match Ankourajman Epary pou Anplwaye yo
+      li-e7dbe4: Solo-401(k)
+      li-765afa: Lòt plan retrèt ki kalifye
+    p-af5a4a: <strong>Pa mete ladan l</strong> kontribisyon nan Aranjman Retrèt Endividyèl (IRA).
+    p-add56c: Ou dwe te itilize yon règ espesyal pou kalkile kontribisyon nan plan retrèt pou tèt ou.
+    p-3248f2: Endividi Travayè Endepandan – Kalkile Pwòp Kontribisyon Ak Prelèvman
+      Plan Retrèt Ou
   modal-hsa-deductions:
-    heading:
-    p-2ab752:
-    p-a7d9fc:
+    heading: 'Prelèvman Kont Epay Sante:'
+    p-2ab752: Antre nenpòt kontribisyon Kont Epay Sante (HSA) ke ou pa t ajoute anba
+      HSA, FSA, oubyen lòt "plan kafeterya" anlè a.
+    p-a7d9fc: Apwopo Piblikasyon 969, Kont Epay Sante Ak Lòt Plan Sante Non Enpozab
   modal-alimony-paid:
-    heading:
-    p-fa1de9:
-    p-7b97e1:
-    p-7948e4:
-    p-358bc5:
-    p-06a405:
-    p-4b335c:
+    heading: Pansyon Alimantè Peye
+    p-fa1de9: Si ou vèse pansyon alimantè oubyen pèman antresyen separe selon òdonans
+      yon tribinal egzekite anvan 1 janvye, 2019 epi lòd la pa endike ou pa ka dedui
+      pèman ou, antre monte ou peye pandan an la.
+    p-7b97e1: 'Pa enkli montan ou peye anvan:'
+    p-7948e4: <strong>Sipò pou fanmi oswa timoun</strong>
+    p-358bc5: Pa enkli montan yo non plis si òdonans tribinal la te modifye e deklare
+      ou pa ka dedui pèman ou
+    p-06a405: Pansyon alimantè oswa antretyen separe ki fèt daprè yon lòd tribinal ki egzekite aprè 31 desanm 2024
+    p-4b335c: Pou plis enfòmasyon <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
+      class="usa-link">vizite</a>
   modal-early-withdrawal:
-    heading:
-    p-7e8d5b:
+    heading: Sanksyon pou retrè antisipe sou epay
+    p-7e8d5b: Si ou retire fon apati yon sètifika oubyen yon depo oubyen lòt kont
+      enterè difere navan matirasyon, yo kapab chaje w penalite. Ou kapab jwenn penalite
+      sa a an Fòmilè 1099-INT nan Box 2. Antre montan sa a la
   modal-moving-expenses:
-    heading:
-    p-6f18fd:
+    heading: Tarif Deplasman
+    p-6f18fd: 'Si w se yon manm aktif nan fòs lame, epi lame te ba ou lòd pou w tout
+      tan ap chanje pozisyon estasyon travay ou, antre nenpòt frè deplasman lame pa
+      te ranbouse w la a. Frè deplasman yo enkli:'
     ul-0:
-      li-60efa3:
-      li-efbbb1:
-    p-6536cb:
+      li-60efa3: Vwayaj dirèk soti nan ansyen kay ou pou nouvo kay ou
+      li-efbbb1: Frè anbalaj ak deplasman zafè pèsonèl ou
+    p-6536cb: Pou plis enfòmasyon <a target="_blank" href="https://www.irs.gov/taxtopics/tc455"
+      class="usa-link">vizite</a>
   modal-employee-business-expenses:
-    heading:
-    p-c92011:
+    heading: Kèk Tarif Anplwaye Pwofesyonèl
+    p-c92011: 'Si ou se yon:'
     ul-0:
-      li-9bde67:
-      li-053ac1:
-      li-e03b09:
-      li-0d1488:
-    p-cc9b68:
-    p-d46373:
-    p-eb68a5:
+      li-9bde67: Rezèvis Fòs lame
+      li-053ac1: Atis Entèprèt elijib
+      li-e03b09: Fonksyonè leta oubyen ofisyèl gouvènman lokal
+      li-0d1488: Anplwaye ak frè travay lye a andikap
+    p-cc9b68: Ou kapab enkli depans ki kouran e aksepte nan domèn komès ou, biznis,
+      oubyen pwofesyon, oubyen depans pou bagay ki itil ak apwopriye pou biznis ou.
+    p-d46373: Si ou pa matche nan youn nan kategori yo, ou pa dwe reklame ajisteman
+      pou depasn sa yo.
+    p-eb68a5: Pou plis enfòmasyon ak yon list depans elijib, <a target="_blank" href="https://www.irs.gov/forms-pubs/about-form-2106"
+      class="usa-link">gade</a> .
   modal-self-employed-health-insurance:
-    heading:
-    p-598073:
-    p-d60394:
-    p-13dece:
+    heading: 'Prelèvman Asirans Sante Travay endepandan:'
+    p-598073: Antre montan ou peye pou asirans maladi pou tèt ou, konjwen ou, epi
+      sa k sou kont ou, si ou se yon travayè endepandan.
+    p-d60394: Prim ki elijib yo se te asirans swen medikal, dantè, vizyon, ak swen alontèm. Règleman asirans lan te kapab pou ou, mari oswa madanm ou, ak depandan ou yo. Règleman an te kapab kouvri pitit ou a tou ki te poko gen laj 27 an nan fen ane a, menm si pitit la pa t depandan w.
+    p-13dece: Pou plis enfòmasyon gade Chapit <a target="_blank" href="https://www.irs.gov/instructions/i7206"
+      class="usa-link">6</a> .
 /qualifying-children:
-  title:
-  h2-dbaf54:
-  p-9b177d:
-  p-c1a0dd:
-  p-3178be:
-  p-e28c1e:
-  p-adf161:
+  title: Timoun Kalifye
+  h2-dbaf54: Timoun Kalifye
+  p-9b177d: Konsideran antre anvan w yo, ou pa gen okenn timoun ki kalifye. Si sa
+    pa kòrèk, tanpri retounen nan <a class="usa-link" href="/app/eitc/filing-status/">Filing
+    Status</a> epi modifye repons ou yo.
+  p-c1a0dd: Tanpri ale nan pwochen etap la pou wè rezilta ou yo.
+  p-3178be: Nan etap sa a, n ap wè konbyen nan pitit ou yo oswa lòt fanmi ou yo ki
+    se pitit ou ki kalifye pou fè reklamasyon ak kalkile EITC a. Ou ka reklame jiska
+    twa timoun ki kalifye pou EITC.
+  p-e28c1e: Ou ka reklame jiska twa timoun ki kalifye pou EITC a
+  p-adf161: Pou ou elijib pou EITC, ou dwe gen omwen yon timoun ki kalifye.
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
-      question:
-      modalLink:
+      question: Èske timoun sa a te viv avèk ou plis pase mwatye nan ane <fg-show
+        path="/taxYear"/> a Etazini?
+      modalLink: <modal-link for="modal-residency">Kisa ki konte kòm tan yo fè ap
+        viv avèk ou a?</modal-link>
     fg-alert-b7d816:
-      heading:
-      p-7666ea:
+      heading: Ou pa kalifye pou Kredi Enpo sou Revni ou Touche a (EITC)
+      p-7666ea: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+        596</a>, Earned Income Credit..
     /familyAndHousehold/*/someoneElseCanClaim:
-      question:
-      modalLink:
+      question: Èske yon lòt moun kapab deklare timoun sa a pou EITC a?
+      modalLink: <modal-link for="modal-claimed-someone-else">Kisa m ta dwe fè si
+        gen plis pase yon moun ki kapab deklare yo?</modal-link>
     /familyAndHousehold/*/isClaimingQCRegardless:
-      question:
-      modalLink:
+      question: Ou gendwa pa kapab reklame yon timoun pou EITC si sèten moun ki elijib
+        reklame yo tou. Ou toujou vle reklame pitit sa a?
+      modalLink: <modal-link for="modal-claimed-someone-else">Kisa k pase si gen plis
+        pase yon moun ki ka reklame yo?</modal-link>
     /familyAndHousehold/*/marriedFilingJointly:
-      question:
-      modalLink:
+      question: Èske pitit sa a marye epi èske li ap ranpli yon deklarasyon kolektif
+        ak konjwen l an <fg-show path="/taxYear"/>?
+      modalLink: <modal-link for="modal-joint-return">Èske mwen ka reklame yon moun
+        ki fè yon deklarasyon ansanm ak yon moun?</modal-link>
     /familyAndHousehold/*/mfjForRefundOnly:
-      question:
-      modalLink:
+      question: I Èske timoun sa a fè yon deklarasyonkon jwent an <fg-show path="/taxYear"/>
+        pou sèlman reklame yon ranbousman taks yo te kenbe oubyen estime taks peye,
+        epi yo pa p reklame okenn kredi taks tankou EITC a?
+      modalLink: <modal-link for="modal-joint-return-with-another-person-exception">Kilè
+        ou ka reklame yon moun ki fè yon deklarasyon ansanm ak yon moun?</modal-link>
     /familyAndHousehold/*/isPermanentlyDisabled:
-      question:
-      modalLink:
+      question: Èske timoun sa a andikape nèt ak totalman?
+      modalLink: <modal-link for="modal-disabled">Kisa k konte kòm pèmanan epi ki
+        enfim nèt ale?</modal-link>
     /familyAndHousehold/*/relationship:
-      question:
-      modalLink:
+      question: 'Seleksyone relasyon pitit sa a genyen ak ou:'
+      modalLink: <modal-link for="modal-relationship">Kiyès ki konte kòm bofis/bèlfi,
+        pitit adoptif, oswa timoun ou pran pou w okipe?</modal-link>
       options:
         childStepFoster:
-          name:
+          name: Timoun, bofi, timoun adopte oubyen timoun adoptif
         sibling:
-          name:
+          name: Frè, demi frè oubyen demi frè
         descendant:
-          name:
+          name: Pitit pitit, nyès oubyen neve
         none:
-          name:
+          name: Okenn nan repons sa yo
     /familyAndHousehold/*/ageRange:
-      question:
+      question: Ki laj timoun sa a te genyen nan fen <fg-show path="/taxYear"/>?
       options:
         under19:
-          name:
+          name: 18 e mwens
         between19And23:
-          name:
+          name: Ant 19 & 23
         over24:
-          name:
+          name: 24 e plis
     /familyAndHousehold/*/isFullTimeStudent:
-      question:
-      modalLink:
+      question: Èske timoun nan t ap etidye aplentan pandan yon pati nan 5 mwa ane
+        a?
+      modalLink: <modal-link for="modal-student">Ki jan m fè konnen si yo se elèv
+        k ap etidye a plen tan?</modal-link>
     /familyAndHousehold/*/isQCYoungerThanSelfOrSpouse:
-      question:
-      modalLink:
+      question: Èske depandan an pi piti pase ou?
+      modalLink: <modal-link for="modal-age-comparison">Poukisa nou mande si yo pi
+        piti pase <span condition="/isFilingStatusMFJ" operator="isFalse">ou?</span><span
+        condition="/isFilingStatusMFJ" operator="isTrue">ou menm oswa mari/madanm
+        ou?</span></modal-link>
     /familyAndHousehold/*/validSSN:
-      question:
-      modalLink:
+      question: Èske timoun sa a gen yon sekirite sosyal ki valab nan dat deklarasyon
+        an oubyen anvan dat la (enkli ekstansyon)?
+      modalLink: <modal-link for="modal-valid-ssn-qc">Yon nimewo sekirite sosyal valab
+        obligatwa</modal-link>
     fg-alert-a004cd:
-      heading:
-      p-8374d8:
-    h2-eaf308:
-  p-5aea65:
+      heading: Tanpri sonje
+      p-8374d8: Timoun sa a se pitit ou ki elijib. Men, paske yo pa gen yon SSN ki
+        valab, timoun sa a pa kalifye ou pou yon kredi pou ogmante revni ou touche.
+    h2-eaf308: Timoun sa a kalifye pou fè reklamasyon ak kalkile EITC a.
+  p-5aea65: Dapre sa w antre, ou gen 3 timoun ki kalifye ki gen nimewo Sekirite Sosyal
+    ki valab epi ou rive nan kantite maksimòm ou ka reklame pou EITC.
   fg-alert-9510e7:
-    heading:
-    p-b6bd9e:
-    p-93a6b5:
+    heading: Egzijans pou timoun ki kalifye
+    p-b6bd9e: Ou pa kalifye pou EITC a san yon timoun kalifye sof si ou, oswa konjwen
+      w lan si n ap fè yon deklarasyon konjwen, genyen ant 25 ak 64 lane.
+    p-93a6b5: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
   fg-alert-64891c:
-    heading: 
-    p-cdf53e: 
-    p-93a6b5: 
-  h2-34370a: 
+    heading: Ou pa kalifye pou kredi taks sou revni (EITC).
+    p-cdf53e: Sou baz montan ou antre a, ou pa ka reklame kredi paske revni ou genyen
+      depase limit deklarasyon estati w ak kantite timoun elijib.
+    p-93a6b5: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
+  h2-34370a: Dapre sa w antre, ou gen <fg-show path="/eitcQualifyingChildren"/> timoun
+    ki kalifye ak nimewo Sekirite Sosyal ki valab.
   modal-residency:
-    heading: 
-    h3-7c913b:
-    p-ff8f12:
-    h3-46d8f4:
-    p-e27b79:
-    h3-16617c:
-    p-c623b2:
-    h3-6839b6:
-    p-658cca:
+    heading: Tès Rezidans
+    h3-7c913b: Ap viv avèk ou
+    p-ff8f12: Yon timoun ki kalifye dwe gen menm kay prensipal ak ou pou plis pase
+      mwatye ane <fg-show path="/taxYear"/> a e kay sa a te dwe sitiye Etazini. Etazini
+      gen ladan 50 eta yo ak Distri Columbia. Li pa enkli Pòtoriko oswa teritwa Etazini
+      yo tankou Guam. Pou EITC a, IRS la konsidere pèsonèl militè Ameriken ki estasyone
+      andeyò Etazini nan sèvis aktif pwolonje tankou yo gen yon kay prensipal Etazini
+      pandan peryòd sèvis sa a.
+    h3-46d8f4: Nesans oubyen lanmò yon timoun
+    p-e27b79: Si timoun nan te fèt oubyen te mouri nan <fg-show path="/taxYear"/>,
+      timoun nan dwe viv avèk ou pou plis pase mwatye ane li te vivan an.
+    h3-16617c: Timoun yo adopte ak timoun yo plase nan fanmi akèy
+    p-c623b2: Si ou te adopte yon timoun an <fg-show path="/taxYear"/>, ou te swiv
+      pwosedi legal yo pou adopsyon legal timoun nan nan <fg-show path="/taxYear"/>
+      a, oswa timoun nan te yon timoun kalifye ki te plase lakay ou nan <fg-show path="/taxYear"/>3
+      a, rezidans prensipal ou te dwe rezidans timoun sa a pandan plis pase mwatye
+      tan depi lè ou te adopte li oswa depi lè li te plase lakay ou nan <fg-show path="/taxYear"/>4
+      a
+    h3-6839b6: Absans tanporè
+    p-658cca: 'Pou EITC a, yon absans tanporè konte kòm tan pase avèk ou. Egzanp yo
+      enkli:'
     ul-0:
-      li-76cf60:
-      li-1b3986:
-      li-dae417:
-      li-de99d6:
-    p-8b99ed:
+      li-76cf60: Malad oubyen entène lopital
+      li-1b3986: Ale lekòl, vakans, travay, oubyen sèvis militè
+      li-dae417: Detansyon nan yon enstitisyon pou minè
+      li-de99d6: timoun kidnape
+    p-8b99ed: Chwa sa a ka ogmante oubyen diminye EITC ou. Pou plis enfòmasyon <a
+      target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">gade</a>
   modal-joint-return:
-    heading:
-    p-9b8921:
-    p-bdfc89:
+    heading: deklarasyon kolektif ak yon lòt moun
+    p-9b8921: An jeneral, ou pa ka deklare yon moun ki marye kòm yon timoun ki elijib
+      pou EITC si li fè yon deklarasyon kolektif.
+    p-bdfc89: Piblikasyon 596, Kredi Sou Revni Ou Fè, Tès Deklrarasyon Konjwent
   modal-joint-return-with-another-person-exception:
-    heading:
-    p-93a25e:
-    p-bdfc89:
+    heading: Eksepsyon deklarasyon kolektif ak yon lòt moun
+    p-93a25e: Ou ka reklame yon moun ki marye ki ranpli yon deklarasyon kolektif kòm
+      yon timoun ki elijib pou EITC a si timoun nan ak mari oubyen madanm yo ap ranpli
+      deklarasyon an ansanm sèlman pou reklame yon ranbousman taks sou revni yo te
+      kenbe nan chèk peman yo oubyen taks estime yo te peye. Yo pa kapab reklame okenn
+      kredi tankou EITC lè yo retounen.
+    p-bdfc89: Piblikasyon 596, Kredi Sou Revni Ou Fè, Tès Deklrarasyon Konjwent
   modal-disabled:
-    heading:
-    p-a09e23:
+    heading: Envalidite definitif e total
+    p-a09e23: 'Pou EITC a, nou konsidere yon timoun andikape nèt ak totalman si de
+      kondisyon sa yo ranpli:'
     ul-0:
-      li-35e112:
-      li-f9618f:
-    p-de127e:
+      li-35e112: Timoun nan pa ka travay anpil pandan yon peryòd tan rezonab pandan
+        l ap travay pou psalè oubyen pou pwofi nan yon sitiyasyon travay konpetitif
+        pou omwen salè minimòm akòz yon kondisyon fizik oubyen mantal, epi
+      li-f9618f: Yon doktè detèmine kondisyon an te dire oubyen n ka espere l ap dire
+        kontinyèlman pou omwen yon ane oubyen ka lakòz lanmò.
+    p-de127e: Piblikasyon 596, Kredi Sou Revni Ou Fè, Definitivman Ak Totalman Andikape
   modal-relationship:
-    heading:
-    h3-523a2e:
-    p-3a1769:
-    h3-3cc097:
-    p-165b15:
-    h3-872822:
-    p-d91342:
-    h3-2fd110:
-    p-b80621:
+    heading: Definisyon Relasyon ak Timoun
+    h3-523a2e: Bèlfi
+    p-3a1769: Yon relasyon etap se yon relasyon ki fòme pa maryaj. Pou EITC a, yon
+      relasyon ki fòme pa maryaj, tankou bèlfi, bofis, demi frè oubyen demi sè, pa
+      fini si maryaj la fini.
+    h3-3cc097: Timoun adopte
+    p-165b15: Yon timoun adopte toujou trete kòm pwòp pitit ou. Tèm sa a gen ladann
+      yon timoun ki te mete avè w legalman pou adopsyon legal.
+    h3-872822: Timoun adopte
+    p-d91342: Yon timoun adopte toujou trete kòm pwòp pitit ou. Tèm sa a gen ladann
+      yon timoun ki te mete avè w legalman pou adopsyon legal.
+    h3-2fd110: Ajans plasman apwouve
+    p-b80621: Tèm sa a gen ladan yon ajans gouvènman leta oubyen lokal oubyen yon
+      gouvènman tribi Endyen. Li gen ladan tou yon òganizasyon egzante taks ki gen
+      lisans pa yon eta Endyen oubyen yon gouvènman tribi.
   modal-student:
-    heading:
-    h3-f803ae:
-    p-ef6d3a:
-    p-69b838:
-    h3-754ddf:
-    p-dfaecc:
+    heading: Etidyan aplentan
+    h3-f803ae: Etidyan aplentan
+    p-ef6d3a: Pou yo konsidere elèv la aplentan, li dwe enskri pou kantite èdtan oubyen
+      klas lekòl la konsidere kòm prezans aplentan.
+    p-69b838: Elèv ki travay nan travay "kooperativ" nan endistri prive kòm yon pati
+      nan kou regilye yon lekòl nan fòmasyon teyorik ak pratik yo konsidere kòm elèv
+      aplentan.
+    h3-754ddf: Lekòl defini
+    p-dfaecc: 'Pou EITC a, yon lekòl se:'
     ul-0:
-      li-5f78b0:
-      li-f8aab3:
-      li-39d2fa:
-      li-96892f:
-    p-986cc5:
+      li-5f78b0: Lekòl primè
+      li-f8aab3: Elemantè oubyen lekòl segondè
+      li-39d2fa: kolèj oubyen inivèsite
+      li-96892f: Lekòl teknik, komèsyal oubyen mekanik
+    p-986cc5: 'A school is not:'
     ul-1:
-      li-775eb9:
-      li-b2e8f2:
-      li-767c35:
-    p-81198a:
+      li-775eb9: Fòmasyon nan travay la
+      li-b2e8f2: Lekòl pa korespondans
+      li-767c35: Lekòl la ofri kou sèlman apati Entènèt
+    p-81198a: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
+      596</a>, Earned Income Credit..
   modal-valid-ssn-qc:
-    heading:
-    p-d68f7a:
-    p-0464ad:
-    p-a708ff:
-    p-558a40:
+    heading: Nimewo sekirite sosyal valab pou timoun ki elijib yo
+    p-d68f7a: Kantite EITC ou a depann de kantite timoun ki elijib ou genyen ak SSN
+      valab. Chak timoun oubyen paran w ap reklame pou w ka kalkile montan EITC a
+      dwe genyen yon Nimewo Sekirite Sosyal (SSN) ki valab ke Administrasyon Sekirite
+      Sosyal la te bay nan dat li te retounen ou an oubyen anvan ou (enkli ekstansyon).
+    p-0464ad: Pou EITC a, yon SSN se yon SSN valab sof si "Pa Valid pou Travay" yo
+      enprime sou kat Sekirite Sosyal la epi yo te bay nimewo a sèlman pou pèmèt moun
+      k ap resevwa SSN a aplike oubyen resevwa yon benefis finansman federal. Medicaid
+      se yon egzanp yon benefis federal finanse.
+    p-a708ff: Nou aksepte yon kat sekirite sosyal ki make "Valab pou travay avèk otorizasyon
+      DHS" sèlman toutotan otorizasyon DHS la toujou valab.
+    p-558a40: 'Pou EITC a, nou pa aksepte:'
     ul-0:
-      li-5e5f3e:
-      li-5fc9b7:
-      li-19d3d7:
+      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
+      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
+      li-19d3d7: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
+        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
   modal-claimed-someone-else:
-    heading:
-    p-9b277e:
-    p-911aff:
+    heading: Reklame sou deklarasyon taks yon lòt moun
+    p-9b277e: Se yon sèl moun ki ka reklame chak timoun pou EITC. Si plis pase yon
+      moun fè reklamasyon pou timoun nan, IRS aplike règ retire yo.
+    p-911aff: Piblikasyon 596, Kredi Sou Revni Ou Fè, Pitit Elijib Ou A Pa Kapab sèvi
+      Pou Plis Pase Yon Moun.
   modal-age-comparison:
-    heading:
-    p-626c78:
-    p-1a035f:
+    heading: Timoun Nan Dwe Pi Piti Pase Ou Ak Konjwen w
+    p-626c78: Pou yon timoun ki kalifye, timoun nan dwe pi piti pase ou, sof si li
+      andikape nèt ale nan nenpòt ki lè pandan <fg-show path="/taxYear">.
+    p-1a035f: Pou jwenn plis enfòmasyon gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Piblikasyon
+      596</a>, Kredi Revni Ou Touche, Tès Laj.
 /results:
-  title:
-  h2-88e7ef:
+  title: Rezilta Ou yo
+  h2-88e7ef: Rezilta Ou yo
   fg-alert-64891c:
-    heading:
-    p-cdf53e:
-    p-93a6b5:
-  p-578b13:
-  p-adf6bb:
-  h2-259962:
-  p-508e29:
-  h3-54f664:
-  p-a5939a:
-  p-3ef53a:
-  h3-792a4e:
-  p-787398:
-  p-25a83e:
-  h3-c7457b:
-  p-b8834f:
-  h2-a3da4a:
-  p-5a6eac:
+    heading: Ou pa kalifye pou Kredi Enpo sou Revni ou Touche a (EITC)
+    p-cdf53e: Dapre enfòmasyon ou bay yo, ou pa kapab reklame kredi pou revni ou touche
+      paske revni ou touche depase limit fikse pou estati deklarasyon ou ak kantite
+      timoun ki kalifye yo.
+    p-93a6b5: Pou jwenn plis enfòmasyon, gade <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596">Piblikasyon 596</a>, Kredi Revni
+      Ou Touche.
+  p-578b13: 'Dapre enfòmasyon ou te bay yo, ou kalifye pou kantite kredi taks sou
+    revni ke ou te fè yo:'
+  p-adf6bb: Kantite kredi sa a ap redwi ou <fg-show path="/taxYear"/> taks lè ou ranpli
+    deklarasyon taks ou ak IRS. Si kredi a diminye taks ou a mwens pase zewo, ou ka
+    jwenn yon ranbousman.
+  h2-259962: 'Pwochen etap: Kijan pou w aplike nan EITC'
+  p-508e29: Yo nan lòd yo resevwa montan an estime nan <strong><fg-show path="/earnedIncomeCredit"/></strong>*
+    , ou dwe soumèt ou <fg-show path="/taxYear"/> deklarasyon taks federal. Si w ap
+    aplike pou EITC, dapre lalwa IRS pa ka bay ranbousman taks ou jiska mitan mwa
+    fevriye. <fg-show path="/nextTaxYear"/>, menm pati ki pa asosye ak EITC la.
+  h3-54f664: Nan liy
+  p-a5939a: Si ou vle ranpli taks ou sou Entènèt, ou ka itilize pwogram IRS Free Files.
+    Tanpri sonje ke pwogram nan disponib sèlman nan mwa janvye rive oktòb.
+  p-3ef53a: <a target="_blank" class="usa-link" href="https://www.irs.gov/filing/free-file-do-your-federal-taxes-for-free">
+    Depoze sou entènèt kounye a<span class="usa-sr-only"> (opens in a new tab)</span>
+    </a>
+  h3-792a4e: An pèson
+  p-787398: Si ou prefere travay avèk yon moun ki prepare taks an pèsòn, ou gen opsyon
+    pou w fè sa nan yon Klinik Asistans Taks Volontè (VITA) IRS.
+  p-25a83e: <a target="_blank" class="usa-link" href="https://www.irs.gov/individuals/free-tax-return-preparation-for-qualifying-taxpayers">
+    Èd an pèsòn gratis<span class="usa-sr-only"> (opens in a new tab)</span> </a>
+  h3-c7457b: Fòm papye
+  p-b8834f: Piske w gen yon timoun ki kalifye, ou dwe ranpli <a target="_blank" class="usa-link"
+    href="https://www.irs.gov/forms-pubs/about-schedule-eic-form-1040"> Orè EIC (PDF)<span
+    class="usa-sr-only"> (opens in a new tab)</span> </a> epi atache li sou ou <a
+    target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    Fòm 1040 (PDF)<span class="usa-sr-only"> (opens in a new tab)</span> </a> oswa
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
+    Fòm 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span> </a> pou
+    ane fiskal <fg-show path="/taxYear"/>.
+  h2-a3da4a: Rezime enfòmasyon ou yo
+  p-5a6eac: Tablo ki anba a se yon rezime enfòmasyon ou te antre nan zouti a. Si nenpòt
+    nan enfòmasyon sa yo pa kòrèk, tanpri klike sou modifye pou mete ajou li, sinon
+    li ka afekte rezilta ou yo.
   table-0:
     tbody-0:
       tr-0:
-        th-537c66:
-        td-0da7c7:
-        td-fba314:
+        th-537c66: Ane
+        td-0da7c7: <fg-show path="/taxYear"/>
+        td-fba314: <a class="usa-link" href="/app/eitc/">Modifye enfòmasyon sou ou</a>
       tr-1:
-        th-c01d87:
-        td-86d753:
-        td-7a1efb:
+        th-c01d87: Kondisyon Fiskal
+        td-86d753: <fg-show path="/flowReadableFilingStatus"/>
+        td-7a1efb: <a class="usa-link" href="/app/eitc/filing-status/">Modifye estati
+          deklarasyon an</a>
       tr-2:
-        th-b1d475:
-        td-5637e9:
-        td-1c1ab4:
+        th-b1d475: Ajiste revni brit
+        td-5637e9: <fg-show path="/agi"/>
+        td-1c1ab4: <a class="usa-link" href="/app/eitc/income/">Modifye revni ak ajisteman</a>
       tr-3:
-        th-40c7ae:
-        td-d604bc:
-        td-387fc0:
+        th-40c7ae: touche revni
+        td-d604bc: 'Total pèman ak salè: <fg-show path="/jobsIncomeTotal"/>'
+        td-387fc0: <a class="usa-link" href="/app/eitc/income/">Modifye revni</a>
       tr-4:
-        th-dbaf54:
-        td-4ea2d8:
-        td-9efa8d:
-  p-35b0d2:
+        th-dbaf54: Timoun Kalifye
+        td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
+        td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Modifye
+          timoun ki kalifye yo</a>
+  p-35b0d2:  a pou w tcheke estati ranbousman w, fè peman, chèche jwenn èd preparasyon
+    enpo ki gratis, enskri pou w jwenn konsèy enpo ki itil, ak lòt bagay ankò!

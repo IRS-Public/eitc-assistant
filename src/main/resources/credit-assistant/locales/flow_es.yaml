@@ -64,7 +64,7 @@
       age25to64:
         name: Entre 25 y 64 años
       65andOlder:
-        name: 65 años y más 65 años y más
+        name: 65 años y más
   modal-tax-year:
     heading: Año tributario
     p-aa5a47: 'Para el sueldo y otros ingresos devengados en:'
@@ -106,15 +106,15 @@
       class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona.</a>
     p-16aba9: Le preguntaremos sobre los hijos o parientes que usted podría reclamar más adelante.
   modal-primary-claimed-as-dependent:
-    heading:
-    p-d3187d:
-    p-762495:
+    heading: ¿Cómo sé si soy el dependiente de alguien?
+    p-d3187d: Si dependió de otra persona (que no sea su cónyuge) para su sustento en <fg-show path="/taxYear"/>, es posible que puedan reclamarlo como dependiente en su declaración de impuestos federal.
+    p-762495: 'Hay algunos factores que determinan si alguien puede reclamarlo como dependiente, entre ellos:'
     ul-0:
-      li-b17276:
-      li-c82d5e:
-      li-5a5073:
-    p-752de3:
-    p-5a0201:
+      li-b17276: Su parentesco con esa persona
+      li-c82d5e: Cuánto le apoyaron, financieramente y de otras maneras
+      li-5a5073: Si vivió con ellos y durante cuánto tiempo
+    p-752de3: Revise la Tabla 5 en la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2024_publink1000196863">Publicación 501 del IRS</a> para determinar si otra persona podría reclamarlo.
+    p-5a0201: Tenga en cuenta que no es dependiente de otra persona si pagó más de la mitad de su propio sustento (o si lo hizo su cónyuge).
   modal-confirm-tax-year-change:
     heading: Atención
     p-31c7da: El cambio de año borrará los datos ingresados anteriormente. ¿Desea continuar?
@@ -390,7 +390,7 @@
       modalLink: <modal-link for="modal-self-employment-gross-income">¿Qué son los ingresos por trabajo por cuenta propia?</modal-link>
     /selfEmploymentGrossIncomeWorkRelatedExpenses:
       question: Gastos del trabajo por cuenta propia que usted <span condition="/isFilingStatusMFJ" operator="isTrue"> y su cónyuge </span> en <fg-show path="/taxYear"/>.
-      hint:
+      hint: Está bien dejar esto en blanco
       modalLink: <modal-link for="modal-self-employment-deductions">¿Cuáles son los gastos deducibles del trabajo por cuenta propia?</modal-link>
   fg-detail-2fc9c0:
     summary: Beneficios de la jubilación
@@ -437,7 +437,7 @@
     summary: Otros tipos de ingresos
     /nonSpecificOtherIncome:
       question: Otros tipos de ingresos
-      hint:
+      hint: Debe ingresar un monto total para todos los demás ingresos.
       modalLink: <modal-link for="modal-other-taxable-income">¿Cuáles son otros tipos de ingresos?</modal-link>
   h3-9fa8b1: Ajustes
   p-233dd3: Seleccione e ingrese alguno de estos tipos de ajustes a los ingresos que usted tuvo en el <fg-show path="/taxYear"/>. No ingrese el mismo ajuste en lugares distintos.
@@ -516,17 +516,17 @@
     h3-84091c: Seguro por incapacidad temporal y de corto plazo
     p-bee3d8: Si tomó su licencia por maternidad o paternidad o estuvo incapacitado temporalmente durante el año y su empleador le pagó, declaró su ingreso en su Formulario W-2.Ingrese aquí ese monto.
   modal-work-no-taxes-withheld:
-    heading:
-    p-7ca214:
-    p-9048f5:
-    p-8f1d83:
+    heading: Ingresos donde no se retuvieron impuestos federales
+    p-7ca214: Reporte los ingresos obtenidos del trabajo a destajo, incluso si es un trabajo secundario, a tiempo parcial o temporal.
+    p-9048f5: Ingrese los ingresos aquí si gana dinero de un trabajo, incluso si no se retuvieron impuestos sobre los ingresos. Es posible que haya recibido o no un Formulario 1099 por todos los ingresos.
+    p-8f1d83: 'Los ingresos pueden haberse obtenido a través de una aplicación o sitio web para:'
     ul-0:
-      li-014f6e:
-      li-816827:
-      li-ac1297:
-      li-743818:
-    p-ccdadf:
-    p-5465af:
+      li-014f6e: Conducir un auto para viajes reservados o entregas
+      li-816827: Hacer mandados o completar tareas
+      li-ac1297: Proporcionar servicios creativos o profesionales
+      li-743818: Proporcionar otro trabajo temporal, a pedido o independiente
+    p-ccdadf: Su ingreso bruto incluye todos los ingresos que recibió. Restaremos sus gastos más adelante.
+    p-5465af: Para más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/businesses/small-businesses-self-employed/manage-taxes-for-your-gig-work">Administre los impuestos para su trabajo a destajo (en inglés)</a>
   modal-self-employment-gross-income:
     heading: Ingreso del trabajo por cuenta propia
     p-3ef7b9: <strong>Si usted:</strong>
@@ -623,12 +623,12 @@
     p-a81df3: Si trabajó por cuenta propia en 2025, puede encontrar sus gastos deducibles en la línea 28 del Anexo C.
     p-4ca1ce: Obtenga más información sobre los gastos comerciales
   modal-estimate-interest-income-en:
-    heading:
-    p-cda131:
-    p-bc395c:
-    p-ec3579:
+    heading: ¿Qué son los ingresos por intereses y cómo puedo calcularlos?
+    p-cda131: Los tipos comunes de ingresos por intereses incluyen los intereses ganados en cuentas bancarias o por prestar dinero.
+    p-bc395c: <strong>Cómo revisar la declaración de impuestos del año pasado</strong>
+    p-ec3579: 'Si obtuvo ingresos por intereses en <fg-show path="/taxYear"/>, busque una cantidad en:'
     ul-0:
-      li-7b5662:
+      li-7b5662: La línea 2b del Formulario 1040 de su declaración de impuestos federales de <fg-show path="/taxYear"/>
   modal-investment-income:
     heading: Ingreso de inversión
     p-b07c20: 'Para los propósitos del crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), el ingreso de inversión incluye:'
@@ -708,7 +708,7 @@
   modal-self-employed-retirement:
     heading: Planes SEP, SIMPLE y otros planes que califican
     p-ca0a8f: 'Si trabaja por cuenta propia, calcula la compensación de su plan calificado restando lo siguiente de su ingreso neto del trabaja por cuenta propia:'
-    p-0d133f:
+    p-0d133f: 'Para calificar, usted o su cónyuge deben haber:'
     ul-0:
       li-6c246a: La parte deducible de su impuesto sobre el trabajo por cuenta propia
         (SE, por las siglas en inglés) de su declaración del Formulario 1040, página
@@ -716,15 +716,15 @@
       li-a2595a: El monto de la aportación a su plan de jubilación de su declaración
         del Formulario 1040, página 1, en la línea correspondiente a los planes SEP,
         SIMPLE y planes calificados para trabajadores por cuenta propia.
-      li-f6cddf:
-    p-3622b4:
+      li-f6cddf: Tenido una sociedad de responsabilidad limitada (LLC)
+    p-3622b4: 'Los planes elegibles pueden haber incluido:'
     ul-1:
-      li-ff93fe:
-      li-200ab4:
-      li-e7dbe4:
-      li-765afa:
-    p-af5a4a:
-    p-add56c:
+      li-ff93fe: Plan de Pensión Simplificada para Empleados (SEP)
+      li-200ab4: Plan de Reembolso de Incentivos de Ahorro para Empleados
+      li-e7dbe4: Solo-401(k)
+      li-765afa: Otros planes de jubilación calificados
+    p-af5a4a: <strong>No incluya</strong> las contribuciones a un Arreglo de Jubilación Individual (IRA).
+    p-add56c: Debe haber utilizado una regla especial para calcular las contribuciones al plan de jubilación para usted mismo.
     p-3248f2: Para obtener más información, consulte <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
       class="usa-link">Trabajadores por cuenta propia - Cómo calcular sus aportaciones
       y deducciones de su propio plan de jubilación (en inglés)<span class="usa-sr-only">
@@ -748,7 +748,7 @@
     p-7948e4: <strong>Family or child support</strong>
     p-358bc5: Tampoco incluya los montos si se modificó la orden judicial o si indica
       que no puede deducir sus pagos.
-    p-06a405:
+    p-06a405: Pensión alimenticia o manutención separada realizada en virtud de una orden judicial ejecutada después del 31 de diciembre de 2024
     p-4b335c: Para obtener más información, visite <a target="_blank" href="https://www.irs.gov/taxtopics/tc452"
       class="usa-link">Tema tributario 452<span class="usa-sr-only"> (opens in a
       new tab)</span></a>.
@@ -791,7 +791,7 @@
     heading: Deducción del seguro de salud del trabajo por cuenta propia
     p-598073: Ingrese el monto que pagó para el seguro de salud para usted, su cónyuge
       y sus personas dependientes, si trabaja por cuenta propia.
-    p-d60394:
+    p-d60394: Las primas elegibles fueron seguros médicos, dentales, de la vista y de cuidado a largo plazo. La póliza podía ser para usted, su cónyuge y sus dependientes. La póliza también podía cubrir a su hijo menor de 27 años al final del año, incluso si el hijo no era su dependiente.
     p-13dece: Para obtener más información, consulte el <a target="_blank" href="https://www.irs.gov/publications/p535"
       class="usa-link">Capítulo 6 de la Publicación 535, Gastos de negocio para la
       información de elegibilidad (en inglés)<span class="usa-sr-only"> (opens in a
