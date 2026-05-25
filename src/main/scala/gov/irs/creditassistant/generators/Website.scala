@@ -3,6 +3,7 @@ package gov.irs.creditassistant.generators
 import gov.irs.creditassistant.build.Flags
 import gov.irs.creditassistant.parser.Flow
 import gov.irs.creditassistant.CreditAssistantTemplateEngine
+import io.circe.Printer
 import org.jsoup.parser.Tag
 import org.jsoup.Jsoup
 import org.thymeleaf.context.Context
@@ -38,13 +39,21 @@ case class WebsitePage(route: String, content: String, languageCode: String) {
 
     var path = root
     if (isTranslated) path = path / languageCode
-    if (isNamedRoute) path = path / route.substring(1)
+    if (isNamedRoute) {
+      // In one question per screen mode, routes may have multiple segments (e.g. "/filing-status/knows-filing-status"
+      // os.Path rejects "/" inside a chunk, so split it out.
+      route.stripPrefix("/").split("/").filter(_.nonEmpty).foreach(seg => path = path / seg)
+    }
 
     path / "index.html"
   }
 }
 
-case class Website(pages: List[WebsitePage], factDictionary: xml.Elem) {
+case class Website(
+    pages: List[WebsitePage],
+    factDictionary: xml.Elem,
+    flowManifestJson: Option[String] = None,
+) {
   def save(directoryPath: Path): Unit = {
     os.remove.all(directoryPath)
 
@@ -60,6 +69,8 @@ case class Website(pages: List[WebsitePage], factDictionary: xml.Elem) {
 
     val dictionaryString = factDictionary.toString
     os.write(resourcesTarget / "fact-dictionary.xml", dictionaryString, null)
+
+    flowManifestJson.foreach(json => os.write(resourcesTarget / "flow-manifest.json", json, null))
   }
 }
 
@@ -83,7 +94,13 @@ object Website {
     var pages = locales.flatMap { languageCode =>
       val templateEngine = new CreditAssistantTemplateEngine(languageCode)
       val navPages = flow.pages.filter(p => !p.exclude)
-      val excludedPageLength = flow.pages.length - navPages.size
+
+      val topicReps: List[gov.irs.creditassistant.parser.Page] = {
+        val seen = scala.collection.mutable.LinkedHashMap.empty[String, gov.irs.creditassistant.parser.Page]
+        navPages.foreach(p => seen.getOrElseUpdate(p.stepperRoute, p))
+        seen.values.toList
+      }
+      val topicIndex: Map[String, Int] = topicReps.zipWithIndex.map { case (p, i) => p.stepperRoute -> i }.toMap
 
       flow.pages.zipWithIndex.map { (page, index) =>
         val titleValue = templateEngine.messageResolver.resolveMessage(page.titleKey)
@@ -92,13 +109,16 @@ object Website {
 
         val title = s"$titlePrefix - $titleValue | $titleSuffix"
 
+        val stepIndex = topicIndex.getOrElse(page.stepperRoute, 0)
+        val stepTotal = topicReps.size
+
         val context = new Context()
         context.setVariable("exclude", page.exclude)
         context.setVariable("title", title)
         context.setVariable("stepTitle", titleValue)
-        context.setVariable("stepIndex", (index - excludedPageLength) % flow.pages.length)
-        context.setVariable("stepTotal", navPages.size)
-        context.setVariable("pages", navPages.asJava) // th:each requires Java Iterables
+        context.setVariable("stepIndex", stepIndex)
+        context.setVariable("stepTotal", stepTotal)
+        context.setVariable("pages", topicReps.asJava) // th:each requires Java Iterables
         context.setVariable("currentPageRoute", page.route)
         context.setVariable("flags", flags.asJava)
         context.setVariable("languageCode", languageCode)
@@ -134,6 +154,14 @@ object Website {
       pages = pages ++ allScreensPages
     }
 
-    Website(pages, dictionaryXml)
+    // In single-question-per-screen mode, emit a manifest that the navigation JS uses to skip
+    // pages whose gating condition is false against the live Fact Graph. The manifest is built
+    // for "en" only because routes are identical across locales (only the href prefix differs);
+    // the JS computes the localized href client-side from window.location.
+    val manifestJson = Option.when(flags.contains(Flags.singleQuestionPerScreen)) {
+      Printer.spaces2.print(FlowManifest.buildJson(flow, "en"))
+    }
+
+    Website(pages, dictionaryXml, manifestJson)
   }
 }

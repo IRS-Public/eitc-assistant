@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <?xml-model href="./FlowConfig.rng"?>
 <FlowConfig>
-  <page title="AGI" route="/agi">
+  <page title="AGI" route="/agi" group-by="h3">
     <section>
       <h2><strong>Estimate Your <fg-show path="/taxYear"/> Adjusted Gross Income (AGI)</strong></h2>
       <p>In this step, we'll estimate your <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse's joint</span> earned income, adjusted gross income, and any adjustments to it.</p>

@@ -17,6 +17,10 @@ FG_TARGET_DIR := ./src/main/resources/credit-assistant/website-static/vendor/fac
 dev: ## Build and run development server, watching for changes (Default)
 	sbt -Dsmol.port=$(PORT) '~run --serve --auditMode --allScreens'
 
+.PHONY: dev-one-question
+dev-one-question: # Run in one question: one screen mode
+	sbt -Dsmol.port=$(PORT) '~run --serve --auditMode --allScreens --singleQuestionPerScreen'
+
 .PHONY: debug
 debug: ## Same as `dev`, but also opens a port to attach a debugger (like your IDE)
 	sbt -Dsmol.port=$(PORT) -jvm-debug $(DEBUGGER_PORT) '~run --serve --auditMode --allScreens'

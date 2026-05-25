@@ -4,6 +4,7 @@ import gov.irs.creditassistant.build.Flags
 import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.generators.Website
 import gov.irs.creditassistant.parser.Flow
+import gov.irs.creditassistant.parser.PageSplitter
 import scala.io.Source
 import scala.util.matching.Regex
 import scala.util.Try
@@ -39,7 +40,11 @@ val flagRegex = new Regex("""--(\w*)""")
   val resolvedConfig = <FlowConfig>{resolvedChildren}</FlowConfig>
 
   val caFactDictionary = loadCreditAssistantFactDictionary()
-  val flow = Flow.fromXmlConfig(resolvedConfig, caFactDictionary.factDictionary)
+  val parsedFlow = Flow.fromXmlConfig(resolvedConfig, caFactDictionary.factDictionary)
+  val flow =
+    if (flags.contains(Flags.singleQuestionPerScreen))
+      Flow(PageSplitter.split(parsedFlow.pages), parsedFlow.translationContext)
+    else parsedFlow
   generateFlowLocaleFile(flow.translationContext.translationMap)
   val site = Website.generate(flow, caFactDictionary.xml, flags)
 

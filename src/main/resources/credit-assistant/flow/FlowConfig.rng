@@ -36,6 +36,11 @@
             <attribute name="html-src">
             </attribute>
           </optional>
+           <optional>
+            <attribute name="group-by">
+              <text/>
+            </attribute>
+          </optional>
           <zeroOrMore>
             <element name="section">
               <ref name="FlowConfigModuleContent"/>
