@@ -37,7 +37,7 @@
     modalLink: <modal-link for="modal-valid-ssn-filer">¿Qué se considera un Número de Seguro Social válido?</modal-link>
     options:
       'true':
-        name: Si
+        name: Sí
       'false':
         name: No
   /hasForeignEarnedIncome:
@@ -45,7 +45,7 @@
     modalLink: <modal-link for="modal-foreign-income">¿Qué son ingreso devengado en el extranjero excluido de los ingresos brutos?</modal-link>
     options:
       'true':
-        name: Si
+        name: Sí
       'false':
         name: No
   /isClaimedAsDependent:
@@ -53,7 +53,7 @@
     modalLink: <modal-link for="modal-claimed-dependent">¿Cómo sé si soy como persona dependiente o hijo calificado?</modal-link>
     options:
       'true':
-        name: Si
+        name: Sí
       'false':
         name: No
   /ageRange:
