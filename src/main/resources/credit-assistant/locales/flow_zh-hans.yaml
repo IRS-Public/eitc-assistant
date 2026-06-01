@@ -22,9 +22,9 @@
         name: 不
   fg-alert-8b7db9:
     heading: 您没有资格申请劳动所得税抵免 (EITC)
-    p-091688: 您必须是美国公民或外籍居民才能申请劳动所得税抵免。请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.，以确定您是否全年为美国外籍居民。
-    p-f72c3e: ' 选择 yes，如果您与您的配偶联合申报 <fg-show path="/taxYear"/> 的所得，并且您或您的配偶全年都是美国公民或外籍居民。'
+    p-091688: 您必须是美国公民或外籍居民才能申请劳动所得税抵免。请参阅 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">第519号刊物，美国外国人税收指南（英文）</a>，以确定您是否全年为美国外籍居民。
+    p-f72c3e: ' 选择 <strong>是</strong>，如果您与您的配偶联合申报 <fg-show path="/taxYear"/> 的所得，并且您或您的配偶全年都是美国公民或外籍居民。'
     p-b85d77: 您无法申请 EITC，因为您没有在您的报税表的截止日期当日或之前签发的有效社会安全号码。
     p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596</a>, Earned Income Credit.。
@@ -79,8 +79,8 @@
     heading: 美国公民或外籍居民
     p-18e680: 如果您非美国公民，您即为外籍公民。
     p-fe70ca: 就 EITC 而言，如果您持有绿卡，或者您在美国居住超过一定天数，您将被视为外籍居民。
-    p-2c8f8f: 有关更多信息和重要例外情况，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.
+    p-2c8f8f: 有关更多信息和重要例外情况，请参阅 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">第519号刊物，美国外国人税收指南（英文）</a>    
   modal-valid-ssn-filer:
     heading: 有效社会安全号码
     p-527528: 您必须在 <fg-show path="/taxYear"/> 年纳税申报表（包括延期）到期日或之前拥有由社保局颁发的有效社会安全号码
@@ -99,7 +99,7 @@
   modal-claimed-dependent:
     heading: 您作为受抚养人或符合条件的子女
     p-faf8d8: 在大多数情况下，您不能成为其他纳税人的受抚养人或符合条件的子女，并申请 EITC。
-    p-98d6db: 在大多数情况下，如果您未满 19 岁，或是一名未满 24 岁的学生，并且与父母或其他亲属在美国生活了半年以上，请选择 <strong>Yes</strong>。
+    p-98d6db: 在大多数情况下，如果您未满 19 岁，或是一名未满 24 岁的学生，并且与父母或其他亲属在美国生活了半年以上，请选择 <strong>是</strong>。
     p-038f13: 如果您已婚并提交联合申报表，则不能将您作为受抚养人进行申报，除非您提交联合申报表只是为了申请预扣所得税或已缴纳的预估税款的退税款。
     p-ceda6c: '有关他人是否可将您申报为受抚养人的更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">请访问</a> '
     p-d11380: 有关他人是否可将您申报为受抚养人以申请 EITC 的更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">请参阅</a>
@@ -156,7 +156,7 @@
     question: 您的配偶是什么时候去世的？
     options:
       taxYear:
-        name: <fg-show path="/taxYear"/> 期间
+        name: 2025 期间
       taxYearMinusOneOrTwo:
         name: 2023 或 2024 期间
       beforeTaxYearMinusTwo:
@@ -310,7 +310,7 @@
     p-9cbbc6: 您的居所在这一年中是否有超过一半的时间位于美国？
     p-775779: 您的居所在 <fg-show path="/taxYear"/> 中必须有超过一半的时间位于美国。美国包括 50 个州和哥伦比亚特区。不包括关岛、维尔京群岛或波多黎各等美国属地。
     h3-398dfd: 驻扎在美国境外的军事人员
-    p-7dbfa0: 如果您是美国军人，并且在美国境外进行延期服役，请选择 yes。
+    p-7dbfa0: 如果您是美国军人，并且在美国境外进行延期服役，请选择 <strong>是</strong>。
   modal-keeping-up-home:
     heading: 维持家庭开支
     p-c0958f: 如果您支付的总金额超过总费用的一半，则您满足支付一半以上的家庭维护费用的要求。
@@ -536,9 +536,9 @@
     p-40d79a: 您的雇主在您的 W-2 表的方框 1 中报告了您的工资、薪金、小费和其他报酬。
     p-ab967b: 您的雇主在《W-2 表格》的方框 1 中报告了您的工资、薪水、小费和其他报酬。在确定劳动所得税抵免资格时，请将小费和加班收入等全部金额计入收入计算中，即使全部或部分可扣除。
     p-cb2522: 如果您是和您的配偶联合申报，请包括在表格 W-2 的 Box 1 中为您本人和您的配偶申报的所有款额。
-    p-1f7f24: 税前供款部分 Don't Include 在表格 W-2 的税前供款中。
+    p-1f7f24: 税前供款部分 不包括 在表格 W-2 的税前供款中。
     h3-af3590: 军人薪金和军饷
-    p-3fdb7d: 就 EITC 而言，您还可以将您的非应税军饷包括在您的劳动所得中。您的雇主在您的表格 W-2，Box 12（Code Q ）中申报了您的非应税军饷。
+    p-3fdb7d: 就 EITC 而言，您还可以将您的非应税军饷包括在您的劳动所得中。您的雇主在您的表格 W-2，第 12 栏（代码 Q ） 中申报了您的非应税军饷。
     p-d9b0e5: '这一选择可能会导致您的 EITC 额上下浮动。欲了解更多信息，<a target="_blank" class="usa-link"
       href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">请参阅</a> '
     h3-84091c: 临时和短期残障保险
@@ -599,7 +599,7 @@
   modal-unemployment-compensation:
     heading: 失业补助（保险）
     p-ec0a26: 就 EITC 而言，包括您的全部失业补助福利。您可以在表格 1099-G 中找到此项所得。
-    p-97117c: 如果您的雇主提供了补充福利，包括在表格 W-2，Box 1 中申报的任何款额。
+    p-97117c: 如果您的雇主提供了补充福利，包括在表格 W-2，第 1 栏 中申报的任何款额。
   modal-social-security:
     heading: 社会保障所得
     p-f2d061: 对于 EITC，只包括您社会保障和铁路退休福利的应纳税金额。
@@ -756,7 +756,8 @@
   modal-hsa-deductions:
     heading: 医疗储蓄账户扣减：
     p-2ab752: 输入您任何健康储蓄账户 (HSA) 供款（未包括在上面的医疗储蓄账户、灵活支出安排或其他“自助餐式福利计划”中）。
-    p-a7d9fc: 关于第969号刊物，医疗储蓄账户和其他税收优惠的医疗计划（英文）
+    p-a7d9fc: 关于<a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-969"
+      class="usa-link">第969号刊物，医疗储蓄账户和其他税收优惠的医疗计划（英文）</a>
   modal-alimony-paid:
     heading: 赡养费支出
     p-fa1de9: 如果您根据 2019 1 月 1 日之前执行的法院命令支付了赡养费或分居赡养费，并且该命令没有明确说明您不能进行抵税，请在此处输入您在  期间支付的款额。
@@ -768,7 +769,7 @@
       class="usa-link">请访问</a> '
   modal-early-withdrawal:
     heading: 提前支取储蓄金的罚金
-    p-7e8d5b: 如果您在存单或其他递延利息账户到期前支取资金，您可能需要支付罚金。您可以在 Box 2 的表格 1099-INT 中找到此项罚金。在此处输入款额。
+    p-7e8d5b: 如果您在存单或其他递延利息账户到期前支取资金，您可能需要支付罚金。您可以在 第 2 栏 的表格 1099-INT 中找到此项罚金。在此处输入款额。
   modal-moving-expenses:
     heading: 迁移支出
     p-6f18fd: 如果您为现役军人，军方命令您永久改变任职地点，请在此处输入军方没有补偿的任何迁移支出。迁移支出包括：
@@ -798,8 +799,7 @@
 /qualifying-children:
   title: 符合条件的子女
   h2-dbaf54: 符合条件的子女
-  p-9b177d: 根据您之前的输入，您没有任何符合条件的子女。如果此项有误，请返回 <a class="usa-link" href="/app/eitc/filing-status/">Filing
-    Status</a>，然后更改您的回复。
+  p-9b177d: 根据您之前的输入，您没有任何符合条件的子女。如果此项有误，请返回 <a class="usa-link" href="/app/eitc/filing-status/">报税状态</a>，然后更改您的回复。
   p-c1a0dd: 请进入下一步查看结果。
   p-3178be: 在这一步中，我们将了解有多少子女或其他亲属是您符合申请和计算 EITC 条件的子女。您最多可以为三个符合条件的子女申请 EITC。
   p-e28c1e: 您有 3 个符合条件的子女，并且已达到可申请 EITC 的符合条件子女的最大数量。你不需要再回答任何问题了。
