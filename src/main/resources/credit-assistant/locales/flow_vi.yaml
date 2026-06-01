@@ -27,16 +27,14 @@
   fg-alert-8b7db9:
     heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
     p-091688: Quý vị phải là công dân Hoa Kỳ hoặc ngoại nhân thường trú để yêu cầu
-      Tín Thuế Thu Nhập Kiếm Được. Xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit. để xác định xem liệu quý vị có phải là ngoại
+      Tín Thuế Thu Nhập Kiếm Được. Xem <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Ấn Phẩm 519, Hướng Dẫn Về Thuế Hoa Kỳ cho Ngoại Nhân (tiếng Anh) </a> để xác định xem liệu quý vị có phải là ngoại
       nhân thường trú Hoa Kỳ trong cả năm đó hay không.
-    p-f72c3e: ' Chọn yes nếu quý vị đang khai thuế chung với người phối ngẫu của mình
+    p-f72c3e: ' Chọn <strong>Có</strong> nếu quý vị đang khai thuế chung với người phối ngẫu của mình
       cho <fg-show path="/taxYear"/> và quý vị hoặc người phối ngẫu là Công Dân Hoa
       Kỳ hoặc Ngoại Nhân Thường Trú trong cả năm.'
     p-b85d77: Quý vị không thể yêu cầu EITC vì quý vị không có số an sinh xã hội hợp
       lệ được cấp vào hoặc trước ngày đến hạn của tờ khai thuế của quý vị.
-    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit..
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC) (tiếng Anh)</a>.
     p-4c0c0d: Bạn không thể yêu cầu tín dụng thu nhập kiếm được nếu bạn nộp <a target="_blank"
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Mẫu 2555</a>,
       Thu nhập kiếm được ở nước ngoài.
@@ -102,8 +100,7 @@
     p-fe70ca: Quý vị được coi là ngoại nhân thường trú cho xét duyệt EITC nếu có thẻ
       xanh hoặc đã sống ở Hoa Kỳ trong hơn một số ngày nhất định.
     p-2c8f8f: Để biết thêm thông tin và các trường hợp ngoại lệ quan trọng, xem <a
-      target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.
+      target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Ấn Phẩm 519, Hướng Dẫn Về Thuế Hoa Kỳ cho Ngoại Nhân</a>.
   modal-valid-ssn-filer:
     heading: Số An Sinh Xã Hội Hợp Lệ
     p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
@@ -135,7 +132,7 @@
       trẻ đủ điều kiện của người đóng thuế khác đồng thời yêu cầu EITC.
     p-98d6db: Trong hầu hết các trường hợp, nếu quý vị chưa đủ 19 tuổi hoặc là học
       sinh/sinh viên dưới 24 tuổi và sống với cha mẹ hoặc thân nhân khác của quý vị
-      ở Hoa Kỳ trong hơn nửa năm, hãy chọn <strong>Yes</strong>.
+      ở Hoa Kỳ trong hơn nửa năm, hãy chọn <strong>Có</strong>.
     p-038f13: Nếu quý vị đã kết hôn và khai thuế chung, quý vị không thể khai là người
       phụ thuộc trừ khi quý vị khai thuế chung chỉ để yêu cầu hoàn thuế thu nhập đã
       khấu lưu hoặc thuế ước tính đã trả.
@@ -203,7 +200,7 @@
     question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
-        name: Trong <fg-show path="/taxYear"/>
+        name: Trong 2025
       taxYearMinusOneOrTwo:
         name: Trong 2023 hoặc 2024
       beforeTaxYearMinusTwo:
@@ -424,7 +421,7 @@
       Rico. '
     h3-398dfd: Quân Nhân Đóng Quân Bên Ngoài Hoa Kỳ
     p-7dbfa0: Nếu quý vị là một thành viên của quân đội Hoa Kỳ và đang đóng quân bên
-      ngoài Hoa Kỳ trong thời gian tại ngũ được gia hạn, hãy chọn yes.
+      ngoài Hoa Kỳ trong thời gian tại ngũ được gia hạn, hãy chọn <strong>Có</strong>.
   modal-keeping-up-home:
     heading: Duy Trì Ngôi Nhà
     p-c0958f: Nếu tổng số tiền quý vị đã trả nhiều hơn một nửa tổng chi phí, quý vị
@@ -718,15 +715,15 @@
       toàn bộ số tiền boa và thu nhập làm thêm giờ trong tính toán thu nhập kiếm được
       khi xác định tính đủ điều kiện nhận tín thuế thu nhập do lao động, ngay cả khi
       tất cả hoặc một phần được khấu trừ.
-    p-cb2522: Bao gồm mọi số tiền được khai báo trong Box 1 của Mẫu W-2 cho cả quý
+    p-cb2522: Bao gồm mọi số tiền được khai báo trong <strong>ô 1</strong> của Mẫu W-2 cho cả quý
       vị và người phối ngẫu của quý vị nếu quý vị đang khai thuế chung với người phối
       ngẫu của mình.
-    p-1f7f24: Don't Include các khoản đóng góp trước thuế trong Mẫu W-2 của quý vị
+    p-1f7f24: Vui lòng không bao gồm các khoản đóng góp trước thuế trong Mẫu W-2 của quý vị
       trong mục đóng góp trước thuế.
     h3-af3590: Lương Quân Nhân & Lương Chiến Đấu
     p-3fdb7d: Quý vị cũng có thể chọn gộp khoản lương chiến đấu không chịu thuế của
       mình vào thu nhập kiếm được để nhận EITC. Chủ lao động của quý vị đã khai báo
-      khoản lương chiến đấu không chịu thuế của quý vị trong Box 12 với Code Q trên
+      khoản lương chiến đấu không chịu thuế của quý vị trong <strong>ô 12</strong> với <strong>mã Q</strong> trên
       Mẫu W-2 của quý vị.
     p-d9b0e5: 'Lựa chọn này có thể làm tăng hoặc giảm EITC của quý vị. Để biết thêm
       thông tin, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">xem</a> '
@@ -818,7 +815,7 @@
     p-ec0a26: Đối với EITC, hãy liệt kê toàn bộ các khoản bồi thường thất nghiệp của
       quý vị. Quý vị sẽ tìm thấy thu nhập này trên Mẫu 1099-G.
     p-97117c: Nếu quỹ của chủ lao động của quý vị cung cấp các quyền lợi bổ sung,
-      hãy liệt kê bất kỳ số tiền nào được khai báo trong Mẫu W-2, Box 1.
+      hãy liệt kê bất kỳ số tiền nào được khai báo trong Mẫu W-2, <strong>ô 1</strong>.
   modal-social-security:
     heading: Quyền Lợi An Sinh Xã Hhội Và Hưu Trí Đường Sắt
     p-f2d061: Đối với EITC, chỉ bao gồm số tiền chịu thuế của Trợ cấp An sinh Xã hội
@@ -1055,7 +1052,7 @@
     heading: Tiền phạt do rút tiền tiết kiệm trước hạn
     p-7e8d5b: Nếu rút tiền từ chứng thư gửi tiền định kỳ hoặc tài khoản tiền lãi được
       hoãn khác trước hạn, quý vị có thể phải chịu một khoản tiền phạt. Quý vị có
-      thể tìm thấy thông tin về khoản tiền phạt này trên Mẫu 1099-INT trong Box 2.
+      thể tìm thấy thông tin về khoản tiền phạt này trên Mẫu 1099-INT trong <strong>ô 2</strong>.
       Nhập khoản đó tại đây.
   modal-moving-expenses:
     heading: chi phí chuyển nhà
@@ -1096,7 +1093,7 @@
   h2-dbaf54: Trẻ Đủ Điều Kiện
   p-9b177d: Dựa trên thông tin đầu vào mà quý vị cung cấp trước đây, quý vị không
     có bất kỳ trẻ đủ điều kiện nào. Nếu điều này không chính xác, vui lòng quay lại
-    <a class="usa-link" href="/app/eitc/filing-status/">Filing Status</a> và thay
+    <a class="usa-link" href="/app/eitc/filing-status/">Tư Cách Khai Thuế</a> và thay
     đổi câu trả lời của quý vị.
   p-c1a0dd: Vui lòng chuyển sang bước tiếp theo để xem kết quả của quý vị.
   p-3178be: Trong bước này, chúng tôi sẽ xem có bao nhiêu người con hoặc người thân
@@ -1112,8 +1109,7 @@
         cùng bạn?</modal-link>
     fg-alert-b7d816:
       heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được
-      p-7666ea: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-        596</a>, Earned Income Credit..
+      p-7666ea: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596"> Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC) (tiếng Anh)</a>.
     /familyAndHousehold/*/someoneElseCanClaim:
       question: Người khác có thể khai trẻ này để nhận EITC không?
       modalLink: <modal-link for="modal-claimed-someone-else">Nếu có nhiều hơn một
@@ -1190,15 +1186,13 @@
     heading: Yêu cầu về trẻ em đủ điều kiện
     p-b6bd9e: Quý vị không đủ điều kiện nhận EITC nếu không có trẻ đủ điều kiện trừ
       khi quý vị hoặc vợ/chồng của quý vị  từ 25 đến 64 tuổi nếu khai thuế chung.
-    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit..
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596"> Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC) (tiếng Anh)</a>.
   fg-alert-64891c:
     heading: Quý vị không đủ điều kiện nhận Tín Thuế Thu Nhập Kiếm Được (EITC).
     p-cdf53e: Dựa trên những số tiền bản thân đã nhập, quý vị không thể yêu cầu tín
       thuế thu nhập kiếm được vì có thu nhập kiếm được vượt quá hạn mức đối với tư
       cách khai thuế và số trẻ đủ điều kiện của quý vị.
-    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit..
+    p-93a6b5: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC) (tiếng Anh)</a>.
   h2-34370a: Dựa trên thông tin đầu vào của quý vị, quý vị có <fg-show path="/eitcQualifyingChildren"/>
     trẻ đủ điều kiện với số An Sinh Xã Hội hợp lệ.
   modal-residency:
@@ -1299,8 +1293,7 @@
       li-775eb9: Lớp huấn luyện thực hành ngay trên công việc đương nhiệm
       li-b2e8f2: Trường học hàm thụ
       li-767c35: Trường chỉ cung cấp các khóa học qua Internet
-    p-81198a: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit..
+    p-81198a: Để biết thêm thông tin, xem <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn Phẩm 596, Tín Thuế Thu Nhập Kiếm Được (EIC) (tiếng Anh)</a>.
   modal-valid-ssn-qc:
     heading: Số An Sinh Xã Hội Hợp Lệ cho Trẻ Đủ Điều Kiện
     p-d68f7a: Số tiền EITC của quý vị phụ thuộc vào số lượng trẻ đủ điều kiện mà quý
