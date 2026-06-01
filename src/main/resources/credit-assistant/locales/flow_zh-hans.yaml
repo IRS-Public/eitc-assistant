@@ -26,8 +26,7 @@
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">第519号刊物，美国外国人税收指南（英文）</a>，以确定您是否全年为美国外籍居民。
     p-f72c3e: ' 选择 <strong>是</strong>，如果您与您的配偶联合申报 <fg-show path="/taxYear"/> 的所得，并且您或您的配偶全年都是美国公民或外籍居民。'
     p-b85d77: 您无法申请 EITC，因为您没有在您的报税表的截止日期当日或之前签发的有效社会安全号码。
-    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第 596 号出版物</a>, 劳动所得抵免。
     p-4c0c0d: 如果您提交了外国赚取收入的<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">表
       2555</a>，则不能申请所得税抵免。
     p-236b69: 第54号刊物，美国公民和外籍居民税务指南（英文）
@@ -810,8 +809,7 @@
       modalLink: <modal-link for="modal-residency">什么算是与您一起生活的时间？</modal-link>
     fg-alert-b7d816:
       heading: 查看是否有资格获得劳动所得税抵免。
-      p-7666ea: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-        596</a>, Earned Income Credit.。
+      p-7666ea: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第 596 号出版物</a>, 劳动所得抵免。
     /familyAndHousehold/*/someoneElseCanClaim:
       question: 有人能为该子女申请 EITC 吗？
       modalLink: <modal-link for="modal-claimed-someone-else">如果不止一个人可以申请他们怎么办？</modal-link>
@@ -867,13 +865,11 @@
   fg-alert-9510e7:
     heading: 符合条件的儿童要求
     p-b6bd9e: 如果没有符合条件的子女，则没有资格申请 EITC，除非您本人或配偶（如果共同申报）年龄在 25 周岁至 64 周岁。
-    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第 596 号出版物</a>, 劳动所得抵免。
   fg-alert-64891c:
     heading: 您没有资格申请劳动所得税抵免 (EITC)
     p-cdf53e: 根据您输入的款额，您不能申请劳动所得抵免，因为您的劳动所得超出了您的申请状态和符合条件的子女数量的限制。
-    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第 596 号出版物</a>, 劳动所得抵免。
   h2-34370a: 根据您的输入，您有 <fg-show path="/eitcQualifyingChildren"/> 个具有有效社会保障号码的合格子女。
   modal-residency:
     heading: 居住地测试
@@ -937,8 +933,7 @@
       li-775eb9: 在职培训课程
       li-b2e8f2: 函授学校
       li-767c35: 仅通过互联网授课的学校
-    p-81198a: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-81198a: 欲了解更多信息，请参阅 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第 596 号出版物</a>, 劳动所得抵免。
   modal-valid-ssn-qc:
     heading: 符合条件的孩子的有效社会安全号码
     p-d68f7a: 您的 EITC 的款额取决于您拥有的符合条件的子女（有有效社会安全号码）的人数。为计算 EITC 的款额而申报的每名孩子或亲属必须有由社会安全局在您的报税表的截止日期（包括延期）当日或之前签发的有效社会安全号码

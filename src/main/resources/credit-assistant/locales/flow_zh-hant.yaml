@@ -22,13 +22,11 @@
         name: 不
   fg-alert-8b7db9:
     heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
-    p-091688: 您必須是美國公民或外籍居民才能申領勞動所得稅務優惠。請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit. 以判斷您是否全年都是美國外籍居民。
+    p-091688: 您必須是美國公民或外籍居民才能申領勞動所得稅務優惠。請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519"> 519 號出版物 —— 外國人的美國稅務指南（英文)</a>。
     p-f72c3e: ' 如果您要在 <fg-show path="/taxYear"/> 年與您的配偶共同申報報稅表，並且您或您的配偶在整個一年中都是美國公民或外籍居民，請選擇
-      yes。'
+      <strong>是</strong>。'
     p-b85d77: 您不能申領 EITC，因為您的報稅表到期日或之前未被簽發的有效社會安全號碼。
-    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">596 號出版物</a>, 勞動所得稅務優惠。
     p-4c0c0d: 如果您提交了外國賺取收入的<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">表
       2555</a>，則不能申請所得稅抵免。
     p-236b69: 54 號出版物 —— 美國公民和海外居民稅務指南（英文）
@@ -80,8 +78,7 @@
     heading: 美國公民或外籍居民
     p-18e680: 如果您不是美國公民，您將被視為外國人。
     p-fe70ca: 如果您有綠卡，或者您在美國居住超過一定天數，您在 EITC 方面將被視為的外籍居民。
-    p-2c8f8f: 有關更多資訊和重要例外情況，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.
+    p-2c8f8f: 有關更多資訊和重要例外情況，請參閱 有關更多資訊和重要例外情況，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519"> 519 號出版物 —— 外國人的美國稅務指南（英文)</a>。
   modal-valid-ssn-filer:
     heading: 有效的社會安全號碼
     p-527528: 您必須在 <fg-show path="/taxYear"/> 年納稅申報表（包括延期）到期日或之前擁有由社保局頒發的有效社會安全號碼
@@ -100,7 +97,7 @@
   modal-claimed-dependent:
     heading: 您作為被撫養或符合資格的子女
     p-faf8d8: 在大多數情況下，您不能同時成為其他納稅人的被撫養人或符合資格的子女並申領 EITC。
-    p-98d6db: 在大多數情況下，如果您未滿 19 歲或未滿 24 歲的學生，並且與您的父母或其他親戚在美國生活了半年以上，請選擇 <strong>Yes</strong>。
+    p-98d6db: 在大多數情況下，如果您未滿 19 歲或未滿 24 歲的學生，並且與您的父母或其他親戚在美國生活了半年以上，請選擇 <strong>是</strong>。
     p-038f13: 如果您已婚並提交聯合申報表，則不能將您作為受撫養人進行申報，除非您提交聯合申報表只是為了申請預扣所得稅或已繳納的預估稅款的退稅款。
     p-ceda6c: '有關某人是否可以將您作為被撫養人的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">請前往</a> '
     p-d11380: 有關某人是否可以針對 EITC 將您申領為合格子女的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">請參閱</a>
@@ -157,7 +154,7 @@
     question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
-        name: <fg-show path="/taxYear"/> 年間
+        name: 2025 年間
       taxYearMinusOneOrTwo:
         name: 2023 或 2024 年間
       beforeTaxYearMinusTwo:
@@ -311,7 +308,7 @@
     p-9cbbc6: 您在美國居住有超過半年的時間嗎？
     p-775779: 您的家在 <fg-show path="/taxYear"/> 年中必須有超過一半的時間是在美國。美國包括 50 個州和哥倫比亞特區。它不包括關島、維爾京群島或波多黎各等美國屬地。
     h3-398dfd: 駐紮在美國境外的從軍人士
-    p-7dbfa0: 如果您是美軍的成員，並且您在美國境外長期服役，請選擇 yes。
+    p-7dbfa0: 如果您是美軍的成員，並且您在美國境外長期服役，請選擇 <strong>是</strong>。
   modal-keeping-up-home:
     heading: 維持家庭開支
     p-c0958f: 如果您支付的總金額超過總費用的一半，則您滿足支付一半以上的家庭維護費用的要求。
@@ -537,10 +534,10 @@
     p-40d79a: 您的雇主在您的 W-2 表的方框 1 中報告了您的工資、薪金、小費和其他報酬。
     p-ab967b: 您的雇主在《W-2 表格》的方框 1 中報告了您的工資、薪水、小費和其他報酬。在確定勞動所得稅抵免資格時，請將小費和加班收入等全部金額計入收入計算中，即使全部或部分可扣除。
     p-cb2522: 如果您與您的配偶共同申報聯合報稅表，將《表格 W-2》的 Box 1 中所有申報的收入納入。
-    p-1f7f24: Don't Include 在稅前投入金額部分填入您的《表格 W-2》稅前投入金額。
+    p-1f7f24: 不包括 在稅前投入金額部分填入您的《表格 W-2》稅前投入金額。
     h3-af3590: 軍隊和戰鬥津貼
-    p-3fdb7d: 您還可以選擇將您的非應稅戰鬥工資計入 EITC 的收入中。您的僱主會在《表格 W-2》的 Box 12 中申報您的非應稅戰鬥工資，並帶有
-      Code Q。
+    p-3fdb7d: 您還可以選擇將您的非應稅戰鬥工資計入 EITC 的收入中。您的僱主會在《表格 W-2》的 方框 12  中申報您的非應稅戰鬥工資，並帶有
+      代碼 Q。
     p-d9b0e5: '此選擇可能會增加或減少您的 EITC。如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297672">請參閱</a> '
     h3-84091c: 臨時及短期傷殘保險
     p-bee3d8: 如果您在這一年休育兒假或暫時殘疾並且您的僱主支付了您的工資，他們會在您的《表格 W-2》上申報您的收入。在此處填入該收入。
@@ -600,7 +597,7 @@
   modal-unemployment-compensation:
     heading: 失業補助金（保險）
     p-ec0a26: 對於 EITC，將您全部的失業補助金福利納入。您可以在《表格 1099-G》上找到該收入。
-    p-97117c: 如果您的僱主的基金提供了補充性福利，請將在《表格 W-2》 Box 1 中申報的任何金額納入。
+    p-97117c: 如果您的僱主的基金提供了補充性福利，請將在《表格 W-2》 方框 1  中申報的任何金額納入。
   modal-social-security:
     heading: 社會安全金收入
     p-f2d061: 對於 EITC，只包括您社會保障和鐵路退休福利的應納稅金額。
@@ -768,7 +765,7 @@
       class="usa-link">請前往</a> '
   modal-early-withdrawal:
     heading: 提前領出儲蓄的處罰
-    p-7e8d5b: 如果您在到期前從定存或其他遞延利息帳戶中提取資金，您可能會被罰款。您可以在您的《表格 1099-INT》的 Box 2 中找到此處罰。在此處填入該金額。
+    p-7e8d5b: 如果您在到期前從定存或其他遞延利息帳戶中提取資金，您可能會被罰款。您可以在您的《表格 1099-INT》的 方框 2  中找到此處罰。在此處填入該金額。
   modal-moving-expenses:
     heading: 搬家費用
     p-6f18fd: 如果您是現役武裝部隊成員，並且軍方命令您永久更改工作地點，請在此處填入您未經軍方核銷的任何搬家費用。搬家費用包括：
@@ -798,8 +795,7 @@
 /qualifying-children:
   title: 符合資格的子女
   h2-dbaf54: 符合資格的子女
-  p-9b177d: 根據您之前填入的資訊，您沒有任何符合資格的子女。如果這是不正確的，請返回 <a class="usa-link" href="/app/eitc/filing-status/">Filing
-    Status</a> 並更改您的回應。
+  p-9b177d: 根據您之前填入的資訊，您沒有任何符合資格的子女。如果這是不正確的，請返回 <a class="usa-link" href="/app/eitc/filing-status/">報稅身份</a> 並更改您的回應。
   p-c1a0dd: 請轉到下一步查看您的結果。
   p-3178be: 在此步驟中，我們將了解您的子女或其他親屬中有多少人符合申請和計算 EITC 的資格。您最多可以為三位符合資格的子女申請 EITC。
   p-e28c1e: 您最多可以為三位符合資格的子女申請 EITC
@@ -810,8 +806,7 @@
       modalLink: <modal-link for="modal-residency">什麼算是與您一起生活的時間？</modal-link>
     fg-alert-b7d816:
       heading: 查看您是否有資格獲得勞動所得稅務優惠。
-      p-7666ea: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-        596</a>, Earned Income Credit.。
+      p-7666ea: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">596 號出版物</a>, 勞動所得稅務優惠。
     /familyAndHousehold/*/someoneElseCanClaim:
       question: 是否有其他人能為該名子女申領 EITC？
       modalLink: <modal-link for="modal-claimed-someone-else">如果不止一個人可以申請他們怎麼辦？</modal-link>
@@ -867,13 +862,11 @@
   fg-alert-9510e7:
     heading: 符合條件的兒童要求
     p-b6bd9e: 除非您或您的配偶（如果共同申報納稅申報單）是 25 歲到 64 歲之間，否則您無法在沒有不符合資格子女的情況下申領 EITC。
-    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">596 號出版物</a>, 勞動所得稅務優惠。
   fg-alert-64891c:
     heading: 您不符合资格获得劳动所得税抵免（EITC）（低收入家庭福利优惠）。
     p-cdf53e: 根據您填入的金額，您無法申領勞動所得稅務優惠，因為您的勞動所得超出了您的報稅身份和合格子女人數的限制。
-    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-93a6b5: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">596 號出版物</a>, 勞動所得稅務優惠。
   h2-34370a: 根據您的輸入，您有 <fg-show path="/eitcQualifyingChildren"/> 名具有有效社會安全號碼的合格子女。
   modal-residency:
     heading: 居住地測試
@@ -937,8 +930,7 @@
       li-775eb9: 在職培訓課程
       li-b2e8f2: 函授學校
       li-767c35: 僅透過網路提供課程的學校
-    p-81198a: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
-      596</a>, Earned Income Credit.。
+    p-81198a: 如需瞭解更多資訊，請參閱 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">596 號出版物</a>, 勞動所得稅務優惠。
   modal-valid-ssn-qc:
     heading: 合格子女的有效社會安全號碼
     p-d68f7a: 您的 EITC 金額取決於您擁有有效社會安全號碼的合格子女的數量。您為計算 EITC 金額而申領的每名子女或親屬必須擁有由社會安全局在您的報稅表到期日或之前（包括延期的申報截止）簽發的有效社會安全號碼（SSN）。
