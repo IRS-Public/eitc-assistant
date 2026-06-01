@@ -29,7 +29,7 @@
       taks sou revni ou fè. Gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596</a>, Earned Income Credit., pou detèmine si w se yon etranje k ap viv Ozetazini
       pandan tout ane a.
-    p-f72c3e: 'Seleksyone: yes si w ap ranpli yon deklarasyon kolektif ak konjwen
+    p-f72c3e: 'Seleksyone: wi si w ap ranpli yon deklarasyon kolektif ak konjwen
       ou pou <fg-show path="/taxYear"/> epi ou menm oubyen konjwen ou te yon sitwayen
       ameriken oubyen rezidan etranje pandan tout ane a.'
     p-b85d77: Ou pa kapab aplike pou EITC paske ou pa gen yon nimewo Sekirite Sosyal
@@ -39,7 +39,7 @@
     p-4c0c0d: Ou pa ka reklame kredi revni ou touche a si w ranpli <a target="_blank"
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">Fòm 2555</a>,
       Revni Touche nan Peyi Etranje.
-    p-236b69: Piblikasyon 54, Tax Guide for U.S. Citizens and Foreign Resident Aliens,
+    p-236b69: Gade Piblikasyon 54, Tax Guide for U.S. Citizens and Foreign Resident Aliens, pou plis enfòmasyon
     p-5e637b: Ou pa kalifye pou EITC si ou se pitit yon lòt moun ki kalifye pou EITC.
     p-ec145e: Pou plis enfòmasyon sou si yon moun ka reklame w kòm yon timoun ki kalifye
       pou EITC a, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
@@ -129,7 +129,7 @@
       kontribyab epi reklame EITC.
     p-98d6db: Nan pifò ka yo, si w gen mwens pase 19 oubyen se yonetidyan anba 24
       lane epi w ap viv ak paran w oubyen lòt fanmi Ozetazini pou plis pase mwatye
-      ane a, Seleksyone <strong>Yes</strong>.
+      ane a, Seleksyone <strong>Wi</strong>.
     p-038f13: Si ou marye epi w ap ranpli yon deklarasyon konjwen, yo pa ka deklare
       w kòm yon depandan, sof si w ap ranpli yon deklarasyon konjwen sèlman pou reklame
       yon ranbousman taks sou revni yo te pran oswa estimasyon taks ki peye.
@@ -412,7 +412,7 @@
       tankou Guam, Zile Vyèj yo, oubyen Pòtoriko.
     h3-398dfd: Pèsonèl Militè Estasyone Andeyò Lèzetazini
     p-7dbfa0: Si ou se yon manm lame Etazini epi ou te estasyone andeyò Lèzetazini
-      nan sèvis aktif pwolonje, Seleksyone yes.
+      nan sèvis aktif pwolonje, Seleksyone wi.
   modal-keeping-up-home:
     heading: Antretyen yon Kay
     p-c0958f: Si kantite lajan total ou te peye a plis pase mwatye pri total la, ou
