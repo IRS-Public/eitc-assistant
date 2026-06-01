@@ -1,11 +1,11 @@
 
 /:
-  title: Información general
-  h2-5e286b: Información general
-  p-c2c8a0: Responda algunas preguntas rápidas sobre usted para saber si califica.
+  title: Acerca de ti
+  h2-5e286b: Acerca de ti
+  p-c2c8a0: Cuéntanos sobre ti. Tus respuestas nos ayudarán a determinar si califica para el Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés).
   /chosenTaxYear: 
-    question: 'Seleccione el año tributario para el que le gustaría corroborar la elegibilidad para el crédito tributario por ingreso del trabajo (EITC):'
-    modalLink: <modal-link for="modal-tax-year">¿Qué año debería usar?</modal-link>
+    question: 'Selecciona el año tributario para el que te gustaría verificar tu elegibilidad para el EITC:'
+    modalLink: <modal-link for="modal-tax-year">¿Qué año debo seleccionar?</modal-link>
     options:
       '2025':
         name: '2025'
@@ -14,50 +14,50 @@
       '2023':
         name: '2023'
   /isUSCitizenOrResidentAlien: 
-    question: ¿Fue un ciudadano estadounidense o extranjero residente durante todo el año 2025?
-    modalLink: <modal-link for="modal-citizen">¿Califico como ciudadano/a estadounidense o residente para EITC?</modal-link>
+    question: ¿Fuiste ciudadano(a) estadounidense o extranjero(a) residente durante todo el año 2025?
+    modalLink: <modal-link for="modal-citizen">¿Califico como ciudadano(a) estadounidense o residente para el EITC?</modal-link>
     options:
       'true':
         name: Sí
       'false':
         name: No
   fg-alert-8b7db9:
-    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
-    p-091688: Debe ser un ciudadano estadounidense o extranjero residente para reclamar el crédito tributario por ingreso del trabajo. Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>, para determinar si usted es un extranjero residente de los Estados Unidos durante todo el año.
-    p-f72c3e: <strong>Aviso:</strong> eleccione <strong>Sí</strong> si presenta una declaración conjunta con su cónyuge para el año <fg-show path="/taxYear"/> y usted o su cónyuge fueron ciudadanos estadounidenses o extranjeros residentes durante todo el año.
-    p-b85d77: No puede reclamar el crédito tributario por ingreso del trabajo porque usted no tiene un número de seguro social válido emitido en la fecha de vencimiento de su declaración de impuestos o antes de esta.
-    p-93a6b5: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito tributario por ingreso del trabajo.</a>
-    p-4c0c0d: No puede reclamar el crédito por ingreso del trabajo si presentó <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">un Formulario 2555, Ingresos devengados en el extranjero (en inglés).</a>
-    p-236b69: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-54">la publicación Publicación 54, Guía tributaria para ciudadanos y residentes de los Estados Unidos que están en el extranjero (en inglés) </a> para obtener más información
-    p-5e637b: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es el hijo calificado de alguien más para el crédito tributario por ingreso del trabajo (EITC).
-    p-ec145e: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
-    p-363ef2: No califica para el crédito tributario por ingreso del trabajo (EITC) si usted es la persona dependiente de alguien más a menos que tenga un hijo calificado para el crédito tributario por ingreso del trabajo (EITC).
+    heading: No calificas para el Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés)
+    p-091688: Debes ser un ciudadano(a) estadounidense o extranjero residente para reclamar el EITC. Consulta <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>, para determinar si eres un extranjero residente de los Estados Unidos durante todo el año.
+    p-f72c3e: <strong>Aviso:</strong> Selecciona <strong>Sí</strong> si vas a presentar tu declaración del impuesto conjunta con tu esposo(a) para el año <fg-show path="/taxYear"/> y si tú o tu esposo(a) fueron ciudadanos estadounidenses o extranjeros residentes durante todo el año.
+    p-b85d77: No puedes reclamar el EITC porque no tienes un número de Seguro Social válido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos.
+    p-93a6b5: Para más información, visita <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito tributario por ingreso del trabajo.</a>
+    p-4c0c0d: No puedes reclamar el EITC si presentas <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">el Formulario 2555, Ingreso devengado en el extranjero (en inglés).</a>
+    p-236b69: Consulta <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-54">la Publicación 54, Guía tributaria para ciudadanos y residentes de los Estados Unidos que están en el extranjero (en inglés) </a> para obtener más información
+    p-5e637b: No calificas para el EITC si eres el hijo calificado de otra persona para el EITC.
+    p-ec145e: Para más información sobre si alguien puede reclamarte como hijo calificado, visita <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
+    p-363ef2: No calificas para el EITC si eres dependiente de otra persona, a menos que tengas un hijo calificado para el EITC.
   /hasValidSSN:
-    question: ¿Usted tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de la declaración del año 2025 o antes de esta (incluidas las prórrogas)?
-    modalLink: <modal-link for="modal-valid-ssn-filer">¿Qué se considera un Número de Seguro Social válido?</modal-link>
+    question: ¿Tienes un número de Seguro Social válido que te haya sido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos del 2025 (incluidas las prórrogas)?
+    modalLink: <modal-link for="modal-valid-ssn-filer">¿Qué se considera un número de Seguro Social válido?</modal-link>
     options:
       'true':
         name: Sí
       'false':
         name: No
   /hasForeignEarnedIncome:
-    question: ¿Presenta un Formulario 2555, Ingresos devengados en el extranjero?
-    modalLink: <modal-link for="modal-foreign-income">¿Qué son ingreso devengado en el extranjero excluido de los ingresos brutos?</modal-link>
+    question: ¿Estás presentando el Formulario 2555, Ingreso devengado en el extranjero?
+    modalLink: <modal-link for="modal-foreign-income">¿Qué es ingreso devengado en el extranjero excluidos de los ingresos brutos?</modal-link>
     options:
       'true':
         name: Sí
       'false':
         name: No
   /isClaimedAsDependent:
-    question: ¿Alguien más lo reclamará como persona dependiente o hijo calificado para el crédito tributario por ingreso del trabajo en la declaración de impuestos?
-    modalLink: <modal-link for="modal-claimed-dependent">¿Cómo sé si soy como persona dependiente o hijo calificado?</modal-link>
+    question: ¿Otra persona te reclamará como dependiente o hijo calificado para el EITC en su declaración de impuestos?
+    modalLink: <modal-link for="modal-claimed-dependent">¿Cómo sé si soy dependiente o hijo calificado?</modal-link>
     options:
       'true':
         name: Sí
       'false':
         name: No
   /ageRange:
-    question: Seleccione la franja que mejor describa su edad al final del año 2025
+    question: Selecciona el rango que mejor describe tu edad al final de 2025
     options:
       under24:
         name: 24 años y menos
@@ -67,44 +67,44 @@
         name: 65 años y más
   modal-tax-year:
     heading: Año tributario
-    p-aa5a47: 'Para el sueldo y otros ingresos devengados en:'
+    p-aa5a47: 'Para el sueldo y otros ingresos de trabajo en el año:'
     ul-0:
-      li-28dd34: 2025, seleccione 2025
-      li-174a8b: 2024, seleccione 2024
-      li-0a25dc: 2023, seleccione 2023
+      li-28dd34: 2025, selecciona 2025
+      li-174a8b: 2024, selecciona 2024
+      li-0a25dc: 2023, selecciona 2023
   modal-citizen:
-    heading: Ciudadano estadounidense o extranjero residente
-    p-18e680: Si usted no es un ciudadano de los Estados Unidos, se considera que es un extranjero.
-    p-fe70ca: Se considera que usted es un extranjero residente para el crédito tributario por ingreso del trabajo si tiene una tarjeta verde o si vivió en los Estados Unidos durante más que un número determinado días.
-    p-2c8f8f: Para obtener más información y excepciones importantes, consulte <a target="_blank"
+    heading: Ciudadano(a) estadounidense o extranjero residente
+    p-18e680: Si no eres un(a) ciudadano(a) de los Estados Unidos, eres considerado un extranjero.
+    p-fe70ca: Eres considerado un extranjero residente para el Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés) si tienes una tarjeta verde o si viviste en los Estados Unidos durante más de un cierto número de días.
+    p-2c8f8f: Para más información y excepciones importantes, consulta <a target="_blank"
       class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>.
   modal-valid-ssn-filer:
     heading: Número de Seguro Social válido
-    p-527528: Usted tiene que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos del <fg-show
-      path="/taxYear"/> (inclusive de las prórrogas).
-    p-45ae0e: Si su tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
-    p-558a40: 'Para los propósitos del Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés), no aceptamos:'
+    p-527528: Tienes que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de impuestos del <fg-show
+      path="/taxYear"/> (incluidas las prórrogas).
+    p-45ae0e: Si tu tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
+    p-558a40: 'Para los propósitos del Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), no aceptamos:'
     ul-0:
       li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
       li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
       li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
-      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid.
-    p-f554f7: Consulte <a target="_blank"
+      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid
+    p-f554f7: Consulta <a target="_blank"
       class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596</a> para más información sobre los números de Seguro Social válidos.
   modal-foreign-income:
     heading: Ingreso devengado en el extranjero excluido de los ingresos brutos
-    p-f45b03: Esto hace referencia al ingreso que devengó fuera de los Estados Unidos, el Distrito de Columbia o las posesiones o territorios de los Estados Unidos que usted eligió excluir en <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">una Formulario 2555, Ingresos devengados en el extranjero (en inglés)</a>.
+    p-f45b03: Esto se refiere al ingreso que que obtuviste fuera de los Estados Unidos, el Distrito de Columbia o las posesiones o territorios de los Estados Unidos que has que has decidido excluir mediante <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555"> el Formulario 2555, Ingreso devengado en el extranjero (en inglés)</a>.
   modal-claimed-dependent:
-    heading: Usted como persona dependiente o hijo calificado
-    p-faf8d8: En la mayoría de los casos, no puede ser una persona dependiente o hijo calificado de otro contribuyente y reclamar el crédito tributario por ingreso del trabajo (EITC).
-    p-98d6db: En la mayoría de los casos, si usted tiene menos de 19 años o es un estudiante menor de 24 años y vive con sus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
-    p-038f13: Si usted para efectos de la declaración de impuestos federales está casado y presenta una declaración conjunta, no puede ser reclamado como un dependiente, a menos que presente la declaración conjunta únicamente para reclamar un reembolso del impuesto sobre los ingresos retenido o de los impuestos estimados pagados.
-    p-ceda6c: Para obtener más información sobre si alguien lo puede reclamar como persona dependiente, visite <a target="_blank"
+    heading: Tú como dependiente o hijo calificado
+    p-faf8d8: En la mayoría de los casos, no puedes ser dependiente o hijo calificado de otro contribuyente y reclamar el Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés).
+    p-98d6db: En la mayoría de los casos, si tienes menos de 19 años o si eres un estudiante menor de 24 años y vives con tus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
+    p-038f13: Si estás casado(a) y presentas una declaración  conjunta, no pueden reclamarte como dependiente, a menos que presentes la declaración conjunta únicamente para reclamar un reembolso de impuestos sobre los ingresos retenido o de los impuestos estimados pagados.
+    p-ceda6c: Para más información sobre si alguien puede reclamarte como dependiente, visita <a target="_blank"
       class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)</a>?
-    p-d11380: Para obtener más información sobre si alguien lo puede reclamar como hijo calificado, visite <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona.</a>
-    p-16aba9: Le preguntaremos sobre los hijos o parientes que usted podría reclamar más adelante.
+    p-d11380: Para más información sobre si alguien puede reclamarte como hijo calificado, visita <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596sp"> la Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona.</a>
+    p-16aba9: Más adelante te preguntaremos sobre hijos o parientes que podrías reclamar.
   modal-primary-claimed-as-dependent:
     heading: ¿Cómo sé si soy el dependiente de alguien?
     p-d3187d: Si dependió de otra persona (que no sea su cónyuge) para su sustento en <fg-show path="/taxYear"/>, es posible que puedan reclamarlo como dependiente en su declaración de impuestos federal.
@@ -123,91 +123,91 @@
 /filing-status:
   title: Estado civil para los efectos de la declaración
   h2-c01d87: Estado civil para los efectos de la declaración
-  p-9bda8f: En este paso, se le harán preguntas sobre cómo planea presentar sus impuestos del año <fg-show path="/taxYear"/>.
+  p-9bda8f: En este paso se te preguntará cómo planeas presentar tus impuestos del <fg-show path="/taxYear"/>.
   /knowsFilingStatus:
-    question: ¿Conoce el estado civil para los efectos de la declaración que utilizará cuando presente de declaración de impuestos del año <fg-show path="/taxYear"/>?
+    question: ¿Sabes cuál será el estado civil que usarás al presentar tu declaración de impuestos del <fg-show path="/taxYear"/>?
   /initialFilingStatus:
-    question: 'Seleccione el estado civil para los efectos de la declaración que utilizará cuando presente sus impuestos del año <fg-show path="/taxYear"/>:'
+    question: '¿Cuál estado civil usarás para presentar tu declaración del impuesto federal en el <fg-show path="/taxYear"/>?'
     modalLink: <modal-link for="modal-filing-status">¿Cuál estado civil debo usar?</modal-link>
     options:
       single:
-        name: Soltero/a
+        name: Soltero(a)
       marriedFilingJointly:
-        name: Casado/a que presenta una declaración conjunta
+        name: Casado(a) que presenta una declaración conjunta
       marriedFilingSeparately:
-        name: Casado/a que presenta una declaración por separado
+        name: Casado(a) que presenta una declaración por separado
       headOfHousehold:
         name: Cabeza de familia
       qualifiedSurvivingSpouse:
-        name: Cónyuge sobreviviente que califica
+        name: Esposo(a) sobreviviente calificado
   /maritalStatus:
-    question: ¿Cuál fue su estado civil el 31 de diciembre del año <fg-show path="/taxYear"/>?
-    modalLink: <modal-link for="modal-legal-separation">¿Qué significa estar en un matrimonio de hecho o estar legalmente separado?</modal-link>
+    question: ¿Cuál fue tu estado civil el 31 de diciembre del <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-legal-separation">¿Qué significa estar casado(a) y legalmente separado?</modal-link>
     options:
       married:
-        name: Casado/aCasado/a
+        name: Casado(a)
       divorced:
-        name: Divorciado/a o legalmente separado/a
+        name: Divorciado(a) o legalmente separado(a)
       widowed:
-        name: Cónyuge sobreviviente que califica
+        name: Esposo(a) sobreviviente calificado
       single:
-        name: Nunca se casóNunca se casó
+        name: Nunca casado(a)
   /yearOfSpouseDeathCurrentTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció tu esposo(a)?
     options:
       taxYear:
-        name: Durante el año 2025
+        name: Durante el 2025
       taxYearMinusOneOrTwo:
-        name: Durante el año 2023 o 2024
+        name: Durante el 2023 o 2024
       beforeTaxYearMinusTwo:
         name: Antes del 2023
   /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: ¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció tu esposo(a)?
     options:
       taxYear:
-        name: Durante el año 2024
+        name: Durante el 2024
       taxYearMinusOneOrTwo:
-        name: Durante el año 2022 o 2023
+        name: Durante el 2022 o 2023
       beforeTaxYearMinusTwo:
         name: Antes del 2022
   /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: ¿Cuándo falleció su cónyuge?
+    question: ¿Cuándo falleció tu esposo(a)?
     options:
       taxYear:
-        name: Durante el año 2023
+        name: Durante el 2023
       taxYearMinusOneOrTwo:
-        name: Durante el año 2021 o 2022
+        name: Durante el 2021 o 2022
       beforeTaxYearMinusTwo:
         name: Antes del 2021
   /isHOHMarried:
-    question: ¿Está casado/a?
+    question: ¿Estás casado(a)?
   /intendsToFileJointlyWidow:
-    question: ¿Tiene la intención de presentar una declaración conjunta con el cónyuge que falleción para el año <fg-show path="/taxYear"/>?
-    modalLink: <modal-link for="modal-joint-deceased-spouse">¿Qué significa presentar una declaración conjunta con un cónyuge fallecido?</modal-link>
+    question: ¿Tienes la intención de presentar una declaración conjunta con tu esposo(a) fallecido(a) el <fg-show path="/taxYear"/>?
+    modalLink: <modal-link for="modal-joint-deceased-spouse">¿Qué significa presentar una declaración conjunta con un esposo(a) fallecido?</modal-link>
   /intendsToFileJointlyMFJ:
-    question: ¿Usted y su cónyuge planean presentar declaraciones conjuntas?
+    question: ¿Tú y tu esposa(a) planean presentar una declaración conjunta?
     modalLink: <modal-link for="modal-joint-return-mfj">¿Qué significa presentar una declaración conjunta?</modal-link>
   /spouseLivedWithTaxpayerLastSixMonths:
-    question: ¿Usted y su cónyuge han tenido la misma residencia principal durante los últimos 6 meses del año <fg-show path="/taxYear"/>?
-    modalLink: <modal-link for="modal-spouse-lived-together">¿Qué significa para los cónyuges vivir juntos?</modal-link>
+    question: ¿Tu esposo(a) vivió contigo en tu casa en algún momento durante los últimos 6 meses del año <fg-show path="/taxYear"/> (incluidas las ausencias temporales)?
+    modalLink: <modal-link for="modal-spouse-lived-together">¿Qué significa que esposos vivan juntos?</modal-link>
   /samePrincipalResidenceLast6Months:
-    question: ¿Usted y su cónyuge han tenido la misma residencia principal durante los últimos 6 meses del año <fg-show path="/taxYear"/>?
+    question: ¿Tú y tu esposo(a) tuvieron la misma residencia principal durante los últimos 6 meses de <fg-show path="/taxYear"/>?
   /writableSeparationAgreement:
-    question: ¿Estaba usted legalmente separado según las leyes en su estado, con un acuerdo de separación escrito o un decreto de manutención por separado, y no vivía con su cónyuge en el último día del <fg-show path="/taxYear"/>?
+    question: ¿Estabas legalmente separado(a) según las leyes de tu estado, bajo un acuerdo escrito de separación o una orden de manutención por separado, y no viviste con tu esposo(a) el último día del <fg-show path="/taxYear"/>?
   /entitledToPreviouslyFileJointReturn:
-    question: ¿Tenía derecho a presentar una declaración conjunta con su cónyuge el año en que falleció?
+    question: ¿Tenías derecho a presentar una declaración conjunta con tu esposo(a) el año en que falleció?
   /paidMoreThanHalfHomeCostsForChild:
-    question: ¿En el año 2025, pagó más de la mitad del costo de mantener el hogar en el que vivió que también fue el hogar principal de su <span
-      condition="/flowQSSQCQuestionText" operator="isTrue">hijo o hijastro</span><span condition="/flowQSSQCQuestionText" operator="isFalse">hijo dependiente, hijastro o hijo de crianza</span> para todo el año <fg-show path="/taxYear"/> (incluida cualquier ausencia temporal)?
+    question: ¿En el 2025, pagaste más de la mitad del costo de mantener un hogar en el que viviste y que también fue el hogar principal de tu <span
+      condition="/flowQSSQCQuestionText" operator="isTrue">hijo(a) o hijastro</span><span condition="/flowQSSQCQuestionText" operator="isFalse">hijo dependiente, hijastro o hijo de crianza</span> para todo el año <fg-show path="/taxYear"/> (incluidas las ausencias temporales)?
     modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
   /canClaimChildAsDependentInCurrentTaxYear:
-    question: ¿Puede reclamar a su hijo o hijastro que vivió con usted como su persona dependiente para el año <fg-show path="/taxYear"/>?
+    question: ¿Puedes reclamar a tu hijo(a) o hijastro(a) que vivió contigo como dependiente para el <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question: 'Podría reclamar a su hijo o hijastro como persona dependiente EXCEPTO que, en el año <fg-show path="/taxYear"/>: 1) El hjo tenía ingresos brutos que superaban el límite de <fg-show path="/eitcChildGrossIncomeLimit"/> para el año <fg-show path="/taxYear"/>; 2) El hijo presentó una declaración conjunta; o 3) ¿Usted podría ser reclamado como persona dependiente en la declaración de otra persona?'
+    question: '¿Podrías reclamar a tu hijo(a) o hijastro(a) como dependiente EXCEPTO que, para el 2025: 1) El hijo(a) tenía ingresos brutos superiores al límite de $5,200 para el 2025; 2) El hijo(a) presentó una declaración conjunta; o 3) Tú podrías ser reclamado(a) como dependiente en la declaración de otra persona'
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /homeUpkeepScenario:
-    question: ¿Pagó usted más del 50% del costo de la manutención del hogar para el año <fg-show path="/taxYear"/>?
+    question: ¿Pagaste más del 50% del costo de mantener un hogar en el <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-keeping-up-home">¿Cómo calculo "Mantener un hogar"?</modal-link>
     options:
       livedWithDependent:
@@ -219,17 +219,17 @@
       none:
         name: Ninguna de las opciones anteriores
   /secondaryFilerHasValidSSN:
-    question: ¿Su cónyuge tiene un número de seguro social válido emitido en la fecha de vencimiento de la declaración del año <fg-show path="/taxYear"/> o antes de esta (incluidas las prórrogas)?
-    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un Número de Seguro Social válido?</modal-link>
+    question: ¿Tu esposo(a) tiene un número de Seguro Social válido que haya sido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos del <fg-show path="/taxYear"/> (incluidas las prórrogas)?
+    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un número de Seguro Social válido?</modal-link>
   /deceasedSpouseValidSSNOnDateOfDeath:
-    question: ¿El cónyuge tenía un número de seguro social válido el día en que falleció?
-    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un Número de Seguro Social válido?</modal-link>
+    question: ¿Tu esposo(a) tenía un número de Seguro Social válido el día de su fallecimiento?
+    modalLink: <modal-link for="modal-valid-ssn">¿Qué se considera un número de Seguro Social válido?</modal-link>
   /spouseAliveEndOfTaxYear:
-    question: ¿Su cónyuge estuvo con vida el 31 de diciembre de <fg-show path="/taxYear"/>?
+    question: ¿Su esposo(a) estuvo con vida el 31 de diciembre del <fg-show path="/taxYear"/>?
   /ageRangeSecondary:
-    question: Seleccione la franja de edad que mejor describa la edad <span condition="/spouseAliveEndOfTaxYear"
-      operator="isFalse">que tenía el cónyuge cuando falleció</span><span condition="/spouseAliveEndOfTaxYear"
-      operator="isTrue">de su cónyuge al final del año <fg-show path="/taxYear"/></span>.
+    question: Selecciona el rango que mejor describe la edad <span condition="/spouseAliveEndOfTaxYear"
+      operator="isFalse">que tenía tu esposo(a) cuando falleció</span><span condition="/spouseAliveEndOfTaxYear"
+      operator="isTrue">de tu esposo(a) al final del año <fg-show path="/taxYear"/></span>.
     options:
       under24:
         name: 24 años y menos
@@ -238,26 +238,26 @@
       65andOlder:
         name: 65 años y más
   /primaryFilerIsClaimingQualifyingChildren:
-    question: ¿Tiene previsto solicitar el crédito tributario por ingreso del trabajo (EITC, en inglés) para sus hijos u otros familiares con números de Seguro Social válidos?
-    modalLink: <modal-link for="modal-qualifying-child-eitc">¿A quién puedo reclamar para el Crédito Tributario por Ingreso del Trabajo (EITC)?</modal-link>
+    question: ¿Planeas reclamar hijos(as) u otros familiares con números de Seguro Social válidos para el EITC?
+    modalLink: <modal-link for="modal-qualifying-child-eitc">¿Quién puede reclamar el Crédito por ingreso del trabajo (EITC)?</modal-link>
   /hasLivedInUSMore6Months:
-    question: ¿Su hogar principal estuvo en los Estados Unidos durante más de la mitad del año <fg-show path="/taxYear"/>?
+    question: ¿Tu hogar principal y el de tu esposo(a) estuvo en los Estados Unidos por más de la mitad del <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-main-home-us">¿Qué se considera una vivienda principal en los Estados Unidos?</modal-link>
-  h2-7864de: Según sus elecciones, su estado civil para los efectos de la declaración es <fg-show path="/flowReadableFilingStatus"/>
+  h2-7864de: Según tus respuestas, tu estado civil para los efectos de la declaración es <fg-show path="/flowReadableFilingStatus"/>
   fg-alert-334e2e:
-    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
-    p-b6bd9e: Usted no califica para el EITC si no tiene un hijo calificado a menos que usted, o su cónyuge si presentan una declaración conjunta, tengan entre 25 y 64 años.
-    p-ae739d: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés)</a>.
-    p-47ef52: 'Usted puede reclamar el Crédito por Ingreso del Trabajo (EIC, por sus siglas en inglés) si para efectos de la declaración está casado, no presenta una declaración conjunta, tiene un hijo calificado que vivió con usted durante más de la mitad del <fg-show path="/taxYear"/> y le corresponde algunas de las siguientes situaciones:'
+    heading: No calificas para el Crédito tributario por ingreso del trabajo (EITC por sus siglas en inglés)
+    p-b6bd9e: No calificas para el EITC sin un hijo(a) calificado(a) a menos que tú, o tu esposo(a) si presentan una declaración conjunta, tengan entre 25 y 64 años.
+    p-ae739d: Para más información, consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés)</a>.
+    p-47ef52: 'Puedes reclamar el EITC si estás casado(a), no presentas una declaración conjunta, tuviste un hijo(a) calificado(a) que vivió contigo por más de la mitad del <fg-show path="/taxYear"/>, y se cumple alguna de las siguientes condiciones:'
     ul-0:
-      li-207749: Vivió por separado de su cónyuge durante los últimos 6 meses del <fg-show
+      li-207749: Viviste separado(a) de tu esposo(a) durante los últimos 6 meses del <fg-show
         path="/taxYear"/>, ó
-      li-93a6ef: Está separado legalmente de su cónyuge según las leyes en su estado, con un acuerdo de separación escrito o un decreto de manutención por separado, y no vivía en el mismo hogar que su cónyuge al final del <fg-show path="/taxYear"/>.
-    p-3630b4: Para más información, consulte la página de información sobre la <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501" class="usa-link">About Publication 501, Dependents, Standard Deduction, and Filing Information.<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a> (Publicación 501, dependientes, deducción estándar e información para la presentación de la declaración) en inglés.
-    p-99f873: No puede reclamar el crédito tributario por ingreso del trabajo porque su cónyuge no tiene un Número de Seguro Social válido emitido en la fecha de vencimiento de su declaración de impuestos o antes de esta.
-    p-91ee91: No puede reclamar el crédito tributario por ingreso del trabajo si elige presentar una declaración conjunta con su cónyuge fallecido porque su cónyuge no tenía un número de seguro social válido el día en que falleció.
-    p-d4d927: Es posible que califique para el crédito tribuario por ingreso del trabajo (EITC) si no presenta una declaración conjunta con el cónyuge que falleció.
-    p-065d1b: Para reclamar el crédito tributario por ingreso del trabajo, su hogar debe haber sido en los Estados Unidos durante más de la mitad del Año year. Los Estados Unidos incluyen los 50 estados y el Distrito de Columbia.
+      li-93a6ef: Estás legalmente separado(a) según las leyes de tu estado, bajo un acuerdo escrito de separación o una orden de manutención por separado, y no viviste en el mismo hogar que tu esposo(a) al final del <fg-show path="/taxYear"/>.
+    p-3630b4: Para más información, consulta la página de información sobre la <a target="_blank" href="https://www.irs.gov/forms-pubs/about-publication-501" class="usa-link">Publicación 501, dependientes, deducción estándar e información para la presentación de la declaración (en inglés).<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a>
+    p-99f873: No puedes reclamar el EITC porque tu esposo(a) no tiene un número de Seguro Social válido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos.
+    p-91ee91: No puedes reclamar el EITC si eliges presentar una declaración conjunta con tu esposo(a) fallecido(a) porque tu esposo(a) no tenía un número de Seguro Social válido el día de su fallecimiento.
+    p-d4d927: Podrías calificar para el EITC si no presentas una declaración conjunta con tu esposo(a) fallecido(a).
+    p-065d1b: Para reclamar el EITC, tu hogar debe haber estado en los Estados Unidos por más de la mitad del año. Los Estados Unidos incluyen los 50 estados y el Distrito de Columbia.
   modal-filing-status:
     heading: ¿Cuál estado civil debo usar?
     p-c0b92c: Si no hubo un cambio en tu estado civil o situación familiar este año, podrías usar el estado civil de tu declaración del <fg-show path="/lastTaxYear"/>.
@@ -286,30 +286,30 @@
     p-5b3ae2: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/filing/filing-status">Conoce más sobre cada estado civil<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a>
   modal-qualifying-child-eitc:
     heading: Hijo calificado
-    p-7356ad: Para poder reclamar el Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés) con un hijo calificado, dicho hijo tiene que tener un número de Seguro Social válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos para el <fg-show path="/taxYear"/> (inclusive de las prórrogas).
-    p-ac8914: Si la tarjeta del Seguro Social indica "Válida para trabajar con autorización del DHS" o "Válida para trabajar con autorización del INS", se trata de un número de Seguro Social válido si la autorización sigue vigente.
-    p-558a40: 'Para los propósitos del EITC, no aceptamos:'
+    p-7356ad: Para reclamar el el Crédito por ingreso del trabajo (EITC, por sus siglas en inglés) con un hijo calificado, tu hijo(a) debe tener un número de Seguro Social válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de <fg-show path="/taxYear"/> (incluidas las prórrogas).
+    p-ac8914: Si la tarjeta del Seguro Social dice “Válido para trabajar con autorización del DHS” o “Válido para trabajar con autorización del INS”, es un Seguro Social válido si la autorización sigue vigente.
+    p-558a40: 'Para el EITC, no aceptamos:'
     ul-0:
       li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN por sus siglas en inglés)
       li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN por sus siglas en inglés)
       li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
       li-19d3d7: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado por fondos federales, tal como el Medicaid.
-    p-0d323a: 'Su hijo es un hijo calificado si el hijo cumple los cuatro requisitos. Los requisitos son:'
+    p-0d323a: 'Tu hijo(a) es un hijo calificado si cumple con cuatro pruebas:'
     ul-1:
-      li-fbc977: Parentesco,
-      li-9d8d2d: Edad,
-      li-23863d: Residencia, y
+      li-fbc977: Relación
+      li-9d8d2d: Edad
+      li-23863d: Residencia
       li-ca34c2: Declaración conjunta
-    p-e00960: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a>, y obtener información sobre un número de Seguro Social válido y si tiene un hijo calificado.
+    p-e00960: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a>, para más información sobre un número de Seguro Social válido y si tiene un hijo calificado.
   modal-main-home-us:
     heading: Hogar principal en los Estados Unidos
-    p-9cbbc6: Su hogar debe haber sido en los Estados Unidos durante más de la mitad del año <fg-show path="/taxYear"/>.
+    p-9cbbc6: Tu hogar debe haber estado en los Estados Unidos por más de la mitad del año<fg-show path="/taxYear"/>.
     p-775779: Los Estados Unidos incluyen los 50 estados y el Distrito de Columbia. No incluye las Posesiones de los Estados Unidos, como, por ejemplo, Guam, las Islas Vírgenes o Puerto Rico.
     h3-398dfd: Personal militar destacado fuera de los Estados Unidos
-    p-7dbfa0: Si usted es un miembro del personal militar de los Estados Unidos y estuvo destacado fuera de los Estados Unidos en servicio activo prolongado, seleccione <strong>Sí</strong>.
+    p-7dbfa0: Si eres miembro del ejército de los Estados Unidos y estuviste destinado fuera de los Estados Unidos en servicio activo prolongado, selecciona <strong>Sí</strong>.
   modal-keeping-up-home:
     heading: Mantener un hogar
-    p-c0958f: Si el total de lo que usted pagó es más de la mitad del costo total, usted cumple con el requisito de pagar más de la mitad del costo de la manutención del hogar.
+    p-c0958f: Si el monto total de lo que pagaste es más de la mitad del costo total, cumples con el requisito de haber pagado más de la mitad del costo de mantener el hogar.
     h3-e8b30a: 'Los costos incluyen:'
     ul-0:
       li-b9b2e1: Alquiler, intereses hipotecarios, impuestos sobre bienes inmuebles, y seguro para el hogar
@@ -322,40 +322,40 @@
       li-40b84f: Tratamientos médicos, pagos del seguro médico, y medicamentos recetados
       li-5eae2b: Seguro de vida
       li-c64365: Costos de transporte, tal como seguro, pagos de arrendamiento, o transporte público
-      li-04dec0: El valor de sus servicios o los de un miembro de su hogar
+      li-04dec0: El valor de tus servicios o los de un miembro de tu hogar
   modal-legal-separation:
-    heading: Separación legal y matrimonio de hecho
+    heading: Separación legal y unión libre (conocida como “common law” en inglés)
     h3-ef7665: Legalmente separados
-    p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o manutención por separación judicia'
+    p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o manutención por separación judicia.'
     h3-357344: Matrimonio de hecho
-    p-f560ea: Algunos estados permiten los matrimonios de hecho. Corrobore con su estado para conocer si se considera que está casado/a de conformidad con el derecho consuetudinario.
+    p-f560ea: Algunos estados permiten el matrimonio por unión libre. Consulta con tu estado para ver si se te considera casado(a) bajo la unión libre.
   modal-joint-return-mfj:
     heading: Declaración conjunta
-    p-75997a: Puede elegir presentar una declaración con su cónyuge seleccionando <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
+    p-75997a: Puedes elegir presentar una declaración con tu esposo(a)seleccionando <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
   modal-joint-deceased-spouse:
-    heading: Declaración conjunta con un cónyuge fallecido
-    p-85e581: Si su cónyuge falleció durante el año <fg-show path="/taxYear"/>, puede elegir presentar una declaración con su cónyuge seleccionado <strong>Casado/a que presenta una declaración conjunta</strong> como su estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
+    heading: Declaración conjunta con un esposo(a) fallecido
+    p-85e581: Si tu esposo(a) falleció durante el <fg-show path="/taxYear"/>, puedes elegir presentar una declaración con tu esposo(a) seleccionado <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto te permite combinar tus ingresos y gastos al calcular tus créditos, deducciones y la cantidad de impuestos que debes.
   modal-spouse-lived-together:
-    heading: Cónyuge - Vivieron juntos
-    p-906815: 'Se considera que una persona ha vivido con usted durante los períodos cuando uno o ambos estuvieron ausentes temporalmente debido a circunstancias especiales tales como:'
+    heading: Esposos - Vivieron juntos
+    p-906815: 'Se considera que una persona ha vivido contigo durante los periodos en que uno de los dos, o ambos, están ausentes de forma temporal debido a circunstancias especiales como:'
     ul-0:
-      li-8ec6de: Enfermedad,
-      li-de7a22: Educación,
-      li-d6e6cb: Negocio,
-      li-2c48dd: Vacaciones, o
-      li-8fdca6: Servicio militar.
+      li-8ec6de: Enfermedad
+      li-de7a22: Educación
+      li-d6e6cb: Negocio
+      li-2c48dd: Vacaciones
+      li-8fdca6: Servicio militar
     p-2392bb: Debe ser razonable suponer que la persona ausente regresará al hogar luego de la ausencia temporal.
   modal-valid-ssn:
     heading: Número de Seguro Social válido
-    p-527528: Usted tiene que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de su declaración de impuestos del <fg-show path="/taxYear"/> (inclusive de las prórrogas).
-    p-45ae0e: Si su tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
-    p-558a40: 'Para los propósitos del Crédito Tributario por Ingreso del Trabajo (EITC, por sus siglas en inglés), no aceptamos:'
+    p-527528: Tienes que tener un número de Seguro Social (SSN, por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de impuestos del año <fg-show path="/taxYear"/> (incluidas las prórrogas).
+    p-45ae0e: Si tu tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
+    p-558a40: 'Para los propósitos del Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), no aceptamos:'
     ul-0:
       li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
       li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
       li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
-      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid.
-    p-f554f7: Consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los números de Seguro Social válidos.
+      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid
+    p-f554f7: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los números de Seguro Social válidos.
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: Confirmación
     p-30861e: Cambiar de <strong>Casado que presenta declaración conjunta</strong> a otro estado civil para la declaración de impuestos borrará los datos del hijo que haya ingresado previamente. ¿Desea continuar?
@@ -372,11 +372,11 @@
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/dependents">Conoce más sobre los dependientes.</a>
 /agi:
   title: Ingreso bruto ajustado (AGI)
-  h2-c0af17: Estimado de su ingreso bruto ajustado (AGI, por las siglas en inglés)
-  p-308236: En este paso, estimaremos su ingreso del trabajo, el ingreso bruto ajustado y cualquier ajuste a este <span condition="/isFilingStatusMFJ"
-    operator="isTrue">de usted y su cónyuge</span>.
-  p-100130: Seleccione e ingrese sus ingresos y ajustes correspondientes al año <fg-show path="/taxYear"/>. Solo seleccione un concepto por fuente.
-  p-bb8818: <strong>Tenga en cuenta:</strong> Asegúrese de también incluir los ingresos y ajustes de su cónyuge.
+  h2-c0af17: Estima tu ingreso bruto ajustado (AGI, por sus siglas en inglés)
+  p-308236: En este paso, estimaremos los ingresos del trabajo, el ingreso bruto ajustado y cualquier ajuste de tu ingreso <span condition="/isFilingStatusMFJ"
+    operator="isTrue">y el de tu esposo(a)</span>.
+  p-100130: Selecciona e ingresa tus ingresos y ajustes del año <fg-show path="/taxYear"/>. Selecciona solo un elemento por fuente.
+  p-bb8818: <strong>Ten en cuenta:</strong> Asegúrate de incluir también los ingresos y ajustes de tu esposo(a).
   h3-40c7ae: Ingreso del trabajo
   fg-detail-c90011:
     summary: Sueldo, salario o propinas
@@ -588,22 +588,22 @@
     p-adf913: No incluya los montos que recibió por los servicios exigidos por el Programa de Becas del Cuerpo de Sanidad Nacional, el Programa de Asistencia Económica y Becas para Profesiones de la Salud para las Fuerzas Armadas, o un programa integral de empleo, aprendizaje y servicio para estudiantes operado por un instituto profesional.
     p-0c59d8: Para obtener más información, visite <a target="_blank" class="usa-link" href="https://www.irs.gov/es/taxtopics/tc421">Tema tributario 421.</a>
   fg-alert-64891c:
-    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
-    p-cdf53e: Según los montos que ingresó, no puede reclamar el crédito por ingreso del trabajo porque sus ingresos del trabajo superan el límite para su estado civil para los efectos de la declaración y el número de hijos que reúnen los requisitos.
-    p-93a6b5: Para obtener más información sobre los límites de los ingresos para el crédito por ingreso del trabajo, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/earned-income-tax-credit/earned-income-and-earned-income-tax-credit-eitc-tables">Tablas del ingreso del trabajo y del crédito tributario.</a>
+    heading: No calificas para el Crédito tributario por ingreso del trabajo (EITC por sus siglas en inglés)
+    p-cdf53e: Según la información que proporcionaste, no puedes reclamar el EITC porque tus ingresos del trabajo superan el límite para tu estado civil para los efectos de la declaración y el número de hijos calificados.
+    p-93a6b5: Para más información sobre los límites de los ingresos para el crédito por ingreso del trabajo, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/earned-income-tax-credit/earned-income-and-earned-income-tax-credit-eitc-tables">Tablas del ingreso del trabajo y del crédito tributario.</a>
   fg-alert-8b7db9:
-    heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
-    p-3abe5f: Para reclamar el EITC, debe haber tenido ingresos del trabajo (por ejemplo, salarios o ganancias netas del trabajo por cuenta propia). Según los ingresos que ingresó, sus ingresos del trabajo para <fg-show path="/taxYear"/> fueron cero o menos; por lo tanto, no califica para el EITC.
+    heading: No calificas para el Crédito tributario por ingreso del trabajo (EITC por sus siglas en inglés)
+    p-3abe5f: Para reclamar el EITC, debes haber tenido ingresos del trabajo (por ejemplo, salarios o ingresos netos por trabajo por cuenta propia). Según los ingresos que ingresaste, tu ingreso del trabajo para el <fg-show path="/taxYear"/> fueron cero o menos; por lo tanto, no calificas para el EITC.
     p-93a6b5: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">Publicación 596</a>, Crédito por Ingreso del Trabajo.
-    p-d04ce1: No puede reclamar el crédito por ingreso del trabajo si su ingreso de inversiones supera el monto de <fg-show path="/eitcInvestmentIncomeLimit"/>. 
-    p-241cb8: <strong>Los ingreso de inversiones incluyen:</strong>
+    p-d04ce1: No calificas para el EITC si tus ingresos de inversión fueron mayores que <fg-show path="/eitcInvestmentIncomeLimit"/>. 
+    p-241cb8: <strong>Los ingresos de inversiones incluyen:</strong>
     ul-0:
       li-12d3b7: Intereses (tributables y exentos de impuestos)
       li-0a9a83: Dividendos
       li-e74f5d: Ingreso por ganancia de capital (no las pérdidas)
       li-e42b99: Algunas rentas y regalías
       li-7c0731: Ingreso neto de actividades pasivas
-    p-9c482c: Para más información, consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">la Publicación 550, Ingreso y gastos de inversiones (en inglés) (Publicación 550, Ingresos y gastos de inversiones), en inglés.</a> Utilice la hora de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito por ingreso del trabajo, para calcular sus ingresos de inversiones.</a>
+    p-9c482c: Para más información, consulta <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p550">la Publicación 550, Ingreso y gastos de inversiones (en inglés) (Publicación 550, Ingresos y gastos de inversiones), en inglés.</a> Utilice la hora de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-596">la Publicación 596, Crédito por ingreso del trabajo, para calcular sus ingresos de inversiones.</a>
   modal-self-employment-deductions:
     heading: ¿Cuáles son los gastos deducibles del trabajo por cuenta propia?
     p-4838ea: Si trabajó por cuenta propia, realizó trabajos ocasionales o fue propietario y operador de un negocio, es posible que haya podido deducir ciertos gastos comerciales de sus ingresos, lo que le permitió pagar menos impuestos.
@@ -725,7 +725,7 @@
       li-765afa: Otros planes de jubilación calificados
     p-af5a4a: <strong>No incluya</strong> las contribuciones a un Arreglo de Jubilación Individual (IRA).
     p-add56c: Debe haber utilizado una regla especial para calcular las contribuciones al plan de jubilación para usted mismo.
-    p-3248f2: Para obtener más información, consulte <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
+    p-3248f2: Para más información, consulte <a target="_blank" href="https://www.irs.gov/retirement-plans/self-employed-individuals-calculating-your-own-retirement-plan-contribution-and-deduction"
       class="usa-link">Trabajadores por cuenta propia - Cómo calcular sus aportaciones
       y deducciones de su propio plan de jubilación (en inglés)<span class="usa-sr-only">
       (opens in a new tab)</span></a>.
@@ -797,13 +797,13 @@
       información de elegibilidad (en inglés)<span class="usa-sr-only"> (opens in a
       new tab)</span></a>.
 /qualifying-children:
-  title: Hijos que reúnen los requisitos
-  h2-dbaf54: Hijos que reúnen los requisitos
-  p-9b177d: Según sus respuestas anteriores, no tiene ningún hijo calificado. Si esto no es así, vuelva a <a class="usa-link" href="/app/eitc/es/filing-status/">Estado civil para los efectos de la declaración</a> y cambie sus respuestas. 
-  p-c1a0dd: Vaya al siguiente paso para ver los resultados.
-  p-3178be: En este paso, veremos cuántos de sus hijos u otros familiares son sus hijos calificados a efectos de solicitar y calcular el EITC.
-  p-e28c1e: Puede solicitar el EITC para un máximo de tres hijos calificados.
-  p-adf161: Para solicitar el crédito tributario por ingresos del trabajo, debe tener un hijo calificado.
+  title: Hijos calificados
+  h2-dbaf54: Hijos calificados
+  p-9b177d: Según tus respuestas anteriores, no tienes ningún hijo(a) calificado(a). Si esto no es correcto, regresa a la sección de <a class="usa-link" href="/app/eitc/es/filing-status/">Estado civil para los efectos de la declaración</a> y cambia tus respuestas. 
+  p-c1a0dd: Continúa al siguiente paso para ver tus resultados.
+  p-3178be: En este paso, veremos cuántos de tus hijos u otros familiares son tus hijos calificados para efectos de reclamar y calcular el EITC.
+  p-e28c1e: Puedes reclamar hasta tres hijos calificados para el EITC.
+  p-adf161: Para ser elegible para el EITC, debes tener al menos un hijo calificado.
   collection/familyAndHousehold:
     /familyAndHousehold/*/livedWithYouUS:
       question: ¿Este menor ha vivido con usted más de la mitad de <fg-show path="/taxYear"/> en los Estados Unidos?
@@ -871,7 +871,7 @@
     heading: Usted no reúne los requisitos para el Crédito Tributario por Ingreso del Trabajo (EITC por sus siglas en inglés).
     p-cdf53e: Según los montos que ingresó, no puede reclamar el crédito por ingreso del trabajo porque sus ingresos del trabajo superan el límite para su estado civil para los efectos de la declaración y el número de hijos que reúnen los requisitos.
     p-93a6b5: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo</a>.
-  h2-34370a: Según sus datos, tiene <fg-show path="/eitcQualifyingChildren"/> hijos calificados con números de Seguro Social válidos. 
+  h2-34370a: Según tus respuestas, tienes <fg-show path="/eitcQualifyingChildren"/> hijos calificados con números de Seguro Social válidos. 
   modal-residency:
     heading: ¿Qué significa "Vivir contigo"?
     h3-7c913b: Vivió con usted
@@ -936,7 +936,7 @@
     p-d68f7a: El monto de su crédito tributario por ingreso del trabajo depende del número de hijos que reúnen los requisitos que usted tiene con un número de seguro social válido. Cada hijo o pariente que usted reclame a los efectos de calcular el monto del crédito tributario por ingreso del trabajo debe tener un número de seguro social (SNN) válido que la Administración de Seguro Social haya emitido en la fecha de vencimiento de la declaración de impuestos o antes (incluidas las prórrogas).
     p-0464ad: Para el crédito tributario por ingreso del trabajo, un SSN es un SSN válido a menos que tenga impreso el texto "No válido para un empleo" en la tarjeta de seguro social y que se haya emitido el número únicamente para permitir al beneficiario del SSN solicitar o recibir un beneficio financiado con fondos federales. Un ejemplo de un beneficio financiado con fondos federales es Medicaid.
     p-a708ff: Aceptamos una Tarjeta de Seguro Social que tenga impreso el texto "Válido para trabajar con la autorización del DHS" siempre y cuando la autorización del DHS sea válida.
-    p-558a40: 'Para los propósitos del EITC, no aceptamos:'
+    p-558a40: 'Para el EITC, no aceptamos:'
     ul-0:
       li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN por sus siglas en inglés)
       li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN por sus siglas en inglés)
@@ -944,7 +944,7 @@
   modal-claimed-someone-else:
     heading: Reclamado en la declaración de impuestos de alguien más
     p-9b277e: Solo una persona puede reclamar a cada hijo para el Crédito tributario por ingreso del trabajo.
-    p-911aff: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Solo una persona puede utilizar a su hijo calificado</a>.
+    p-911aff: Para más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Solo una persona puede utilizar a su hijo calificado</a>.
   modal-age-comparison:
     heading: El hijo tiene que ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span
         condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>
@@ -954,43 +954,43 @@
   title: Resultados
   h2-88e7ef: Sus resultados
   fg-alert-64891c:
-    heading: Usted no califica para el Crédito tributario por ingreso del trabajo
-    p-cdf53e: Según la información que proporcionó, no puede reclamar el crédito por ingreso del trabajo porque su ingreso del trabajo supera el límite para su estado civil y número de hijos calificados.
-    p-93a6b5: For more information, see <a target="_blank" class="usa-link" href="https://www.irs.gov/es/publications/p596">Publication 596</a>, Earned Income Credit.
+    heading: No calificas para el Crédito tributario por ingreso del trabajo (EITC por sus siglas en inglés)
+    p-cdf53e: Según la información que proporcionaste, no puedes reclamar el EITC porque tus ingresos del trabajo superan el límite para tu estado civil para los efectos de la declaración y el número de hijos calificados.
+    p-93a6b5: Para más información, consulte la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596 (SP), Crédito por Ingreso del Trabajo (EITC)</a>.
   p-578b13: |-
-    Según la información que usted proporcionó, usted es elegible para el monto estimado del crédito tributario por ingreso del trabajo de:
+    Según la información que proporcionaste, eres elegible para el monto estimado del Crédito tributario por ingreso del trabajo con un monto estimado de:
             <strong><fg-show path="/earnedIncomeCredit"/></strong>*
   p-adf6bb: |-
-    Este monto del crédito reducirá sus impuestos del año <fg-show path="/taxYear"/> cuando presente su declaración de impuestos ante el IRS.
-            Sl el crédito reduce su impuesto a un monto menor que cero, es posible que pueda obtener un reembolso.
-  h2-259962: 'Próximos pasos: Cómo presentar el crédito tributario por ingreso del trabajo (EITC)'
+    Este monto del crédito reducirá tus impuestos de - cuando presentes tu declaración de impuestos ante el IRS. 
+            Si el crédito reduce tu impuesto a menos de cero, podrías recibir un reembolso.
+  h2-259962: 'Próximos pasos: Cómo solicitar el EITC'
   p-508e29: |-
     Para recibir el monto estimado de <strong><fg-show path="/earnedIncomeCredit"/></strong>*,
-            debe presentar su declaración de impuestos del año <fg-show path="/taxYear"/>.
-            Si reclama el crédito tributario por ingreso del trabajo (EITC), por ley, el IRS no puede emitir el reembolso de impuestos antes de la mitad de Febrero de <fg-show path="/nextTaxYear"/>,
-            incluso la parte que no está asociada con el Crédito tributario por ingreso del trabajo.
+            debes presentar tu declaración federal de impuestos del año <fg-show path="/taxYear"/>.
+            Si reclamas el EITC, por ley el IRS no puede emitir tu reembolso de impuestos antes de mediados de febrero de <fg-show path="/nextTaxYear"/>,
+            incluso la parte que no esté relacionada con el EITC.
   h3-54f664: En línea
   p-a5939a: |-
-    Si le gustaría presentar su declaración de impuestos en línea, puede calificar para utilizar el Programa Free File del IRS.
-            Tenga en cuenta que el programa solo está disponible de Enero a Octubre.
+    Si quieres presentar tus impuestos en línea, calificas para usar el Programa Free File del IRS. 
+            Ten en cuenta que el programa solo está disponible de enero a octubre.
   p-3ef53a: |-
     <a target="_blank" class="usa-link" href="https://www.irs.gov/es/filing/free-file-do-your-federal-taxes-for-free">
-              PRESENTAR AHORA UNA DECLARACIÓN EN LÍNEA<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
+              - Presenta en línea ahora tu declaración de impuestos en línea<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
             </a>
-  h3-792a4e: Presencial
+  h3-792a4e: En persona
   p-787398: |-
-    Si preferiría trabajar con un preparador de declaraciones de impuestos, tiene la opción de hacerlo en un taller del IRS del programa de Ayuda Voluntaria al Contribuyente con los impuestos sobre los Ingresos (VITA).
+    Si prefieres trabajar con un preparador de impuestos en persona, puedes hacerlo en una clínica del programa de Ayuda Voluntaria al Contribuyente con los impuestos sobre los Ingresos (VITA, por sus siglas en inglés).
   p-25a83e: |-
     <a target="_blank" class="usa-link" href="https://www.irs.gov/es/individuals/free-tax-return-preparation-for-you-by-volunteers">
-              ASISTENCIA PRESENCIAL GRATUITA<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
+              Ayuda gratuita en persona <span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
             </a>
   h3-c7457b: Formularios en papel
   p-b8834f: |-
-    Porque usted tiene un hijo calificado, tiene que Ilenar el
+    Dado que tienes un hijo(a) calificado(a), debes completar el
             <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-schedule-eic-form-1040">
               Anexo EIC (Formulario 1040), Crédito por Ingreso del Trabajo (EITC) de <fg-show path="/taxYear"/> (PDF)
             </a>
-            y adjuntarlo a su
+            y adjuntarlo a tu
             <a target="_blank" class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-form-1040">
               Formulario 1040 (PDF)
             </a>
@@ -999,11 +999,11 @@
               Formulario 1040-SR (PDF)
             </a>
             de <fg-show path="/taxYear"/>.
-  h2-a3da4a: Resumen de su información
+  h2-a3da4a: Resumen de tu información
   p-5a6eac: |-
-    El cuadro que aparece a continuación es un resumen de la información que ingresó en la herramienta.
-            Si alguna parte de la información es incorrecta, haga clic en "editar" para actualizarla.
-            De lo contrario, podría afectar sus resultados.
+    La tabla a continuación es un resumen de la información que ingresaste en la herramienta.
+            Si alguna de esta información es incorrecta, haz clic en “editar” para actualizarla.
+            De lo contrario, podría afectar tus resultados.
   table-0:
     tbody-0:
       tr-0:
@@ -1023,7 +1023,7 @@
         td-d604bc: 'Total del sueldo y salario: <fg-show path="/jobsIncomeTotal"/>'
         td-387fc0: <a class="usa-link" href="/app/eitc/income/">Editar ingresos</a>
       tr-4:
-        th-dbaf54: Hijos que reúnen los requisitos
+        th-dbaf54: Hijos calificados
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Editar hijos calificados</a>
   p-35b0d2: |-
@@ -1031,4 +1031,4 @@
             <a target="_blank" class="usa-link" href="https://www.irs.gov/es/help/irs2goapp">
               IRS2Go app<span class="usa-sr-only"> (se abre en una pestaña nueva)</span>
             </a>
-            para verificar el estado de su reembolso, realizar un pago, encontrar ayuda gratuita para la preparación de impuestos, regístrese para recibir consejos tributarios útiles y más!
+            para verificar el estado de tu reembolso, hacer un pago, encontrar asistencia gratuita para la preparación de impuestos, registrarte para recibir consejos útiles sobre impuestos y más!
