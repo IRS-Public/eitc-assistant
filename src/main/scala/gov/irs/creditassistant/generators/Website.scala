@@ -113,13 +113,18 @@ object Website {
         val stepTotal = topicReps.size
 
         val context = new Context()
+        val currentPageRoute = if (!page.route.endsWith("/")) {
+          page.route + "/"
+        } else {
+          page.route
+        }
         context.setVariable("exclude", page.exclude)
         context.setVariable("title", title)
         context.setVariable("stepTitle", titleValue)
         context.setVariable("stepIndex", stepIndex)
         context.setVariable("stepTotal", stepTotal)
         context.setVariable("pages", topicReps.asJava) // th:each requires Java Iterables
-        context.setVariable("currentPageRoute", page.route)
+        context.setVariable("currentPageRoute", currentPageRoute)
         context.setVariable("flags", flags.asJava)
         context.setVariable("languageCode", languageCode)
         context.setVariable("supportedLocales", supportedLocales.asJava)
