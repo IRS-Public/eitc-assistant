@@ -18,7 +18,7 @@ concurrency:
 jobs:
   build-deploy-credit-assistant:
     if: vars.build == 'true'
-    uses: IRSDigitalService/shared-actions/.github/workflows/build-scan-deploy.yml@e1ba7f9f0fbd96d7d7353c264afe6273e2a1f4d7
+    uses: IRSDigitalService/shared-actions/.github/workflows/build-scan-deploy.yml@666d55eb98599d116217e630380abb8e20e4469a
     permissions:
       id-token: write
       contents: read
