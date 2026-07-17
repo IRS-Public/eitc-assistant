@@ -380,7 +380,7 @@
   title: AGI
   h2-c0af17: 预估您的调整后总收入 (AGI)
   p-308236: 在这一步中，我们将估计您和您配偶的共同劳动所得、经调整总收入以及对其进行的任何调整。
-  p-100130: 请选择并输入您在 <fg-show path="/taxYear"/> 的收入和调整。每项来源只选择一项。
+  p-0130ff: 请选择并输入您在 <fg-show path="/taxYear"/> 的收入和调整。每项来源只选择一项。请不要在多个地方输入相同的收入。
   p-bb8818: 确保还包括您配偶的收入和调整。
   h3-40c7ae: 劳动所得
   fg-detail-c90011:
@@ -984,7 +984,13 @@
     target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
     表 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        针对纳税年度
     <fg-show path="/taxYear"/>。
+  h3-8d19c6: 经修订的报税表
+  p-59dd03: 如果您已经进行了报税，但是没有申请 EITC，并且满足申请 EITC 的条件，则您可以提交经修订的报税表，以申请 EITC。
+  p-b72717:     <a target="_blank" class="usa-link" href="https://www.irs.gov/zh-hans/taxtopics/tc308">
+                递交经修订的报税表（英文）<span class="usa-sr-only"> (opens in a new tab)</span>
+              </a>
   h2-a3da4a: 您的信息概述
+  p-3f5504: <strong>*须知：</strong> 这一估计的准确性取决于您所提供信息的准确性。IRS 不保证这一估计的准确性，也不承担因您使用这一估计而产生的任何责任。
   p-5a6eac: 下表汇总了您在该工具中输入的信息。如果其中任何信息有误，请单击“编辑”进行更新，否则可能会影响您的结果。
   table-0:
     tbody-0:
@@ -1008,4 +1014,6 @@
         th-dbaf54: 符合条件的子女
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">编辑符合条件的儿童</a>
-  p-35b0d2: 来查看您的退税状态，付款，找到免费的税收准备帮助，注册获取有帮助的税务提示，以及等等！
+  p-35b0d2: |-
+      您可以使用 <a class="usa-link" href="https://www.irs.gov/zh-hans/help/irs2goapp">IRS2GO移动应用程序</a> 
+        来查看您的退税状态，付款，找到免费的税收准备帮助，注册获取有帮助的税务提示，以及等等！

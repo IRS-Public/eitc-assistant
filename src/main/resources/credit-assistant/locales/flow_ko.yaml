@@ -417,7 +417,7 @@
   title: 총조정소득(AGI)
   h2-c0af17: 귀하의 조정 총소득(AGI)을 추정합니다.
   p-308236: 이번 단계에서 우리는 귀하와 귀하의 배우자의 공동 근로 소득, 조정 총 소득 그리고 그에 대한 조정액을 추정할 것입니다.
-  p-100130: <fg-show path="/taxYear"/>년 소득과 조정액을 선택하고 입력하세요.출처당 하나의 항목만을 선택해야 합니다.
+  p-0130ff: <fg-show path="/taxYear"/>년 소득과 조정액을 선택하고 입력하세요.출처당 하나의 항목만을 선택해야 합니다. 동일한 소득을 여러 곳에 입력하지 마십시오. 
   p-bb8818: 귀하의 배우자의 소득과 조정액
   h3-40c7ae: 근로 소득
   fg-detail-c90011:
@@ -1084,9 +1084,15 @@
     (opens in a new tab)</span>        </a>        또는        <a target="_blank" class="usa-link"
     href="https://www.irs.gov/forms-pubs/about-form-1040"> 양식 1040-SR (PDF)<span class="usa-sr-only">
     (opens in a new tab)</span>        </a>        에 첨부해야 합니다.
+  h3-8d19c6: 수정 신고서
+  p-59dd03: 이미 귀하의 세금을 EITC 신청 없이 신고했다면, 귀하는 EITC를 위해 수정된 신고서를 제출할 수 있습니다.
+  p-b72717: <a target="_blank" class="usa-link" href="https://www.irs.gov/ko/taxtopics/tc308">
+                수정 신고서 제출<span class="usa-sr-only"> (opens in a new tab)</span>
+              </a>
   h2-a3da4a: 귀하의 정보 요약
+  p-3f5504: <strong>*중요한 알림 :</strong> 추정의 정확성은 귀하가 제공한 정보의 정확성에 기초합니다. 국세청은 추정의 정확성을 보장하지 않습니다. 그리고 귀하가 추정을 사용하여 얻은 결과의 법적 책임이 없습니다.
   p-5a6eac: 아래 표는 이 도구에서 귀하가 입력한 정보의 요약입니다. 이 정보가 올바르지 않다면 에디트를 눌러 업데이트하세요. 그렇지 않으면
-    귀하의 결과에 영향을 줄 수 있습니다.
+      귀하의 결과에 영향을 줄 수 있습니다.
   table-0:
     tbody-0:
       tr-0:
@@ -1110,4 +1116,6 @@
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">적격 자녀
           수정</a>
-  p-35b0d2: 을 사용해 귀하의 환급 현황, 세금 납부, 무료 세금 신고 준비 지원, 도우되는 세무팁 구독 등을 할 수 있습니다.
+  p-35b0d2: |-
+    <a class="usa-link" href="https://www.irs.gov/ko/help/irs2goapp">IRS2GO 앱</a>
+    을 사용해 귀하의 환급 현황, 세금 납부, 무료 세금 신고 준비 지원, 도우되는 세무팁 구독 등을 할 수 있습니다.

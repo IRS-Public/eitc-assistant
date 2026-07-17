@@ -522,8 +522,8 @@
   p-308236: Trong bước này, chúng tôi sẽ ước tính thu nhập kiếm được chung của quý
     vị và người phối ngẫu của quý vị, tổng thu nhập điều chỉnh và bất kỳ mục điều
     chỉnh nào đối với thu nhập đó.
-  p-100130: Vui lòng chọn và nhập thu nhập và các mục điều chỉnh của năm <fg-show
-    path="/taxYear"/> của quý vị. Chỉ chọn một mục cho mỗi nguồn.
+  p-0130ff: Vui lòng chọn và nhập thu nhập và các mục điều chỉnh của năm <fg-show
+    path="/taxYear"/> của quý vị. Chỉ chọn một mục cho mỗi nguồn. Không nhập cùng một khoản thu nhập ở nhiều nơi. 
   p-bb8818: Bảo đảm bao gồm cả thu nhập và các mục điều chỉnh của người phối ngẫu
     của quý vị.
   h3-40c7ae: Thu Nhập Kiếm Được
@@ -1371,10 +1371,16 @@
     target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
     Mẫu 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        cho
     năm tính thuế <fg-show path="/taxYear"/>.
+  h3-8d19c6: Tờ Khai Thuế Được Điều Chỉnh
+  p-59dd03: Nếu đã khai thuế mà không yêu cầu EITC và đủ điều kiện nhận tín thuế này, quý vị có thể nộp tờ khai được điều chỉnh để yêu cầu EITC.
+  p-b72717:    <a target="_blank" class="usa-link" href="https://www.irs.gov/vi/taxtopics/tc308">
+                Nộp tờ khai thuế được điều chỉnh<span class="usa-sr-only"> (opens in a new tab)</span>
+              </a>
   h2-a3da4a: Tóm Tắt Thông Tin Của Quý Vị
+  p-3f5504: <strong>*Lưu ý quan trọng:</strong> Độ chính xác của phép ước tính này phụ thuộc vào độ chính xác của thông tin mà quý vị cung cấp. IRS không bảo đảm về tính chính xác của phép ước tính này và không chịu trách nhiệm về khoản nợ phải trả xuất phát từ việc quý vị sử dụng ước tính.
   p-5a6eac: Bảng dưới đây tóm tắt lại thông tin mà quý vị đã nhập vào công cụ. Nếu
-    bất kỳ thông tin nào trong số này không chính xác, vui lòng nhấp vào chỉnh sửa
-    để cập nhật, nếu không điều này có thể ảnh hưởng đến kết quả của quý vị.
+      bất kỳ thông tin nào trong số này không chính xác, vui lòng nhấp vào chỉnh sửa
+      để cập nhật, nếu không điều này có thể ảnh hưởng đến kết quả của quý vị.
   table-0:
     tbody-0:
       tr-0:
@@ -1400,6 +1406,8 @@
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Chỉnh
           sửa trẻ em đủ điều kiện</a>
-  p-35b0d2: ' để kiểm tra tình trạng hoàn thuế, thực hiện thanh toán, tìm kiếm sự
-    hỗ trợ chuẩn bị thuế miễn phí, đăng ký nhận các mẹo hữu ích về thuế và nhiều hơn
-    thế nữa!'
+  p-35b0d2: |-
+    Bạn có thể sử dụng <a class="usa-link" href="https://www.irs.gov/vi/help/irs2goapp">ứng dụng IRS2GO</a>
+    để kiểm tra tình trạng hoàn thuế, thực hiện thanh toán, tìm kiếm sự
+      hỗ trợ chuẩn bị thuế miễn phí, đăng ký nhận các mẹo hữu ích về thuế và nhiều hơn
+      thế nữa!

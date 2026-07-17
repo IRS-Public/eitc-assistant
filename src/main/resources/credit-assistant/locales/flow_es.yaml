@@ -375,7 +375,7 @@
   h2-c0af17: Estima tu ingreso bruto ajustado (AGI, por sus siglas en inglés)
   p-308236: En este paso, estimaremos los ingresos del trabajo, el ingreso bruto ajustado y cualquier ajuste de tu ingreso <span condition="/isFilingStatusMFJ"
     operator="isTrue">y el de tu esposo(a)</span>.
-  p-100130: Selecciona e ingresa tus ingresos y ajustes del año <fg-show path="/taxYear"/>. Selecciona solo un elemento por fuente.
+  p-0130ff: Selecciona e ingresa tus ingresos y ajustes del año <fg-show path="/taxYear"/>. Selecciona solo un elemento por fuente. No ingrese el mismo ingreso en múltiples lugares.
   p-bb8818: <strong>Ten en cuenta:</strong> Asegúrate de incluir también los ingresos y ajustes de tu esposo(a).
   h3-40c7ae: Ingreso del trabajo
   fg-detail-c90011:
@@ -999,11 +999,22 @@
               Formulario 1040-SR (PDF)
             </a>
             de <fg-show path="/taxYear"/>.
-  h2-a3da4a: Resumen de tu información
+  h3-8d19c6: Declaración enmendada
+  p-59dd03: Si ya presentó su declaración de impuestos sin reclamar el 
+    crédito tributario por ingreso del trabajo y es elegible, puede 
+    presentar una declaración enmendada para reclamar el Crédito 
+    tributario por ingreso del trabajo.
+  p-b72717: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/taxtopics/tc308">Presentar una declaración enmendada</a>
+  h2-a3da4a: Resumen de tu información 
+  p-3f5504: <strong>* Aviso importante:</strong> La precisión de este 
+    estimado depende de la precisión de la información que usted 
+    proporciona. El IRS no garantiza la precisión de este estimado 
+    y no accepta ninguna responsabilidad que resulte cuando usted 
+    utiliza el estimado.
   p-5a6eac: |-
     La tabla a continuación es un resumen de la información que ingresaste en la herramienta.
             Si alguna de esta información es incorrecta, haz clic en “editar” para actualizarla.
-            De lo contrario, podría afectar tus resultados.
+            De lo contrario, podría afectar tus resultados. 
   table-0:
     tbody-0:
       tr-0:

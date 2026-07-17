@@ -518,9 +518,10 @@
   p-308236: In this step, we'll estimate your <span condition="/isFilingStatusMFJ"
     operator="isTrue">and your spouse's joint</span> earned income, adjusted gross
     income, and any adjustments to it.
-  p-100130: Please select and enter your <fg-show path="/taxYear"/> <span condition="/isFilingStatusMFJ"
+  p-0130ff: Please select and enter your <fg-show path="/taxYear"/> <span condition="/isFilingStatusMFJ"
     operator="isTrue">and your spouse's</span> income and adjustments. Only select
-    one item per source. All fields marked with an asterisk are required.
+    one item per source. Do not enter the same income in multiple places. All fields
+    marked with an asterisk are required.
   p-bb8818: <strong>Please note:</strong> Make sure to also include your spouse's
     income and adjustments.
   h3-40c7ae: Earned Income
@@ -1361,7 +1362,18 @@
               Form 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>
             </a>
             for tax year <fg-show path="/taxYear"/>.
+  h3-8d19c6: Amended Return
+  p-59dd03: If you already filed your taxes without claiming the EITC and are eligible,
+    you can file an amended return to claim the EITC.
+  p-b72717: |-
+    <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc308">
+              File an amended return<span class="usa-sr-only"> (opens in a new tab)</span>
+            </a>
   h2-a3da4a: Your Information Summary
+  p-3f5504: <strong>* Important note:</strong> The accuracy of this estimate depends
+    on the accuracy of the information you provide. The IRS makes no guarantees about
+    the accuracy of this estimate and accepts no liability resulting from your use
+    of the estimation.
   p-5a6eac: |-
     The table below is a summary of the information you entered in the tool. If any of this information is
             incorrect please click edit to update it, otherwise, it could affect your results.

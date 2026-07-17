@@ -505,8 +505,8 @@
   h2-c0af17: Kalkile Revni An Gwo Ajiste Ou (AGI)
   p-308236: Pandan etap sa a, n ap estime revni ou menm ak konjwen w touche ansanm,
     revni brit ajiste ou ak nenpòt ajisteman ki gen rapò ak li.
-  p-100130: Tanpri seleksyone epi antre <fg-show path="/taxYear"/> revni ak ajisteman
-    ou. Seleksyone yon sèl atik pou chak sous.
+  p-0130ff: Tanpri seleksyone epi antre <fg-show path="/taxYear"/> revni ak ajisteman
+    ou. Seleksyone yon sèl atik pou chak sous. Pa mete menm revni an nan plizyè kote.
   p-bb8818: Asire w ou enkli revni konjwen w ak ajisteman yo tou.
   h3-40c7ae: touche revni
   fg-detail-c90011:
@@ -1297,10 +1297,17 @@
     <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
     Fòm 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span> </a> pou
     ane fiskal <fg-show path="/taxYear"/>.
+  h3-8d19c6: Deklarasyon amande
+  p-59dd03: Si ou te deja ranpli taks ou san ou pa reklame EITC a epi ou kalifye, ou ka ranpli yon deklarasyon amannman pou reklame EITC a.
+  p-b72717: |-
+      <a target="_blank" class="usa-link" href="https://www.irs.gov/ht/taxtopics/tc308">
+                Depoze yon deklarasyon amande<span class="usa-sr-only"> (opens in a new tab)</span>
+              </a>
   h2-a3da4a: Rezime enfòmasyon ou yo
+  p-3f5504: <strong>* Nòt enpòtan:</strong> Presizyon estimasyon sa a depann de presizyon enfòmasyon ou bay yo. IRS pa bay okenn garanti sou presizyon estimasyon sa a epi li pa aksepte okenn responsablite ki soti nan itilizasyon estimasyon an.
   p-5a6eac: Tablo ki anba a se yon rezime enfòmasyon ou te antre nan zouti a. Si nenpòt
-    nan enfòmasyon sa yo pa kòrèk, tanpri klike sou modifye pou mete ajou li, sinon
-    li ka afekte rezilta ou yo.
+      nan enfòmasyon sa yo pa kòrèk, tanpri klike sou modifye pou mete ajou li, sinon
+      li ka afekte rezilta ou yo.
   table-0:
     tbody-0:
       tr-0:
@@ -1324,6 +1331,8 @@
         th-dbaf54: Timoun Kalifye
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">Modifye
-          timoun ki kalifye yo</a>
-  p-35b0d2:  a pou w tcheke estati ranbousman w, fè peman, chèche jwenn èd preparasyon
-    enpo ki gratis, enskri pou w jwenn konsèy enpo ki itil, ak lòt bagay ankò!
+          timoun ki kalifye yo</a>          
+  p-35b0d2: |- 
+    Ou ka itilize aplikasyon <a class="usa-link" href="https://www.irs.gov/ht/help/irs2goapp">IRS2GO</a>
+     a pou w tcheke estati ranbousman w, fè peman, chèche jwenn èd preparasyon
+      enpo ki gratis, enskri pou w jwenn konsèy enpo ki itil, ak lòt bagay ankò!
