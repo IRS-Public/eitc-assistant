@@ -5,7 +5,7 @@
     <section>
       <h2><strong>Estimate Your <fg-show path="/taxYear"/> Adjusted Gross Income (AGI)</strong></h2>
       <p>In this step, we'll estimate your <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse's joint</span> earned income, adjusted gross income, and any adjustments to it.</p>
-        <p>Please select and enter your <fg-show path="/taxYear"/> <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse's</span> income and adjustments. Only select one item per source. All fields marked with an asterisk are required.</p>
+        <p>Please select and enter your <fg-show path="/taxYear"/> <span condition="/isFilingStatusMFJ" operator="isTrue">and your spouse's</span> income and adjustments. Only select one item per source. Do not enter the same income in multiple places. All fields marked with an asterisk are required.</p>
 
       <div class="usa-alert usa-alert--info" condition="/isFilingStatusMFJ" operator="isTrue">
         <div class="usa-alert__body">

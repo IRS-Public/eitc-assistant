@@ -379,7 +379,7 @@
   title: AGI
   h2-c0af17: 估算您的調整後總收入 (AGI)
   p-308236: 在此步驟中，我們將估算您和您配偶的共同收入、調整後的總收入以及對其進行的任何調整。
-  p-100130: 請選擇並填入您在 <fg-show path="/taxYear"/> 年的收入和調整項。每項來源只選擇一項。
+  p-0130ff: 請選擇並填入您在 <fg-show path="/taxYear"/> 年的收入和調整項。每項來源只選擇一項。請不要在多個地方輸入相同的收入。
   p-bb8818: 確保還包括您配偶的收入和調整。
   h3-40c7ae: 勞動所得
   fg-detail-c90011:
@@ -980,7 +980,13 @@
     target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-1040">
     表 1040-SR (PDF)<span class="usa-sr-only"> (opens in a new tab)</span>        </a>        針對納稅年度
     <fg-show path="/taxYear"/>。
+  h3-8d19c6: 修改過的稅務申報單
+  p-59dd03: 如果您已經報稅但未申領 EITC 並且符合資格，您可以申報修改過的報稅表以申領 EITC。
+  p-b72717:     <a target="_blank" class="usa-link" href="https://www.irs.gov/zh-hant/taxtopics/tc308">
+                申報修改後的報稅表<span class="usa-sr-only"> (opens in a new tab)</span>
+              </a>
   h2-a3da4a: 您的資訊摘要
+  p-3f5504: <strong>*重要附註：</strong> 此估算的準確性取決於您提供的資訊的準確性。美國國稅局不保證此估算的準確性，也不承擔因您使用該估算而產生的任何責任。
   p-5a6eac: 下表是您在工具中填入的資訊的摘要。如果此資訊有任何不正確，請點選編輯進行更新，否則可能會影響您的結果。
   table-0:
     tbody-0:
@@ -1004,4 +1010,6 @@
         th-dbaf54: 符合資格的子女
         td-4ea2d8: <fg-show path="/eitcQualifyingChildren"/>
         td-9efa8d: <a class="usa-link" href="/app/eitc/qualifying-children/">編輯符合條件的兒童</a>
-  p-35b0d2: 來查看您的退稅狀態，付款，找到免費的稅收準備幫助，註冊獲取有幫助的稅務提示，以及等等！
+  p-35b0d2: |-
+    您可以使用<a class="usa-link" href="https://www.irs.gov/zh-hant/help/irs2goapp">IRS2GO移動應用程序</a>
+    來查看您的退稅狀態，付款，找到免費的稅收準備幫助，註冊獲取有幫助的稅務提示，以及等等！

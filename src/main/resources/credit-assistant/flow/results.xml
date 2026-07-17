@@ -64,7 +64,18 @@
         </a>
         for tax year <fg-show path="/taxYear"/>.
       </p>
+<h3>Amended Return</h3>
+      <p>
+        If you already filed your taxes without claiming the EITC and are eligible, you can file an amended return to claim the EITC.
+      </p>
+      <p>
+        <a target="_blank" class="usa-link" href="https://www.irs.gov/taxtopics/tc308">
+          File an amended return<span class="usa-sr-only"> (opens in a new tab)</span>
+        </a>
+      </p>
       <h2>Your Information Summary</h2>
+      <p><strong>*&#8201;Important note:</strong> The accuracy of this estimate depends on the accuracy of the information you provide. The IRS makes no guarantees about the accuracy of this estimate and accepts no liability resulting from your use of the estimation.
+      </p>
       <p>
         The table below is a summary of the information you entered in the tool. If any of this information is
         incorrect please click edit to update it, otherwise, it could affect your results.
