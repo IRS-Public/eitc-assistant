@@ -298,7 +298,7 @@
     <modal-dialog id="modal-age-comparison">
       <modal-heading>Child Must be Younger Than You or Your Spouse</modal-heading>
       <modal-content>
-        <p>To be a qualifying child, the child must be younger than you or your spouse unless the child is permanently and totally disabled at any time during 2026.</p>
+        <p>To be a qualifying child, the child must be younger than you or your spouse unless the child is permanently and totally disabled at any time during 2025.</p>
         <p>For more information see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Publication 596</a>, Earned Income Credit, Age Test.</p>
       </modal-content>
     </modal-dialog>

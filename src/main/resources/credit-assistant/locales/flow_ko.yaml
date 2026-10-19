@@ -6,12 +6,12 @@
     question: 귀하의 EITC 적격성을 확인하기 원하는 과세연도를 선택하세요.
     modalLink: <modal-link for="modal-tax-year">어느 연도를 사용해야 합니까?</modal-link>
     options:
-      '2026':
-        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
+      '2023':
+        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: <fg-show path="/taxYear"/>년 내내 미국 국민 혹은 영주 체류자였습니까?
     modalLink: <modal-link for="modal-citizen">미국 시민권자 또는 거주자로서 EITC 자격이 있습니까?</modal-link>
@@ -77,9 +77,9 @@
     heading: 과세 연도
     p-aa5a47: '임금 혹은 기타 근로 소득:'
     ul-0:
-      li-97ee5c: 2026년, 2026년 선택
       li-28dd34: 2025년, 2025년 선택
       li-174a8b: 2024년, 2024년 선택
+      li-0a25dc: 2023년, 2023년 선택
   modal-citizen:
     heading: 미국 국민 혹은 영주 체류자
     p-18e680: 귀하가 미국 국민이 아니라면, 외국인으로 고려됩니다.
@@ -170,19 +170,10 @@
       taxYear:
         name: <fg-show path="/taxYear"/> 년도에
       taxYearMinusOneOrTwo:
-        name: 2024 년 혹은 2025 년도에
-      beforeTaxYearMinusTwo:
-        name: 2024 년 이전에
-  /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: 귀하의 배우자는 언제 사망했습니까?
-    options:
-      taxYear:
-        name: 2025 년도에
-      taxYearMinusOneOrTwo:
         name: 2023 년 혹은 2024 년도에
       beforeTaxYearMinusTwo:
         name: 2023 년 이전에
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+  /yearOfSpouseDeathLastTaxYearIsChosen:
     question: 귀하의 배우자는 언제 사망했습니까?
     options:
       taxYear:
@@ -191,6 +182,15 @@
         name: 2022 년 혹은 2023 년도에
       beforeTaxYearMinusTwo:
         name: 2022 년 이전에
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+    question: 귀하의 배우자는 언제 사망했습니까?
+    options:
+      taxYear:
+        name: 2023 년도에
+      taxYearMinusOneOrTwo:
+        name: 2021 년 혹은 2022 년도에
+      beforeTaxYearMinusTwo:
+        name: 2021 년 이전에
   /isHOHMarried:
     question: 기혼입니까?
   /intendsToFileJointlyWidow:
@@ -220,7 +220,7 @@
     modalLink: <modal-link for="modal-claiming-dependents">제가 피부양자로 신청할 수 있는 사람은 누구입니까?(영어)</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: '<fg-show path="/taxYear"/>년에 대해 다음을 제외하고 자녀 또는 의붓자녀를 부양가족으로 청구할 수 있습니까:
-      1) 자녀의 총소득이 <fg-show path="/taxYear"/>년도 임계값인 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>를
+      1) 자녀의 총소득이 <fg-show path="/taxYear"/>년도 임계값인 <fg-show path="/eitcChildGrossIncomeLimit"/>를
       초과했습니다; 2) 자녀가 공동 보고서를 제출했습니다; 또는 3) 귀하가 다른 사람의 보고서에 부양가족으로 청구될 수 있습니다?'
     modalLink: <modal-link for="modal-claiming-dependents">제가 피부양자로 신청할 수 있는 사람은 누구입니까?(영어)</modal-link>
   /homeUpkeepScenario:
@@ -408,7 +408,7 @@
     ul-0:
       li-7673e2: 만 19세 미만 자녀
       li-e9750c: 부모와 함께 거주하는 24세 미만의 학생
-      li-cb5799: 귀하로부터 재정 지원의 절반 이상을 받고 총소득이 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
+      li-9a6fc3: 귀하로부터 재정 지원의 절반 이상을 받고 총소득이 <fg-show path="/eitcChildGrossIncomeLimit"/>
         미만인 친척 또는 가구원
     p-6b3acc: 공동으로 신고하는 경우 배우자를 부양가족으로 청구할 수 없습니다.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">부양가족에
@@ -731,7 +731,7 @@
       li-7c0731: 피동 활동으로부터 순 소득
     p-4c8f5e: 구체적인 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">내용은</a>
       를 확인하세요.
-    p-62c83e: '2026년에 다음 중 하나라도 해당되는 경우 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+    p-df5956: '2025년에 다음 중 하나라도 해당되는 경우 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
       596</a>, 근로 소득 세액 공제의 워크시트 1을 사용하여 투자 소득을 계산하십시오:'
     ul-1:
       li-0f3c1b: 스케줄 E(양식 1040)를 제출하는 경우
@@ -1046,7 +1046,7 @@
     p-911aff: 간행물 596, ‘근로 소득 공제, 귀하의 적격 자녀는 한 명 이상의 사람에 의해 신청될 수 없습니다’(영어)
   modal-age-comparison:
     heading: 자녀는 반드시 귀하와 귀하의 배우자보다 어려야 합니다.
-    p-174fc8: 적격 자녀가 되기 위해 자녀가 <fg-show path="/taxYear">년에 영구적으로 완전하게 장애가 있는 것이 아니라면
+    p-626c78: 적격 자녀가 되기 위해 자녀가 <fg-show path="/taxYear">년에 영구적으로 완전하게 장애가 있는 것이 아니라면
       반드시 귀하 혹은 귀하의 배우자보다 어려야 합니다.
     p-1a035f: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">간행물
       596</a>, 근로 소득 세액 공제, 연령 테스트를 참조하십시오.

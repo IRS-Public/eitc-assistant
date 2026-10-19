@@ -8,12 +8,12 @@
       получение EITC:'
     modalLink: <modal-link for="modal-tax-year">Какой год мне следует использовать?</modal-link>
     options:
-      '2026':
-        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
+      '2023':
+        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: Были ли вы гражданином США или иностранцем-резидентом в течение всего
       <fg-show path="/taxYear"/>?
@@ -96,9 +96,9 @@
     heading: Налоговый год
     p-aa5a47: 'Для заработной платы и других доходов, заработанных в:'
     ul-0:
-      li-97ee5c: 2026, выберите 2026
       li-28dd34: 2025, выберите 2025
       li-174a8b: 2024, выберите 2024
+      li-0a25dc: 2023, выберите 2023
   modal-citizen:
     heading: Гражданин США или постоянно проживающий иностранец
     p-18e680: Если вы не являетесь гражданином США, вы считаетесь иностранцем.
@@ -209,19 +209,10 @@
       taxYear:
         name: В течение <fg-show path="/taxYear"/>
       taxYearMinusOneOrTwo:
-        name: В течение 2024 или 2025
-      beforeTaxYearMinusTwo:
-        name: До 2024
-  /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: Когда скончался ваш супруг(а)?
-    options:
-      taxYear:
-        name: В течение 2025
-      taxYearMinusOneOrTwo:
         name: В течение 2023 или 2024
       beforeTaxYearMinusTwo:
         name: До 2023
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+  /yearOfSpouseDeathLastTaxYearIsChosen:
     question: Когда скончался ваш супруг(а)?
     options:
       taxYear:
@@ -230,6 +221,15 @@
         name: В течение 2022 или 2023
       beforeTaxYearMinusTwo:
         name: До 2022
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+    question: Когда скончался ваш супруг(а)?
+    options:
+      taxYear:
+        name: В течение 2023
+      taxYearMinusOneOrTwo:
+        name: В течение 2021 или 2022
+      beforeTaxYearMinusTwo:
+        name: До 2021
   /isHOHMarried:
     question: Вы состоите в браке?
   /intendsToFileJointlyWidow:
@@ -272,7 +272,7 @@
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Могли бы вы заявить своего ребенка или пасынка/падчерицу в качестве
       иждивенца ЗА ИСКЛЮЧЕНИЕМ того, что в <fg-show path="/taxYear"/> году: 1) У ребенка
-      был валовой доход, превышающий пороговое значение в <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
+      был валовой доход, превышающий пороговое значение в <fg-show path="/eitcChildGrossIncomeLimit"/>
       за <fg-show path="/taxYear"/> год; 2) Ребенок подал совместную декларацию; или
       3) Вас могли заявить в качестве иждивенца в чьей-то еще декларации?'
     modalLink: <modal-link for="modal-claiming-dependents">Кого я могу заявить в качестве
@@ -523,9 +523,9 @@
     ul-0:
       li-7673e2: Дети до 19 лет;
       li-e9750c: Студенты в возрасте до 24 лет, проживающие с родителями
-      li-cb5799: Родственники или члены вашей семьи, которые получают от вас более
+      li-9a6fc3: Родственники или члены вашей семьи, которые получают от вас более
         половины своей финансовой поддержки и чей валовой доход составляет менее <fg-show
-        path="/eitcGrossIncomeLimitForQualifyingRelative"/>
+        path="/eitcChildGrossIncomeLimit"/>
     p-6b3acc: Вы не можете заявить своего супруга(у) в качестве иждивенца, если подаете
       совместную декларацию.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Узнайте
@@ -924,9 +924,9 @@
       li-498151: Некоторые виды арендной платы и авторских вознаграждений или
       li-7c0731: Чистый доход от пассивной деятельности
     p-4c8f5e: Более подробную информацию см. <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">link</a>.
-    p-62c83e: 'Используйте Таблицу 1 в <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Публикации
+    p-df5956: 'Используйте Таблицу 1 в <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Публикации
       596</a>, Налоговый зачет за заработанный доход, чтобы рассчитать ваш инвестиционный
-      доход, если какое-либо из следующих утверждений верно для 2026 года:'
+      доход, если какое-либо из следующих утверждений верно для 2025 года:'
     ul-1:
       li-0f3c1b: Вы подаете Приложение E (Форма 1040).
       li-782dae: Вы указываете доход от сдачи в аренду личного имущества, не используемого
@@ -1347,7 +1347,7 @@
       требованиям ребенок не может быть использован более чем одним лицом
   modal-age-comparison:
     heading: Ребенок должен быть младше вас или вашего супруга (супруги)
-    p-174fc8: Для того чтобы ребенок соответствовал критериям, он должен быть младше
+    p-626c78: Для того чтобы ребенок соответствовал критериям, он должен быть младше
       вас, если только ребенок не является постоянным и полностью нетрудоспособным
       в любое время в течение <fg-show path="/taxYear">.
     p-1a035f: Для получения дополнительной информации см. <a target="_blank" class="usa-link"

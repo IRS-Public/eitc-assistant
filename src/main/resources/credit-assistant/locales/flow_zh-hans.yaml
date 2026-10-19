@@ -6,12 +6,12 @@
     question: 选择您想要核实您的 EITC 申请资格的纳税年度：
     modalLink: <modal-link for="modal-tax-year">我应该使用哪一年？</modal-link>
     options:
-      '2026':
-        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
+      '2023':
+        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: 您在 <fg-show path="/taxYear"/> 是否全年都是美国公民或外籍居民？
     modalLink: <modal-link for="modal-citizen">我是否符合作为美国公民或居民申请 EITC 的条件？</modal-link>
@@ -71,9 +71,9 @@
     heading: 纳税年度
     p-aa5a47: 对于工资和其他劳动所得：
     ul-0:
-      li-97ee5c: 2026 年, 选择 2026 年
       li-28dd34: 2025 年, 选择 2025 年
       li-174a8b: 2024 年, 选择 2024 年
+      li-0a25dc: 2023 年, 选择 2023 年
   modal-citizen:
     heading: 美国公民或外籍居民
     p-18e680: 如果您非美国公民，您即为外籍公民。
@@ -155,21 +155,12 @@
     question: 您的配偶是什么时候去世的？
     options:
       taxYear:
-        name: 2026 期间
-      taxYearMinusOneOrTwo:
-        name: 2024 或 2025 期间
-      beforeTaxYearMinusTwo:
-        name: 2024 之前
-  /yearOfSpouseDeathLastTaxYearIsChosen:
-    question: 您的配偶是什么时候去世的？
-    options:
-      taxYear:
         name: 2025 期间
       taxYearMinusOneOrTwo:
         name: 2023 或 2024 期间
       beforeTaxYearMinusTwo:
         name: 2023 之前
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+  /yearOfSpouseDeathLastTaxYearIsChosen:
     question: 您的配偶是什么时候去世的？
     options:
       taxYear:
@@ -178,6 +169,15 @@
         name: 2022 或 2023 期间
       beforeTaxYearMinusTwo:
         name: 2022 之前
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
+    question: 您的配偶是什么时候去世的？
+    options:
+      taxYear:
+        name: 2023 期间
+      taxYearMinusOneOrTwo:
+        name: 2021 或 2022 期间
+      beforeTaxYearMinusTwo:
+        name: 2021 之前
   /isHOHMarried:
     question: 您是否已婚？
   /intendsToFileJointlyWidow:
@@ -204,7 +204,7 @@
     modalLink: <modal-link for="modal-claiming-dependents">我可以申报谁为受抚养人？（英文）</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 您是否可以将您的孩子或继子女申请为被抚养人，除非在 <fg-show path="/taxYear"/> 年：1) 孩子的总收入高于 <fg-show
-      path="/taxYear"/> 年的 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/> 门槛；2) 孩子进行了联合申报；或者
+      path="/taxYear"/> 年的 <fg-show path="/eitcChildGrossIncomeLimit"/> 门槛；2) 孩子进行了联合申报；或者
       3) 您可以在别人的报税表中被申请为被抚养人？
     modalLink: <modal-link for="modal-claiming-dependents">我可以申报谁为受抚养人？（英文）</modal-link>
   /homeUpkeepScenario:
@@ -289,7 +289,7 @@
       class="usa-sr-only"> (opens in a new tab)</span>。</a>
   modal-qualifying-child-eitc:
     heading: 符合资格的子女
-    p-7356ad: 如希望与符合资格的子女一起申请 EITC，该子女必须在 2026 年申报表到期日或之前拥有社保局颁发的有效 SSN（包括延期）。
+    p-7356ad: 如希望与符合资格的子女一起申请 EITC，该子女必须在 2025 年申报表到期日或之前拥有社保局颁发的有效 SSN（包括延期）。
     p-ac8914: 如果社会保障卡上写着“凭 DHS 授权工作有效”或“凭 INS 授权工作有效”，那么只要授权仍然有效，这就是有效的 SSN。
     p-558a40: 对于 EITC，我们不接受：
     ul-0:
@@ -372,7 +372,7 @@
     ul-0:
       li-7673e2: 19 岁以下子女；
       li-e9750c: 与父母同住的 24 岁以下学生
-      li-cb5799: 从您那里获得一半以上财务支持，且总收入低于 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
+      li-9a6fc3: 从您那里获得一半以上财务支持，且总收入低于 <fg-show path="/eitcChildGrossIncomeLimit"/>
         的亲属或家庭成员
     p-6b3acc: 如果您联合申报，则不能将配偶申请为受抚养人。
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">了解有关被抚养人的更多信息。</a>
@@ -672,7 +672,7 @@
       li-7c0731: 非本业性业务净所得
     p-4c8f5e: 欲了解更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">请参阅</a>
       。
-    p-62c83e: 如果您在 2026 年符合以下任一情况，请使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+    p-df5956: 如果您在 2025 年符合以下任一情况，请使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
       596 号出版物</a>，所得税抵免中的工作表 1 来计算您的投资收入：
     ul-1:
       li-0f3c1b: 您正在提交《附表 E》（《表格 1040》）。
@@ -951,7 +951,7 @@
     p-911aff: 第596号刊物， 劳动所得抵免，您的符合条件的子女不能被超过一人申报（英文）
   modal-age-comparison:
     heading: 孩子必须比您或您的配偶年龄小
-    p-174fc8: 要成为符合条件的子女，这名子女必须比您年龄小，除非这名子女于 <fg-show path="/taxYear"/> 期间的任何时间永久、完全残障。
+    p-626c78: 要成为符合条件的子女，这名子女必须比您年龄小，除非这名子女于 <fg-show path="/taxYear"/> 期间的任何时间永久、完全残障。
     p-1a035f: 如需了解更多信息，请参阅<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">第
       596 号出版物</a>，所得税抵免，年龄测试。
 /results:

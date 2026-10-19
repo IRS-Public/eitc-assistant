@@ -34,25 +34,25 @@
       <fg-set path="/yearOfSpouseDeathCurrentTaxYearIsChosen" if-true="/isWidowedAndCurrentTaxYear">
         <question>When did your spouse pass away?</question>
         <input type="enum" options-path="/yearOfSpouseDeath">
-          <option value="taxYear">During 2026</option>
-          <option value="taxYearMinusOneOrTwo">During 2024 or 2025</option>
-          <option value="beforeTaxYearMinusTwo">Before 2024</option>
-        </input>
-      </fg-set>
-      <fg-set path="/yearOfSpouseDeathLastTaxYearIsChosen" if-true="/isWidowedAndLastTaxYear">
-        <question>When did your spouse pass away?</question>
-        <input type="enum" options-path="/yearOfSpouseDeath">
           <option value="taxYear">During 2025</option>
           <option value="taxYearMinusOneOrTwo">During 2023 or 2024</option>
           <option value="beforeTaxYearMinusTwo">Before 2023</option>
         </input>
       </fg-set>
-      <fg-set path="/yearOfSpouseDeathTwoTaxYearsAgoIsChosen" if-true="/isWidowedAndTwoTaxYearsAgo">
+      <fg-set path="/yearOfSpouseDeathLastTaxYearIsChosen" if-true="/isWidowedAndLastTaxYear">
         <question>When did your spouse pass away?</question>
         <input type="enum" options-path="/yearOfSpouseDeath">
           <option value="taxYear">During 2024</option>
           <option value="taxYearMinusOneOrTwo">During 2022 or 2023</option>
           <option value="beforeTaxYearMinusTwo">Before 2022</option>
+        </input>
+      </fg-set>
+      <fg-set path="/yearOfSpouseDeathTwoTaxYearsAgoIsChosen" if-true="/isWidowedAndTwoTaxYearsAgo">
+        <question>When did your spouse pass away?</question>
+        <input type="enum" options-path="/yearOfSpouseDeath">
+          <option value="taxYear">During 2023</option>
+          <option value="taxYearMinusOneOrTwo">During 2021 or 2022</option>
+          <option value="beforeTaxYearMinusTwo">Before 2021</option>
         </input>
       </fg-set>
 
@@ -107,7 +107,7 @@
       </fg-set>
 
       <fg-set path="/couldClaimChildAsDependentInCurrentTaxYearWithExceptions" if-false="/canClaimChildAsDependentInCurrentTaxYear">
-        <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/> for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
+        <question>Could you claim your child or stepchild as a dependent EXCEPT that, for <fg-show path="/taxYear"/>: 1) The child had gross income that was above the threshold of <fg-show path="/eitcChildGrossIncomeLimit"/> for <fg-show path="/taxYear"/>; 2) The child filed a joint return; or 3) You could be claimed as a dependent on someone else's return?</question>
         <modal-link for="modal-claiming-dependents">Who can I claim as a dependent?</modal-link>
         <input type="boolean"/>
       </fg-set>
@@ -380,7 +380,7 @@
               <ul>
                   <li>Children under the age of 19</li>
                   <li>Students under the age of 24 who live with their parents</li>
-                  <li>Relatives or members of your household who get more than half of their financial support from you and who have a gross income under <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/></li>
+                  <li>Relatives or members of your household who get more than half of their financial support from you and who have a gross income under <fg-show path="/eitcChildGrossIncomeLimit"/></li>
               </ul>
               <p>You can’t claim your spouse as a dependent if you file jointly.</p>
               <p><a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Learn more about dependents.</a></p>

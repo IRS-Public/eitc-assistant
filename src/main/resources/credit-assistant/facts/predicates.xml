@@ -67,7 +67,7 @@
               <Dependency path="/chosenTaxYear"/>
             </Left>
             <Right>
-              <Enum optionsPath="/taxYearOptions">2026</Enum>
+              <Enum optionsPath="/taxYearOptions">2025</Enum>
             </Right>
           </Equal>
         </All>
@@ -82,7 +82,7 @@
               <Dependency path="/chosenTaxYear"/>
             </Left>
             <Right>
-              <Enum optionsPath="/taxYearOptions">2025</Enum>
+              <Enum optionsPath="/taxYearOptions">2024</Enum>
             </Right>
           </Equal>
         </All>
@@ -97,7 +97,7 @@
               <Dependency path="/chosenTaxYear"/>
             </Left>
             <Right>
-              <Enum optionsPath="/taxYearOptions">2024</Enum>
+              <Enum optionsPath="/taxYearOptions">2023</Enum>
             </Right>
           </Equal>
         </All>
