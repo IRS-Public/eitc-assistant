@@ -138,7 +138,8 @@ class PageSplitterSpec extends AnyFunSpec {
         knockouts.contains("/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage"),
         s"expected agi knockout on /agi/adjustments; got $knockouts",
       )
-      assert(knockouts.contains("/belowEitcAgiLimit"))
+      assert(knockouts.contains("/flowShouldShowEitcAgiLimitKnockoutWithoutQcs"))
+      assert(!knockouts.contains("/belowEitcAgiLimit"), "the QC count is not known on the AGI page")
       assert(knockouts.contains("/belowEitcInvestmentIncomeLimit"))
     }
 

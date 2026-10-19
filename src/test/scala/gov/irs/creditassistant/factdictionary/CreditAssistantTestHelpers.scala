@@ -221,5 +221,6 @@ trait CreditAssistantTestHelpers extends Matchers:
     booleanAt(graph, "/belowEitcInvestmentIncomeLimit") shouldBe true
     assertBooleanGateOff(graph, "/flowShouldShowNonPositiveEarnedIncomeKnockoutAfterContinue")
     assertBooleanGateOff(graph, "/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage")
+    assertBooleanGateOff(graph, "/flowShouldShowEitcAgiLimitKnockoutWithoutQcs")
     assertBooleanGateOff(graph, "/flowShouldShowEitcIncomeLimitKnockoutAfterContinue")
     assertBooleanGateOff(graph, "/flowShouldShowQcRequiredAddChildKnockoutAfterContinue")

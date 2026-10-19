@@ -367,6 +367,25 @@
         </All>
       </Derived>
     </Fact>
+    <Fact path="/flowShouldShowEitcAgiLimitKnockoutWithoutQcs">
+      <Name>Show zero-QC AGI limit knockout on AGI page</Name>
+      <Description>
+                True when the taxpayer is not claiming qualifying children and AGI is at or above the zero-QC completed
+                phase-out line. Only valid for that answer: on the AGI page no children have been entered yet, so
+                /eitcQualifyingChildren is 0 for a taxpayer who is claiming them too. Those taxpayers are checked against
+                /flowShouldShowEitcAgiKnockoutOnAdjustmentsPage here and the exact limit on Qualifying Children.
+            </Description>
+      <Derived>
+        <All>
+          <Not>
+            <Dependency path="/primaryFilerIsClaimingQualifyingChildren"/>
+          </Not>
+          <Not>
+            <Dependency path="/belowEitcAgiLimit"/>
+          </Not>
+        </All>
+      </Derived>
+    </Fact>
     <Fact path="/belowHighestEitcEarnedIncomeLimit">
       <Description>Whether the TP's Earned Income is low enough to potentially be eligible for the EITC.</Description>
       <Derived>

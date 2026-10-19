@@ -372,7 +372,7 @@
       </modal-content>
     </modal-dialog>
 
-  <fg-alert alert-type="error" alert-key="eitc-agi-limit-knockout" knockout="true" condition="/belowEitcAgiLimit" operator="isFalse">
+  <fg-alert alert-type="error" alert-key="eitc-agi-limit-knockout" knockout="true" condition="/flowShouldShowEitcAgiLimitKnockoutWithoutQcs" operator="isTrue">
       <heading>You don’t qualify for the Earned Income Tax Credit</heading>
       <p class="usa-alert__text">
           Based on the information you provided, you can’t claim the earned income credit because your earned income is over the limit for your filing status and number of qualifying children.
