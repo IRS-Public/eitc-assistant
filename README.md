@@ -13,6 +13,9 @@ EITC eligibility and credit calculations are complex. If a taxpayer improperly c
 
 For more information about EITC, see [Publication 596](https://www.irs.gov/publications/p596).
 
+### Annual Updates
+See [here](docs/annual-tax-year-update.md) for how to make annual updates in preparation for a new tax year.
+
 ### Contributing
 Please see [CONTRIBUTING.md](./CONTRIBUTING.md) for details.
 

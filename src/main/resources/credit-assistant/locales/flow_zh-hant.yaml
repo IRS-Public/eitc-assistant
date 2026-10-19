@@ -6,12 +6,12 @@
     question: 選擇您要檢查您的 EITC 資格的納稅年度：
     modalLink: <modal-link for="modal-tax-year">我應該使用哪一年？</modal-link>
     options:
+      '2026':
+        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
-      '2023':
-        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: 您在 <fg-show path="/taxYear"/> 年全年度中是美國公民還是外籍居民？
     modalLink: <modal-link for="modal-citizen">我是否符合作為美國公民或居民申請 EITC 的條件？</modal-link>
@@ -71,9 +71,9 @@
     heading: 稅收年度
     p-aa5a47: 對於工資和其他收入：
     ul-0:
+      li-97ee5c: 2026，選擇 2026
       li-28dd34: 2025，選擇 2025
       li-174a8b: 2024，選擇 2024
-      li-0a25dc: 2023，選擇 2023
   modal-citizen:
     heading: 美國公民或外籍居民
     p-18e680: 如果您不是美國公民，您將被視為外國人。
@@ -154,12 +154,21 @@
     question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
+        name: 2026 年間
+      taxYearMinusOneOrTwo:
+        name: 2024 或 2025 年間
+      beforeTaxYearMinusTwo:
+        name: 2024 年前
+  /yearOfSpouseDeathLastTaxYearIsChosen:
+    question: 您的配偶是什麼時候去世的？
+    options:
+      taxYear:
         name: 2025 年間
       taxYearMinusOneOrTwo:
         name: 2023 或 2024 年間
       beforeTaxYearMinusTwo:
         name: 2023 年前
-  /yearOfSpouseDeathLastTaxYearIsChosen:
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
     question: 您的配偶是什麼時候去世的？
     options:
       taxYear:
@@ -168,15 +177,6 @@
         name: 2022 或 2023 年間
       beforeTaxYearMinusTwo:
         name: 2022 年前
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: 您的配偶是什麼時候去世的？
-    options:
-      taxYear:
-        name: 2023 年間
-      taxYearMinusOneOrTwo:
-        name: 2021 或 2022 年間
-      beforeTaxYearMinusTwo:
-        name: 2021 年前
   /isHOHMarried:
     question: 您結婚了嗎？
   /intendsToFileJointlyWidow:
@@ -191,7 +191,7 @@
   /samePrincipalResidenceLast6Months:
     question: 和您的配偶在 <fg-show path="/taxYear"/> 年的最後 6 個月是否擁有相同的主要住所？
   /writableSeparationAgreement:
-    question: 您是否依據您所在的州法律根據書面分居協定或根據分居贍養令合法分居，並且，您在 2025 年的最後一天沒有與配偶居住在一起？
+    question: 您是否依據您所在的州法律根據書面分居協定或根據分居贍養令合法分居，並且，您在 2026 年的最後一天沒有與配偶居住在一起？
   /entitledToPreviouslyFileJointReturn:
     question: 您是否有權在您的配偶去世的那一年與您的配偶共同申報報稅表？
   /paidMoreThanHalfHomeCostsForChild:
@@ -203,7 +203,7 @@
     modalLink: <modal-link for="modal-claiming-dependents">我可以申領誰作為被撫養人？（英文）</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 您是否可以將您的孩子或繼子女申請為被撫養人，除非在 <fg-show path="/taxYear"/> 年：1) 孩子的總收入高於 <fg-show
-      path="/taxYear"/> 年的 <fg-show path="/eitcChildGrossIncomeLimit"/> 門檻；2) 孩子進行了聯合申報；或者
+      path="/taxYear"/> 年的 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/> 門檻；2) 孩子進行了聯合申報；或者
       3) 您可以在別人的報稅表中被申請為被撫養人？
     modalLink: <modal-link for="modal-claiming-dependents">我可以申領誰作為被撫養人？（英文）</modal-link>
   /homeUpkeepScenario:
@@ -288,7 +288,7 @@
       class="usa-sr-only"> (opens in a new tab)</span>。</a>
   modal-qualifying-child-eitc:
     heading: 符合資格的子女
-    p-7356ad: 如希望與符合資格的子女一起申請 EITC，該子女必須在 2025 年申報表到期日或之前擁有社保局頒發的有效 SSN（包括延期）。
+    p-7356ad: 如希望與符合資格的子女一起申請 EITC，該子女必須在 2026 年申報表到期日或之前擁有社保局頒發的有效 SSN（包括延期）。
     p-ac8914: 如果社會保障卡上寫著“憑 DHS 授權工作有效”或“憑 INS 授權工作有效”，那麼只要授權仍然有效，這就是有效的 SSN。
     p-558a40: 對於 EITC，我們不接受：
     ul-0:
@@ -371,7 +371,7 @@
     ul-0:
       li-7673e2: 19歲以下的子女；
       li-e9750c: 與父母同住的 24 歲以下學生
-      li-9a6fc3: 從您那裡獲得一半以上財務支持，且總收入低於 <fg-show path="/eitcChildGrossIncomeLimit"/>
+      li-cb5799: 從您那裡獲得一半以上財務支持，且總收入低於 <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
         的親屬或家庭成員
     p-6b3acc: 如果您聯合申報，則不能將配偶申請為受撫養人。
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">了解有關被撫養人的更多資訊。</a>
@@ -670,7 +670,7 @@
       li-498151: 部分租金和特許權使用費或
       li-7c0731: 非本業性活動的淨收入
     p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">請參閱</a>  以瞭解更多資訊。
-    p-df5956: 如果您在 2025 年符合以下任一情況，請使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+    p-df5956: 如果您在 2026 年符合以下任一情況，請使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
       596 號出版物</a>，所得稅抵免中的工作表 1 來計算您的投資收入：
     ul-1:
       li-0f3c1b: 您正在提交《附表 E》（《表格 1040》）。

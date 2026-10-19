@@ -1,0 +1,117 @@
+{
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/marriedFilingJointly": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/isHOHMarried": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/primaryFilerIsClaimingQualifyingChildren": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/isFullTimeStudent": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/writableSeparationAgreement": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold": {
+    "$type": "CollectionWrapper",
+    "item": {
+      "items": [
+        "17a3bc82-3e77-444d-8093-cf9b7b2ade73"
+      ]
+    }
+  },
+  "/ageRange": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "age25to64",
+      "enumOptionsPath": "/ageRangeOptions"
+    }
+  },
+  "/isClaimedAsDependent": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/relationship": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "childStepFoster",
+      "enumOptionsPath": "/relationshipOptions"
+    }
+  },
+  "/chosenTaxYear": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "2024",
+      "enumOptionsPath": "/taxYearOptions"
+    }
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/someoneElseCanClaim": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/validSSN": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/jobsIncomeTotal": {
+    "$type": "DollarWrapper",
+    "item": "49083.00"
+  },
+  "/spouseLivedWithTaxpayerLastSixMonths": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/flowClickedNextOnAdjustmentsPage": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/hasForeignEarnedIncome": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/ageRange": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "between19And23",
+      "enumOptionsPath": "/ageRangeOptionsQC"
+    }
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/isPermanentlyDisabled": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/familyAndHousehold/#17a3bc82-3e77-444d-8093-cf9b7b2ade73/livedWithYouUS": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/meta/migrationsApplied": {
+    "$type": "IntWrapper",
+    "item": 2
+  },
+  "/knowsFilingStatus": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/initialFilingStatus": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "headOfHousehold",
+      "enumOptionsPath": "/filingStatusOptions"
+    }
+  },
+  "/hasValidSSN": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/isUSCitizenOrResidentAlien": {
+    "$type": "BooleanWrapper",
+    "item": true
+  }
+}

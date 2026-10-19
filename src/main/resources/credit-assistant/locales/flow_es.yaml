@@ -7,14 +7,14 @@
     question: 'Selecciona el año tributario para el que te gustaría verificar tu elegibilidad para el EITC:'
     modalLink: <modal-link for="modal-tax-year">¿Qué año debo seleccionar?</modal-link>
     options:
+      '2026':
+        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
-      '2023':
-        name: '2023'
   /isUSCitizenOrResidentAlien: 
-    question: ¿Fuiste ciudadano(a) estadounidense o extranjero(a) residente durante todo el año 2025?
+    question: ¿Fuiste ciudadano(a) estadounidense o extranjero(a) residente durante todo el año 2026?
     modalLink: <modal-link for="modal-citizen">¿Califico como ciudadano(a) estadounidense o residente para el EITC?</modal-link>
     options:
       'true':
@@ -33,7 +33,7 @@
     p-ec145e: Para más información sobre si alguien puede reclamarte como hijo calificado, visita <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publicación 596, Crédito por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona (en inglés)</a>.
     p-363ef2: No calificas para el EITC si eres dependiente de otra persona, a menos que tengas un hijo calificado para el EITC.
   /hasValidSSN:
-    question: ¿Tienes un número de Seguro Social válido que te haya sido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos del 2025 (incluidas las prórrogas)?
+    question: ¿Tienes un número de Seguro Social válido que te haya sido emitido en o antes de la fecha de vencimiento de tu declaración de impuestos del 2026 (incluidas las prórrogas)?
     modalLink: <modal-link for="modal-valid-ssn-filer">¿Qué se considera un número de Seguro Social válido?</modal-link>
     options:
       'true':
@@ -69,9 +69,9 @@
     heading: Año tributario
     p-aa5a47: 'Para el sueldo y otros ingresos de trabajo en el año:'
     ul-0:
+      li-97ee5c: 2026, selecciona 2026
       li-28dd34: 2025, selecciona 2025
       li-174a8b: 2024, selecciona 2024
-      li-0a25dc: 2023, selecciona 2023
   modal-citizen:
     heading: Ciudadano(a) estadounidense o extranjero residente
     p-18e680: Si no eres un(a) ciudadano(a) de los Estados Unidos, eres considerado un extranjero.
@@ -156,12 +156,21 @@
     question: ¿Cuándo falleció tu esposo(a)?
     options:
       taxYear:
+        name: Durante el 2026
+      taxYearMinusOneOrTwo:
+        name: Durante el 2024 o 2025
+      beforeTaxYearMinusTwo:
+        name: Antes del 2024
+  /yearOfSpouseDeathLastTaxYearIsChosen:
+    question: ¿Cuándo falleció tu esposo(a)?
+    options:
+      taxYear:
         name: Durante el 2025
       taxYearMinusOneOrTwo:
         name: Durante el 2023 o 2024
       beforeTaxYearMinusTwo:
         name: Antes del 2023
-  /yearOfSpouseDeathLastTaxYearIsChosen:
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
     question: ¿Cuándo falleció tu esposo(a)?
     options:
       taxYear:
@@ -170,15 +179,6 @@
         name: Durante el 2022 o 2023
       beforeTaxYearMinusTwo:
         name: Antes del 2022
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: ¿Cuándo falleció tu esposo(a)?
-    options:
-      taxYear:
-        name: Durante el 2023
-      taxYearMinusOneOrTwo:
-        name: Durante el 2021 o 2022
-      beforeTaxYearMinusTwo:
-        name: Antes del 2021
   /isHOHMarried:
     question: ¿Estás casado(a)?
   /intendsToFileJointlyWidow:
@@ -204,7 +204,7 @@
     question: ¿Puedes reclamar a tu hijo(a) o hijastro(a) que vivió contigo como dependiente para el <fg-show path="/taxYear"/>?
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
-    question: '¿Podrías reclamar a tu hijo(a) o hijastro(a) como dependiente EXCEPTO que, para el 2025: 1) El hijo(a) tenía ingresos brutos superiores al límite de $5,200 para el 2025; 2) El hijo(a) presentó una declaración conjunta; o 3) Tú podrías ser reclamado(a) como dependiente en la declaración de otra persona'
+    question: '¿Podrías reclamar a tu hijo(a) o hijastro(a) como dependiente EXCEPTO que, para el 2026: 1) El hijo(a) tenía ingresos brutos superiores al límite de $5,200 para el 2025; 2) El hijo(a) presentó una declaración conjunta; o 3) Tú podrías ser reclamado(a) como dependiente en la declaración de otra persona'
     modalLink: <modal-link for="modal-claiming-dependents">¿A quién puedo reclamar como dependiente?</modal-link>
   /homeUpkeepScenario:
     question: ¿Pagaste más del 50% del costo de mantener un hogar en el <fg-show path="/taxYear"/>?
@@ -367,7 +367,7 @@
     ul-0:
       li-7673e2: Hijos menores de 19 años
       li-e9750c: Estudiantes menores de 24 años que viven con sus padres
-      li-9a6fc3: Parientes o miembros de tu hogar que reciben de ti más de la mitad de sus costos de vida y tienen un sueldo bruto menor de <fg-show path="/eitcChildGrossIncomeLimit"/>
+      li-cb5799: Parientes o miembros de tu hogar que reciben de ti más de la mitad de sus costos de vida y tienen un sueldo bruto menor de <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
     p-6b3acc: No puedes reclamar a tu esposo(a) como tu dependiente si presentan una declaración conjunta.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/credits-deductions/individuals/dependents">Conoce más sobre los dependientes.</a>
 /agi:
@@ -639,7 +639,7 @@
       li-498151: Algunas rentas y regalías o
       li-7c0731: Ingreso neto de actividades pasivas
     p-4c8f5e: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">la publicación Publicación 550, Ingreso y gastos de inversiones (en inglés)</a> para obtener más información.
-    p-df5956: 'Use la hoja de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">la Publicación 596, Crédito por ingreso del trabajo (en inglés) </a> para calcular su ingreso de inversión si es que alguna de las siguientes le aplican a usted en el 2025:'
+    p-df5956: 'Use la hoja de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">la Publicación 596, Crédito por ingreso del trabajo (en inglés) </a> para calcular su ingreso de inversión si es que alguna de las siguientes le aplican a usted en el 2026:'
     ul-1:
       li-0f3c1b: Presenta el Anexo E (Formulario 1040)
       li-782dae: Declara ingresos del alquiler de su propiedad personal no usada en un oficio o negocio

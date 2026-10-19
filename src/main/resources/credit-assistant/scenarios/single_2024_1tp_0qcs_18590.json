@@ -1,0 +1,65 @@
+{
+  "/jobsIncomeTotal": {
+    "$type": "DollarWrapper",
+    "item": "18590.00"
+  },
+  "/flowClickedNextOnAdjustmentsPage": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/primaryFilerIsClaimingQualifyingChildren": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold": {
+    "$type": "CollectionWrapper",
+    "item": {
+      "items": []
+    }
+  },
+  "/ageRange": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "age25to64",
+      "enumOptionsPath": "/ageRangeOptions"
+    }
+  },
+  "/isClaimedAsDependent": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/hasForeignEarnedIncome": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/chosenTaxYear": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "2024",
+      "enumOptionsPath": "/taxYearOptions"
+    }
+  },
+  "/meta/migrationsApplied": {
+    "$type": "IntWrapper",
+    "item": 2
+  },
+  "/knowsFilingStatus": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/initialFilingStatus": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "single",
+      "enumOptionsPath": "/filingStatusOptions"
+    }
+  },
+  "/hasValidSSN": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/isUSCitizenOrResidentAlien": {
+    "$type": "BooleanWrapper",
+    "item": true
+  }
+}

@@ -7,12 +7,12 @@
       li a :*
     modalLink: <modal-link for="modal-tax-year">Ki ane m ta dwe itilize?</modal-link>
     options:
+      '2026':
+        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
-      '2023':
-        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: Èske ou te yon sitwayen ameriken oubyen rezidan etranje pou tout ou
       <fg-show path="/taxYear"/>?
@@ -89,9 +89,9 @@
     heading: Ane taksasyon
     p-aa5a47: 'Pou salè ak lòt revni ou touche nan:'
     ul-0:
+      li-97ee5c: 2026, seleksyone 2026
       li-28dd34: 2025, seleksyone 2025
       li-174a8b: 2024, seleksyone 2024
-      li-0a25dc: 2023, seleksyone 2023
   modal-citizen:
     heading: Sitwayen ameriken oubyen etranje rezidan
     p-18e680: Si w pa yon sitwayen ameriken, yo konsidere w kòm yon etranje.
@@ -103,7 +103,7 @@
   modal-valid-ssn-filer:
     heading: Nimewo sekirite sosyal valab
     p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
-      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2025 ou a oswa anvan (ki
+      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2026 ou a oswa anvan (ki
       gen ladan ekstansyon yo).
     p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
       DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
@@ -198,10 +198,19 @@
       taxYear:
         name: Pandan <fg-show path="/taxYear"/>
       taxYearMinusOneOrTwo:
+        name: Pandan 2024 oubyen 2025
+      beforeTaxYearMinusTwo:
+        name: Anvan 2024
+  /yearOfSpouseDeathLastTaxYearIsChosen:
+    question: Ki lè konjwen ou te mouri?
+    options:
+      taxYear:
+        name: Pandan 2025
+      taxYearMinusOneOrTwo:
         name: Pandan 2023 oubyen 2024
       beforeTaxYearMinusTwo:
         name: Anvan 2023
-  /yearOfSpouseDeathLastTaxYearIsChosen:
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
     question: Ki lè konjwen ou te mouri?
     options:
       taxYear:
@@ -210,15 +219,6 @@
         name: Pandan 2022 oubyen 2023
       beforeTaxYearMinusTwo:
         name: Anvan 2022
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: Ki lè konjwen ou te mouri?
-    options:
-      taxYear:
-        name: Pandan 2023
-      taxYearMinusOneOrTwo:
-        name: Pandan 2021 oubyen 2022
-      beforeTaxYearMinusTwo:
-        name: Anvan 2021
   /isHOHMarried:
     question: Ou marye?
   /intendsToFileJointlyWidow:
@@ -259,7 +259,7 @@
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Èske ou ta ka reklame pitit ou a oswa bofis/bèlfi ou kòm yon moun ki
       depann EKSÈPTE ke, pou <fg-show path="/taxYear"/>: 1) Timoun nan te gen revni
-      brit ki te pi wo pase limit <fg-show path="/eitcChildGrossIncomeLimit"/> pou
+      brit ki te pi wo pase limit <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/> pou
       <fg-show path="/taxYear"/>; 2) Timoun nan te fè yon deklarasyon ansanm; oswa
       3) Ou ta ka reklame kòm yon moun ki depann sou deklarasyon yon lòt moun?'
     modalLink: <modal-link for="modal-claiming-dependents">Ki moun mwen ka reklame
@@ -466,7 +466,7 @@
   modal-valid-ssn:
     heading: Nimewo sekirite sosyal valab
     p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
-      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2025 ou a oswa anvan (ki
+      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2026 ou a oswa anvan (ki
       gen ladan ekstansyon yo).
     p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
       DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
@@ -494,8 +494,8 @@
     ul-0:
       li-7673e2: Timoun anba 19;
       li-e9750c: Elèv ki poko gen 24 an k ap viv avèk paran yo
-      li-9a6fc3: Fanmi oswa manm nan kay ou ki jwenn plis pase mwatye sipò finansye
-        yo nan men ou epi ki gen yon revni brit ki mwens pase <fg-show path="/eitcChildGrossIncomeLimit"/>
+      li-cb5799: Fanmi oswa manm nan kay ou ki jwenn plis pase mwatye sipò finansye
+        yo nan men ou epi ki gen yon revni brit ki mwens pase <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
     p-6b3acc: Ou pa kapab reklame mari/madanm ou kòm yon moun ki depann si ou deklare
       ansanm.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Aprann
@@ -876,7 +876,7 @@
       pou plis enfòmasyon.
     p-df5956: 'Sèvi ak Fèy Travay 1 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
       596</a>, Kredi Revni Ou Touche, pou w kalkile revni envestisman w si youn nan
-      deklarasyon sa yo vre pou 2025:'
+      deklarasyon sa yo vre pou 2026:'
     ul-1:
       li-0f3c1b: Ou ap ranpli Barèm E (Fòm 1040)
       li-782dae: Ou ap rapòte revni nan lokasyon pwopriyete pèsonèl ki pa itilize

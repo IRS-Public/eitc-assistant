@@ -8,12 +8,12 @@
       của mình đối với:'
     modalLink: <modal-link for="modal-tax-year">Tôi nên sử dụng năm nào?</modal-link>
     options:
+      '2026':
+        name: '2026'
       '2025':
         name: '2025'
       '2024':
         name: '2024'
-      '2023':
-        name: '2023'
   /isUSCitizenOrResidentAlien:
     question: Quý vị là Công Dân Hoa Kỳ hay Ngoại Nhân Thường Trú cho cả năm <fg-show
       path="/taxYear"/>?
@@ -91,9 +91,9 @@
     heading: Niên Thuế
     p-aa5a47: 'Đối với lương bổng và thu nhập kiếm được khác trong:'
     ul-0:
+      li-97ee5c: 2026, chọn 2026
       li-28dd34: 2025, chọn 2025
       li-174a8b: 2024, chọn 2024
-      li-0a25dc: 2023, chọn 2023
   modal-citizen:
     heading: Công Dân Hoa Kỳ hay Ngoại Nhân Thường Trú
     p-18e680: Nếu không phải là công dân Hoa Kỳ, quý vị được coi là ngoại nhân.
@@ -105,7 +105,7 @@
     heading: Số An Sinh Xã Hội Hợp Lệ
     p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
       do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
-      ngày đến hạn khai thuế năm 2025 (bao gồm cả thời gian gia hạn).
+      ngày đến hạn khai thuế năm 2026 (bao gồm cả thời gian gia hạn).
     p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
       phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
       lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
@@ -200,12 +200,21 @@
     question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
+        name: Trong 2026
+      taxYearMinusOneOrTwo:
+        name: Trong 2024 hoặc 2025
+      beforeTaxYearMinusTwo:
+        name: Trước 2024
+  /yearOfSpouseDeathLastTaxYearIsChosen:
+    question: Người phối ngẫu của quý vị qua đời khi nào?
+    options:
+      taxYear:
         name: Trong 2025
       taxYearMinusOneOrTwo:
         name: Trong 2023 hoặc 2024
       beforeTaxYearMinusTwo:
         name: Trước 2023
-  /yearOfSpouseDeathLastTaxYearIsChosen:
+  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
     question: Người phối ngẫu của quý vị qua đời khi nào?
     options:
       taxYear:
@@ -214,15 +223,6 @@
         name: Trong 2022 hoặc 2023
       beforeTaxYearMinusTwo:
         name: Trước 2022
-  /yearOfSpouseDeathTwoTaxYearsAgoIsChosen:
-    question: Người phối ngẫu của quý vị qua đời khi nào?
-    options:
-      taxYear:
-        name: Trong 2023
-      taxYearMinusOneOrTwo:
-        name: Trong 2021 hoặc 2022
-      beforeTaxYearMinusTwo:
-        name: Trước 2021
   /isHOHMarried:
     question: Quý vị đã kết hôn chưa?
   /intendsToFileJointlyWidow:
@@ -265,7 +265,7 @@
   /couldClaimChildAsDependentInCurrentTaxYearWithExceptions:
     question: 'Bạn có thể yêu cầu con ruột hoặc con riêng của mình là người phụ thuộc
       NGOẠI TRỪ việc, trong năm <fg-show path="/taxYear"/>: 1) Đứa trẻ có tổng thu
-      nhập cao hơn mức ngưỡng là <fg-show path="/eitcChildGrossIncomeLimit"/> cho
+      nhập cao hơn mức ngưỡng là <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/> cho
       năm <fg-show path="/taxYear"/>; 2) Đứa trẻ đã nộp một tờ khai chung; hoặc 3)
       Bạn có thể được yêu cầu là người phụ thuộc trên tờ khai của người khác?'
     modalLink: <modal-link for="modal-claiming-dependents">Tôi Có Thể Yêu Cầu Ai Là
@@ -481,7 +481,7 @@
     heading: Số An Sinh Xã Hội Hợp Lệ
     p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
       do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
-      ngày đến hạn khai thuế năm 2025 (bao gồm cả thời gian gia hạn).
+      ngày đến hạn khai thuế năm 2026 (bao gồm cả thời gian gia hạn).
     p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
       phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
       lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
@@ -510,8 +510,8 @@
     ul-0:
       li-7673e2: Trẻ em dưới 19 tuổi;
       li-e9750c: Học sinh/Sinh viên dưới 24 tuổi sống cùng cha mẹ
-      li-9a6fc3: Người thân hoặc thành viên trong gia đình bạn, những người nhận được
-        hơn một nửa sự hỗ trợ tài chính từ bạn và có tổng thu nhập dưới <fg-show path="/eitcChildGrossIncomeLimit"/>
+      li-cb5799: Người thân hoặc thành viên trong gia đình bạn, những người nhận được
+        hơn một nửa sự hỗ trợ tài chính từ bạn và có tổng thu nhập dưới <fg-show path="/eitcGrossIncomeLimitForQualifyingRelative"/>
     p-6b3acc: Bạn không thể yêu cầu vợ/chồng mình là người phụ thuộc nếu bạn nộp hồ
       sơ chung.
     p-40e480: <a target="_blank" class="usa-link" href="https://www.irs.gov/credits-deductions/individuals/dependents">Tìm
@@ -918,7 +918,7 @@
       biết thêm thông tin.
     p-df5956: 'Sử dụng Bảng tính 1 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn
       phẩm 596</a>, Tín dụng Thu nhập Kiếm được, để tính thu nhập đầu tư của bạn nếu
-      bất kỳ điều nào sau đây là đúng cho năm 2025:'
+      bất kỳ điều nào sau đây là đúng cho năm 2026:'
     ul-1:
       li-0f3c1b: Quý vị đang nộp Bảng E (Mẫu 1040).
       li-782dae: Quý vị đang khai báo thu nhập từ việc cho thuê tài sản cá nhân không

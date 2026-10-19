@@ -1,0 +1,113 @@
+{
+  "/jobsIncomeTotal": {
+    "$type": "DollarWrapper",
+    "item": "49083.00"
+  },
+  "/primaryFilerIsClaimingQualifyingChildren": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/relationship": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "descendant",
+      "enumOptionsPath": "/relationshipOptions"
+    }
+  },
+  "/writableSeparationAgreement": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold": {
+    "$type": "CollectionWrapper",
+    "item": {
+      "items": [
+        "55b34c06-d7db-4684-a4b8-80820e952cff"
+      ]
+    }
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/ageRange": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "under19",
+      "enumOptionsPath": "/ageRangeOptionsQC"
+    }
+  },
+  "/isClaimedAsDependent": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/marriedFilingJointly": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/hasForeignEarnedIncome": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/chosenTaxYear": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "2024",
+      "enumOptionsPath": "/taxYearOptions"
+    }
+  },
+  "/spouseLivedWithTaxpayerLastSixMonths": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/validSSN": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/flowClickedNextOnAdjustmentsPage": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/ageRange": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "age25to64",
+      "enumOptionsPath": "/ageRangeOptions"
+    }
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/livedWithYouUS": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/isPermanentlyDisabled": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/meta/migrationsApplied": {
+    "$type": "IntWrapper",
+    "item": 2
+  },
+  "/knowsFilingStatus": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/initialFilingStatus": {
+    "$type": "EnumWrapper",
+    "item": {
+      "value": "marriedFilingSeparately",
+      "enumOptionsPath": "/filingStatusOptions"
+    }
+  },
+  "/flowClickedNextOnQualifyingChildrenPageForIncomeLimit": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/familyAndHousehold/#55b34c06-d7db-4684-a4b8-80820e952cff/someoneElseCanClaim": {
+    "$type": "BooleanWrapper",
+    "item": false
+  },
+  "/hasValidSSN": {
+    "$type": "BooleanWrapper",
+    "item": true
+  },
+  "/isUSCitizenOrResidentAlien": {
+    "$type": "BooleanWrapper",
+    "item": true
+  }
+}
