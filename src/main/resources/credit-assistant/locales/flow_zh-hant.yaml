@@ -670,7 +670,7 @@
       li-498151: 部分租金和特許權使用費或
       li-7c0731: 非本業性活動的淨收入
     p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">請參閱</a>  以瞭解更多資訊。
-    p-df5956: 如果您在 2026 年符合以下任一情況，請使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+    p-62c83e: 如果您在 2026 年符合以下任一情況，請使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
       596 號出版物</a>，所得稅抵免中的工作表 1 來計算您的投資收入：
     ul-1:
       li-0f3c1b: 您正在提交《附表 E》（《表格 1040》）。
@@ -947,7 +947,7 @@
     p-911aff: 596 號出版物 —— 勞動所得稅務優惠，您的合格子女不能被一人以上的人數申領（英文）
   modal-age-comparison:
     heading: 子女必須比您或您的配偶小
-    p-626c78: 如要成為合格的子女，子女必須比您小，除非子女在 <fg-show path="/taxYear"/> 年中的任何時候都是永久且完全殘疾。
+    p-174fc8: 如要成為合格的子女，子女必須比您小，除非子女在 <fg-show path="/taxYear"/> 年中的任何時候都是永久且完全殘疾。
     p-1a035f: 如需了解更多資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">第
       596 號出版物</a>，所得稅抵免，年齡測試。
 /results:

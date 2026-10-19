@@ -731,7 +731,7 @@
       li-7c0731: 피동 활동으로부터 순 소득
     p-4c8f5e: 구체적인 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">내용은</a>
       를 확인하세요.
-    p-df5956: '2025년에 다음 중 하나라도 해당되는 경우 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
+    p-62c83e: '2026년에 다음 중 하나라도 해당되는 경우 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">간행물
       596</a>, 근로 소득 세액 공제의 워크시트 1을 사용하여 투자 소득을 계산하십시오:'
     ul-1:
       li-0f3c1b: 스케줄 E(양식 1040)를 제출하는 경우
@@ -1046,7 +1046,7 @@
     p-911aff: 간행물 596, ‘근로 소득 공제, 귀하의 적격 자녀는 한 명 이상의 사람에 의해 신청될 수 없습니다’(영어)
   modal-age-comparison:
     heading: 자녀는 반드시 귀하와 귀하의 배우자보다 어려야 합니다.
-    p-626c78: 적격 자녀가 되기 위해 자녀가 <fg-show path="/taxYear">년에 영구적으로 완전하게 장애가 있는 것이 아니라면
+    p-174fc8: 적격 자녀가 되기 위해 자녀가 <fg-show path="/taxYear">년에 영구적으로 완전하게 장애가 있는 것이 아니라면
       반드시 귀하 혹은 귀하의 배우자보다 어려야 합니다.
     p-1a035f: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">간행물
       596</a>, 근로 소득 세액 공제, 연령 테스트를 참조하십시오.

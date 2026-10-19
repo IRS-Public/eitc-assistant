@@ -916,7 +916,7 @@
       li-7c0731: Thu nhập ròng từ các hoạt động đầu tư thụ động
     p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">Xem</a>  để
       biết thêm thông tin.
-    p-df5956: 'Sử dụng Bảng tính 1 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn
+    p-62c83e: 'Sử dụng Bảng tính 1 trong <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Ấn
       phẩm 596</a>, Tín dụng Thu nhập Kiếm được, để tính thu nhập đầu tư của bạn nếu
       bất kỳ điều nào sau đây là đúng cho năm 2026:'
     ul-1:
@@ -1322,7 +1322,7 @@
       Trẻ Đủ Điều Kiện Của Quý Vị Để Yêu Cầu EIC (tiếng Anh)
   modal-age-comparison:
     heading: Trẻ Phải Nhỏ Tuổi Hơn Quý Vị hoặc Người Phối Ngẫu Của Quý Vị
-    p-626c78: Để trở thành trẻ đủ điều kiện, đứa trẻ phải ít tuổi hơn quý vị trừ khi
+    p-174fc8: Để trở thành trẻ đủ điều kiện, đứa trẻ phải ít tuổi hơn quý vị trừ khi
       đứa trẻ đó bị tàn tật toàn phần và vĩnh viễn tại bất kỳ thời điểm nào trong
       <fg-show path="/taxYear">.
     p-1a035f: Để biết thêm thông tin, hãy xem <a target="_blank" class="usa-link"

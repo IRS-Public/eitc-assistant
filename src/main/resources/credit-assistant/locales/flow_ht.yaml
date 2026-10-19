@@ -874,7 +874,7 @@
       li-7c0731: Revni nèt sou aktivite pasif
     p-4c8f5e: <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">Gade</a>
       pou plis enfòmasyon.
-    p-df5956: 'Sèvi ak Fèy Travay 1 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
+    p-62c83e: 'Sèvi ak Fèy Travay 1 nan <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Piblikasyon
       596</a>, Kredi Revni Ou Touche, pou w kalkile revni envestisman w si youn nan
       deklarasyon sa yo vre pou 2026:'
     ul-1:
@@ -1252,7 +1252,7 @@
       Pou Plis Pase Yon Moun.
   modal-age-comparison:
     heading: Timoun Nan Dwe Pi Piti Pase Ou Ak Konjwen w
-    p-626c78: Pou yon timoun ki kalifye, timoun nan dwe pi piti pase ou, sof si li
+    p-174fc8: Pou yon timoun ki kalifye, timoun nan dwe pi piti pase ou, sof si li
       andikape nèt ale nan nenpòt ki lè pandan <fg-show path="/taxYear">.
     p-1a035f: Pou jwenn plis enfòmasyon gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">Piblikasyon
       596</a>, Kredi Revni Ou Touche, Tès Laj.

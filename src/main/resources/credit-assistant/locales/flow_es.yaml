@@ -639,7 +639,7 @@
       li-498151: Algunas rentas y regalías o
       li-7c0731: Ingreso neto de actividades pasivas
     p-4c8f5e: Consulte <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">la publicación Publicación 550, Ingreso y gastos de inversiones (en inglés)</a> para obtener más información.
-    p-df5956: 'Use la hoja de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">la Publicación 596, Crédito por ingreso del trabajo (en inglés) </a> para calcular su ingreso de inversión si es que alguna de las siguientes le aplican a usted en el 2026:'
+    p-62c83e: 'Use la hoja de trabajo 1 de <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">la Publicación 596, Crédito por ingreso del trabajo (en inglés) </a> para calcular su ingreso de inversión si es que alguna de las siguientes le aplican a usted en el 2026:'
     ul-1:
       li-0f3c1b: Presenta el Anexo E (Formulario 1040)
       li-782dae: Declara ingresos del alquiler de su propiedad personal no usada en un oficio o negocio
@@ -948,7 +948,7 @@
   modal-age-comparison:
     heading: El hijo tiene que ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span
         condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>
-    p-626c78: Para ser un hijo calificado, el niño debe ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>, a menos que tenga una discapacidad permanente y total en cualquier momento del año <fg-show path="/taxYear"/>.
+    p-174fc8: Para ser un hijo calificado, el niño debe ser menor que <span condition="/isFilingStatusMFJ" operator="isFalse">usted</span><span condition="/isFilingStatusMFJ" operator="isTrue">usted o su cónyuge</span>, a menos que tenga una discapacidad permanente y total en cualquier momento del año <fg-show path="/taxYear"/>.
     p-1a035f: Para obtener más información, visite la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596, Crédito por ingreso del trabajo, Requisito de edad</a>.
 /results:
   title: Resultados

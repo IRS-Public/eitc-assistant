@@ -10,7 +10,7 @@ final class AgiPageIncomeLimitKnockoutSpec extends AnyFlatSpec with Matchers wit
   private val gatePath = "/flowShouldShowEitcAgiLimitKnockoutWithoutQcs"
   private val tentativeGatePath = "/flowShouldShowEitcAgiKnockoutOnAdjustmentsPage"
 
-  private val taxYears = Seq("2023", "2024", "2025")
+  private val taxYears = Seq("2024", "2025", "2026")
   private val filingStatuses = Seq(
     "single",
     "headOfHousehold",

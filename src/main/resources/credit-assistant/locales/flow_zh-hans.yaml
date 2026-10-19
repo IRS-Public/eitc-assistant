@@ -672,7 +672,7 @@
       li-7c0731: 非本业性业务净所得
     p-4c8f5e: 欲了解更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-550">请参阅</a>
       。
-    p-df5956: 如果您在 2026 年符合以下任一情况，请使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
+    p-62c83e: 如果您在 2026 年符合以下任一情况，请使用<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">第
       596 号出版物</a>，所得税抵免中的工作表 1 来计算您的投资收入：
     ul-1:
       li-0f3c1b: 您正在提交《附表 E》（《表格 1040》）。
@@ -951,7 +951,7 @@
     p-911aff: 第596号刊物， 劳动所得抵免，您的符合条件的子女不能被超过一人申报（英文）
   modal-age-comparison:
     heading: 孩子必须比您或您的配偶年龄小
-    p-626c78: 要成为符合条件的子女，这名子女必须比您年龄小，除非这名子女于 <fg-show path="/taxYear"/> 期间的任何时间永久、完全残障。
+    p-174fc8: 要成为符合条件的子女，这名子女必须比您年龄小，除非这名子女于 <fg-show path="/taxYear"/> 期间的任何时间永久、完全残障。
     p-1a035f: 如需了解更多信息，请参阅<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2019_publink1000298140">第
       596 号出版物</a>，所得税抵免，年龄测试。
 /results:
