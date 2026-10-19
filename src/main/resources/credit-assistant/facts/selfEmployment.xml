@@ -15,6 +15,20 @@
         </Subtract>
       </Derived>
     </Fact>
+    <Fact path="/earnedSelfEmploymentIncome">
+      <Description>Self-employment earnings counted as earned income for the EITC: net profit minus the
+        deductible half of SE tax. Publication 596 Worksheet B line 1e; IRC 32(c)(2)(A).</Description>
+      <Derived>
+        <Subtract>
+          <Minuend>
+            <Dependency path="/netSelfEmploymentIncomeTotal"/>
+          </Minuend>
+          <Subtrahends>
+            <Dependency path="/selfEmploymentTaxDeduction"/>
+          </Subtrahends>
+        </Subtract>
+      </Derived>
+    </Fact>
     <Fact path="/hasSelfEmploymentIncome">
       <Derived>
         <GreaterThan>

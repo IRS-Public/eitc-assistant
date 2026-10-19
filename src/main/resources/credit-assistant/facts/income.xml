@@ -247,7 +247,7 @@
           <Dependency path="/jobsIncomeTotal"/>
           <Dependency path="/disabilityRetirementBenefits"/>
           <Dependency path="/non2555ForeignIncome"/>
-          <Dependency path="/netSelfEmploymentIncomeTotal"/>
+          <Dependency path="/earnedSelfEmploymentIncome"/>
         </Add>
       </Derived>
     </Fact>

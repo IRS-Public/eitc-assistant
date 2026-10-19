@@ -1,13 +1,10 @@
 package gov.irs.creditassistant.factdictionary
 
-import gov.irs.factgraph.types.Dollar
+import gov.irs.factgraph.types.{ Dollar, Enum as FgEnum }
 import gov.irs.factgraph.Graph
 import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
-/** `/flowShouldShowNonPositiveEarnedIncomeKnockoutAfterContinue` gates the Income earned-income knockout until the user
-  * clicks Next once.
-  */
 final class IncomeNonPositiveEarnedIncomeKnockoutGateSpec
     extends AnyFlatSpec
     with Matchers
@@ -16,6 +13,8 @@ final class IncomeNonPositiveEarnedIncomeKnockoutGateSpec
   private val gatePath = "/flowShouldShowNonPositiveEarnedIncomeKnockoutAfterContinue"
 
   private def graphWithNonPositiveEarnedIncome(graph: Graph): Unit = {
+    // Set on About You before Income; the Schedule SE deduction in /earnedIncomeTotal needs the tax year.
+    graph.set("/chosenTaxYear", FgEnum("2025", "/taxYearOptions"))
     graph.set("/jobsIncomeTotal", Dollar(0))
     graph.set("/selfEmploymentGrossIncome", Dollar(0))
     graph.set("/selfEmploymentGrossIncomeWorkRelatedExpenses", Dollar(0))
