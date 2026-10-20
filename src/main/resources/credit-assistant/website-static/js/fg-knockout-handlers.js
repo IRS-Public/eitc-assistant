@@ -150,14 +150,14 @@ function handleQualifyingChildrenIncomeLimitKnockoutRevealOnContinue (event) {
 }
 
 /**
- * First Continue from Adjustments while over the tentative EITC AGI limit:
+ * First Continue from AGI (formerly the Adjustments page) while over the tentative EITC AGI limit:
  * set /flowClickedNextOnAdjustmentsPage, reveal the AGI knockout in-place (no navigation).
  * Subsequent Continue attempts are blocked by validateSectionForNavigation while the knockout is
  * visible.
  */
 function handleAdjustmentsAgiKnockoutRevealOnContinue (event) {
   const path = window.location.pathname
-  if (!path.includes('/eitc/adjustments')) {
+  if (!path.includes('/eitc/agi')) {
     return false
   }
   let belowLimitTrue
