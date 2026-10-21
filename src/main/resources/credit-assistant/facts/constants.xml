@@ -86,7 +86,6 @@
       </Derived>
     </Fact>
     <Fact path="/lastTaxYear">
-      <Description>Previous tax year</Description>
       <Derived>
         <Subtract>
           <Minuend>
