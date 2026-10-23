@@ -29,15 +29,20 @@ class FgCollection extends HTMLElement {
       })
     }
 
+    // An item the user has named shows that name as its accordion title in place of the numbered
+    // default ("Child #2"), and has the name appended to its remove link ("Remove child #2 (Otto)").
     this.setCollectionItemTitles = () => {
-      this.querySelectorAll('fg-collection-item').forEach((item, index) => {
+      this.querySelectorAll('fg-collection-item').forEach(item => {
         const titleElement = item.querySelector('.fg-collection__item-title')
         if (!titleElement) return
 
-        const title = item.querySelector('.fg-collection-item__title-input')?.value.trim()
-        titleElement.textContent = title || (index === 0
-          ? titleElement.dataset.unnamedTitle
-          : titleElement.dataset.unnamedTitleAdditional)
+        const title = item.querySelector('.fg-collection-item__title-input')?.value.trim() ?? ''
+        titleElement.textContent = title
+        titleElement.hidden = !title
+        item.querySelector('.fg-collection__item-default-title').hidden = !!title
+
+        const removeTitle = item.querySelector('.fg-collection-item__remove-item-title')
+        removeTitle.textContent = title ? removeTitle.dataset.nameSuffix.replace('{0}', title) : ''
       })
     }
   }

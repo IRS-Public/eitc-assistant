@@ -346,12 +346,26 @@ class WebsiteSpec extends AnyFunSpec with BeforeAndAfterAll {
       </page>
     </FlowConfig>
 
-    it("titles an item with the default the entered name replaces") {
-      val title = renderCollection(formConfigWithItemTitle).select(".fg-collection__item-title")
+    it("titles an item with the numbered default the entered name replaces") {
+      val document = renderCollection(formConfigWithItemTitle)
 
-      title.text() shouldBe "Add a child"
-      title.attr("data-unnamed-title") shouldBe "Add a child"
-      title.attr("data-unnamed-title-additional") shouldBe "Add another child"
+      document.select("summary .fg-collection__item-default-title").text() shouldBe "Child"
+      document.select("summary .collection-item-number").isEmpty shouldBe false
+
+      val enteredTitle = document.select("summary .fg-collection__item-title")
+      enteredTitle.isEmpty shouldBe false
+      enteredTitle.text() shouldBe ""
+      enteredTitle.hasAttr("hidden") shouldBe true
+    }
+
+    it("gives the remove link the suffix the entered name fills in") {
+      val document = renderCollection(formConfigWithItemTitle)
+
+      document.select(".fg-collection-item__remove-item .collection-item-number").isEmpty shouldBe false
+
+      val removeTitle = document.select(".fg-collection-item__remove-item-title")
+      removeTitle.text() shouldBe ""
+      removeTitle.attr("data-name-suffix") shouldBe "({0})"
     }
 
     it("gives each item a field to name it") {
@@ -362,11 +376,12 @@ class WebsiteSpec extends AnyFunSpec with BeforeAndAfterAll {
       document.select(".fg-collection-item__title-hint").isEmpty shouldBe false
     }
 
-    it("numbers the items when no item title is configured") {
+    it("numbers the items without naming them when no item title is configured") {
       val document = renderCollection(formConfigWithoutItemTitle)
 
       document.select(".fg-collection__item-title").isEmpty shouldBe true
       document.select(".fg-collection-item__title-field").isEmpty shouldBe true
+      document.select(".fg-collection-item__remove-item-title").isEmpty shouldBe true
       document.select("summary .collection-item-number").isEmpty shouldBe false
     }
 

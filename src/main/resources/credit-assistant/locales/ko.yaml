@@ -7,8 +7,7 @@ components:
       add: "{0} 추가"
       add-with-determiner: "{1} {0} 추가"
     item-title:
-      first: "{0} 추가"
-      subsequent: "다른 {0} 추가"
+      name-suffix: "({0})"
     remove-item-modal:
       heading:
         remove: "{0} 삭제?"

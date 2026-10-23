@@ -10,17 +10,13 @@
         <template class="fg-collection__item-template">
             <details class="fg-collection__details">
                 <summary class="fg-collection__item-button">
-                    <h4 th:unless="${hasItemTitle}">
-                        <span th:text="${itemNameTitleCase}"></span>
-                        <span class="collection-item-number"></span>
+                    <h4>
+                        <span class="fg-collection__item-default-title">
+                            <span th:text="${itemNameTitleCase}"></span>
+                            <span class="collection-item-number"></span>
+                        </span>
+                        <span th:if="${hasItemTitle}" class="fg-collection__item-title" hidden></span>
                     </h4>
-                    <h4 th:if="${hasItemTitle}"
-                        class="fg-collection__item-title"
-                        th:attr="
-                            data-unnamed-title=#{components.fg-collection.item-title.first(${itemName})},
-                            data-unnamed-title-additional=#{components.fg-collection.item-title.subsequent(${itemName})}
-                        "
-                        th:text="#{components.fg-collection.item-title.first(${itemName})}"></h4>
                 </summary>
                 <div class="details-content fg-collection__item-content">
                     <div th:if="${hasItemTitle}" class="usa-form-group fg-collection-item__title-field">
@@ -40,6 +36,9 @@
                             <span>
                                 <th:block th:text="#{components.fg-collection.buttons.remove(${itemName})}"></th:block>
                                 <span class="collection-item-number"></span>
+                                <span th:if="${hasItemTitle}"
+                                      class="fg-collection-item__remove-item-title"
+                                      th:attr="data-name-suffix=#{components.fg-collection.item-title.name-suffix}"></span>
                             </span>
                         </modal-link>
                     </div>

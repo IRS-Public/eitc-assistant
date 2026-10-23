@@ -7,8 +7,7 @@ components:
       add: "Add {0}"
       add-with-determiner: "Add {1} {0}"
     item-title:
-      first: "Add a {0}"
-      subsequent: "Add another {0}"
+      name-suffix: "({0})"
     remove-item-modal:
       heading:
         remove: "Are you sure you want to remove this {0}?"
