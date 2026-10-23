@@ -1043,6 +1043,9 @@
   p-e28c1e: Ou ka reklame jiska twa timoun ki kalifye pou EITC a
   p-adf161: Pou ou elijib pou EITC, ou dwe gen omwen yon timoun ki kalifye.
   collection/familyAndHousehold:
+    itemTitle:
+      question: Non timoun nan (opsyonèl)
+      hint: Se pou referans sèlman e li p ap anrejistre
     /familyAndHousehold/*/livedWithYouUS:
       question: Èske timoun sa a te viv avèk ou plis pase mwatye nan ane <fg-show
         path="/taxYear"/> a Etazini?

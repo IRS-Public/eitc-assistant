@@ -1,6 +1,7 @@
 package gov.irs.creditassistant.generators
 
 import gov.irs.creditassistant.build.Flags
+import gov.irs.creditassistant.exceptions.InvalidFormConfig
 import gov.irs.creditassistant.parser.Flow
 import gov.irs.factgraph.FactDictionary
 import org.jsoup.nodes.Document
@@ -40,6 +41,24 @@ class WebsiteSpec extends AnyFunSpec with BeforeAndAfterAll {
         <Name>Bonus</Name>
         <Writable>
           <Dollar/>
+        </Writable>
+      </Fact>
+    </Facts>
+  </FactDictionaryModule>
+
+  private val collectionDictionaryConfig = <FactDictionaryModule>
+    <Facts>
+      <Fact path="/people">
+        <Name>People</Name>
+        <Writable>
+          <Collection/>
+        </Writable>
+      </Fact>
+
+      <Fact path="/people/*/isUsCitizenFullYear">
+        <Name>Citizenship</Name>
+        <Writable>
+          <Boolean/>
         </Writable>
       </Fact>
     </Facts>
@@ -286,6 +305,93 @@ class WebsiteSpec extends AnyFunSpec with BeforeAndAfterAll {
           None,
         )
       }
+    }
+  }
+
+  describe("collection item titles") {
+    def renderCollection(formConfig: Elem): Document = {
+      val factDictionary = FactDictionary.fromXml(collectionDictionaryConfig)
+      val renderedFlow = Flow.fromXmlConfig(formConfig, factDictionary)
+      val site = Website.generate(renderedFlow, collectionDictionaryConfig, Map())
+      Jsoup.parse(site.pages.head.content)
+    }
+
+    val formConfigWithItemTitle = <FlowConfig>
+      <page route="/" title="Collection Test Form">
+        <section>
+          <fg-collection path="/people" item-name="child" determiner="another">
+            <item-title>
+              <question>Child's name (optional)</question>
+              <hint>For reference only and will not be saved</hint>
+            </item-title>
+            <fg-set path="/people/*/isUsCitizenFullYear">
+              <question>Were you a U.S. Citizen for all of the tax year?</question>
+              <input type="boolean"/>
+            </fg-set>
+          </fg-collection>
+        </section>
+      </page>
+    </FlowConfig>
+
+    val formConfigWithoutItemTitle = <FlowConfig>
+      <page route="/" title="Collection Test Form">
+        <section>
+          <fg-collection path="/people" item-name="child" determiner="another">
+            <fg-set path="/people/*/isUsCitizenFullYear">
+              <question>Were you a U.S. Citizen for all of the tax year?</question>
+              <input type="boolean"/>
+            </fg-set>
+          </fg-collection>
+        </section>
+      </page>
+    </FlowConfig>
+
+    it("titles an item with the default the entered name replaces") {
+      val title = renderCollection(formConfigWithItemTitle).select(".fg-collection__item-title")
+
+      title.text() shouldBe "Add a child"
+      title.attr("data-unnamed-title") shouldBe "Add a child"
+      title.attr("data-unnamed-title-additional") shouldBe "Add another child"
+    }
+
+    it("gives each item a field to name it") {
+      val document = renderCollection(formConfigWithItemTitle)
+
+      document.select(".fg-collection-item__title-input").isEmpty shouldBe false
+      document.select(".fg-collection-item__title-label").isEmpty shouldBe false
+      document.select(".fg-collection-item__title-hint").isEmpty shouldBe false
+    }
+
+    it("numbers the items when no item title is configured") {
+      val document = renderCollection(formConfigWithoutItemTitle)
+
+      document.select(".fg-collection__item-title").isEmpty shouldBe true
+      document.select(".fg-collection-item__title-field").isEmpty shouldBe true
+      document.select("summary .collection-item-number").isEmpty shouldBe false
+    }
+
+    it("rejects an item title without a question") {
+      val formConfigWithEmptyItemTitle = <FlowConfig>
+        <page route="/" title="Collection Test Form">
+          <section>
+            <fg-collection path="/people" item-name="child">
+              <item-title>
+                <hint>For reference only and will not be saved</hint>
+              </item-title>
+              <fg-set path="/people/*/isUsCitizenFullYear">
+                <question>Were you a U.S. Citizen for all of the tax year?</question>
+                <input type="boolean"/>
+              </fg-set>
+            </fg-collection>
+          </section>
+        </page>
+      </FlowConfig>
+
+      val thrown = intercept[InvalidFormConfig] {
+        renderCollection(formConfigWithEmptyItemTitle)
+      }
+
+      thrown.getMessage should include("/people")
     }
   }
 }

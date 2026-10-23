@@ -10,12 +10,26 @@
         <template class="fg-collection__item-template">
             <details class="fg-collection__details">
                 <summary class="fg-collection__item-button">
-                    <h4>
+                    <h4 th:unless="${hasItemTitle}">
                         <span th:text="${itemNameTitleCase}"></span>
                         <span class="collection-item-number"></span>
                     </h4>
+                    <h4 th:if="${hasItemTitle}"
+                        class="fg-collection__item-title"
+                        th:attr="
+                            data-unnamed-title=#{components.fg-collection.item-title.first(${itemName})},
+                            data-unnamed-title-additional=#{components.fg-collection.item-title.subsequent(${itemName})}
+                        "
+                        th:text="#{components.fg-collection.item-title.first(${itemName})}"></h4>
                 </summary>
                 <div class="details-content fg-collection__item-content">
+                    <div th:if="${hasItemTitle}" class="usa-form-group fg-collection-item__title-field">
+                        <label class="usa-label twe-question fg-collection-item__title-label"
+                               th:utext="#{${contentKey} + .itemTitle.question}"></label>
+                        <div th:if="${hasItemTitleHint}" class="usa-hint fg-collection-item__title-hint"
+                             th:utext="#{${contentKey} + .itemTitle.hint}"></div>
+                        <input class="usa-input fg-collection-item__title-input" type="text" autocomplete="off">
+                    </div>
                     <div class="fg-collection-item__fields" th:utext="${collectionFacts}"></div>
                     <div class="fg-collection-item__controls">
                         <modal-link th:attr="for=${removeModalId}" class="fg-collection-item__remove-item">

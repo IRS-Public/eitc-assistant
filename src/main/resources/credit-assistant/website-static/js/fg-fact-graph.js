@@ -1,4 +1,5 @@
 import * as fg from '../vendor/fact-graph/factgraph-3.1.0.js'
+import { clearItemTitles } from './fg-collection-item-titles.js'
 
 const res = await fetch('/app/eitc/resources/fact-dictionary.xml')
 const text = await res.text()
@@ -27,6 +28,7 @@ export function loadFactGraph (factGraphAsString) {
 window.loadFactGraph = loadFactGraph
 
 export function resetEntireGraphKeepingTaxYear (newYearValue) {
+  clearItemTitles()
   sessionStorage.removeItem('factGraph')
   factGraph = fg.GraphFactory.apply(factDictionary)
   window.factGraph = factGraph

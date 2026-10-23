@@ -235,6 +235,18 @@
         </choice>
       </optional>
       <interleave>
+        <optional>
+          <element name="item-title">
+            <element name="question">
+              <ref name="FlowConfigModuleInlineContent"/>
+            </element>
+            <optional>
+              <element name="hint">
+                <ref name="FlowConfigModuleInlineContent"/>
+              </element>
+            </optional>
+          </element>
+        </optional>
         <oneOrMore>
           <ref name="fg-set-module"></ref>
         </oneOrMore>

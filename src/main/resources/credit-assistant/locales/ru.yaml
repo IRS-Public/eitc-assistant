@@ -6,6 +6,9 @@ components:
       remove: "Удалить {0}"
       add: "Добавить {0}"
       add-with-determiner: "Добавить {1} {0}"
+    item-title:
+      first: "Добавить {0}"
+      subsequent: "Добавить еще один {0}"
     remove-item-modal:
       heading:
         remove: "Удалить {0}?"

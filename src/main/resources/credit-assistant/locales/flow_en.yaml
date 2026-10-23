@@ -1086,6 +1086,9 @@
   p-e28c1e: You can claim up to three qualifying children for the EITC.
   p-adf161: To be eligible for EITC, you must have at least one qualifying child.
   collection/familyAndHousehold:
+    itemTitle:
+      question: Child's name (optional)
+      hint: For reference only and will not be saved
     /familyAndHousehold/*/livedWithYouUS:
       question: Has this child lived with you more than half of <fg-show path="/taxYear"/>
         in the United States?

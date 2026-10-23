@@ -26,6 +26,11 @@
       <!-- TODO: ensure that removing a child that is eligible actually removes it from the collection so that we don't over represent the number of QCs      -->
       <fg-collection path="/familyAndHousehold" item-name="child" determiner="another" add-item-if-true="/flowShouldAllowAddAnotherQualifyingChild" if-true="/primaryFilerIsClaimingQualifyingChildren">
 
+        <item-title>
+          <question>Child's name (optional)</question>
+          <hint>For reference only and will not be saved</hint>
+        </item-title>
+
         <fg-set path="/familyAndHousehold/*/livedWithYouUS">
           <question>Has this child lived with you more than half of <fg-show path="/taxYear"/> in the United States?</question>
           <modal-link for="modal-residency">What counts as time lived with you?</modal-link>

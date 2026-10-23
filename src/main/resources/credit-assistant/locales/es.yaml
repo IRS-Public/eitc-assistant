@@ -6,6 +6,9 @@ components:
       remove: "Quitar {0}"
       add: "Añadir {0}"
       add-with-determiner: "Añadir {1} {0}"
+    item-title:
+      first: "Añadir un {0}"
+      subsequent: "Añadir otro {0}"
     remove-item-modal:
       heading:
         remove: "Quitar {0}?"

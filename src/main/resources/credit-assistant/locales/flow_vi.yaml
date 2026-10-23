@@ -1102,6 +1102,9 @@
   p-e28c1e: Quý vị có thể khai tối đa ba trẻ đủ điều kiện để nhận EITC
   p-adf161: Để đủ điều kiện nhận EITC, bạn phải có ít nhất một trẻ em đủ điều kiện.
   collection/familyAndHousehold:
+    itemTitle:
+      question: Tên của trẻ (không bắt buộc)
+      hint: Chỉ để tham khảo và sẽ không được lưu
     /familyAndHousehold/*/livedWithYouUS:
       question: Trẻ này đã sống với quý vị hơn nửa năm <fg-show path="/taxYear"/>
         tại Hoa Kỳ phải không?

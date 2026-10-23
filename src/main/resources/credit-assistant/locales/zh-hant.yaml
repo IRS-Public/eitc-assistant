@@ -6,6 +6,9 @@ components:
       remove: "刪除 {0}"
       add: "新增 {0}"
       add-with-determiner: "新增 {1} {0}"
+    item-title:
+      first: "新增{0}"
+      subsequent: "新增另一個{0}"
     remove-item-modal:
       heading:
         remove: "刪除 {0}？"

@@ -9,6 +9,37 @@ import gov.irs.factgraph.FactDictionary
 import org.thymeleaf.context.Context
 import scala.xml.Elem
 
+case class ItemTitle(question: String, hint: Option[String])
+
+object ItemTitle {
+  def fromXml(
+      fgCollectionElement: Elem,
+      path: String,
+      collectionTranslationContext: TranslationContext,
+  ): Option[ItemTitle] = {
+    val itemTitleNode = fgCollectionElement \ "item-title"
+    if (itemTitleNode.isEmpty) return None
+
+    val questionNode = itemTitleNode.head \ "question"
+    if (questionNode.isEmpty) {
+      throw InvalidFormConfig(s"item-title for collection $path is missing a question")
+    }
+    val question = questionNode.head.child.mkString.strip
+    if (question.isEmpty) {
+      throw InvalidFormConfig(s"item-title for collection $path has an empty question")
+    }
+
+    val hintNode = itemTitleNode.head \ "hint"
+    val hint = Option.when(hintNode.nonEmpty)(hintNode.head.child.mkString.strip)
+
+    val translationContext = collectionTranslationContext.forChildWithId("itemTitle")
+    translationContext.updateValue("question", question)
+    hint.foreach(translationContext.updateValue("hint", _))
+
+    Some(ItemTitle(question, hint))
+  }
+}
+
 case class FgCollection(
     path: String,
     itemName: String,
@@ -18,6 +49,7 @@ case class FgCollection(
     children: Seq[FlowNode],
     determiner: String,
     addItemIfTrue: Option[String],
+    itemTitle: Option[ItemTitle],
 ) extends FlowNode {
   def html(templateEngine: CreditAssistantTemplateEngine): String = {
     val context = new Context()
@@ -29,6 +61,9 @@ case class FgCollection(
     context.setVariable("condition", condition.map(_.path).orNull)
     context.setVariable("operator", condition.map(_.operator.toString).orNull)
     context.setVariable("addItemIfTrue", addItemIfTrue.getOrElse(""))
+    context.setVariable("contentKey", translationKeyBase)
+    context.setVariable("hasItemTitle", itemTitle.isDefined)
+    context.setVariable("hasItemTitleHint", itemTitle.exists(_.hint.isDefined))
     context.setVariable("itemName", itemName)
     context.setVariable("determiner", determiner)
 
@@ -66,9 +101,21 @@ object FgCollection extends FlowNodeParser {
 
     val translationContext = parentTranslationContext.forChildWithId("collection" + path)
 
-    val children = flowParser.parseChildElements(fgCollectionElement, translationContext)
+    val itemTitle = ItemTitle.fromXml(fgCollectionElement, path, translationContext)
 
-    FgCollection(path, itemName, disallowEmpty, condition, translationContext, children, determiner, addItemIfTrue)
+    val children = flowParser.parseChildElements(fgCollectionElement, translationContext, Seq("item-title"))
+
+    FgCollection(
+      path,
+      itemName,
+      disallowEmpty,
+      condition,
+      translationContext,
+      children,
+      determiner,
+      addItemIfTrue,
+      itemTitle,
+    )
   }
 
   private def validateFgCollection(path: String, factDictionary: FactDictionary): Unit = {

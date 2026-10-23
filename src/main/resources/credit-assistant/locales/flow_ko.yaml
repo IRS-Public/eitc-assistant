@@ -872,6 +872,9 @@
   p-e28c1e: 최대 3명의 적격 자녀까지 EITC를 신청할 수 있습니다
   p-adf161: EITC 자격을 얻으려면 최소 한 명의 적격 자녀가 있어야 합니다.
   collection/familyAndHousehold:
+    itemTitle:
+      question: 자녀 이름 (선택 사항)
+      hint: 참고용이며 저장되지 않습니다
     /familyAndHousehold/*/livedWithYouUS:
       question: 아이는 <fg-show path="/taxYear"/>년 중 절반 이상을 미국에서 부모와 함께 살았습니까?
       modalLink: <modal-link for="modal-residency">귀하와 함께 산 시간으로 간주되는 것은 무엇입니까?</modal-link>

@@ -804,6 +804,9 @@
   p-e28c1e: 您有 3 个符合条件的子女，并且已达到可申请 EITC 的符合条件子女的最大数量。你不需要再回答任何问题了。
   p-adf161: 要获得 EITC 的资格，您必须至少有一个符合条件的儿童。
   collection/familyAndHousehold:
+    itemTitle:
+      question: 子女姓名（可选）
+      hint: 仅供参考，不会被保存
     /familyAndHousehold/*/livedWithYouUS:
       question: 子女必须在 <fg-show path="/taxYear"/> 年有一半以上的时间与您在美国境内共同生活？
       modalLink: <modal-link for="modal-residency">什么算是与您一起生活的时间？</modal-link>

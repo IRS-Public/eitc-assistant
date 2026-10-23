@@ -6,6 +6,9 @@ components:
       remove: "Retire {0}"
       add: "Ajoute {0}"
       add-with-determiner: "Ajoute {1} {0}"
+    item-title:
+      first: "Ajoute yon {0}"
+      subsequent: "Ajoute yon lòt {0}"
     remove-item-modal:
       heading:
         remove: "Èske w sèten ou vle retire {0} sa a?"

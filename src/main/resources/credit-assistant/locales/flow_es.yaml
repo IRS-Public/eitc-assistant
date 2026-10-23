@@ -805,6 +805,9 @@
   p-e28c1e: Puedes reclamar hasta tres hijos calificados para el EITC.
   p-adf161: Para ser elegible para el EITC, debes tener al menos un hijo calificado.
   collection/familyAndHousehold:
+    itemTitle:
+      question: Nombre del hijo (opcional)
+      hint: Solo como referencia; no se guardará
     /familyAndHousehold/*/livedWithYouUS:
       question: ¿Este menor ha vivido con usted más de la mitad de <fg-show path="/taxYear"/> en los Estados Unidos?
       modalLink: <modal-link for="modal-residency">¿Qué significa "vivir contigo"?</modal-link>

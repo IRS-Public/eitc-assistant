@@ -1,4 +1,5 @@
 import { factGraph } from './fg-fact-graph.js'
+import { clearItemTitles } from './fg-collection-item-titles.js'
 
 /*
  * <fg-show> - Display the current value and/or status of a fact.
@@ -56,6 +57,7 @@ class FgReset extends HTMLElement {
   }
 
   handleEvent () {
+    clearItemTitles()
     sessionStorage.removeItem('factGraph')
     window.location = '/app/eitc/'
   }

@@ -1,6 +1,7 @@
 import { factGraph, saveFactGraph } from './fg-fact-graph.js'
 import { configureCollectionIds, makeCollectionIdPath, generateUUID } from './fg-collection-utils.js'
 import { checkCondition } from './fg-conditions.js'
+import { readItemTitle, writeItemTitle } from './fg-collection-item-titles.js'
 
 /*
  * <fg-collection> - Expandable collection list
@@ -25,6 +26,18 @@ class FgCollection extends HTMLElement {
         if (itemNumberSlot) {
           itemNumberSlot.forEach(slot => { slot.textContent = `#${index + 1}` })
         }
+      })
+    }
+
+    this.setCollectionItemTitles = () => {
+      this.querySelectorAll('fg-collection-item').forEach((item, index) => {
+        const titleElement = item.querySelector('.fg-collection__item-title')
+        if (!titleElement) return
+
+        const title = item.querySelector('.fg-collection-item__title-input')?.value.trim()
+        titleElement.textContent = title || (index === 0
+          ? titleElement.dataset.unnamedTitle
+          : titleElement.dataset.unnamedTitleAdditional)
       })
     }
   }
@@ -151,6 +164,7 @@ class FgCollectionItem extends HTMLElement {
     const templateContent = fgCollection.querySelector('.fg-collection__item-template').content.cloneNode(true)
 
     const collectionId = this.getAttribute('collectionId')
+    const collectionPath = this.getAttribute('collectionPath')
     configureCollectionIds(templateContent, collectionId)
 
     this.append(templateContent)
@@ -174,14 +188,35 @@ class FgCollectionItem extends HTMLElement {
 
     document.addEventListener('fg-clear', this.clearListener)
 
+    this.titleInput = this.querySelector('.fg-collection-item__title-input')
+    if (this.titleInput) {
+      this.titleInput.id = `collection-item-title-${collectionId}`
+      this.querySelector('.fg-collection-item__title-label').setAttribute('for', this.titleInput.id)
+
+      const titleHint = this.querySelector('.fg-collection-item__title-hint')
+      if (titleHint) {
+        titleHint.id = `${this.titleInput.id}-hint`
+        this.titleInput.setAttribute('aria-describedby', titleHint.id)
+      }
+
+      this.titleInput.value = readItemTitle(collectionPath, collectionId)
+      this.titleInputListener = () => {
+        writeItemTitle(collectionPath, collectionId, this.titleInput.value.trim())
+        fgCollection.setCollectionItemTitles()
+      }
+      this.titleInput.addEventListener('input', this.titleInputListener)
+    }
+
     // Set collection item numbers
     fgCollection.setCollectionItemNumbers()
+    fgCollection.setCollectionItemTitles()
   }
 
   disconnectedCallback () {
     console.debug('Disconnecting', this)
 
     this.removeButton.removeEventListener('click', this.clickRemoveItemListener)
+    this.titleInput?.removeEventListener('input', this.titleInputListener)
     document.removeEventListener('fg-clear', this.clearListener)
 
     // Reset content
@@ -209,6 +244,7 @@ class FgCollectionItem extends HTMLElement {
     const fgCollection = this.closest('fg-collection')
     const collectionPath = this.getAttribute('collectionPath')
     const collectionId = this.getAttribute('collectionId')
+    writeItemTitle(collectionPath, collectionId, '')
     factGraph.delete(makeCollectionIdPath(`${collectionPath}/*`, collectionId))
     factGraph.removeFromCollection(collectionPath, collectionId)
     saveFactGraph()
@@ -216,6 +252,7 @@ class FgCollectionItem extends HTMLElement {
     // Remove this element and its parent fieldset from the DOM after removing the item from the fact graph
     this.remove()
     fgCollection.setCollectionItemNumbers()
+    fgCollection.setCollectionItemTitles()
     document.dispatchEvent(new CustomEvent('fg-update'))
   }
 }

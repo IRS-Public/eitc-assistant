@@ -6,6 +6,9 @@ components:
       remove: "Xóa {0}"
       add: "Thêm {0}"
       add-with-determiner: "Thêm {1} {0}"
+    item-title:
+      first: "Thêm một {0}"
+      subsequent: "Thêm một {0} khác"
     remove-item-modal:
       heading:
         remove: "Xóa {0}?"
