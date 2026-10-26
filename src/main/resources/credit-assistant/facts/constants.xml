@@ -5,9 +5,9 @@
     <Fact path="/taxYearOptions">
       <Derived>
         <EnumOptions>
+          <String>2026</String>
           <String>2025</String>
           <String>2024</String>
-          <String>2023</String>
         </EnumOptions>
       </Derived>
     </Fact>
@@ -28,6 +28,21 @@
       <Description>Chosen tax year</Description>
       <Derived>
         <Switch>
+          <Case>
+            <When>
+              <Equal>
+                <Left>
+                  <Dependency path="/chosenTaxYear"/>
+                </Left>
+                <Right>
+                  <Enum optionsPath="/taxYearOptions">2026</Enum>
+                </Right>
+              </Equal>
+            </When>
+            <Then>
+              <Int>2026</Int>
+            </Then>
+          </Case>
           <Case>
             <When>
               <Equal>
@@ -56,21 +71,6 @@
             </When>
             <Then>
               <Int>2024</Int>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Equal>
-                <Left>
-                  <Dependency path="/chosenTaxYear"/>
-                </Left>
-                <Right>
-                  <Enum optionsPath="/taxYearOptions">2023</Enum>
-                </Right>
-              </Equal>
-            </When>
-            <Then>
-              <Int>2023</Int>
             </Then>
           </Case>
         </Switch>
@@ -108,18 +108,6 @@
             <Int>2</Int>
           </Subtrahends>
         </Subtract>
-      </Derived>
-    </Fact>
-    <Fact path="/isTaxYear2023">
-      <Derived>
-        <Equal>
-          <Left>
-            <Dependency path="/taxYear"/>
-          </Left>
-          <Right>
-            <Int>2023</Int>
-          </Right>
-        </Equal>
       </Derived>
     </Fact>
     <Fact path="/isTaxYear2024">
@@ -166,14 +154,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/deductionForTraditionalIRAContributionMax2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -203,14 +183,6 @@
       <Description>The maximum deduction an individual can take for educator expense and is MFJ</Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/maxEducatorExpensesMFJ2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -244,14 +216,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/maxEducatorExpensesNonMFJ2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -281,14 +245,6 @@
       <Description>Maximum annual deductible and other out-of-pocket expenses for family. We are agnostic to filing status so double to 17000 and do not take MAGI into account for simplified computation</Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/hsaTotalDeductibleAmountMax2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -321,14 +277,6 @@
               the 6.2% portion of the 7.65% railroad retirement (tier 1) tax for 2026. See https://www.ssa.gov/oact/cola/cbb.html</Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/maxIncomeSubjectToSocialSecurityTax2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -393,25 +341,19 @@
         <Dollar>2500</Dollar>
       </Derived>
     </Fact>
-    <Fact path="/maxIncomeForStudentLoanInterestDeduction">
-      <Name>Max income for an MFJ filer student loan interest deduction</Name>
-      <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
+    <Fact path="/eitcGrossIncomeLimitForQualifyingRelative">
+      <Name>EITC gross income limitation for a qualifying relative</Name>
+      <Description>A relative must have gross income below this amount to be claimed as a qualifying relative.
+              The amount equals the exemption amount under IRC &#xA7;151(d), which IRC &#xA7;152(d)(1)(B) uses as the qualifying relative gross income test.
+          </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
-              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2024"/>
+              <Dependency path="/eitcGrossIncomeLimitForQualifyingRelative2024"/>
             </Then>
           </Case>
           <Case>
@@ -419,7 +361,7 @@
               <Dependency path="/isTaxYear2025"/>
             </When>
             <Then>
-              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2025"/>
+              <Dependency path="/eitcGrossIncomeLimitForQualifyingRelative2025"/>
             </Then>
           </Case>
           <Case>
@@ -427,37 +369,7 @@
               <Dependency path="/isTaxYear2026"/>
             </When>
             <Then>
-              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2026"/>
-            </Then>
-          </Case>
-        </Switch>
-      </Derived>
-    </Fact>
-    <Fact path="/eitcChildGrossIncomeLimit">
-      <Derived>
-        <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcChildGrossIncomeLimit2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2024"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcChildGrossIncomeLimit2024"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2025"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcChildGrossIncomeLimit2025"/>
+              <Dependency path="/eitcGrossIncomeLimitForQualifyingRelative2026"/>
             </Then>
           </Case>
         </Switch>
@@ -468,14 +380,6 @@
       <Description>The maximum MAGI that a taxpayer can have and still receive the Student Loan Interest Deduction</Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/maxIncomeForStudentLoanInterestDeduction2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -513,14 +417,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/studentLoanPhaseOutStart2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -553,14 +449,6 @@
       </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcMfjLimitWithThreeOrMoreChildren2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -597,14 +485,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcSelfLimitWithThreeOrMoreChildren2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -637,14 +517,6 @@
           </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcMfjLimitWithTwoChildren2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -681,14 +553,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcSelfLimitWithTwoChildren2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -721,14 +585,6 @@
           </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcMfjLimitWithOneChild2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -765,14 +621,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcSelfLimitWithOneChild2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -807,14 +655,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcMfjLimitWithZeroChildren2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -847,14 +687,6 @@
           </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcSelfLimitWithZeroChildren2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -892,14 +724,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInEndsFor0QualifyingChildren2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -933,14 +757,6 @@
           </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInEndsFor1QualifyingChild2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -979,14 +795,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInEndsFor2OrMoreQualifyingChildren2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1020,14 +828,6 @@
           </Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcPhaseOutThreshold2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -1064,14 +864,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcInvestmentIncomeLimit2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1101,14 +893,6 @@
       <Name>Phase in rate for 0 qualifying children</Name>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInRatesFor0Qc2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -1142,14 +926,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInRatesFor1Qc2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1181,14 +957,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInRatesFor2Qc2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1218,14 +986,6 @@
       <Name>Phase in rate for 3 or more qualifying children</Name>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/phaseInRatesFor3OrMoreQc2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>
@@ -1260,14 +1020,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcPhaseOutRate0QC2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1300,14 +1052,6 @@
         <Switch>
           <Case>
             <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcPhaseOutRate1QC2023"/>
-            </Then>
-          </Case>
-          <Case>
-            <When>
               <Dependency path="/isTaxYear2024"/>
             </When>
             <Then>
@@ -1338,14 +1082,6 @@
       <Description>The rate at which EITC phases out as income exceeds the threshold amount.</Description>
       <Derived>
         <Switch>
-          <Case>
-            <When>
-              <Dependency path="/isTaxYear2023"/>
-            </When>
-            <Then>
-              <Dependency path="/eitcPhaseOutRate2OrMoreQC2023"/>
-            </Then>
-          </Case>
           <Case>
             <When>
               <Dependency path="/isTaxYear2024"/>

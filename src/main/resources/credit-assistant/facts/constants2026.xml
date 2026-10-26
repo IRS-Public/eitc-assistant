@@ -133,6 +133,12 @@
         </Switch>
       </Derived>
     </Fact>
+    <Fact path="/eitcGrossIncomeLimitForQualifyingRelative2026">
+      <TaxYear>2026</TaxYear>
+      <Derived>
+        <Dollar>5300</Dollar>
+      </Derived>
+    </Fact>
     <Fact path="/eitcMfjLimitWithThreeOrMoreChildren2026">
       <Name>EITC (MFJ) limit with 3 or more children</Name>
       <Description>EITC limit with 3 or more children when filing as MFJ

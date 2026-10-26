@@ -11,9 +11,9 @@
         <modal-link for="modal-tax-year">Which year should I use?</modal-link>
 
         <input type="enum" options-path="/taxYearOptions">
+          <option value="2026">2026</option>
           <option value="2025">2025</option>
           <option value="2024">2024</option>
-          <option value="2023">2023</option>
         </input>
       </fg-set>
       
@@ -108,9 +108,9 @@
       <modal-content>
         <p>For wages and other income earned in:</p>
         <ul>
+          <li>2026, select 2026</li>
           <li>2025, select 2025</li>
           <li>2024, select 2024</li>
-          <li>2023, select 2023</li>
         </ul>
       </modal-content>
     </modal-dialog>

@@ -95,7 +95,7 @@
         </Switch>
       </Derived>
     </Fact>
-    <Fact path="/eitcChildGrossIncomeLimit2023">
+    <Fact path="/eitcGrossIncomeLimitForQualifyingRelative2023">
       <TaxYear>2023</TaxYear>
       <Derived>
         <Dollar>4700</Dollar>
