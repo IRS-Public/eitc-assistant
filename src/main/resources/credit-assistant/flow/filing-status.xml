@@ -352,16 +352,9 @@
     <modal-dialog id="modal-valid-ssn">
       <modal-heading>Valid Social Security Number</modal-heading>
       <modal-content>
-        <p>You must have a valid Social Security number (SSN) that is issued by the Social Security Administration on or before the due date of your <fg-show path="/taxYear"/> tax return (including extensions).</p>
-        <p>If your Social Security card reads “Valid for work with DHS authorization” or “Valid for work with INS authorization” on it, it is a valid SSN if the authorization is still valid.</p>
-        <p>For the EITC, we don't accept:</p>
-        <ul>
-          <li>IRS Individual taxpayer identification number (ITIN)</li>
-          <li>Adoption taxpayer identification number (ATIN)</li>
-          <li>Social Security number issued after the due date of the return, including extensions</li>
-          <li>Social Security number issued solely to apply for or receive a federally funded benefit such as Medicaid</li>
-        </ul>
-        <p>See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a> for more information on a valid Social Security Number.</p>
+        <p>An SSN is valid for the EIC unless it was issued after the due date of your <fg-show path="/taxYear"/> return (including extensions) or it was issued solely to apply for or receive a federally funded benefit and does not authorize you to work. An example of a federally funded benefit is Medicaid.</p>
+        <p>If the social security card reads “Valid for work only with INS authorization” or “Valid for work only with DHS authorization,” you have a valid SSN, but only if that authorization is still valid.</p>
+        <p>See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication 596</a> for more information on a <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297446">valid Social Security Number</a>.</p>
       </modal-content>
     </modal-dialog>
 

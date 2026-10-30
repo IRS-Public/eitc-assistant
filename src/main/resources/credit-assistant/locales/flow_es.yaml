@@ -80,17 +80,10 @@
       class="usa-link" href="https://www.irs.gov/es/forms-pubs/about-publication-519">la Publicación 519, Guía tributaria estadounidense para extranjeros</a>.
   modal-valid-ssn-filer:
     heading: Número de Seguro Social válido
-    p-527528: Tienes que tener un número de Seguro Social (SSN por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de impuestos del <fg-show
-      path="/taxYear"/> (incluidas las prórrogas).
-    p-45ae0e: Si tu tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
-    p-558a40: 'Para los propósitos del Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), no aceptamos:'
-    ul-0:
-      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
-      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
-      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
-      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid
-    p-f554f7: Consulta <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596sp"> Publicación 596</a> para más información sobre los números de Seguro Social válidos.
+    p-d14361: Un número de Seguro Social (SSN, por sus siglas en inglés) es válido para el Crédito tributario por ingreso del trabajo (EIC, por sus siglas en inglés), a menos que se haya emitido después de la fecha límite para presentar tu declaración de impuestos de <fg-show path="/taxYear"/> (incluidas las prórrogas) o que se haya emitido únicamente para solicitar o recibir un beneficio financiado con fondos federales y no te autorice a trabajar. Medicaid es un ejemplo de un beneficio financiado con fondos federales.
+    p-fb4572: Si tu tarjeta de Seguro Social tiene impresas las palabras “Valid for work only with INS authorization” (Válida para trabajar únicamente con autorización del Servicio de Inmigración y Naturalización, INS) o “Valid for work only with DHS authorization” (Válida para trabajar únicamente con autorización del Departamento de Seguridad Nacional, DHS), entonces el SSN es válido, pero solo siempre que la autorización siga vigente.
+    p-8bcfeb: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596sp#es_ES_2025_publink1000297446">números de Seguro Social válidos</a>.
   modal-foreign-income:
     heading: Ingreso devengado en el extranjero excluido de los ingresos brutos
     p-f45b03: Esto se refiere al ingreso que que obtuviste fuera de los Estados Unidos, el Distrito de Columbia o las posesiones o territorios de los Estados Unidos que has que has decidido excluir mediante <a target="_blank"
@@ -344,15 +337,10 @@
     p-2392bb: Debe ser razonable suponer que la persona ausente regresará al hogar luego de la ausencia temporal.
   modal-valid-ssn:
     heading: Número de Seguro Social válido
-    p-527528: Tienes que tener un número de Seguro Social (SSN, por sus siglas en inglés) válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de impuestos del año <fg-show path="/taxYear"/> (incluidas las prórrogas).
-    p-45ae0e: Si tu tarjeta de Seguro Social tiene impresas las palabras “Valid for work with DHS authorization” o “Valid for work with INS authorization” (Válido para el empleo con autorización del Departamento de Seguridad Nacional (DHS por sus siglas en inglés)) o con la autorización del Servicio de inmigración y nacionalización (INS por sus siglas en inglés)), entonces el SSN es válido siempre que la autorización siga vigente.
-    p-558a40: 'Para los propósitos del Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés), no aceptamos:'
-    ul-0:
-      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN, por sus siglas en inglés)
-      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN, por sus siglas en inglés)
-      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
-      li-a69a30: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado con fondos federales, tal como el Medicaid
-    p-f554f7: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los números de Seguro Social válidos.
+    p-d14361: Un número de Seguro Social (SSN, por sus siglas en inglés) es válido para el Crédito tributario por ingreso del trabajo (EIC, por sus siglas en inglés), a menos que se haya emitido después de la fecha límite para presentar tu declaración de impuestos de <fg-show path="/taxYear"/>  (incluidas las prórrogas) o que se haya emitido únicamente para solicitar o recibir un beneficio financiado con fondos federales y no te autorice a trabajar. Medicaid es un ejemplo de un beneficio financiado con fondos federales.
+    p-13253d: Si la tarjeta de Seguro Social tiene impresas las palabras “Valid for work only with INS authorization” (Válida para trabajar únicamente con autorización del Servicio de Inmigración y Naturalización, INS) o “Valid for work only with DHS authorization” (Válida para trabajar únicamente con autorización del Departamento de Seguridad Nacional, DHS), entonces el SSN es válido, pero solo siempre que la autorización siga vigente.
+    p-8bcfeb: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre los <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596sp#es_ES_2025_publink1000297446">números de Seguro Social válidos</a>.
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: Confirmación
     p-30861e: Cambiar de <strong>Casado que presenta declaración conjunta</strong> a otro estado civil para la declaración de impuestos borrará los datos del hijo que haya ingresado previamente. ¿Desea continuar?

@@ -101,24 +101,11 @@
       target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">Ấn Phẩm 519, Hướng Dẫn Về Thuế Hoa Kỳ cho Ngoại Nhân</a>.
   modal-valid-ssn-filer:
     heading: Số An Sinh Xã Hội Hợp Lệ
-    p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
-      do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
-      ngày đến hạn khai thuế năm 2026 (bao gồm cả thời gian gia hạn).
-    p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
-      phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
-      lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
-      Naturalization Service, INS) trên đó thì đó là SSN hợp lệ nếu ủy quyền vẫn còn
-      hiệu lực.
-    p-558a40: 'Đối với Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Tax Credit,
-      EITC), chúng tôi không chấp nhận:'
-    ul-0:
-      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
-      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
-      li-9f487b: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
-        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
-      li-a69a30: Số An Sinh Xã Hội được cấp chỉ để đăng ký hoặc nhận phúc lợi do liên
-        bang tài trợ như Medicaid
-    p-f554f7: Xem Ấn Bản 596 để biết thêm thông tin về Số An Sinh Xã Hội hợp lệ.
+    p-d14361: Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ để yêu cầu Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Credit, EIC), trừ khi số đó được cấp sau ngày đến hạn nộp tờ khai thuế năm <fg-show path="/taxYear"/> của quý vị (bao gồm cả thời gian gia hạn), hoặc số đó chỉ được cấp để đăng ký hoặc nhận phúc lợi do liên bang tài trợ và không cho phép quý vị làm việc. Medicaid là một ví dụ về phúc lợi do liên bang tài trợ.
+    p-fb4572: Nếu thẻ An Sinh Xã Hội của quý vị ghi “Valid for work only with INS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Sở Di Trú và Nhập Tịch, INS) hoặc “Valid for work only with DHS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Bộ An Ninh Nội Địa, DHS), thì SSN đó hợp lệ, nhưng chỉ khi sự cho phép đó vẫn còn hiệu lực.
+    p-8bcfeb: Xem <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/vi/forms-pubs/about-publication-596">Ấn Bản 596</a> để biết thêm thông tin về <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596vie#en_US_2025_publink1000297446">Số An Sinh Xã Hội hợp lệ</a>.
   modal-foreign-income:
     heading: Thu Nhập Kiếm Được Ở Nước Ngoài không bao gồm trong Tổng Thu Nhập
     p-f45b03: 'Điều này đề cập đến thu nhập quý vị kiếm được bên ngoài Hoa Kỳ, Đặc
@@ -476,24 +463,11 @@
       trở về nhà sau thời gian tạm vắng.
   modal-valid-ssn:
     heading: Số An Sinh Xã Hội Hợp Lệ
-    p-527528: Quý vị phải có Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ
-      do Cơ Quan An Sinh Xã Hội (Social Security Administration) cấp vào hoặc trước
-      ngày đến hạn khai thuế năm 2026 (bao gồm cả thời gian gia hạn).
-    p-45ae0e: Nếu thẻ An Sinh Xã Hội của quý vị ghi "Hợp lệ để làm việc với sự cho
-      phép của Bộ An Ninh Nội Địa" (Department of Homeland Security, DHS) hoặc "Hợp
-      lệ để làm việc với sự cho phép của Sở Di Trú Và Nhập Tịch" (Immigration and
-      Naturalization Service, INS) trên đó thì đó là SSN hợp lệ nếu ủy quyền vẫn còn
-      hiệu lực.
-    p-558a40: 'Đối với Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Tax Credit,
-      EITC), chúng tôi không chấp nhận:'
-    ul-0:
-      li-5e5f3e: Số nhận dạng cá nhân đóng thuế (ITIN) của IRS
-      li-5fc9b7: Mã số người đóng thuế cho việc nhận con nuôi (ATIN)
-      li-9f487b: Số An Sinh Xã Hội được cấp chỉ để cho phép người nhận số SSN đăng
-        ký hoặc nhận phúc lợi do liên bang tài trợ, chẳng hạn như Medicaid
-      li-a69a30: Số An Sinh Xã Hội được cấp chỉ để đăng ký hoặc nhận phúc lợi do liên
-        bang tài trợ như Medicaid
-    p-f554f7: Xem Ấn Bản 596 để biết thêm thông tin về Số An Sinh Xã Hội hợp lệ.
+    p-d14361: Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ để yêu cầu Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Credit, EIC), trừ khi số đó được cấp sau ngày đến hạn nộp tờ khai thuế năm <fg-show path="/taxYear"/> của quý vị (bao gồm cả thời gian gia hạn), hoặc số đó chỉ được cấp để đăng ký hoặc nhận phúc lợi do liên bang tài trợ và không cho phép quý vị làm việc. Medicaid là một ví dụ về phúc lợi do liên bang tài trợ.
+    p-13253d: Nếu thẻ An Sinh Xã Hội có ghi “Valid for work only with INS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Sở Di Trú và Nhập Tịch, INS) hoặc “Valid for work only with DHS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Bộ An Ninh Nội Địa, DHS), thì SSN đó hợp lệ, nhưng chỉ khi sự cho phép đó vẫn còn hiệu lực.
+    p-8bcfeb: Xem <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/vi/forms-pubs/about-publication-596">Ấn Bản 596</a> để biết thêm thông tin về <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596vie#en_US_2025_publink1000297446">Số An Sinh Xã Hội hợp lệ</a>.
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: Xác nhận
     p-30861e: Thay đổi từ <strong>Kết hôn nộp chung</strong> sang một tình trạng khai

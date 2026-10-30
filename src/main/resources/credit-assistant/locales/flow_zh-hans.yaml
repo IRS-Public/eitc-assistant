@@ -82,16 +82,11 @@
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-519">第519号刊物，美国外国人税收指南（英文）</a>    
   modal-valid-ssn-filer:
     heading: 有效社会安全号码
-    p-527528: 您必须在 <fg-show path="/taxYear"/> 年纳税申报表（包括延期）到期日或之前拥有由社保局颁发的有效社会安全号码
-      （SSN）。
-    p-45ae0e: 如果您的社会保卡上写着“经国土安全部授权可用于工作”或“经 INS 授权可用于工作”，只要该授权仍然有效，则这张卡上的 SSN 仍然有效。
-    p-558a40: 对于 EITC，我们不接受：
-    ul-0:
-      li-5e5f3e: IRS 个人纳税人识别号 (ITIN)
-      li-5fc9b7: 领养纳税人识别号 (ATIN)
-      li-9f487b: 社会安全号码，仅用于让 SSN 的接收者申请或获得联邦资助的福利，如医疗补助
-      li-a69a30: 仅出于申请或领取联邦资助的福利（例如 Medicaid）之目的颁发的社会安全号码
-    p-f554f7: 有关有效社会安全号码的更多信息，请参阅《出版物 596》。
+    p-d14361: 社会安全号码（SSN）可用于申请劳动所得税抵免（EIC），除非该号码是在您的 <fg-show path="/taxYear"/> 年纳税申报表提交截止日期（包括延期）之后签发的，或者该号码仅为申请或领取联邦政府资助的福利而签发，且不允许您工作。Medicaid（医疗补助）是联邦政府资助的福利的一个例子。
+    p-fb4572: 如果您的社会保障卡上写有“Valid for work only with INS authorization”（仅在获得 INS 授权的情况下可以工作）或“Valid for work only with DHS authorization”（仅在获得 DHS 授权的情况下可以工作），则该社会安全号码有效，但前提是相关授权仍然有效。
+    p-8bcfeb: 有关有效社会安全号码的更多信息，请参阅<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/zh-hans/forms-pubs/about-publication-596">《出版物 596》</a>中关于<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596zhs#en_US_2025_publink1000297446">有效社会安全号码</a>的说明。
   modal-foreign-income:
     heading: 不计入总收入的外国收入
     p-f45b03: 这指的是您在美国、哥伦比亚特区或美国属地或领土之外的劳动所得，<a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">您选择在</a>  中将其排除在外。
@@ -349,16 +344,11 @@
     p-2392bb: 必须合理地假设缺席者在临时缺席后将返回家中。
   modal-valid-ssn:
     heading: 有效社会安全号码
-    p-527528: 您必须在 <fg-show path="/taxYear"/> 年纳税申报表（包括延期）到期日或之前拥有由社保局颁发的有效社会安全号码
-      （SSN）。
-    p-45ae0e: 如果您的社会保卡上写着“经国土安全部授权可用于工作”或“经 INS 授权可用于工作”，只要该授权仍然有效，则这张卡上的 SSN 仍然有效。
-    p-558a40: 对于 EITC，我们不接受：
-    ul-0:
-      li-5e5f3e: IRS 个人纳税人识别号 (ITIN)
-      li-5fc9b7: 领养纳税人识别号 (ATIN)
-      li-9f487b: 社会安全号码，仅用于让 SSN 的接收者申请或获得联邦资助的福利，如医疗补助
-      li-a69a30: 仅出于申请或领取联邦资助的福利（例如 Medicaid）之目的颁发的社会安全号码
-    p-f554f7: 有关有效社会安全号码的更多信息，请参阅《出版物 596》。
+    p-d14361: 社会安全号码（SSN）可用于申请劳动所得税抵免（EIC），除非该号码是在您的 <fg-show path="/taxYear"/> 年纳税申报表提交截止日期（包括延期）之后签发的，或者该号码仅为申请或领取联邦政府资助的福利而签发，且不允许您工作。Medicaid（医疗补助）是联邦政府资助的福利的一个例子。
+    p-13253d: 如果社会保卡上写着“Valid for work only with INS authorization”（仅在获得 INS 授权的情况下可以工作）或“Valid for work only with DHS authorization”（仅在获得 DHS 授权的情况下可以工作），则该 SSN 有效，但前提是该授权仍然有效。
+    p-8bcfeb: 有关有效社会安全号码的更多信息，请参阅<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/zh-hans/forms-pubs/about-publication-596">《出版物 596》</a>中关于<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596zhs#en_US_2025_publink1000297446">有效社会安全号码</a>的说明。
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: 确认
     p-30861e: 从<strong>已婚联合申报</strong>更改为其他报税身份将清除您之前输入的符合条件的儿童数据。您仍想继续吗？

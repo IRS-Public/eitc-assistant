@@ -88,18 +88,11 @@
       596</a>, Earned Income Credit.를 확인하세요.
   modal-valid-ssn-filer:
     heading: 유효한 사회 보장 번호
-    p-527528: <fg-show path="/taxYear"/> 년 세금 신고서(연장 포함) 마감일 또는 그 이전에 사회보장국에서 발급한
-      유효한 사회보장번호(SSN)가 있어야 합니다.
-    p-45ae0e: 사회 보장 카드에 "DHS 승인 시 취업 가능(Valid for work with DHS authorization)” 또는
-      “INS 승인 시 취업 가능(Valid for work with INS authorization)”이라고 표시되어 있다면, 해당 승인 상태가
-      여전히 유효할 경우 이 사회보장번호(SSN)는 유효한 것으로 간주됩니다.
-    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
-    ul-0:
-      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
-      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
-      li-9f487b: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
-      li-a69a30: 메디케이드와 같은 연방 자금 지원 혜택을 신청하거나 받기 위한 용도로만 발급된 사회보장번호
-    p-f554f7: 유효한 사회 보장 번호에 대한 자세한 내용은 간행물 596을 참조하십시오.
+    p-d14361: 사회보장번호(SSN)는 <fg-show path="/taxYear"/>년 세금 신고서 제출 기한(연장 기한 포함) 이후에 발급되었거나, 연방 정부가 재정을 지원하는 혜택을 신청하거나 받기 위한 목적으로만 발급되었으며 취업을 허용하지 않는 경우를 제외하고 근로 소득 세액 공제(EIC)를 신청하는 데 유효합니다. 메디케이드(Medicaid)는 연방 정부가 재정을 지원하는 혜택의 한 예입니다.
+    p-fb4572: 사회 보장 카드에 “Valid for work only with INS authorization”(INS의 승인이 있는 경우에만 취업 가능) 또는 “Valid for work only with DHS authorization”(DHS의 승인이 있는 경우에만 취업 가능)이라고 표시되어 있다면, 해당 승인이 여전히 유효한 경우에만 사회보장번호(SSN)가 유효합니다.
+    p-8bcfeb: 유효한 사회 보장 번호에 대한 자세한 내용은 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/ko/forms-pubs/about-publication-596">간행물 596</a>의 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596ko#en_US_2025_publink1000297446">유효한 사회보장번호</a> 관련 설명을 참조하십시오.
   modal-foreign-income:
     heading: 총 소득에서 제외된 해외 근로 소득
     p-f45b03: 이는 <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">귀하가</a>  에서
@@ -379,18 +372,11 @@
     p-2392bb: 일시적 부재 후에 집으로 돌아올 것이라는 가정을 하는 것은 타당합니다.
   modal-valid-ssn:
     heading: 유효한 사회 보장 번호
-    p-527528: <fg-show path="/taxYear"/> 년 세금 신고서(연장 포함) 마감일 또는 그 이전에 사회보장국에서 발급한
-      유효한 사회보장번호(SSN)가 있어야 합니다.
-    p-45ae0e: 사회 보장 카드에 "DHS 승인 시 취업 가능(Valid for work with DHS authorization)” 또는
-      “INS 승인 시 취업 가능(Valid for work with INS authorization)”이라고 표시되어 있다면, 해당 승인 상태가
-      여전히 유효할 경우 이 사회보장번호(SSN)는 유효한 것으로 간주됩니다.
-    p-558a40: 'EITC의 경우 다음을 허용하지 않습니다:'
-    ul-0:
-      li-5e5f3e: 국세청 개인 납세자 식별 번호(ITIN)
-      li-5fc9b7: 입양 납세자 식별 번호(ATIN)
-      li-9f487b: 오직 SSN 수령자가 메디케이드 같은 연방 지원 혜택 신청하거나 받는 것을 허락하는 사회 보장 번호를 발급받았습니다.
-      li-a69a30: 메디케이드와 같은 연방 자금 지원 혜택을 신청하거나 받기 위한 용도로만 발급된 사회보장번호
-    p-f554f7: 유효한 사회 보장 번호에 대한 자세한 내용은 간행물 596을 참조하십시오.
+    p-d14361: 사회보장번호(SSN)는 <fg-show path="/taxYear"/>년 세금 신고서 제출 기한(연장 기한 포함) 이후에 발급되었거나, 연방 정부가 재정을 지원하는 혜택을 신청하거나 받기 위한 목적으로만 발급되었으며 취업을 허용하지 않는 경우를 제외하고 근로 소득 세액 공제(EIC)를 신청하는 데 유효합니다. 메디케이드(Medicaid)는 연방 정부가 재정을 지원하는 혜택의 한 예입니다.
+    p-13253d: 사회 보장 카드에 “Valid for work only with INS authorization”(INS의 승인이 있는 경우에만 취업 가능) 또는 “Valid for work only with DHS authorization”(DHS의 승인이 있는 경우에만 취업 가능)이라고 표시되어 있다면, 해당 승인 상태가 여전히 유효할 경우에만 이 사회보장번호(SSN)는 유효한 것으로 간주됩니다.
+    p-8bcfeb: 유효한 사회 보장 번호에 대한 자세한 내용은 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/ko/forms-pubs/about-publication-596">간행물 596</a>의 <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596ko#en_US_2025_publink1000297446">유효한 사회보장번호</a> 관련 설명을 참조하십시오.
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: 확인
     p-30861e: <strong>부부 공동 보고</strong>에서 다른 보고 상태로 변경하면 이전에 입력한 적격 자녀 데이터가 지워집니다.

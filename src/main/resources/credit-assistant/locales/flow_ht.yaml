@@ -101,22 +101,11 @@
       Credit.
   modal-valid-ssn-filer:
     heading: Nimewo sekirite sosyal valab
-    p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
-      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2026 ou a oswa anvan (ki
-      gen ladan ekstansyon yo).
-    p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
-      DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
-      si otorizasyon an toujou valid.
-    p-558a40: 'Pou EITC a, nou pa aksepte:'
-    ul-0:
-      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
-      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
-      li-9f487b: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
-        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
-      li-a69a30: Nimewo Sekirite Sosyal ki te pibliye apre dat limit delarasyon an,
-        ki gen ladan ekstansyon yo
-    p-f554f7: Gade Piblikasyon 596 pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal
-      ki valid.
+    p-d14361: Yon nimewo Sekirite Sosyal (SSN) valab pou Kredi sou Revni Travay (EIC), sof si yo te bay nimewo a apre dat limit pou depoze deklarasyon taks <fg-show path="/taxYear"/>  ou a (ki gen ladan pwolongasyon yo), oswa si yo te bay li sèlman pou aplike pou yon benefis gouvènman federal la finanse oswa pou resevwa benefis sa a, epi nimewo a pa ba ou otorizasyon pou travay. Medicaid se yon egzanp benefis gouvènman federal la finanse.
+    p-fb4572: Si sou kat Sekirite Sosyal ou a gen mo “Valid for work only with INS authorization” (Valab pou travay sèlman avèk otorizasyon INS) oswa “Valid for work only with DHS authorization” (Valab pou travay sèlman avèk otorizasyon DHS), SSN nan valab, men sèlman si otorizasyon sa a toujou valab.
+    p-8bcfeb: Gade <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-596">Piblikasyon 596 (an anglè)</a> pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal ki valid (<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297446">Nimewo Sekirite Sosyal ki valab (an anglè)</a>).
   modal-foreign-income:
     heading: Revni ki Touche Aletranje ki eskli nan Revni Brit
     p-f45b03: Sa a se revni ou te touche andeyò peyi Etazini, Distri Columbia, oubyen
@@ -457,22 +446,11 @@
       absans tanporè a.
   modal-valid-ssn:
     heading: Nimewo sekirite sosyal valab
-    p-527528: Ou dwe gen yon nimewo Sekirite Sosyal (SSN) ki valid ke Administrasyon
-      Sekirite Sosyal la bay nan dat limit deklarasyon taks 2026 ou a oswa anvan (ki
-      gen ladan ekstansyon yo).
-    p-45ae0e: Si kat Sekirite Sosyal ou a ekri "Valid pou travay avèk otorizasyon
-      DHS" oswa "Valid pou travay avèk otorizasyon INS" sou li, li se yon SSN valid
-      si otorizasyon an toujou valid.
-    p-558a40: 'Pou EITC a, nou pa aksepte:'
-    ul-0:
-      li-5e5f3e: Nimewo idantifikasyon taks endividyèl IRS (ITIN)
-      li-5fc9b7: Nimewo idantifikasyon taks adopsyon (ATIN)
-      li-9f487b: Nimewo Sekirite Sosyal yo bay sèlman pou pèmèt moun k ap resevwa
-        SSN a aplike oubyen resevwa yon benefis finansman federal, tankou Medicaid.
-      li-a69a30: Nimewo Sekirite Sosyal ki te pibliye apre dat limit delarasyon an,
-        ki gen ladan ekstansyon yo
-    p-f554f7: Gade Piblikasyon 596 pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal
-      ki valid.
+    p-d14361: Yon nimewo Sekirite Sosyal (SSN) valab pou Kredi sou Revni Travay (EIC), sof si yo te bay nimewo a apre dat limit pou depoze deklarasyon taks <fg-show path="/taxYear"/> ou a (ki gen ladan pwolongasyon yo), oswa si yo te bay li sèlman pou aplike pou yon benefis gouvènman federal la finanse oswa pou resevwa benefis sa a, epi nimewo a pa ba ou otorizasyon pou travay. Medicaid se yon egzanp benefis gouvènman federal la finanse.
+    p-13253d: Si sou kat Sekirite Sosyal la a gen mo “Valid for work only with INS authorization” (Valab pou travay sèlman avèk otorizasyon INS) oswa “Valid for work only with DHS authorization” (Valab pou travay sèlman avèk otorizasyon DHS), SSN nan valab, men sèlman si otorizasyon sa a toujou valab.
+    p-8bcfeb: Gade <a target="_blank"
+      class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-596">Piblikasyon 596 (an anglè)</a> pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal ki valid (<a target="_blank"
+      class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297446">Nimewo Sekirite Sosyal ki valab (an anglè)</a>).
   modal-confirm-mfj-to-nonmfj-qc-clear:
     heading: Konfimasyon
     p-30861e: Si w chanje soti nan <strong>Marye k ap Fè yon Deklarasyon Ansanm</strong>
