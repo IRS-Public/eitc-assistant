@@ -51,7 +51,7 @@
       'false':
         name: 不
   /isClaimedAsDependent:
-    question: 其他人會在他們的報稅表上針對 EITC 將您申領為被撫養人或符合資格的子女嗎？
+    question: 其他人是否有資格在他們的報稅表上針對 EITC 將您申領為被撫養人或符合資格的子女嗎?
     modalLink: <modal-link for="modal-claimed-dependent">您作為被撫養或符合資格的子女</modal-link>
     options:
       'true':
@@ -97,11 +97,10 @@
   modal-claimed-dependent:
     heading: 您作為被撫養或符合資格的子女
     p-faf8d8: 在大多數情況下，您不能同時成為其他納稅人的被撫養人或符合資格的子女並申領 EITC。
-    p-98d6db: 在大多數情況下，如果您未滿 19 歲或未滿 24 歲的學生，並且與您的父母或其他親戚在美國生活了半年以上，請選擇 <strong>是</strong>。
+    p-5e1c8a: 在大多數情況下，如果您未滿 19 歲或未滿 24 歲的全日制學生，並且與您的父母或其他親戚在美國生活了半年以上，請選擇 是。
     p-038f13: 如果您已婚並提交聯合申報表，則不能將您作為受撫養人進行申報，除非您提交聯合申報表只是為了申請預扣所得稅或已繳納的預估稅款的退稅款。
-    p-ceda6c: '有關某人是否可以將您作為被撫養人的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">請前往</a> '
-    p-d11380: 有關某人是否可以針對 EITC 將您申領為合格子女的更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">請參閱</a>
-      。
+    p-4a4fd9: 有關某人是否可以將您作為被撫養人或針對 EITC 將您申領為符合資格的子女的更多資訊，請參閱第 596 號刊物《勞動所得稅抵免》(Earned Income Credit) 中的<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596zht#en_US_2025_publink1000298563">「您不能是其他人的被撫養人」</a>或<a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596zht#en_US_2025_publink1000298572">「您不能是其他納稅人的符合資格的子女」</a>。
     p-16aba9: 我們會在後續詢問您可能申領的子女或親屬。
   modal-primary-claimed-as-dependent:
     heading: 我如何知道自己是否是別人的受撫養人？

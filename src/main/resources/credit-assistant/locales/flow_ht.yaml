@@ -67,8 +67,7 @@
       'false':
         name: Non
   /isClaimedAsDependent:
-    question: Èske yon lòt moun pral rapòte w kòm yon timoun depandan oubyen ki kalifye
-      pou EITC sou deklarasyon taks yo?
+    question: Èske yon lòt moun gen dwa deklare w kòm yon moun ki sou kont li oswa kòm yon timoun ki kalifye pou EITC sou deklarasyon taks li?
     modalLink: <modal-link for="modal-claimed-dependent">Ou kòm yon timoun depandan
       oubyen ki kalifye</modal-link>
     options:
@@ -124,21 +123,14 @@
       byen oubyen teritwa Etazini ke ou Seleksyone pou eskli <a target="_blank" class="usa-link"
       href="https://www.irs.gov/forms-pubs/about-form-2555">sou</a>
   modal-claimed-dependent:
-    heading: Ou kòm yon timoun depandan oubyen ki kalifye
-    p-faf8d8: Nan pifò ka yo, ou pa kapab yon timoun depandan oubyen elijib yon lòt
-      kontribyab epi reklame EITC.
-    p-98d6db: Nan pifò ka yo, si w gen mwens pase 19 oubyen se yonetidyan anba 24
-      lane epi w ap viv ak paran w oubyen lòt fanmi Ozetazini pou plis pase mwatye
-      ane a, Seleksyone <strong>Wi</strong>.
+    heading: Ou kòm yon moun ki sou kont yon lòt moun oubyen yon timoun ki kalifye
+    p-faf8d8: Nan pifò ka yo, ou pa kapab yon moun ki sou kont yon lòt kontribyab oubyen yon timoun ki kalifye pou yon lòt kontribyab epi reklame EITC a.
+    p-5e1c8a: Nan pifò ka yo, si w gen mwens pase 19 lane oubyen se yon etidyan aplentan ki gen mwens pase 24 lane epi w ap viv ak paran w oubyen lòt fanmi Ozetazini pou plis pase mwatye ane a, seleksyone Wi.
     p-038f13: Si ou marye epi w ap ranpli yon deklarasyon konjwen, yo pa ka deklare
       w kòm yon depandan, sof si w ap ranpli yon deklarasyon konjwen sèlman pou reklame
       yon ranbousman taks sou revni yo te pran oswa estimasyon taks ki peye.
-    p-ceda6c: Pou chèche konnen si yon moun ka reklame ou kòm yon depandan, <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">vizite</a>
-    p-d11380: Pou plis enfòmasyon sou si yon moun ka deklare w yon timoun ki kalifye
-      pou EITC, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">gade</a>
-      .
-    p-16aba9: N ap poze w kesyon sou timoun oubyen paran ou ka reklame pita.
+    p-4a4fd9: Pou plis enfòmasyon sou si yon moun ka reklame w kòm yon moun ki sou kont li oubyen yon timoun ki kalifye pou EITC, gade Piblikasyon 596, Kredi sou Revni Travay (Earned Income Credit), nan seksyon <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298563">Ou pa kapab yon moun ki sou kont yon lòt moun (an anglè)</a> oubyen <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298572">Ou pa kapab yon timoun ki kalifye pou yon lòt kontribyab (an anglè)</a>.
+    p-16aba9: N ap poze w kesyon sou timoun oubyen lòt fanmi ou ka reklame pita.
   modal-primary-claimed-as-dependent:
     heading: Kijan mwen fè konnen si mwen se depandan yon moun?
     p-d3187d: Si ou te depann de yon lòt moun (apa de mari oswa madanm ou) pou sipò nan <fg-show path="/taxYear"/>, yo ta ka kapab deklare ou kòm yon depandan sou deklarasyon taks federal yo.

@@ -69,8 +69,8 @@
       'false':
         name: 'No'
   /isClaimedAsDependent:
-    question: Will someone else claim you as a dependent or qualifying child for the
-      EITC on their tax return?*
+    question: Is someone else eligible to claim you as a dependent or qualifying child
+      for the EITC on their tax return?*
     modalLink: <modal-link for="modal-claimed-dependent">How do I know if I’m someone’s
       dependent or qualifying child?</modal-link>
     options:
@@ -131,18 +131,18 @@
     heading: You as a Dependent or Qualifying Child
     p-faf8d8: In most cases you cannot be a dependent or qualifying child of another
       taxpayer and claim the EITC.
-    p-98d6db: In most cases, if you're under age 19 or a student under age 24 and
-      live with your parents or other relatives in the United States for more than
-      half of the year, select Yes.
+    p-5e1c8a: In most cases, if you're under age 19 or a full-time student under age
+      24 and live with your parents or other relatives in the United States for more
+      than half of the year, select Yes.
     p-038f13: If you’re married and filing a joint return, you can’t be claimed as
       a dependent unless you’re filing a joint return only to claim a refund of withheld
       income taxes or estimated taxes paid.
-    p-ceda6c: For more information about whether someone can claim you as a dependent,
-      visit <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">Whom
-      May I Claim as a Dependent?</a>
-    p-d11380: For more information about whether someone can claim you as a qualifying
-      child for the EITC, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">Publication
-      596, Earned Income Credit, You Cannot Be a Qualifying Child of Another Taxpayer</a>.
+    p-4a4fd9: For more information about whether someone can claim you as a dependent
+      or qualifying child for the EITC, see Publication 596, Earned Income Credit,
+      <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298563">You
+      Cannot Be the Dependent of Another Person</a> or <a target="_blank" class="usa-link"
+      href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298572">You
+      Cannot Be a Qualifying Child of Another Taxpayer</a>.
     p-16aba9: We'll ask about children or relatives you might claim later.
   modal-primary-claimed-as-dependent:
     heading: How do I know if I’m someone’s dependent?

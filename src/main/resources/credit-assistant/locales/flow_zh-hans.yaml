@@ -51,7 +51,7 @@
       'false':
         name: 不
   /isClaimedAsDependent:
-    question: 是否有其他人会在其报税表中将您申报为受抚养人或符合条件的子女，以申请 EITC？
+    question: 是否有其他人有资格在其报税表中将您申报为受抚养人或符合条件的子女，以申请 EITC？
     modalLink: <modal-link for="modal-claimed-dependent">您作为受抚养人或符合条件的子女</modal-link>
     options:
       'true':
@@ -98,11 +98,9 @@
   modal-claimed-dependent:
     heading: 您作为受抚养人或符合条件的子女
     p-faf8d8: 在大多数情况下，您不能成为其他纳税人的受抚养人或符合条件的子女，并申请 EITC。
-    p-98d6db: 在大多数情况下，如果您未满 19 岁，或是一名未满 24 岁的学生，并且与父母或其他亲属在美国生活了半年以上，请选择 <strong>是</strong>。
+    p-5e1c8a: 在大多数情况下，如果您未满 19 岁，或是一名未满 24 岁的全日制学生，并且与父母或其他亲属在美国生活了半年以上，请选择 是。
     p-038f13: 如果您已婚并提交联合申报表，则不能将您作为受抚养人进行申报，除非您提交联合申报表只是为了申请预扣所得税或已缴纳的预估税款的退税款。
-    p-ceda6c: '有关他人是否可将您申报为受抚养人的更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">请访问</a> '
-    p-d11380: 有关他人是否可将您申报为受抚养人以申请 EITC 的更多信息，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">请参阅</a>
-      。
+    p-4a4fd9: 有关他人是否可将您申报为受抚养人或符合 EITC 条件的子女的更多信息，请参阅第 596 号出版物《劳动所得税抵免》(Earned Income Credit) 中的<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596zhs#en_US_2025_publink1000298563">“您不能是其他人的受抚养人”</a>或<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596zhs#en_US_2025_publink1000298572">“您不能是其他纳税人的符合条件的子女”</a>。
     p-16aba9: 我们将会询问您稍后可能申报的子女或亲属。
   modal-primary-claimed-as-dependent:
     heading: 我如何知道自己是否是别人的受抚养人？

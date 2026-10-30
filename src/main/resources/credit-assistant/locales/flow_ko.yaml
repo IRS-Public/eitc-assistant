@@ -57,7 +57,7 @@
       'false':
         name: 아니요
   /isClaimedAsDependent:
-    question: 누군가가 세금 신고서에 EITC를 위한 부양가족 혹은 적격 자녀로서 귀하를 신청할까요?
+    question: 누군가가 세금 신고서에 EITC를 위한 부양가족 혹은 적격 자녀로서 귀하를 신청할 자격이 있나요?
     modalLink: <modal-link for="modal-claimed-dependent">부양가족 혹은 적격 자녀로서의 자신</modal-link>
     options:
       'true':
@@ -106,16 +106,11 @@
       예외로 선택한 외국, 컬럼비아 특별구 혹은 미국령(possessions, territory)외에서 얻은 소득을 의미합니다.
   modal-claimed-dependent:
     heading: 부양가족 혹은 적격 자녀로서의 자신
-    p-faf8d8: 대부분의 경우에 귀하는 다른 납세자의 부양가족 혹은 적격 자녀가 될 수 없습니다. EITC를 신청하세요.
-    p-98d6db: 대부분의 경우, 귀하가 만 19세 미만이거나 만 24세 미만의 학생이며 부모님이나 친척과 함께 미국에서 반년 이상 살고 있다면  <strong>네</strong>를
-      선택하세요.
+    p-faf8d8: 대부분의 경우, 귀하가 다른 납세자의 부양가족 또는 적격 자녀에 해당하면 EITC를 신청할 수 없습니다.
+    p-5e1c8a: 대부분의 경우, 귀하가 만 19세 미만이거나 만 24세 미만의 정규 과정에 전일제로 등록한 학생이며 부모님이나 친척과 함께 미국에서 반년 이상 살고 있다면 네를 선택하세요.
     p-038f13: 결혼하여 공동 세금 신고서를 제출하는 경우, 원천징수된 소득세나 납부한 추정세의 환급만을 청구하기 위한 목적이 아닌 이상
       부양가족으로 청구될 수 없습니다.
-    p-ceda6c: 누군가를 부양가족으로 신청 가능한지에 대한 자세한 <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">정보는</a>  를
-      방문하세요.
-    p-d11380: 누군가 귀하를 EITC를 위한 적격 자녀로 신청할 수 있는지에 대한 자세한 <a target="_blank" class="usa-link"
-      href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">정보는</a>
-      를 확인하세요.
+    p-4a4fd9: 다른 사람이 귀하를 부양가족 또는 EITC 적격 자녀로 신청할 수 있는지에 대한 자세한 내용은 간행물 596, 근로 소득 세액 공제(Earned Income Credit)의 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596ko#en_US_2025_publink1000298563">「다른 사람의 부양가족이 될 수 없음」</a> 또는 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596ko#en_US_2025_publink1000298572">「다른 납세자의 적격 자녀가 될 수 없음」</a>을 참조하세요.
     p-16aba9: 우리는 귀하가 이후에 신청할 자녀 혹은 친척에 대해 질문합니다.
   modal-primary-claimed-as-dependent:
     heading: 내가 누군가의 부양가족인지 어떻게 알 수 있나요?

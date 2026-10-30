@@ -73,7 +73,7 @@
       </fg-alert>
 
       <fg-set path="/isClaimedAsDependent" if-false="/hasForeignEarnedIncome">
-        <question>Will someone else claim you as a dependent or qualifying child for the EITC on their tax return?*</question>
+        <question>Is someone else eligible to claim you as a dependent or qualifying child for the EITC on their tax return?*</question>
         <modal-link for="modal-claimed-dependent">How do I know if I’m someone’s dependent or qualifying child?</modal-link>
         <input type="boolean">
           <option value="true">Yes</option>
@@ -151,10 +151,9 @@
       <modal-heading>You as a Dependent or Qualifying Child</modal-heading>
       <modal-content>
         <p>In most cases you cannot be a dependent or qualifying child of another taxpayer and claim the EITC.</p>
-        <p>In most cases, if you're under age 19 or a student under age 24 and live with your parents or other relatives in the United States for more than half of the year, select Yes.</p>
+        <p>In most cases, if you're under age 19 or a full-time student under age 24 and live with your parents or other relatives in the United States for more than half of the year, select Yes.</p>
         <p>If you’re married and filing a joint return, you can’t be claimed as a dependent unless you’re filing a joint return only to claim a refund of withheld income taxes or estimated taxes paid.</p>
-        <p>For more information about whether someone can claim you as a dependent, visit <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">Whom May I Claim as a Dependent?</a></p>
-        <p>For more information about whether someone can claim you as a qualifying child for the EITC, see <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">Publication 596, Earned Income Credit, You Cannot Be a Qualifying Child of Another Taxpayer</a>.</p>
+        <p>For more information about whether someone can claim you as a dependent or qualifying child for the EITC, see Publication 596, Earned Income Credit, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298563">You Cannot Be the Dependent of Another Person</a> or <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000298572">You Cannot Be a Qualifying Child of Another Taxpayer</a>.</p>
         <p>We'll ask about children or relatives you might claim later.</p>
       </modal-content>
     </modal-dialog>

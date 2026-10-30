@@ -69,10 +69,8 @@
       'false':
         name: Không
   /isClaimedAsDependent:
-    question: Có người nào sẽ kê khai quý vị là người phụ thuộc hoặc trẻ đủ điều kiện
-      để nhận EITC trên tờ khai thuế của họ không?
-    modalLink: <modal-link for="modal-claimed-dependent">Quý vị là Người Phụ Thuộc
-      hoặc Trẻ Đủ Điều Kiện</modal-link>
+    question: Có người nào khác đủ điều kiện để kê khai quý vị là người phụ thuộc hoặc trẻ đủ điều kiện để nhận EITC trên tờ khai thuế của họ không?
+    modalLink: <modal-link for="modal-claimed-dependent">Về việc bạn là người phụ thuộc hay con đủ điều kiện</modal-link>
     options:
       'true':
         name: Có
@@ -127,20 +125,19 @@
       Khu Columbia hoặc các khu vực thuộc sở hữu hay lãnh thổ của Hoa Kỳ mà quý vị
       đã lựa chọn loại trừ <a target="_blank" class="usa-link" href="https://www.irs.gov/forms-pubs/about-form-2555">trên</a> '
   modal-claimed-dependent:
-    heading: Quý vị là Người Phụ Thuộc hoặc Trẻ Đủ Điều Kiện
+    heading: Về việc bạn là người phụ thuộc hay con đủ điều kiện
     p-faf8d8: Trong hầu hết các trường hợp, quý vị không thể là người phụ thuộc hoặc
       trẻ đủ điều kiện của người đóng thuế khác đồng thời yêu cầu EITC.
-    p-98d6db: Trong hầu hết các trường hợp, nếu quý vị chưa đủ 19 tuổi hoặc là học
-      sinh/sinh viên dưới 24 tuổi và sống với cha mẹ hoặc thân nhân khác của quý vị
-      ở Hoa Kỳ trong hơn nửa năm, hãy chọn <strong>Có</strong>.
+    p-5e1c8a: Trong hầu hết các trường hợp, nếu quý vị chưa đủ 19 tuổi hoặc là học sinh/sinh viên toàn thời gian dưới 24 tuổi và sống với cha mẹ hoặc thân nhân khác của quý vị ở Hoa Kỳ trong hơn nửa năm, hãy chọn Có.
     p-038f13: Nếu quý vị đã kết hôn và khai thuế chung, quý vị không thể khai là người
       phụ thuộc trừ khi quý vị khai thuế chung chỉ để yêu cầu hoàn thuế thu nhập đã
       khấu lưu hoặc thuế ước tính đã trả.
-    p-ceda6c: 'Để biết thêm thông tin về việc liệu ai đó có thể kê khai quý vị là
-      người phụ thuộc hay không, truy <a target="_blank" class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">cập</a> '
-    p-d11380: Để biết thêm thông tin về việc liệu ai đó có thể kê khai quý vị là trẻ
-      đủ điều kiện để nhận EITC, <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2021_publink1000298540">xem</a>
-      .
+    p-4a4fd9: Để biết thêm thông tin về việc liệu ai đó có thể kê khai quý vị là người phụ 
+      thuộc hoặc trẻ đủ điều kiện để nhận EITC hay không, xem Ấn Phẩm 596, Tín Dụng Thuế 
+      Thu Nhập Kiếm Được (Earned Income Credit), mục 
+      <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596vie#en_US_2025_publink1000298563">Quý 
+      vị không thể là người phụ thuộc của người khác</a> hoặc 
+      <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596vie#en_US_2025_publink1000298572">“Quý vị không thể là trẻ đủ điều kiện của người đóng thuế khác”</a>.
     p-16aba9: Chúng tôi sẽ hỏi về trẻ em hoặc thân nhân mà quý vị có thể kê khai sau.
   modal-primary-claimed-as-dependent:
     heading: Làm cách nào để biết tôi có phải là người phụ thuộc của ai đó hay không?

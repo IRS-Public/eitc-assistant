@@ -49,7 +49,7 @@
       'false':
         name: No
   /isClaimedAsDependent:
-    question: ¿Otra persona te reclamará como dependiente o hijo calificado para el EITC en su declaración de impuestos?
+    question: ¿Otra persona cumple con los requisitos para reclamarte como dependiente o hijo calificado para el EITC en su declaración de impuestos?
     modalLink: <modal-link for="modal-claimed-dependent">¿Cómo sé si soy dependiente o hijo calificado?</modal-link>
     options:
       'true':
@@ -98,12 +98,9 @@
   modal-claimed-dependent:
     heading: Tú como dependiente o hijo calificado
     p-faf8d8: En la mayoría de los casos, no puedes ser dependiente o hijo calificado de otro contribuyente y reclamar el Crédito tributario por ingreso del trabajo (EITC, por sus siglas en inglés).
-    p-98d6db: En la mayoría de los casos, si tienes menos de 19 años o si eres un estudiante menor de 24 años y vives con tus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
+    p-5e1c8a: En la mayoría de los casos, si tienes menos de 19 años o si eres un estudiante a tiempo completo menor de 24 años y vives con tus padres u otros parientes en los Estados Unidos durante más de la mitad del año, seleccione <strong>Sí</strong>.
     p-038f13: Si estás casado(a) y presentas una declaración  conjunta, no pueden reclamarte como dependiente, a menos que presentes la declaración conjunta únicamente para reclamar un reembolso de impuestos sobre los ingresos retenido o de los impuestos estimados pagados.
-    p-ceda6c: Para más información sobre si alguien puede reclamarte como dependiente, visita <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/help/ita/whom-may-i-claim-as-a-dependent">¿A quién puedo reclamar como una persona dependiente (en inglés)</a>?
-    p-d11380: Para más información sobre si alguien puede reclamarte como hijo calificado, visita <a target="_blank"
-      class="usa-link" href="https://www.irs.gov/publications/p596sp"> la Publicación 596, Crédito tributario por ingreso del trabajo, Usted no puede ser el hijo calificado de otra persona.</a>
+    p-4a4fd9: Para más información sobre si alguien puede reclamarte como dependiente o hijo calificado para el EITC, consulta la Publicación 596, Crédito tributario por ingreso del trabajo, en las secciones <a target="_blank" class="usa-link" href="https://www.irs.gov//publications/p596sp#es_ES_2025_publink1000298563">No puedes ser dependiente de otra persona</a> o <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp#es_ES_2025_publink1000298572">No puedes ser el hijo calificado de otro contribuyente</a>.
     p-16aba9: Más adelante te preguntaremos sobre hijos o parientes que podrías reclamar.
   modal-primary-claimed-as-dependent:
     heading: ¿Cómo sé si soy el dependiente de alguien?
