@@ -447,7 +447,7 @@
   modal-valid-ssn:
     heading: Nimewo sekirite sosyal valab
     p-d14361: Yon nimewo Sekirite Sosyal (SSN) valab pou Kredi sou Revni Travay (EIC), sof si yo te bay nimewo a apre dat limit pou depoze deklarasyon taks <fg-show path="/taxYear"/> ou a (ki gen ladan pwolongasyon yo), oswa si yo te bay li sèlman pou aplike pou yon benefis gouvènman federal la finanse oswa pou resevwa benefis sa a, epi nimewo a pa ba ou otorizasyon pou travay. Medicaid se yon egzanp benefis gouvènman federal la finanse.
-    p-13253d: Si sou kat Sekirite Sosyal la a gen mo “Valid for work only with INS authorization” (Valab pou travay sèlman avèk otorizasyon INS) oswa “Valid for work only with DHS authorization” (Valab pou travay sèlman avèk otorizasyon DHS), SSN nan valab, men sèlman si otorizasyon sa a toujou valab.
+    p-0a1463: Si sou kat Sekirite Sosyal la a gen mo “Valid for work only with INS authorization” (Valab pou travay sèlman avèk otorizasyon INS) oswa “Valid for work only with DHS authorization” (Valab pou travay sèlman avèk otorizasyon DHS), SSN nan valab, men sèlman si otorizasyon sa a toujou valab.
     p-8bcfeb: Gade <a target="_blank"
       class="usa-link" href="https://www.irs.gov/forms-pubs/about-publication-596">Piblikasyon 596 (an anglè)</a> pou plis enfòmasyon sou yon Nimewo Sekirite Sosyal ki valid (<a target="_blank"
       class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297446">Nimewo Sekirite Sosyal ki valab (an anglè)</a>).

@@ -345,7 +345,7 @@
   modal-valid-ssn:
     heading: 有效的社會安全號碼
     p-d14361: 社會安全號碼（SSN）可用於申領勞動所得稅抵免（EIC），除非該號碼是在您的 <fg-show path="/taxYear"/> 年報稅表提交截止日期（包括延期）之後核發的，或者該號碼僅為申請或領取聯邦政府資助的福利而核發，且不允許您工作。Medicaid（聯邦醫療補助）是聯邦政府資助的福利的一個例子。
-    p-13253d: 如果社會保卡上寫著「Valid for work only with INS authorization」（僅在獲得 INS 授權的情況下可以工作）或「Valid for work only with DHS authorization」（僅在獲得 DHS 授權的情況下可以工作），則該 SSN 有效，但前提是該授權仍然有效。
+    p-0a1463: 如果社會保卡上寫著「Valid for work only with INS authorization」（僅在獲得 INS 授權的情況下可以工作）或「Valid for work only with DHS authorization」（僅在獲得 DHS 授權的情況下可以工作），則該 SSN 有效，但前提是該授權仍然有效。
     p-8bcfeb: 有關有效社會安全號碼的更多資訊，請參閱<a target="_blank"
       class="usa-link" href="https://www.irs.gov/zh-hant/forms-pubs/about-publication-596">《出版物 596》</a>中有關<a target="_blank"
       class="usa-link" href="https://www.irs.gov/publications/p596zht#en_US_2025_publink1000297446">有效社會安全號碼</a>的說明。

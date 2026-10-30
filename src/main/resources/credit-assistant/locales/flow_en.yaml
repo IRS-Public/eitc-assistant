@@ -474,8 +474,8 @@
       of your <fg-show path="/taxYear"/> return (including extensions) or it was issued
       solely to apply for or receive a federally funded benefit and does not authorize
       you to work. An example of a federally funded benefit is Medicaid.
-    p-13253d: If the social security card reads “Valid for work only with INS authorization”
-      or “Valid for work only with DHS authorization,” you have a valid SSN, but only
+    p-0a1463: If the social security card reads “Valid for work only with INS authorization”
+      or “Valid for work only with DHS authorization,” it's a valid SSN, but only
       if that authorization is still valid.
     p-8bcfeb: See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">Publication
       596</a> for more information on a <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596#en_US_2025_publink1000297446">valid

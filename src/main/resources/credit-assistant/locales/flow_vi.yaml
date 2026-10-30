@@ -464,7 +464,7 @@
   modal-valid-ssn:
     heading: Số An Sinh Xã Hội Hợp Lệ
     p-d14361: Số An Sinh Xã Hội (Social Security number, SSN) hợp lệ để yêu cầu Tín Dụng Thuế Thu Nhập Kiếm Được (Earned Income Credit, EIC), trừ khi số đó được cấp sau ngày đến hạn nộp tờ khai thuế năm <fg-show path="/taxYear"/> của quý vị (bao gồm cả thời gian gia hạn), hoặc số đó chỉ được cấp để đăng ký hoặc nhận phúc lợi do liên bang tài trợ và không cho phép quý vị làm việc. Medicaid là một ví dụ về phúc lợi do liên bang tài trợ.
-    p-13253d: Nếu thẻ An Sinh Xã Hội có ghi “Valid for work only with INS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Sở Di Trú và Nhập Tịch, INS) hoặc “Valid for work only with DHS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Bộ An Ninh Nội Địa, DHS), thì SSN đó hợp lệ, nhưng chỉ khi sự cho phép đó vẫn còn hiệu lực.
+    p-0a1463: Nếu thẻ An Sinh Xã Hội có ghi “Valid for work only with INS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Sở Di Trú và Nhập Tịch, INS) hoặc “Valid for work only with DHS authorization” (Chỉ hợp lệ để làm việc khi có sự cho phép của Bộ An Ninh Nội Địa, DHS), thì SSN đó hợp lệ, nhưng chỉ khi sự cho phép đó vẫn còn hiệu lực.
     p-8bcfeb: Xem <a target="_blank"
       class="usa-link" href="https://www.irs.gov/vi/forms-pubs/about-publication-596">Ấn Bản 596</a> để biết thêm thông tin về <a target="_blank"
       class="usa-link" href="https://www.irs.gov/publications/p596vie#en_US_2025_publink1000297446">Số An Sinh Xã Hội hợp lệ</a>.
