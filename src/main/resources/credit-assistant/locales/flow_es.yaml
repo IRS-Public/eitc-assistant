@@ -276,21 +276,15 @@
     p-5b3ae2: <a target="_blank" class="usa-link" href="https://www.irs.gov/es/filing/filing-status">Conoce más sobre cada estado civil<span class="usa-sr-only"> (abre en una nueva pestaña)</span></a>
   modal-qualifying-child-eitc:
     heading: Hijo calificado
-    p-7356ad: Para reclamar el el Crédito por ingreso del trabajo (EITC, por sus siglas en inglés) con un hijo calificado, tu hijo(a) debe tener un número de Seguro Social válido, emitido por la Administración de Seguro Social en o antes de la fecha de vencimiento de tu declaración de <fg-show path="/taxYear"/> (incluidas las prórrogas).
-    p-ac8914: Si la tarjeta del Seguro Social dice “Válido para trabajar con autorización del DHS” o “Válido para trabajar con autorización del INS”, es un Seguro Social válido si la autorización sigue vigente.
-    p-558a40: 'Para el EITC, no aceptamos:'
+    p-d14361: Un número de Seguro Social (SSN, por sus siglas en inglés) es válido para el Crédito por ingreso del trabajo (EIC, por sus siglas en inglés), a menos que se haya emitido después de la fecha límite para presentar tu declaración de impuestos de <fg-show path="/taxYear"/> (incluidas las prórrogas) o que se haya emitido únicamente para solicitar o recibir un beneficio financiado con fondos federales y no te autorice a trabajar. Medicaid es un ejemplo de un beneficio financiado con fondos federales.
+    p-1df3b4: Si la tarjeta del Seguro Social dice “Valid for work with DHS authorization” (Válido para trabajar con autorización del DHS) o “Valid for work with INS authorization” (Válido para trabajar con autorización del INS), es un número de Seguro Social válido, pero solo si la autorización sigue vigente.
+    p-53e247: 'Un menor es un hijo calificado si cumple con estas cuatro pruebas:'
     ul-0:
-      li-5e5f3e: Número de identificación personal del contribuyente del IRS (ITIN por sus siglas en inglés)
-      li-5fc9b7: Número identificación del contribuyente en proceso de adopción (ATIN por sus siglas en inglés)
-      li-9f487b: Número de Seguro Social emitido luego de la fecha de vencimiento de la declaración, incluidas las prórrogas
-      li-19d3d7: Número de Seguro Social emitido únicamente para los propósitos de recibir un beneficio financiado por fondos federales, tal como el Medicaid.
-    p-0d323a: 'Tu hijo(a) es un hijo calificado si cumple con cuatro pruebas:'
-    ul-1:
       li-fbc977: Relación
       li-9d8d2d: Edad
       li-23863d: Residencia
       li-ca34c2: Declaración conjunta
-    p-e00960: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a>, para más información sobre un número de Seguro Social válido y si tiene un hijo calificado.
+    p-d18097: Consulta la <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596sp">Publicación 596</a> para más información sobre un número de Seguro Social válido y si tienes un hijo calificado.
   modal-main-home-us:
     heading: Hogar principal en los Estados Unidos
     p-9cbbc6: Tu hogar debe haber estado en los Estados Unidos por más de la mitad del año<fg-show path="/taxYear"/>.

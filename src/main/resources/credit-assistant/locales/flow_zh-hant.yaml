@@ -282,21 +282,15 @@
       class="usa-sr-only"> (opens in a new tab)</span>。</a>
   modal-qualifying-child-eitc:
     heading: 符合資格的子女
-    p-7356ad: 如希望與符合資格的子女一起申請 EITC，該子女必須在 2026 年申報表到期日或之前擁有社保局頒發的有效 SSN（包括延期）。
-    p-ac8914: 如果社會保障卡上寫著“憑 DHS 授權工作有效”或“憑 INS 授權工作有效”，那麼只要授權仍然有效，這就是有效的 SSN。
-    p-558a40: 對於 EITC，我們不接受：
+    p-d14361: 社會安全號碼（SSN）可用於申領勞動所得稅抵免（EIC），除非該號碼是在您的 <fg-show path="/taxYear"/> 年報稅表提交截止日期（包括延期）之後核發的，或者該號碼僅為申請或領取聯邦政府資助的福利而核發，且不允許您工作。Medicaid（聯邦醫療補助）是聯邦政府資助的福利的一個例子。
+    p-1df3b4: 如果社會保障卡上寫著「Valid for work with DHS authorization」（獲得 DHS 授權後可工作）或「Valid for work with INS authorization」（獲得 INS 授權後可工作），那麼該 SSN 有效，但前提是授權仍然有效。
+    p-53e247: '如果一名子女符合以下四項條件，該子女就是符合資格的子女：'
     ul-0:
-      li-5e5f3e: 美國國稅局個人納稅人識別號（ITIN）
-      li-5fc9b7: 領養納稅識別號碼（ATIN）
-      li-9f487b: 僅為允許社會安全號碼的接收者申請或獲得聯邦資助的福利（如聯邦醫療補助）而簽發的社會安全號碼
-      li-19d3d7: 僅出於申請或領取聯邦資助的福利（例如 Medicaid）之目的頒發的社會安全號碼
-    p-0d323a: 如果您的子女透過四項測試，您的子女就是符合資格的子女。這四項測試是：
-    ul-1:
-      li-fbc977: 關係，
-      li-9d8d2d: 年齡，
-      li-23863d: 居住權，以及
+      li-fbc977: 關係
+      li-9d8d2d: 年齡
+      li-23863d: 居住條件
       li-ca34c2: 共同報稅表
-    p-e00960: '如需瞭解更多資訊，<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596">請參閱</a> '
+    p-d18097: '如需瞭解更多關於有效社會安全號碼以及如何確定您是否有符合資格的子女的資訊，請參閱<a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p596zht">美國國稅局第 596 號刊物</a>。'
   modal-main-home-us:
     heading: 美國的主要住宅
     p-9cbbc6: 您在美國居住有超過半年的時間嗎？
