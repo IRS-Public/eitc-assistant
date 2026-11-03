@@ -308,11 +308,13 @@
       li-c64365: Costos de transporte, tal como seguro, pagos de arrendamiento, o transporte público
       li-04dec0: El valor de tus servicios o los de un miembro de tu hogar
   modal-legal-separation:
-    heading: Separación legal y unión libre (conocida como “common law” en inglés)
-    h3-ef7665: Legalmente separados
-    p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o manutención por separación judicia.'
+    heading: Definición de matrimonio, matrimonio de hecho y separación legal
+    h3-5b58e6: Definición de matrimonio
+    p-4e04ff: Un matrimonio entre dos personas se reconoce para fines federales si el estado o territorio de los Estados Unidos donde se celebró el matrimonio lo reconoce como válido, independientemente del lugar de residencia legal de las personas.
     h3-357344: Matrimonio de hecho
     p-f560ea: Algunos estados permiten el matrimonio por unión libre. Consulta con tu estado para ver si se te considera casado(a) bajo la unión libre.
+    h3-ef7665: Legalmente separados
+    p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o una sentencia judicial de manutención por separación.'
   modal-joint-return-mfj:
     heading: Declaración conjunta
     p-75997a: Puedes elegir presentar una declaración con tu esposo(a)seleccionando <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.

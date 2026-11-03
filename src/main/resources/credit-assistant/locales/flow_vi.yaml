@@ -414,14 +414,13 @@
       li-04dec0: Giá trị dịch vụ của quý vị hoặc của một thành viên trong gia đình
         quý vị
   modal-legal-separation:
-    heading: Ly thân hợp pháp và Thông luật
-    h3-ef7665: Ly Thân Về Mặt Pháp Lý
-    p-198345: “Ly thân về mặt pháp lý" cho mục đích này có nghĩa là tình trạng ly
-      thân theo như phán quyết chính thức về ly hôn hoặc việc cấp dưỡng sau ly thân.
+    heading: Định Nghĩa Về Hôn Nhân, Hôn Nhân Theo Thông Luật và Ly Thân Hợp Pháp
+    h3-5b58e6: Định Nghĩa Về Hôn Nhân
+    p-4e04ff: Hôn nhân giữa hai người được công nhận cho các mục đích liên bang nếu hôn nhân đó được tiểu bang hoặc vùng lãnh thổ Hoa Kỳ nơi hai người kết hôn công nhận, bất kể nơi cư trú hợp pháp của họ.
     h3-357344: Hôn Nhân Theo Tập Tục Không Cần Phải Làm Giấy Hôn Thú
-    p-f560ea: Một số tiểu bang cho phép hôn nhân theo thông luật. Kiểm tra đối với
-      tiểu bang của quý vị để xem liệu quý vị có được coi là đã kết hôn theo thông
-      luật không.
+    p-f560ea: Một số tiểu bang cho phép hôn nhân theo thông luật. Kiểm tra đối với tiểu bang của quý vị để xem liệu quý vị có được coi là đã kết hôn theo thông luật không.
+    h3-ef7665: Ly Thân Về Mặt Pháp Lý
+    p-198345: '“Ly thân về mặt pháp lý" cho mục đích này có nghĩa là tình trạng ly thân theo phán quyết của tòa án về ly hôn hoặc ly thân có quy định cấp dưỡng cho vợ hoặc chồng.'
   modal-joint-return-mfj:
     heading: Khai Thuế Chung
     p-75997a: Quý vị có thể chọn khai chung hồ sơ thuế với người phối ngẫu của mình

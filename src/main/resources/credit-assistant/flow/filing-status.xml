@@ -306,13 +306,14 @@
       </modal-content>
     </modal-dialog>
     <modal-dialog id="modal-legal-separation">
-      <modal-heading>Legal Separation and Common Law</modal-heading>
+      <modal-heading>Definition of Marriage, Common Law Marriage, and Legal Separation </modal-heading>
       <modal-content>
-        <h3>Legally Separated</h3>
-        <p>"Legally separated" for this purpose means legally separated under a decree of divorce or separate maintenance.</p>
-
+        <h3>Definition of Marriage</h3>
+        <p>A marriage of two individuals is recognized for federal purposes if the marriage is recognized by the state or territory of the United States in which the marriage is entered into, regardless of legal residence.</p>
         <h3>Common Law Marriage</h3>
         <p>Some states allow common law marriages. Check with your state to see if you are considered married under common law.</p>
+        <h3>Legally Separated</h3>
+        <p>"Legally separated" for this purpose means legally separated under a decree of divorce or separate maintenance.</p>
       </modal-content>
     </modal-dialog>
     <modal-dialog id="modal-joint-return-mfj">

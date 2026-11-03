@@ -429,13 +429,17 @@
       li-c64365: Transportation costs like insurance, lease payments, or public transportation
       li-04dec0: Value of your services or those of a member of your household
   modal-legal-separation:
-    heading: Legal Separation and Common Law
-    h3-ef7665: Legally Separated
-    p-198345: '&quot;Legally separated&quot; for this purpose means legally separated
-      under a decree of divorce or separate maintenance.'
+    heading: 'Definition of Marriage, Common Law Marriage, and Legal Separation '
+    h3-5b58e6: Definition of Marriage
+    p-4e04ff: A marriage of two individuals is recognized for federal purposes if
+      the marriage is recognized by the state or territory of the United States in
+      which the marriage is entered into, regardless of legal residence.
     h3-357344: Common Law Marriage
     p-f560ea: Some states allow common law marriages. Check with your state to see
       if you are considered married under common law.
+    h3-ef7665: Legally Separated
+    p-198345: '&quot;Legally separated&quot; for this purpose means legally separated
+      under a decree of divorce or separate maintenance.'
   modal-joint-return-mfj:
     heading: Joint Return
     p-75997a: You can choose to file one return with your spouse by selecting <strong>Married</strong>
