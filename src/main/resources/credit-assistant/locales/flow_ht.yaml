@@ -406,10 +406,9 @@
     h3-ef7665: Legalman separe
     p-198345: '"Separe legalman" pou objektif sa a vle di separe legalman dapre yon desizyon tribinal pou divòs oswa yon desizyon tribinal ki etabli separasyon legal ak obligasyon pou bay mari oswa madanm sipò finansye.'
   modal-joint-return-mfj:
-    heading: deklarasyon kolektif
-    p-75997a: Ou ka Seleksyone pou fè yon sèl deklarasyon ak konjwen ou lè w Seleksyone
-      <strong> estati ranpli w. Sa a pèmèt ou konbine revni ou ak depans lè w ap kalkile
-      kredi ou, dediksyon ak taks ou peye.
+    heading: Deklarasyon taks konjwen
+    p-05585c: Ou ka chwazi depoze yon sèl deklarasyon taks ansanm ak mari oswa madanm ou lè w chwazi <strong>«Marye k ap fè deklarasyon taks ansanm»</strong> kòm estati deklarasyon taks ou. Sa pèmèt nou mete revni ak depans nou ansanm lè n ap kalkile kredi taks, dediksyon ak kantite taks nou dwe peye.
+    p-31ece0: Pou plis enfòmasyon, gade <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">Piblikasyon 501, Fè yon deklarasyon taks konjwen</a>.
   modal-joint-deceased-spouse:
     heading: deklarasyon kolektif ak konjwen ki mouri a
     p-85e581: Si konjwen ou te mouri pandan <fg-show path="/taxYear"/>, ou ka Seleksyone

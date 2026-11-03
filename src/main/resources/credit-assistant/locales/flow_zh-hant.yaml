@@ -323,7 +323,8 @@
     p-198345: 在此處，「合法分居」指的是根據法院頒布的離婚判令或單獨贍養令合法分居。
   modal-joint-return-mfj:
     heading: 共同報稅表
-    p-75997a: 您可以透過選擇 <strong> 作為您的報稅身份來選擇與您的配偶一起報稅。這使您可以在計算稅務優惠、扣除額和納稅義務時結合您的收入和支出。
+    p-05585c: 您可以透過選擇<strong>「已婚聯合報稅」（Married Filing Jointly）</strong>作為您的報稅身分，與配偶共同提交一份報稅表。這樣，在計算稅收抵免、扣除額和應納稅額時，您可以合併計算您和配偶的收入及支出。
+    p-31ece0: 如需更多資訊，請參閱<a target="_blank" class="usa-link"  href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">第 501 號刊物《提交聯合報稅表》</a>。
   modal-joint-deceased-spouse:
     heading: 與已故配偶申報共同報稅表
     p-85e581: 如果您的配偶在 <fg-show path="/taxYear"/>, 年間去世，您可以透過選擇 <fg-show path="/taxYear"/>

@@ -423,10 +423,8 @@
     p-198345: '“Ly thân về mặt pháp lý" cho mục đích này có nghĩa là tình trạng ly thân theo phán quyết của tòa án về ly hôn hoặc ly thân có quy định cấp dưỡng cho vợ hoặc chồng.'
   modal-joint-return-mfj:
     heading: Khai Thuế Chung
-    p-75997a: Quý vị có thể chọn khai chung hồ sơ thuế với người phối ngẫu của mình
-      bằng cách chọn <strong> trong tư cách khai thuế của quý vị. Điều này cho phép
-      quý vị kết hợp thu nhập và chi phí của hai người khi tính toán các khoản tín
-      thuế, khoản khấu trừ và trách nhiệm trả thuế.
+    p-05585c: Quý vị có thể chọn khai chung hồ sơ thuế với người phối ngẫu của mình bằng cách chọn <strong>“Vợ Chồng Khai Thuế Chung” (Married Filing Jointly)</strong> trong tư cách khai thuế của quý vị. Điều này cho phép quý vị kết hợp thu nhập và chi phí của hai người khi tính toán các khoản tín thuế, khoản khấu trừ và trách nhiệm trả thuế.
+    p-31ece0: Để biết thêm thông tin, xem <a target="_blank" class="usa-link"   href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">Ấn Phẩm 501, Khai Thuế Chung</a>.
   modal-joint-deceased-spouse:
     heading: Khai Thuế Chung với Người Phối Ngẫu Đã Qua Đời
     p-85e581: Nếu người phối ngẫu của quý vị đã qua đời trong <fg-show path="/taxYear"/>,

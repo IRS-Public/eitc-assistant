@@ -442,9 +442,11 @@
       under a decree of divorce or separate maintenance.'
   modal-joint-return-mfj:
     heading: Joint Return
-    p-75997a: You can choose to file one return with your spouse by selecting <strong>Married</strong>
-      as your filing status. This allows you to combine your income and expenses when
-      figuring your credits, deductions, and tax liability.
+    p-05585c: You can choose to file one return with your spouse by selecting <strong>Married
+      Filing Jointly</strong> as your filing status. This allows you to combine your
+      income and expenses when figuring your credits, deductions, and tax liability.
+    p-31ece0: See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">
+      Publication 501 Filing a Joint Return</a> for more information.
   modal-joint-deceased-spouse:
     heading: Joint Return with Deceased Spouse
     p-85e581: If your spouse died during <fg-show path="/taxYear"/>, you can choose

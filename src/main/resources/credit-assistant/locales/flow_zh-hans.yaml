@@ -323,7 +323,8 @@
     p-198345: 为此，“合法分居”是指根据法院颁布的离婚判令或单独赡养令合法分居。
   modal-joint-return-mfj:
     heading: 联合申报
-    p-75997a: 您可以选择 <strong> 为您的报税状态，以与您的配偶提交一份报税表。因此，在计算您的抵免额、扣除额以及纳税金额时，可以将您的收入与支出进行结合。
+    p-05585c: 您可以选择<strong>“已婚联合申报”（Married Filing Jointly）</strong>作为您的报税身份，与配偶共同提交一份报税表。这样，在计算税收抵免、扣除额和应纳税额时，您可以合并计算您和配偶的收入及支出。
+    p-31ece0: 有关更多信息，请参阅<a target="_blank" class="usa-link"   href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">第 501 号出版物《提交联合报税表》</a>。
   modal-joint-deceased-spouse:
     heading: 与已故配偶联合申报
     p-85e581: 如果您的配偶于 <fg-show path="/taxYear"/> 去世，您可以选择 <fg-show path="/taxYear"/>

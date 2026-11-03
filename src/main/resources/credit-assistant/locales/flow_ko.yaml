@@ -346,8 +346,8 @@
     p-198345: 이 목적으로 "법적으로 별거"는 이혼 혹은 별거 중 배우자 부양에 관한 법원 명령에 따라 법적으로 별거했다는 의미입니다.
   modal-joint-return-mfj:
     heading: 공동 신고
-    p-75997a: 귀하는  <strong> 를 귀하의 신고 지위로 선택하여  배우자와 함께 하나의 신고서를 제출하도록 선택할 수 있습니다.
-      이는 귀하가 세액공제, 소득공제 그리고 세금 채무를 계산할 때 소득과 지출을 합하도록 허용합니다.
+    p-05585c: 귀하는 신고 지위로 '<strong>부부 공동 신고(Married Filing Jointly)</strong>'를 선택하여 배우자와 함께 하나의 세금 신고서를 제출할 수 있습니다. 이렇게 하면 세액공제, 소득공제 및 납부해야 할 세금을 계산할 때 부부의 소득과 지출을 합산할 수 있습니다.
+    p-31ece0: 자세한 내용은 <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">간행물 501, 공동 신고서 제출</a>을 참조하세요.
   modal-joint-deceased-spouse:
     heading: 사망한 배우자와 공동신고
     p-85e581: 만약 귀하의 배우자가 <fg-show path="/taxYear"/>년에 사망했다면, 귀하의 신고 지위로서 <fg-show

@@ -1,4 +1,4 @@
-
+ 
 /:
   title: Acerca de ti
   h2-5e286b: Acerca de ti
@@ -317,7 +317,8 @@
     p-198345: '"Legalmente separado" para este propósito significa estar legalmente separado de conformidad con un fallo de divorcio o una sentencia judicial de manutención por separación.'
   modal-joint-return-mfj:
     heading: Declaración conjunta
-    p-75997a: Puedes elegir presentar una declaración con tu esposo(a)seleccionando <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
+    p-05585c: Puedes elegir presentar una declaración con tu esposo(a) seleccionando <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto le permite combinar sus ingresos y gastos cuando calcula sus créditos, deducciones y obligación tributaria.
+    p-31ece0: Para más información, consulta la <a target="_blank" class="usa-link"  href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749">Publicación 501, Presentación de una declaración conjunta</a>.
   modal-joint-deceased-spouse:
     heading: Declaración conjunta con un esposo(a) fallecido
     p-85e581: Si tu esposo(a) falleció durante el <fg-show path="/taxYear"/>, puedes elegir presentar una declaración con tu esposo(a) seleccionado <strong>Casado(a) que presenta una declaración conjunta</strong> como tu estado civil para los efectos de la declaración. Esto te permite combinar tus ingresos y gastos al calcular tus créditos, deducciones y la cantidad de impuestos que debes.

@@ -319,7 +319,8 @@
     <modal-dialog id="modal-joint-return-mfj">
       <modal-heading>Joint Return</modal-heading>
       <modal-content>
-        <p>You can choose to file one return with your spouse by selecting <strong>Married</strong> as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+        <p>You can choose to file one return with your spouse by selecting <strong>Married Filing Jointly</strong> as your filing status. This allows you to combine your income and expenses when figuring your credits, deductions, and tax liability.</p>
+        <p>See <a target="_blank" class="usa-link" href="https://www.irs.gov/publications/p501#en_US_2025_publink1000220749"> Publication 501 Filing a Joint Return</a> for more information.</p>
       </modal-content>
     </modal-dialog>
     <modal-dialog id="modal-joint-deceased-spouse">
